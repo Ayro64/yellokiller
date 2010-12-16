@@ -85,11 +85,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="hero.cs" />
+    <Compile Include="IKeyboardService.cs" />
     <Compile Include="invaders.cs" />
+    <Compile Include="KeyboardService.cs" />
     <Compile Include="missile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ServiceHelper.cs" />
     <Compile Include="SpaceInvaders.cs" />
+    <Compile Include="Sprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
