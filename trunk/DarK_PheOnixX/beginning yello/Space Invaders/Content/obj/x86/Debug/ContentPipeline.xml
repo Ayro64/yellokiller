@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>sprites\wallpaper.jpg</Source>
+      <Name>sprites\wallpaper</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\wallpaper.xnb</Output>
+      <Time>2010-11-28T04:12:22+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\beam1.png</Source>
+      <Name>sprites\classic\beam1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\beam1.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\beam2.png</Source>
+      <Name>sprites\classic\beam2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\beam2.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\explosion.png</Source>
+      <Name>sprites\classic\explosion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\explosion.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\invaderdeath.png</Source>
+      <Name>sprites\classic\invaderdeath</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\invaderdeath.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\laser.png</Source>
+      <Name>sprites\classic\laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\laser.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\player.png</Source>
+      <Name>sprites\classic\player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\player.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\shield.png</Source>
+      <Name>sprites\classic\shield</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\shield.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\adriana.png</Source>
+      <Name>sprites\adriana</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\adriana.xnb</Output>
+      <Time>2010-12-03T22:15:32.3134766+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\adriana2.png</Source>
+      <Name>sprites\adriana2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\adriana2.xnb</Output>
+      <Time>2010-12-03T22:55:09.756836+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\crabe1.png</Source>
+      <Name>sprites\classic\crabe1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\crabe1.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\crabe2.png</Source>
+      <Name>sprites\classic\crabe2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\crabe2.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\poulpe1.png</Source>
+      <Name>sprites\classic\poulpe1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\poulpe1.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\poulpe2.png</Source>
+      <Name>sprites\classic\poulpe2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\poulpe2.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\seche1.png</Source>
+      <Name>sprites\classic\seche1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\seche1.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\seche2.png</Source>
+      <Name>sprites\classic\seche2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\seche2.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\classic\soucoupe.png</Source>
+      <Name>sprites\classic\soucoupe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sprites\classic\soucoupe.xnb</Output>
+      <Time>2010-11-28T04:12:36+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\0.wav</Source>
+      <Name>sounds\0</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\0.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\1.wav</Source>
+      <Name>sounds\1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\1.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\2.wav</Source>
+      <Name>sounds\2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\2.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\3.wav</Source>
+      <Name>sounds\3</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\3.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\4.wav</Source>
+      <Name>sounds\4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\4.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\5.wav</Source>
+      <Name>sounds\5</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\5.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\6.wav</Source>
+      <Name>sounds\6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\6.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\7.wav</Source>
+      <Name>sounds\7</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\7.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\8.wav</Source>
+      <Name>sounds\8</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\8.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sounds\9.wav</Source>
+      <Name>sounds\9</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\sounds\9.xnb</Output>
+      <Time>2010-11-28T04:12:46+01:00</Time>
+    </Item>
+    <Item>
+      <Source>fonts\Arial10.spritefont</Source>
+      <Name>fonts\Arial10</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\fonts\Arial10.xnb</Output>
+      <Time>2010-12-01T02:24:22+01:00</Time>
+    </Item>
+    <Item>
+      <Source>fonts\Arial15.spritefont</Source>
+      <Name>fonts\Arial15</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\fonts\Arial15.xnb</Output>
+      <Time>2010-12-01T02:24:22+01:00</Time>
+    </Item>
+    <Item>
+      <Source>fonts\Arial20.spritefont</Source>
+      <Name>fonts\Arial20</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\fonts\Arial20.xnb</Output>
+      <Time>2010-12-01T02:24:22+01:00</Time>
+    </Item>
+    <Item>
+      <Source>fonts\Courier10.spritefont</Source>
+      <Name>fonts\Courier10</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\fonts\Courier10.xnb</Output>
+      <Time>2010-12-01T02:24:22+01:00</Time>
+    </Item>
+    <Item>
+      <Source>fonts\Courier20.spritefont</Source>
+      <Name>fonts\Courier20</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\fonts\Courier20.xnb</Output>
+      <Time>2010-12-01T02:24:22+01:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2009-05-28T09:16:14+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2009-05-28T09:16:06+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2009-05-28T09:16:16+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2009-05-28T09:16:26+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2009-05-28T09:16:12+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2009-05-28T09:16:06+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2010-08-05T02:46:55.8294694+02:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
