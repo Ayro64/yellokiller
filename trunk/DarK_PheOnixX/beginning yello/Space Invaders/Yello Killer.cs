@@ -38,7 +38,7 @@ namespace Space_Invaders
             int screenwidth = GraphicsDevice.Viewport.Width;
             int screenheight = GraphicsDevice.Viewport.Height;
 
-            max1 = new Player1(new Vector2(350,500));
+            max1 = new Player1(new Vector2(350,300));
             max2 = new Player2(new Vector2(450,500));
                        
             base.Initialize();
@@ -50,6 +50,7 @@ namespace Space_Invaders
 
             max1.LoadContent(Content, "Mario");
             max2.LoadContent(Content, "joueur");
+            max1.Scale = new Vector2(0.2f, 0.2f);
         }
 
         protected override void UnloadContent()
