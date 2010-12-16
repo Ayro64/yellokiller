@@ -18,7 +18,8 @@ namespace Space_Invaders
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         
-        Player max;
+        Player1 max1;
+        Player2 max2;
         
         public Yello_Killer()
         {
@@ -37,7 +38,8 @@ namespace Space_Invaders
             int screenwidth = GraphicsDevice.Viewport.Width;
             int screenheight = GraphicsDevice.Viewport.Height;
 
-            max = new Player(new Vector2(100, 100));
+            max1 = new Player1(new Vector2(100, 100));
+            max2 = new Player2(new Vector2(100, 100));
                        
             base.Initialize();
         }
@@ -46,7 +48,8 @@ namespace Space_Invaders
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            max.LoadContent(Content, "joueur");
+            max1.LoadContent(Content, "joueur");
+            max2.LoadContent(Content, "joueur");
         }
 
         protected override void UnloadContent()
@@ -55,7 +58,8 @@ namespace Space_Invaders
 
         protected override void Update(GameTime gameTime)
         {
-            max.Update(gameTime);
+            max1.Update(gameTime);
+            max2.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -65,7 +69,8 @@ namespace Space_Invaders
             
             spriteBatch.Begin();
 
-            max.Draw(spriteBatch);
+            max1.Draw(spriteBatch);
+            max2.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

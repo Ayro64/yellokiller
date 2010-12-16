@@ -20,14 +20,14 @@ namespace Space_Invaders
 
         public void Update(GameTime gameTime)
         {
-            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Up))
-                Position = new Vector2(Position.X, Position.Y - 0.8f * gameTime.ElapsedGameTime.Milliseconds);
-            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Down))
-                Position = new Vector2(Position.X, Position.Y + 0.8f * gameTime.ElapsedGameTime.Milliseconds);
-            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Left))
-                Position = new Vector2(Position.X - 0.8f * gameTime.ElapsedGameTime.Milliseconds, Position.Y);
-            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Right))
-                Position = new Vector2(Position.X + 0.8f * gameTime.ElapsedGameTime.Milliseconds, Position.Y);
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.W))
+                Position = new Vector2(Position.X, Position.Y - 0.1f * gameTime.ElapsedGameTime.Milliseconds);
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.S))
+                Position = new Vector2(Position.X, Position.Y + 0.1f * gameTime.ElapsedGameTime.Milliseconds);
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.A))
+                Position = new Vector2(Position.X - 0.1f * gameTime.ElapsedGameTime.Milliseconds, Position.Y);
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.D))
+                Position = new Vector2(Position.X + 0.1f * gameTime.ElapsedGameTime.Milliseconds, Position.Y);
         }
     }
 }

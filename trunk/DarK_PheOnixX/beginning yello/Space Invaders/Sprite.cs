@@ -5,10 +5,10 @@ using System;
 
 namespace Space_Invaders
 {
-    class Sprite
+   class Sprite
     {
         Vector2 position, origin = Vector2.Zero, scale = Vector2.One;
-        Texture2D texture;
+       public Texture2D texture;
         Rectangle? sourceRectangle = null;
         Color color = Color.White;
         public float rotation = 0, layerDepth = 0;
