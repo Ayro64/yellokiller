@@ -8,10 +8,10 @@ namespace Space_Invaders
    class Sprite
     {
         Vector2 position, origin = Vector2.Zero, scale = Vector2.One;
-       public Texture2D texture;
+        Texture2D texture;
         Rectangle? sourceRectangle = null;
         Color color = Color.White;
-        public float rotation = 0, layerDepth = 0;
+        float rotation = 0, layerDepth = 0;
         SpriteEffects effect = SpriteEffects.None;
 
         public bool CollisionPerPixel(Sprite spriteA, Sprite spriteB)
