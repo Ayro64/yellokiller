@@ -4,12 +4,9 @@ namespace Space_Invaders
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         static void Main(string[] args)
         {
-            using (SpaceInvaders game = new SpaceInvaders())
+            using (Yello_Killer game = new Yello_Killer())
             {
                 game.Run();
             }

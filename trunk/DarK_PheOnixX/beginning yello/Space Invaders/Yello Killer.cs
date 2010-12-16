@@ -17,8 +17,8 @@ namespace Space_Invaders
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-       
-        int dir = 1;
+        
+        Player max;
         
         public Yello_Killer()
         {
@@ -29,12 +29,15 @@ namespace Space_Invaders
 
             graphics.PreferredBackBufferHeight = 600;
             graphics.PreferredBackBufferWidth = 800;
+
         }
 
         protected override void Initialize()
         {
             int screenwidth = GraphicsDevice.Viewport.Width;
             int screenheight = GraphicsDevice.Viewport.Height;
+
+            max = new Player(new Vector2(100, 100));
                        
             base.Initialize();
         }
@@ -43,7 +46,7 @@ namespace Space_Invaders
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
+            max.LoadContent(Content);
         }
 
         protected override void UnloadContent()
@@ -52,7 +55,7 @@ namespace Space_Invaders
 
         protected override void Update(GameTime gameTime)
         {
-            
+            max.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -60,9 +63,9 @@ namespace Space_Invaders
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             
-            spriteBatch.Begin();  
+            spriteBatch.Begin();
 
-
+            max.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
