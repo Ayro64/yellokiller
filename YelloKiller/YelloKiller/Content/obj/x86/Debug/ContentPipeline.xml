@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo Sellem\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\Luigi.xnb</Output>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Luigi.xnb</Output>
       <Time>2010-12-16T18:03:13.9892128+01:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo Sellem\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\joueur.xnb</Output>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\joueur.xnb</Output>
       <Time>2010-12-16T17:27:26.0123792+01:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo Sellem\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\Mario.xnb</Output>
+      <Output>C:\Users\Théo Sellem\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Mario.xnb</Output>
       <Time>2010-12-16T17:27:25.9967792+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -33,10 +33,10 @@
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Théo Sellem\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Théo Sellem\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Théo Sellem\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Théo Sellem\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Théo Sellem\Desktop\yellokiller\YelloKiller\YelloKiller\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Théo Sellem\Desktop\yellokiller\YelloKiller\YelloKiller\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Théo Sellem\Desktop\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Théo Sellem\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
