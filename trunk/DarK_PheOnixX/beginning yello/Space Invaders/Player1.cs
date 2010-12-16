@@ -24,5 +24,6 @@ namespace Space_Invaders
             if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.D))
                 Position = new Vector2(Position.X + 0.1f * gameTime.ElapsedGameTime.Milliseconds, Position.Y);
         }
+        scale
     }
 }
