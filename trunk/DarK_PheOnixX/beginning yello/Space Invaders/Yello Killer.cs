@@ -46,7 +46,7 @@ namespace Space_Invaders
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            max.LoadContent(Content);
+            max.LoadContent(Content, "joueur");
         }
 
         protected override void UnloadContent()

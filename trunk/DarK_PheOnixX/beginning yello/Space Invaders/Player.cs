@@ -8,20 +8,17 @@ namespace Space_Invaders
 {
     class Player : Sprite
     {
-        public Player()
-            : base(Vector2.Zero)
+        public Player(Vector2 position)
+            : base(position)
         {
-        }
-
-        public void LoadContent(ContentManager content)
-        {
-            texture = content.Load<Texture2D>("joueur");
         }
 
         public void Update(GameTime gameTime)
         {
             if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Up))
-                Position = new position
+                Position = new Vector2(Position.X, Position.Y - gameTime.ElapsedGameTime.Milliseconds);
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Down))
+                Position = new Vector2(Position.X, Position.Y + gameTime.ElapsedGameTime.Milliseconds);
         }
     }
 }
