@@ -1,4 +1,0 @@
-C:\Users\Théo Sellem\Desktop\Tpnight2\Space Invaders\Space Invaders\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\Content\obj\x86\Debug\ResolveAssemblyReference.cache
