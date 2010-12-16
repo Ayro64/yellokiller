@@ -38,8 +38,8 @@ namespace Space_Invaders
             int screenwidth = GraphicsDevice.Viewport.Width;
             int screenheight = GraphicsDevice.Viewport.Height;
 
-            max1 = new Player1(new Vector2(100, 100));
-            max2 = new Player2(new Vector2(100, 100));
+            max1 = new Player1(new Vector2(350,500));
+            max2 = new Player2(new Vector2(450,500));
                        
             base.Initialize();
         }
