@@ -1,0 +1,28 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+using System;
+using Microsoft.Xna.Framework.Input;
+
+namespace YelloKiller
+{
+    class Player2 : Sprite
+    {
+        public Player2(Vector2 position)
+            : base(position)
+        {
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Up))
+                Position = new Vector2(Position.X, Position.Y - 0.1f * gameTime.ElapsedGameTime.Milliseconds);
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Down))
+                Position = new Vector2(Position.X, Position.Y + 0.1f * gameTime.ElapsedGameTime.Milliseconds);
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Left))
+                Position = new Vector2(Position.X - 0.1f * gameTime.ElapsedGameTime.Milliseconds, Position.Y);
+            if (ServiceHelper.Get<IKeyboardService>().IsKeyDown(Keys.Right))
+                Position = new Vector2(Position.X + 0.1f * gameTime.ElapsedGameTime.Milliseconds, Position.Y);
+        }
+    }
+}

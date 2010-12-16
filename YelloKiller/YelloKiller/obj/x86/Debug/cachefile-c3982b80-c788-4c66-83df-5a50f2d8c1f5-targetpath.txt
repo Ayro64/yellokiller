@@ -1,0 +1,3 @@
+Content\Luigi.xnb
+Content\joueur.xnb
+Content\Mario.xnb
