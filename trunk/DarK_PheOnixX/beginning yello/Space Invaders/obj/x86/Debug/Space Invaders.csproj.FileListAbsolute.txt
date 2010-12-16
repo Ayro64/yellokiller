@@ -112,3 +112,10 @@ C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space In
 C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Space Invaders.exe
 C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Space Invaders.pdb
 C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\Space Invaders.pdb
+C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\joueur.xnb
+C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Space Invaders.exe
+C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Space Invaders.pdb
+C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\Space Invaders.exe
+C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\Space Invaders.pdb
