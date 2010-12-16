@@ -8,10 +8,9 @@ namespace Space_Invaders
 {
     class Player1 : Sprite
     {
-        public Player1(Vector2 position, ContentManager content)
+        public Player1(Vector2 position)
             : base(position)
         {
-            base.LoadContent(content, "joueur");
         }
 
         public void Update(GameTime gameTime)
