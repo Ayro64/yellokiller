@@ -74,3 +74,41 @@ C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Spa
 C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Content\fonts\Courier20.xnb
 C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Space Invaders.exe
 C:\Users\Théo Sellem\Desktop\yellokiller\trunk\DarK_PheOnixX\Space Invaders\Space Invaders\bin\x86\Debug\Space Invaders.pdb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\Space Invaders.exe
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\wallpaper.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\beam1.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\beam2.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\explosion.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\invaderdeath.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\laser.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\player.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\shield.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\adriana.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\adriana2.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\crabe1.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\crabe2.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\poulpe1.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\poulpe2.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\seche1.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\seche2.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sprites\classic\soucoupe.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\0.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\1.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\2.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\3.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\4.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\5.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\6.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\7.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\8.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\sounds\9.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\fonts\Arial10.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\fonts\Arial15.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\fonts\Arial20.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\fonts\Courier10.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Content\fonts\Courier20.xnb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Space Invaders.exe
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\bin\x86\Debug\Space Invaders.pdb
+C:\Users\Adrien\Desktop\yellokiller\trunk\DarK_PheOnixX\beginning yello\Space Invaders\obj\x86\Debug\Space Invaders.pdb
