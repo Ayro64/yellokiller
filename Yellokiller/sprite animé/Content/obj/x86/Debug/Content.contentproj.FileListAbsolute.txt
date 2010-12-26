@@ -1,0 +1,2 @@
+C:\Users\Théo\Documents\Visual Studio 2008\Projects\sprite animé\sprite animé\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\Content\obj\x86\Debug\ResolveAssemblyReference.cache

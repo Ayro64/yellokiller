@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yellokiller", "sprite animé\Yellokiller.csproj", "{D3983428-72D9-43B5-BE9C-BBB502AE0BDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3983428-72D9-43B5-BE9C-BBB502AE0BDA}.Debug|x86.ActiveCfg = Debug|x86
+		{D3983428-72D9-43B5-BE9C-BBB502AE0BDA}.Debug|x86.Build.0 = Debug|x86
+		{D3983428-72D9-43B5-BE9C-BBB502AE0BDA}.Release|x86.ActiveCfg = Release|x86
+		{D3983428-72D9-43B5-BE9C-BBB502AE0BDA}.Release|x86.Build.0 = Release|x86
+		{4AA46B6C-F7CA-4E4D-9291-DFB28C55D61D}.Debug|x86.ActiveCfg = Debug|x86
+		{4AA46B6C-F7CA-4E4D-9291-DFB28C55D61D}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
