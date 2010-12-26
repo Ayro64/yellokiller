@@ -1,2 +1,0 @@
-C:\Users\Théo Sellem\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Théo Sellem\Desktop\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
