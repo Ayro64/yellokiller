@@ -40,7 +40,7 @@ namespace Yellokiller
 
         protected override void Initialize()
         {
-            carte = new Map("map.txt");
+            carte = new Map("save.txt");
             hero1 = new Hero1(new Vector2(330, 10), new Rectangle(25, 133, 16, 25));
             hero2 = new Hero2(new Vector2(350, 10), new Rectangle(25, 133, 16, 25));           
 
@@ -67,6 +67,8 @@ namespace Yellokiller
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
 
+            if(keyboardState.IsKeyDown(Keys.Escape))
+                this.Exit();
             if (keyboardState.IsKeyDown(Keys.K))
             {
                 i = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
