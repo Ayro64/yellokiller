@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\bin\x86\Debug\Content\sprite.xnb</Output>
-      <Time>2010-12-23T17:09:37.5702352+01:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\sprite.xnb</Output>
+      <Time>2010-12-27T04:45:22.1066934+01:00</Time>
     </Item>
     <Item>
       <Source>NinjaTrans.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\bin\x86\Debug\Content\NinjaTrans.xnb</Output>
-      <Time>2010-12-16T18:37:31+01:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\NinjaTrans.xnb</Output>
+      <Time>2010-12-27T04:45:22.1126937+01:00</Time>
     </Item>
     <Item>
       <Source>arbre.bmp</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\bin\x86\Debug\Content\arbre.xnb</Output>
-      <Time>2010-12-23T18:10:29.9842999+01:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\arbre.xnb</Output>
+      <Time>2010-12-27T04:45:22.0946927+01:00</Time>
     </Item>
     <Item>
       <Source>herbe.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\bin\x86\Debug\Content\herbe.xnb</Output>
-      <Time>2010-12-23T18:11:00.8099541+01:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\herbe.xnb</Output>
+      <Time>2010-12-27T04:45:22.0896924+01:00</Time>
     </Item>
     <Item>
       <Source>maison.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\bin\x86\Debug\Content\maison.xnb</Output>
-      <Time>2010-12-25T10:56:40.4902213+01:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\maison.xnb</Output>
+      <Time>2010-12-27T04:45:22.1016931+01:00</Time>
     </Item>
     <Item>
       <Source>mur.bmp</Source>
@@ -52,18 +52,18 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\bin\x86\Debug\Content\mur.xnb</Output>
-      <Time>2010-12-23T18:11:37.4076184+01:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\mur.xnb</Output>
+      <Time>2010-12-27T04:45:22.0836921+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -92,7 +92,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-12-02T21:16:12.0090888+01:00</Value>
+        <Value>2010-12-04T14:06:59.8917689+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
