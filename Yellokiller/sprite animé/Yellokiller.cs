@@ -32,15 +32,15 @@ namespace Yellokiller
             Content.RootDirectory = "content";
             ServiceHelper.Game = this;
             Components.Add(new KeyboardService(this));
-            graphics.PreferredBackBufferHeight = 476;
-            graphics.PreferredBackBufferWidth = 616;
+            graphics.PreferredBackBufferHeight = 780;
+            graphics.PreferredBackBufferWidth = 1250;
             sampleMediaLibrary = new MediaLibrary();
             rand = new Random();
         }
 
         protected override void Initialize()
         {
-            carte = new Map("save.txt");
+            carte = new Map("Map Theo.txt");
             hero1 = new Hero1(new Vector2(330, 10), new Rectangle(25, 133, 16, 25));
             hero2 = new Hero2(new Vector2(350, 10), new Rectangle(25, 133, 16, 25));           
 

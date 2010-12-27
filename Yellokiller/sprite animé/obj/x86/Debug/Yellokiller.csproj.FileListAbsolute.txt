@@ -34,3 +34,15 @@ C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\Reso
 C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\sprite animé.exe
 C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\sprite animé.pdb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\sprite.xnb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\NinjaTrans.xnb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\arbre.xnb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\herbe.xnb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\maison.xnb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\mur.xnb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\sprite animé.exe
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\sprite animé.pdb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\sprite animé.exe
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\sprite animé.pdb
