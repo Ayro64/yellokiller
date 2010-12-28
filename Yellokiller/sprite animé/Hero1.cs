@@ -56,20 +56,9 @@ namespace Yellokiller
             set { sourceRectangle = value; }
         }
 
-        public Hero1(Vector2 position)
-        {
-            this.position = position;
-        }
-
         public Hero1(Vector2 position, Rectangle? sourceRectangle)
         {
             this.position = position;
-            this.sourceRectangle = sourceRectangle;
-        }
-
-        public Hero1(float x, float y, Rectangle? sourceRectangle)
-        {
-            position = new Vector2(x, y);
             this.sourceRectangle = sourceRectangle;
         }
 
@@ -95,6 +84,11 @@ namespace Yellokiller
                 if (sourceRectangle.Value.Y == 166)
                     sourceRectangle = new Rectangle(24, 165, 16, 28);
             }
+            if (keyboardState.IsKeyUp(Keys.LeftShift))
+            {
+                vitesse_animation = 0.008f;
+            }
+           
 
             if (position.Y > 0 && keyboardState.IsKeyDown(Keys.Z) &&
                (map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 0 ||
@@ -111,6 +105,12 @@ namespace Yellokiller
                 else
                 {
                     index = 0f;
+                }
+
+                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                {
+                    position.Y -= 1 * vitesse_sprite * 2;
+                    vitesse_animation = 0.008f * 2;
                 }
             }
 
@@ -130,6 +130,11 @@ namespace Yellokiller
                 {
                     index = 0f;
                 }
+                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                {
+                    position.Y += 1 * vitesse_sprite * 2;
+                    vitesse_animation = 0.008f * 2;
+                }
             }
 
             if (position.X > 0 && keyboardState.IsKeyDown(Keys.Q) &&
@@ -148,6 +153,11 @@ namespace Yellokiller
                 {
                     index = 0f;
                 }
+                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                {
+                    position.X -= 1 * vitesse_sprite * 2;
+                    vitesse_animation = 0.008f * 2;
+                }
             }
 
             if (position.X < 28 * largeurMap - 16 && keyboardState.IsKeyDown(Keys.D) &&
@@ -165,6 +175,11 @@ namespace Yellokiller
                 else
                 {
                     index = 0f;
+                }
+                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                {
+                    position.X += 1 * vitesse_sprite * 2;
+                    vitesse_animation = 0.008f * 2;
                 }
             }
         }
