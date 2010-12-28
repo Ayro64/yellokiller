@@ -1,2 +1,0 @@
-C:\Users\Adrien\Documents\Visual Studio 2008\Projects\Editeur de Map 2\Editeur de Map 2\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Théo\Documents\My Dropbox\Yuyutte\Editeur de Map 2\Editeur de Map 2\Content\obj\x86\Debug\ResolveAssemblyReference.cache
