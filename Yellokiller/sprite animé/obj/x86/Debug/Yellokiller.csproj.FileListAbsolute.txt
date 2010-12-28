@@ -46,3 +46,4 @@ C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\Micro
 C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\sprite animé.exe
 C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\obj\x86\Debug\sprite animé.pdb
 C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\arbre2.xnb
+C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\bin\x86\Debug\Content\Ninja2Trans.xnb
