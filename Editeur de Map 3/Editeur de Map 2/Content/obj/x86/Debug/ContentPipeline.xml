@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\bin\x86\Debug\Content\cursor.xnb</Output>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\bin\x86\Debug\Content\cursor.xnb</Output>
       <Time>2010-12-25T15:14:06+01:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\bin\x86\Debug\Content\arbre.xnb</Output>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\bin\x86\Debug\Content\arbre.xnb</Output>
       <Time>2010-12-25T15:16:33+01:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\bin\x86\Debug\Content\herbe.xnb</Output>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\bin\x86\Debug\Content\herbe.xnb</Output>
       <Time>2010-12-25T15:16:33+01:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\bin\x86\Debug\Content\maison.xnb</Output>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\bin\x86\Debug\Content\maison.xnb</Output>
       <Time>2010-12-25T15:16:33+01:00</Time>
     </Item>
     <Item>
@@ -43,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\bin\x86\Debug\Content\mur.xnb</Output>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\bin\x86\Debug\Content\mur.xnb</Output>
       <Time>2010-12-25T15:16:33+01:00</Time>
     </Item>
     <Item>
@@ -52,7 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\bin\x86\Debug\Content\arbre2.xnb</Output>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\bin\x86\Debug\Content\arbre2.xnb</Output>
       <Time>2010-12-28T14:10:42.5639964+01:00</Time>
     </Item>
     <Item>
@@ -61,7 +61,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\bin\x86\Debug\Content\Text.xnb</Output>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\bin\x86\Debug\Content\Text.xnb</Output>
       <Time>2010-12-28T16:19:10+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -69,10 +69,10 @@
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 2\Editeur de Map 2\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Théo\Desktop\yellokiller\Editeur de Map 3\Editeur de Map 2\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
