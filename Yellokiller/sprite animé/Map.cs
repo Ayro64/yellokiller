@@ -94,6 +94,9 @@ namespace Yellokiller
                         case 3:
                             spriteBatch.Draw(LoadContent(content, "maison"), new Vector2(x * 28, y * 28), Color.White);
                             break;
+                        case 4:
+                            spriteBatch.Draw(LoadContent(content, "arbre2"), new Vector2(x * 28, y * 28), Color.White);
+                            break;
                     }
                 }
             }

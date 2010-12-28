@@ -90,7 +90,7 @@ namespace Yellokiller
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Green);
 
             spriteBatch.Begin();
             carte.Draw(spriteBatch, Content);
