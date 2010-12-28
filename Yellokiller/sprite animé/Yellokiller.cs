@@ -32,8 +32,8 @@ namespace Yellokiller
             Content.RootDirectory = "content";
             ServiceHelper.Game = this;
             Components.Add(new KeyboardService(this));
-            graphics.PreferredBackBufferHeight = 780;
-            graphics.PreferredBackBufferWidth = 1250;
+            graphics.PreferredBackBufferHeight = 728;
+            graphics.PreferredBackBufferWidth = 1260;
             sampleMediaLibrary = new MediaLibrary();
             rand = new Random();
         }
