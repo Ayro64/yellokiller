@@ -53,9 +53,9 @@ namespace Yellokiller
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
-            carte = new Map("Map Theo.txt");
-            hero1 = new Hero1(new Vector2(336, 10), new Rectangle(25, 133, 16, 25));
-            hero2 = new Hero2(new Vector2(346, 10), new Rectangle(25, 133, 16, 25));
+            carte = new Map("save.txt");
+            hero1 = new Hero1(new Vector2(830, 10), new Rectangle(25, 133, 16, 25));
+            hero2 = new Hero2(new Vector2(850, 10), new Rectangle(25, 133, 16, 25));
             i = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
             j = rand.Next(0, sampleMediaLibrary.Albums[i].Songs.Count);
             MediaPlayer.Play(sampleMediaLibrary.Albums[i].Songs[j]);
