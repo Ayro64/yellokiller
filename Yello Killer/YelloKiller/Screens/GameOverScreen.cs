@@ -169,14 +169,14 @@ namespace Yellokiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                        bool coveredByOtherScreen)
         {
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-
             // Update each nested MenuEntry object.
             for (int i = 0; i < MenuEntries.Count; i++)
             {
                 bool isSelected = IsActive && (i == selectedEntry);
                 menuEntries[i].Update(this, isSelected, gameTime);
             }
+
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
         /// <summary>
