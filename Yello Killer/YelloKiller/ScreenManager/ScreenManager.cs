@@ -33,8 +33,8 @@ namespace Yellokiller
 
         InputState input = new InputState();
 
-        SpriteBatch spriteBatch;
-        SpriteFont font;
+        public static SpriteBatch spriteBatch;
+        public static SpriteFont font;
         Texture2D blankTexture;
 
         bool isInitialized;
