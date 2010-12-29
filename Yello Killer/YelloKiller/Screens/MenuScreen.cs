@@ -185,7 +185,7 @@ namespace Yellokiller
 
                 bool isSelected = IsActive && (i == selectedEntry);
 
-                menuEntry.Draw(this, position, isSelected, gameTime);
+                menuEntry.Draw(this, position, isSelected, gameTime, Color.White);
 
                 position.Y += (menuEntry.GetHeight(this) + 10);
             }
