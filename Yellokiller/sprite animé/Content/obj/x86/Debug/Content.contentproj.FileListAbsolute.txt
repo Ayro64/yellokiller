@@ -1,4 +1,0 @@
-C:\Users\Théo\Documents\Visual Studio 2008\Projects\sprite animé\sprite animé\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Théo\Documents\Visual Studio 2008\Projects\Yellokiller\sprite animé\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Adrien\Desktop\yellokiller\Yellokiller\sprite animé\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Théo\Desktop\yellokiller\Yellokiller\sprite animé\Content\obj\x86\Debug\ResolveAssemblyReference.cache
