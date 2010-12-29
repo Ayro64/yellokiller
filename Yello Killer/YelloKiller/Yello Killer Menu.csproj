@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Screens\EditorScreen.cs" />
     <Compile Include="MapEditor\MapEdit.cs" />
     <Compile Include="MapEditor\Taille Map.cs" />
