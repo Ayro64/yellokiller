@@ -15,7 +15,10 @@ namespace Yellokiller
         List<MenuEntry> menuEntries = new List<MenuEntry>();
         public int selectedEntry = 0;
         ContentManager content;
-        Texture2D gameoverTexture;
+        Texture2D gameoverTexture, blankTexture;
+        string GOmessage = "Vous avez été capturé!";
+
+        Color Color;
 
         #endregion
 
@@ -41,6 +44,9 @@ namespace Yellokiller
         /// </summary>
         public GameOverScreen()
         {
+            
+
+            //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
             TransitionOffTime = TimeSpan.FromSeconds(1.2);
 
@@ -70,7 +76,11 @@ namespace Yellokiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
+            //Ecran Game Over.
             gameoverTexture = content.Load<Texture2D>("Game Over");
+
+            //Carré noir.
+            blankTexture = content.Load<Texture2D>("blank");
         }
 
         /// <summary>
@@ -176,13 +186,16 @@ namespace Yellokiller
         /// </summary>
         public override void Draw(GameTime gameTime)
         {
+            Color = new Color(255, 0, 0, TransitionAlpha);
+
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             SpriteFont font = ScreenManager.Font;
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
             byte fade = TransitionAlpha;
 
-            Vector2 position = new Vector2(100, 450);
+            //Entrées Menu
+            Vector2 position = new Vector2(430, 610);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -199,6 +212,12 @@ namespace Yellokiller
             spriteBatch.Draw(gameoverTexture, fullscreen,
                              new Color(fade, fade, fade));
 
+            // Rectangle noir
+            spriteBatch.Draw(blankTexture,
+                             new Rectangle(320, 530, 615, 110),
+                             new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+
+
             // Draw each menu entry in turn.
             for (int i = 0; i < menuEntries.Count; i++)
             {
@@ -206,11 +225,20 @@ namespace Yellokiller
 
                 bool isSelected = IsActive && (i == selectedEntry);
 
-                menuEntry.Draw(this, position, isSelected, gameTime);
+                menuEntry.Draw(this, position, isSelected, gameTime, Color);
 
-                position.X += menuEntry.GetHeight(this);
+                position.X += 320;
             }
 
+            // Draw the menu title.
+            Vector2 titlePosition = new Vector2(630, 565);
+            Vector2 titleOrigin = font.MeasureString(GOmessage) / 2;
+            float titleScale = 1.25f;
+
+            titlePosition.Y -= transitionOffset * 100;
+
+            spriteBatch.DrawString(font, GOmessage, titlePosition, Color, 0,
+                                   titleOrigin, titleScale, SpriteEffects.None, 0);
 
             spriteBatch.End();
         }
