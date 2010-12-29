@@ -32,13 +32,11 @@ namespace Yellokiller
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
 
+        Player audio;
+
         Hero1 hero1;
         Hero2 hero2;
         Map carte;
-
-        MediaLibrary sampleMediaLibrary;
-        Random rand;
-        int i, j;
 
         KeyboardState keyboardState, lastKeyboardState;
 
@@ -52,22 +50,13 @@ namespace Yellokiller
         /// </summary>
         public GameplayScreen()
         {
-            sampleMediaLibrary = new MediaLibrary();
-            rand = new Random();
-
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
             carte = new Map("Map Theo.txt");
             hero1 = new Hero1(new Vector2(336, 10), new Rectangle(25, 133, 16, 25));
             hero2 = new Hero2(new Vector2(346, 10), new Rectangle(25, 133, 16, 25));
-
-            i = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
-            j = rand.Next(0, sampleMediaLibrary.Albums[i].Songs.Count);
-            MediaPlayer.Play(sampleMediaLibrary.Albums[i].Songs[j]);
-
-
-
+            audio = new Player();
         }
 
 
@@ -130,14 +119,8 @@ namespace Yellokiller
             {
                 hero1.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap);
                 hero2.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap);
+                audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-            }
-
-            if (MediaPlayer.State == MediaState.Stopped)
-            {
-                i = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
-                j = rand.Next(0, sampleMediaLibrary.Albums[i].Songs.Count);
-                MediaPlayer.Play(sampleMediaLibrary.Albums[i].Songs[j]);
             }
         }
 
@@ -159,7 +142,7 @@ namespace Yellokiller
             carte.Draw(spriteBatch, content);
             hero1.Draw(spriteBatch);
             hero2.Draw(spriteBatch);
-            spriteBatch.DrawString(gameFont, sampleMediaLibrary.Albums[i].Songs[j].Artist + " - " + sampleMediaLibrary.Albums[i].Songs[j], new Vector2(10, 10), Color.Red);
+            audio.Draw(gameTime);
 
             spriteBatch.End();
             base.Draw(gameTime);
@@ -216,23 +199,10 @@ namespace Yellokiller
                     movement.Y++;
 
                 if (keyboardState.IsKeyDown(Keys.G))
-                {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
-                }
 
-                if (keyboardState.IsKeyDown(Keys.K))
-                {
-                    i = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
-                    j = rand.Next(0, sampleMediaLibrary.Albums[i].Songs.Count);
-                    MediaPlayer.Play(sampleMediaLibrary.Albums[i].Songs[j]);
-                }
-                if (keyboardState.IsKeyDown(Keys.L) && lastKeyboardState.IsKeyUp(Keys.L))
-                {
-                    if (MediaPlayer.State == MediaState.Playing)
-                        MediaPlayer.Pause();
-                    else
-                        MediaPlayer.Resume();
-                }
+                // Looks up input for the Media Player.
+                audio.HandleInput(keyboardState, lastKeyboardState);
                 
             }
         }
