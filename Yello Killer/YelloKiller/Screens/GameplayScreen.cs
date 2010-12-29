@@ -141,6 +141,32 @@ namespace Yellokiller
             }
         }
 
+        /// <summary>
+        /// Draws the gameplay screen.
+        /// </summary>
+        public override void Draw(GameTime gameTime)
+        {
+            // This game has a blue background. Why? Because!
+            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
+                                               Color.DarkOrchid, 0, 0);
+
+            // If the game is transitioning on or off, fade it out to black.
+            if (TransitionPosition > 0)
+                ScreenManager.FadeBackBufferToBlack(255 - TransitionAlpha);
+
+            spriteBatch.Begin();
+
+            carte.Draw(spriteBatch, content);
+            hero1.Draw(spriteBatch);
+            hero2.Draw(spriteBatch);
+            spriteBatch.DrawString(gameFont, sampleMediaLibrary.Albums[i].Songs[j].Artist + " - " + sampleMediaLibrary.Albums[i].Songs[j], new Vector2(10, 10), Color.Red);
+
+            spriteBatch.End();
+            base.Draw(gameTime);
+        }
+
+#endregion
+        #region Handle Input
 
         /// <summary>
         /// Lets the game respond to player input. Unlike the Update method,
@@ -212,30 +238,7 @@ namespace Yellokiller
         }
 
 
-        /// <summary>
-        /// Draws the gameplay screen.
-        /// </summary>
-        public override void Draw(GameTime gameTime)
-        {
-            // This game has a blue background. Why? Because!
-            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
-                                               Color.DarkOrchid, 0, 0);
-
-            // If the game is transitioning on or off, fade it out to black.
-            if (TransitionPosition > 0)
-                ScreenManager.FadeBackBufferToBlack(255 - TransitionAlpha);
-
-            spriteBatch.Begin();
-
-            carte.Draw(spriteBatch, content);
-            hero1.Draw(spriteBatch);
-            hero2.Draw(spriteBatch);
-            spriteBatch.DrawString(gameFont, sampleMediaLibrary.Albums[i].Songs[j].Artist + " - " + sampleMediaLibrary.Albums[i].Songs[j], new Vector2(10, 10), Color.Red);
-
-            spriteBatch.End();
-            base.Draw(gameTime);
-        }
-
+        
 
         #endregion
     }
