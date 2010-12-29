@@ -22,26 +22,26 @@ namespace Yellokiller
     {
         #region Fields
 
-        MenuEntry ungulateMenuEntry;
         MenuEntry languageMenuEntry;
         MenuEntry sonMenuEntry;
+        MenuEntry soMenuEntry;
         MenuEntry elfMenuEntry;
 
         int mod;
 
-        enum Ungulate
+        enum Language
         {
-            BactrianCamel,
-            Dromedary,
-            Llama,
+            Français,
+            Anglais,
+            Allemand,
         }
 
-        static Ungulate currentUngulate = Ungulate.Dromedary;
+        static Language currentLanguage = Language.Français;
 
-        static string[] languages = { "C#", "Français", "Anglais" };
-        static int currentLanguage = 0;
+        static string[] son = { "Défault", "Player", "Aucun" };
+        static int currentSon = 0;
 
-        static bool Son = true;
+        static bool So = true;
 
         static int elf = 23;
 
@@ -59,9 +59,9 @@ namespace Yellokiller
             mod = mode;
 
             // Create our menu entries.
-            ungulateMenuEntry = new MenuEntry(string.Empty);
             languageMenuEntry = new MenuEntry(string.Empty);
             sonMenuEntry = new MenuEntry(string.Empty);
+            soMenuEntry = new MenuEntry(string.Empty);
             elfMenuEntry = new MenuEntry(string.Empty);
 
             SetMenuEntryText();
@@ -69,16 +69,16 @@ namespace Yellokiller
             MenuEntry backMenuEntry = new MenuEntry("Retour");
 
             // Hook up menu event handlers.
-            ungulateMenuEntry.Selected += UngulateMenuEntrySelected;
             languageMenuEntry.Selected += LanguageMenuEntrySelected;
             sonMenuEntry.Selected += SonMenuEntrySelected;
+            soMenuEntry.Selected += SoMenuEntrySelected;
             elfMenuEntry.Selected += ElfMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
-            MenuEntries.Add(ungulateMenuEntry);
             MenuEntries.Add(languageMenuEntry);
             MenuEntries.Add(sonMenuEntry);
+            MenuEntries.Add(soMenuEntry);
             MenuEntries.Add(elfMenuEntry);
             MenuEntries.Add(backMenuEntry);
         }
@@ -89,9 +89,9 @@ namespace Yellokiller
         /// </summary>
         void SetMenuEntryText()
         {
-            ungulateMenuEntry.Text = "Ongulé préféré: " + currentUngulate;
-            languageMenuEntry.Text = "Langage: " + languages[currentLanguage];
-            sonMenuEntry.Text = "Son: " + (Son ? "oui" : "non");
+            languageMenuEntry.Text = "Langage: " + currentLanguage;
+            sonMenuEntry.Text = "Mode de son: " + son[currentSon];
+            soMenuEntry.Text = "Blah?: " + (So ? "Oui" : "Non");
             elfMenuEntry.Text = "elf: " + elf;
         }
 
@@ -104,12 +104,12 @@ namespace Yellokiller
         /// <summary>
         /// Event handler for when the Ungulate menu entry is selected.
         /// </summary>
-        void UngulateMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        void LanguageMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            currentUngulate++;
+            currentLanguage++;
 
-            if (currentUngulate > Ungulate.Llama)
-                currentUngulate = 0;
+            if (currentLanguage > Language.Allemand)
+                currentLanguage = 0;
 
             SetMenuEntryText();
         }
@@ -118,9 +118,9 @@ namespace Yellokiller
         /// <summary>
         /// Event handler for when the Language menu entry is selected.
         /// </summary>
-        void LanguageMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        void SonMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            currentLanguage = (currentLanguage + 1) % languages.Length;
+            currentSon = (currentSon + 1) % son.Length;
 
             SetMenuEntryText();
         }
@@ -129,9 +129,9 @@ namespace Yellokiller
         /// <summary>
         /// Event handler for when the Frobnicate menu entry is selected.
         /// </summary>
-        void SonMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        void SoMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            Son = !Son;
+            So = !So;
 
             SetMenuEntryText();
         }
@@ -150,7 +150,6 @@ namespace Yellokiller
         {
             if (IsPopup)
                 ScreenManager.AddScreen(new PauseMenuScreen(1, mod), playerIndex, true);
-
             ExitScreen();
         }
 
