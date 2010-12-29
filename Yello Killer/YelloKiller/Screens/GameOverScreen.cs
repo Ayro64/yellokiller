@@ -13,6 +13,8 @@ namespace Yellokiller
         #region Fields
 
         List<MenuEntry> menuEntries = new List<MenuEntry>();
+        MenuEntry restartMenuEntry, abortMenuEntry;
+
         public int selectedEntry = 0;
         ContentManager content;
         Texture2D gameoverTexture, blankTexture;
@@ -44,16 +46,14 @@ namespace Yellokiller
         /// </summary>
         public GameOverScreen()
         {
-            
-
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
             TransitionOffTime = TimeSpan.FromSeconds(1.2);
 
 
             // Create our menu entries.
-            MenuEntry restartMenuEntry = new MenuEntry("Réessayer");
-            MenuEntry abortMenuEntry = new MenuEntry("Quitter");
+            restartMenuEntry = new MenuEntry("Réessayer");
+            abortMenuEntry = new MenuEntry("Quitter");
 
             // Hook up menu event handlers.
             restartMenuEntry.Selected += RestartMenuEntrySelected;
@@ -136,7 +136,7 @@ namespace Yellokiller
         /// </summary>
         protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
         {
-            menuEntries[selectedEntry].OnSelectEntry(playerIndex);
+            menuEntries[entryIndex].OnSelectEntry(playerIndex);
         }
 
         /// <summary>
@@ -173,10 +173,9 @@ namespace Yellokiller
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 
             // Update each nested MenuEntry object.
-            for (int i = 0; i < menuEntries.Count; i++)
+            for (int i = 0; i < MenuEntries.Count; i++)
             {
                 bool isSelected = IsActive && (i == selectedEntry);
-
                 menuEntries[i].Update(this, isSelected, gameTime);
             }
         }
@@ -195,7 +194,8 @@ namespace Yellokiller
             byte fade = TransitionAlpha;
 
             //Entrées Menu
-            Vector2 position = new Vector2(430, 610);
+            Vector2 positionL = new Vector2(430, 610);
+            Vector2 positionR = new Vector2(750, 610);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -203,9 +203,15 @@ namespace Yellokiller
             float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
 
             if (ScreenState == ScreenState.TransitionOn)
-                position.X -= transitionOffset * 256;
+            {
+                positionL.X -= transitionOffset * 256;
+                positionR.X += transitionOffset * 256;
+            }
             else
-                position.X += transitionOffset * 512;
+            {
+                positionL.X -= transitionOffset * 512;
+                positionR.X += transitionOffset * 512;
+            }
 
             spriteBatch.Begin();
 
@@ -219,26 +225,22 @@ namespace Yellokiller
 
 
             // Draw each menu entry in turn.
-            for (int i = 0; i < menuEntries.Count; i++)
-            {
-                MenuEntry menuEntry = menuEntries[i];
 
-                bool isSelected = IsActive && (i == selectedEntry);
+            bool isSelected = IsActive && (0 == selectedEntry);
+            restartMenuEntry.Draw(this, positionL, isSelected, gameTime, Color);
+            isSelected = IsActive && (1 == selectedEntry);
+            abortMenuEntry.Draw(this, positionR, isSelected, gameTime, Color);
 
-                menuEntry.Draw(this, position, isSelected, gameTime, Color);
-
-                position.X += 320;
-            }
 
             // Draw the menu title.
-            Vector2 titlePosition = new Vector2(630, 565);
-            Vector2 titleOrigin = font.MeasureString(GOmessage) / 2;
-            float titleScale = 1.25f;
+            Vector2 GOPosition = new Vector2(630, 565);
+            Vector2 GOOrigin = font.MeasureString(GOmessage) / 2;
+            float GOScale = 1.25f;
 
-            titlePosition.Y -= transitionOffset * 100;
+            GOPosition.Y -= transitionOffset * 100;
 
-            spriteBatch.DrawString(font, GOmessage, titlePosition, Color, 0,
-                                   titleOrigin, titleScale, SpriteEffects.None, 0);
+            spriteBatch.DrawString(font, GOmessage, GOPosition, Color, 0,
+                                   GOOrigin, GOScale, SpriteEffects.None, 0);
 
             spriteBatch.End();
         }
