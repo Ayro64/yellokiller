@@ -2,3 +2,4 @@ C:\Users\Ayro\Desktop\GSMSample_ARCHIVE_3_1\GameStateManagementSample\GameStateM
 C:\Users\Ayro\Desktop\GSMSample_ARCHIVE_3_1\GameStateManagement\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Ayro\Desktop\GSMSample_ARCHIVE_3_1\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Ayro\Documents\Yello_KillerSVN\Yello Killer\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
