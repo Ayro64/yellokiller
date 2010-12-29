@@ -1,0 +1,1 @@
+Pourquoi quand on appuie sur gauche et droite en même temps, on peut aller vers le haut et pas le bas?
