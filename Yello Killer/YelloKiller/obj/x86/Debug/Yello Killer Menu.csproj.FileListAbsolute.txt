@@ -87,3 +87,22 @@ C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Resolv
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.exe
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.pdb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\background.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\blank.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\gradient.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\arbre.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\herbe.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\maison.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\mur.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\NinjaTrans.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\Game Over.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\Ninja2Trans.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\arbre2.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\cursor.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Content\courier.xnb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Yellokiller.exe
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\bin\x86\Debug\Yellokiller.pdb
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.exe
+C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.pdb
