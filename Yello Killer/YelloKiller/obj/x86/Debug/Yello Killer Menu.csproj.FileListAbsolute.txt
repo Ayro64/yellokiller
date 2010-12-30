@@ -106,3 +106,7 @@ C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\obj\x86\Debug\Resol
 C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.exe
 C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.pdb
+C:\Users\Ayro\Desktop\yellokiller.googlecode.com\svn\Yello Killer\YelloKiller\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Ayro\Desktop\yellokiller.googlecode.com\svn\Yello Killer\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Ayro\Desktop\yellokiller.googlecode.com\svn\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.exe
+C:\Users\Ayro\Desktop\yellokiller.googlecode.com\svn\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.pdb
