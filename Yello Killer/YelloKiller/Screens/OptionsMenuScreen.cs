@@ -9,6 +9,9 @@
 
 #region Using Statements
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Input;
 #endregion
 
 namespace Yellokiller
@@ -22,10 +25,14 @@ namespace Yellokiller
     {
         #region Fields
 
+        Player audio;
+        KeyboardState keyboardState, lastKeyboardState;
+
         MenuEntry languageMenuEntry;
         MenuEntry sonMenuEntry;
         MenuEntry soMenuEntry;
-        MenuEntry elfMenuEntry;
+        MenuEntry soundVolumeMenuEntry;
+        MenuEntry fxVolumeMenuEntry;
 
         int mod;
 
@@ -43,7 +50,8 @@ namespace Yellokiller
 
         static bool So = true;
 
-        static int elf = 23;
+        static int soundVolume = (int)(MediaPlayer.Volume * 100);
+        static int fxVolume = 25;
 
         #endregion
 
@@ -56,13 +64,15 @@ namespace Yellokiller
         public OptionsMenuScreen(int mode)
             : base("Options")
         {
+            audio = new Player(soundVolume / 100);
             mod = mode;
 
             // Create our menu entries.
             languageMenuEntry = new MenuEntry(string.Empty);
             sonMenuEntry = new MenuEntry(string.Empty);
             soMenuEntry = new MenuEntry(string.Empty);
-            elfMenuEntry = new MenuEntry(string.Empty);
+            soundVolumeMenuEntry = new MenuEntry(string.Empty);
+            fxVolumeMenuEntry = new MenuEntry(string.Empty);
 
             SetMenuEntryText();
 
@@ -72,14 +82,14 @@ namespace Yellokiller
             languageMenuEntry.Selected += LanguageMenuEntrySelected;
             sonMenuEntry.Selected += SonMenuEntrySelected;
             soMenuEntry.Selected += SoMenuEntrySelected;
-            elfMenuEntry.Selected += ElfMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
             MenuEntries.Add(languageMenuEntry);
             MenuEntries.Add(sonMenuEntry);
             MenuEntries.Add(soMenuEntry);
-            MenuEntries.Add(elfMenuEntry);
+            MenuEntries.Add(soundVolumeMenuEntry);
+            MenuEntries.Add(fxVolumeMenuEntry);
             MenuEntries.Add(backMenuEntry);
         }
 
@@ -92,7 +102,8 @@ namespace Yellokiller
             languageMenuEntry.Text = "Langage: " + currentLanguage;
             sonMenuEntry.Text = "Mode de son: " + son[currentSon];
             soMenuEntry.Text = "Blah?: " + (So ? "Oui" : "Non");
-            elfMenuEntry.Text = "elf: " + elf;
+            soundVolumeMenuEntry.Text = "Volume de la musique : " + soundVolume;
+            fxVolumeMenuEntry.Text = "Volume des sons : " + fxVolume;
         }
 
 
@@ -100,7 +111,66 @@ namespace Yellokiller
 
         #region Handle Input
 
+        /// <summary>
+        /// Responds to user input, changing the selected entry and accepting
+        /// or cancelling the menu.
+        /// </summary>
+        public override void HandleInput(InputState input)
+        {
 
+
+            // Accept or cancel the menu? We pass in our ControllingPlayer, which may
+            // either be null (to accept input from any player) or a specific index.
+            // If we pass a null controlling player, the InputState helper returns to
+            // us which player actually provided the input. We pass that through to
+            // OnSelectEntry and OnCancel, so they can tell which player triggered them.
+
+            // Look up inputs for the active player profile.
+            PlayerIndex PlayerIndex;
+            int playerIndex = (int)ControllingPlayer.Value;
+
+            lastKeyboardState = keyboardState;
+            keyboardState = input.CurrentKeyboardStates[playerIndex];
+
+            audio.HandleInput(keyboardState, lastKeyboardState);
+
+            if (input.IsMenuSelect(ControllingPlayer, out PlayerIndex))
+            {
+                OnSelectEntry(selectedEntry, PlayerIndex);
+            }
+            else if (input.IsMenuCancel(ControllingPlayer, out PlayerIndex))
+            {
+                OnCancel(PlayerIndex);
+            }
+
+            // Event handler for when the Sound Volume menu entry is selected.
+            if (input.IsMenuLeft(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry)
+            {
+                MediaPlayer.Volume -= 0.01f;
+                soundVolume = (int)(MediaPlayer.Volume * 100);
+                SetMenuEntryText();
+            }
+            if (input.IsMenuRight(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry)
+            {
+                MediaPlayer.Volume += 0.01f;
+                soundVolume = (int)(MediaPlayer.Volume * 100);
+                SetMenuEntryText();
+            }
+
+            // Event handler for when the Sound FX Volume menu entry is selected.
+            if (input.IsMenuLeft(ControllingPlayer) && MenuEntries[selectedEntry] == fxVolumeMenuEntry)
+            {
+                fxVolume--;
+                SetMenuEntryText();
+            }
+            if (input.IsMenuRight(ControllingPlayer) && MenuEntries[selectedEntry] == fxVolumeMenuEntry)
+            {
+                fxVolume++;
+                SetMenuEntryText();
+            }
+
+            base.HandleInput(input);
+        }
         /// <summary>
         /// Event handler for when the Ungulate menu entry is selected.
         /// </summary>
@@ -136,23 +206,23 @@ namespace Yellokiller
             SetMenuEntryText();
         }
 
-
-        /// <summary>
-        /// Event handler for when the Elf menu entry is selected.
-        /// </summary>
-        void ElfMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            elf++;
-            SetMenuEntryText();
-        }
-
         protected override void OnCancel(PlayerIndex playerIndex)
         {
             if (IsPopup)
                 ScreenManager.AddScreen(new PauseMenuScreen(1, mod), playerIndex, true);
+            audio.Close();
             ExitScreen();
         }
 
+        /// <summary>
+        /// Updates the menu.
+        /// </summary>
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus,
+                                                       bool coveredByOtherScreen)
+        {
+            audio.Update(gameTime);
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+        }
 
         #endregion
     }
