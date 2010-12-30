@@ -50,7 +50,7 @@ namespace Yellokiller
 
         static bool So = true;
 
-        static int soundVolume = (int)(MediaPlayer.Volume * 100);
+        static int soundVolume = (int)(MediaPlayer.Volume * 10);
         static int fxVolume = 25;
 
         #endregion
@@ -64,7 +64,7 @@ namespace Yellokiller
         public OptionsMenuScreen(int mode)
             : base("Options")
         {
-            audio = new Player(soundVolume / 100);
+            audio = new Player(soundVolume / 10);
             mod = mode;
 
             // Create our menu entries.
@@ -144,16 +144,18 @@ namespace Yellokiller
             }
 
             // Event handler for when the Sound Volume menu entry is selected.
-            if (input.IsMenuLeft(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry)
+            if (input.IsMenuLeft(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry
+                && soundVolume > 0)
             {
-                MediaPlayer.Volume -= 0.01f;
-                soundVolume = (int)(MediaPlayer.Volume * 100);
+                MediaPlayer.Volume -= 0.096f;
+                soundVolume = (int)(MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
-            if (input.IsMenuRight(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry)
+            if (input.IsMenuRight(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry
+                && soundVolume < 10)
             {
-                MediaPlayer.Volume += 0.01f;
-                soundVolume = (int)(MediaPlayer.Volume * 100);
+                MediaPlayer.Volume += 0.096f;
+                soundVolume = (int)(MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
 
