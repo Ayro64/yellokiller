@@ -22,9 +22,9 @@ namespace Yellokiller
 
         #endregion
 
-
         #region Fields
 
+		float Volume;
         int m, n;
         MediaLibrary sampleMediaLibrary;
         Random rand;
@@ -32,9 +32,10 @@ namespace Yellokiller
         SpriteFont font;
 
         #endregion
+		
         #region Initialization
 
-        public Player()
+        public Player(int soundVolume)
         {
             sampleMediaLibrary = new MediaLibrary();
             rand = new Random();
@@ -42,7 +43,9 @@ namespace Yellokiller
             m = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
             n = rand.Next(0, sampleMediaLibrary.Albums[m].Songs.Count);
             MediaPlayer.Play(sampleMediaLibrary.Albums[m].Songs[n]);
-        }
+            Volume = soundVolume;
+            MediaPlayer.Volume = Volume;
+		}
 
         public void LoadContent()
         {
@@ -59,8 +62,7 @@ namespace Yellokiller
 
         public void HandleInput(KeyboardState keyboardState, KeyboardState lastKeyboardState)
         {
-
-            //Change track
+            // Change track
             if (keyboardState.IsKeyDown(Keys.K))
             {
                 m = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
@@ -68,6 +70,7 @@ namespace Yellokiller
                 MediaPlayer.Play(sampleMediaLibrary.Albums[m].Songs[n]);
             }
 
+			// Pause player
             if (keyboardState.IsKeyDown(Keys.L) && lastKeyboardState.IsKeyUp(Keys.L))
             {
                 if (MediaPlayer.State == MediaState.Playing)
@@ -83,6 +86,7 @@ namespace Yellokiller
 
         public void Update(GameTime gameTime)
         {
+			// Change to the next track when the last one ends.
             if (MediaPlayer.State == MediaState.Stopped)
             {
                 m = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
@@ -90,8 +94,10 @@ namespace Yellokiller
                 MediaPlayer.Play(sampleMediaLibrary.Albums[m].Songs[n]);
             }
         }
+		
         public void Draw(GameTime gameTime)
         {
+			// Song name.
             spriteBatch = ScreenManager.spriteBatch;
             font = ScreenManager.font;
             spriteBatch.DrawString(font, sampleMediaLibrary.Albums[m].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[m].Songs[n], new Vector2(10, 10), Color.Red);
