@@ -32,8 +32,6 @@ namespace Yellokiller
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
 
-        Player audio;
-
         Hero1 hero1;
         Hero2 hero2;
         Map carte;
@@ -56,7 +54,6 @@ namespace Yellokiller
             carte = new Map("Map Theo.txt");
             hero1 = new Hero1(new Vector2(336, 10), new Rectangle(25, 133, 16, 25));
             hero2 = new Hero2(new Vector2(346, 10), new Rectangle(25, 133, 16, 25));
-            audio = new Player();
         }
 
 
@@ -100,8 +97,6 @@ namespace Yellokiller
 
         #endregion
 
-
-
         #region Update and Draw
 
 
@@ -119,7 +114,7 @@ namespace Yellokiller
             {
                 hero1.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap);
                 hero2.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap);
-                audio.Update(gameTime);
+                //audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
         }
@@ -142,13 +137,14 @@ namespace Yellokiller
             carte.Draw(spriteBatch, content);
             hero1.Draw(spriteBatch);
             hero2.Draw(spriteBatch);
-            audio.Draw(gameTime);
-
+            
+            //audio.Draw(gameTime);
             spriteBatch.End();
             base.Draw(gameTime);
         }
 
-#endregion
+        #endregion
+
         #region Handle Input
 
         /// <summary>
@@ -202,13 +198,13 @@ namespace Yellokiller
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
 
                 // Looks up input for the Media Player.
-                audio.HandleInput(keyboardState, lastKeyboardState);
-                
+                //audio.HandleInput(keyboardState, lastKeyboardState);
+
             }
         }
 
 
-        
+
 
         #endregion
     }
