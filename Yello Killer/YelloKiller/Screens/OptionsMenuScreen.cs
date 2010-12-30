@@ -147,14 +147,14 @@ namespace Yellokiller
             if (input.IsMenuLeft(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry
                 && soundVolume > 0)
             {
-                MediaPlayer.Volume -= 0.096f;
+                MediaPlayer.Volume -= 0.0999f;
                 soundVolume = (int)(MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
             if (input.IsMenuRight(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry
                 && soundVolume < 10)
             {
-                MediaPlayer.Volume += 0.096f;
+                MediaPlayer.Volume += 0.0999f;
                 soundVolume = (int)(MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
