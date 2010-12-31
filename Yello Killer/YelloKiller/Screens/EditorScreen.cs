@@ -23,13 +23,13 @@ namespace Yellokiller
         /// Cursor
         /// </summary>
         Texture2D cursor;
-        Vector2 position;
-
+        Vector2 position, origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
+        bool enableOrigine1 = true, enableOrigine2 = true;
         /// <summary>
         /// Menu
         /// </summary>
         SpriteFont font;
-        Texture2D arbre, maison, mur, arbre2;
+        Texture2D arbre, maison, mur, arbre2, textOrigine1, textOrigine2;
 
         public EditorScreen()
         {
@@ -56,6 +56,8 @@ namespace Yellokiller
             maison = content.Load<Texture2D>("maison");
             mur = content.Load<Texture2D>("mur");
             arbre2 = content.Load<Texture2D>("arbre2");
+            textOrigine1 = content.Load<Texture2D>("origine1");
+            textOrigine2 = content.Load<Texture2D>("origine2");
         }
 
         public override void UnloadContent()
@@ -104,15 +106,31 @@ namespace Yellokiller
             if (keyboardState.IsKeyDown(Keys.Down) && lastKeyboardState.IsKeyUp(Keys.Down) && position.Y < carte.hauteurMap - 1)
                 position.Y++;
 
-            if (keyboardState.IsKeyDown(Keys.F1))
-                carte.map[(int)position.Y, (int)position.X] = 1;
-            if (keyboardState.IsKeyDown(Keys.F2))
-                carte.map[(int)position.Y, (int)position.X] = 2;
-            if (keyboardState.IsKeyDown(Keys.F3))
-                carte.map[(int)position.Y, (int)position.X] = 3;
-            if (keyboardState.IsKeyDown(Keys.F4))
-                carte.map[(int)position.Y, (int)position.X] = 4;
+            if (keyboardState.IsKeyDown(Keys.F1) && Position != origine1 && Position != origine2)
+                carte.map[(int)Position.Y, (int)Position.X] = 1;
 
+            if (keyboardState.IsKeyDown(Keys.F2) && Position != origine1 && Position != origine2)
+                carte.map[(int)Position.Y, (int)Position.X] = 2;
+
+            if (keyboardState.IsKeyDown(Keys.F3) && Position != origine1 && Position != origine2)
+                carte.map[(int)Position.Y, (int)Position.X] = 3;
+
+            if (keyboardState.IsKeyDown(Keys.F4) && Position != origine1 && Position != origine2)
+                carte.map[(int)Position.Y, (int)Position.X] = 4;
+
+            if (keyboardState.IsKeyDown(Keys.F5) && enableOrigine1)
+            {
+                carte.map[(int)Position.Y, (int)Position.X] = 5;
+                enableOrigine1 = false;
+                origine1 = Position;
+            }
+
+            if (keyboardState.IsKeyDown(Keys.F6) && enableOrigine2)
+            {
+                carte.map[(int)Position.Y, (int)Position.X] = 6;
+                enableOrigine2 = false;
+                origine2 = Position;
+            }
             if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.S))
             {
                 sauvegarde = new StreamWriter("save.txt");
@@ -120,11 +138,17 @@ namespace Yellokiller
                 {
                     for (int x = 0; x < carte.largeurMap; x++)
                     {
-                        ligne += carte.map[y, x].ToString();
+                        if (carte.map[y, x] == 5 || carte.map[y, x] == 6)
+                            ligne += '0';
+                        else
+                            ligne += carte.map[y, x].ToString();
                     }
                     sauvegarde.WriteLine(ligne);
                     ligne = "";
                 }
+                sauvegarde.WriteLine(origine1.X + " " + origine1.Y);
+                sauvegarde.WriteLine(origine2.X + " " + origine2.Y);
+                
                 sauvegarde.Close();
              //   Window.Title = "Fichier sauvegardé";
             }
@@ -141,14 +165,18 @@ namespace Yellokiller
             
             carte.Draw(spriteBatch, content);
             
-            spriteBatch.DrawString(font, " Touche F1", new Vector2(Taille_Map.LARGEURMAP * 28 + 10, 000), Color.Red);
-            spriteBatch.DrawString(font, " Touche F2", new Vector2(Taille_Map.LARGEURMAP * 28 + 10, 100), Color.Red);
-            spriteBatch.DrawString(font, " Touche F3", new Vector2(Taille_Map.LARGEURMAP * 28 + 10, 200), Color.Red);
-            spriteBatch.DrawString(font, " Touche F4", new Vector2(Taille_Map.LARGEURMAP * 28 + 10, 300), Color.Red);
-            spriteBatch.Draw(arbre, new Vector2(Taille_Map.LARGEURMAP * 28 + 61, 50), Color.White);
-            spriteBatch.Draw(mur, new Vector2(Taille_Map.LARGEURMAP * 28 + 61, 150), Color.White);
-            spriteBatch.Draw(maison, new Vector2(Taille_Map.LARGEURMAP * 28 + 61, 250), Color.White);
-            spriteBatch.Draw(arbre2, new Vector2(Taille_Map.LARGEURMAP * 28 + 61, 350), Color.White);
+            spriteBatch.DrawString(font, " Touche F1", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 000), Color.Red);
+            spriteBatch.DrawString(font, " Touche F2", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 100), Color.Red);
+            spriteBatch.DrawString(font, " Touche F3", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 200), Color.Red);
+            spriteBatch.DrawString(font, " Touche F4", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 300), Color.Red);
+            spriteBatch.DrawString(font, "Touche F5\n Player 1", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 450), Color.Red);
+            spriteBatch.DrawString(font, "Touche F6\n Player 2", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 550), Color.Red);
+            spriteBatch.Draw(arbre, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 50), Color.White);
+            spriteBatch.Draw(mur, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 150), Color.White);
+            spriteBatch.Draw(maison, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 250), Color.White);
+            spriteBatch.Draw(arbre2, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 350), Color.White);
+            spriteBatch.Draw(textOrigine1, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 500), Color.White);
+            spriteBatch.Draw(textOrigine2, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 600), Color.White);
 
             spriteBatch.Draw(cursor, new Vector2(position.X * cursor.Width, position.Y * cursor.Height), Color.White);
 
