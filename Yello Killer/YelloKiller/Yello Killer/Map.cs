@@ -22,17 +22,18 @@ namespace Yellokiller
     class Map
     {
         string nomFichier;
-        public int[,] map = new int[200, 100];
-        public int largeurMap = 0, hauteurMap = 0;
+        public int[,] map = new int[Taille_Map.HAUTEURMAP + 1, Taille_Map.LARGEURMAP + 1];
+        public int largeurMap = Taille_Map.LARGEURMAP, hauteurMap = Taille_Map.HAUTEURMAP;
+        public Vector2 origine1 = new Vector2(0, 0), origine2 = new Vector2(0, 0);        
 
         public Map(string nomFichier)
         {
             this.nomFichier = nomFichier;
-            calculTailleMap();
+            //calculTailleMap();
             mapGen();
         }
 
-        private void calculTailleMap()
+        /*private void calculTailleMap()
         {
             StreamReader file = new StreamReader(nomFichier);
             string ligne = file.ReadLine();
@@ -49,7 +50,7 @@ namespace Yellokiller
             file.Close();
 
             hauteurMap++;
-        }
+        }*/
 
         private int charToInt(char c)
         {
@@ -60,6 +61,7 @@ namespace Yellokiller
         {
             StreamReader file = new StreamReader(nomFichier);
             string line;
+            int c = 0;
 
             for (int i = 0; i < hauteurMap; i++)
             {
@@ -72,6 +74,35 @@ namespace Yellokiller
                 {
                     map[i, j] = charToInt(line[j]);
                 }
+            }
+
+            line = file.ReadLine();
+
+            while (line[c] != ' ')
+            {
+                origine1.X = 10 * origine1.X + charToInt(line[c]);
+                c++;
+            }
+            c++;
+            while (c < line.Length)
+            {
+                origine1.Y = 10 * origine1.Y + charToInt(line[c]);
+                c++;
+            }
+
+            c = 0;
+            line = file.ReadLine();
+
+            while (line[c] != ' ')
+            {
+                origine2.X = 10 * origine2.X + charToInt(line[c]);
+                c++;
+            }
+            c++;
+            while (c < line.Length)
+            {
+                origine2.Y = 10 * origine2.Y + charToInt(line[c]);
+                c++;
             }
         }
 
