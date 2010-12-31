@@ -76,6 +76,7 @@
     <Compile Include="Yello Killer\IKeyboardService.cs" />
     <Compile Include="Yello Killer\KeyboardService.cs" />
     <Compile Include="Yello Killer\Map.cs" />
+    <Compile Include="Yello Killer\Moteur physique.cs" />
     <Compile Include="Yello Killer\ServiceHelper.cs" />
   </ItemGroup>
   <ItemGroup>
