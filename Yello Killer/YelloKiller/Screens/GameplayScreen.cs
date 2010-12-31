@@ -51,9 +51,9 @@ namespace Yellokiller
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
-            carte = new Map("Map Theo.txt");
-            hero1 = new Hero1(new Vector2(336, 10), new Rectangle(25, 133, 16, 25));
-            hero2 = new Hero2(new Vector2(346, 10), new Rectangle(25, 133, 16, 25));
+            carte = new Map("save.txt");
+            hero1 = new Hero1(28 * carte.origine1, new Rectangle(25, 133, 16, 25));
+            hero2 = new Hero2(28 * carte.origine2, new Rectangle(25, 133, 16, 25));
         }
 
 
