@@ -20,8 +20,10 @@ namespace Yellokiller
         float index = 0;
         int maxIndex = 0;
         Rectangle? sourceRectangle = null;
+        Rectangle rectangle;
         Texture2D texture;
         KeyboardState lastKeyboardState, keyboardState;
+        public bool monter = true, descendre = true, droite = true, gauche = true;
 
         public Vector2 Position
         {
@@ -40,6 +42,12 @@ namespace Yellokiller
             set { sourceRectangle = value; }
         }
 
+        public Rectangle Rectangle
+        {
+            get { return rectangle; }
+            set { rectangle = value; }
+        }
+        
         public Hero2(Vector2 position, Rectangle? sourceRectangle)
         {
             this.position = position;
@@ -52,10 +60,13 @@ namespace Yellokiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, int[,] map, int hauteurMap, int largeurMap)
+        public void Update(GameTime gameTime, int[,] map, int hauteurMap, int largeurMap, Hero1 hero1)
         {
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
+
+            rectangle = new Rectangle((int)Position.X, (int)Position.Y, 18, 28);
+            Moteur_physique.Collision(this.rectangle, hero1.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
 
             if (Keyboard.GetState().IsKeyUp(Keys.Up))                        // arreter le sprite
             {
@@ -72,7 +83,7 @@ namespace Yellokiller
             if (keyboardState.IsKeyUp(Keys.RightShift))
                 vitesse_animation = 0.008f;
 
-            if (position.Y > 0 && keyboardState.IsKeyDown(Keys.Up) &&
+            if (position.Y > 0 && keyboardState.IsKeyDown(Keys.Up) && monter &&
                (map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 0 ||
                 map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 1) &&
                (map[(int)(position.Y + 6) / 28, (int)position.X / 28] == 0 ||
@@ -96,7 +107,7 @@ namespace Yellokiller
                 }
             }
 
-            if (position.Y < 28 * (hauteurMap - 1) && keyboardState.IsKeyDown(Keys.Down) &&
+            if (position.Y < 28 * (hauteurMap - 1) && keyboardState.IsKeyDown(Keys.Down) && descendre &&
                 (map[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28] == 0 ||
                  map[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28] == 1) &&
                 (map[(int)(position.Y / 28) + 1, (int)(position.X) / 28] == 0 ||
@@ -121,7 +132,7 @@ namespace Yellokiller
                 }
             }
 
-            if (position.X > 0 && keyboardState.IsKeyDown(Keys.Left) &&
+            if (position.X > 0 && keyboardState.IsKeyDown(Keys.Left) && gauche &&
                (map[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28] == 0 ||
                 map[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28] == 1) &&
                (map[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28] == 0 ||
@@ -145,7 +156,7 @@ namespace Yellokiller
                 }
             }
 
-            if (position.X < 28 * largeurMap - 16 && keyboardState.IsKeyDown(Keys.Right) &&
+            if (position.X < 28 * largeurMap - 16 && keyboardState.IsKeyDown(Keys.Right) && droite &&
                 (map[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1] == 0 ||
                  map[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1] == 1) &&
                 (map[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1] == 0 ||
