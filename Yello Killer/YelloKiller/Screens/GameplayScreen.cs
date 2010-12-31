@@ -112,9 +112,9 @@ namespace Yellokiller
 
             if (IsActive)
             {
-                hero1.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap);
-                hero2.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap);
-                //audio.Update(gameTime);
+                hero1.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero2);
+                hero2.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero1);
+                //audio.Update(gameTime); bitte
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
         }
