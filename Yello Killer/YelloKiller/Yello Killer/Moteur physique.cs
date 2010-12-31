@@ -14,22 +14,22 @@ namespace Yellokiller
 
             if (hero1.Intersects(hero2))
             {
-                if (hero1.Top == hero2.Bottom - 1)
+                if (hero1.Top == hero2.Bottom - 1 || hero1.Top == hero2.Bottom - 2)
                 {
                     monter1 = false;
                 }
 
-                if (hero1.Bottom == hero2.Top + 1)
+                if (hero1.Bottom == hero2.Top + 1 || hero1.Bottom == hero2.Top + 2)
                 {
                     descendre1 = false;
                 }
 
-                if (hero1.Left == hero2.Right - 1)
+                if (hero1.Left == hero2.Right - 1 || hero1.Left == hero2.Right - 2)
                 {
                     gauche1 = false;
                 }
 
-                if (hero1.Right == hero2.Left + 1)
+                if (hero1.Right == hero2.Left + 1 || hero1.Right == hero2.Left + 2)
                 {
                     droite1 = false;
                 }
