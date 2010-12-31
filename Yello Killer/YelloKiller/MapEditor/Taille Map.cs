@@ -6,7 +6,7 @@ namespace Yellokiller
 {
     static class Taille_Map
     {
-        static public int LARGEURMAP = 40;
+        static public int LARGEURMAP = 45;
         static public int HAUTEURMAP = 26;
     }
 }

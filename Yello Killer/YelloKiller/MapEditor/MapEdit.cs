@@ -8,7 +8,7 @@ namespace Yellokiller
 {
     class MapEdit
     {
-        public int[,] map = new int[Taille_Map.HAUTEURMAP, Taille_Map.LARGEURMAP];
+        public int[,] map = new int[Taille_Map.HAUTEURMAP + 2, Taille_Map.LARGEURMAP + 2];
         public int largeurMap = Taille_Map.LARGEURMAP, hauteurMap = Taille_Map.HAUTEURMAP;
 
         public MapEdit()
@@ -42,6 +42,12 @@ namespace Yellokiller
                             break;
                         case 4:
                             spriteBatch.Draw(LoadContent(content, "arbre2"), new Vector2(x * 28, y * 28), Color.White);
+                            break;
+                        case 5:
+                            spriteBatch.Draw(LoadContent(content, "origine1"), new Vector2(x * 28, y * 28), Color.White);
+                            break;
+                        case 6:
+                            spriteBatch.Draw(LoadContent(content, "origine2"), new Vector2(x * 28, y * 28), Color.White);
                             break;
                     }
                 }
