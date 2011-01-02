@@ -100,7 +100,10 @@ namespace Yellokiller
             // Song name.
             spriteBatch = ScreenManager.spriteBatch;
             font = ScreenManager.font;
+
+            spriteBatch.Begin();
             spriteBatch.DrawString(font, sampleMediaLibrary.Albums[m].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[m].Songs[n], new Vector2(10, 10), Color.Red);
+            spriteBatch.End();
         }
 
         public void Close()
