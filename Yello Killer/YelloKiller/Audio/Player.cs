@@ -25,7 +25,7 @@ namespace Yellokiller
         #region Fields
 
         float Volume;
-        int m, n;
+        int n;
         MediaLibrary sampleMediaLibrary;
         Random rand;
         SpriteBatch spriteBatch;
@@ -40,9 +40,8 @@ namespace Yellokiller
             sampleMediaLibrary = new MediaLibrary();
             rand = new Random();
 
-            m = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
-            n = rand.Next(0, sampleMediaLibrary.Albums[m].Songs.Count);
-            MediaPlayer.Play(sampleMediaLibrary.Albums[m].Songs[n]);
+            n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
+            MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
             Volume = soundVolume;
             MediaPlayer.Volume = Volume;
         }
@@ -65,9 +64,8 @@ namespace Yellokiller
             // Change track
             if (keyboardState.IsKeyDown(Keys.K))
             {
-                m = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
-                n = rand.Next(0, sampleMediaLibrary.Albums[m].Songs.Count);
-                MediaPlayer.Play(sampleMediaLibrary.Albums[m].Songs[n]);
+                n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
+                MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
             }
 
             // Pause player
@@ -89,9 +87,8 @@ namespace Yellokiller
             // Change to the next track when the last one ends.
             if (MediaPlayer.State == MediaState.Stopped)
             {
-                m = rand.Next(0, sampleMediaLibrary.Albums.Count - 1);
-                n = rand.Next(0, sampleMediaLibrary.Albums[m].Songs.Count);
-                MediaPlayer.Play(sampleMediaLibrary.Albums[m].Songs[n]);
+                n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
+                MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
             }
         }
 
@@ -102,7 +99,7 @@ namespace Yellokiller
             font = ScreenManager.font;
 
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, sampleMediaLibrary.Albums[m].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[m].Songs[n], new Vector2(10, 10), Color.Red);
+            spriteBatch.DrawString(font, sampleMediaLibrary.Albums[1].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[1].Songs[n], new Vector2(10, 10), Color.Red);
             spriteBatch.End();
         }
 
