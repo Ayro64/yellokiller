@@ -143,7 +143,7 @@ namespace Yellokiller
             carte.Draw(spriteBatch, content);
             hero1.Draw(spriteBatch);
             hero2.Draw(spriteBatch);
-            
+
             spriteBatch.End();
             audio.Draw(gameTime);
             base.Draw(gameTime);
@@ -165,7 +165,6 @@ namespace Yellokiller
             // Look up inputs for the active player profile.
             int playerIndex = (int)ControllingPlayer.Value;
 
-
             lastKeyboardState = keyboardState;
             keyboardState = input.CurrentKeyboardStates[playerIndex];
 
@@ -183,30 +182,13 @@ namespace Yellokiller
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1), ControllingPlayer, true);
             }
-            else
-            {
-                // Otherwise move the player position.
-                Vector2 movement = Vector2.Zero;
 
-                if (keyboardState.IsKeyDown(Keys.Left))
-                    movement.X--;
+            if (keyboardState.IsKeyDown(Keys.G))
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
 
-                if (keyboardState.IsKeyDown(Keys.Right))
-                    movement.X++;
+            // Looks up input for the Media Player.
+            audio.HandleInput(keyboardState, lastKeyboardState);
 
-                if (keyboardState.IsKeyDown(Keys.Up))
-                    movement.Y--;
-
-                if (keyboardState.IsKeyDown(Keys.Down))
-                    movement.Y++;
-
-                if (keyboardState.IsKeyDown(Keys.G))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
-
-                // Looks up input for the Media Player.
-                audio.HandleInput(keyboardState, lastKeyboardState);
-
-            }
         }
 
 
