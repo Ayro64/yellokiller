@@ -24,7 +24,6 @@ namespace Yellokiller
 
         #endregion
 
-
         #region Properties
 
         /// <summary>
@@ -37,7 +36,6 @@ namespace Yellokiller
         }
 
         #endregion
-
 
         #region Initialization
 
@@ -92,7 +90,6 @@ namespace Yellokiller
         }
 
         #endregion
-
 
         #region Handle Input
 
@@ -159,7 +156,6 @@ namespace Yellokiller
         }
 
         #endregion
-
 
         #region Update and Draw
 
