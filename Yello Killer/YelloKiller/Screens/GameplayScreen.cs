@@ -36,6 +36,8 @@ namespace Yellokiller
         Hero2 hero2;
         Map carte;
 
+        Player audio;
+
         KeyboardState keyboardState, lastKeyboardState;
 
         #endregion
@@ -50,6 +52,8 @@ namespace Yellokiller
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
+
+            audio = new Player(1);
 
             carte = new Map("save.txt");
             hero1 = new Hero1(28 * carte.origine1, new Rectangle(25, 133, 16, 25));
@@ -114,7 +118,7 @@ namespace Yellokiller
             {
                 hero1.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero2);
                 hero2.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero1);
-                //audio.Update(gameTime); bitte
+                audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
         }
@@ -138,7 +142,7 @@ namespace Yellokiller
             hero1.Draw(spriteBatch);
             hero2.Draw(spriteBatch);
             
-            //audio.Draw(gameTime);
+            audio.Draw(gameTime);
             spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -198,7 +202,7 @@ namespace Yellokiller
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
 
                 // Looks up input for the Media Player.
-                //audio.HandleInput(keyboardState, lastKeyboardState);
+                audio.HandleInput(keyboardState, lastKeyboardState);
 
             }
         }
