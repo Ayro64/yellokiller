@@ -226,6 +226,11 @@ namespace Yellokiller
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
+        public override void Draw(GameTime gameTime)
+        {
+            audio.Draw(gameTime);
+            base.Draw(gameTime);
+        }
         #endregion
     }
 }
