@@ -118,20 +118,20 @@ namespace Yellokiller
             if (keyboardState.IsKeyDown(Keys.F4) && Position != origine1 && Position != origine2)
                 carte.map[(int)Position.Y, (int)Position.X] = 4;
 
-            if (keyboardState.IsKeyDown(Keys.F5) && enableOrigine1)
+            if (keyboardState.IsKeyDown(Keys.F5) && enableOrigine1 && carte.map[(int)position.Y, (int)position.X] != 6)
             {
                 carte.map[(int)Position.Y, (int)Position.X] = 5;
                 enableOrigine1 = false;
                 origine1 = Position;
             }
 
-            if (keyboardState.IsKeyDown(Keys.F6) && enableOrigine2)
+            if (keyboardState.IsKeyDown(Keys.F6) && enableOrigine2 && carte.map[(int)position.Y, (int)position.X] != 5)
             {
                 carte.map[(int)Position.Y, (int)Position.X] = 6;
                 enableOrigine2 = false;
                 origine2 = Position;
             }
-            if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.S))
+            if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.S) && !enableOrigine1 && !enableOrigine2)
             {
                 sauvegarde = new StreamWriter("save.txt");
                 for (int y = 0; y < carte.hauteurMap; y++)
@@ -146,8 +146,10 @@ namespace Yellokiller
                     sauvegarde.WriteLine(ligne);
                     ligne = "";
                 }
-                sauvegarde.WriteLine(origine1.X + " " + origine1.Y);
-                sauvegarde.WriteLine(origine2.X + " " + origine2.Y);
+                sauvegarde.WriteLine(origine1.X);
+                sauvegarde.WriteLine(origine1.Y);
+                sauvegarde.WriteLine(origine2.X);
+                sauvegarde.WriteLine(origine2.Y);
                 
                 sauvegarde.Close();
              //   Window.Title = "Fichier sauvegardé";
