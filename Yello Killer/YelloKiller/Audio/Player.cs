@@ -62,7 +62,7 @@ namespace Yellokiller
         public void HandleInput(KeyboardState keyboardState, KeyboardState lastKeyboardState)
         {
             // Change track
-            if (keyboardState.IsKeyDown(Keys.K))
+            if (keyboardState.IsKeyDown(Keys.K) && lastKeyboardState.IsKeyUp(Keys.K))
             {
                 n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
                 MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
