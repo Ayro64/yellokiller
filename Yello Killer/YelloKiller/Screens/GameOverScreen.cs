@@ -216,7 +216,7 @@ namespace Yellokiller
             // Rectangle noir
             spriteBatch.Draw(blankTexture,
                              new Rectangle(320, 530, 615, 110),
-                             new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+                             new Color(0, 0, 0, (byte)(fade * 2 / 3)));
 
 
             // Draw each menu entry in turn.
