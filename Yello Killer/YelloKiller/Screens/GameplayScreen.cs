@@ -142,8 +142,8 @@ namespace Yellokiller
             hero1.Draw(spriteBatch);
             hero2.Draw(spriteBatch);
             
-            audio.Draw(gameTime);
             spriteBatch.End();
+            audio.Draw(gameTime);
             base.Draw(gameTime);
         }
 
