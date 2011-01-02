@@ -76,6 +76,8 @@ namespace Yellokiller
             spriteBatch = ScreenManager.SpriteBatch;
 
             gameFont = content.Load<SpriteFont>("courier");
+
+            audio.LoadContent(content);
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
             // A real game would probably have more content than this sample, so
