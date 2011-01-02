@@ -142,8 +142,8 @@ namespace Yellokiller
 
             // Celui du titre
             spriteBatch.Draw(blankTexture,
-                            new Rectangle(334, 60, 230, 80),
-                            new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+                             new Rectangle(334, 60, 230, 80),
+                             new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
             spriteBatch.End();
 
