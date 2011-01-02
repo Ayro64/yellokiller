@@ -68,7 +68,6 @@ C:\Users\Ayro\Documents\Yello_KillerSVN\Yello Killer\YelloKiller\obj\x86\Debug\R
 C:\Users\Ayro\Documents\Yello_KillerSVN\Yello Killer\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Ayro\Documents\Yello_KillerSVN\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.exe
 C:\Users\Ayro\Documents\Yello_KillerSVN\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.pdb
-C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\background.xnb
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\blank.xnb
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\gradient.xnb
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\arbre.xnb
@@ -131,3 +130,6 @@ C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Resol
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.exe
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.pdb
+C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine1.xnb
+C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine2.xnb
+C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\background.xnb
