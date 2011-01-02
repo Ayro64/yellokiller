@@ -9,6 +9,8 @@
 
 #region Using Statements
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 #endregion
 
 namespace Yellokiller
@@ -18,6 +20,16 @@ namespace Yellokiller
     /// </summary>
     class MainMenuScreen : MenuScreen
     {
+        // Sert à keud'
+        #region Properties (provisoire)
+
+        ContentManager content;
+        SpriteBatch spriteBatch;
+        Texture2D blankTexture;
+
+        #endregion
+        //
+
         #region Initialization
 
 
@@ -46,6 +58,16 @@ namespace Yellokiller
             MenuEntries.Add(exitMenuEntry);
         }
 
+        // Sert qu'aux rectangles
+        public override void LoadContent()
+        {
+            if (content == null)
+                content = new ContentManager(ScreenManager.Game.Services, "Content");
+            blankTexture = content.Load<Texture2D>("blank");
+
+            base.LoadContent();
+        }
+        //
 
         #endregion
 
@@ -104,6 +126,33 @@ namespace Yellokiller
             ScreenManager.Game.Exit();
         }
 
+
+        #endregion
+
+        #region Draw
+
+        public override void Draw(GameTime gameTime)
+        {
+            // Tout ça ne sert qu'à faire les pauvres rectangles noirs.
+            spriteBatch = ScreenManager.SpriteBatch;
+
+            spriteBatch.Begin();
+            // Rectangle noir des entrées menu
+            spriteBatch.Draw(blankTexture,
+                             new Rectangle(115, 210, 215, 190),
+                             new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+
+            // Celui du titre
+            spriteBatch.Draw(blankTexture,
+                            new Rectangle(510, 60, 230, 80),
+                            new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+
+            spriteBatch.End();
+
+            base.Draw(gameTime);
+        }
+
+        //
 
         #endregion
     }
