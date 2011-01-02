@@ -12,6 +12,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 #endregion
 
 namespace Yellokiller
@@ -52,6 +54,13 @@ namespace Yellokiller
 
         static int soundVolume = (int)(MediaPlayer.Volume * 10);
         static int fxVolume = 25;
+
+
+        // Sert à keud', XNA.Content et XNA.Graphics à dégager.
+        ContentManager content;
+        SpriteBatch spriteBatch;
+        Texture2D blankTexture;
+        //
 
         #endregion
 
@@ -106,6 +115,16 @@ namespace Yellokiller
             fxVolumeMenuEntry.Text = "Volume des sons : " + fxVolume;
         }
 
+        // Sert qu'aux rectangles
+        public override void LoadContent()
+        {
+            if (content == null)
+                content = new ContentManager(ScreenManager.Game.Services, "Content");
+            blankTexture = content.Load<Texture2D>("blank");
+
+            base.LoadContent();
+        }
+        //
 
         #endregion
 
@@ -144,15 +163,15 @@ namespace Yellokiller
             }
 
             // Event handler for when the Sound Volume menu entry is selected.
-            if (input.IsMenuLeft(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry
-                && soundVolume > 0)
+            if (MenuEntries[selectedEntry] == soundVolumeMenuEntry
+                && input.IsMenuLeft(ControllingPlayer) && soundVolume > 0)
             {
                 MediaPlayer.Volume -= 0.0999f;
                 soundVolume = (int)(MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
-            if (input.IsMenuRight(ControllingPlayer) && MenuEntries[selectedEntry] == soundVolumeMenuEntry
-                && soundVolume < 10)
+            if (MenuEntries[selectedEntry] == soundVolumeMenuEntry
+                && input.IsMenuRight(ControllingPlayer) && soundVolume < 10)
             {
                 MediaPlayer.Volume += 0.0999f;
                 soundVolume = (int)(MediaPlayer.Volume * 10);
@@ -229,6 +248,23 @@ namespace Yellokiller
         public override void Draw(GameTime gameTime)
         {
             audio.Draw(gameTime);
+
+            // Tout ça ne sert qu'à faire les pauvres rectangles noirs.
+            spriteBatch = ScreenManager.SpriteBatch;
+
+            spriteBatch.Begin();
+            // Rectangle noir des entrées menu
+            spriteBatch.Draw(blankTexture,
+                             new Rectangle(115, 210, 300, 235),
+                             new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+
+            // Celui du titre
+            spriteBatch.Draw(blankTexture,
+                            new Rectangle(510, 60, 230, 80),
+                            new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+
+            spriteBatch.End();
+
             base.Draw(gameTime);
         }
         #endregion
