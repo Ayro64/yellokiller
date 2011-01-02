@@ -120,9 +120,17 @@ namespace Yellokiller
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
+
             blankTexture = content.Load<Texture2D>("blank");
 
+            audio.LoadContent(content);
             base.LoadContent();
+        }
+
+        public override void UnloadContent()
+        {
+            audio.UnloadContent();
+            content.Unload();
         }
         //
 
@@ -229,10 +237,11 @@ namespace Yellokiller
 
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-            if (IsPopup)
-                ScreenManager.AddScreen(new PauseMenuScreen(1, mod), playerIndex, true);
             audio.Close();
             ExitScreen();
+
+            if (IsPopup)
+                ScreenManager.AddScreen(new PauseMenuScreen(1, mod), playerIndex, true);
         }
 
         /// <summary>
@@ -249,22 +258,24 @@ namespace Yellokiller
         {
             audio.Draw(gameTime);
 
-            // Tout ça ne sert qu'à faire les pauvres rectangles noirs.
-            spriteBatch = ScreenManager.SpriteBatch;
+            if ((mod != 1) && (mod != 2))
+            {
+                // Tout ça ne sert qu'à faire les pauvres rectangles noirs.
+                spriteBatch = ScreenManager.SpriteBatch;
 
-            spriteBatch.Begin();
-            // Rectangle noir des entrées menu
-            spriteBatch.Draw(blankTexture,
-                             new Rectangle(115, 210, 300, 235),
-                             new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+                spriteBatch.Begin();
+                // Rectangle noir des entrées menu.
+                spriteBatch.Draw(blankTexture,
+                                 new Rectangle(115, 210, 300, 235),
+                                 new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
-            // Celui du titre
-            spriteBatch.Draw(blankTexture,
-                            new Rectangle(510, 60, 230, 80),
-                            new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+                // Celui du titre.
+                spriteBatch.Draw(blankTexture,
+                                new Rectangle(334, 60, 230, 80),
+                                new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
-            spriteBatch.End();
-
+                spriteBatch.End();
+            }
             base.Draw(gameTime);
         }
         #endregion
