@@ -41,7 +41,7 @@ namespace Yellokiller
             MenuEntry optionsGameMenuEntry = new MenuEntry("Options");
             MenuEntry quitGameMenuEntry;
 
-            if (mode == 1)
+            if (mode == 2)
             {
                 resumeGameMenuEntry = new MenuEntry("Reprendre l'édition");
                 quitGameMenuEntry = new MenuEntry("Quitter l'édition");
@@ -77,8 +77,9 @@ namespace Yellokiller
         {
             string message;
 
-            if (mod == 1)
+            if (mod == 2)
                 message = "Êtes-vous sûr de vouloir quitter l'édition?\nToute édition non sauvegardée sera perdue.";
+
             else
                 message = "Êtes-vous sûr de vouloir quitter la partie?";
 
@@ -96,8 +97,8 @@ namespace Yellokiller
 
         public void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new OptionsMenuScreen(mod), e.PlayerIndex, true);
             ScreenManager.RemoveScreen(this);
+            ScreenManager.AddScreen(new OptionsMenuScreen(mod), e.PlayerIndex, true);
         }
 
         /// <summary>
