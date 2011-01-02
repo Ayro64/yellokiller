@@ -64,8 +64,6 @@ namespace Yellokiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             blankTexture = content.Load<Texture2D>("blank");
-
-            base.LoadContent();
         }
         //
 
