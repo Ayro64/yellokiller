@@ -18,7 +18,7 @@ namespace Yellokiller
         StreamWriter sauvegarde;
         string ligne = "";
         KeyboardState keyboardState, lastKeyboardState;
-        
+
         /// <summary>
         /// Cursor
         /// </summary>
@@ -150,9 +150,9 @@ namespace Yellokiller
                 sauvegarde.WriteLine(origine1.Y);
                 sauvegarde.WriteLine(origine2.X);
                 sauvegarde.WriteLine(origine2.Y);
-                
+
                 sauvegarde.Close();
-             //   Window.Title = "Fichier sauvegardé";
+                //   Window.Title = "Fichier sauvegardé";
             }
         }
 
@@ -164,9 +164,9 @@ namespace Yellokiller
 
             spriteBatch.Begin();
 
-            
+
             carte.Draw(spriteBatch, content);
-            
+
             spriteBatch.DrawString(font, " Touche F1", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 000), Color.Red);
             spriteBatch.DrawString(font, " Touche F2", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 100), Color.Red);
             spriteBatch.DrawString(font, " Touche F3", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 200), Color.Red);
@@ -186,6 +186,5 @@ namespace Yellokiller
 
             base.Draw(gameTime);
         }
-
     }
 }
