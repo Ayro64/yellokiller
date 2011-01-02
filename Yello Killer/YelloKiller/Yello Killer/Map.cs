@@ -57,11 +57,23 @@ namespace Yellokiller
             return c - '0';
         }
 
+        private int stringToInt(string s)
+        {
+            int ret = 0, dec = 1;
+
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                ret += dec * (int)(s[i] - 48);
+                dec *= 10;
+            }
+
+            return ret;
+        }
+
         private void mapGen()
         {
             StreamReader file = new StreamReader(nomFichier);
             string line;
-            int c = 0;
 
             for (int i = 0; i < hauteurMap; i++)
             {
@@ -77,33 +89,16 @@ namespace Yellokiller
             }
 
             line = file.ReadLine();
+            origine1.X = stringToInt(line);
 
-            while (line[c] != ' ')
-            {
-                origine1.X = 10 * origine1.X + charToInt(line[c]);
-                c++;
-            }
-            c++;
-            while (c < line.Length)
-            {
-                origine1.Y = 10 * origine1.Y + charToInt(line[c]);
-                c++;
-            }
-
-            c = 0;
             line = file.ReadLine();
+            origine1.Y = stringToInt(line);
 
-            while (line[c] != ' ')
-            {
-                origine2.X = 10 * origine2.X + charToInt(line[c]);
-                c++;
-            }
-            c++;
-            while (c < line.Length)
-            {
-                origine2.Y = 10 * origine2.Y + charToInt(line[c]);
-                c++;
-            }
+            line = file.ReadLine();
+            origine2.X = stringToInt(line);
+
+            line = file.ReadLine();
+            origine2.Y = stringToInt(line);
         }
 
         private Texture2D LoadContent(ContentManager content, string assetName)
