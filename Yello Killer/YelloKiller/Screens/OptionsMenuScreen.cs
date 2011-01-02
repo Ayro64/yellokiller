@@ -32,7 +32,6 @@ namespace Yellokiller
 
         MenuEntry languageMenuEntry;
         MenuEntry sonMenuEntry;
-        MenuEntry soMenuEntry;
         MenuEntry soundVolumeMenuEntry;
         MenuEntry fxVolumeMenuEntry;
 
@@ -50,10 +49,8 @@ namespace Yellokiller
         static string[] son = { "Défault", "Player", "Aucun" };
         static int currentSon = 0;
 
-        static bool So = true;
-
         static int soundVolume = (int)(MediaPlayer.Volume * 10);
-        static int fxVolume = 25;
+        static int fxVolume = 10;
 
 
         // Sert à keud', XNA.Content et XNA.Graphics à dégager.
@@ -79,7 +76,6 @@ namespace Yellokiller
             // Create our menu entries.
             languageMenuEntry = new MenuEntry(string.Empty);
             sonMenuEntry = new MenuEntry(string.Empty);
-            soMenuEntry = new MenuEntry(string.Empty);
             soundVolumeMenuEntry = new MenuEntry(string.Empty);
             fxVolumeMenuEntry = new MenuEntry(string.Empty);
 
@@ -90,13 +86,11 @@ namespace Yellokiller
             // Hook up menu event handlers.
             languageMenuEntry.Selected += LanguageMenuEntrySelected;
             sonMenuEntry.Selected += SonMenuEntrySelected;
-            soMenuEntry.Selected += SoMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
             MenuEntries.Add(languageMenuEntry);
             MenuEntries.Add(sonMenuEntry);
-            MenuEntries.Add(soMenuEntry);
             MenuEntries.Add(soundVolumeMenuEntry);
             MenuEntries.Add(fxVolumeMenuEntry);
             MenuEntries.Add(backMenuEntry);
@@ -110,7 +104,6 @@ namespace Yellokiller
         {
             languageMenuEntry.Text = "Langage: " + currentLanguage;
             sonMenuEntry.Text = "Mode de son: " + son[currentSon];
-            soMenuEntry.Text = "Blah?: " + (So ? "Oui" : "Non");
             soundVolumeMenuEntry.Text = "Volume de la musique : " + soundVolume;
             fxVolumeMenuEntry.Text = "Volume des sons : " + fxVolume;
         }
@@ -129,7 +122,6 @@ namespace Yellokiller
 
         public override void UnloadContent()
         {
-            audio.UnloadContent();
             content.Unload();
         }
         //
@@ -144,8 +136,6 @@ namespace Yellokiller
         /// </summary>
         public override void HandleInput(InputState input)
         {
-
-
             // Accept or cancel the menu? We pass in our ControllingPlayer, which may
             // either be null (to accept input from any player) or a specific index.
             // If we pass a null controlling player, the InputState helper returns to
@@ -220,28 +210,17 @@ namespace Yellokiller
         void SonMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             currentSon = (currentSon + 1) % son.Length;
-
-            SetMenuEntryText();
-        }
-
-
-        /// <summary>
-        /// Event handler for when the Frobnicate menu entry is selected.
-        /// </summary>
-        void SoMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            So = !So;
-
             SetMenuEntryText();
         }
 
         protected override void OnCancel(PlayerIndex playerIndex)
         {
             audio.Close();
-            ExitScreen();
 
             if (IsPopup)
                 ScreenManager.AddScreen(new PauseMenuScreen(1, mod), playerIndex, true);
+
+            ExitScreen();
         }
 
         /// <summary>
@@ -266,7 +245,7 @@ namespace Yellokiller
                 spriteBatch.Begin();
                 // Rectangle noir des entrées menu.
                 spriteBatch.Draw(blankTexture,
-                                 new Rectangle(115, 210, 300, 235),
+                                 new Rectangle(115, 210, 300, 200),
                                  new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
                 // Celui du titre.
