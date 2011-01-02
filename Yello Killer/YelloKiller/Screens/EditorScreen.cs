@@ -94,7 +94,7 @@ namespace Yellokiller
             if (input.IsPauseGame(ControllingPlayer) || gamePadDisconnected)
             {
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
-                ScreenManager.AddScreen(new PauseMenuScreen(0, 1), ControllingPlayer, true);
+                ScreenManager.AddScreen(new PauseMenuScreen(0, 2), ControllingPlayer, true);
             }
 
             if (keyboardState.IsKeyDown(Keys.Left) && lastKeyboardState.IsKeyUp(Keys.Left) && position.X > 0)
