@@ -189,8 +189,8 @@ namespace Yellokiller
             byte fade = TransitionAlpha;
 
             //Entrées Menu
-            Vector2 positionL = new Vector2(430, 610);
-            Vector2 positionR = new Vector2(750, 610);
+            Vector2 positionL = new Vector2(285, 610);
+            Vector2 positionR = new Vector2(530, 610);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -215,7 +215,7 @@ namespace Yellokiller
 
             // Rectangle noir
             spriteBatch.Draw(blankTexture,
-                             new Rectangle(320, 530, 615, 110),
+                             new Rectangle(220, 530, 450, 110),
                              new Color(0, 0, 0, (byte)(fade * 2 / 3)));
 
 
@@ -228,7 +228,7 @@ namespace Yellokiller
 
 
             // Draw the menu title.
-            Vector2 GOPosition = new Vector2(630, 565);
+            Vector2 GOPosition = new Vector2(450, 565);
             Vector2 GOOrigin = font.MeasureString(GOmessage) / 2;
             float GOScale = 1.25f;
 
