@@ -105,7 +105,7 @@ namespace Yellokiller
         /// </summary>
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-            const string message = "Êtes-vous sûr de vouloir quitter le jeu?";
+            const string message = "Êtes-vous sûr de vouloir quitter le jeu?\n";
 
             MessageBoxScreen confirmExitMessageBox = new MessageBoxScreen(message);
 
