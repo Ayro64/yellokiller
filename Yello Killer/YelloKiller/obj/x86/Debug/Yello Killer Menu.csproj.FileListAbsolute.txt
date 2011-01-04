@@ -133,3 +133,24 @@ C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yello
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine1.xnb
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine2.xnb
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\background.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\blank.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\gradient.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\arbre.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\herbe.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\maison.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\mur.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\NinjaTrans.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\Game Over.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\Ninja2Trans.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\arbre2.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\cursor.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine1.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine2.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\background.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\courier.xnb
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Yellokiller.exe
+D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Yellokiller.pdb
+D:\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.exe
+D:\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.pdb
