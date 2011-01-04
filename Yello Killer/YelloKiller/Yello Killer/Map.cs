@@ -99,6 +99,8 @@ namespace Yellokiller
 
             line = file.ReadLine();
             origine2.Y = stringToInt(line);
+
+            file.Close();
         }
 
         private Texture2D LoadContent(ContentManager content, string assetName)
