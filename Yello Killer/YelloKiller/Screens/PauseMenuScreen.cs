@@ -97,8 +97,8 @@ namespace Yellokiller
 
         public void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            this.ExitScreen();
             ScreenManager.AddScreen(new OptionsMenuScreen(mod), e.PlayerIndex, true);
+            ScreenManager.RemoveScreen(this);
         }
 
         /// <summary>
