@@ -78,10 +78,10 @@ namespace Yellokiller
             string message;
 
             if (mod == 2)
-                message = "Êtes-vous sûr de vouloir quitter l'édition?\nToute édition non sauvegardée sera perdue.";
+                message = "Êtes-vous sûr de vouloir quitter l'édition?\nToute édition non sauvegardée sera perdue.\n";
 
             else
-                message = "Êtes-vous sûr de vouloir quitter la partie?";
+                message = "Êtes-vous sûr de vouloir quitter la partie?\n";
 
             MessageBoxScreen confirmQuitMessageBox = new MessageBoxScreen(message);
 
@@ -97,7 +97,7 @@ namespace Yellokiller
 
         public void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.RemoveScreen(this);
+            this.ExitScreen();
             ScreenManager.AddScreen(new OptionsMenuScreen(mod), e.PlayerIndex, true);
         }
 
