@@ -117,7 +117,6 @@ namespace Yellokiller
             blankTexture = content.Load<Texture2D>("blank");
 
             audio.LoadContent(content);
-            base.LoadContent();
         }
 
         public override void UnloadContent()
@@ -243,6 +242,7 @@ namespace Yellokiller
                 spriteBatch = ScreenManager.SpriteBatch;
 
                 spriteBatch.Begin();
+
                 // Rectangle noir des entrées menu.
                 spriteBatch.Draw(blankTexture,
                                  new Rectangle(115, 210, 300, 200),
