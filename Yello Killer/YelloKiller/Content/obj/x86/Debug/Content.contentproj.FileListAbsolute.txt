@@ -7,3 +7,4 @@ C:\Users\Théo\Desktop\yello killer\Yello Killer\YelloKiller\Content\obj\x86\Deb
 C:\Users\Ayro\Desktop\yellokiller.googlecode.com\svn\Yello Killer\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\yellokiller\Yello Killer\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
