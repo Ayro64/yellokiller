@@ -8,11 +8,18 @@ namespace Yellokiller
 {
     class MapEdit
     {
-        public int[,] map = new int[Taille_Map.HAUTEURMAP + 2, Taille_Map.LARGEURMAP + 2];
+        public char[,] map = new char[Taille_Map.HAUTEURMAP + 2, Taille_Map.LARGEURMAP + 2];
         public int largeurMap = Taille_Map.LARGEURMAP, hauteurMap = Taille_Map.HAUTEURMAP;
 
         public MapEdit()
         {
+            for (int y = 0; y < hauteurMap; y++)
+            {
+                for (int x = 0; x < largeurMap; x++)
+                {
+                    map[y, x] = 'h';
+                }
+            }
         }
 
         private Texture2D LoadContent(ContentManager content, string assetName)
@@ -28,25 +35,25 @@ namespace Yellokiller
                 {
                     switch (map[y, x])
                     {
-                        case 0:
+                        case 'h':
                             spriteBatch.Draw(LoadContent(content, "herbe"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 1:
+                        case 'a':
                             spriteBatch.Draw(LoadContent(content, "arbre"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 2:
+                        case 'm':
                             spriteBatch.Draw(LoadContent(content, "mur"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 3:
+                        case 'M':
                             spriteBatch.Draw(LoadContent(content, "maison"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 4:
+                        case 'A':
                             spriteBatch.Draw(LoadContent(content, "arbre2"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 5:
+                        case 'o':
                             spriteBatch.Draw(LoadContent(content, "origine1"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 6:
+                        case 'O':
                             spriteBatch.Draw(LoadContent(content, "origine2"), new Vector2(x * 28, y * 28), Color.White);
                             break;
                     }
