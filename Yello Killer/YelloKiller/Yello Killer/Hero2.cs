@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using Yellokiller.Yello_Killer;
 
 namespace Yellokiller
 {
@@ -23,6 +24,8 @@ namespace Yellokiller
         Rectangle rectangle;
         Texture2D texture;
         KeyboardState lastKeyboardState, keyboardState;
+        List<Shuriken> _shuriken;
+        KeyboardState current;
         public bool monter = true, descendre = true, droite = true, gauche = true;
 
         public Vector2 Position
@@ -45,13 +48,13 @@ namespace Yellokiller
         public Rectangle Rectangle
         {
             get { return rectangle; }
-            set { rectangle = value; }
         }
         
         public Hero2(Vector2 position, Rectangle? sourceRectangle)
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
+            _shuriken = new List<Shuriken>();
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -60,10 +63,17 @@ namespace Yellokiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, char[,] map, int hauteurMap, int largeurMap, Hero1 hero1)
+        public void Update(GameTime gameTime, char[,] map, int hauteurMap, int largeurMap, Hero1 hero1, GameplayScreen yk)
         {
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
+
+            if (Keyboard.GetState().IsKeyDown(Keys.RightControl) && !current.IsKeyDown(Keys.RightControl))
+            {
+                _shuriken.Add(new Shuriken(yk, position, this.texture.Width));
+            }
+
+            current = Keyboard.GetState();
 
             rectangle = new Rectangle((int)Position.X, (int)Position.Y, 18, 28);
             Moteur_physique.Collision(this.rectangle, hero1.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
@@ -184,6 +194,17 @@ namespace Yellokiller
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, sourceRectangle, Color.White);
+            for (int i = 0; i < _shuriken.Count; i++)
+            {
+                Shuriken m = _shuriken[i];
+                m.Update();
+                m.draw(spriteBatch);
+
+                if (m.Get_Y() < -14)
+                {
+                    _shuriken.Remove(m);
+                }
+            }
         }
     }
 }
