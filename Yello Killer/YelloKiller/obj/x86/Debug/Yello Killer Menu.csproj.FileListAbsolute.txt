@@ -175,3 +175,4 @@ C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.exe
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\obj\x86\Debug\Yellokiller.pdb
+C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\fond.xnb
