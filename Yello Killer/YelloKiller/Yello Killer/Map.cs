@@ -22,7 +22,7 @@ namespace Yellokiller
     class Map
     {
         string nomFichier;
-        public int[,] map = new int[Taille_Map.HAUTEURMAP + 1, Taille_Map.LARGEURMAP + 1];
+        public char[,] map = new char[Taille_Map.HAUTEURMAP + 1, Taille_Map.LARGEURMAP + 1];
         public int largeurMap = Taille_Map.LARGEURMAP, hauteurMap = Taille_Map.HAUTEURMAP;
         public Vector2 origine1 = new Vector2(0, 0), origine2 = new Vector2(0, 0);        
 
@@ -52,11 +52,6 @@ namespace Yellokiller
             hauteurMap++;
         }*/
 
-        private int charToInt(char c)
-        {
-            return c - '0';
-        }
-
         private int stringToInt(string s)
         {
             int ret = 0, dec = 1;
@@ -84,7 +79,7 @@ namespace Yellokiller
                     break;
                 for (int j = 0; j < largeurMap; j++)
                 {
-                    map[i, j] = charToInt(line[j]);
+                    map[i, j] = line[j];
                 }
             }
 
@@ -116,19 +111,19 @@ namespace Yellokiller
                 {
                     switch (map[y, x])
                     {
-                        case 0:
+                        case 'h':
                             spriteBatch.Draw(LoadContent(content, "herbe"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 1:
+                        case 'a':
                             spriteBatch.Draw(LoadContent(content, "arbre"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 2:
+                        case 'm':
                             spriteBatch.Draw(LoadContent(content, "mur"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 3:
+                        case 'M':
                             spriteBatch.Draw(LoadContent(content, "maison"), new Vector2(x * 28, y * 28), Color.White);
                             break;
-                        case 4:
+                        case 'A':
                             spriteBatch.Draw(LoadContent(content, "arbre2"), new Vector2(x * 28, y * 28), Color.White);
                             break;
                     }
