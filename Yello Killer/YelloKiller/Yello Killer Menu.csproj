@@ -80,6 +80,7 @@
     <Compile Include="Yello Killer\Map.cs" />
     <Compile Include="Yello Killer\Moteur physique.cs" />
     <Compile Include="Yello Killer\ServiceHelper.cs" />
+    <Compile Include="Yello Killer\Shuriken.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

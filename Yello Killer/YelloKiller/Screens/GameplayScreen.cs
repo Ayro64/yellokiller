@@ -24,11 +24,13 @@ namespace Yellokiller
     /// placeholder to get the idea across: you'll probably want to
     /// put some more interesting gameplay in here!
     /// </summary>
-    class GameplayScreen : GameScreen
+   public class GameplayScreen : GameScreen
     {
         #region Fields
 
         ContentManager content;
+
+        public ContentManager Content { get { return content; } }
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
 
@@ -118,8 +120,8 @@ namespace Yellokiller
 
             if (IsActive)
             {
-                hero1.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero2);
-                hero2.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero1);
+                hero1.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero2, this);
+                hero2.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero1, this);
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
