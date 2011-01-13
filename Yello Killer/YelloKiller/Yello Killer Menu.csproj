@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Audio\Player.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="MapEditor\Cursor.cs" />
     <Compile Include="Screens\EditorScreen.cs" />
     <Compile Include="MapEditor\MapEdit.cs" />
     <Compile Include="MapEditor\Taille Map.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Screens\Pausebckground.cs" />
     <Compile Include="Screens\PauseMenuScreen.cs" />
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
+    <Compile Include="MapEditor\Textures Choice.cs" />
     <Compile Include="Yello Killer\Hero1.cs" />
     <Compile Include="Yello Killer\Hero2.cs" />
     <Compile Include="Yello Killer\IKeyboardService.cs" />
