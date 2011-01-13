@@ -23,8 +23,8 @@ namespace Yellokiller
         Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
         
         string ligne = "", nomSauvegarde = "save0";
-        bool enableOrigine1 = true, enableOrigine2 = true, fileExist = false, enableSave = true;
-        int compteur = 0;
+        bool enableOrigine1 = true, enableOrigine2 = true, fileExist = false, enableSave = true, afficheMessageErreur = false, afficheMessageSauvegarde = false;
+        int compteur = 0, chronometre = 0;
 
         public EditorScreen()
         {
@@ -61,6 +61,11 @@ namespace Yellokiller
 
             // Look up inputs for the active player profile.
             int playerIndex = (int)ControllingPlayer.Value;
+
+            if (afficheMessageErreur)
+                chronometre++;
+            else
+                chronometre = 0;
 
             lastKeyboardState = keyboardState;
             keyboardState = input.CurrentKeyboardStates[playerIndex];
@@ -103,52 +108,59 @@ namespace Yellokiller
 
             if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.S) && enableSave)
             {
-                /*fileExist = File.Exists(nomSauvegarde + ".txt");
-                while (fileExist)
+                if (enableOrigine1 || enableOrigine2)
                 {
-                    compteur += 1;
-                    nomSauvegarde = nomSauvegarde.Substring(0, 4) + compteur.ToString();
-                    fileExist = File.Exists(nomSauvegarde + ".txt");
-                }*/
-
-                sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
-
-                for (int y = 0; y < carte.hauteurMap; y++)
-                {
-                    for (int x = 0; x < carte.largeurMap; x++)
-                    {
-                        if (carte.map[y, x] == 'o')
-                        {
-                            ligne += 'h';
-                            origine1 = new Vector2(x, y);
-                        }
-                        else if (carte.map[y, x] == 'O')
-                        {
-                            ligne += 'h';
-                            origine2 = new Vector2(x, y);
-                        }
-
-                        else
-                            ligne += carte.map[y, x];
-                    }
-                    sauvegarde.WriteLine(ligne);
-                    ligne = "";
+                    afficheMessageErreur = true;
+                    chronometre = 0;
                 }
-                sauvegarde.WriteLine(origine1.X);
-                sauvegarde.WriteLine(origine1.Y);
-                sauvegarde.WriteLine(origine2.X);
-                sauvegarde.WriteLine(origine2.Y);
+                else if (!(enableOrigine1 || enableOrigine2))
+                {
 
-                sauvegarde.Close();
-                enableSave = false;
+                    /*fileExist = File.Exists(nomSauvegarde + ".txt");
+               while (fileExist)
+               {
+                   compteur += 1;
+                   nomSauvegarde = nomSauvegarde.Substring(0, 4) + compteur.ToString();
+                   fileExist = File.Exists(nomSauvegarde + ".txt");
+               }*/
+
+                    sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
+
+                    for (int y = 0; y < carte.hauteurMap; y++)
+                    {
+                        for (int x = 0; x < carte.largeurMap; x++)
+                        {
+                            if (carte.map[y, x] == 'o')
+                            {
+                                ligne += 'h';
+                                origine1 = new Vector2(x, y);
+                            }
+                            else if (carte.map[y, x] == 'O')
+                            {
+                                ligne += 'h';
+                                origine2 = new Vector2(x, y);
+                            }
+
+                            else
+                                ligne += carte.map[y, x];
+                        }
+                        sauvegarde.WriteLine(ligne);
+                        ligne = "";
+                    }
+                    sauvegarde.WriteLine(origine1.X);
+                    sauvegarde.WriteLine(origine1.Y);
+                    sauvegarde.WriteLine(origine2.X);
+                    sauvegarde.WriteLine(origine2.Y);
+
+                    sauvegarde.Close();
+                    enableSave = false;
+                    afficheMessageSauvegarde = true;
+                }
             }
-
-
         }
 
         public override void Draw(GameTime gameTime)
         {
-            // This game has a blue background. Why? Because!
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.DarkOrchid, 0, 0); ;
 
             spriteBatch.Begin();
@@ -157,6 +169,15 @@ namespace Yellokiller
             curseur.Draw(spriteBatch);
             menu.Draw(spriteBatch, curseur);
 
+            if (chronometre > 0)
+                spriteBatch.DrawString(ScreenManager.font, "Un ou des personnages n'a / n'ont pas été placé.\n\nVeuillez placer les deux personnages avant de sauvegarder.\n\nMerci", new Vector2(100), Color.Red);
+            if (chronometre > 300)
+                afficheMessageErreur = false;
+
+            if(afficheMessageSauvegarde)
+                spriteBatch.DrawString(ScreenManager.font, "Fichier sauvegardé sous " + nomSauvegarde.ToString() + ".txt" + "\n\nAppuyez sur ECHAP pour quitter.", new Vector2(100), Color.Red);
+
+                    
             spriteBatch.End();
 
             base.Draw(gameTime);
