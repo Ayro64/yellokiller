@@ -59,7 +59,7 @@ namespace Yellokiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, int[,] map, int hauteurMap, int largeurMap, Hero2 hero2)
+        public void Update(GameTime gameTime, char[,] map, int hauteurMap, int largeurMap, Hero2 hero2)
         {
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
@@ -83,10 +83,10 @@ namespace Yellokiller
                 vitesse_animation = 0.008f;
 
             if (position.Y > 0 && keyboardState.IsKeyDown(Keys.Z) && monter &&
-               (map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 0 ||
-                map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 1) &&
-               (map[(int)(position.Y + 6) / 28, (int)position.X / 28] == 0 ||
-                map[(int)(position.Y + 6) / 28, (int)position.X / 28] == 1))
+               (map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 'h' ||
+                map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 'a') &&
+               (map[(int)(position.Y + 6) / 28, (int)position.X / 28] == 'h' ||
+                map[(int)(position.Y + 6) / 28, (int)position.X / 28] == 'a'))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
@@ -107,10 +107,10 @@ namespace Yellokiller
             }
 
             if (position.Y < 28 * (hauteurMap - 1) && keyboardState.IsKeyDown(Keys.S) && descendre &&
-                (map[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28] == 0 ||
-                 map[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28] == 1) &&
-                (map[(int)(position.Y / 28) + 1, (int)(position.X) / 28] == 0 ||
-                 map[(int)(position.Y / 28) + 1, (int)position.X / 28] == 1))
+                (map[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28] == 'h' ||
+                 map[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28] == 'a') &&
+                (map[(int)(position.Y / 28) + 1, (int)(position.X) / 28] == 'h' ||
+                 map[(int)(position.Y / 28) + 1, (int)position.X / 28] == 'a'))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
@@ -132,10 +132,10 @@ namespace Yellokiller
             }
 
             if (position.X > 0 && keyboardState.IsKeyDown(Keys.Q) && gauche &&
-               (map[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28] == 0 ||
-                map[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28] == 1) &&
-               (map[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28] == 0 ||
-                map[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28] == 1))
+               (map[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28] == 'h' ||
+                map[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28] == 'a') &&
+               (map[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28] == 'h' ||
+                map[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28] == 'a'))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
@@ -156,10 +156,10 @@ namespace Yellokiller
             }
 
             if (position.X < 28 * largeurMap - 16 && keyboardState.IsKeyDown(Keys.D) && droite &&
-                (map[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1] == 0 ||
-                 map[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1] == 1) &&
-                (map[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1] == 0 ||
-                 map[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1] == 1))
+                (map[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1] == 'h' ||
+                 map[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1] == 'a') &&
+                (map[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1] == 'h' ||
+                 map[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1] == 'a'))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
