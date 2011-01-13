@@ -23,7 +23,7 @@ namespace Yellokiller
         Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
         
         string ligne = "", nomSauvegarde = "save0";
-        bool enableOrigine1 = true, enableOrigine2 = true, fileExist = false, enableSave = true, afficheMessageErreur = false, afficheMessageSauvegarde = false;
+        bool enableOrigine1 = true, enableOrigine2 = true, fileExist = false, enableSave = true, afficheMessageErreur = false;
         int compteur = 0, chronometre = 0;
 
         public EditorScreen()
@@ -154,7 +154,6 @@ namespace Yellokiller
 
                     sauvegarde.Close();
                     enableSave = false;
-                    afficheMessageSauvegarde = true;
                 }
             }
         }
@@ -174,7 +173,7 @@ namespace Yellokiller
             if (chronometre > 300)
                 afficheMessageErreur = false;
 
-            if(afficheMessageSauvegarde)
+            if(!enableSave)
                 spriteBatch.DrawString(ScreenManager.font, "Fichier sauvegardé sous " + nomSauvegarde.ToString() + ".txt" + "\n\nAppuyez sur ECHAP pour quitter.", new Vector2(100), Color.Red);
 
                     
