@@ -191,13 +191,13 @@ namespace Yellokiller
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             spriteBatch.Draw(texture, position, sourceRectangle, Color.White);
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];
-                m.Update();
+                m.Update(gameTime);
                 m.draw(spriteBatch);
 
                 if (m.Get_Y() < -14)
