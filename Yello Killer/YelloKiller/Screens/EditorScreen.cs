@@ -15,32 +15,21 @@ namespace Yellokiller
         ContentManager content;
 
         MapEdit carte;
+        Cursor curseur;
         StreamWriter sauvegarde;
-        string ligne = "";
         KeyboardState keyboardState, lastKeyboardState;
-
-        /// <summary>
-        /// Cursor
-        /// </summary>
-        Texture2D cursor;
-        Vector2 position, origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
-        bool enableOrigine1 = true, enableOrigine2 = true;
-        /// <summary>
-        /// Menu
-        /// </summary>
-        SpriteFont font;
-        Texture2D arbre, maison, mur, arbre2, textOrigine1, textOrigine2;
+        MouseState MState, lastMState;
+        Textures_Choice menu;
+        Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
+        
+        string ligne = "", nomSauvegarde = "save0";
+        bool enableOrigine1 = true, enableOrigine2 = true, fileExist = false, enableSave = true;
+        int compteur = 0;
 
         public EditorScreen()
         {
-            position = new Vector2(0, 0);
+            menu = new Textures_Choice();
             carte = new MapEdit();
-        }
-
-        public Vector2 Position
-        {
-            get { return position; }
-            set { position = value; }
         }
 
         public override void LoadContent()
@@ -48,16 +37,11 @@ namespace Yellokiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
+            curseur = new Cursor(content);
+            menu.LoadContent(content);
+            
             spriteBatch = ScreenManager.SpriteBatch;
 
-            cursor = content.Load<Texture2D>("cursor");
-            font = content.Load<SpriteFont>("courier");
-            arbre = content.Load<Texture2D>("arbre");
-            maison = content.Load<Texture2D>("maison");
-            mur = content.Load<Texture2D>("mur");
-            arbre2 = content.Load<Texture2D>("arbre2");
-            textOrigine1 = content.Load<Texture2D>("origine1");
-            textOrigine2 = content.Load<Texture2D>("origine2");
         }
 
         public override void UnloadContent()
@@ -65,8 +49,7 @@ namespace Yellokiller
             content.Unload();
         }
 
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus,
-                                                       bool coveredByOtherScreen)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
@@ -81,6 +64,9 @@ namespace Yellokiller
 
             lastKeyboardState = keyboardState;
             keyboardState = input.CurrentKeyboardStates[playerIndex];
+
+            lastMState = MState;
+            MState = Mouse.GetState();
 
             GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
 
@@ -97,51 +83,53 @@ namespace Yellokiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 2), ControllingPlayer, true);
             }
 
-            if (keyboardState.IsKeyDown(Keys.Left) && lastKeyboardState.IsKeyUp(Keys.Left) && position.X > 0)
-                position.X--;
-            if (keyboardState.IsKeyDown(Keys.Right) && lastKeyboardState.IsKeyUp(Keys.Right) && position.X < carte.largeurMap - 1)
-                position.X++;
-            if (keyboardState.IsKeyDown(Keys.Up) && lastKeyboardState.IsKeyUp(Keys.Up) && position.Y > 0)
-                position.Y--;
-            if (keyboardState.IsKeyDown(Keys.Down) && lastKeyboardState.IsKeyUp(Keys.Down) && position.Y < carte.hauteurMap - 1)
-                position.Y++;
-
-            if (keyboardState.IsKeyDown(Keys.F1) && Position != origine1 && Position != origine2)
-                carte.map[(int)Position.Y, (int)Position.X] = 1;
-
-            if (keyboardState.IsKeyDown(Keys.F2) && Position != origine1 && Position != origine2)
-                carte.map[(int)Position.Y, (int)Position.X] = 2;
-
-            if (keyboardState.IsKeyDown(Keys.F3) && Position != origine1 && Position != origine2)
-                carte.map[(int)Position.Y, (int)Position.X] = 3;
-
-            if (keyboardState.IsKeyDown(Keys.F4) && Position != origine1 && Position != origine2)
-                carte.map[(int)Position.Y, (int)Position.X] = 4;
-
-            if (keyboardState.IsKeyDown(Keys.F5) && enableOrigine1 && carte.map[(int)position.Y, (int)position.X] != 6)
+            curseur.Update(content, Taille_Map.LARGEURMAP, Taille_Map.HAUTEURMAP, MState, lastMState);
+            
+            if (MState.LeftButton == ButtonState.Pressed && curseur.Enable)
             {
-                carte.map[(int)Position.Y, (int)Position.X] = 5;
-                enableOrigine1 = false;
-                origine1 = Position;
+                if (curseur.Dessin != 'o' && curseur.Dessin != 'O')
+                    carte.map[(int)curseur.Position.Y, (int)curseur.Position.X] = curseur.Dessin;
+                else if (curseur.Dessin == 'o' && enableOrigine1)
+                {
+                    enableOrigine1 = false;
+                    carte.map[(int)curseur.Position.Y, (int)curseur.Position.X] = 'o';
+                }
+                else if (curseur.Dessin == 'O' && enableOrigine2)
+                {
+                    enableOrigine2 = false;
+                    carte.map[(int)curseur.Position.Y, (int)curseur.Position.X] = 'O';
+                }
             }
 
-            if (keyboardState.IsKeyDown(Keys.F6) && enableOrigine2 && carte.map[(int)position.Y, (int)position.X] != 5)
+            if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.S) && enableSave)
             {
-                carte.map[(int)Position.Y, (int)Position.X] = 6;
-                enableOrigine2 = false;
-                origine2 = Position;
-            }
-            if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.S) && !enableOrigine1 && !enableOrigine2)
-            {
-                sauvegarde = new StreamWriter("save.txt");
+                fileExist = File.Exists(nomSauvegarde + ".txt");
+                while (fileExist)
+                {
+                    compteur += 1;
+                    nomSauvegarde = nomSauvegarde.Substring(0, 4) + compteur.ToString();
+                    fileExist = File.Exists(nomSauvegarde + ".txt");
+                }
+
+                sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
+
                 for (int y = 0; y < carte.hauteurMap; y++)
                 {
                     for (int x = 0; x < carte.largeurMap; x++)
                     {
-                        if (carte.map[y, x] == 5 || carte.map[y, x] == 6)
-                            ligne += '0';
+                        if (carte.map[y, x] == 'o')
+                        {
+                            ligne += 'h';
+                            origine1 = new Vector2(x, y);
+                        }
+                        else if (carte.map[y, x] == 'O')
+                        {
+                            ligne += 'h';
+                            origine2 = new Vector2(x, y);
+                        }
+
                         else
-                            ligne += carte.map[y, x].ToString();
+                            ligne += carte.map[y, x];
                     }
                     sauvegarde.WriteLine(ligne);
                     ligne = "";
@@ -152,35 +140,22 @@ namespace Yellokiller
                 sauvegarde.WriteLine(origine2.Y);
 
                 sauvegarde.Close();
-                //   Window.Title = "Fichier sauvegardé";
+                enableSave = false;
             }
+
+
         }
 
         public override void Draw(GameTime gameTime)
         {
             // This game has a blue background. Why? Because!
-            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
-                                               Color.DarkOrchid, 0, 0); ;
+            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.DarkOrchid, 0, 0); ;
 
             spriteBatch.Begin();
 
-
             carte.Draw(spriteBatch, content);
-
-            spriteBatch.DrawString(font, " Touche F1", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 000), Color.Red);
-            spriteBatch.DrawString(font, " Touche F2", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 100), Color.Red);
-            spriteBatch.DrawString(font, " Touche F3", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 200), Color.Red);
-            spriteBatch.DrawString(font, " Touche F4", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 300), Color.Red);
-            spriteBatch.DrawString(font, "Touche F5\n Player 1", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 450), Color.Red);
-            spriteBatch.DrawString(font, "Touche F6\n Player 2", new Vector2(Taille_Map.LARGEURMAP * 28 - 120, 550), Color.Red);
-            spriteBatch.Draw(arbre, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 50), Color.White);
-            spriteBatch.Draw(mur, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 150), Color.White);
-            spriteBatch.Draw(maison, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 250), Color.White);
-            spriteBatch.Draw(arbre2, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 350), Color.White);
-            spriteBatch.Draw(textOrigine1, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 500), Color.White);
-            spriteBatch.Draw(textOrigine2, new Vector2(Taille_Map.LARGEURMAP * 28 - 69, 600), Color.White);
-
-            spriteBatch.Draw(cursor, new Vector2(position.X * cursor.Width, position.Y * cursor.Height), Color.White);
+            curseur.Draw(spriteBatch);
+            menu.Draw(spriteBatch, curseur);
 
             spriteBatch.End();
 
