@@ -103,13 +103,13 @@ namespace Yellokiller
 
             if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.S) && enableSave)
             {
-                fileExist = File.Exists(nomSauvegarde + ".txt");
+                /*fileExist = File.Exists(nomSauvegarde + ".txt");
                 while (fileExist)
                 {
                     compteur += 1;
                     nomSauvegarde = nomSauvegarde.Substring(0, 4) + compteur.ToString();
                     fileExist = File.Exists(nomSauvegarde + ".txt");
-                }
+                }*/
 
                 sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
 
