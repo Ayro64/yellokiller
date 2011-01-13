@@ -17,8 +17,8 @@ namespace Yellokiller.Yello_Killer
         {
             _shuriken = yk.Content.Load<Texture2D>("shuriken");
 
-            position.X = position_ini.X + largeur / 2;
-            position.Y = position_ini.Y;
+            position.X = position_ini.X + 16 / 2;
+            position.Y = position_ini.Y + 4;
         }
 
         public void draw(SpriteBatch sb)
@@ -28,7 +28,7 @@ namespace Yellokiller.Yello_Killer
 
         public void Update()
         {
-            position.X++;
+            position.X += 2;
         }
 
         public float Get_Y()
