@@ -55,7 +55,7 @@ namespace Yellokiller
 
             audio = new Player(1);
 
-            carte = new Map("save.txt");
+            carte = new Map("save0.txt");
             hero1 = new Hero1(28 * carte.origine1, new Rectangle(25, 133, 16, 25));
             hero2 = new Hero2(28 * carte.origine2, new Rectangle(25, 133, 16, 25));
         }
