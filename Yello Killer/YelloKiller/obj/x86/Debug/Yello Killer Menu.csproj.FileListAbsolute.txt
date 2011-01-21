@@ -119,7 +119,6 @@ C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Conte
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\NinjaTrans.xnb
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\Game Over.xnb
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\Ninja2Trans.xnb
-C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\cursor.xnb
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\courier.xnb
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine1.xnb
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine2.xnb
