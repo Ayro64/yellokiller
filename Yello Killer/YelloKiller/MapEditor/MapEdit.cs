@@ -8,14 +8,14 @@ namespace Yellokiller
 {
     class MapEdit
     {
-        public char[,] map = new char[Taille_Map.HAUTEURMAP + 2, Taille_Map.LARGEURMAP + 2];
-        public int largeurMap = Taille_Map.LARGEURMAP, hauteurMap = Taille_Map.HAUTEURMAP;
+        public char[,] map = new char[Taille_Map.HAUTEUR_MAP + 2, Taille_Map.LARGEUR_MAP + 2];
+        public int LARGEUR_MAP = Taille_Map.LARGEUR_MAP, HAUTEUR_MAP = Taille_Map.HAUTEUR_MAP;
 
         public MapEdit()
         {
-            for (int y = 0; y < hauteurMap; y++)
+            for (int y = 0; y < HAUTEUR_MAP; y++)
             {
-                for (int x = 0; x < largeurMap; x++)
+                for (int x = 0; x < LARGEUR_MAP; x++)
                 {
                     map[y, x] = 'h';
                 }
@@ -29,9 +29,9 @@ namespace Yellokiller
 
         public void Draw(SpriteBatch spriteBatch, ContentManager content)
         {
-            for (int y = 0; y < hauteurMap; y++)
+            for (int y = 0; y < HAUTEUR_MAP; y++)
             {
-                for (int x = 0; x < largeurMap; x++)
+                for (int x = 0; x < LARGEUR_MAP; x++)
                 {
                     switch (map[y, x])
                     {

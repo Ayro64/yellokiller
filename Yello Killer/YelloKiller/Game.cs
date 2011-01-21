@@ -41,8 +41,8 @@ namespace Yellokiller
 
             graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreferredBackBufferHeight = Taille_Map.HAUTEURMAP * 28;
-            graphics.PreferredBackBufferWidth = Taille_Map.LARGEURMAP * 28;
+            graphics.PreferredBackBufferHeight = Taille_Ecran.HAUTEUR_ECRAN;
+            graphics.PreferredBackBufferWidth = Taille_Ecran.LARGEUR_ECRAN;
 
             // Create the screen manager component.
             screenManager = new ScreenManager(this);

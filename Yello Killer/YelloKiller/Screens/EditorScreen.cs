@@ -14,22 +14,27 @@ namespace Yellokiller
         SpriteBatch spriteBatch;
         ContentManager content;
 
-        MapEdit carte;
+        Carte carte;
         Cursor curseur;
+        Menu menu;
+        Souris souris;
+        Ascenseur ascenseur;
+
         StreamWriter sauvegarde;
+        string ligne = "", nomSauvegarde = "save0";
         KeyboardState keyboardState, lastKeyboardState;
-        MouseState MState, lastMState;
-        Textures_Choice menu;
+        Rectangle camera;
         Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
         
-        string ligne = "", nomSauvegarde = "save0";
-        bool enableOrigine1 = true, enableOrigine2 = true, fileExist = false, enableSave = true, afficheMessageErreur = false;
+        bool enableOrigine1 = true, enableOrigine2 = true, enableSave = true, afficheMessageErreur = false;
         int compteur = 0, chronometre = 0;
 
         public EditorScreen()
         {
-            menu = new Textures_Choice();
-            carte = new MapEdit();
+            souris = new Souris();
+            camera = new Rectangle(0, 0, 28, 22);
+            carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+            carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
         }
 
         public override void LoadContent()
@@ -37,11 +42,11 @@ namespace Yellokiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
+            menu = new Menu(content, 6);
             curseur = new Cursor(content);
-            menu.LoadContent(content);
+            ascenseur = new Ascenseur(content);
             
             spriteBatch = ScreenManager.SpriteBatch;
-
         }
 
         public override void UnloadContent()
@@ -70,8 +75,10 @@ namespace Yellokiller
             lastKeyboardState = keyboardState;
             keyboardState = input.CurrentKeyboardStates[playerIndex];
 
-            lastMState = MState;
-            MState = Mouse.GetState();
+            souris.Update();
+            ascenseur.Update(souris);
+            menu.Update(ascenseur);
+            curseur.Update(content, souris, menu);
 
             GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
 
@@ -88,21 +95,31 @@ namespace Yellokiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 2), ControllingPlayer, true);
             }
 
-            curseur.Update(content, Taille_Map.LARGEURMAP, Taille_Map.HAUTEURMAP, MState, lastMState);
-            
-            if (MState.LeftButton == ButtonState.Pressed && curseur.Enable)
+            if (camera.X > 0 && (souris.Rectangle.X < 28 && souris.Rectangle.X > 0 || keyboardState.IsKeyDown(Keys.Left)))
+                camera.X--;
+
+            if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && (souris.Rectangle.X > Taille_Ecran.LARGEUR_ECRAN - 84 && souris.Rectangle.X < Taille_Ecran.LARGEUR_ECRAN - 56 || keyboardState.IsKeyDown(Keys.Right)))
+                camera.X++;
+
+            if (camera.Y > 0 && (souris.Rectangle.Y < 28 && souris.Rectangle.Y > 0 || keyboardState.IsKeyDown(Keys.Up)))
+                camera.Y--;
+
+            if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && (souris.Rectangle.Y > Taille_Ecran.HAUTEUR_ECRAN - 28 && souris.Rectangle.Y < Taille_Ecran.HAUTEUR_ECRAN || keyboardState.IsKeyDown(Keys.Down)))
+                camera.Y++;
+                        
+            if (souris.MState.LeftButton == ButtonState.Pressed && souris.DansLaCarte)
             {
-                if (curseur.Dessin != 'o' && curseur.Dessin != 'O')
-                    carte.map[(int)curseur.Position.Y, (int)curseur.Position.X] = curseur.Dessin;
-                else if (curseur.Dessin == 'o' && enableOrigine1)
+                if (curseur.Type != TypeCase.origineJoueur1 && curseur.Type != TypeCase.origineJoueur2)
+                    carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = curseur.Type;
+                else if (curseur.Type == TypeCase.origineJoueur1 && enableOrigine1)
                 {
                     enableOrigine1 = false;
-                    carte.map[(int)curseur.Position.Y, (int)curseur.Position.X] = 'o';
+                    carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = TypeCase.origineJoueur1;
                 }
-                else if (curseur.Dessin == 'O' && enableOrigine2)
+                else if (curseur.Type == TypeCase.origineJoueur2 && enableOrigine2)
                 {
                     enableOrigine2 = false;
-                    carte.map[(int)curseur.Position.Y, (int)curseur.Position.X] = 'O';
+                    carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = TypeCase.origineJoueur2;
                 }
             }
 
@@ -126,23 +143,23 @@ namespace Yellokiller
 
                     sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
 
-                    for (int y = 0; y < carte.hauteurMap; y++)
+                    for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
                     {
-                        for (int x = 0; x < carte.largeurMap; x++)
+                        for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
                         {
-                            if (carte.map[y, x] == 'o')
+                            if (carte.Cases[y, x].Type == TypeCase.origineJoueur1)
                             {
                                 ligne += 'h';
                                 origine1 = new Vector2(x, y);
                             }
-                            else if (carte.map[y, x] == 'O')
+                            else if (carte.Cases[y, x].Type == TypeCase.origineJoueur2)
                             {
                                 ligne += 'h';
                                 origine2 = new Vector2(x, y);
                             }
 
                             else
-                                ligne += carte.map[y, x];
+                                ligne += (char)carte.Cases[y, x].Type;
                         }
                         sauvegarde.WriteLine(ligne);
                         ligne = "";
@@ -156,6 +173,8 @@ namespace Yellokiller
                     enableSave = false;
                 }
             }
+
+            ScreenManager.Game.IsMouseVisible = !souris.DansLaCarte;
         }
 
         public override void Draw(GameTime gameTime)
@@ -164,9 +183,13 @@ namespace Yellokiller
 
             spriteBatch.Begin();
 
-            carte.Draw(spriteBatch, content);
-            curseur.Draw(spriteBatch);
-            menu.Draw(spriteBatch, curseur);
+            carte.DrawInMapEditor(spriteBatch, content, camera);
+
+            if (souris.DansLaCarte)
+                curseur.Draw(spriteBatch);
+
+            menu.Draw(spriteBatch, ascenseur, souris);
+            ascenseur.Draw(spriteBatch);
 
             if (chronometre > 0)
                 spriteBatch.DrawString(ScreenManager.font, "Un ou des personnages n'a / n'ont pas été placé.\n\nVeuillez placer les deux personnages avant de sauvegarder.\n\nMerci", new Vector2(100), Color.Red);
@@ -176,7 +199,6 @@ namespace Yellokiller
             if(!enableSave)
                 spriteBatch.DrawString(ScreenManager.font, "Fichier sauvegardé sous " + nomSauvegarde.ToString() + ".txt" + "\n\nAppuyez sur ECHAP pour quitter.", new Vector2(100), Color.Red);
 
-                    
             spriteBatch.End();
 
             base.Draw(gameTime);
