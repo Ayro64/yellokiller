@@ -22,8 +22,8 @@ namespace Yellokiller
     class Map
     {
         string nomFichier;
-        public char[,] map = new char[Taille_Map.HAUTEURMAP + 1, Taille_Map.LARGEURMAP + 1];
-        public int largeurMap = Taille_Map.LARGEURMAP, hauteurMap = Taille_Map.HAUTEURMAP;
+        public char[,] map = new char[Taille_Map.HAUTEUR_MAP + 1, Taille_Map.LARGEUR_MAP + 1];
+        public int LARGEUR_MAP = Taille_Map.LARGEUR_MAP, HAUTEUR_MAP = Taille_Map.HAUTEUR_MAP;
         public Vector2 origine1 = new Vector2(0, 0), origine2 = new Vector2(0, 0);        
 
         public Map(string nomFichier)
@@ -38,18 +38,18 @@ namespace Yellokiller
             StreamReader file = new StreamReader(nomFichier);
             string ligne = file.ReadLine();
 
-            largeurMap = ligne.Length;
+            LARGEUR_MAP = ligne.Length;
 
             ligne = file.ReadLine();
 
             while (ligne != null)
             {
-                hauteurMap++;
+                HAUTEUR_MAP++;
                 ligne = file.ReadLine();
             }
             file.Close();
 
-            hauteurMap++;
+            HAUTEUR_MAP++;
         }*/
 
         private int stringToInt(string s)
@@ -70,14 +70,14 @@ namespace Yellokiller
             StreamReader file = new StreamReader(nomFichier);
             string line;
 
-            for (int i = 0; i < hauteurMap; i++)
+            for (int i = 0; i < HAUTEUR_MAP; i++)
             {
                 line = file.ReadLine();
                 if (line == "")
                     line = file.ReadLine();
                 else if (line == null)
                     break;
-                for (int j = 0; j < largeurMap; j++)
+                for (int j = 0; j < LARGEUR_MAP; j++)
                 {
                     map[i, j] = line[j];
                 }
@@ -105,9 +105,9 @@ namespace Yellokiller
 
         public void Draw(SpriteBatch spriteBatch, ContentManager content)
         {
-            for (int y = 0; y < hauteurMap; y++)
+            for (int y = 0; y < HAUTEUR_MAP; y++)
             {
-                for (int x = 0; x < largeurMap; x++)
+                for (int x = 0; x < LARGEUR_MAP; x++)
                 {
                     switch (map[y, x])
                     {

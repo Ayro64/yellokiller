@@ -9,13 +9,11 @@ namespace Yellokiller.Yello_Killer
 {
     public class Shuriken
     {
-
         Texture2D _shuriken;
         Vector2 position;
-        private Vector2 origin;
-        private float RotationAngle;
-
-
+        Vector2 origin;
+        float RotationAngle;
+        
         public Shuriken(GameplayScreen yk, Vector2 position_ini, int largeur)
         {
             _shuriken = yk.Content.Load<Texture2D>("shuriken");

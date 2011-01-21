@@ -24,6 +24,19 @@ namespace Yellokiller
     /// placeholder to get the idea across: you'll probably want to
     /// put some more interesting gameplay in here!
     /// </summary>
+    /// 
+
+    public enum TypeCase
+    {
+        herbe = 'h',
+        herbeFoncee = 'H',
+        arbre = 'a',
+        mur = 'm',
+        maison = 'M',
+        origineJoueur1 = 'o',
+        origineJoueur2 = 'O',
+    };
+
    public class GameplayScreen : GameScreen
     {
         #region Fields
@@ -36,7 +49,8 @@ namespace Yellokiller
 
         Hero1 hero1;
         Hero2 hero2;
-        Map carte;
+        Carte carte;
+        Rectangle camera;
 
         Player audio;
 
@@ -57,9 +71,11 @@ namespace Yellokiller
 
             audio = new Player(1);
 
-            carte = new Map("save0.txt");
-            hero1 = new Hero1(28 * carte.origine1, new Rectangle(25, 133, 16, 25));
-            hero2 = new Hero2(28 * carte.origine2, new Rectangle(25, 133, 16, 25));
+            carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+            carte.OuvrirCarte("save0.txt");
+            camera = new Rectangle(0, 0, 32, 24);
+            hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25));
+            hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25));
         }
 
 
@@ -113,15 +129,14 @@ namespace Yellokiller
         /// property, so the game will stop updating when the pause menu is active,
         /// or if you tab away to a different application.
         /// </summary>
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus,
-                                                       bool coveredByOtherScreen)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 
             if (IsActive)
             {
-                hero1.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero2, this);
-                hero2.Update(gameTime, carte.map, carte.hauteurMap, carte.largeurMap, hero1, this);
+                hero1.Update(gameTime, carte, hero2, this, ref camera);
+                hero2.Update(gameTime, carte, hero1, this);
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
@@ -142,9 +157,9 @@ namespace Yellokiller
 
             spriteBatch.Begin();
 
-            carte.Draw(spriteBatch, content);
-            hero1.Draw(spriteBatch,gameTime);
-            hero2.Draw(spriteBatch, gameTime);
+            carte.DrawInGame(spriteBatch, content, camera);
+            hero1.Draw(spriteBatch, gameTime, camera);
+            hero2.Draw(spriteBatch, gameTime, camera);
 
             spriteBatch.End();
             audio.Draw(gameTime);
@@ -190,12 +205,7 @@ namespace Yellokiller
 
             // Looks up input for the Media Player.
             audio.HandleInput(keyboardState, lastKeyboardState);
-
         }
-
-
-
-
         #endregion
     }
 }

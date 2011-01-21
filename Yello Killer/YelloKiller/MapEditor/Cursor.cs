@@ -9,15 +9,13 @@ namespace Yellokiller
     {
         Texture2D texture;
         Vector2 position;
-
-        char dessin = 'a';
-        bool enable = true;
-        public bool arbre = false, mur = false, maison = false, arbre2 = false, origine1 = false, origine2 = false;
+        TypeCase type;
 
         public Cursor(ContentManager content)
         {
             position = new Vector2(0, 0);
-            LoadContent(content, "arbre");
+            LoadContent(content, "herbefoncee");
+            type = TypeCase.herbeFoncee;
         }
 
         public Vector2 Position
@@ -26,16 +24,9 @@ namespace Yellokiller
             set { position = value; }
         }
 
-        public char Dessin
+        public TypeCase Type
         {
-            get { return dessin; }
-            set { dessin = value; }
-        }
-
-        public bool Enable
-        {
-            get { return enable; }
-            set { enable = value; }
+            get { return type; }
         }
 
         private void LoadContent(ContentManager Content, string nom)
@@ -43,83 +34,42 @@ namespace Yellokiller
             texture = Content.Load<Texture2D>(nom);
         }
 
-        public void Update(ContentManager content, int largeurMap, int hauteurMap, MouseState MState, MouseState lastMState)
+        public void Update(ContentManager content, Souris souris, Menu menu)
         {
-            arbre = false;
-            mur = false;
-            maison = false;
-            arbre2 = false;
-            origine1 = false;
-            origine2 = false;
+            if (souris.MState.X > 0 && souris.MState.X < Taille_Map.LARGEUR_MAP * 28 && souris.MState.Y > 0 && souris.MState.Y < Taille_Map.HAUTEUR_MAP * 28)
+                position = new Vector2(souris.MState.X / 28, souris.MState.Y / 28);
 
-            enable = true;
-
-            if (MState.X > 0 && MState.X < Taille_Map.LARGEURMAP * 28 && MState.Y > 0 && MState.Y < Taille_Map.HAUTEURMAP * 28)
-                position = new Vector2(MState.X / 28, MState.Y / 28);
-
-            if (MState.X > 827 && MState.X < 855 && MState.Y > 50 && MState.Y < 78)
+            for (int i = 0; i < 6; i++)
             {
-                enable = false;
-                arbre = true;
-                if (MState.LeftButton == ButtonState.Pressed && lastMState.LeftButton == ButtonState.Released)
+                if (souris.MState.LeftButton == ButtonState.Pressed && souris.LastMState.LeftButton == ButtonState.Released && souris.Rectangle.Intersects(menu.ListesRectangles[i]))
                 {
-                    dessin = 'a';
-                    LoadContent(content, "arbre");
-                }
-            }
-
-            if (MState.X > 827 && MState.X < 855 && MState.Y > 150 && MState.Y < 178)
-            {
-                enable = false;
-                mur = true;
-                if (MState.LeftButton == ButtonState.Pressed && lastMState.LeftButton == ButtonState.Released)
-                {
-                    dessin = 'm';
-                    LoadContent(content, "mur");
-                }
-            }
-
-            if (MState.X > 827 && MState.X < 855 && MState.Y > 250 && MState.Y < 278)
-            {
-                enable = false;
-                maison = true;
-                if (MState.LeftButton == ButtonState.Pressed && lastMState.LeftButton == ButtonState.Released)
-                {
-                    dessin = 'M';
-                    LoadContent(content, "maison");
-                }
-            }
-
-            if (MState.X > 827 && MState.X < 855 && MState.Y > 350 && MState.Y < 378)
-            {
-                enable = false;
-                arbre2 = true;
-                if (MState.LeftButton == ButtonState.Pressed && lastMState.LeftButton == ButtonState.Released)
-                {
-                    dessin = 'A';
-                    LoadContent(content, "arbre2");
-                }
-            }
-
-            if (MState.X > 827 && MState.X < 855 && MState.Y > 450 && MState.Y < 478)
-            {
-                enable = false;
-                origine1 = true;
-                if (MState.LeftButton == ButtonState.Pressed && lastMState.LeftButton == ButtonState.Released)
-                {
-                    dessin = 'o';
-                    LoadContent(content, "origine1");
-                }
-            }
-
-            if (MState.X > 827 && MState.X < 855 && MState.Y > 550 && MState.Y < 578)
-            {
-                enable = false;
-                origine2 = true;
-                if (MState.LeftButton == ButtonState.Pressed && lastMState.LeftButton == ButtonState.Released)
-                {
-                    dessin = 'O';
-                    LoadContent(content, "origine2");
+                    switch (i)
+                    {
+                        case (0):
+                            type = TypeCase.herbeFoncee;
+                            LoadContent(content, "herbeFoncee");
+                            break;
+                        case (1):
+                            type = TypeCase.mur;
+                            LoadContent(content, "mur");
+                            break;
+                        case (2):
+                            type = TypeCase.maison;
+                            LoadContent(content, "maison");
+                            break;
+                        case (3):
+                            type = TypeCase.arbre;
+                            LoadContent(content, "arbre");
+                            break;
+                        case (4):
+                            type = TypeCase.origineJoueur1;
+                            LoadContent(content, "origine1");
+                            break;
+                        case (5):
+                            type = TypeCase.origineJoueur2;
+                            LoadContent(content, "origine2");
+                            break;
+                    }
                 }
             }
         }

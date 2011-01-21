@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Net;
-using Microsoft.Xna.Framework.Storage;
+using System.Collections.Generic;
 using Yellokiller.Yello_Killer;
+using Microsoft.Xna.Framework.Content;
 
 namespace Yellokiller
 {
@@ -64,7 +58,7 @@ namespace Yellokiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, char[,] map, int hauteurMap, int largeurMap, Hero2 hero2, GameplayScreen yk)
+        public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreen yk, ref Rectangle camera)
         {
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
@@ -95,106 +89,114 @@ namespace Yellokiller
                 vitesse_animation = 0.008f;
 
             if (position.Y > 0 && keyboardState.IsKeyDown(Keys.Z) && monter &&
-               (map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 'h' ||
-                map[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28] == 'a') &&
-               (map[(int)(position.Y + 6) / 28, (int)position.X / 28] == 'h' ||
-                map[(int)(position.Y + 6) / 28, (int)position.X / 28] == 'a'))
+               (carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
+                carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
+               (carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbe ||
+                carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbeFoncee))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
-                    position.Y -= 1 * vitesse_sprite;
+                    position.Y -= vitesse_sprite;
+                    if(camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
+                        camera.Y -= vitesse_sprite;
                 }
                 else
-                {
                     index = 0f;
-                }
 
                 if (keyboardState.IsKeyDown(Keys.LeftShift))
                 {
-                    position.Y -= 1 * vitesse_sprite * 2;
+                    position.Y -= 2 * vitesse_sprite;
+                    if (camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
+                        camera.Y -= 2 * vitesse_sprite;
                     vitesse_animation = 0.008f * 2;
                 }
             }
 
-            if (position.Y < 28 * (hauteurMap - 1) && keyboardState.IsKeyDown(Keys.S) && descendre &&
-                (map[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28] == 'h' ||
-                 map[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28] == 'a') &&
-                (map[(int)(position.Y / 28) + 1, (int)(position.X) / 28] == 'h' ||
-                 map[(int)(position.Y / 28) + 1, (int)position.X / 28] == 'a'))
+            if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 2) && keyboardState.IsKeyDown(Keys.S) && descendre &&
+                (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
+                 carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
+                (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X) / 28].Type == TypeCase.herbe ||
+                 carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type == TypeCase.herbeFoncee))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                 if (index < maxIndex)
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
-                    position.Y += 1 * vitesse_sprite;
+                    position.Y += vitesse_sprite;
+                    if (camera.Y < 28 * (Taille_Map.HAUTEUR_MAP - camera.Height - 1) && position.Y > 200)
+                        camera.Y += vitesse_sprite;
                 }
                 else
-                {
                     index = 0f;
-                }
 
                 if (keyboardState.IsKeyDown(Keys.LeftShift))
                 {
-                    position.Y += 1 * vitesse_sprite * 2;
+                    position.Y += 2 * vitesse_sprite;
+                    if (camera.Y < 28 * (Taille_Map.HAUTEUR_MAP - camera.Height - 1) && position.Y > 200)
+                        camera.Y += 2 * vitesse_sprite;
                     vitesse_animation = 0.008f * 2;
                 }
             }
 
             if (position.X > 0 && keyboardState.IsKeyDown(Keys.Q) && gauche &&
-               (map[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28] == 'h' ||
-                map[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28] == 'a') &&
-               (map[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28] == 'h' ||
-                map[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28] == 'a'))
+               (carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
+                carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee) &&
+               (carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
+                carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
-                    position.X -= 1 * vitesse_sprite;
+                    position.X -= vitesse_sprite;
+                    if (camera.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
+                        camera.X -= vitesse_sprite;
                 }
                 else
-                {
                     index = 0f;
-                }
 
                 if (keyboardState.IsKeyDown(Keys.LeftShift))
                 {
-                    position.X -= 1 * vitesse_sprite * 2;
+                    position.X -= 2 * vitesse_sprite;
+                    if (camera.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
+                        camera.X -= 2 * vitesse_sprite;
                     vitesse_animation = 0.008f * 2;
                 }
             }
 
-            if (position.X < 28 * largeurMap - 16 && keyboardState.IsKeyDown(Keys.D) && droite &&
-                (map[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1] == 'h' ||
-                 map[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1] == 'a') &&
-                (map[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1] == 'h' ||
-                 map[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1] == 'a'))
+            if (position.X < 28 * (Taille_Map.LARGEUR_MAP - 1) - 16 && keyboardState.IsKeyDown(Keys.D) && droite &&
+                (carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
+                 carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee) &&
+                (carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
+                 carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
-                    position.X += 1 * vitesse_sprite;
+                    position.X += vitesse_sprite;
+                    if (camera.X < 28 * (Taille_Map.LARGEUR_MAP - camera.Width - 1) && position.X > 200)
+                        camera.X += vitesse_sprite;
                 }
                 else
-                {
                     index = 0f;
-                }
 
                 if (keyboardState.IsKeyDown(Keys.LeftShift))
                 {
-                    position.X += 1 * vitesse_sprite * 2;
+                    position.X += 2 * vitesse_sprite;
+                    if (camera.X < 28 * (Taille_Map.LARGEUR_MAP - camera.Width - 1) && position.X > 200)
+                        camera.X += 2 * vitesse_sprite;
                     vitesse_animation = 0.008f * 2;
                 }
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
         {
-            spriteBatch.Draw(texture, position, sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, new Vector2(position.X - camera.X, position.Y - camera.Y), sourceRectangle, Color.White);
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];
@@ -202,9 +204,7 @@ namespace Yellokiller
                 m.draw(spriteBatch);
 
                 if (m.Get_Y() < -14)
-                {
                     _shuriken.Remove(m);
-                }
             }
         }
     }
