@@ -38,13 +38,7 @@ namespace Yellokiller
         #region Properties
 
 
-        /// <summary>
-        /// Normally when one screen is brought up over the top of another,
-        /// the first screen will transition off to make room for the new
-        /// one. This property indicates whether the screen is only a small
-        /// popup, in which case screens underneath it do not need to bother
-        /// transitioning off.
-        /// </summary>
+        
         public bool IsPopup
         {
             get { return isPopup; }
@@ -54,10 +48,7 @@ namespace Yellokiller
         bool isPopup = false;
 
 
-        /// <summary>
-        /// Indicates how long the screen takes to
-        /// transition on when it is activated.
-        /// </summary>
+        
         public TimeSpan TransitionOnTime
         {
             get { return transitionOnTime; }
@@ -67,10 +58,7 @@ namespace Yellokiller
         TimeSpan transitionOnTime = TimeSpan.Zero;
 
 
-        /// <summary>
-        /// Indicates how long the screen takes to
-        /// transition off when it is deactivated.
-        /// </summary>
+        
         public TimeSpan TransitionOffTime
         {
             get { return transitionOffTime; }
@@ -79,12 +67,6 @@ namespace Yellokiller
 
         TimeSpan transitionOffTime = TimeSpan.Zero;
 
-
-        /// <summary>
-        /// Gets the current position of the screen transition, ranging
-        /// from zero (fully active, no transition) to one (transitioned
-        /// fully off to nothing).
-        /// </summary>
         public float TransitionPosition
         {
             get { return transitionPosition; }

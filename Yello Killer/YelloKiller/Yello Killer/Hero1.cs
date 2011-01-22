@@ -67,7 +67,7 @@ namespace Yellokiller
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !current.IsKeyDown(Keys.Space))
             {
-                _shuriken.Add(new Shuriken(yk, position, this.texture.Width));
+                _shuriken.Add(new Shuriken(yk,new Vector2(position.X - camera.X, position.Y - camera.Y), this.texture.Width));
             }
 
             current = Keyboard.GetState();
@@ -215,7 +215,7 @@ namespace Yellokiller
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];
-                m.Update(gameTime);
+                m.Update(gameTime, camera);
                 m.draw(spriteBatch);
 
                 if (m.Get_Y() < -14)

@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace Yellokiller.Yello_Killer
-
 {
     public class Shuriken
     {
@@ -19,7 +18,7 @@ namespace Yellokiller.Yello_Killer
             _shuriken = yk.Content.Load<Texture2D>("shuriken");
             origin.X = _shuriken.Width / 2;
             origin.Y = _shuriken.Height / 2;
-            position.X = position_ini.X + 16 / 2;
+            position.X = position_ini.X + 8;
             position.Y = position_ini.Y + 4;
         }
 
@@ -29,9 +28,9 @@ namespace Yellokiller.Yello_Killer
                 SpriteEffects.None, 0f);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Rectangle camera)
         {
-            position.X += 2;
+            position.X += 2 - camera.X;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             RotationAngle += elapsed + 50;
             float circle = MathHelper.Pi * 2;
