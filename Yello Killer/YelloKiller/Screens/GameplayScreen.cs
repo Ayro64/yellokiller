@@ -45,7 +45,7 @@ namespace Yellokiller
         Hero2 hero2;
         Carte carte;
         Rectangle camera;
-
+        Souris souris;
         Player audio;
         KeyboardState keyboardState, lastKeyboardState;
 
@@ -60,7 +60,7 @@ namespace Yellokiller
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
             audio = new Player(1);
-           
+            souris = new Souris();
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.OuvrirCarte("save0.txt");
             camera = new Rectangle(0, 0, 32, 24);
@@ -99,13 +99,14 @@ namespace Yellokiller
         
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            MouseState souris = Mouse.GetState();
+            souris.Update();
+            ScreenManager.Game.IsMouseVisible = true;
             if (IsActive)
             {  
-               if (souris.RightButton == ButtonState.Pressed)
+               if ( souris.MState.LeftButton == ButtonState.Pressed)
                 {           
                         hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1,
-                            carte.Cases[((int)souris.X) / 28, ((int)souris.Y) / 28]);
+                            carte.Cases[((int)souris.Rectangle.X) / 28, ((int)souris.Rectangle.Y) / 28]);
                 }
               /*  if (ServiceHelper.Get<IMouseService>().LeftButtonHasBeenPressed())
                 {
@@ -154,7 +155,7 @@ namespace Yellokiller
         /// this will only be called when the gameplay screen is active.
         /// </summary>
         public override void HandleInput(InputState input)
-        {
+        {   
             if (input == null)
                 throw new ArgumentNullException("input");
 

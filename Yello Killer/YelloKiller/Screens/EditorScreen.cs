@@ -42,7 +42,7 @@ namespace Yellokiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            menu = new Menu(content, 6);
+            menu = new Menu(content, 7);
             curseur = new Cursor(content);
             ascenseur = new Ascenseur(content);
             

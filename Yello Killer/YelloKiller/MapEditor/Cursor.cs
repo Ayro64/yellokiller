@@ -7,7 +7,7 @@ namespace Yellokiller
 {
     class Cursor
     {
-        Texture2D texture;
+        Texture2D texture, fond;
         Vector2 position;
         TypeCase type;
 
@@ -15,6 +15,7 @@ namespace Yellokiller
         {
             position = new Vector2(0, 0);
             LoadContent(content, "herbefoncee");
+            fond = content.Load<Texture2D>("fond");
             type = TypeCase.herbeFoncee;
         }
 
@@ -46,26 +47,30 @@ namespace Yellokiller
                     switch (i)
                     {
                         case (0):
+                            type = TypeCase.herbe;
+                            LoadContent(content, "herbe");
+                            break;
+                        case (1):
                             type = TypeCase.herbeFoncee;
                             LoadContent(content, "herbeFoncee");
                             break;
-                        case (1):
+                        case (2):
                             type = TypeCase.mur;
                             LoadContent(content, "mur");
                             break;
-                        case (2):
+                        case (3):
                             type = TypeCase.maison;
                             LoadContent(content, "maison");
                             break;
-                        case (3):
+                        case (4):
                             type = TypeCase.arbre;
                             LoadContent(content, "arbre");
                             break;
-                        case (4):
+                        case (5):
                             type = TypeCase.origineJoueur1;
                             LoadContent(content, "origine1");
                             break;
-                        case (5):
+                        case (6):
                             type = TypeCase.origineJoueur2;
                             LoadContent(content, "origine2");
                             break;
@@ -76,7 +81,8 @@ namespace Yellokiller
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, new Vector2(position.X * texture.Width, position.Y * texture.Height), Color.White);
+            spriteBatch.Draw(fond, new Vector2(position.X * texture.Width - 2, position.Y * texture.Height - 2), Color.White);
+            spriteBatch.Draw(texture, new Vector2(position.X * texture.Width, position.Y * texture.Height), Color.Violet);
         }
     }
 }
