@@ -79,9 +79,14 @@
     <Compile Include="Yello Killer\Hero1.cs" />
     <Compile Include="Yello Killer\Hero2.cs" />
     <Compile Include="Yello Killer\IKeyboardService.cs" />
+    <Compile Include="Yello Killer\IMouseService.cs" />
     <Compile Include="Yello Killer\KeyboardService.cs" />
     <Compile Include="Yello Killer\Map.cs" />
     <Compile Include="Yello Killer\Moteur physique.cs" />
+    <Compile Include="Yello Killer\MouseService.cs" />
+    <Compile Include="Yello Killer\Node.cs" />
+    <Compile Include="Yello Killer\NodeList.cs" />
+    <Compile Include="Yello Killer\PathFinding.cs" />
     <Compile Include="Yello Killer\ServiceHelper.cs" />
     <Compile Include="Yello Killer\Shuriken.cs" />
   </ItemGroup>

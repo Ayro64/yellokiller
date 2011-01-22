@@ -9,11 +9,11 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Yellokiller
 {
-    class EditorScreen : GameScreen
+   public class EditorScreen : GameScreen
     {
         SpriteBatch spriteBatch;
         ContentManager content;
-
+       
         Carte carte;
         Cursor curseur;
         Menu menu;
@@ -27,7 +27,7 @@ namespace Yellokiller
         Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
         
         bool enableOrigine1 = true, enableOrigine2 = true, enableSave = true, afficheMessageErreur = false;
-        int compteur = 0, chronometre = 0;
+        int chronometre = 0;
 
         public EditorScreen()
         {
