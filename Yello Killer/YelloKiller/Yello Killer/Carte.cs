@@ -7,19 +7,33 @@ namespace Yellokiller
 {
     class Carte
     {
-        Case[,] cases;
+        Case[,] _case;
         public Vector2 origineJoueur1 = new Vector2(0, 0), origineJoueur2 = new Vector2(0, 0);   
 
         public Carte(Vector2 size)
         {
-            cases = new Case[(int)size.Y, (int)size.X];
+            _case = new Case[(int)size.Y, (int)size.X];
         }
 
         public Case[,] Cases
         {
-            get { return cases; }
-            set { cases = value; }
+            get { return _case; }
+            set { _case = value; }
         }
+
+        public bool ValidCoordinates(float x, float y)
+        {
+            if (x < 0)
+                return false;
+            if (y < 0)
+                return false;
+            if (x >= _case.GetLength(1))
+                return false;
+            if (y >= _case.GetLength(0))
+                return false;
+            return true;
+        }
+                    
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
@@ -27,8 +41,8 @@ namespace Yellokiller
             {
                 for (int x = camera.X / 28; x < camera.X / 28 + camera.Width + 1; x++)
                 {
-                    cases[y, x].Position = 28 * new Vector2(x,y) - new Vector2(camera.X, camera.Y);
-                    cases[y, x].DrawInGame(spriteBatch, content);
+                    _case[y, x].Position = 28 * new Vector2(x,y) - new Vector2(camera.X, camera.Y);
+                    _case[y, x].DrawInGame(spriteBatch, content);
                 }
             }
         }
@@ -39,8 +53,8 @@ namespace Yellokiller
             {
                 for (int x = camera.X; x < camera.X + camera.Width; x++)
                 {
-                    cases[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
-                    cases[y, x].DrawInMapEditor(spriteBatch, content);
+                    _case[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
+                    _case[y, x].DrawInMapEditor(spriteBatch, content);
                 }
             }
         }
@@ -64,7 +78,7 @@ namespace Yellokiller
             {
                 for (int x = 0; x < size.X; x++)
                 {
-                    cases[y, x] = new Case(new Vector2(x, y ), TypeCase.herbe);
+                    _case[y, x] = new Case(new Vector2(x, y ),new Rectangle(), TypeCase.herbe);
                 }
             }
         }
@@ -86,19 +100,19 @@ namespace Yellokiller
                     switch (line[x])
                     {
                         case ('h'):
-                            cases[y,x] = new Case(28 * new Vector2(x, y), TypeCase.herbe);
+                            _case[y,x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             break;
                         case ('H'):
-                            cases[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbeFoncee);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
                             break;
                         case ('a'):
-                            cases[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
                             break;
                         case ('m'):
-                            cases[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.mur);
                             break;
                         case ('M'):
-                            cases[y, x] = new Case(28 * new Vector2(x, y), TypeCase.maison);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.maison);
                             break; 
                         /*default:
                             cases[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbe);

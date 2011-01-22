@@ -15,16 +15,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Yellokiller.Yello_Killer;
 #endregion
 
 namespace Yellokiller
 {
-    /// <summary>
-    /// This screen implements the actual game logic. It is just a
-    /// placeholder to get the idea across: you'll probably want to
-    /// put some more interesting gameplay in here!
-    /// </summary>
-    /// 
 
     public enum TypeCase
     {
@@ -37,7 +32,7 @@ namespace Yellokiller
         origineJoueur2 = 'O',
     };
 
-   public class GameplayScreen : GameScreen
+    public class GameplayScreen : GameScreen
     {
         #region Fields
 
@@ -46,14 +41,12 @@ namespace Yellokiller
         public ContentManager Content { get { return content; } }
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
-
         Hero1 hero1;
         Hero2 hero2;
         Carte carte;
         Rectangle camera;
 
         Player audio;
-
         KeyboardState keyboardState, lastKeyboardState;
 
         #endregion
@@ -61,58 +54,39 @@ namespace Yellokiller
         #region Initialization
 
 
-        /// <summary>
-        /// Constructor.
-        /// </summary>
+
         public GameplayScreen()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
-
             audio = new Player(1);
-
+           
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.OuvrirCarte("save0.txt");
             camera = new Rectangle(0, 0, 32, 24);
-            hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25));
+            hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
             hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25));
         }
 
 
         protected void Initialize()
-        {
+        {            
         }
-
-        /// <summary>
-        /// Load graphics content for the game.
-        /// </summary>
         public override void LoadContent()
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            spriteBatch = ScreenManager.SpriteBatch;
-
+            spriteBatch = ScreenManager.SpriteBatch;         
             gameFont = content.Load<SpriteFont>("courier");
 
             audio.LoadContent(content);
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
-            // A real game would probably have more content than this sample, so
-            // it would take longer to load. We simulate that by delaying for a
-            // while, giving you a chance to admire the beautiful loading screen.
             Thread.Sleep(1000);
-
-            // once the load has finished, we use ResetElapsedTime to tell the game's
-            // timing mechanism that we have just finished a very long frame, and that
-            // it should not try to catch up.
             ScreenManager.Game.ResetElapsedTime();
         }
 
-
-        /// <summary>
-        /// Unload graphics content used by the game.
-        /// </summary>
         public override void UnloadContent()
         {
             content.Unload();
@@ -122,32 +96,37 @@ namespace Yellokiller
         #endregion
 
         #region Update and Draw
-
-
-        /// <summary>
-        /// Updates the state of the game. This method checks the GameScreen.IsActive
-        /// property, so the game will stop updating when the pause menu is active,
-        /// or if you tab away to a different application.
-        /// </summary>
+        
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-
+            MouseState souris = Mouse.GetState();
             if (IsActive)
-            {
+            {  
+               if (souris.RightButton == ButtonState.Pressed)
+                {           
+                        hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1,
+                            carte.Cases[((int)souris.X) / 28, ((int)souris.Y) / 28]);
+                }
+              /*  if (ServiceHelper.Get<IMouseService>().LeftButtonHasBeenPressed())
+                {
+                    if (hero1.Position.X != ((int)ServiceHelper.Get<IMouseService>()
+                    .GetCoordinates().X / 28) || hero1.Position.Y != ((int)ServiceHelper
+                    .Get<IMouseService>().GetCoordinates().Y / 28))
+                        hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1, 
+                           carte.Cases[(int)ServiceHelper.Get<IMouseService>().GetCoordinates().Y
+                        / 28, (int)ServiceHelper.Get<IMouseService>().GetCoordinates().X / 28]);
+                }*/
                 hero1.Update(gameTime, carte, hero2, this, ref camera);
                 hero2.Update(gameTime, carte, hero1, this);
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
+
         }
 
-        /// <summary>
-        /// Draws the gameplay screen.
-        /// </summary>
         public override void Draw(GameTime gameTime)
         {
-            // This game has a blue background. Why? Because!
+
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
                                                Color.DarkOrchid, 0, 0);
 

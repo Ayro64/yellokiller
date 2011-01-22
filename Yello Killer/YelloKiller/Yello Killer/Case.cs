@@ -12,7 +12,7 @@ namespace Yellokiller
 
         string nomTexture;
 
-        public Case(Vector2 position, TypeCase type)
+        public Case(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
         {
             this.position = position;
             this.type = type;
