@@ -24,7 +24,7 @@ namespace Yellokiller.Yello_Killer
 
         public void draw(SpriteBatch sb, Rectangle camera)
         {
-            sb.Draw(_shuriken, new Vector2(position.X, position.Y - camera.Y), null, Color.White, RotationAngle, origin, 1.0f,
+            sb.Draw(_shuriken, new Vector2(position.X - camera.X, position.Y - camera.Y), null, Color.White, RotationAngle, origin, 1.0f,
                 SpriteEffects.None, 0f);
         }
 
