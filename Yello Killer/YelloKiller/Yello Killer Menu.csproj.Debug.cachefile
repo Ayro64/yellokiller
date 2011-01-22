@@ -1,8 +1,5 @@
 Content\blank.xnb
 Content\gradient.xnb
-Content\herbe.xnb
-Content\maison.xnb
-Content\mur.xnb
 Content\NinjaTrans.xnb
 Content\Game Over.xnb
 Content\Ninja2Trans.xnb
@@ -11,7 +8,10 @@ Content\origine2.xnb
 Content\background.xnb
 Content\fond.xnb
 Content\shuriken.xnb
-Content\courier.xnb
 Content\arbre.xnb
+Content\herbe.xnb
 Content\herbeFoncee.xnb
+Content\maison.xnb
+Content\mur.xnb
 Content\ascenseur.xnb
+Content\courier.xnb
