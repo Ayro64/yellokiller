@@ -22,15 +22,15 @@ namespace Yellokiller.Yello_Killer
             position.Y = position_ini.Y + 4;
         }
 
-        public void draw(SpriteBatch sb)
+        public void draw(SpriteBatch sb, Rectangle camera)
         {
-            sb.Draw(_shuriken, position, null, Color.White, RotationAngle, origin, 1.0f,
+            sb.Draw(_shuriken, new Vector2(position.X, position.Y - camera.Y), null, Color.White, RotationAngle, origin, 1.0f,
                 SpriteEffects.None, 0f);
         }
 
-        public void Update(GameTime gameTime, Rectangle camera)
+        public void Update(GameTime gameTime)
         {
-            position.X += 2 - camera.X;
+            position.X += 2;
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             RotationAngle += elapsed + 50;
             float circle = MathHelper.Pi * 2;

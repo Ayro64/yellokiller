@@ -191,8 +191,8 @@ namespace Yellokiller
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];
-                m.Update(gameTime, camera);
-                m.draw(spriteBatch);
+                m.Update(gameTime);
+                m.draw(spriteBatch, camera);
 
                 if (m.Get_Y() < -14)
                 {
