@@ -40,7 +40,7 @@ namespace Yellokiller
             if (souris.MState.X > 0 && souris.MState.X < Taille_Map.LARGEUR_MAP * 28 && souris.MState.Y > 0 && souris.MState.Y < Taille_Map.HAUTEUR_MAP * 28)
                 position = new Vector2(souris.MState.X / 28, souris.MState.Y / 28);
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < menu.nbTextures; i++)
             {
                 if (souris.MState.LeftButton == ButtonState.Pressed && souris.LastMState.LeftButton == ButtonState.Released && souris.Rectangle.Intersects(menu.ListesRectangles[i]))
                 {
