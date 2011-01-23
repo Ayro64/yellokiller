@@ -65,12 +65,8 @@ namespace Yellokiller
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
 
-            rectangle = new Rectangle((int)Position.X, (int)Position.Y, 18, 28);
-            Moteur_physique.Collision(this.rectangle, hero1.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
-
-
             if (keyboardState.IsKeyDown(Keys.RightControl) && !current.IsKeyDown(Keys.RightControl))
-            {
+            {// lancer shuriken
                 ishero2 = true;
                 _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, hero1, this));
                 Console.WriteLine("ajout shuriken");
