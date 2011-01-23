@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Yellokiller.Yello_Killer
 {
-    class PathFnding
+    class PathFinding
     {
         public static List<Case> CalculatePathWithAStar(Carte carte, Case startCase, Case endCase)
         {
