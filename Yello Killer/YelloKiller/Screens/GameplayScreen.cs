@@ -1,12 +1,3 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// GameplayScreen.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
 #region Using Statements
 using System;
 using System.Threading;
@@ -21,7 +12,6 @@ using Yellokiller.Yello_Killer;
 
 namespace Yellokiller
 {
-
     public enum TypeCase
     {
         herbe = 'h',
@@ -76,6 +66,7 @@ namespace Yellokiller
         {
 
         }
+
         public override void LoadContent()
         {
             if (content == null)
