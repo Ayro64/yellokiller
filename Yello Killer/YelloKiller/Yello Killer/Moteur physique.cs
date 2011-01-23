@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace Yellokiller
 {
@@ -14,6 +15,7 @@ namespace Yellokiller
 
             if (hero1.Intersects(hero2))
             {
+                Console.WriteLine("intersect true");
                 if (hero1.Top == hero2.Bottom - 1 || hero1.Top == hero2.Bottom - 2 || hero1.Top == hero2.Bottom - 4)
                     monter1 = false;
 

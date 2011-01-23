@@ -9,9 +9,11 @@ namespace Yellokiller
     {
         List<Rectangle> listeRectangles = new List<Rectangle>();
         Texture2D arbre, maison, mur, herbeFoncee, origine1, origine2, fond, herbe;
+        int nbTextures;
 
         public Menu(ContentManager content, int nbTextures)
         {
+            this.nbTextures = nbTextures;
             for (int i = 0; i < nbTextures; i++)
                 listeRectangles.Add(new Rectangle(0, 0, 28, 28));
 
@@ -32,7 +34,7 @@ namespace Yellokiller
 
         public void Update(Ascenseur ascenseur)
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < nbTextures; i++)
                 listeRectangles[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, (int)-ascenseur.Position.Y + i * 80, 28, 28);
         }
 

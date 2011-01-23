@@ -11,6 +11,7 @@
 using System;
 using System.Threading;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -48,6 +49,8 @@ namespace Yellokiller
         Souris souris;
         Player audio;
         KeyboardState keyboardState, lastKeyboardState;
+        List<Shuriken> _shuriken;
+
 
         #endregion
 
@@ -63,26 +66,28 @@ namespace Yellokiller
             souris = new Souris();
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.OuvrirCarte("save0.txt");
+            _shuriken = new List<Shuriken>();
             camera = new Rectangle(0, 0, 32, 24);
             hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
-            hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25));
+            hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
         }
 
 
         protected void Initialize()
-        {            
+        {
         }
         public override void LoadContent()
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            spriteBatch = ScreenManager.SpriteBatch;         
+            spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
 
             audio.LoadContent(content);
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
+
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
         }
@@ -96,29 +101,29 @@ namespace Yellokiller
         #endregion
 
         #region Update and Draw
-        
+
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             souris.Update();
             ScreenManager.Game.IsMouseVisible = true;
             if (IsActive)
-            {  
-               if ( souris.MState.LeftButton == ButtonState.Pressed)
-                {           
-                        hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1,
-                            carte.Cases[((int)souris.Rectangle.X) / 28, ((int)souris.Rectangle.Y) / 28]);
-                }
-              /*  if (ServiceHelper.Get<IMouseService>().LeftButtonHasBeenPressed())
+            {
+                if (souris.MState.LeftButton == ButtonState.Pressed)
                 {
-                    if (hero1.Position.X != ((int)ServiceHelper.Get<IMouseService>()
-                    .GetCoordinates().X / 28) || hero1.Position.Y != ((int)ServiceHelper
-                    .Get<IMouseService>().GetCoordinates().Y / 28))
-                        hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1, 
-                           carte.Cases[(int)ServiceHelper.Get<IMouseService>().GetCoordinates().Y
-                        / 28, (int)ServiceHelper.Get<IMouseService>().GetCoordinates().X / 28]);
-                }*/
-                hero1.Update(gameTime, carte, hero2, this, ref camera);
-                hero2.Update(gameTime, carte, hero1, this);
+                    hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1,
+                        carte.Cases[((int)souris.Rectangle.X) / 28, ((int)souris.Rectangle.Y) / 28]);
+                }
+                /*  if (ServiceHelper.Get<IMouseService>().LeftButtonHasBeenPressed())
+                  {
+                      if (hero1.Position.X != ((int)ServiceHelper.Get<IMouseService>()
+                      .GetCoordinates().X / 28) || hero1.Position.Y != ((int)ServiceHelper
+                      .Get<IMouseService>().GetCoordinates().Y / 28))
+                          hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1, 
+                             carte.Cases[(int)ServiceHelper.Get<IMouseService>().GetCoordinates().Y
+                          / 28, (int)ServiceHelper.Get<IMouseService>().GetCoordinates().X / 28]);
+                  }*/
+                hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
+                hero2.Update(gameTime, carte, hero1, this, ref camera, _shuriken);
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
@@ -138,9 +143,20 @@ namespace Yellokiller
             spriteBatch.Begin();
 
             carte.DrawInGame(spriteBatch, content, camera);
-            hero1.Draw(spriteBatch, gameTime, camera);
-            hero2.Draw(spriteBatch, gameTime, camera);
+            hero1.Draw(spriteBatch, gameTime, camera, carte, hero1);
+            hero2.Draw(spriteBatch, gameTime, camera, carte, hero2);
+            for (int i = 0; i < _shuriken.Count; i++)
+            {
+                Shuriken m = _shuriken[i];
+                m.Update(gameTime, carte);
+                m.draw(spriteBatch, camera);
 
+                if (m.Get_X() > Taille_Map.LARGEUR_MAP * 28 || _shuriken[i].existshuriken == false)
+                {
+                    _shuriken.Remove(m);
+                    Console.WriteLine("suppresion shuriken");
+                }
+            }
             spriteBatch.End();
             audio.Draw(gameTime);
             base.Draw(gameTime);
@@ -155,7 +171,7 @@ namespace Yellokiller
         /// this will only be called when the gameplay screen is active.
         /// </summary>
         public override void HandleInput(InputState input)
-        {   
+        {
             if (input == null)
                 throw new ArgumentNullException("input");
 

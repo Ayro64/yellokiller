@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Yellokiller.Yello_Killer;
 using Microsoft.Xna.Framework.Content;
+using System;
 
 namespace Yellokiller
 {
@@ -18,13 +19,12 @@ namespace Yellokiller
         Rectangle rectangle;
         Texture2D texture;
         KeyboardState lastKeyboardState, keyboardState;
-        List<Shuriken> _shuriken;
         int msElapsed = 0;
-
+        public bool ishero1 = false;
         KeyboardState current;
         public bool monter = true, descendre = true, droite = true, gauche = true;
-
         List<Case> walkingList = new List<Case>();
+
         public List<Case> WalkingList
         {
             set { if (value != null) walkingList = value; }
@@ -51,7 +51,6 @@ namespace Yellokiller
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
-            _shuriken = new List<Shuriken>();
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -59,16 +58,24 @@ namespace Yellokiller
             texture = content.Load<Texture2D>("NinjaTrans");
             this.maxIndex = maxIndex;
         }
+        
 
-        public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreen yk, ref Rectangle camera)
+        public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreen yk, ref Rectangle camera, List<Shuriken> _shuriken)
         {
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
 
+            rectangle = new Rectangle((int)Position.X, (int)Position.Y, 18, 28);
+            Moteur_physique.Collision(this.rectangle, hero2.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
+           
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !current.IsKeyDown(Keys.Space))
             {
-                _shuriken.Add(new Shuriken(yk,new Vector2(position.X, position.Y), this.texture.Width));
+                ishero1 = true;
+                _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, this, hero2));
+                Console.WriteLine("ajout shuriken");
             }
+            else
+                ishero1 = false;
 
             current = Keyboard.GetState();
 
@@ -80,11 +87,11 @@ namespace Yellokiller
                 if (sourceRectangle.Value.Y == 133)
                     sourceRectangle = new Rectangle(24, 133, 16, 28);
                 if (sourceRectangle.Value.Y == 198)
-                    sourceRectangle = new Rectangle(24, 197, 16, 28);
+                    sourceRectangle = new Rectangle(24, 198, 16, 28);
                 if (sourceRectangle.Value.Y == 230)
-                    sourceRectangle = new Rectangle(24, 229, 16, 28);
+                    sourceRectangle = new Rectangle(24, 230, 16, 28);
                 if (sourceRectangle.Value.Y == 166)
-                    sourceRectangle = new Rectangle(24, 165, 16, 28);
+                    sourceRectangle = new Rectangle(24, 166, 16, 28);
             }
 
             if (keyboardState.IsKeyUp(Keys.LeftShift))
@@ -101,7 +108,7 @@ namespace Yellokiller
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
                     position.Y -= vitesse_sprite;
-                    if(camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
+                    if (camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
                         camera.Y -= vitesse_sprite;
                 }
                 else
@@ -209,18 +216,10 @@ namespace Yellokiller
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera, Carte carte, Hero1 hero1)
         {
             spriteBatch.Draw(texture, new Vector2(position.X - camera.X, position.Y - camera.Y), sourceRectangle, Color.White);
-            for (int i = 0; i < _shuriken.Count; i++)
-            {
-                Shuriken m = _shuriken[i];
-                m.Update(gameTime);
-                m.draw(spriteBatch, camera);
-
-                if (m.Get_Y() < -14)
-                    _shuriken.Remove(m);
-            }
+       
         }
     }
 }
