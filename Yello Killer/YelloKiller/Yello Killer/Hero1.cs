@@ -63,9 +63,6 @@ namespace Yellokiller
         {
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
-
-            rectangle = new Rectangle((int)Position.X, (int)Position.Y, 18, 28);
-            Moteur_physique.Collision(this.rectangle, hero2.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
            
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !current.IsKeyDown(Keys.Space))
             {
