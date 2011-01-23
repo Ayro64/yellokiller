@@ -98,11 +98,11 @@ namespace Yellokiller
             ScreenManager.Game.IsMouseVisible = true;
             if (IsActive)
             {
-                if (souris.MState.LeftButton == ButtonState.Pressed)
+                /*if (souris.MState.LeftButton == ButtonState.Pressed)
                 {
                        hero1.WalkingList = Yello_Killer.PathFinding.CalculatePathWithAStar(carte, hero1,
                        carte.Cases[souris.MState.Y / 28, souris.MState.X / 28]);
-                }
+                }*/
 
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
                 hero2.Update(gameTime, carte, hero1, this, ref camera, _shuriken);
