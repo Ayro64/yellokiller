@@ -14,9 +14,7 @@ using Microsoft.Xna.Framework;
 
 namespace Yellokiller
 {
-    /// <summary>
-    /// Enum describes the screen transition state.
-    /// </summary>
+   
     public enum ScreenState
     {
         TransitionOn,
@@ -25,14 +23,6 @@ namespace Yellokiller
         Hidden,
     }
 
-
-    /// <summary>
-    /// A screen is a single layer that has update and draw logic, and which
-    /// can be combined with other layers to build up a complex menu system.
-    /// For instance the main menu, the options menu, the "are you sure you
-    /// want to quit" message box, and the main game itself are all implemented
-    /// as screens.
-    /// </summary>
     public abstract class GameScreen
     {
         #region Properties
@@ -75,21 +65,11 @@ namespace Yellokiller
 
         float transitionPosition = 1;
 
-
-        /// <summary>
-        /// Gets the current alpha of the screen transition, ranging
-        /// from 255 (fully active, no transition) to 0 (transitioned
-        /// fully off to nothing).
-        /// </summary>
         public byte TransitionAlpha
         {
             get { return (byte)(255 - TransitionPosition * 255); }
         }
 
-
-        /// <summary>
-        /// Gets the current screen transition state.
-        /// </summary>
         public ScreenState ScreenState
         {
             get { return screenState; }
@@ -98,15 +78,6 @@ namespace Yellokiller
 
         ScreenState screenState = ScreenState.TransitionOn;
 
-
-        /// <summary>
-        /// There are two possible reasons why a screen might be transitioning
-        /// off. It could be temporarily going away to make room for another
-        /// screen that is on top of it, or it could be going away for good.
-        /// This property indicates whether the screen is exiting for real:
-        /// if set, the screen will automatically remove itself as soon as the
-        /// transition finishes.
-        /// </summary>
         public bool IsExiting
         {
             get { return isExiting; }
@@ -115,10 +86,6 @@ namespace Yellokiller
 
         bool isExiting = false;
 
-
-        /// <summary>
-        /// Checks whether this screen is active and can respond to user input.
-        /// </summary>
         public bool IsActive
         {
             get
@@ -131,10 +98,6 @@ namespace Yellokiller
 
         bool otherScreenHasFocus;
 
-
-        /// <summary>
-        /// Gets the manager that this screen belongs to.
-        /// </summary>
         public ScreenManager ScreenManager
         {
             get { return screenManager; }
@@ -144,14 +107,6 @@ namespace Yellokiller
         ScreenManager screenManager;
 
 
-        /// <summary>
-        /// Gets the index of the player who is currently controlling this screen,
-        /// or null if it is accepting input from any player. This is used to lock
-        /// the game to a specific player profile. The main menu responds to input
-        /// from any connected gamepad, but whichever player makes a selection from
-        /// this menu is given control over all subsequent screens, so other gamepads
-        /// are inactive until the controlling player returns to the main menu.
-        /// </summary>
         public PlayerIndex? ControllingPlayer
         {
             get { return controllingPlayer; }
@@ -166,15 +121,8 @@ namespace Yellokiller
         #region Initialization
 
 
-        /// <summary>
-        /// Load graphics content for the screen.
-        /// </summary>
         public virtual void LoadContent() { }
 
-
-        /// <summary>
-        /// Unload content for the screen.
-        /// </summary>
         public virtual void UnloadContent() { }
 
 

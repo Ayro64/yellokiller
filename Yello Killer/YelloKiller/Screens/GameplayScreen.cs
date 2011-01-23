@@ -38,7 +38,6 @@ namespace Yellokiller
         #region Fields
 
         ContentManager content;
-
         public ContentManager Content { get { return content; } }
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
@@ -75,12 +74,12 @@ namespace Yellokiller
 
         protected void Initialize()
         {
+
         }
         public override void LoadContent()
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
-
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
 
@@ -110,25 +109,18 @@ namespace Yellokiller
             {
                 if (souris.MState.LeftButton == ButtonState.Pressed)
                 {
-                    hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1,
-                        carte.Cases[((int)souris.Rectangle.X) / 28, ((int)souris.Rectangle.Y) / 28]);
+                       hero1.WalkingList = Yello_Killer.PathFinding.CalculatePathWithAStar(carte, hero1,
+                       carte.Cases[souris.MState.Y / 28, souris.MState.X / 28]);
                 }
-                /*  if (ServiceHelper.Get<IMouseService>().LeftButtonHasBeenPressed())
-                  {
-                      if (hero1.Position.X != ((int)ServiceHelper.Get<IMouseService>()
-                      .GetCoordinates().X / 28) || hero1.Position.Y != ((int)ServiceHelper
-                      .Get<IMouseService>().GetCoordinates().Y / 28))
-                          hero1.WalkingList = Yello_Killer.PathFnding.CalculatePathWithAStar(carte, hero1, 
-                             carte.Cases[(int)ServiceHelper.Get<IMouseService>().GetCoordinates().Y
-                          / 28, (int)ServiceHelper.Get<IMouseService>().GetCoordinates().X / 28]);
-                  }*/
+
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
                 hero2.Update(gameTime, carte, hero1, this, ref camera, _shuriken);
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
-
         }
+
+
 
         public override void Draw(GameTime gameTime)
         {

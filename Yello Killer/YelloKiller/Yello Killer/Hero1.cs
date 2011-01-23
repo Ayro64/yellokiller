@@ -93,7 +93,6 @@ namespace Yellokiller
                 if (sourceRectangle.Value.Y == 166)
                     sourceRectangle = new Rectangle(24, 166, 16, 28);
             }
-
             if (keyboardState.IsKeyUp(Keys.LeftShift))
                 vitesse_animation = 0.008f;
 
