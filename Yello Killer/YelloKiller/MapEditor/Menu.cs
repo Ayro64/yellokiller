@@ -9,7 +9,7 @@ namespace Yellokiller
     {
         List<Rectangle> listeRectangles = new List<Rectangle>();
         Texture2D arbre, maison, mur, herbeFoncee, origine1, origine2, fond, herbe;
-        int nbTextures;
+        public int nbTextures;
 
         public Menu(ContentManager content, int nbTextures)
         {
