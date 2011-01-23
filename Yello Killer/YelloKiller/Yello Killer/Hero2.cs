@@ -74,6 +74,8 @@ namespace Yellokiller
             else
                 ishero2 = false;
 
+            current = Keyboard.GetState();
+
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             Moteur_physique.Collision(this.rectangle, hero1.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
 

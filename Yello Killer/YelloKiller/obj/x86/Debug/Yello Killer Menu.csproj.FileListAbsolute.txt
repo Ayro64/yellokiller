@@ -179,3 +179,5 @@ C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Conte
 C:\Users\Adrien\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\herbeFoncee.xnb
 C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb
+C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\ennemi.xnb
+C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origineEnnemi1.xnb

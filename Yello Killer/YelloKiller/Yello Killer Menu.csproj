@@ -91,6 +91,7 @@
     <Compile Include="Yello Killer\PathFinding.cs" />
     <Compile Include="Yello Killer\ServiceHelper.cs" />
     <Compile Include="Yello Killer\Shuriken.cs" />
+    <Compile Include="Yello Killer\Ennemi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

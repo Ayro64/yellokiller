@@ -49,12 +49,16 @@ namespace Yellokiller
                 case TypeCase.maison:
                     nomTexture = "maison";
                     break;
+                case TypeCase.origineEnnemi:
+                    nomTexture = "origineEnnemi1";
+                    break;
                 case TypeCase.origineJoueur1:
                     nomTexture = "origine1";
                     break;
                 case TypeCase.origineJoueur2:
                     nomTexture = "origine2";
                     break;
+               
             }
             texture = content.Load<Texture2D>(nomTexture);
         }
