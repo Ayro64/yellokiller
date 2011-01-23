@@ -67,13 +67,18 @@ namespace Yellokiller
                             LoadContent(content, "arbre");
                             break;
                         case (5):
+                            type = TypeCase.origineEnnemi;
+                            LoadContent(content, "origineEnnemi1");
+                            break;
+                        case (6):
                             type = TypeCase.origineJoueur1;
                             LoadContent(content, "origine1");
                             break;
-                        case (6):
+                        case (7):
                             type = TypeCase.origineJoueur2;
                             LoadContent(content, "origine2");
                             break;
+                       
                     }
                 }
             }

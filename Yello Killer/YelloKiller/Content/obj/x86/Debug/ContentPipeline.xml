@@ -154,6 +154,24 @@
       <Output>C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\courier.xnb</Output>
       <Time>2011-01-13T21:41:40.6640785+01:00</Time>
     </Item>
+    <Item>
+      <Source>ennemi.png</Source>
+      <Name>ennemi</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\ennemi.xnb</Output>
+      <Time>2011-01-23T21:08:55.192525+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origineEnnemi1.png</Source>
+      <Name>origineEnnemi1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origineEnnemi1.xnb</Output>
+      <Time>2011-01-23T22:03:33.7163172+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
