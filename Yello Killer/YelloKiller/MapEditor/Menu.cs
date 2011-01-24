@@ -50,9 +50,9 @@ namespace Yellokiller
             spriteBatch.Draw(mur, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 160), Color.White);
             spriteBatch.Draw(maison, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 240), Color.White);
             spriteBatch.Draw(arbre, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 320), Color.White);
-            spriteBatch.Draw(ennemi, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 560), Color.White);
-            spriteBatch.Draw(origine1, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 400), Color.White);
-            spriteBatch.Draw(origine2, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 480), Color.White);
+            spriteBatch.Draw(ennemi, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 400), Color.White);
+            spriteBatch.Draw(origine1, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 480), Color.White);
+            spriteBatch.Draw(origine2, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 560), Color.White);
         }
     }
 }

@@ -165,8 +165,7 @@ namespace Yellokiller
                 if (index < maxIndex)
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
-                    position.X += vitesse_sprite;
-                    
+                    position.X += vitesse_sprite;                    
                 }
                 else
                     index = 0f;
