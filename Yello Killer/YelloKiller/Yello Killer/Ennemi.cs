@@ -11,7 +11,7 @@ namespace Yellokiller
 {
     class Ennemi : Case
     {
-  
+
         Vector2 position;
         float vitesse_animation = 0.008f;
         int vitesse_sprite = 1;
@@ -20,12 +20,10 @@ namespace Yellokiller
         Rectangle? sourceRectangle = null;
         Rectangle rectangle;
         Texture2D texture;
-        KeyboardState lastKeyboardState, keyboardState;
-        int msElapsed = 0;
-        public bool ishero1 = false;
         public bool monter = true, descendre = true, droite = true, gauche = true;
         List<Case> walkingList = new List<Case>();
-
+        float autochemin = 0f;
+        int msElapsed = 0;
         public Ennemi(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
         {
@@ -58,124 +56,75 @@ namespace Yellokiller
         {
             texture = content.Load<Texture2D>("ennemi");
             this.maxIndex = maxIndex;
-        }        
+        }
 
-        public void Update(GameTime gameTime, Carte carte,GameplayScreen yk)
+        public void Update(GameTime gameTime, Carte carte, GameplayScreen yk)
         {
-            lastKeyboardState = keyboardState;
-            keyboardState = Keyboard.GetState();
-           
-           
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
+            autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+            Console.WriteLine(autochemin);
 
-            if (keyboardState.IsKeyUp(Keys.Z))                        // arreter le sprite
-            {
-                if (sourceRectangle.Value.Y == 133)
-                    sourceRectangle = new Rectangle(24, 133, 16, 28);
-                if (sourceRectangle.Value.Y == 198)
-                    sourceRectangle = new Rectangle(24, 198, 16, 28);
-                if (sourceRectangle.Value.Y == 230)
-                    sourceRectangle = new Rectangle(24, 230, 16, 28);
-                if (sourceRectangle.Value.Y == 166)
-                    sourceRectangle = new Rectangle(24, 166, 16, 28);
-            }
-            if (keyboardState.IsKeyUp(Keys.LeftShift))
-                vitesse_animation = 0.008f;
+            if (sourceRectangle.Value.Y == 1)
+                sourceRectangle = new Rectangle(5, 1, 16, 23);
+            if (sourceRectangle.Value.Y == 33)
+                sourceRectangle = new Rectangle(5, 33, 16, 23);
+            if (sourceRectangle.Value.Y == 65)
+                sourceRectangle = new Rectangle(5, 65, 16, 23);
+            if (sourceRectangle.Value.Y == 98)
+                sourceRectangle = new Rectangle(5, 98, 16, 23);
 
-            if (position.Y > 0 && keyboardState.IsKeyDown(Keys.Z) && monter &&
-               (carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
-               (carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbeFoncee))
+            if (autochemin < 5)
             {
+
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
                 {
-                    sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
-                    position.Y -= vitesse_sprite;
-                    
+                    sourceRectangle = new Rectangle((int)index * 5, 33, 16, 23);
+                    position.X += vitesse_sprite;
                 }
                 else
                     index = 0f;
-
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
-                {
-                    position.Y -= 2 * vitesse_sprite;
-                    
-                    vitesse_animation = 0.008f * 2;
-                }
             }
-
-            if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && keyboardState.IsKeyDown(Keys.S) && descendre &&
-                (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
-                (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X) / 28].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type == TypeCase.herbeFoncee))
+            else if (autochemin < 10)
             {
+                //  Console.WriteLine("recule");
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-
                 if (index < maxIndex)
                 {
-                    sourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
+                    sourceRectangle = new Rectangle((int)index * 5, 65, 16, 23);
                     position.Y += vitesse_sprite;
-               
                 }
                 else
                     index = 0f;
-
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
-                {
-                    position.Y += 2 * vitesse_sprite;
-                    
-                    vitesse_animation = 0.008f * 2;
-                }
             }
-
-            if (position.X > 0 && keyboardState.IsKeyDown(Keys.Q) && gauche &&
-               (carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee) &&
-               (carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee))
+            else if (autochemin < 15)
             {
+
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
                 {
-                    sourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
+                    sourceRectangle = new Rectangle((int)index * 5, 98, 16, 23);
                     position.X -= vitesse_sprite;
-                   
                 }
                 else
                     index = 0f;
-
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
-                {
-                    position.X -= 2 * vitesse_sprite;
-                    
-                    vitesse_animation = 0.008f * 2;
-                }
             }
-
-            if (position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && keyboardState.IsKeyDown(Keys.D) && droite &&
-                (carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee) &&
-                (carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee))
+            else if (autochemin < 20)
             {
+                //  Console.WriteLine("recule");
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
                 {
-                    sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
-                    position.X += vitesse_sprite;                    
+                    sourceRectangle = new Rectangle((int)index * 5, 1, 16, 23);
+                    position.Y -= vitesse_sprite;
                 }
                 else
                     index = 0f;
-
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
-                {
-                    position.X += 2 * vitesse_sprite;
-                   
-                    vitesse_animation = 0.008f * 2;
-                }
+            }
+            else
+            {
+                Console.WriteLine("autochemin = " + autochemin);
+                autochemin = 0;
             }
 
             msElapsed += gameTime.ElapsedGameTime.Milliseconds;

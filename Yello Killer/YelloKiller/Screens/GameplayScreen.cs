@@ -20,6 +20,7 @@ namespace Yellokiller
         mur = 'm',
         maison = 'M',
         origineEnnemi = 'E',
+        origineEnnemi2 = 'e',
         origineJoueur1 = 'o',
         origineJoueur2 = 'O'
     };
@@ -34,7 +35,7 @@ namespace Yellokiller
         SpriteBatch spriteBatch;
         Hero1 hero1;
         Hero2 hero2;
-        Ennemi ennemi;
+        Ennemi ennemi, ennemi2;
         Carte carte;
         Rectangle camera;
         Souris souris;
@@ -60,6 +61,7 @@ namespace Yellokiller
             hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
             hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
             ennemi = new Ennemi(28 * carte.origineEnnemi, new Rectangle(0, 0, 16, 25), TypeCase.origineEnnemi);
+            ennemi2 = new Ennemi(28 * carte.origineEnnemi2, new Rectangle(0, 0, 16, 25), TypeCase.origineEnnemi2);
         }
 
 
@@ -77,7 +79,8 @@ namespace Yellokiller
             audio.LoadContent(content);
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
-            ennemi.LoadContent(content, 3);
+            ennemi.LoadContent(content, 2);
+            ennemi2.LoadContent(content, 2);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -108,6 +111,7 @@ namespace Yellokiller
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
                 hero2.Update(gameTime, carte, hero1, this, ref camera, _shuriken);
                 ennemi.Update(gameTime, carte, this);
+                ennemi2.Update(gameTime, carte, this);
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
@@ -131,6 +135,8 @@ namespace Yellokiller
             hero1.Draw(spriteBatch, gameTime, camera, carte, hero1);
             hero2.Draw(spriteBatch, gameTime, camera, carte, hero2);
             ennemi.Draw(spriteBatch, gameTime, carte, ennemi);
+            ennemi2.Draw(spriteBatch, gameTime, carte, ennemi2);
+
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];

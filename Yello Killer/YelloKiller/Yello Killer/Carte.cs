@@ -9,7 +9,8 @@ namespace Yellokiller
     {
         Case[,] _case;
         public Vector2 origineJoueur1 = new Vector2(0, 0), origineJoueur2 = new Vector2(0, 0);
-        public Vector2 origineEnnemi = new Vector2(0, 0);
+        public Vector2 origineEnnemi = new Vector2(2, 2);
+        public Vector2 origineEnnemi2 = new Vector2(4, 4);
 
         public Carte(Vector2 size)
         {
@@ -108,9 +109,6 @@ namespace Yellokiller
                             break;
                         case ('a'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
-                            break;
-                        case ('E'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.origineEnnemi);
                             break;
                         case ('m'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.mur);
