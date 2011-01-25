@@ -18,10 +18,8 @@ namespace Yellokiller
         Rectangle? sourceRectangle = null;
         Rectangle rectangle;
         Texture2D texture;
-        KeyboardState lastKeyboardState, keyboardState;
         int msElapsed = 0;
         public bool ishero1 = false;
-        KeyboardState current;
         public bool monter = true, descendre = true, droite = true, gauche = true;
         List<Case> walkingList = new List<Case>();
 
@@ -57,14 +55,11 @@ namespace Yellokiller
         {
             texture = content.Load<Texture2D>("NinjaTrans");
             this.maxIndex = maxIndex;
-        }        
+        }
 
         public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreen yk, ref Rectangle camera, List<Shuriken> _shuriken)
         {
-            lastKeyboardState = keyboardState;
-            keyboardState = Keyboard.GetState();
-           
-            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !current.IsKeyDown(Keys.Space))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Space))
             {
                 ishero1 = true;
                 _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, this, hero2));
@@ -73,12 +68,10 @@ namespace Yellokiller
             else
                 ishero1 = false;
 
-            current = Keyboard.GetState();
-
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             Moteur_physique.Collision(this.rectangle, hero2.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
 
-            if (keyboardState.IsKeyUp(Keys.Z))                        // arreter le sprite
+            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Z))                        // arreter le sprite
             {
                 if (sourceRectangle.Value.Y == 133)
                     sourceRectangle = new Rectangle(24, 133, 16, 28);
@@ -89,14 +82,14 @@ namespace Yellokiller
                 if (sourceRectangle.Value.Y == 166)
                     sourceRectangle = new Rectangle(24, 166, 16, 28);
             }
-            if (keyboardState.IsKeyUp(Keys.LeftShift))
+            if (!ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftShift))
                 vitesse_animation = 0.008f;
 
-            if (position.Y > 0 && keyboardState.IsKeyDown(Keys.Z) && monter &&
-               (carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
-               (carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbeFoncee))
+            if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Z) && monter &&
+           (carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
+            carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
+           (carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbe ||
+            carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbeFoncee))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
@@ -109,7 +102,7 @@ namespace Yellokiller
                 else
                     index = 0f;
 
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftShift))
                 {
                     position.Y -= 2 * vitesse_sprite;
                     if (camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
@@ -118,11 +111,11 @@ namespace Yellokiller
                 }
             }
 
-            if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && keyboardState.IsKeyDown(Keys.S) && descendre &&
-                (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
-                (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X) / 28].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type == TypeCase.herbeFoncee))
+            if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) && descendre &&
+            (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
+             carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
+            (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X) / 28].Type == TypeCase.herbe ||
+             carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type == TypeCase.herbeFoncee))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
@@ -136,7 +129,7 @@ namespace Yellokiller
                 else
                     index = 0f;
 
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftShift))
                 {
                     position.Y += 2 * vitesse_sprite;
                     if (camera.Y + 2 * vitesse_sprite < 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 200)
@@ -145,11 +138,11 @@ namespace Yellokiller
                 }
             }
 
-            if (position.X > 0 && keyboardState.IsKeyDown(Keys.Q) && gauche &&
-               (carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee) &&
-               (carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee))
+            if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Q) && gauche &&
+           (carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
+            carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee) &&
+           (carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
+            carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
@@ -162,7 +155,7 @@ namespace Yellokiller
                 else
                     index = 0f;
 
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftShift))
                 {
                     position.X -= 2 * vitesse_sprite;
                     if (camera.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
@@ -171,11 +164,11 @@ namespace Yellokiller
                 }
             }
 
-            if (position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && keyboardState.IsKeyDown(Keys.D) && droite &&
-                (carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee) &&
-                (carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee))
+            if (position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.D) && droite &&
+            (carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
+             carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee) &&
+            (carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
+             carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee))
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
@@ -188,7 +181,7 @@ namespace Yellokiller
                 else
                     index = 0f;
 
-                if (keyboardState.IsKeyDown(Keys.LeftShift))
+                if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftShift))
                 {
                     position.X += 2 * vitesse_sprite;
                     if (camera.X + 2 * vitesse_sprite < 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 200)
