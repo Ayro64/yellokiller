@@ -110,7 +110,7 @@ namespace Yellokiller
                     else
                         enableOrigine1 = false;
 
-                    origine1 = new Vector2((int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1);
+                    origine1 = new Vector2((int)curseur.Position.X + camera.X - 1, (int)curseur.Position.Y + camera.Y - 1);
                     carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = TypeCase.origineJoueur1;
 
                 }
@@ -121,7 +121,7 @@ namespace Yellokiller
                     else
                         enableOrigine2 = false;
 
-                    origine2 = new Vector2((int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1);
+                    origine2 = new Vector2((int)curseur.Position.X + camera.X - 1, (int)curseur.Position.Y + camera.Y - 1);
                     carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = TypeCase.origineJoueur2;
                 }
             }
