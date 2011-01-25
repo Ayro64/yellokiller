@@ -38,9 +38,7 @@ namespace Yellokiller
         Ennemi ennemi, ennemi2;
         Carte carte;
         Rectangle camera;
-        Souris souris;
         Player audio;
-        KeyboardState keyboardState, lastKeyboardState;
         List<Shuriken> _shuriken;
 
 
@@ -53,7 +51,6 @@ namespace Yellokiller
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
             audio = new Player(1);
-            souris = new Souris();
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.OuvrirCarte("save0.txt");
             _shuriken = new List<Shuriken>();
@@ -98,7 +95,6 @@ namespace Yellokiller
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            souris.Update();
             ScreenManager.Game.IsMouseVisible = true;
             if (IsActive)
             {
@@ -122,8 +118,7 @@ namespace Yellokiller
         public override void Draw(GameTime gameTime)
         {
 
-            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
-                                               Color.DarkOrchid, 0, 0);
+            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.DarkOrchid, 0, 0);
 
             // If the game is transitioning on or off, fade it out to black.
             if (TransitionPosition > 0)
@@ -170,9 +165,6 @@ namespace Yellokiller
             // Look up inputs for the active player profile.
             int playerIndex = (int)ControllingPlayer.Value;
 
-            lastKeyboardState = keyboardState;
-            keyboardState = input.CurrentKeyboardStates[playerIndex];
-
             GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
 
             // The game pauses either if the user presses the pause button, or if
@@ -188,11 +180,11 @@ namespace Yellokiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1), ControllingPlayer, true);
             }
 
-            if (keyboardState.IsKeyDown(Keys.G))
+            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.G))
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
 
             // Looks up input for the Media Player.
-            audio.HandleInput(keyboardState, lastKeyboardState);
+            audio.HandleInput();
         }
         #endregion
     }

@@ -39,10 +39,10 @@ namespace Yellokiller
                 listeRectangles[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, (int)-ascenseur.Position.Y + i * 80, 28, 28);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseur, Souris souris)
+        public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseur)
         {
             foreach (Rectangle rect in listeRectangles)
-                if (souris.Rectangle.Intersects(rect))
+                if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rect))
                     spriteBatch.Draw(fond, new Vector2(rect.X - 2, rect.Y - 2), Color.White);
 
             spriteBatch.Draw(herbe, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y), Color.White);

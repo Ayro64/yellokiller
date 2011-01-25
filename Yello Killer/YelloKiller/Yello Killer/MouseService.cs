@@ -1,33 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 
-namespace Yellokiller.Yello_Killer
+namespace Yellokiller
 {
     public class MouseService : GameComponent, IMouseService
     {
-        MouseState mouseState = Mouse.GetState();
-        MouseState lastMouseState;
+        MouseState MState = Mouse.GetState(), LastMState;
+        Rectangle rectangle;
+
         public MouseService(Game game)
             : base(game)
         {
             ServiceHelper.Add<IMouseService>(this);
         }
-        public bool LeftButtonHasBeenPressed()
+
+        public bool ClicBoutonGauche()
         {
-            return mouseState.LeftButton == ButtonState.Released &&
-            lastMouseState.LeftButton == ButtonState.Pressed;
+            return MState.LeftButton == ButtonState.Released && LastMState.LeftButton == ButtonState.Pressed;
         }
-        public Vector2 GetCoordinates()
+
+        public bool BoutonGauchePresse()
         {
-            return new Vector2(mouseState.X, mouseState.Y);
+            return MState.LeftButton == ButtonState.Pressed;
         }
+
+        public bool BoutonGaucheEnfonce()
+        {
+            return MState.LeftButton == ButtonState.Pressed && LastMState.LeftButton == ButtonState.Released;
+        }
+
+        public Vector2 Coordonnees()
+        {
+            return new Vector2(MState.X, MState.Y);
+        }
+
+        public Rectangle Rectangle()
+        {
+            return rectangle;
+        }
+
+        public bool DansLEcran()
+        {
+            if (MState.X < 0)
+                return false;
+            if (MState.Y < 0)
+                return false;
+            if (MState.X > Taille_Ecran.LARGEUR_ECRAN)
+                return false;
+            if (MState.Y > Taille_Ecran.HAUTEUR_ECRAN)
+                return false;
+            return true;
+        }
+         
+
+        public bool DansLaCarte()
+        {
+                if (MState.X > 28 && MState.X < Taille_Ecran.LARGEUR_ECRAN - 84 && MState.Y > 28 && MState.Y < Taille_Ecran.HAUTEUR_ECRAN - 28)
+                    return true;
+                else
+                    return false;
+        }
+
         public override void Update(GameTime gameTime)
         {
-            lastMouseState = mouseState;
-            mouseState = Mouse.GetState();
+            LastMState = MState;
+            MState = Mouse.GetState();
+            rectangle = new Rectangle(MState.X, MState.Y, 1, 1);
         }
     }
 }

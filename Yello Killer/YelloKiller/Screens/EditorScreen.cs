@@ -1,11 +1,9 @@
+using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.GamerServices;
-using System.IO;
-using System;
-using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
 
 namespace Yellokiller
 {
@@ -17,12 +15,10 @@ namespace Yellokiller
         Carte carte;
         Cursor curseur;
         Menu menu;
-        Souris souris;
         Ascenseur ascenseur;
 
         StreamWriter sauvegarde;
         string ligne = "", nomSauvegarde = "save0";
-        KeyboardState keyboardState, lastKeyboardState;
         Rectangle camera;
         Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
         
@@ -31,7 +27,6 @@ namespace Yellokiller
 
         public EditorScreen()
         {
-            souris = new Souris();
             camera = new Rectangle(0, 0, 28, 22);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
@@ -72,13 +67,9 @@ namespace Yellokiller
             else
                 chronometre = 0;
 
-            lastKeyboardState = keyboardState;
-            keyboardState = input.CurrentKeyboardStates[playerIndex];
-
-            souris.Update();
-            ascenseur.Update(souris);
+            ascenseur.Update();
             menu.Update(ascenseur);
-            curseur.Update(content, souris, menu);
+            curseur.Update(content, menu);
 
             GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
 
@@ -95,19 +86,19 @@ namespace Yellokiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 2), ControllingPlayer, true);
             }
 
-            if (camera.X > 0 && (souris.Rectangle.X < 28 && souris.Rectangle.X > 0 || keyboardState.IsKeyDown(Keys.Left)))
+            if (camera.X > 0 && (ServiceHelper.Get<IMouseService>().Coordonnees().X < 28 && ServiceHelper.Get<IMouseService>().Coordonnees().X > 0 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left)))
                 camera.X--;
 
-            if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && (souris.Rectangle.X > Taille_Ecran.LARGEUR_ECRAN - 84 && souris.Rectangle.X < Taille_Ecran.LARGEUR_ECRAN - 56 || keyboardState.IsKeyDown(Keys.Right)))
+            if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && (ServiceHelper.Get<IMouseService>().Coordonnees().X > Taille_Ecran.LARGEUR_ECRAN - 84 && ServiceHelper.Get<IMouseService>().Coordonnees().X < Taille_Ecran.LARGEUR_ECRAN - 56 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right)))
                 camera.X++;
 
-            if (camera.Y > 0 && (souris.Rectangle.Y < 28 && souris.Rectangle.Y > 0 || keyboardState.IsKeyDown(Keys.Up)))
+            if (camera.Y > 0 && (ServiceHelper.Get<IMouseService>().Coordonnees().Y < 28 && ServiceHelper.Get<IMouseService>().Coordonnees().Y > 0 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up)))
                 camera.Y--;
 
-            if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && (souris.Rectangle.Y > Taille_Ecran.HAUTEUR_ECRAN - 28 && souris.Rectangle.Y < Taille_Ecran.HAUTEUR_ECRAN || keyboardState.IsKeyDown(Keys.Down)))
+            if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && (ServiceHelper.Get<IMouseService>().Coordonnees().Y > Taille_Ecran.HAUTEUR_ECRAN - 28 && ServiceHelper.Get<IMouseService>().Coordonnees().Y < Taille_Ecran.HAUTEUR_ECRAN || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down)))
                 camera.Y++;
-                        
-            if (souris.MState.LeftButton == ButtonState.Pressed && souris.DansLaCarte)
+
+            if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
                 if (curseur.Type != TypeCase.origineJoueur1 && curseur.Type != TypeCase.origineJoueur2)
                     carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = curseur.Type;
@@ -135,7 +126,7 @@ namespace Yellokiller
                 }
             }
 
-            if (keyboardState.IsKeyDown(Keys.LeftControl) && keyboardState.IsKeyDown(Keys.S) && enableSave)
+            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) && enableSave)
             {
                 if (enableOrigine1 || enableOrigine2)
                 {
@@ -179,7 +170,7 @@ namespace Yellokiller
                 }
             }
 
-            ScreenManager.Game.IsMouseVisible = !souris.DansLaCarte;
+            ScreenManager.Game.IsMouseVisible = !ServiceHelper.Get<IMouseService>().DansLaCarte();
         }
 
         public override void Draw(GameTime gameTime)
@@ -190,10 +181,10 @@ namespace Yellokiller
 
             carte.DrawInMapEditor(spriteBatch, content, camera);
 
-            if (souris.DansLaCarte)
+            if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
 
-            menu.Draw(spriteBatch, ascenseur, souris);
+            menu.Draw(spriteBatch, ascenseur);
             ascenseur.Draw(spriteBatch);
 
             if (chronometre > 0)

@@ -10,8 +10,6 @@ namespace Yellokiller
 {
     class Player
     {
-        #region Properties
-
         public bool IsPlayer
         {
             get { return isPlayer; }
@@ -19,10 +17,6 @@ namespace Yellokiller
         }
 
         bool isPlayer = true;
-
-        #endregion
-
-        #region Fields
 
         float Volume;
         int n;
@@ -33,8 +27,6 @@ namespace Yellokiller
         SpriteFont font;
 
         Texture2D blankTexture;
-
-        #endregion
 
         #region Initialization
 
@@ -64,10 +56,10 @@ namespace Yellokiller
 
         #region Handle Input
 
-        public void HandleInput(KeyboardState keyboardState, KeyboardState lastKeyboardState)
+        public void HandleInput()
         {
             // Change track
-            if (keyboardState.IsKeyDown(Keys.K) && lastKeyboardState.IsKeyUp(Keys.K))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.K))
             {
                 n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
                 MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
@@ -75,7 +67,7 @@ namespace Yellokiller
             }
 
             // Pause player
-            if (keyboardState.IsKeyDown(Keys.L) && lastKeyboardState.IsKeyUp(Keys.L))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.L))
             {
                 if (MediaPlayer.State == MediaState.Playing)
                     MediaPlayer.Pause();
