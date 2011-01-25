@@ -23,19 +23,18 @@ namespace Yellokiller
             set { _case = value; }
         }
 
-        public bool ValidCoordinates(float x, float y)
+        public bool ValidCoordinates(float x,float y)
         {
             if (x < 0)
                 return false;
             if (y < 0)
                 return false;
-            if (x >= _case.GetLength(1))
+            if (x >= Cases.GetLength(1))
                 return false;
-            if (y >= _case.GetLength(0))
+            if (y >= Cases.GetLength(0))
                 return false;
             return true;
         }
-                    
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {

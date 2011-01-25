@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
-
-namespace Yellokiller.Yello_Killer
+﻿using Microsoft.Xna.Framework;
+namespace Yellokiller
 {
     interface IMouseService
     {
-        bool LeftButtonHasBeenPressed();
-        Vector2 GetCoordinates();
+        bool ClicBoutonGauche();
+
+        bool BoutonGauchePresse();
+
+        bool BoutonGaucheEnfonce();
+
+        bool DansLEcran();
+
+        bool DansLaCarte();
+
+        Vector2 Coordonnees();
+        
+        Rectangle Rectangle();
     }
 }

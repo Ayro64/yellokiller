@@ -35,14 +35,14 @@ namespace Yellokiller
             texture = Content.Load<Texture2D>(nom);
         }
 
-        public void Update(ContentManager content, Souris souris, Menu menu)
+        public void Update(ContentManager content, Menu menu)
         {
-            if (souris.MState.X > 0 && souris.MState.X < Taille_Map.LARGEUR_MAP * 28 && souris.MState.Y > 0 && souris.MState.Y < Taille_Map.HAUTEUR_MAP * 28)
-                position = new Vector2(souris.MState.X / 28, souris.MState.Y / 28);
+            if (ServiceHelper.Get<IMouseService>().DansLEcran())
+                position = new Vector2((int)ServiceHelper.Get<IMouseService>().Coordonnees().X / 28, (int)ServiceHelper.Get<IMouseService>().Coordonnees().Y / 28);
 
             for (int i = 0; i < menu.nbTextures; i++)
             {
-                if (souris.MState.LeftButton == ButtonState.Pressed && souris.LastMState.LeftButton == ButtonState.Released && souris.Rectangle.Intersects(menu.ListesRectangles[i]))
+                if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(menu.ListesRectangles[i]))
                 {
                     switch (i)
                     {
@@ -77,8 +77,7 @@ namespace Yellokiller
                         case (7):
                             type = TypeCase.origineJoueur2;
                             LoadContent(content, "origine2");
-                            break;
-                       
+                            break;                       
                     }
                 }
             }

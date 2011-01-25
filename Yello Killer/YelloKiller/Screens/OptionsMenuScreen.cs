@@ -148,7 +148,7 @@ namespace Yellokiller
             lastKeyboardState = keyboardState;
             keyboardState = input.CurrentKeyboardStates[playerIndex];
 
-            audio.HandleInput(keyboardState, lastKeyboardState);
+            audio.HandleInput();
 
             if (input.IsMenuSelect(ControllingPlayer, out PlayerIndex))
             {

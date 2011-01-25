@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Net;
-using Microsoft.Xna.Framework.Storage;
 
 namespace Yellokiller
 {
@@ -23,12 +14,12 @@ namespace Yellokiller
             ServiceHelper.Add<IKeyboardService>(this);
         }
 
-        public bool KeyHasBeenPressed(Keys key)
+        public bool ToucheAEtePressee(Keys key)
         {
-            return lastKBState.IsKeyDown(key) && KBState.IsKeyUp(key);
+            return lastKBState.IsKeyUp(key) && KBState.IsKeyDown(key);
         }
 
-        public bool IsKeyDown(Keys key)
+        public bool TouchePresse(Keys key)
         {
             return KBState.IsKeyDown(key);
         }
@@ -37,7 +28,6 @@ namespace Yellokiller
         {
             lastKBState = KBState;
             KBState = Keyboard.GetState();
-            base.Update(gameTime);
         }
     }
 }
