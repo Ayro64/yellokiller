@@ -73,7 +73,11 @@ namespace Yellokiller
             if (sourceRectangle.Value.Y == 98)
                 sourceRectangle = new Rectangle(5, 98, 16, 23);
 
-            if (autochemin < 5)
+            if (autochemin < 5 &&  (position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && droite &&
+            (carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
+             carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee) &&
+            (carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
+             carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee)))
             {
 
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
@@ -85,9 +89,12 @@ namespace Yellokiller
                 else
                     index = 0f;
             }
-            else if (autochemin < 10)
+            else if (autochemin < 10 && (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && descendre &&
+            (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
+             carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
+            (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X) / 28].Type == TypeCase.herbe ||
+             carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type == TypeCase.herbeFoncee)))
             {
-                //  Console.WriteLine("recule");
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
                 {
@@ -97,7 +104,11 @@ namespace Yellokiller
                 else
                     index = 0f;
             }
-            else if (autochemin < 15)
+            else if (autochemin < 15 && (position.X > 0 && gauche &&
+           (carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
+            carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee) &&
+           (carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
+            carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee)))
             {
 
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
@@ -109,9 +120,12 @@ namespace Yellokiller
                 else
                     index = 0f;
             }
-            else if (autochemin < 20)
+            else if (autochemin < 20 && (position.Y > 0 && monter &&
+           (carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
+            carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
+           (carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbe ||
+            carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbeFoncee)))
             {
-                //  Console.WriteLine("recule");
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
                 {
@@ -147,3 +161,14 @@ namespace Yellokiller
         }
     }
 }
+
+
+       
+
+
+    
+
+           
+       
+
+           
