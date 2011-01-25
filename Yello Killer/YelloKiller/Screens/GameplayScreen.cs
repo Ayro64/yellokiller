@@ -136,7 +136,7 @@ namespace Yellokiller
             {
                 Shuriken m = _shuriken[i];
                 m.Update(gameTime, carte);
-                m.draw(spriteBatch, camera);
+                m.Draw(spriteBatch, camera);
 
                 if (m.Get_X() > Taille_Map.LARGEUR_MAP * 28 || _shuriken[i].existshuriken == false)
                 {

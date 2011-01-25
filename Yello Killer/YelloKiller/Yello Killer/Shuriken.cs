@@ -50,7 +50,7 @@ namespace Yellokiller.Yello_Killer
             }
         }
 
-        public void draw(SpriteBatch sb, Rectangle camera)
+        public void Draw(SpriteBatch sb, Rectangle camera)
         {
             sb.Draw(_shuriken, new Vector2(position.X - camera.X, position.Y - camera.Y), null, Color.White, RotationAngle, origin, 1.0f,
                 SpriteEffects.None, 0f);
@@ -59,10 +59,11 @@ namespace Yellokiller.Yello_Killer
         public void Update(GameTime gameTime, Carte carte)
         {
 
-            if (carte.Cases[(int)(position.Y) / 28, (int)((position.X - 12) / 28)].Type == TypeCase.herbe ||
-                    carte.Cases[(int)(position.Y) / 28, (int)((position.X - 12) / 28)].Type == TypeCase.herbeFoncee &&
-                   (carte.Cases[(int)(position.Y) / 28, (int)((position.X - 12) / 28)].Type == TypeCase.herbe ||
-                    carte.Cases[(int)(position.Y) / 28, (int)((position.X - 12) / 28)].Type == TypeCase.herbeFoncee))
+            if (position.X > 0 && position.X < 28 * (Taille_Map.LARGEUR_MAP - 1) && position.Y > 0 && position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) &&
+                     carte.Cases[(int)(position.Y) / 28, (int)((position.X - 12) / 28)].Type == TypeCase.herbe ||
+                     carte.Cases[(int)(position.Y) / 28, (int)((position.X - 12) / 28)].Type == TypeCase.herbeFoncee &&
+                   ( carte.Cases[(int)(position.Y) / 28, (int)((position.X - 12) / 28)].Type == TypeCase.herbe ||
+                     carte.Cases[(int)(position.Y) / 28, (int)((position.X - 12) / 28)].Type == TypeCase.herbeFoncee))
             {
                 existshuriken = true;
                 position += 2 * direction;
