@@ -111,14 +111,26 @@ namespace Yellokiller
             {
                 if (curseur.Type != TypeCase.origineJoueur1 && curseur.Type != TypeCase.origineJoueur2)
                     carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = curseur.Type;
-                else if (curseur.Type == TypeCase.origineJoueur1 && enableOrigine1)
+
+                else if (curseur.Type == TypeCase.origineJoueur1)
                 {
-                    enableOrigine1 = false;
+                    if(!enableOrigine1)
+                        carte.Cases[(int)origine1.X, (int)origine1.Y].Type = TypeCase.herbe;
+                    else
+                        enableOrigine1 = false;
+
+                    origine1 = new Vector2((int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1);
                     carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = TypeCase.origineJoueur1;
+
                 }
-                else if (curseur.Type == TypeCase.origineJoueur2 && enableOrigine2)
+                else if (curseur.Type == TypeCase.origineJoueur2)
                 {
-                    enableOrigine2 = false;
+                    if(!enableOrigine2)
+                        carte.Cases[(int)origine2.X, (int)origine2.Y].Type = TypeCase.herbe;
+                    else
+                        enableOrigine2 = false;
+
+                    origine2 = new Vector2((int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1);
                     carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = TypeCase.origineJoueur2;
                 }
             }
@@ -148,16 +160,9 @@ namespace Yellokiller
                         for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
                         {
                             if (carte.Cases[y, x].Type == TypeCase.origineJoueur1)
-                            {
                                 ligne += 'h';
-                                origine1 = new Vector2(x, y);
-                            }
                             else if (carte.Cases[y, x].Type == TypeCase.origineJoueur2)
-                            {
                                 ligne += 'h';
-                                origine2 = new Vector2(x, y);
-                            }
-
                             else
                                 ligne += (char)carte.Cases[y, x].Type;
                         }
