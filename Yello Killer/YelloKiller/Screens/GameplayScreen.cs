@@ -127,7 +127,7 @@ namespace Yellokiller
             hero1.Draw(spriteBatch, gameTime, camera, carte, hero1);
             hero2.Draw(spriteBatch, gameTime, camera, carte, hero2);
             foreach (Ennemi connard in _ennemis)
-                connard.Draw(spriteBatch);
+                connard.Draw(spriteBatch, camera);
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];
