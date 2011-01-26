@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Yellokiller
 {
@@ -9,7 +10,7 @@ namespace Yellokiller
     {
         Case[,] _case;
         public Vector2 origineJoueur1 = new Vector2(0, 0), origineJoueur2 = new Vector2(0, 0);
-        public Vector2 origineEnnemi;
+        public List<Vector2> _originesEnnemis = new List<Vector2>();
 
         public Carte(Vector2 size)
         {
@@ -116,13 +117,20 @@ namespace Yellokiller
                             break;
                         case ('E'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            origineEnnemi = new Vector2(x, y);
+                            _originesEnnemis.Add(new Vector2(x, y));
                             break;
-                        
+                        case ('o'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            origineJoueur1 = new Vector2(x, y);
+                            break;
+                        case ('O'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            origineJoueur2 = new Vector2(x, y);
+                            break;                        
                     }
                 }
             }
-
+            /*
             line = file.ReadLine();
             origineJoueur1.X = stringToInt(line);
 
@@ -133,7 +141,7 @@ namespace Yellokiller
             origineJoueur2.X = stringToInt(line);
 
             line = file.ReadLine();
-            origineJoueur2.Y = stringToInt(line);
+            origineJoueur2.Y = stringToInt(line);*/
 
             file.Close();
         }

@@ -161,7 +161,7 @@ namespace Yellokiller
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Carte carte, Ennemi ennemi)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, new Vector2(position.X, position.Y), sourceRectangle, Color.White);
         }

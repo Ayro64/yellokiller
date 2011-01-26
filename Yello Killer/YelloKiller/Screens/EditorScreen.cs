@@ -86,13 +86,13 @@ namespace Yellokiller
             if (camera.X > 0 && (ServiceHelper.Get<IMouseService>().Coordonnees().X < 28 && ServiceHelper.Get<IMouseService>().Coordonnees().X > 0 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left)))
                 camera.X--;
 
-            if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && (ServiceHelper.Get<IMouseService>().Coordonnees().X > Taille_Ecran.LARGEUR_ECRAN - 84 && ServiceHelper.Get<IMouseService>().Coordonnees().X < Taille_Ecran.LARGEUR_ECRAN - 56 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right)))
+            else if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && (ServiceHelper.Get<IMouseService>().Coordonnees().X > Taille_Ecran.LARGEUR_ECRAN - 84 && ServiceHelper.Get<IMouseService>().Coordonnees().X < Taille_Ecran.LARGEUR_ECRAN - 56 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right)))
                 camera.X++;
 
-            if (camera.Y > 0 && (ServiceHelper.Get<IMouseService>().Coordonnees().Y < 28 && ServiceHelper.Get<IMouseService>().Coordonnees().Y > 0 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up)))
+            else if (camera.Y > 0 && (ServiceHelper.Get<IMouseService>().Coordonnees().Y < 28 && ServiceHelper.Get<IMouseService>().Coordonnees().Y > 0 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up)))
                 camera.Y--;
 
-            if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && (ServiceHelper.Get<IMouseService>().Coordonnees().Y > Taille_Ecran.HAUTEUR_ECRAN - 28 && ServiceHelper.Get<IMouseService>().Coordonnees().Y < Taille_Ecran.HAUTEUR_ECRAN || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down)))
+            else if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && (ServiceHelper.Get<IMouseService>().Coordonnees().Y > Taille_Ecran.HAUTEUR_ECRAN - 28 && ServiceHelper.Get<IMouseService>().Coordonnees().Y < Taille_Ecran.HAUTEUR_ECRAN || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down)))
                 camera.Y++;
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
@@ -103,23 +103,23 @@ namespace Yellokiller
                 else if (curseur.Type == TypeCase.origineJoueur1)
                 {
                     if(!enableOrigine1)
-                        carte.Cases[(int)origine1.X, (int)origine1.Y].Type = TypeCase.herbe;
+                        carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
                     else
                         enableOrigine1 = false;
 
                     origine1 = new Vector2((int)curseur.Position.X + camera.X - 1, (int)curseur.Position.Y + camera.Y - 1);
-                    carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = TypeCase.origineJoueur1;
+                    carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.origineJoueur1;
 
                 }
                 else if (curseur.Type == TypeCase.origineJoueur2)
                 {
                     if(!enableOrigine2)
-                        carte.Cases[(int)origine2.X, (int)origine2.Y].Type = TypeCase.herbe;
+                        carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
                     else
                         enableOrigine2 = false;
 
                     origine2 = new Vector2((int)curseur.Position.X + camera.X - 1, (int)curseur.Position.Y + camera.Y - 1);
-                    carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = TypeCase.origineJoueur2;
+                    carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.origineJoueur2;
                 }
             }
 
@@ -147,20 +147,20 @@ namespace Yellokiller
                     {
                         for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
                         {
-                            if (carte.Cases[y, x].Type == TypeCase.origineJoueur1)
+                            /*if (carte.Cases[y, x].Type == TypeCase.origineJoueur1)
                                 ligne += 'h';
                             else if (carte.Cases[y, x].Type == TypeCase.origineJoueur2)
                                 ligne += 'h';
-                            else
+                            else*/
                                 ligne += (char)carte.Cases[y, x].Type;
                         }
                         sauvegarde.WriteLine(ligne);
                         ligne = "";
                     }
-                    sauvegarde.WriteLine(origine1.X);
+                    /*sauvegarde.WriteLine(origine1.X);
                     sauvegarde.WriteLine(origine1.Y);
                     sauvegarde.WriteLine(origine2.X);
-                    sauvegarde.WriteLine(origine2.Y);
+                    sauvegarde.WriteLine(origine2.Y);*/
 
                     sauvegarde.Close();
                     enableSave = false;
@@ -185,12 +185,12 @@ namespace Yellokiller
             ascenseur.Draw(spriteBatch);
 
             if (chronometre > 0)
-                spriteBatch.DrawString(ScreenManager.font, "Un ou des personnages n'a / n'ont pas été placé.\n\nVeuillez placer les deux personnages avant de sauvegarder.\n\nMerci", new Vector2(100), Color.Red);
+                spriteBatch.DrawString(ScreenManager.font, "Un ou des personnages n'a / n'ont pas été placé.\n\nVeuillez placer les deux personnages avant de sauvegarder.\n\nMerci", new Vector2(10), Color.White);
             if (chronometre > 300)
                 afficheMessageErreur = false;
 
             if(!enableSave)
-                spriteBatch.DrawString(ScreenManager.font, "Fichier sauvegardé sous " + nomSauvegarde.ToString() + ".txt" + "\n\nAppuyez sur ECHAP pour quitter.", new Vector2(100), Color.Red);
+                spriteBatch.DrawString(ScreenManager.font, "Fichier sauvegardé sous " + nomSauvegarde.ToString() + ".txt" + "\n\nAppuyez sur ECHAP pour quitter.", new Vector2(10), Color.White);
 
             spriteBatch.End();
 

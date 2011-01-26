@@ -34,11 +34,11 @@ namespace Yellokiller
         SpriteBatch spriteBatch;
         Hero1 hero1;
         Hero2 hero2;
-        Ennemi ennemi;
         Carte carte;
         Rectangle camera;
         Player audio;
         List<Shuriken> _shuriken;
+        List<Ennemi> _ennemis;
 
 
         #endregion
@@ -56,7 +56,10 @@ namespace Yellokiller
             camera = new Rectangle(0, 0, 32, 24);
             hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
             hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
-            ennemi = new Ennemi(28 * carte.origineEnnemi, new Rectangle(5, 1, 16, 23), TypeCase.origineEnnemi);
+            _ennemis = new List<Ennemi>();
+
+            foreach (Vector2 position in carte._originesEnnemis)
+                _ennemis.Add(new Ennemi(28 * position, new Rectangle(5, 1, 16, 23), TypeCase.origineEnnemi));
         }
 
 
@@ -74,7 +77,8 @@ namespace Yellokiller
             audio.LoadContent(content);
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
-            ennemi.LoadContent(content, 2);
+            foreach (Ennemi mechant in _ennemis)
+                mechant.LoadContent(content, 2);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -95,11 +99,12 @@ namespace Yellokiller
             ScreenManager.Game.IsMouseVisible = true;
             if (IsActive)
             {
-                
+
 
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
                 hero2.Update(gameTime, carte, hero1, this, ref camera, _shuriken);
-                ennemi.Update(gameTime, carte, this, hero1, hero2);
+                foreach (Ennemi pasgentil in _ennemis)
+                    pasgentil.Update(gameTime, carte, this, hero1, hero2);
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
@@ -121,7 +126,8 @@ namespace Yellokiller
             carte.DrawInGame(spriteBatch, content, camera);
             hero1.Draw(spriteBatch, gameTime, camera, carte, hero1);
             hero2.Draw(spriteBatch, gameTime, camera, carte, hero2);
-            ennemi.Draw(spriteBatch, gameTime, carte, ennemi);
+            foreach (Ennemi connard in _ennemis)
+                connard.Draw(spriteBatch);
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];
