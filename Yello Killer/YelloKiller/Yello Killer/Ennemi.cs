@@ -63,12 +63,12 @@ namespace Yellokiller
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-        //    Console.WriteLine(autochemin);
 
-            if (this.position.Y - hero1.Position.Y < 2 || this.position.Y - hero2.Position.Y < 2)
+            if (this.position.Y - hero1.Position.Y < 5 && this.position.Y - hero1.Position.Y > -5
+                || this.position.Y - hero2.Position.Y < 5 && this.position.Y - hero2.Position.Y > -5)
             {
-                Console.WriteLine("visuel = " + gameTime.ElapsedGameTime.Milliseconds * 0.001);
-            
+                autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                Console.WriteLine("posision = " + (this.position.Y - hero1.Position.Y));            
             }
 
             if (sourceRectangle.Value.Y == 1)
@@ -144,7 +144,6 @@ namespace Yellokiller
             }
             else
             {
-               // Console.WriteLine("autochemin = " + autochemin);
                 autochemin = 0;
             }
 
