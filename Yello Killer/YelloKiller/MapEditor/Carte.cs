@@ -60,7 +60,7 @@ namespace Yellokiller
             }
         }
 
-        private int stringToInt(string s)
+        /*private int stringToInt(string s)
         {
             int ret = 0, dec = 1;
 
@@ -71,7 +71,7 @@ namespace Yellokiller
             }
 
             return ret;
-        }
+        }*/
 
         public void Initialisation(Vector2 size)
         {
