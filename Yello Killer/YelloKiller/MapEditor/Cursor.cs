@@ -86,7 +86,7 @@ namespace Yellokiller
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(fond, new Vector2(position.X * texture.Width - 2, position.Y * texture.Height - 2), Color.White);
-            spriteBatch.Draw(texture, new Vector2(position.X * texture.Width, position.Y * texture.Height), Color.Violet);
+            spriteBatch.Draw(texture, new Vector2(position.X * texture.Width, position.Y * texture.Height), Color.White);
         }
     }
 }
