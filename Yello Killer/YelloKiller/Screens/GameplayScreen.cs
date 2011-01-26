@@ -35,7 +35,7 @@ namespace Yellokiller
         SpriteBatch spriteBatch;
         Hero1 hero1;
         Hero2 hero2;
-        Ennemi ennemi, ennemi2;
+        Ennemi ennemi;
         Carte carte;
         Rectangle camera;
         Player audio;
@@ -58,7 +58,6 @@ namespace Yellokiller
             hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
             hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
             ennemi = new Ennemi(28 * carte.origineEnnemi, new Rectangle(0, 0, 16, 25), TypeCase.origineEnnemi);
-            ennemi2 = new Ennemi(28 * carte.origineEnnemi2, new Rectangle(0, 0, 16, 25), TypeCase.origineEnnemi2);
         }
 
 
@@ -77,7 +76,6 @@ namespace Yellokiller
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
             ennemi.LoadContent(content, 2);
-            ennemi2.LoadContent(content, 2);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -98,16 +96,11 @@ namespace Yellokiller
             ScreenManager.Game.IsMouseVisible = true;
             if (IsActive)
             {
-                /*if (souris.MState.LeftButton == ButtonState.Pressed)
-                {
-                       hero1.WalkingList = Yello_Killer.PathFinding.CalculatePathWithAStar(carte, hero1,
-                       carte.Cases[souris.MState.Y / 28, souris.MState.X / 28]);
-                }*/
+                
 
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
                 hero2.Update(gameTime, carte, hero1, this, ref camera, _shuriken);
-                ennemi.Update(gameTime, carte, this);
-                ennemi2.Update(gameTime, carte, this);
+                ennemi.Update(gameTime, carte, this, hero1, hero2);
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
@@ -130,8 +123,6 @@ namespace Yellokiller
             hero1.Draw(spriteBatch, gameTime, camera, carte, hero1);
             hero2.Draw(spriteBatch, gameTime, camera, carte, hero2);
             ennemi.Draw(spriteBatch, gameTime, carte, ennemi);
-            ennemi2.Draw(spriteBatch, gameTime, carte, ennemi2);
-
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];

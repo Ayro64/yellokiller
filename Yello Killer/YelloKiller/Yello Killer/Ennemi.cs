@@ -24,6 +24,7 @@ namespace Yellokiller
         List<Case> walkingList = new List<Case>();
         float autochemin = 0f;
         int msElapsed = 0;
+
         public Ennemi(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
         {
@@ -58,11 +59,17 @@ namespace Yellokiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, GameplayScreen yk)
+        public void Update(GameTime gameTime, Carte carte, GameplayScreen yk, Hero1 hero1, Hero2 hero2)
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-            Console.WriteLine(autochemin);
+        //    Console.WriteLine(autochemin);
+
+            if (this.position.Y - hero1.Position.Y < 2 || this.position.Y - hero2.Position.Y < 2)
+            {
+                Console.WriteLine("visuel = " + gameTime.ElapsedGameTime.Milliseconds * 0.001);
+            
+            }
 
             if (sourceRectangle.Value.Y == 1)
                 sourceRectangle = new Rectangle(5, 1, 16, 23);
@@ -137,7 +144,7 @@ namespace Yellokiller
             }
             else
             {
-                Console.WriteLine("autochemin = " + autochemin);
+               // Console.WriteLine("autochemin = " + autochemin);
                 autochemin = 0;
             }
 
