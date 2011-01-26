@@ -50,7 +50,7 @@ namespace Yellokiller
                     nomTexture = "maison";
                     break;
                 case TypeCase.origineEnnemi:
-                    nomTexture = "origineEnnemi1";
+                    nomTexture = "ennemi";
                     break;
                 case TypeCase.origineJoueur1:
                     nomTexture = "origine1";
