@@ -14,14 +14,14 @@ namespace Yellokiller
 {
     public enum TypeCase
     {
-        herbe = 'h',
-        herbeFoncee = 'H',
-        arbre = 'a',
-        mur = 'm',
-        maison = 'M',
-        origineEnnemi = 'E',
-        origineJoueur1 = 'o',
-        origineJoueur2 = 'O'
+        herbe = 1,
+        herbeFoncee = 2,
+        arbre = -1,
+        mur = -2,
+        maison = -3,
+        Ennemi = 3,
+        Joueur1 = 4,
+        Joueur2 = 5
     };
 
     public class GameplayScreen : GameScreen
@@ -54,12 +54,12 @@ namespace Yellokiller
             carte.OuvrirCarte("save0.txt");
             _shuriken = new List<Shuriken>();
             camera = new Rectangle(0, 0, 32, 24);
-            hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
-            hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
+            hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
+            hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
             _ennemis = new List<Ennemi>();
 
             foreach (Vector2 position in carte._originesEnnemis)
-                _ennemis.Add(new Ennemi(28 * position, new Rectangle(5, 1, 16, 23), TypeCase.origineEnnemi));
+                _ennemis.Add(new Ennemi(28 * position, new Rectangle(5, 1, 16, 23), TypeCase.Ennemi));
         }
 
 
