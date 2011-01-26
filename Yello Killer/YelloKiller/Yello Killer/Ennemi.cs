@@ -11,7 +11,6 @@ namespace Yellokiller
 {
     class Ennemi : Case
     {
-
         Vector2 position;
         float vitesse_animation = 0.008f;
         int vitesse_sprite = 1;
@@ -64,8 +63,8 @@ namespace Yellokiller
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
-            if (this.position.Y - hero1.Position.Y < 5 && this.position.Y - hero1.Position.Y > -5
-                || this.position.Y - hero2.Position.Y < 5 && this.position.Y - hero2.Position.Y > -5)
+            if (this.position.Y - hero1.Position.Y < 5 && this.position.Y - hero1.Position.Y > -5 || 
+                this.position.Y - hero2.Position.Y < 5 && this.position.Y - hero2.Position.Y > -5)
             {
                 autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
                 Console.WriteLine("posision = " + (this.position.Y - hero1.Position.Y));            
@@ -81,8 +80,8 @@ namespace Yellokiller
                 sourceRectangle = new Rectangle(5, 98, 16, 23);
 
             if (autochemin < 5 && position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && droite &&
-            (int)carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type > 0 &&
-                     (int)carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type > 0)
+                (int)carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type > 0 &&
+                (int)carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type > 0)
             {
 
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
@@ -95,7 +94,7 @@ namespace Yellokiller
                     index = 0f;
             }
             else if (autochemin < 10 && position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && descendre &&
-            (int)carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type > 0 &&
+                     (int)carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type > 0 &&
                      (int)carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type > 0)
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
@@ -108,8 +107,8 @@ namespace Yellokiller
                     index = 0f;
             }
             else if (autochemin < 15 && position.X > 0 && gauche &&
-           (int)carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type > 0 &&
-                (int)carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type > 0)
+                     (int)carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type > 0 &&
+                     (int)carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type > 0)
             {
 
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
@@ -122,8 +121,8 @@ namespace Yellokiller
                     index = 0f;
             }
             else if (autochemin < 20 && position.Y > 0 && monter &&
-           (int)carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type > 0 &&
-                (int)carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type > 0)
+                     (int)carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type > 0 &&
+                     (int)carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type > 0)
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
