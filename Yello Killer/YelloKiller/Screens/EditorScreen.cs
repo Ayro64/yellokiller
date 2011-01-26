@@ -97,10 +97,10 @@ namespace Yellokiller
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
-                if (curseur.Type != TypeCase.origineJoueur1 && curseur.Type != TypeCase.origineJoueur2)
+                if (curseur.Type != TypeCase.Joueur1 && curseur.Type != TypeCase.Joueur2)
                     carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = curseur.Type;
 
-                else if (curseur.Type == TypeCase.origineJoueur1)
+                else if (curseur.Type == TypeCase.Joueur1)
                 {
                     if(!enableOrigine1)
                         carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
@@ -108,10 +108,10 @@ namespace Yellokiller
                         enableOrigine1 = false;
 
                     origine1 = new Vector2((int)curseur.Position.X + camera.X - 1, (int)curseur.Position.Y + camera.Y - 1);
-                    carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.origineJoueur1;
+                    carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.Joueur1;
 
                 }
-                else if (curseur.Type == TypeCase.origineJoueur2)
+                else if (curseur.Type == TypeCase.Joueur2)
                 {
                     if(!enableOrigine2)
                         carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
@@ -119,7 +119,7 @@ namespace Yellokiller
                         enableOrigine2 = false;
 
                     origine2 = new Vector2((int)curseur.Position.X + camera.X - 1, (int)curseur.Position.Y + camera.Y - 1);
-                    carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.origineJoueur2;
+                    carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.Joueur2;
                 }
             }
 
@@ -152,7 +152,34 @@ namespace Yellokiller
                             else if (carte.Cases[y, x].Type == TypeCase.origineJoueur2)
                                 ligne += 'h';
                             else*/
-                                ligne += (char)carte.Cases[y, x].Type;
+                            switch (carte.Cases[y, x].Type)
+                            {
+                                case(TypeCase.herbe):
+                                    ligne += 'h';
+                                    break;
+                                case (TypeCase.herbeFoncee):
+                                    ligne += 'H';
+                                    break;
+                                case (TypeCase.arbre):
+                                    ligne += 'a';
+                                    break;
+                                case (TypeCase.mur):
+                                    ligne += 'm';
+                                    break;
+                                case (TypeCase.maison):
+                                    ligne += 'M';
+                                    break;
+                                case (TypeCase.Ennemi):
+                                    ligne += 'E';
+                                    break;
+                                case (TypeCase.Joueur1):
+                                    ligne += 'o';
+                                    break;
+                                case (TypeCase.Joueur2):
+                                    ligne += 'O';
+                                    break;
+                            }
+                            //ligne += (char)carte.Cases[y, x].Type;
                         }
                         sauvegarde.WriteLine(ligne);
                         ligne = "";
