@@ -94,10 +94,8 @@ namespace Yellokiller
             }
 
             if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) && monter &&
-               (carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
-               (carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type == TypeCase.herbeFoncee))
+               (int)carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type > 0 &&
+                (int)carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type > 0)
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
@@ -112,10 +110,8 @@ namespace Yellokiller
             }
 
             else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down) && descendre &&
-                (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type == TypeCase.herbeFoncee) &&
-                (carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X) / 28].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type == TypeCase.herbeFoncee))
+                (int)carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type > 0 &&
+                     (int)carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type > 0)
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
@@ -131,10 +127,8 @@ namespace Yellokiller
             }
 
             if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) && gauche &&
-               (carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee) &&
-               (carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbe ||
-                carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type == TypeCase.herbeFoncee))
+               (int)carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type > 0 &&
+                (int)carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type > 0)
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
@@ -149,10 +143,8 @@ namespace Yellokiller
             }
 
             else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) && droite &&
-                (carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee) &&
-                (carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbe ||
-                 carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type == TypeCase.herbeFoncee))
+                (int)carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type > 0 &&
+                     (int)carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type > 0)
             {
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
                 if (index < maxIndex)
