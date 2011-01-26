@@ -49,13 +49,13 @@ namespace Yellokiller
                 case TypeCase.maison:
                     nomTexture = "maison";
                     break;
-                case TypeCase.origineEnnemi:
+                case TypeCase.Ennemi:
                     nomTexture = "origineEnnemi1";
                     break;
-                case TypeCase.origineJoueur1:
+                case TypeCase.Joueur1:
                     nomTexture = "origine1";
                     break;
-                case TypeCase.origineJoueur2:
+                case TypeCase.Joueur2:
                     nomTexture = "origine2";
                     break;
                
