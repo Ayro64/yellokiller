@@ -20,7 +20,6 @@ namespace Yellokiller
         mur = 'm',
         maison = 'M',
         origineEnnemi = 'E',
-        origineEnnemi2 = 'e',
         origineJoueur1 = 'o',
         origineJoueur2 = 'O'
     };
@@ -57,7 +56,7 @@ namespace Yellokiller
             camera = new Rectangle(0, 0, 32, 24);
             hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
             hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.origineJoueur1);
-            ennemi = new Ennemi(28 * carte.origineEnnemi, new Rectangle(0, 0, 16, 25), TypeCase.origineEnnemi);
+            ennemi = new Ennemi(28 * carte.origineEnnemi, new Rectangle(5, 1, 16, 23), TypeCase.origineEnnemi);
         }
 
 
