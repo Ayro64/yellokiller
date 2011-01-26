@@ -161,9 +161,9 @@ namespace Yellokiller
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Rectangle camera)
         {
-            spriteBatch.Draw(texture, new Vector2(position.X, position.Y), sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, new Vector2(position.X - camera.X, position.Y - camera.Y), sourceRectangle, Color.White);
         }
     }
 }
