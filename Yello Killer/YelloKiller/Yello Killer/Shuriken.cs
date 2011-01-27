@@ -25,18 +25,6 @@ namespace Yellokiller.Yello_Killer
             position.X = position_ini.X + 8;
             position.Y = position_ini.Y + 4;
 
-            if (hero2.ishero2 == true)
-            {
-                if (hero2.SourceRectangle.Value.Y == 230)
-                    direction = -Vector2.UnitX;
-                else if (hero2.SourceRectangle.Value.Y == 198)
-                    direction = Vector2.UnitY;
-                else if (hero2.SourceRectangle.Value.Y == 166)
-                    direction = Vector2.UnitX;
-                else if (hero2.SourceRectangle.Value.Y == 133)
-                    direction = -Vector2.UnitY;
-            }
-
             if (hero1.ishero1 == true)
             {
                 if (hero1.SourceRectangle.Value.Y == 230)
@@ -48,6 +36,17 @@ namespace Yellokiller.Yello_Killer
                 else if (hero1.SourceRectangle.Value.Y == 133)
                     direction = -Vector2.UnitY;
             }
+            if (hero2.ishero2 == true)
+            {
+                if (hero2.SourceRectangle.Value.Y == 230)
+                    direction = -Vector2.UnitX;
+                else if (hero2.SourceRectangle.Value.Y == 198)
+                    direction = Vector2.UnitY;
+                else if (hero2.SourceRectangle.Value.Y == 166)
+                    direction = Vector2.UnitX;
+                else if (hero2.SourceRectangle.Value.Y == 133)
+                    direction = -Vector2.UnitY;
+            }           
         }
 
         public void Draw(SpriteBatch sb, Rectangle camera)
@@ -73,7 +72,6 @@ namespace Yellokiller.Yello_Killer
             }
             else
                 existshuriken = false;
-
         }
 
         public float Get_Y()

@@ -63,8 +63,9 @@ namespace Yellokiller
             {
                 ishero1 = true;
                 _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, this, hero2));
-                Console.WriteLine("ajout shuriken");
             }
+            else
+                ishero1 = false;
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             Moteur_physique.Collision(this.rectangle, hero2.Rectangle, ref droite, ref gauche, ref monter, ref descendre);

@@ -24,6 +24,7 @@ namespace Yellokiller
         public bool monter = true, descendre = true, droite = true, gauche = true;
 
         List<Case> walkingList = new List<Case>();
+
         public List<Case> WalkingList
         {
             set { if (value != null) walkingList = value; }
@@ -64,8 +65,9 @@ namespace Yellokiller
             {// lancer shuriken
                 ishero2 = true;
                 _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, hero1, this));
-                Console.WriteLine("ajout shuriken");
             }
+            else
+                ishero2 = false;
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             Moteur_physique.Collision(this.rectangle, hero1.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
