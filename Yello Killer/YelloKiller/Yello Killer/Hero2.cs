@@ -18,17 +18,10 @@ namespace Yellokiller
         Rectangle? sourceRectangle = null;
         Rectangle rectangle;
         Texture2D texture;
-        int msElapsed = 0;
+        int countshuriken = 10;
         public bool ishero2 = false;
 
         public bool monter = true, descendre = true, droite = true, gauche = true;
-
-        List<Case> walkingList = new List<Case>();
-
-        public List<Case> WalkingList
-        {
-            set { if (value != null) walkingList = value; }
-        }
 
         public Texture2D Texture
         {
@@ -59,10 +52,12 @@ namespace Yellokiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, Hero1 hero1, GameplayScreen yk, ref Rectangle camera, List<Shuriken> _shuriken)
+        public void Update(GameTime gameTime, Carte carte, Hero1 hero1, GameplayScreen yk, List<Shuriken> _shuriken)
         {
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl))
-            {// lancer shuriken
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl) && countshuriken > 0)
+            {
+                countshuriken--;
+                Console.WriteLine("il reste : " + countshuriken + " shurikens pour hero2.");
                 ishero2 = true;
                 _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, hero1, this));
             }
@@ -104,8 +99,6 @@ namespace Yellokiller
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
                     position.Y -= vitesse_sprite;
-                    if (camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
-                        camera.Y -= vitesse_sprite;
                 }
                 else
                     index = 0f;
@@ -121,8 +114,6 @@ namespace Yellokiller
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
                     position.Y += vitesse_sprite;
-                    if (camera.Y + vitesse_sprite < 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 200)
-                        camera.Y += vitesse_sprite;
                 }
                 else
                     index = 0f;
@@ -137,8 +128,6 @@ namespace Yellokiller
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
                     position.X -= vitesse_sprite;
-                    if (camera.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
-                        camera.X -= vitesse_sprite;
                 }
                 else
                     index = 0f;
@@ -153,24 +142,9 @@ namespace Yellokiller
                 {
                     sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
                     position.X += vitesse_sprite;
-                    if (camera.X + vitesse_sprite < 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 200)
-                        camera.X += vitesse_sprite;
                 }
                 else
                     index = 0f;
-            }
-
-            msElapsed += gameTime.ElapsedGameTime.Milliseconds;
-            if (walkingList.Count != 0)
-            {
-                if (msElapsed >= 100)
-                {
-                    msElapsed = 0;
-                    position.X = walkingList[walkingList.Count - 1].Position.X;
-                    position.Y = walkingList[walkingList.Count - 1].Position.Y;
-                    Position = walkingList[walkingList.Count - 1].Position;
-                    walkingList.RemoveAt(walkingList.Count - 1);
-                }
             }
         }
 

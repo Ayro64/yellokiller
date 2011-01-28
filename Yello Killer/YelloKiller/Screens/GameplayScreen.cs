@@ -102,7 +102,7 @@ namespace Yellokiller
 
 
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
-                hero2.Update(gameTime, carte, hero1, this, ref camera, _shuriken);
+                hero2.Update(gameTime, carte, hero1, this, _shuriken);
                 foreach (Ennemi pasgentil in _ennemis)
                     pasgentil.Update(gameTime, carte, this, hero1, hero2);
                 audio.Update(gameTime);
