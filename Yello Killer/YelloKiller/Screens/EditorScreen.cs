@@ -7,11 +7,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Yellokiller
 {
-   public class EditorScreen : GameScreen
+    public class EditorScreen : GameScreen
     {
         SpriteBatch spriteBatch;
         ContentManager content;
-       
+
         Carte carte;
         Cursor curseur;
         Menu menu;
@@ -21,9 +21,9 @@ namespace Yellokiller
         string ligne = "", nomSauvegarde = "save0";
         Rectangle camera;
         Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
-        
+
         bool enableOrigine1 = true, enableOrigine2 = true, enableSave = true, afficheMessageErreur = false;
-        int chronometre = 0;
+        double chronometre = 0;
 
         public EditorScreen()
         {
@@ -40,7 +40,7 @@ namespace Yellokiller
             menu = new Menu(content, 8);
             curseur = new Cursor(content);
             ascenseur = new Ascenseur(content);
-            
+
             spriteBatch = ScreenManager.SpriteBatch;
         }
 
@@ -51,6 +51,10 @@ namespace Yellokiller
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
+            if (afficheMessageErreur)
+                chronometre += gameTime.ElapsedGameTime.TotalSeconds;
+
+
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
@@ -59,13 +63,7 @@ namespace Yellokiller
             if (input == null)
                 throw new ArgumentNullException("input");
 
-            
             int playerIndex = (int)ControllingPlayer.Value;
-
-            if (afficheMessageErreur)
-                chronometre++;
-            else
-                chronometre = 0;
 
             ascenseur.Update();
             menu.Update(ascenseur);
@@ -73,9 +71,7 @@ namespace Yellokiller
 
             GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
 
-          
-            bool gamePadDisconnected = !gamePadState.IsConnected &&
-                                       input.GamePadWasConnected[playerIndex];
+            bool gamePadDisconnected = !gamePadState.IsConnected && input.GamePadWasConnected[playerIndex];
 
             if (input.IsPauseGame(ControllingPlayer) || gamePadDisconnected)
             {
@@ -102,7 +98,7 @@ namespace Yellokiller
 
                 else if (curseur.Type == TypeCase.Joueur1)
                 {
-                    if(!enableOrigine1)
+                    if (!enableOrigine1)
                         carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
                     else
                         enableOrigine1 = false;
@@ -113,7 +109,7 @@ namespace Yellokiller
                 }
                 else if (curseur.Type == TypeCase.Joueur2)
                 {
-                    if(!enableOrigine2)
+                    if (!enableOrigine2)
                         carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
                     else
                         enableOrigine2 = false;
@@ -125,14 +121,10 @@ namespace Yellokiller
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) && enableSave)
             {
-                if (enableOrigine1 || enableOrigine2)
-                {
-                    afficheMessageErreur = true;
-                    chronometre = 0;
-                }
-                else if (!(enableOrigine1 || enableOrigine2))
-                {
+                afficheMessageErreur = enableOrigine1 || enableOrigine2;
 
+                if (!(enableOrigine1 || enableOrigine2))
+                {
                     /*fileExist = File.Exists(nomSauvegarde + ".txt");
                while (fileExist)
                {
@@ -147,14 +139,9 @@ namespace Yellokiller
                     {
                         for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
                         {
-                            /*if (carte.Cases[y, x].Type == TypeCase.origineJoueur1)
-                                ligne += 'h';
-                            else if (carte.Cases[y, x].Type == TypeCase.origineJoueur2)
-                                ligne += 'h';
-                            else*/
                             switch (carte.Cases[y, x].Type)
                             {
-                                case(TypeCase.herbe):
+                                case (TypeCase.herbe):
                                     ligne += 'h';
                                     break;
                                 case (TypeCase.herbeFoncee):
@@ -179,15 +166,10 @@ namespace Yellokiller
                                     ligne += 'O';
                                     break;
                             }
-                            //ligne += (char)carte.Cases[y, x].Type;
                         }
                         sauvegarde.WriteLine(ligne);
                         ligne = "";
                     }
-                    /*sauvegarde.WriteLine(origine1.X);
-                    sauvegarde.WriteLine(origine1.Y);
-                    sauvegarde.WriteLine(origine2.X);
-                    sauvegarde.WriteLine(origine2.Y);*/
 
                     sauvegarde.Close();
                     enableSave = false;
@@ -211,12 +193,16 @@ namespace Yellokiller
             menu.Draw(spriteBatch, ascenseur);
             ascenseur.Draw(spriteBatch);
 
-            if (chronometre > 0)
-                spriteBatch.DrawString(ScreenManager.font, "Un ou des personnages n'a / n'ont pas été placé.\n\nVeuillez placer les deux personnages avant de sauvegarder.\n\nMerci", new Vector2(10), Color.White);
-            if (chronometre > 300)
+            if (chronometre > 3)
+            {
                 afficheMessageErreur = false;
+                chronometre = 0;
+            }
+            else if (chronometre > 0)
+                spriteBatch.DrawString(ScreenManager.font, "Un ou des personnages n'a / n'ont pas été placé.\n\nVeuillez placer les deux personnages avant de sauvegarder.\n\nMerci", new Vector2(10), Color.White);
 
-            if(!enableSave)
+
+            if (!enableSave)
                 spriteBatch.DrawString(ScreenManager.font, "Fichier sauvegardé sous " + nomSauvegarde.ToString() + ".txt" + "\n\nAppuyez sur ECHAP pour quitter.", new Vector2(10), Color.White);
 
             spriteBatch.End();
