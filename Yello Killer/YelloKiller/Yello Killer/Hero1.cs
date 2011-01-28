@@ -18,21 +18,15 @@ namespace Yellokiller
         Rectangle? sourceRectangle = null;
         Rectangle rectangle;
         Texture2D texture;
-        int msElapsed = 0;
+        int countshuriken = 10;
         public bool ishero1 = false;
         public bool monter = true, descendre = true, droite = true, gauche = true;
-        List<Case> walkingList = new List<Case>();
 
         public Hero1(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
-        }
-
-        public List<Case> WalkingList
-        {
-            set { if (value != null) walkingList = value; }
         }
 
         public Texture2D Texture
@@ -59,8 +53,10 @@ namespace Yellokiller
 
         public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreen yk, ref Rectangle camera, List<Shuriken> _shuriken)
         {
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Space))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Space) && countshuriken > 0)
             {
+                countshuriken--;
+                Console.WriteLine("il reste : " + countshuriken + " shurikens pour hero1.");
                 ishero1 = true;
                 _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, this, hero2));
             }
@@ -92,7 +88,7 @@ namespace Yellokiller
                 vitesse_animation = 0.008f;
             }
 
-            if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Z) && monter &&
+            if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.W) && monter &&
                 (int)carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type > 0 &&
                 (int)carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type > 0)
             {
@@ -125,7 +121,7 @@ namespace Yellokiller
                     index = 0f;
             }
 
-            if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Q) && gauche &&
+            if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.A) && gauche &&
                 (int)carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type > 0 &&
                 (int)carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type > 0)
             {
@@ -155,19 +151,6 @@ namespace Yellokiller
                 }
                 else
                     index = 0f;
-            }
-
-            msElapsed += gameTime.ElapsedGameTime.Milliseconds;
-            if (walkingList.Count != 0)
-            {
-                if (msElapsed >= 100)
-                {
-                    msElapsed = 0;
-                    position.X = walkingList[walkingList.Count - 1].Position.X;
-                    position.Y = walkingList[walkingList.Count - 1].Position.Y;
-                    Position = walkingList[walkingList.Count - 1].Position;
-                    walkingList.RemoveAt(walkingList.Count - 1);
-                }
             }
         }
 

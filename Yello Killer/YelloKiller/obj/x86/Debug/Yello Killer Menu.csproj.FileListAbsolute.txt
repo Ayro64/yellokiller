@@ -157,8 +157,6 @@ C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\NinjaTrans.xnb
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\Game Over.xnb
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\Ninja2Trans.xnb
-C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\arbre2.xnb
-C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\cursor.xnb
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine1.xnb
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origine2.xnb
 C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\background.xnb
@@ -187,3 +185,9 @@ D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\herbeFoncee.xnb
 D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb
 D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\ennemi.xnb
 D:\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origineEnnemi1.xnb
+C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\fond.xnb
+C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\shuriken.xnb
+C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\herbeFoncee.xnb
+C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb
+C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\ennemi.xnb
+C:\Users\Théo Sellem\Desktop\yellokiller\Yello Killer\YelloKiller\bin\x86\Debug\Content\origineEnnemi1.xnb
