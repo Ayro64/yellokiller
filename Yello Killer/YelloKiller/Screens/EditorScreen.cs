@@ -27,7 +27,7 @@ namespace Yellokiller
 
         public EditorScreen()
         {
-            camera = new Rectangle(0, 0, 28, 22);
+            camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
         }
@@ -83,22 +83,22 @@ namespace Yellokiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 2), ControllingPlayer, true);
             }
 
-            if (camera.X > 0 && (ServiceHelper.Get<IMouseService>().Coordonnees().X < 28 && ServiceHelper.Get<IMouseService>().Coordonnees().X > 0 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left)))
+            if (camera.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left))
                 camera.X--;
 
-            else if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && (ServiceHelper.Get<IMouseService>().Coordonnees().X > Taille_Ecran.LARGEUR_ECRAN - 84 && ServiceHelper.Get<IMouseService>().Coordonnees().X < Taille_Ecran.LARGEUR_ECRAN - 56 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right)))
+            else if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right))
                 camera.X++;
 
-            else if (camera.Y > 0 && (ServiceHelper.Get<IMouseService>().Coordonnees().Y < 28 && ServiceHelper.Get<IMouseService>().Coordonnees().Y > 0 || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up)))
+            else if (camera.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))
                 camera.Y--;
 
-            else if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && (ServiceHelper.Get<IMouseService>().Coordonnees().Y > Taille_Ecran.HAUTEUR_ECRAN - 28 && ServiceHelper.Get<IMouseService>().Coordonnees().Y < Taille_Ecran.HAUTEUR_ECRAN || ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down)))
+            else if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down))
                 camera.Y++;
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
                 if (curseur.Type != TypeCase.Joueur1 && curseur.Type != TypeCase.Joueur2)
-                    carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X - 1].Type = curseur.Type;
+                    carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
 
                 else if (curseur.Type == TypeCase.Joueur1)
                 {
@@ -107,7 +107,7 @@ namespace Yellokiller
                     else
                         enableOrigine1 = false;
 
-                    origine1 = new Vector2((int)curseur.Position.X + camera.X - 1, (int)curseur.Position.Y + camera.Y - 1);
+                    origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
                     carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.Joueur1;
 
                 }
@@ -118,7 +118,7 @@ namespace Yellokiller
                     else
                         enableOrigine2 = false;
 
-                    origine2 = new Vector2((int)curseur.Position.X + camera.X - 1, (int)curseur.Position.Y + camera.Y - 1);
+                    origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
                     carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.Joueur2;
                 }
             }

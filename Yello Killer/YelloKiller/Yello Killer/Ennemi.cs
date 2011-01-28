@@ -67,7 +67,7 @@ namespace Yellokiller
                 this.position.Y - hero2.Position.Y < 5 && this.position.Y - hero2.Position.Y > -5)
             {
                 autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-                Console.WriteLine("posision = " + (this.position.Y - hero1.Position.Y));            
+                Console.WriteLine("position = " + (this.position.Y - hero1.Position.Y));            
             }
 
             if (sourceRectangle.Value.Y == 1)

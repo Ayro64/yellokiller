@@ -72,7 +72,7 @@ namespace Yellokiller
         public void DrawInMapEditor(SpriteBatch spriteBatch, ContentManager content)
         {
             LoadContent(content);
-            spriteBatch.Draw(texture, 28 * position + 28 * Vector2.One, Color.White);
+            spriteBatch.Draw(texture, 28 * position, Color.White);
         }
     }
 }
