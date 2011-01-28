@@ -55,7 +55,7 @@ namespace Yellokiller
 
         public bool DansLaCarte()
         {
-                if (MState.X > 28 && MState.X < Taille_Ecran.LARGEUR_ECRAN - 84 && MState.Y > 28 && MState.Y < Taille_Ecran.HAUTEUR_ECRAN - 28)
+                if (MState.X > 0 && MState.X < Taille_Ecran.LARGEUR_ECRAN - 56 && MState.Y > 0 && MState.Y < Taille_Ecran.HAUTEUR_ECRAN)
                     return true;
                 else
                     return false;
