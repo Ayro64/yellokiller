@@ -8,7 +8,9 @@ namespace Yellokiller
     class Menu
     {
         List<Rectangle> listeRectangles = new List<Rectangle>();
-        Texture2D arbre, maison, mur, herbeFoncee, origine1, origine2, ennemi, fond, herbe;
+        List<Texture2D> listeTextures = new List<Texture2D>();
+        Texture2D fond;
+
         public int nbTextures;
 
         public Menu(ContentManager content, int nbTextures)
@@ -17,20 +19,26 @@ namespace Yellokiller
             for (int i = 0; i < nbTextures; i++)
                 listeRectangles.Add(new Rectangle(0, 0, 28, 28));
 
-            herbe = content.Load<Texture2D>("herbe");
-            arbre = content.Load<Texture2D>("arbre");
-            maison = content.Load<Texture2D>("maison");
-            mur = content.Load<Texture2D>("mur");
-            herbeFoncee = content.Load<Texture2D>("herbeFoncee");
-            ennemi = content.Load<Texture2D>("origineEnnemi1");
-            origine1 = content.Load<Texture2D>("origine1");
-            origine2 = content.Load<Texture2D>("origine2");            
+            listeTextures.Add(content.Load<Texture2D>("herbe"));
+            listeTextures.Add(content.Load<Texture2D>("herbeFoncee"));
+            listeTextures.Add(content.Load<Texture2D>("mur"));
+            listeTextures.Add(content.Load<Texture2D>("maison"));
+            listeTextures.Add(content.Load<Texture2D>("arbre"));
+            listeTextures.Add(content.Load<Texture2D>("origineEnnemi1"));
+            listeTextures.Add(content.Load<Texture2D>("origine1"));
+            listeTextures.Add(content.Load<Texture2D>("origine2"));
+
             fond = content.Load<Texture2D>("fond");
         }
 
-        public List<Rectangle> ListesRectangles
+        public List<Rectangle> ListeRectangles
         {
             get { return listeRectangles; }
+        }
+
+        public List<Texture2D> ListeTextures
+        {
+            get { return listeTextures; }
         }
 
         public void Update(Ascenseur ascenseur)
@@ -45,14 +53,8 @@ namespace Yellokiller
                 if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rect))
                     spriteBatch.Draw(fond, new Vector2(rect.X - 2, rect.Y - 2), Color.White);
 
-            spriteBatch.Draw(herbe, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y), Color.White);
-            spriteBatch.Draw(herbeFoncee, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 80), Color.White);
-            spriteBatch.Draw(mur, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 160), Color.White);
-            spriteBatch.Draw(maison, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 240), Color.White);
-            spriteBatch.Draw(arbre, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 320), Color.White);
-            spriteBatch.Draw(ennemi, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 400), Color.White);
-            spriteBatch.Draw(origine1, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 480), Color.White);
-            spriteBatch.Draw(origine2, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + 560), Color.White);
+            for (int i = 0; i < nbTextures; i++)
+                spriteBatch.Draw(listeTextures[i], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + i * 80), Color.White);
         }
     }
 }

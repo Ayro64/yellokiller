@@ -76,12 +76,8 @@ namespace Yellokiller
         public void Initialisation(Vector2 size)
         {
             for (int y = 0; y < size.Y; y++)
-            {
                 for (int x = 0; x < size.X; x++)
-                {
                     _case[y, x] = new Case(new Vector2(x, y ),new Rectangle(), TypeCase.herbe);
-                }
-            }
         }
 
         public void OuvrirCarte(string nomDeFichier)
@@ -126,7 +122,7 @@ namespace Yellokiller
                         case ('O'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             origineJoueur2 = new Vector2(x, y);
-                            break;                        
+                            break;
                     }
                 }
             }

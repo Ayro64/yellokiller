@@ -57,8 +57,7 @@ namespace Yellokiller
                     break;
                 case TypeCase.Joueur2:
                     nomTexture = "origine2";
-                    break;
-               
+                    break;            
             }
             texture = content.Load<Texture2D>(nomTexture);
         }
