@@ -197,7 +197,7 @@ namespace Yellokiller
         /// <summary>
         /// Prints a list of all the screens, for debugging.
         /// </summary>
-        public void TraceScreens()
+        void TraceScreens()
         {
             List<string> screenNames = new List<string>();
 
