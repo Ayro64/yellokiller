@@ -20,7 +20,7 @@ namespace Yellokiller
         Ennemi = 3,
         Joueur1 = 4,
         Joueur2 = 5
-    };
+    }
 
     public class GameplayScreen : GameScreen
     {
@@ -37,7 +37,6 @@ namespace Yellokiller
         Player audio;
         List<Shuriken> _shuriken;
         List<Ennemi> _ennemis;
-
 
         #endregion
 
@@ -147,6 +146,7 @@ namespace Yellokiller
                     Console.WriteLine("suppresion shuriken");
                 }
             }
+
             spriteBatch.End();
             audio.Draw(gameTime);
             base.Draw(gameTime);
@@ -184,7 +184,12 @@ namespace Yellokiller
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.G))
+            {
+                //ScreenManager.RemoveScreen(this);
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
+
+                ScreenManager.TraceScreens();
+            }
 
             // Looks up input for the Media Player.
             audio.HandleInput();
