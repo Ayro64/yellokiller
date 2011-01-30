@@ -40,19 +40,22 @@ namespace Yellokiller
             : base(" Yello Killer\nMenu Principal")
         {
             // Create our menu entries.
-            MenuEntry jouerMenuEntry = new MenuEntry("\"Jouer\"");
+            MenuEntry soloMenuEntry = new MenuEntry("Mode Solo");
+            MenuEntry coopMenuEntry = new MenuEntry("Mode Co-op");
             MenuEntry editorMenuEntry = new MenuEntry("Editeur de cartes");
             MenuEntry optionsMenuEntry = new MenuEntry("Options");
             MenuEntry exitMenuEntry = new MenuEntry("Quitter");
 
             // Hook up menu event handlers.
-            jouerMenuEntry.Selected += JouerMenuEntrySelected;
+            soloMenuEntry.Selected += SoloMenuEntrySelected;
+            coopMenuEntry.Selected += CoopMenuEntrySelected;
             editorMenuEntry.Selected += EditorMenuEntrySelected;
             optionsMenuEntry.Selected += OptionsMenuEntrySelected;
             exitMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
-            MenuEntries.Add(jouerMenuEntry);
+            MenuEntries.Add(soloMenuEntry);
+            MenuEntries.Add(coopMenuEntry);
             MenuEntries.Add(editorMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
@@ -73,9 +76,18 @@ namespace Yellokiller
 
 
         /// <summary>
-        /// Event handler for when the Play Game menu entry is selected.
+        /// Event handler for when the Play Solo Game menu entry is selected.
         /// </summary>
-        void JouerMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        void SoloMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
+                               new GameplayScreen());
+        }
+
+        /// <summary>
+        /// Event handler for when the Play Coop Game menu entry is selected.
+        /// </summary>
+        void CoopMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
                                new GameplayScreen());
@@ -137,7 +149,7 @@ namespace Yellokiller
             spriteBatch.Begin();
             // Rectangle noir des entrées menu
             spriteBatch.Draw(blankTexture,
-                             new Rectangle(115, 220, 215, 160),
+                             new Rectangle(115, 220, 215, 190),
                              new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
             // Celui du titre
