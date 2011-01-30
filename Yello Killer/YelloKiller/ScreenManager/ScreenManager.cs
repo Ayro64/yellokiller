@@ -197,13 +197,14 @@ namespace Yellokiller
         /// <summary>
         /// Prints a list of all the screens, for debugging.
         /// </summary>
-        void TraceScreens()
+        public void TraceScreens()
         {
             List<string> screenNames = new List<string>();
 
             foreach (GameScreen screen in screens)
                 screenNames.Add(screen.GetType().Name);
 
+            Console.WriteLine(string.Join(", ", screenNames.ToArray()));
             Trace.WriteLine(string.Join(", ", screenNames.ToArray()));
         }
 
