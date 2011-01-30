@@ -111,8 +111,8 @@ namespace Yellokiller
                     pasgentil.Update(gameTime, carte, this, hero1, hero2);
 
                 audio.Update(gameTime);
-                base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
 
@@ -185,10 +185,7 @@ namespace Yellokiller
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.G))
             {
-                //ScreenManager.RemoveScreen(this);
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
-
-                ScreenManager.TraceScreens();
             }
 
             // Looks up input for the Media Player.
