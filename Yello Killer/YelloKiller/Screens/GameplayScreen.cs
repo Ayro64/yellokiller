@@ -47,13 +47,19 @@ namespace Yellokiller
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
+
             audio = new Player(1);
+
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.OuvrirCarte("save0.txt");
+
             _shuriken = new List<Shuriken>();
+
             camera = new Rectangle(0, 0, 32, 24);
+
             hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
             hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
+
             _ennemis = new List<Ennemi>();
 
             foreach (Vector2 position in carte._originesEnnemis)
@@ -73,8 +79,10 @@ namespace Yellokiller
             gameFont = content.Load<SpriteFont>("courier");
 
             audio.LoadContent(content);
+
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
+
             foreach (Ennemi mechant in _ennemis)
                 mechant.LoadContent(content, 2);
 
@@ -97,12 +105,12 @@ namespace Yellokiller
             ScreenManager.Game.IsMouseVisible = true;
             if (IsActive)
             {
-
-
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
                 hero2.Update(gameTime, carte, hero1, this, _shuriken);
+
                 foreach (Ennemi pasgentil in _ennemis)
                     pasgentil.Update(gameTime, carte, this, hero1, hero2);
+
                 audio.Update(gameTime);
                 base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             }
@@ -112,7 +120,6 @@ namespace Yellokiller
 
         public override void Draw(GameTime gameTime)
         {
-
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.DarkOrchid, 0, 0);
 
             // If the game is transitioning on or off, fade it out to black.
@@ -124,8 +131,10 @@ namespace Yellokiller
             carte.DrawInGame(spriteBatch, content, camera);
             hero1.Draw(spriteBatch, gameTime, camera, carte, hero1);
             hero2.Draw(spriteBatch, gameTime, camera, carte, hero2);
+
             foreach (Ennemi connard in _ennemis)
                 connard.Draw(spriteBatch, camera);
+
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 Shuriken m = _shuriken[i];
