@@ -63,7 +63,6 @@ namespace Yellokiller
 
         #region Handle Input
 
-
         /// <summary>
         /// Responds to user input, changing the selected entry and accepting
         /// or cancelling the menu.
