@@ -49,7 +49,7 @@ namespace Yellokiller.Yello_Killer
         public Rectangle Rectangle
         {
             get { return rectangle; }
-        }  
+        }
 
         public void LoadContent(ContentManager content, int maxIndex)
         {
@@ -57,16 +57,109 @@ namespace Yellokiller.Yello_Killer
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, GameplayScreen yk, Hero1 hero1, Hero2 hero2)
+        public void Update(GameTime gameTime, Carte carte, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2)
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
-            if (this.position.Y - hero1.Position.Y < 5 && this.position.Y - hero1.Position.Y > -5 || 
+            if (this.position.Y - hero1.Position.Y < 5 && this.position.Y - hero1.Position.Y > -5 ||
                 this.position.Y - hero2.Position.Y < 5 && this.position.Y - hero2.Position.Y > -5)
             {
                 autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-                Console.WriteLine("position = " + (this.position.Y - hero1.Position.Y));            
+                Console.WriteLine("théo est un boloss qui avait ecrit posision a la base\nposition = " + (this.position.Y - hero1.Position.Y));
+            }
+
+            if (sourceRectangle.Value.Y == 1)
+                sourceRectangle = new Rectangle(5, 1, 16, 23);
+            if (sourceRectangle.Value.Y == 33)
+                sourceRectangle = new Rectangle(5, 33, 16, 23);
+            if (sourceRectangle.Value.Y == 65)
+                sourceRectangle = new Rectangle(5, 65, 16, 23);
+            if (sourceRectangle.Value.Y == 98)
+                sourceRectangle = new Rectangle(5, 98, 16, 23);
+
+            if (autochemin < 5 && position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && droite &&
+                (int)carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type > 0 &&
+                (int)carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type > 0)
+            {
+
+                index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
+                if (index < maxIndex)
+                {
+                    sourceRectangle = new Rectangle((int)index * 5, 33, 16, 23);
+                    position.X += vitesse_sprite;
+                }
+                else
+                    index = 0f;
+            }
+            else if (autochemin < 10 && position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && descendre &&
+                     (int)carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type > 0 &&
+                     (int)carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type > 0)
+            {
+                index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
+                if (index < maxIndex)
+                {
+                    sourceRectangle = new Rectangle((int)index * 5, 65, 16, 23);
+                    position.Y += vitesse_sprite;
+                }
+                else
+                    index = 0f;
+            }
+            else if (autochemin < 15 && position.X > 0 && gauche &&
+                     (int)carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type > 0 &&
+                     (int)carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type > 0)
+            {
+
+                index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
+                if (index < maxIndex)
+                {
+                    sourceRectangle = new Rectangle((int)index * 5, 98, 16, 23);
+                    position.X -= vitesse_sprite;
+                }
+                else
+                    index = 0f;
+            }
+            else if (autochemin < 20 && position.Y > 0 && monter &&
+                     (int)carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type > 0 &&
+                     (int)carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type > 0)
+            {
+                index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
+                if (index < maxIndex)
+                {
+                    sourceRectangle = new Rectangle((int)index * 5, 1, 16, 23);
+                    position.Y -= vitesse_sprite;
+                }
+                else
+                    index = 0f;
+            }
+            else
+            {
+                autochemin = 0;
+            }
+
+            msElapsed += gameTime.ElapsedGameTime.Milliseconds;
+            if (walkingList.Count != 0)
+            {
+                if (msElapsed >= 100)
+                {
+                    msElapsed = 0;
+                    position.X = walkingList[walkingList.Count - 1].Position.X;
+                    position.Y = walkingList[walkingList.Count - 1].Position.Y;
+                    Position = walkingList[walkingList.Count - 1].Position;
+                    walkingList.RemoveAt(walkingList.Count - 1);
+                }
+            }
+        }
+
+        public void UpdateInSolo(GameTime gameTime, Carte carte, GameplayScreenSolo yk, Hero hero)
+        {
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
+            autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+
+            if (this.position.Y - hero.Position.Y < 5 && this.position.Y - hero.Position.Y > -5)
+            {
+                autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+                Console.WriteLine("théo est un boloss qui avait ecrit posision a la base\nposition = " + (this.position.Y - hero.Position.Y));
             }
 
             if (sourceRectangle.Value.Y == 1)
@@ -157,14 +250,3 @@ namespace Yellokiller.Yello_Killer
         }
     }
 }
-
-
-       
-
-
-    
-
-           
-       
-
-           
