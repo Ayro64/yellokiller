@@ -174,7 +174,7 @@ namespace Yellokiller
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.maison);
                             break;
                         case ('E'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             _originesEnnemis.Add(new Vector2(x, y));
                             break;
                         case ('o'):
