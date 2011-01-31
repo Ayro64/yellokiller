@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace Yellokiller
+namespace Yellokiller.Yello_Killer
 {
     static class Moteur_physique
     {
@@ -27,6 +27,17 @@ namespace Yellokiller
                 if (hero1.Right == hero2.Left + 1 || hero1.Right == hero2.Left + 2 || hero1.Right == hero2.Left + 4)
                     droite1 = false;
             }
+        }
+
+        static public void Collision_Shuriken_Ennemi(List<Ennemi> listeEnnemis, List<Shuriken> listeShuriken)
+        {
+            for (int i = 0; i < listeEnnemis.Count; i++)
+                for (int j = 0; j < listeShuriken.Count; j++)
+                    if (listeEnnemis[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
+                    {
+                        listeEnnemis.Remove(listeEnnemis[i]);
+                        listeShuriken.Remove(listeShuriken[j]);
+                    }
         }
     }
 }

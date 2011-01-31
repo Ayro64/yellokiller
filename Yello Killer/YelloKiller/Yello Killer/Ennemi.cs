@@ -6,7 +6,7 @@ using Yellokiller.Yello_Killer;
 using Microsoft.Xna.Framework.Content;
 using System;
 
-namespace Yellokiller
+namespace Yellokiller.Yello_Killer
 {
     class Ennemi : Case
     {

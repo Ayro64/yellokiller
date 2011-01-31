@@ -110,6 +110,9 @@ namespace Yellokiller
                 foreach (Ennemi pasgentil in _ennemis)
                     pasgentil.Update(gameTime, carte, this, hero1, hero2);
 
+
+                Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken);
+
                 audio.Update(gameTime);
             }
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
