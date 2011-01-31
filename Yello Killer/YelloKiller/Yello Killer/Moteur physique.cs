@@ -31,7 +31,7 @@ namespace Yellokiller.Yello_Killer
 
         static public void Collision_Shuriken_Ennemi(List<Ennemi> listeEnnemis, List<Shuriken> listeShuriken)
         {
-            if (listeEnnemis.Count != 0)
+            if (listeEnnemis.Count > 0 && listeShuriken.Count > 0)
             {
                 for (int i = 0; i < listeEnnemis.Count; i++)
                     for (int j = 0; j < listeShuriken.Count; j++)
@@ -39,11 +39,13 @@ namespace Yellokiller.Yello_Killer
                         {
                             listeEnnemis.Remove(listeEnnemis[i]);
                             listeShuriken.Remove(listeShuriken[j]);
+                            break;
                         }
             }
         }
 
         //Commentaire destine a Etienne : Bitte
+        //Commentaire destine a Maximilien : Chatte
 
 
         static public bool Collision_Ennemi_Heros(List<Ennemi> listeEnnemis, Hero1 hero1, Hero2 hero2)
