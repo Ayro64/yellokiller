@@ -134,7 +134,9 @@ namespace Yellokiller
                }*/
 
                     if (origine1 == -Vector2.One || origine2 == -Vector2.One)
-                        nomSauvegarde += 's';
+                        nomSauvegarde = 'S' + nomSauvegarde;
+                    else
+                        nomSauvegarde = 'C' + nomSauvegarde;
                     
                     sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
 
