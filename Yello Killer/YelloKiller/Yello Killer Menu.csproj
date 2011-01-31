@@ -57,6 +57,7 @@
     <Compile Include="MapEditor\Ascenseur.cs" />
     <Compile Include="MapEditor\Cursor.cs" />
     <Compile Include="MapEditor\Menu.cs" />
+    <Compile Include="Screens\GameplayScreenSolo.cs" />
     <Compile Include="Screens\EditorScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
@@ -64,7 +65,7 @@
     <Compile Include="ScreenManager\ScreenManager.cs" />
     <Compile Include="Screens\BackgroundScreen.cs" />
     <Compile Include="Screens\GameOverScreen.cs" />
-    <Compile Include="Screens\GameplayScreen.cs" />
+    <Compile Include="Screens\GameplayScreenCoop.cs" />
     <Compile Include="Screens\LoadingScreen.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />
     <Compile Include="Screens\MenuEntry.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
     <Compile Include="MapEditor\Carte.cs" />
     <Compile Include="MapEditor\Case.cs" />
+    <Compile Include="Yello Killer\Hero.cs" />
     <Compile Include="Yello Killer\Dimensions.cs" />
     <Compile Include="Yello Killer\Hero1.cs" />
     <Compile Include="Yello Killer\Hero2.cs" />
