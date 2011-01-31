@@ -49,7 +49,7 @@ namespace Yellokiller
             audio = new Player(1);
 
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.OuvrirCarteSolo("save0s.txt");
+            carte.OuvrirCarteSolo("Ssave0.txt");
 
             _shuriken = new List<Shuriken>();
 
