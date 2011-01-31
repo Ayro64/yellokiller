@@ -18,7 +18,7 @@ namespace Yellokiller.Yello_Killer
         Rectangle? sourceRectangle = null;
         Rectangle rectangle;
         Texture2D texture;
-        int countshuriken = 10;
+        int countshuriken = 20;
         public bool ishero1 = false;
         public bool monter = true, descendre = true, droite = true, gauche = true;
 
@@ -51,7 +51,7 @@ namespace Yellokiller.Yello_Killer
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreen yk, ref Rectangle camera, List<Shuriken> _shuriken)
+        public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreenCoop yk, ref Rectangle camera, List<Shuriken> _shuriken)
         {
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Space) && countshuriken > 0)
             {
@@ -154,7 +154,7 @@ namespace Yellokiller.Yello_Killer
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera, Carte carte, Hero1 hero1)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera, Carte carte)
         {
             spriteBatch.Draw(texture, new Vector2(position.X - camera.X, position.Y - camera.Y), sourceRectangle, Color.White);       
         }
