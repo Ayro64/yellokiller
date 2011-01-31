@@ -57,7 +57,7 @@ namespace Yellokiller.Yello_Killer
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2)
+        public void UpdateInCoop(GameTime gameTime, Carte carte, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2)
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
