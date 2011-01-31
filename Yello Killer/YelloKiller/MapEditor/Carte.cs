@@ -80,7 +80,7 @@ namespace Yellokiller
                     _case[y, x] = new Case(new Vector2(x, y ),new Rectangle(), TypeCase.herbe);
         }
 
-        public void OuvrirCarte(string nomDeFichier)
+        public void OuvrirCarteCoop(string nomDeFichier)
         {
             StreamReader file = new StreamReader(nomDeFichier);
             string line;
@@ -112,15 +112,15 @@ namespace Yellokiller
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.maison);
                             break;
                         case ('E'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             _originesEnnemis.Add(new Vector2(x, y));
                             break;
                         case ('o'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             origineJoueur1 = new Vector2(x, y);
                             break;
                         case ('O'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             origineJoueur2 = new Vector2(x, y);
                             break;
                     }
@@ -141,5 +141,68 @@ namespace Yellokiller
 
             file.Close();
         }
+
+        public void OuvrirCarteSolo(string nomDeFichier)
+        {
+            StreamReader file = new StreamReader(nomDeFichier);
+            string line;
+
+            for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
+            {
+                line = file.ReadLine();
+                if (line == "")
+                    line = file.ReadLine();
+                else if (line == null)
+                    break;
+                for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
+                {
+                    switch (line[x])
+                    {
+                        case ('h'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            break;
+                        case ('H'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
+                            break;
+                        case ('a'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
+                            break;
+                        case ('m'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.mur);
+                            break;
+                        case ('M'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.maison);
+                            break;
+                        case ('E'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
+                            _originesEnnemis.Add(new Vector2(x, y));
+                            break;
+                        case ('o'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            origineJoueur1 = new Vector2(x, y);
+                            break;
+                        case ('O'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            origineJoueur1 = new Vector2(x, y);
+                            break;
+                    }
+                }
+            }
+            /*
+            line = file.ReadLine();
+            origineJoueur1.X = stringToInt(line);
+
+            line = file.ReadLine();
+            origineJoueur1.Y = stringToInt(line);
+
+            line = file.ReadLine();
+            origineJoueur2.X = stringToInt(line);
+
+            line = file.ReadLine();
+            origineJoueur2.Y = stringToInt(line);*/
+
+            file.Close();
+        }
+
     }
 }
