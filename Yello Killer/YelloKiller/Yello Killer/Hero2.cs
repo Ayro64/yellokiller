@@ -23,6 +23,13 @@ namespace Yellokiller.Yello_Killer
 
         public bool monter = true, descendre = true, droite = true, gauche = true;
 
+        public Hero2(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
+            : base(position, sourceRectangle, type)
+        {
+            this.position = position;
+            this.sourceRectangle = sourceRectangle;
+        }
+
         public Texture2D Texture
         {
             get { return texture; }
@@ -39,20 +46,13 @@ namespace Yellokiller.Yello_Killer
             get { return rectangle; }
         }
 
-        public Hero2(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
-            : base(position, sourceRectangle, type)
-        {
-            this.position = position;
-            this.sourceRectangle = sourceRectangle;
-        }
-
         public void LoadContent(ContentManager content, int maxIndex)
         {
             texture = content.Load<Texture2D>("Ninja2Trans");
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, Hero1 hero1, GameplayScreen yk, List<Shuriken> _shuriken)
+        public void Update(GameTime gameTime, Carte carte, Hero1 hero1, GameplayScreenCoop yk, List<Shuriken> _shuriken)
         {
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl) && countshuriken > 0)
             {
@@ -148,7 +148,7 @@ namespace Yellokiller.Yello_Killer
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera, Carte carte, Hero2 hero2)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera, Carte carte)
         {
             spriteBatch.Draw(texture, new Vector2(position.X - camera.X, position.Y - camera.Y), sourceRectangle, Color.White);
         }
