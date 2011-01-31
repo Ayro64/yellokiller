@@ -6,7 +6,7 @@ using Yellokiller.Yello_Killer;
 using Microsoft.Xna.Framework.Content;
 using System;
 
-namespace Yellokiller
+namespace Yellokiller.Yello_Killer
 {
     class Hero2 : Case
     {
@@ -18,7 +18,7 @@ namespace Yellokiller
         Rectangle? sourceRectangle = null;
         Rectangle rectangle;
         Texture2D texture;
-        int countshuriken = 10;
+        int countshuriken = 100;
         public bool ishero2 = false;
 
         public bool monter = true, descendre = true, droite = true, gauche = true;
