@@ -39,5 +39,18 @@ namespace Yellokiller.Yello_Killer
                         listeShuriken.Remove(listeShuriken[j]);
                     }
         }
+
+        //Commentaire destine a Etienne : Bitte
+
+
+        static public bool Collision_Ennemi_Heros(List<Ennemi> listeEnnemis, Hero1 hero1, Hero2 hero2)
+        {
+            for (int b = 0; b < listeEnnemis.Count; b++)
+            {
+                if (listeEnnemis[b].Rectangle.Intersects(hero1.Rectangle) || listeEnnemis[b].Rectangle.Intersects(hero2.Rectangle))
+                    return true;
+            }
+            return false;
+        }
     }
 }
