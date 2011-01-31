@@ -71,7 +71,7 @@ namespace Yellokiller
         /// </summary>
         void SoloMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Yellokiller
         /// </summary>
         void CoopMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenCoop());
         }
 
 
