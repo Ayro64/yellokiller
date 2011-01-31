@@ -121,9 +121,9 @@ namespace Yellokiller
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) && enableSave)
             {
-                afficheMessageErreur = enableOrigine1 || enableOrigine2;
-
-                if (!(enableOrigine1 || enableOrigine2))
+                if (enableOrigine1 && enableOrigine2)
+                    afficheMessageErreur = true;
+                else
                 {
                     /*fileExist = File.Exists(nomSauvegarde + ".txt");
                while (fileExist)
@@ -133,6 +133,9 @@ namespace Yellokiller
                    fileExist = File.Exists(nomSauvegarde + ".txt");
                }*/
 
+                    if (origine1 == -Vector2.One || origine2 == -Vector2.One)
+                        nomSauvegarde += 's';
+                    
                     sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
 
                     for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
@@ -170,7 +173,7 @@ namespace Yellokiller
                         sauvegarde.WriteLine(ligne);
                         ligne = "";
                     }
-
+                    
                     sauvegarde.Close();
                     enableSave = false;
                 }
@@ -199,7 +202,7 @@ namespace Yellokiller
                 chronometre = 0;
             }
             else if (chronometre > 0)
-                spriteBatch.DrawString(ScreenManager.font, "Un ou des personnages n'a / n'ont pas été placé.\n\nVeuillez placer les deux personnages avant de sauvegarder.\n\nMerci", new Vector2(10), Color.White);
+                spriteBatch.DrawString(ScreenManager.font, "Le ou les personnages n'a / n'ont pas été placé.\n\nVeuillez placer un ou deux personnages avant de sauvegarder.\n\nMerci", new Vector2(10), Color.White);
 
 
             if (!enableSave)
