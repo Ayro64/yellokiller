@@ -112,6 +112,8 @@ namespace Yellokiller
 
 
                 Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken);
+                if(Moteur_physique.Collision_Ennemi_Heros(_ennemis, hero1, hero2))
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
 
                 audio.Update(gameTime);
             }
