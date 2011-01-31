@@ -70,8 +70,8 @@ namespace Yellokiller
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
 
-            foreach (Ennemi mechant in _ennemis)
-                mechant.LoadContent(content, 2);
+            foreach (Ennemi ennemi in _ennemis)
+                ennemi.LoadContent(content, 2);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -95,8 +95,8 @@ namespace Yellokiller
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
                 hero2.Update(gameTime, carte, hero1, this, _shuriken);
 
-                foreach (Ennemi pasgentil in _ennemis)
-                    pasgentil.Update(gameTime, carte, this, hero1, hero2);
+                foreach (Ennemi ennemi in _ennemis)
+                    ennemi.UpdateInCoop(gameTime, carte, this, hero1, hero2);
 
 
                 Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken);
@@ -124,8 +124,8 @@ namespace Yellokiller
             hero1.Draw(spriteBatch, gameTime, camera, carte);
             hero2.Draw(spriteBatch, gameTime, camera, carte);
 
-            foreach (Ennemi connard in _ennemis)
-                connard.Draw(spriteBatch, camera);
+            foreach (Ennemi ennemi in _ennemis)
+                ennemi.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
