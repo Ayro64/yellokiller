@@ -1,12 +1,3 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// MainMenuScreen.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
 #region Using Statements
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -80,8 +71,7 @@ namespace Yellokiller
         /// </summary>
         void SoloMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
-                               new GameplayScreen());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen());
         }
 
         /// <summary>
@@ -89,8 +79,7 @@ namespace Yellokiller
         /// </summary>
         void CoopMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
-                               new GameplayScreen());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen());
         }
 
 
@@ -99,8 +88,7 @@ namespace Yellokiller
         ///</summary>
         void EditorMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
-                                new EditorScreen());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen());
         }
 
         /// <summary>
