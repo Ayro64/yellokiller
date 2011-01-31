@@ -16,7 +16,7 @@ namespace Yellokiller.Yello_Killer
         float RotationAngle;
         public bool existshuriken = false;
 
-        public Shuriken(GameplayScreen yk, Vector2 position_ini, int largeur, Hero1 hero1, Hero2 hero2)
+        public Shuriken(GameplayScreenCoop yk, Vector2 position_ini, int largeur, Hero1 hero1, Hero2 hero2)
         {
             _shuriken = yk.Content.Load<Texture2D>("shuriken");
             origin.X = _shuriken.Width / 2;
@@ -50,7 +50,30 @@ namespace Yellokiller.Yello_Killer
                     direction = -Vector2.UnitY;
             }           
         }
-        
+
+        public Shuriken(GameplayScreenSolo yk, Vector2 position_ini, int largeur, Hero hero)
+        {
+            _shuriken = yk.Content.Load<Texture2D>("shuriken");
+            origin.X = _shuriken.Width / 2;
+            origin.Y = _shuriken.Height / 2;
+
+            position.X = position_ini.X + 8;
+            position.Y = position_ini.Y + 4;
+
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 12, 12);
+
+            if (hero.ishero == true)
+            {
+                if (hero.SourceRectangle.Value.Y == 230)
+                    direction = -Vector2.UnitX;
+                else if (hero.SourceRectangle.Value.Y == 198)
+                    direction = Vector2.UnitY;
+                else if (hero.SourceRectangle.Value.Y == 166)
+                    direction = Vector2.UnitX;
+                else if (hero.SourceRectangle.Value.Y == 133)
+                    direction = -Vector2.UnitY;
+            }
+        }
         public float Get_Y()
         {
             return position.Y;
