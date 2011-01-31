@@ -112,15 +112,15 @@ namespace Yellokiller
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.maison);
                             break;
                         case ('E'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
                             _originesEnnemis.Add(new Vector2(x, y));
                             break;
                         case ('o'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
                             origineJoueur1 = new Vector2(x, y);
                             break;
                         case ('O'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
                             origineJoueur2 = new Vector2(x, y);
                             break;
                     }
