@@ -44,7 +44,7 @@ namespace Yellokiller.Yello_Killer
             }
         }
 
-        //Commentaire destine a Etienne : Bite
+        //Commentaire destine a Etienne : Bite avec un 'T'
 
 
         static public bool Collision_Ennemi_Heros(List<Ennemi> listeEnnemis, Hero1 hero1, Hero2 hero2)
