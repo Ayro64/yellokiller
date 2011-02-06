@@ -71,7 +71,7 @@ namespace Yellokiller.Yello_Killer
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))                        // arreter le sprite
+            if (!ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))                        // arreter le sprite
             {
                 if (sourceRectangle.Value.Y == 133)
                     sourceRectangle = new Rectangle(24, 133, 16, 28);
