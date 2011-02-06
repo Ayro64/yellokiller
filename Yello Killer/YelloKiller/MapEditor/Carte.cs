@@ -38,11 +38,11 @@ namespace Yellokiller
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
-            for (int y = camera.Y / 28; y < camera.Y / 28 + camera.Height + 1; y++)
+            for (int y = camera.Y / 28 + camera.Height; y >= camera.Y / 28; y--)
             {
-                for (int x = camera.X / 28; x < camera.X / 28 + camera.Width + 1; x++)
+                for (int x = camera.X / 28 + camera.Width; x >= camera.X / 28; x--)
                 {
-                    _case[y, x].Position = 28 * new Vector2(x,y) - new Vector2(camera.X, camera.Y);
+                    _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
                     _case[y, x].DrawInGame(spriteBatch, content);
                 }
             }
@@ -50,9 +50,9 @@ namespace Yellokiller
 
         public void DrawInMapEditor(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
-            for (int y = camera.Y; y < camera.Y + camera.Height; y++)
+            for (int y = camera.Y + camera.Height - 1; y >= camera.Y; y--)
             {
-                for (int x = camera.X; x < camera.X + camera.Width; x++)
+                for (int x = camera.X + camera.Width - 1; x >= camera.X; x--)
                 {
                     _case[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
                     _case[y, x].DrawInMapEditor(spriteBatch, content);
@@ -123,6 +123,9 @@ namespace Yellokiller
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             origineJoueur2 = new Vector2(x, y);
                             break;
+                        case ('A'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
+                            break; 
                     }
                 }
             }
@@ -185,6 +188,9 @@ namespace Yellokiller
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             origineJoueur1 = new Vector2(x, y);
                             break;
+                        case ('A'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
+                            break; 
                     }
                 }
             }

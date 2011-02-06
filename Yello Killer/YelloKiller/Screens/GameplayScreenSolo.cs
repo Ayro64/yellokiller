@@ -19,7 +19,8 @@ namespace Yellokiller
         maison = -3,
         Ennemi = 3,
         Joueur1 = 4,
-        Joueur2 = 5
+        Joueur2 = 5,
+        arbre2 = -4
     }
 
     public class GameplayScreenSolo : GameScreen
