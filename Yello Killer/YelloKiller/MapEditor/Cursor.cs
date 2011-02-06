@@ -66,6 +66,9 @@ namespace Yellokiller
                         case (7):
                             type = TypeCase.Joueur2;
                             break;
+                        case (8):
+                            type = TypeCase.arbre2;
+                            break;
                     }
                 }
             }
@@ -73,7 +76,7 @@ namespace Yellokiller
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(fond, new Vector2(position.X * texture.Width - 2, position.Y * texture.Height - 2), Color.White);
+            spriteBatch.Draw(fond, new Vector2(position.X * 28 - 2, position.Y * 28 - 2), Color.White);
             spriteBatch.Draw(texture, new Vector2(position.X * 28, position.Y * 28), Color.White);
         }
     }

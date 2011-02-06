@@ -37,7 +37,7 @@ namespace Yellokiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            menu = new Menu(content, 8);
+            menu = new Menu(content, 9);
             curseur = new Cursor(content);
             ascenseur = new Ascenseur(content);
 
@@ -169,6 +169,9 @@ namespace Yellokiller
                                     break;
                                 case (TypeCase.Joueur2):
                                     ligne += 'O';
+                                    break;
+                                case (TypeCase.arbre2):
+                                    ligne += 'A';
                                     break;
                             }
                         }

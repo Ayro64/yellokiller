@@ -17,3 +17,4 @@ Content\ascenseur.xnb
 Content\ennemi.xnb
 Content\origineEnnemi1.xnb
 Content\courier.xnb
+Content\arbre2.xnb

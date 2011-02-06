@@ -27,6 +27,7 @@ namespace Yellokiller
             listeTextures.Add(content.Load<Texture2D>("origineEnnemi1"));
             listeTextures.Add(content.Load<Texture2D>("origine1"));
             listeTextures.Add(content.Load<Texture2D>("origine2"));
+            listeTextures.Add(content.Load<Texture2D>("arbre2"));
 
             fond = content.Load<Texture2D>("fond");
         }
