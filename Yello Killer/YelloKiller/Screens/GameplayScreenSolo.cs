@@ -140,7 +140,8 @@ namespace Yellokiller
 
             carte.DrawInGame(spriteBatch, content, camera);
             hero.Draw(spriteBatch, gameTime, camera, carte, hero);
-
+            spriteBatch.DrawString(ScreenManager.font, "Il reste " + _ennemis.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.BurlyWood);
+       
             foreach (Ennemi connard in _ennemis)
                 connard.Draw(spriteBatch, camera);
 
