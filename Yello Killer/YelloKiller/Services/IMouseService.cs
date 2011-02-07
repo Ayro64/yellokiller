@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+
 namespace Yellokiller
 {
     interface IMouseService

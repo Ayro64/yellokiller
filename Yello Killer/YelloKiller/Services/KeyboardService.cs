@@ -1,12 +1,11 @@
-﻿using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Yellokiller
 {
     class KeyboardService : GameComponent, IKeyboardService
     {
-        KeyboardState KBState;
-        KeyboardState lastKBState;
+        KeyboardState KBState, lastKBState;
 
         public KeyboardService(Game game)
             : base(game)
