@@ -194,8 +194,8 @@ namespace Yellokiller
                     }
                 }
             }
-            /*
-            line = file.ReadLine();
+            
+            /*line = file.ReadLine();
             origineJoueur1.X = stringToInt(line);
 
             line = file.ReadLine();
@@ -209,6 +209,5 @@ namespace Yellokiller
 
             file.Close();
         }
-
     }
 }
