@@ -37,6 +37,7 @@ namespace Yellokiller
         Player audio;
         List<Shuriken> _shuriken;
         List<Ennemi> _ennemis;
+        double temps;
 
         #endregion
 
@@ -72,6 +73,8 @@ namespace Yellokiller
 
             foreach (Vector2 position in carte._originesEnnemis)
                 _ennemis.Add(new Ennemi(28 * position, new Rectangle(5, 1, 16, 23), TypeCase.Ennemi));
+
+            temps = 0;
         }
 
 
@@ -108,16 +111,17 @@ namespace Yellokiller
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            ScreenManager.Game.IsMouseVisible = true;
             if (IsActive)
             {
+                temps += gameTime.ElapsedGameTime.TotalSeconds;
+
                 hero.Update(gameTime, carte, this, ref camera, _shuriken);
-                ScreenManager.Game.Window.Title = "Camera.X = " + camera.X.ToString() + " Camera.Y = " + camera.Y.ToString();
+
                 foreach (Ennemi pasgentil in _ennemis)
                     pasgentil.UpdateInSolo(gameTime, carte, this, hero);
-
-
+                
                 Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken);
+
                 if(Moteur_physique.Collision_Ennemi_Hero(_ennemis, hero))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
 
@@ -140,8 +144,11 @@ namespace Yellokiller
 
             carte.DrawInGame(spriteBatch, content, camera);
             hero.Draw(spriteBatch, gameTime, camera, carte, hero);
+
             spriteBatch.DrawString(ScreenManager.font, "Il reste " + _ennemis.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.BurlyWood);
-       
+
+            spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
+
             foreach (Ennemi connard in _ennemis)
                 connard.Draw(spriteBatch, camera);
 
