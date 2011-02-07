@@ -10,6 +10,7 @@ namespace Yellokiller
         Texture2D texture, fond;
         Vector2 position;
         TypeCase type;
+        float tailleFond;
 
         public Cursor(ContentManager content)
         {
@@ -17,6 +18,7 @@ namespace Yellokiller
             texture = content.Load<Texture2D>("herbefoncee");
             fond = content.Load<Texture2D>("fond");
             type = TypeCase.herbeFoncee;
+            tailleFond = 1;
         }
 
         public Vector2 Position
@@ -44,30 +46,39 @@ namespace Yellokiller
                     {
                         case (0):
                             type = TypeCase.herbe;
+                            tailleFond = 1;
                             break;
                         case (1):
                             type = TypeCase.herbeFoncee;
+                            tailleFond = 1;
                             break;
                         case (2):
                             type = TypeCase.mur;
+                            tailleFond = 1;
                             break;
                         case (3):
                             type = TypeCase.maison;
+                            tailleFond = 1;
                             break;
                         case (4):
                             type = TypeCase.arbre;
+                            tailleFond = 1;
                             break;
                         case (5):
                             type = TypeCase.Ennemi;
+                            tailleFond = 1;
                             break;
                         case (6):
                             type = TypeCase.Joueur1;
+                            tailleFond = 1;
                             break;
                         case (7):
                             type = TypeCase.Joueur2;
+                            tailleFond = 1;
                             break;
                         case (8):
                             type = TypeCase.arbre2;
+                            tailleFond = 1.88f;
                             break;
                     }
                 }
@@ -76,7 +87,9 @@ namespace Yellokiller
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(fond, new Vector2(position.X * 28 - 2, position.Y * 28 - 2), Color.White);
+            spriteBatch.Draw(fond, new Vector2(position.X * 28 - 2, position.Y * 28 - 2), null, Color.White, 0, Vector2.Zero, tailleFond, SpriteEffects.None, 0);
+            
+            //spriteBatch.Draw(fond, new Vector2(position.X * 28 - 2, position.Y * 28 - 2), Color.White);
             spriteBatch.Draw(texture, new Vector2(position.X * 28, position.Y * 28), Color.White);
         }
     }

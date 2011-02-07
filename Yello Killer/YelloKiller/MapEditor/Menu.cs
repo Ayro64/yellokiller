@@ -55,7 +55,11 @@ namespace Yellokiller
                     spriteBatch.Draw(fond, new Vector2(rect.X - 2, rect.Y - 2), Color.White);
 
             for (int i = 0; i < nbTextures; i++)
-                spriteBatch.Draw(listeTextures[i], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + i * 80), Color.White);
+            {
+                spriteBatch.Draw(listeTextures[i], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + i * 80), null, Color.White, 0, Vector2.Zero, (float)28/listeTextures[i].Height, SpriteEffects.None, 0);
+            
+                //spriteBatch.Draw(listeTextures[i], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + i * 80), Color.White);
+            }
         }
     }
 }
