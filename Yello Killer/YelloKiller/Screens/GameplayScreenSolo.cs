@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using Yellokiller.Yello_Killer;
 
 namespace Yellokiller
@@ -52,12 +52,22 @@ namespace Yellokiller
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.OuvrirCarteSolo("Ssave0.txt");
 
-            _shuriken = new List<Shuriken>();
-
             camera = new Rectangle(0, 0, 32, 24);
+
+            _shuriken = new List<Shuriken>();
 
             hero = new Hero(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
 
+            if (28 * carte.origineJoueur1.X - 440 >= 0)
+                camera.X = 28 * (int)carte.origineJoueur1.X - 440;
+            else
+                camera.X = 0;
+
+            if (28 * carte.origineJoueur1.Y - 322 >= 0)
+                camera.Y = 28 * (int)carte.origineJoueur1.Y - 322;
+            else
+                camera.Y = 0;
+ 
             _ennemis = new List<Ennemi>();
 
             foreach (Vector2 position in carte._originesEnnemis)
@@ -92,7 +102,6 @@ namespace Yellokiller
             content.Unload();
         }
 
-
         #endregion
 
         #region Update and Draw
@@ -103,7 +112,7 @@ namespace Yellokiller
             if (IsActive)
             {
                 hero.Update(gameTime, carte, this, ref camera, _shuriken);
-
+                ScreenManager.Game.Window.Title = "Camera.X = " + camera.X.ToString() + " Camera.Y = " + camera.Y.ToString();
                 foreach (Ennemi pasgentil in _ennemis)
                     pasgentil.UpdateInSolo(gameTime, carte, this, hero);
 
