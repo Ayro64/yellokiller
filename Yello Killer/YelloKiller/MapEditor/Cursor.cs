@@ -46,41 +46,36 @@ namespace Yellokiller
                     {
                         case (0):
                             type = TypeCase.herbe;
-                            tailleFond = 1;
                             break;
                         case (1):
                             type = TypeCase.herbeFoncee;
-                            tailleFond = 1;
                             break;
                         case (2):
                             type = TypeCase.mur;
-                            tailleFond = 1;
                             break;
                         case (3):
                             type = TypeCase.maison;
-                            tailleFond = 1;
                             break;
                         case (4):
                             type = TypeCase.arbre;
-                            tailleFond = 1;
                             break;
                         case (5):
                             type = TypeCase.Ennemi;
-                            tailleFond = 1;
                             break;
                         case (6):
                             type = TypeCase.Joueur1;
-                            tailleFond = 1;
                             break;
                         case (7):
                             type = TypeCase.Joueur2;
-                            tailleFond = 1;
                             break;
                         case (8):
                             type = TypeCase.arbre2;
-                            tailleFond = 1.88f;
                             break;
                     }
+                    if (i >= 0 && i <= 7)
+                        tailleFond = 1;
+                    else
+                        tailleFond = 1.88f;
                 }
             }
         }
