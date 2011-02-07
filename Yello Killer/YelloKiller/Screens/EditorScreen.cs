@@ -189,7 +189,7 @@ namespace Yellokiller
 
         public override void Draw(GameTime gameTime)
         {
-            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 0, 0); ;
+            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Gray, 0, 0); ;
 
             spriteBatch.Begin();
 
