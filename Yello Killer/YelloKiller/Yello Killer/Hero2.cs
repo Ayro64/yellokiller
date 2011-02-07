@@ -151,6 +151,7 @@ namespace Yellokiller.Yello_Killer
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera, Carte carte)
         {
             spriteBatch.Draw(texture, new Vector2(position.X - camera.X, position.Y - camera.Y), sourceRectangle, Color.White);
+            spriteBatch.DrawString(ScreenManager.font, "Le joueur 2 a encore " + countshuriken.ToString() + " shurikens.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.BurlyWood);
         }
     }
 }

@@ -104,7 +104,7 @@ namespace Yellokiller
             {
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
                 hero2.Update(gameTime, carte, hero1, this, _shuriken);
-
+                
                 foreach (Ennemi ennemi in _ennemis)
                     ennemi.UpdateInCoop(gameTime, carte, this, hero1, hero2);
 
@@ -133,7 +133,8 @@ namespace Yellokiller
             carte.DrawInGame(spriteBatch, content, camera);
             hero1.Draw(spriteBatch, gameTime, camera, carte);
             hero2.Draw(spriteBatch, gameTime, camera, carte);
-
+            spriteBatch.DrawString(ScreenManager.font, "Il reste " + _ennemis.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.BurlyWood);
+       
             foreach (Ennemi ennemi in _ennemis)
                 ennemi.Draw(spriteBatch, camera);
 
