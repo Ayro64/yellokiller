@@ -7,6 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 /* Si quelqu'un touche a cette classe, je lui demonte sa mere. */
 
+/* Si vous souhaitez rajouter une texture au jeu, soit vous me le demandez, soit vous tentez de le faire vous meme em completant les 4 switchs
+ * dans Carte.cs (deux fois), Case.cs, Cursor.cs, la rajouter dans la liste de textures dans Menu.cs, et de rajouter sa valeur dans l'enumeration
+ dans GameplayScreenSolo.cs */
+
 namespace Yellokiller
 {
     public class EditorScreen : GameScreen
