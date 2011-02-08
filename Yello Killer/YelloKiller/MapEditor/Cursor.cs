@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+/* Cette classe gere le curseur de selection des textures dans l'editeur de map. */
+
 namespace Yellokiller
 {
     class Cursor
