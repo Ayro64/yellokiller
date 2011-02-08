@@ -10,7 +10,7 @@ using Yellokiller.Yello_Killer;
 
 namespace Yellokiller
 {
-    public enum TypeCase
+    public enum TypeCase // Valeur strictement positive pour les cases franchissables, negative sinon.
     {
         herbe = 1,
         herbeFoncee = 2,
