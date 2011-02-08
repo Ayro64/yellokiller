@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+/* Cette classe gere l'affichage du menu de selection de droite dans l'editeur de map. */
+
 namespace Yellokiller
 {
     class Menu
@@ -49,16 +51,18 @@ namespace Yellokiller
         }
 
         public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseur)
-        {
-            for (int i = 0; i < nbTextures; i++)
-                spriteBatch.Draw(listeTextures[i], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + i * 80), null, Color.White, 0, Vector2.Zero, (float)28 / listeTextures[i].Height, SpriteEffects.None, 0);
-            
-            for (int u = 0; u < listeRectangles.Count; u++)
+        {            
+            for (int u = 0; u < nbTextures; u++)
+            {
                 if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(listeRectangles[u]))
                 {
-                    spriteBatch.Draw(fond, new Vector2(listeRectangles[u].X - 2, listeRectangles[u].Y - 2), Color.White);
+                    spriteBatch.Draw(fond, new Vector2(listeRectangles[u].X + 28 * (1 - listeTextures[u].Width / 28) - 2, listeRectangles[u].Y + 28 * (1 - listeTextures[u].Height / 28) - 2), null, Color.White, 0, Vector2.Zero, 1 + 0.88f * (listeTextures[u].Width / 28 - 1), SpriteEffects.None, 0);
+
                     spriteBatch.Draw(listeTextures[u], new Vector2(listeRectangles[u].X + 28 * (1 - listeTextures[u].Width / 28), listeRectangles[u].Y + 28 * (1 - listeTextures[u].Height / 28)), Color.White);
                 }
+                else
+                    spriteBatch.Draw(listeTextures[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + u * 80), null, Color.White, 0, Vector2.Zero, (float)28 / listeTextures[u].Height, SpriteEffects.None, 0);                
+            }
         }
     }
 }
