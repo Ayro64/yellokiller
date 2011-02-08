@@ -72,6 +72,7 @@ namespace Yellokiller
                             type = TypeCase.arbre2;
                             break;
                     }
+
                     if (i >= 0 && i <= 7)
                         tailleFond = 1;
                     else
@@ -82,9 +83,7 @@ namespace Yellokiller
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(fond, new Vector2(position.X * 28 - 2, position.Y * 28 - 2), null, Color.White, 0, Vector2.Zero, tailleFond, SpriteEffects.None, 0);
-            
-            //spriteBatch.Draw(fond, new Vector2(position.X * 28 - 2, position.Y * 28 - 2), Color.White);
+            spriteBatch.Draw(fond, new Vector2(position.X * 28 - 2, position.Y * 28 - 2), null, Color.White, 0, Vector2.Zero, tailleFond, SpriteEffects.None, 0);            
             spriteBatch.Draw(texture, new Vector2(position.X * 28, position.Y * 28), Color.White);
         }
     }
