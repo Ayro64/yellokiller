@@ -5,6 +5,15 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+/* Si tu vois un bateau qui flotte sur l'eau c'est que ta mère n'est pas à bord !!!!!
+
+    Ta mère est tellement vieille que dans sa première photo de classe on voit Jésus !
+
+    Ta mère est tellement grosse que quand elle passe devant le soleil tout le monde crie : "une éclipse "!
+
+    Ta mère est tellement radine que quand elle va aux toilettes elle utilise les deux côtés du papier toilette.
+ 
+*/
 namespace Yellokiller.Yello_Killer
 {
     class Hero2 : Case
