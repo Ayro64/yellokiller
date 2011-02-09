@@ -5,6 +5,10 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+/* Quelle est la différence entre une blonde et une boule de bowling ?
+   On ne peut mettre que trois doigts dans la boule de bowling.
+*/
+
 namespace Yellokiller.Yello_Killer
 {
     class Hero1 : Case
