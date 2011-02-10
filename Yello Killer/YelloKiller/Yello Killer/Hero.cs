@@ -185,18 +185,17 @@ namespace Yellokiller.Yello_Killer
                     vitesse_animation = 0.008f;
                 }
 
-                if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) && 
-                    (int)carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type > 0 &&
-                    (int)carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type > 0)
+                if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) &&
+                    (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0)
                 {
                     positionDesiree.X = position.X;
                     positionDesiree.Y = position.Y - 28;
                     bougerHaut = false;
                 }
 
+
                 else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down) &&
-                          (int)carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type > 0 &&
-                          (int)carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type > 0)
+                          (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0)
                 {
                     positionDesiree.X = position.X;
                     positionDesiree.Y = position.Y + 28;
@@ -205,17 +204,15 @@ namespace Yellokiller.Yello_Killer
 
 
                 else if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) &&
-                    (int)carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type > 0 &&
-                    (int)carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type > 0)
+                    (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0)
                 {
                     positionDesiree.X = position.X - 28;
                     positionDesiree.Y = position.Y;
                     bougerGauche = false;
                 }
 
-                else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) &&
-                         (int)carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type > 0 &&
-                         (int)carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type > 0)
+                else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) &&
+                         (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0)
                 {
                     positionDesiree.X = position.X + 28;
                     positionDesiree.Y = position.Y;
