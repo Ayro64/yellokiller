@@ -1,12 +1,11 @@
 using System;
 using System.Threading;
 using Microsoft.Xna.Framework;
+using Yellokiller.Yello_Killer;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Yellokiller.Yello_Killer;
 
 namespace Yellokiller
 {
