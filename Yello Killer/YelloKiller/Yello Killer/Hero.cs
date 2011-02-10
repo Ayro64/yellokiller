@@ -20,7 +20,7 @@ namespace Yellokiller.Yello_Killer
         float vitesse_animation = 0.001f;
         int vitesse_sprite = 1;
         float index = 0;
-        int maxIndex = 0;
+        int maxIndex = 0, etienne = 0;
         Rectangle? sourceRectangle = null;
         Rectangle rectangle;
         Texture2D texture;
