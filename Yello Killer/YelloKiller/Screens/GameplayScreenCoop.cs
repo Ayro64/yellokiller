@@ -1,12 +1,11 @@
 using System;
 using System.Threading;
 using Microsoft.Xna.Framework;
+using Yellokiller.Yello_Killer;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Yellokiller.Yello_Killer;
 
 namespace Yellokiller
 {
@@ -45,8 +44,8 @@ namespace Yellokiller
 
             camera = new Rectangle(0, 0, 32, 24);
 
-            hero1 = new Hero1(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
-            hero2 = new Hero2(28 * carte.origineJoueur2, new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
+            hero1 = new Hero1(new Vector2(28 * carte.origineJoueur1.X + 5, 28 * carte.origineJoueur1.Y), new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
+            hero2 = new Hero2(new Vector2(28 * carte.origineJoueur2.X + 5, 28 * carte.origineJoueur2.Y), new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
 
             if (28 * carte.origineJoueur1.X - 440 >= 0)
                 camera.X = 28 * (int)carte.origineJoueur1.X - 440;
