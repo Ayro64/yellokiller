@@ -27,8 +27,7 @@ namespace Yellokiller.Yello_Killer
         int countshuriken = 100;
         public bool ishero = false;
         bool bougerHaut, bougerBas, bougerDroite, bougerGauche;
-
-
+        
         public Hero(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
         {
@@ -73,7 +72,7 @@ namespace Yellokiller.Yello_Killer
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
 
-            if (!ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))                        // arreter le sprite
+            if (!ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))    // arreter le sprite
             {
                 if (sourceRectangle.Value.Y == 133)
                     sourceRectangle = new Rectangle(24, 133, 16, 28);
@@ -84,6 +83,7 @@ namespace Yellokiller.Yello_Killer
                 if (sourceRectangle.Value.Y == 166)
                     sourceRectangle = new Rectangle(24, 166, 16, 28);
             }
+
             if (!bougerHaut)
             {
                 if (position != positionDesiree)
@@ -106,6 +106,7 @@ namespace Yellokiller.Yello_Killer
                     index = 0f;
                 }
             }
+
             if (!bougerBas)
             {
                 if (position != positionDesiree && index < maxIndex)
@@ -127,6 +128,7 @@ namespace Yellokiller.Yello_Killer
                     index = 0f;
                 }
             }
+
             if (!bougerGauche)
             {
                 if (position != positionDesiree && index < maxIndex)
@@ -149,6 +151,7 @@ namespace Yellokiller.Yello_Killer
                     index = 0f;
                 }
             }
+
             if (!bougerDroite)
             {
                 if (position != positionDesiree && index < maxIndex)
