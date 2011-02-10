@@ -57,7 +57,7 @@ namespace Yellokiller
 
             _shuriken = new List<Shuriken>();
 
-            hero = new Hero(28 * carte.origineJoueur1, new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
+            hero = new Hero(new Vector2(28 * carte.origineJoueur1.X + 5, 28 * carte.origineJoueur1.Y), new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
 
             if (28 * carte.origineJoueur1.X - 440 >= 0)
                 camera.X = 28 * (int)carte.origineJoueur1.X - 440;
