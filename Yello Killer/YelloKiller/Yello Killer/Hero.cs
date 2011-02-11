@@ -17,14 +17,12 @@ namespace Yellokiller.Yello_Killer
     class Hero : Case
     {
         Vector2 position, positionDesiree;
-        float vitesse_animation;
-        int vitesse_sprite;
-        float index;
-        int maxIndex, etienne;
-        Rectangle? sourceRectangle = null;
+        Rectangle? sourceRectangle;
         Rectangle rectangle;
         Texture2D texture;
-        int countshuriken;
+
+        float vitesse_animation, index;
+        int maxIndex, countshuriken, vitesse_sprite, etienne;
         public bool ishero;
         bool bougerHaut, bougerBas, bougerDroite, bougerGauche;
         
@@ -37,15 +35,11 @@ namespace Yellokiller.Yello_Killer
             vitesse_sprite = 1;
             index = 0;
             maxIndex = 0;
-            etienne = 0;
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             countshuriken = 100;
-            ishero = false;
+            ishero = false;        
+            etienne = 0;
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
-        }
-
-        public Texture2D Texture
-        {
-            get { return texture; }
         }
 
         public Rectangle? SourceRectangle
@@ -67,6 +61,9 @@ namespace Yellokiller.Yello_Killer
 
         public void Update(GameTime gameTime, Carte carte, GameplayScreenSolo yk, ref Rectangle camera, List<Shuriken> _shuriken)
         {
+            rectangle.X = (int)position.X;
+            rectangle.Y = (int)position.Y;
+            
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl) && countshuriken > 0)
             {
                 countshuriken--;
@@ -76,8 +73,6 @@ namespace Yellokiller.Yello_Killer
             }
             else
                 ishero = false;
-
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
 
             if (!ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))    // arreter le sprite
             {
