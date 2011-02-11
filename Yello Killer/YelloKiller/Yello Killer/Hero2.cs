@@ -19,16 +19,13 @@ namespace Yellokiller.Yello_Killer
     class Hero2 : Case
     {
         Vector2 position, positionDesiree;
-        float vitesse_animation = 0.008f;
-        int vitesse_sprite = 1;
-        float index = 0;
-        int maxIndex = 0;
-        Rectangle? sourceRectangle = null;
+        Rectangle? sourceRectangle;
         Rectangle rectangle;
         Texture2D texture;
-        int countshuriken = 100;
-        public bool ishero2 = false;
 
+        float vitesse_animation, index;
+        int vitesse_sprite, maxIndex, countshuriken;
+        public bool ishero2;
         bool bougerHaut, bougerBas, bougerDroite, bougerGauche;
 
         public Hero2(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
@@ -36,13 +33,16 @@ namespace Yellokiller.Yello_Killer
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
+            vitesse_animation = 0.008f;
+            vitesse_sprite = 1;
+            index = 0;
+            maxIndex = 0;
+            sourceRectangle = null;
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);            
+            countshuriken = 100;
+            ishero2 = false;
             positionDesiree = position;
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
-        }
-
-        public Texture2D Texture
-        {
-            get { return texture; }
         }
 
         public Rectangle? SourceRectangle
@@ -69,6 +69,9 @@ namespace Yellokiller.Yello_Killer
 
         public void Update(GameTime gameTime, Carte carte, Hero1 hero1, GameplayScreenCoop yk, List<Shuriken> _shuriken)
         {
+            rectangle.X = (int)position.X;
+            rectangle.Y = (int)position.Y;
+
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl) && countshuriken > 0)
             {
                 countshuriken--;
@@ -78,8 +81,6 @@ namespace Yellokiller.Yello_Killer
             }
             else
                 ishero2 = false;
-
-            //rectangle = new Rectangle((int)position.X, (int)position.Y, 28, 28);
             
             if (!ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))                        // arreter le sprite
             {
@@ -196,7 +197,7 @@ namespace Yellokiller.Yello_Killer
 
                 else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down) &&
                          (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0 &&
-                    (position.X != hero1.PositionDesiree.X || position.Y + 28 != hero1.PositionDesiree.Y))
+                         (position.X != hero1.PositionDesiree.X || position.Y + 28 != hero1.PositionDesiree.Y))
                 {
                     positionDesiree.X = position.X;
                     positionDesiree.Y = position.Y + 28;
@@ -205,7 +206,7 @@ namespace Yellokiller.Yello_Killer
 
                 else if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) &&
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0 &&
-                    (position.Y != hero1.PositionDesiree.Y || position.X - 28 != hero1.PositionDesiree.X))
+                         (position.Y != hero1.PositionDesiree.Y || position.X - 28 != hero1.PositionDesiree.X))
                 {
                     positionDesiree.X = position.X - 28;
                     positionDesiree.Y = position.Y;
@@ -214,7 +215,7 @@ namespace Yellokiller.Yello_Killer
 
                 else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) &&
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0 &&
-                    (position.Y != hero1.PositionDesiree.Y || position.X + 28 != hero1.PositionDesiree.X))
+                         (position.Y != hero1.PositionDesiree.Y || position.X + 28 != hero1.PositionDesiree.X))
                 {
                     positionDesiree.X = position.X + 28;
                     positionDesiree.Y = position.Y;
