@@ -37,7 +37,6 @@ namespace Yellokiller.Yello_Killer
             vitesse_sprite = 1;
             index = 0;
             maxIndex = 0;
-            sourceRectangle = null;
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);            
             countshuriken = 100;
             ishero2 = false;

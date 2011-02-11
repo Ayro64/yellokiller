@@ -28,15 +28,14 @@ namespace Yellokiller.Yello_Killer
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
-            positionDesiree = position;
             vitesse_animation = 0.008f;
             vitesse_sprite = 1;
             index = 0;
             maxIndex = 0;
-            sourceRectangle = null;
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             countshuriken = 20;
             ishero1 = false;
+            positionDesiree = position;
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
         }
 
