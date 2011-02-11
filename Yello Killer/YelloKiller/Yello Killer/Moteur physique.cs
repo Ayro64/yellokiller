@@ -32,7 +32,7 @@ namespace Yellokiller.Yello_Killer
             return false;
         }
 
-        //tamere
+        //tamerexcvwxcvw
 
         static public bool Collision_Ennemi_Hero(List<Ennemi> listeEnnemis, Hero hero)
         {
