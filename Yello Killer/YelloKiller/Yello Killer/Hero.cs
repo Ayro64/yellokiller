@@ -17,15 +17,15 @@ namespace Yellokiller.Yello_Killer
     class Hero : Case
     {
         Vector2 position, positionDesiree;
-        float vitesse_animation = 0.001f;
-        int vitesse_sprite = 1;
-        float index = 0;
-        int maxIndex = 0, etienne = 0;
+        float vitesse_animation;
+        int vitesse_sprite;
+        float index;
+        int maxIndex, etienne;
         Rectangle? sourceRectangle = null;
         Rectangle rectangle;
         Texture2D texture;
-        int countshuriken = 100;
-        public bool ishero = false;
+        int countshuriken;
+        public bool ishero;
         bool bougerHaut, bougerBas, bougerDroite, bougerGauche;
         
         public Hero(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
@@ -33,6 +33,13 @@ namespace Yellokiller.Yello_Killer
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
+            vitesse_animation = 0.001f;
+            vitesse_sprite = 1;
+            index = 0;
+            maxIndex = 0;
+            etienne = 0;
+            countshuriken = 100;
+            ishero = false;
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
         }
 
@@ -91,7 +98,7 @@ namespace Yellokiller.Yello_Killer
                     position.Y -= vitesse_sprite;
                     sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-                   
+
                     if (index >= maxIndex)
                         index = 0f;
 
@@ -109,12 +116,12 @@ namespace Yellokiller.Yello_Killer
 
             if (!bougerBas)
             {
-                if (position != positionDesiree && index < maxIndex)
+                if (position != positionDesiree)
                 {
                     position.Y += vitesse_sprite;
                     sourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-                    
+
                     if (index >= maxIndex)
                         index = 0f;
 
@@ -131,17 +138,17 @@ namespace Yellokiller.Yello_Killer
 
             if (!bougerGauche)
             {
-                if (position != positionDesiree && index < maxIndex)
+                if (position != positionDesiree)
                 {
                     position.X -= vitesse_sprite;
                     sourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-                    
+
                     if (index >= maxIndex)
                         index = 0f;
 
                     if (camera.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
-                        camera.X -= vitesse_sprite;                    
+                        camera.X -= vitesse_sprite;
                 }
 
                 else
@@ -154,12 +161,12 @@ namespace Yellokiller.Yello_Killer
 
             if (!bougerDroite)
             {
-                if (position != positionDesiree && index < maxIndex)
+                if (position != positionDesiree)
                 {
                     position.X += vitesse_sprite;
                     sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-                    
+
                     if (index >= maxIndex)
                         index = 0f;
 
@@ -191,38 +198,69 @@ namespace Yellokiller.Yello_Killer
                 if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) &&
                     (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0)
                 {
-                    positionDesiree.X = position.X;
-                    positionDesiree.Y = position.Y - 28;
-                    bougerHaut = false;
+                    etienne++;
+
+                    if (etienne > 4)
+                    {
+                        positionDesiree.X = position.X;
+                        positionDesiree.Y = position.Y - 28;
+                        bougerHaut = false;
+                    }
+                    else
+                        sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
                 }
 
 
                 else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down) &&
                           (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0)
                 {
-                    positionDesiree.X = position.X;
-                    positionDesiree.Y = position.Y + 28;
-                    bougerBas = false;
+                    etienne++;
+
+                    if (etienne > 4)
+                    {
+                        positionDesiree.X = position.X;
+                        positionDesiree.Y = position.Y + 28;
+                        bougerBas = false;
+                    }
+                    else
+                        sourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
                 }
 
 
                 else if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) &&
                     (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0)
                 {
-                    positionDesiree.X = position.X - 28;
-                    positionDesiree.Y = position.Y;
-                    bougerGauche = false;
+                    etienne++;
+
+                    if (etienne > 4)
+                    {
+                        positionDesiree.X = position.X - 28;
+                        positionDesiree.Y = position.Y;
+                        bougerGauche = false;
+                    }
+                    else
+                        sourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
                 }
+
 
                 else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) &&
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0)
                 {
-                    positionDesiree.X = position.X + 28;
-                    positionDesiree.Y = position.Y;
-                    bougerDroite = false;
+                    etienne++;
+
+                    if (etienne > 4)
+                    {
+                        positionDesiree.X = position.X + 28;
+                        positionDesiree.Y = position.Y;
+                        bougerDroite = false;
+                    }
+                    else
+                        sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
                 }
             }
-        }
+            else
+                etienne = 0;
+        }    
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera, Carte carte, Hero hero2)
         {
