@@ -69,14 +69,10 @@ namespace Yellokiller.Yello_Killer
                     direction = -Vector2.UnitY;
             }
         }
-        public float Get_Y()
-        {
-            return position.Y;
-        }
 
-        public float Get_X()
+        public Vector2 Position
         {
-            return position.X;
+            get { return position; }
         }
 
         public Rectangle Rectangle
