@@ -18,7 +18,7 @@ namespace Yellokiller.Yello_Killer
 {
     class Hero2 : Case
     {
-        Vector2 position;
+        Vector2 position, positionDesiree;
         float vitesse_animation = 0.008f;
         int vitesse_sprite = 1;
         float index = 0;
@@ -29,13 +29,15 @@ namespace Yellokiller.Yello_Killer
         int countshuriken = 100;
         public bool ishero2 = false;
 
-        public bool monter = true, descendre = true, droite = true, gauche = true;
+        bool bougerHaut, bougerBas, bougerDroite, bougerGauche;
 
         public Hero2(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
+            positionDesiree = position;
+            bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
         }
 
         public Texture2D Texture
@@ -52,6 +54,11 @@ namespace Yellokiller.Yello_Killer
         public Rectangle Rectangle
         {
             get { return rectangle; }
+        }
+
+        public Vector2 PositionDesiree
+        {
+            get { return positionDesiree; }
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -72,9 +79,8 @@ namespace Yellokiller.Yello_Killer
             else
                 ishero2 = false;
 
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
-            Moteur_physique.Collision(this.rectangle, hero1.Rectangle, ref droite, ref gauche, ref monter, ref descendre);
-
+            //rectangle = new Rectangle((int)position.X, (int)position.Y, 28, 28);
+            
             if (!ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))                        // arreter le sprite
             {
                 if (sourceRectangle.Value.Y == 133)
@@ -87,72 +93,133 @@ namespace Yellokiller.Yello_Killer
                     sourceRectangle = new Rectangle(24, 166, 16, 28);
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.RightShift))
+            if (!bougerHaut)
             {
-                vitesse_sprite = 3;
-                vitesse_animation = 0.016f;
-            }
-            else
-            {
-                vitesse_sprite = 1;
-                vitesse_animation = 0.008f;
-            }
-
-            if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) && monter &&
-                (int)carte.Cases[(int)(position.Y + 6) / 28, (int)(position.X + 15) / 28].Type > 0 &&
-                (int)carte.Cases[(int)(position.Y + 6) / 28, (int)position.X / 28].Type > 0)
-            {
-                index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-                if (index < maxIndex)
+                if (position != positionDesiree)
                 {
-                    sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
                     position.Y -= vitesse_sprite;
+                    sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
+                    index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
+
+                    if (index >= maxIndex)
+                        index = 0f;
                 }
+
                 else
+                {
+                    bougerHaut = true;
+                    position = positionDesiree;
                     index = 0f;
+                }
             }
 
-            else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down) && descendre &&
-                     (int)carte.Cases[(int)(position.Y / 28) + 1, (int)(position.X + 15) / 28].Type > 0 &&
-                     (int)carte.Cases[(int)(position.Y / 28) + 1, (int)position.X / 28].Type > 0)
+            if (!bougerBas)
             {
-                index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-
-                if (index < maxIndex)
+                if (position != positionDesiree && index < maxIndex)
                 {
-                    sourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
                     position.Y += vitesse_sprite;
+                    sourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
+                    index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
+
+                    if (index >= maxIndex)
+                        index = 0f;
                 }
                 else
+                {
+                    bougerBas = true;
+                    position = positionDesiree;
                     index = 0f;
+                }
             }
 
-            if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) && gauche &&
-                (int)carte.Cases[(int)(position.Y + 27) / 28, (int)(position.X - 1) / 28].Type > 0 &&
-                (int)carte.Cases[(int)(position.Y + 7) / 28, (int)(position.X - 1) / 28].Type > 0)
+            if (!bougerGauche)
             {
-                index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-                if (index < maxIndex)
+                if (position != positionDesiree && index < maxIndex)
                 {
-                    sourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
                     position.X -= vitesse_sprite;
+                    sourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
+                    index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
+
+                    if (index >= maxIndex)
+                        index = 0f;
                 }
+
                 else
+                {
+                    bougerGauche = true;
+                    position = positionDesiree;
                     index = 0f;
+                }
             }
 
-            else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 18 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) && droite &&
-                     (int)carte.Cases[(int)(position.Y + 27) / 28, (int)((position.X - 12) / 28) + 1].Type > 0 &&
-                     (int)carte.Cases[(int)(position.Y + 7) / 28, (int)((position.X - 12) / 28) + 1].Type > 0)
+            if (!bougerDroite)
             {
-                index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
-                if (index < maxIndex)
+                if (position != positionDesiree && index < maxIndex)
                 {
-                    sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
                     position.X += vitesse_sprite;
+                    sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
+                    index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
+
+                    if (index >= maxIndex)
+                        index = 0f;
+                }
+
+                else
+                {
+                    bougerDroite = true;
+                    position = positionDesiree;
+                    index = 0f;
+                }
+            }
+
+            if (bougerHaut && bougerBas && bougerDroite && bougerGauche)
+            {
+                if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.RightShift))
+                {
+                    vitesse_sprite = 2;
+                    vitesse_animation = 0.016f;
                 }
                 else
-                    index = 0f;
+                {
+                    vitesse_sprite = 1;
+                    vitesse_animation = 0.008f;
+                }
+
+                if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) &&
+                    (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0 &&
+                    (position.X != hero1.PositionDesiree.X || position.Y - 28 != hero1.PositionDesiree.Y))
+                {
+                    positionDesiree.X = position.X;
+                    positionDesiree.Y = position.Y - 28;
+                    bougerHaut = false;
+                }
+
+                else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down) &&
+                         (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0 &&
+                    (position.X != hero1.PositionDesiree.X || position.Y + 28 != hero1.PositionDesiree.Y))
+                {
+                    positionDesiree.X = position.X;
+                    positionDesiree.Y = position.Y + 28;
+                    bougerBas = false;
+                }
+
+                else if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) &&
+                         (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0 &&
+                    (position.Y != hero1.PositionDesiree.Y || position.X - 28 != hero1.PositionDesiree.X))
+                {
+                    positionDesiree.X = position.X - 28;
+                    positionDesiree.Y = position.Y;
+                    bougerGauche = false;
+                }
+
+                else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) &&
+                         (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0 &&
+                    (position.Y != hero1.PositionDesiree.Y || position.X + 28 != hero1.PositionDesiree.X))
+                {
+                    positionDesiree.X = position.X + 28;
+                    positionDesiree.Y = position.Y;
+                    bougerDroite = false;
+                }
             }
         }
 
