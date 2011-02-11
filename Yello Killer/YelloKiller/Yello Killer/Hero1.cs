@@ -64,6 +64,9 @@ namespace Yellokiller.Yello_Killer
 
         public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreenCoop yk, ref Rectangle camera, List<Shuriken> _shuriken)
         {
+            rectangle.X = (int)position.X;
+            rectangle.Y = (int)position.Y;
+
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Space) && countshuriken > 0)
             {
                 countshuriken--;
@@ -179,9 +182,6 @@ namespace Yellokiller.Yello_Killer
 
             if (bougerHaut && bougerBas && bougerDroite && bougerGauche)
             {
-                rectangle.X = (int)position.X;
-                rectangle.Y = (int)position.Y;
-
                 if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftShift))
                 {
                     vitesse_sprite = 2;
