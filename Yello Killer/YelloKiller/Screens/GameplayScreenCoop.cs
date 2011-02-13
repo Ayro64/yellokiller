@@ -60,7 +60,7 @@ namespace Yellokiller
             _ennemis = new List<Ennemi>();
 
             foreach (Vector2 position in carte._originesEnnemis)
-                _ennemis.Add(new Ennemi(28 * position, new Rectangle(5, 1, 16, 23), TypeCase.Ennemi));
+                _ennemis.Add(new Ennemi(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 1, 16, 23), TypeCase.Ennemi));
 
             temps = 0;
         }
