@@ -42,7 +42,7 @@ namespace Yellokiller
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
-
+            // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu.
             menu = new Menu(content, 9);
             curseur = new Cursor(content);
             ascenseur = new Ascenseur(content);
@@ -100,7 +100,21 @@ namespace Yellokiller
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
                 if (curseur.Type != TypeCase.Joueur1 && curseur.Type != TypeCase.Joueur2)
+                {
                     carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
+
+                    if (curseur.Type == TypeCase.arbre2)
+                    {
+                        if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.mur;
+
+                        if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
+                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.mur;
+
+                        if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.mur;
+                    }
+                }
 
                 else if (curseur.Type == TypeCase.Joueur1)
                 {
@@ -111,7 +125,6 @@ namespace Yellokiller
 
                     origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
                     carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.Joueur1;
-
                 }
                 else if (curseur.Type == TypeCase.Joueur2)
                 {

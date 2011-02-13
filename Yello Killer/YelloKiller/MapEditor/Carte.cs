@@ -9,12 +9,15 @@ namespace Yellokiller
     class Carte
     {
         Case[,] _case;
-        public Vector2 origineJoueur1 = new Vector2(0, 0), origineJoueur2 = new Vector2(0, 0);
-        public List<Vector2> _originesEnnemis = new List<Vector2>();
+        public Vector2 origineJoueur1, origineJoueur2;
+        public List<Vector2> _originesEnnemis;
 
         public Carte(Vector2 size)
         {
             _case = new Case[(int)size.Y, (int)size.X];
+            origineJoueur1 = new Vector2(0, 0);
+            origineJoueur2 = new Vector2(0, 0);
+            _originesEnnemis = new List<Vector2>();
         }
 
         public Case[,] Cases
@@ -43,6 +46,7 @@ namespace Yellokiller
                 for (int x = camera.X / 28 + camera.Width; x >= camera.X / 28; x--)
                 {
                     _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
+                    
                     _case[y, x].DrawInGame(spriteBatch, content);
                 }
             }
@@ -54,7 +58,8 @@ namespace Yellokiller
             {
                 for (int x = camera.X + camera.Width - 1; x >= camera.X; x--)
                 {
-                    _case[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
+                    _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
+
                     _case[y, x].DrawInMapEditor(spriteBatch, content);
                 }
             }

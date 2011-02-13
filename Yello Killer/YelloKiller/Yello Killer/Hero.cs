@@ -67,7 +67,6 @@ namespace Yellokiller.Yello_Killer
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl) && countshuriken > 0)
             {
                 countshuriken--;
-                Console.WriteLine("il reste : " + countshuriken + " shurikens pour hero2.");
                 ishero = true;
                 _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, this));
             }
