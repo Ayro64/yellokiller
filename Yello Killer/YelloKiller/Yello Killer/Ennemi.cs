@@ -19,7 +19,7 @@ namespace Yellokiller.Yello_Killer
         bool monter, descendre, droite, gauche;
         List<Case> walkingList;
         float autochemin;
-        int msElapsed;
+        //int msElapsed;
 
         public Ennemi(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
@@ -32,7 +32,7 @@ namespace Yellokiller.Yello_Killer
             index = 0;
             maxIndex = 0;
             autochemin = 0;
-            msElapsed = 0;
+            //msElapsed = 0;
             positionDesiree = position;
             monter = descendre = droite = gauche = true;
             walkingList = new List<Case>();
@@ -70,7 +70,7 @@ namespace Yellokiller.Yello_Killer
             this.maxIndex = maxIndex;
         }
 
-        public void UpdateInCoop(GameTime gameTime, Carte carte, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2)
+        public void Update(GameTime gameTime, Carte carte/*, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2*/)
         {
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
@@ -214,7 +214,7 @@ namespace Yellokiller.Yello_Killer
             }*/
         }
 
-        public void UpdateInSolo(GameTime gameTime, Carte carte, GameplayScreenSolo yk, Hero hero)
+        /*public void UpdateInSolo(GameTime gameTime, Carte carte, GameplayScreenSolo yk, Hero hero)
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
@@ -305,7 +305,7 @@ namespace Yellokiller.Yello_Killer
                     walkingList.RemoveAt(walkingList.Count - 1);
                 }
             }
-        }
+        }*/
 
         public void Draw(SpriteBatch spriteBatch, Rectangle camera)
         {
