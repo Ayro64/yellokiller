@@ -117,7 +117,7 @@ namespace Yellokiller
                 hero.Update(gameTime, carte, this, ref camera, _shuriken);
 
                 foreach (Ennemi pasgentil in _ennemis)
-                    pasgentil.UpdateInSolo(gameTime, carte, this, hero);
+                    pasgentil.Update(gameTime, carte/*, this, hero*/);
                 
                 Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken);
 
