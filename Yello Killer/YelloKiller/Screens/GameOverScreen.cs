@@ -15,7 +15,7 @@ namespace Yellokiller
         List<MenuEntry> menuEntries = new List<MenuEntry>();
         MenuEntry restartMenuEntry, abortMenuEntry;
 
-        public int selectedEntry = 0;
+        int selectedEntry = 0, comingfrom;
         ContentManager content;
         Texture2D gameoverTexture, blankTexture;
         string GOmessage = "Vous avez été capturé!";
@@ -42,8 +42,10 @@ namespace Yellokiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public GameOverScreen()
+        public GameOverScreen(int comingfrom)
         {
+            this.comingfrom = comingfrom;
+
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
             TransitionOffTime = TimeSpan.FromSeconds(1.2);
@@ -141,7 +143,10 @@ namespace Yellokiller
         /// </summary>
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenCoop());
+            if (comingfrom == 1)
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
+            else
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenCoop());
         }
 
         /// <summary>
