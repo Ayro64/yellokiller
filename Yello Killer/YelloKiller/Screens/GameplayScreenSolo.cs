@@ -76,11 +76,6 @@ namespace Yellokiller
             temps = 0;
         }
 
-
-        protected void Initialize()
-        {
-        }
-
         public override void LoadContent()
         {
             if (content == null)
@@ -122,7 +117,7 @@ namespace Yellokiller
                 Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken);
 
                 if(Moteur_physique.Collision_Ennemi_Hero(_ennemis, hero))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
 
                 audio.Update(gameTime);
             }
@@ -202,7 +197,7 @@ namespace Yellokiller
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.G))
             {
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen());
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
             }
 
             // Looks up input for the Media Player.
