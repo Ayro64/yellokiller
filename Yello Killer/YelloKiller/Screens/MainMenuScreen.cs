@@ -71,7 +71,7 @@ namespace Yellokiller
         /// </summary>
         void SoloMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new LevelSelectSolo());
         }
 
         /// <summary>
