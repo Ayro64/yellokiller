@@ -79,7 +79,7 @@ namespace Yellokiller
         /// </summary>
         void CoopMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenCoop());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new LevelSelectMulti());
         }
 
 
