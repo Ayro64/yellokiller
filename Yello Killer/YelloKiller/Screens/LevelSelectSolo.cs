@@ -13,7 +13,7 @@ namespace Yellokiller
         #region Fields
 
         List<MenuEntry> levels = new List<MenuEntry>();
-        MenuEntry levelOne, levelTwo, levelThree, levelFour, abortMenuEntry;
+        MenuEntry levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix, abortMenuEntry;
 
         const string menuTitle = "Choix du Niveau";
         int selectedEntry = 0;
@@ -53,6 +53,8 @@ namespace Yellokiller
             levelTwo = new MenuEntry("Level Two");
             levelThree = new MenuEntry("Level Three");
             levelFour = new MenuEntry("Level Four");
+            levelFive = new MenuEntry("Level Five");
+            levelSix = new MenuEntry("Level Six");
             abortMenuEntry = new MenuEntry("Retour au Menu");
 
             // Hook up menu event handlers.
@@ -60,6 +62,8 @@ namespace Yellokiller
             levelTwo.Selected += LevelTwoMenuEntrySelected;
             levelThree.Selected += LevelThreeMenuEntrySelected;
             levelFour.Selected += LevelFourMenuEntrySelected;
+            levelFive.Selected += LevelFiveMenuEntrySelected;
+            levelSix.Selected += LevelSixMenuEntrySelected;
             abortMenuEntry.Selected += AbortMenuEntrySelected;
 
             // Add entries to the menu.
@@ -67,6 +71,8 @@ namespace Yellokiller
             Levels.Add(levelTwo);
             Levels.Add(levelThree);
             Levels.Add(levelFour);
+            Levels.Add(levelFive);
+            Levels.Add(levelSix);
             Levels.Add(abortMenuEntry);
         }
 
@@ -135,6 +141,8 @@ namespace Yellokiller
             {
                 if (selectedEntry < levels.Count - 3)
                     selectedEntry += 3;
+                else
+                    selectedEntry = selectedEntry % 3;
             }
 
             // Accept or cancel the menu? We pass in our ControllingPlayer, which may
@@ -189,6 +197,22 @@ namespace Yellokiller
         }
 
         /// <summary>
+        /// Event handler for when the Level Five menu entry is selected.
+        /// </summary>
+        void LevelFiveMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
+        }
+
+        /// <summary>
+        /// Event handler for when the Level Six menu entry is selected.
+        /// </summary>
+        void LevelSixMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
+        }
+
+        /// <summary>
         /// This uses the loading screen to transition from the game over screen back to the main menu screen.
         /// </summary>
 
@@ -231,7 +255,7 @@ namespace Yellokiller
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
 
-            Vector2 position = new Vector2(130, 250);
+            Vector2 position = new Vector2(130, 280);
 
             byte fade = TransitionAlpha;
 
@@ -259,7 +283,13 @@ namespace Yellokiller
 
                 menuEntry.Draw(this, position, isSelected, gameTime, Color.Black);
 
-                position.Y += (menuEntry.GetHeight(this) + 10);
+                if ((i % 3 == 0) || (i % 3 == 1))
+                    position.X += 250;
+                else
+                {
+                    position.Y += (menuEntry.GetHeight(this) + 150);
+                    position.X -= 500;
+                }
             }
 
             // Draw the menu title.
