@@ -39,7 +39,7 @@ namespace Yellokiller
             MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
             songName = sampleMediaLibrary.Albums[1].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[1].Songs[n];
             Volume = (Properties.Settings.Default.MusicVolume / 10);
-            MediaPlayer.Volume = Volume;
+            MediaPlayer.Volume = (float)Volume;
         }
 
         public void LoadContent(ContentManager content)
