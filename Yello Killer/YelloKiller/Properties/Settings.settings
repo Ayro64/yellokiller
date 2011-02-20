@@ -8,7 +8,7 @@
     <Setting Name="AudioType" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="MusicVolume" Type="System.UInt32" Scope="User">
+    <Setting Name="MusicVolume" Type="System.Single" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="FXVolume" Type="System.UInt32" Scope="User">
