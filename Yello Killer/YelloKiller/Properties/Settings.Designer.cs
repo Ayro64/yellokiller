@@ -50,9 +50,9 @@ namespace Yellokiller.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public uint MusicVolume {
+        public float MusicVolume {
             get {
-                return ((uint)(this["MusicVolume"]));
+                return ((float)(this["MusicVolume"]));
             }
             set {
                 this["MusicVolume"] = value;
