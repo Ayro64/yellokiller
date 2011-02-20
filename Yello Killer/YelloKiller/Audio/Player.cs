@@ -30,7 +30,7 @@ namespace Yellokiller
 
         #region Initialization
 
-        public Player(int soundVolume)
+        public Player(uint soundVolume)
         {
             sampleMediaLibrary = new MediaLibrary();
             rand = new Random();
