@@ -42,13 +42,9 @@ namespace Yellokiller
 
         uint currentLanguage;
         uint currentSon;
-        uint soundVolume;
+        float soundVolume;
         uint fxVolume;
-
-
-
-
-
+        
         // Sert à keud', XNA.Content et XNA.Graphics à dégager.
         ContentManager content;
         SpriteBatch spriteBatch;
@@ -100,8 +96,6 @@ namespace Yellokiller
             MenuEntries.Add(soundVolumeMenuEntry);
             MenuEntries.Add(fxVolumeMenuEntry);
             MenuEntries.Add(backMenuEntry);
-
-            currentLanguage = Properties.Settings.Default.Language;
         }
 
 
@@ -112,15 +106,13 @@ namespace Yellokiller
         {
             languageMenuEntry.Text = "Langage: " + language[currentLanguage];
             sonMenuEntry.Text = "Mode de son: " + son[currentSon];
-            soundVolumeMenuEntry.Text = "Volume de la musique : " + soundVolume;
+            soundVolumeMenuEntry.Text = "Volume de la musique : " + (uint)soundVolume;
             fxVolumeMenuEntry.Text = "Volume des sons : " + fxVolume;
 
             Properties.Settings.Default.Language = currentLanguage;
             Properties.Settings.Default.AudioType = currentSon;
             Properties.Settings.Default.MusicVolume = soundVolume;
             Properties.Settings.Default.FXVolume = fxVolume;
-
-
         }
 
         // Sert qu'aux rectangles
@@ -179,14 +171,14 @@ namespace Yellokiller
                 && input.IsMenuLeft(ControllingPlayer) && soundVolume > 0)
             {
                 MediaPlayer.Volume -= 0.0999f;
-                soundVolume = (uint)(MediaPlayer.Volume * 10);
+                soundVolume = (MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
             if (MenuEntries[selectedEntry] == soundVolumeMenuEntry
                 && input.IsMenuRight(ControllingPlayer) && soundVolume < 10)
             {
                 MediaPlayer.Volume += 0.0999f;
-                soundVolume = (uint)(MediaPlayer.Volume * 10);
+                soundVolume = (MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
 
