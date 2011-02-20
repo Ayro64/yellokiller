@@ -15,7 +15,7 @@ namespace Yellokiller
         List<MenuEntry> levels = new List<MenuEntry>();
         MenuEntry levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix, abortMenuEntry;
 
-        const string menuTitle = "Choix du Niveau";
+        const string menuTitle = "Choix du Niveau\n      Solo";
         int selectedEntry = 0;
         ContentManager content;
         Texture2D levelSelectBkground, blankTexture;
