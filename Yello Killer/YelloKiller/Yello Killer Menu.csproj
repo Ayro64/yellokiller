@@ -85,6 +85,7 @@
     <Compile Include="MapEditor\Carte.cs" />
     <Compile Include="MapEditor\Case.cs" />
     <Compile Include="Services\Temps.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Yello Killer\Hero.cs" />
     <Compile Include="Yello Killer\Dimensions.cs" />
     <Compile Include="Yello Killer\Hero1.cs" />

@@ -70,14 +70,5 @@ namespace Yellokiller.Properties {
                 this["FXVolume"] = value;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("blah")]
-        public string LanPath {
-            get {
-                return ((string)(this["LanPath"]));
-            }
-        }
     }
 }
