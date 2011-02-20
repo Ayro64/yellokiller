@@ -30,7 +30,7 @@ namespace Yellokiller
 
         #region Initialization
 
-        public Player(uint soundVolume)
+        public Player()
         {
             sampleMediaLibrary = new MediaLibrary();
             rand = new Random();
@@ -38,7 +38,7 @@ namespace Yellokiller
             n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
             MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
             songName = sampleMediaLibrary.Albums[1].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[1].Songs[n];
-            Volume = soundVolume;
+            Volume = (Properties.Settings.Default.MusicVolume / 10);
             MediaPlayer.Volume = Volume;
         }
 
