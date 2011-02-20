@@ -37,20 +37,16 @@ namespace Yellokiller
 
         int mod;
 
-        enum Language
-        {
-            Français,
-            Anglais,
-            Allemand,
-        }
+        string[] language = { "Français", "English", "Deutsch" };
+        string[] son = { "Défault", "Player", "Aucun" };
 
-        static Language currentLanguage = Language.Français;
+        uint currentLanguage;
+        uint currentSon;
+        uint soundVolume;
+        uint fxVolume;
 
-        static string[] son = { "Défault", "Player", "Aucun" };
-        static int currentSon = 0;
 
-        static int soundVolume = (int)(MediaPlayer.Volume * 10);
-        static int fxVolume = 10;
+
 
 
         // Sert à keud', XNA.Content et XNA.Graphics à dégager.
@@ -70,6 +66,16 @@ namespace Yellokiller
         public OptionsMenuScreen(int mode)
             : base("Options")
         {
+
+            // Fetches Settings.
+            currentLanguage = Properties.Settings.Default.Language;
+            currentSon = Properties.Settings.Default.AudioType;
+
+            // soundVolume = (uint)(MediaPlayer.Volume * 10);
+            soundVolume = Properties.Settings.Default.MusicVolume;
+            fxVolume = Properties.Settings.Default.FXVolume;
+
+
             audio = new Player(soundVolume / 10);
             mod = mode;
 
@@ -94,6 +100,8 @@ namespace Yellokiller
             MenuEntries.Add(soundVolumeMenuEntry);
             MenuEntries.Add(fxVolumeMenuEntry);
             MenuEntries.Add(backMenuEntry);
+
+            currentLanguage = Properties.Settings.Default.Language;
         }
 
 
@@ -102,10 +110,17 @@ namespace Yellokiller
         /// </summary>
         void SetMenuEntryText()
         {
-            languageMenuEntry.Text = "Langage: " + currentLanguage;
+            languageMenuEntry.Text = "Langage: " + language[currentLanguage];
             sonMenuEntry.Text = "Mode de son: " + son[currentSon];
             soundVolumeMenuEntry.Text = "Volume de la musique : " + soundVolume;
             fxVolumeMenuEntry.Text = "Volume des sons : " + fxVolume;
+
+            Properties.Settings.Default.Language = currentLanguage;
+            Properties.Settings.Default.AudioType = currentSon;
+            Properties.Settings.Default.MusicVolume = soundVolume;
+            Properties.Settings.Default.FXVolume = fxVolume;
+
+
         }
 
         // Sert qu'aux rectangles
@@ -164,14 +179,14 @@ namespace Yellokiller
                 && input.IsMenuLeft(ControllingPlayer) && soundVolume > 0)
             {
                 MediaPlayer.Volume -= 0.0999f;
-                soundVolume = (int)(MediaPlayer.Volume * 10);
+                soundVolume = (uint)(MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
             if (MenuEntries[selectedEntry] == soundVolumeMenuEntry
                 && input.IsMenuRight(ControllingPlayer) && soundVolume < 10)
             {
                 MediaPlayer.Volume += 0.0999f;
-                soundVolume = (int)(MediaPlayer.Volume * 10);
+                soundVolume = (uint)(MediaPlayer.Volume * 10);
                 SetMenuEntryText();
             }
 
@@ -190,15 +205,11 @@ namespace Yellokiller
             base.HandleInput(input);
         }
         /// <summary>
-        /// Event handler for when the Ungulate menu entry is selected.
+        /// Event handler for when the Language menu entry is selected.
         /// </summary>
         void LanguageMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            currentLanguage++;
-
-            if (currentLanguage > Language.Allemand)
-                currentLanguage = 0;
-
+            currentLanguage = (uint)((currentLanguage + 1) % language.Length);
             SetMenuEntryText();
         }
 
@@ -208,13 +219,14 @@ namespace Yellokiller
         /// </summary>
         void SonMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            currentSon = (currentSon + 1) % son.Length;
+            currentSon = (uint)((currentSon + 1) % son.Length);
             SetMenuEntryText();
         }
 
         protected override void OnCancel(PlayerIndex playerIndex)
         {
             audio.Close();
+            Properties.Settings.Default.Save();
 
             if (IsPopup)
                 ScreenManager.AddScreen(new PauseMenuScreen(1, mod), playerIndex, true);
@@ -257,6 +269,7 @@ namespace Yellokiller
             }
             base.Draw(gameTime);
         }
+
         #endregion
     }
 }
