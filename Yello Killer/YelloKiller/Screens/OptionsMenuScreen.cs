@@ -76,7 +76,7 @@ namespace Yellokiller
             fxVolume = Properties.Settings.Default.FXVolume;
 
 
-            audio = new Player(soundVolume / 10);
+            audio = new Player();
             mod = mode;
 
             // Create our menu entries.
