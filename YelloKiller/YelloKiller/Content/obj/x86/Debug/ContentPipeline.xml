@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>arbre.png</Source>
+      <Name>arbre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\arbre.xnb</Output>
+      <Time>2011-02-21T14:42:31.2902114+01:00</Time>
+    </Item>
+    <Item>
+      <Source>arbre2.png</Source>
+      <Name>arbre2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\arbre2.xnb</Output>
+      <Time>2011-02-21T14:42:31.2962117+01:00</Time>
+    </Item>
+    <Item>
+      <Source>ascenseur.png</Source>
+      <Name>ascenseur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb</Output>
+      <Time>2011-02-21T14:42:31.3022121+01:00</Time>
+    </Item>
+    <Item>
+      <Source>background.jpg</Source>
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\background.xnb</Output>
+      <Time>2011-02-21T14:42:31.3072123+01:00</Time>
+    </Item>
+    <Item>
+      <Source>blank.png</Source>
+      <Name>blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\blank.xnb</Output>
+      <Time>2011-02-21T14:42:31.3122126+01:00</Time>
+    </Item>
+    <Item>
+      <Source>ennemi.png</Source>
+      <Name>ennemi</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\ennemi.xnb</Output>
+      <Time>2011-02-21T14:42:32.9643071+01:00</Time>
+    </Item>
+    <Item>
+      <Source>fond.png</Source>
+      <Name>fond</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\fond.xnb</Output>
+      <Time>2011-02-21T14:42:32.9723076+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Game Over.png</Source>
+      <Name>Game Over</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\Game Over.xnb</Output>
+      <Time>2011-02-21T14:42:32.979308+01:00</Time>
+    </Item>
+    <Item>
+      <Source>gradient.png</Source>
+      <Name>gradient</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\gradient.xnb</Output>
+      <Time>2011-02-21T14:42:32.9853083+01:00</Time>
+    </Item>
+    <Item>
+      <Source>herbe.png</Source>
+      <Name>herbe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\herbe.xnb</Output>
+      <Time>2011-02-21T14:42:32.9923087+01:00</Time>
+    </Item>
+    <Item>
+      <Source>herbeFoncee.bmp</Source>
+      <Name>herbeFoncee</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\herbeFoncee.xnb</Output>
+      <Time>2011-02-21T14:42:32.9993091+01:00</Time>
+    </Item>
+    <Item>
+      <Source>LevelSelection.jpg</Source>
+      <Name>LevelSelection</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\LevelSelection.xnb</Output>
+      <Time>2011-02-21T14:42:33.0073096+01:00</Time>
+    </Item>
+    <Item>
+      <Source>maison.png</Source>
+      <Name>maison</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\maison.xnb</Output>
+      <Time>2011-02-21T14:42:33.01431+01:00</Time>
+    </Item>
+    <Item>
+      <Source>mur.bmp</Source>
+      <Name>mur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\mur.xnb</Output>
+      <Time>2011-02-21T14:42:33.0203103+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Ninja2Trans.png</Source>
+      <Name>Ninja2Trans</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\Ninja2Trans.xnb</Output>
+      <Time>2011-02-21T14:42:33.0273107+01:00</Time>
+    </Item>
+    <Item>
+      <Source>NinjaTrans.png</Source>
+      <Name>NinjaTrans</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\NinjaTrans.xnb</Output>
+      <Time>2011-02-21T14:42:33.0343111+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origine1.png</Source>
+      <Name>origine1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine1.xnb</Output>
+      <Time>2011-02-21T14:42:33.0413115+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origine2.png</Source>
+      <Name>origine2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine2.xnb</Output>
+      <Time>2011-02-21T14:42:33.6993492+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origineEnnemi1.png</Source>
+      <Name>origineEnnemi1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\origineEnnemi1.xnb</Output>
+      <Time>2011-02-21T14:42:33.7093497+01:00</Time>
+    </Item>
+    <Item>
+      <Source>shuriken.png</Source>
+      <Name>shuriken</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\shuriken.xnb</Output>
+      <Time>2011-02-21T14:42:33.8053552+01:00</Time>
+    </Item>
+    <Item>
+      <Source>collision.wav</Source>
+      <Name>collision</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\collision.xnb</Output>
+      <Time>2011-02-21T14:42:31.3172129+01:00</Time>
+    </Item>
+    <Item>
+      <Source>cri.wav</Source>
+      <Name>cri</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\cri.xnb</Output>
+      <Time>2011-02-21T14:42:32.9533065+01:00</Time>
+    </Item>
+    <Item>
+      <Source>courier.spritefont</Source>
+      <Name>courier</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\courier.xnb</Output>
+      <Time>2011-02-21T14:42:31.3232133+01:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2009-05-28T01:16:14+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2009-05-28T01:16:06+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2009-05-28T01:16:16+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2009-05-28T01:16:26+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2009-05-28T01:16:12+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2009-05-28T01:16:06+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2010-12-04T14:06:59.8917689+01:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
