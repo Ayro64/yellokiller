@@ -1,5 +1,6 @@
 #region Using Statements
 using System;
+using System.Resources;
 using System.Diagnostics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -31,6 +32,8 @@ namespace YelloKiller
         bool isInitialized;
 
         bool traceEnabled;
+
+        public ResourceManager resourceManager;
 
         #endregion
 
