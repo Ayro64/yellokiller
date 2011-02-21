@@ -192,6 +192,7 @@ namespace YelloKiller
                 if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) &&
                     (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0)
                 {
+                    moteurAudio.SoundBank.PlayCue("pasBois");
                     positionDesiree.X = position.X;
                     positionDesiree.Y = position.Y - 28;
                     bougerHaut = false;
@@ -201,6 +202,7 @@ namespace YelloKiller
                 else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down) &&
                           (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0)
                 {
+                    moteurAudio.SoundBank.PlayCue("pasBois");
                     positionDesiree.X = position.X;
                     positionDesiree.Y = position.Y + 28;
                     bougerBas = false;
@@ -210,6 +212,7 @@ namespace YelloKiller
                 else if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) &&
                     (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0)
                 {
+                    moteurAudio.SoundBank.PlayCue("pasBois");
                     positionDesiree.X = position.X - 28;
                     positionDesiree.Y = position.Y;
                     bougerGauche = false;
@@ -219,6 +222,7 @@ namespace YelloKiller
                 else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) &&
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0)
                 {
+                    moteurAudio.SoundBank.PlayCue("pasBois");
                     positionDesiree.X = position.X + 28;
                     positionDesiree.Y = position.Y;
                     bougerDroite = false;
