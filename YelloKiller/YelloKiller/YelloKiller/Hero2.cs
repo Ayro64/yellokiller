@@ -191,6 +191,7 @@ namespace YelloKiller
                     (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0 &&
                     (position.X != hero1.PositionDesiree.X || position.Y - 28 != hero1.PositionDesiree.Y))
                 {
+                    moteurAudio.SoundBank.PlayCue("pasBois");
                     positionDesiree.X = position.X;
                     positionDesiree.Y = position.Y - 28;
                     bougerHaut = false;
@@ -200,6 +201,7 @@ namespace YelloKiller
                          (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0 &&
                          (position.X != hero1.PositionDesiree.X || position.Y + 28 != hero1.PositionDesiree.Y))
                 {
+                    moteurAudio.SoundBank.PlayCue("pasBois");
                     positionDesiree.X = position.X;
                     positionDesiree.Y = position.Y + 28;
                     bougerBas = false;
@@ -209,6 +211,7 @@ namespace YelloKiller
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0 &&
                          (position.Y != hero1.PositionDesiree.Y || position.X - 28 != hero1.PositionDesiree.X))
                 {
+                    moteurAudio.SoundBank.PlayCue("pasBois");
                     positionDesiree.X = position.X - 28;
                     positionDesiree.Y = position.Y;
                     bougerGauche = false;
@@ -218,6 +221,7 @@ namespace YelloKiller
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0 &&
                          (position.Y != hero1.PositionDesiree.Y || position.X + 28 != hero1.PositionDesiree.X))
                 {
+                    moteurAudio.SoundBank.PlayCue("pasBois");
                     positionDesiree.X = position.X + 28;
                     positionDesiree.Y = position.Y;
                     bougerDroite = false;
