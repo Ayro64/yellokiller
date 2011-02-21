@@ -119,7 +119,7 @@ namespace YelloKiller
                 
                 Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken, moteurAudio.SoundBank);
 
-                if(Moteur_physique.Collision_Ennemi_Hero(_ennemis, hero))
+                if(Moteur_physique.Collision_Ennemi_Hero(_ennemis, hero, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
 
                 audio.Update(gameTime);

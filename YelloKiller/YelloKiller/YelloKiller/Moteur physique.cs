@@ -24,22 +24,28 @@ namespace YelloKiller
 
         //Commentaire destine a Etienne : Bite avec un 'T'
         
-        static public bool Collision_Ennemi_Heros(List<Ennemi> listeEnnemis, Hero1 hero1, Hero2 hero2)
+        static public bool Collision_Ennemi_Heros(List<Ennemi> listeEnnemis, Hero1 hero1, Hero2 hero2, SoundBank soundBank)
         {
             for (int b = 0; b < listeEnnemis.Count; b++)
             {
                 if (listeEnnemis[b].Rectangle.Intersects(hero1.Rectangle) || listeEnnemis[b].Rectangle.Intersects(hero2.Rectangle))
+                {
+                    soundBank.PlayCue("CriMortHero");
                     return true;
+                }
             }
             return false;
         }
 
-        static public bool Collision_Ennemi_Hero(List<Ennemi> listeEnnemis, Hero hero)
+        static public bool Collision_Ennemi_Hero(List<Ennemi> listeEnnemis, Hero hero, SoundBank soundBank)
         {
             for (int b = 0; b < listeEnnemis.Count; b++)
             {
                 if (listeEnnemis[b].Rectangle.Intersects(hero.Rectangle))
+                {
+                    soundBank.PlayCue("CriMortHero");
                     return true;
+                }
             }
             return false;
         }
