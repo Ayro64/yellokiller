@@ -32,9 +32,10 @@ namespace YelloKiller
         Hero hero;
         Carte carte;
         Rectangle camera;
-        Player audio;
         List<Shuriken> _shuriken;
         List<Ennemi> _ennemis;
+        Player audio;
+        MoteurAudio moteurAudio;
         double temps;
 
         #endregion
@@ -47,6 +48,7 @@ namespace YelloKiller
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
             audio = new Player();
+            moteurAudio = new MoteurAudio();
 
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.OuvrirCarteSolo("Ssave0.txt");
@@ -108,12 +110,14 @@ namespace YelloKiller
             {
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
 
+                moteurAudio.Update();
+
                 hero.Update(gameTime, carte, this, ref camera, _shuriken);
 
                 foreach (Ennemi pasgentil in _ennemis)
                     pasgentil.Update(gameTime, carte/*, this, hero*/);
                 
-                Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken);
+                Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken, moteurAudio.SoundBank);
 
                 if(Moteur_physique.Collision_Ennemi_Hero(_ennemis, hero))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));

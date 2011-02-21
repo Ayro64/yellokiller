@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 
 namespace YelloKiller
 {
     static class Moteur_physique
     {
-        static public void Collision_Shuriken_Ennemi(List<Ennemi> listeEnnemis, List<Shuriken> listeShuriken)
+        static public void Collision_Shuriken_Ennemi(List<Ennemi> listeEnnemis, List<Shuriken> listeShuriken, SoundBank soundBank)
         {
             if (listeEnnemis.Count != 0)
             {
@@ -13,6 +14,7 @@ namespace YelloKiller
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (listeEnnemis[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
+                            soundBank.PlayCue("cri");
                             listeEnnemis.Remove(listeEnnemis[i]);
                             listeShuriken.Remove(listeShuriken[j]);
                             break;

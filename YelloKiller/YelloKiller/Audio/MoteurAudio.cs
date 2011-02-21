@@ -15,6 +15,11 @@ namespace YelloKiller
             soundBank = new SoundBank(engine, @"Content\Sound Bank.xsb");
         }
 
+        public SoundBank SoundBank
+        {
+            get { return soundBank; }
+        }
+
         public void Update()
         {
             engine.Update();
