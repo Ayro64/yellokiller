@@ -190,6 +190,7 @@ namespace YelloKiller
             {
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1), ControllingPlayer, true);
+                moteurAudio.SoundBank.PlayCue("menuBouge");
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.G))
