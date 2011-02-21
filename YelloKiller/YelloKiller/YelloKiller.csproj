@@ -88,11 +88,6 @@
     <Compile Include="Audio\Player.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MadEditor\Ascenseur.cs" />
-    <Compile Include="MadEditor\Carte.cs" />
-    <Compile Include="MadEditor\Case.cs" />
-    <Compile Include="MadEditor\Cursor.cs" />
-    <Compile Include="MadEditor\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
