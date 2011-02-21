@@ -35,16 +35,16 @@ namespace YelloKiller
             switch (type)
             {
                 case TypeCase.herbe:
-                    nomTexture = "herbe";
+                    nomTexture = "Herbe2";
                     break;
                 case TypeCase.herbeFoncee:
-                    nomTexture = "herbeFoncee";
+                    nomTexture = "herbeFonce";
                     break;
                 case TypeCase.arbre:
-                    nomTexture = "arbre";
+                    nomTexture = "HBuisson";
                     break;
                 case TypeCase.mur:
-                    nomTexture = "mur";
+                    nomTexture = "MurBlanc";
                     break;
                 case TypeCase.maison:
                     nomTexture = "maison";
