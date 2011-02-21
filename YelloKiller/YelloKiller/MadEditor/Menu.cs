@@ -53,7 +53,7 @@ namespace YelloKiller
         public void Update(Ascenseur ascenseur)
         {
             for (int i = 0; i < nbTextures; i++)
-                listeRectangles[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, (int)-ascenseur.Position.Y + i * 80, 28, 28);
+                listeRectangles[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, (int)-ascenseur.Position.Y + i * 40, 28, 28);
         }
 
         public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseur)
@@ -67,7 +67,7 @@ namespace YelloKiller
                     spriteBatch.Draw(listeTextures[u], new Vector2(listeRectangles[u].X + 28 * (1 - listeTextures[u].Width / 28), listeRectangles[u].Y + 28 * (1 - listeTextures[u].Height / 28)), Color.White);
                 }
                 else
-                    spriteBatch.Draw(listeTextures[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + u * 80), null, Color.White, 0, Vector2.Zero, (float)28 / listeTextures[u].Height, SpriteEffects.None, 0);                
+                    spriteBatch.Draw(listeTextures[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseur.Position.Y + u * 40), null, Color.White, 0, Vector2.Zero, (float)28 / listeTextures[u].Height, SpriteEffects.None, 0);                
             }
         }
     }
