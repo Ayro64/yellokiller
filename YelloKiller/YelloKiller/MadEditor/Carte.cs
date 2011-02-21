@@ -41,9 +41,9 @@ namespace YelloKiller
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
-            for (int y = camera.Y / 28 + camera.Height; y >= camera.Y / 28; y--)
+            for (int y = camera.Y / 28 + camera.Height; y >= 0; y--)
             {
-                for (int x = camera.X / 28 + camera.Width; x >= camera.X / 28; x--)
+                for (int x = camera.X / 28 + camera.Width; x >= 0; x--)
                 {
                     _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
                     
@@ -54,13 +54,13 @@ namespace YelloKiller
 
         public void DrawInMapEditor(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
-            for (int y = camera.Y + camera.Height - 1; y >= camera.Y; y--)
+            for (int y = camera.Y + camera.Height - 1; y >= 0; y--)
             {
-                for (int x = camera.X + camera.Width - 1; x >= camera.X; x--)
+                for (int x = camera.X + camera.Width - 1; x >= 0; x--)
                 {
-                    _case[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
+                        _case[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
 
-                    _case[y, x].DrawInMapEditor(spriteBatch, content);
+                        _case[y, x].DrawInMapEditor(spriteBatch, content);
                 }
             }
         }
