@@ -14,6 +14,8 @@ namespace YelloKiller
         List<MenuEntry> levels = new List<MenuEntry>();
         MenuEntry levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix, abortMenuEntry;
 
+        MoteurAudio moteurAudio;
+
         const string menuTitle = "Choix du Niveau\n      Coop";
         int selectedEntry = 0;
         ContentManager content;
@@ -43,6 +45,8 @@ namespace YelloKiller
         /// </summary>
         public LevelSelectMulti()
         {
+            moteurAudio = new MoteurAudio();
+
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -115,6 +119,7 @@ namespace YelloKiller
             // Move to the left menu entry?
             if (input.IsMenuLeft(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry > 0)
                     selectedEntry--;
             }
@@ -122,6 +127,7 @@ namespace YelloKiller
             // Move to the right menu entry?
             if (input.IsMenuRight(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry < (levels.Count - 1))
                     selectedEntry++;
             }
@@ -129,6 +135,7 @@ namespace YelloKiller
             // Move to the up menu entry?
             if (input.IsMenuUp(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry > 2)
                     selectedEntry -= 3;
                 else
@@ -138,6 +145,7 @@ namespace YelloKiller
             // Move to the down menu entry?
             if (input.IsMenuDown(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry < levels.Count - 3)
                     selectedEntry += 3;
                 else
@@ -152,7 +160,10 @@ namespace YelloKiller
             PlayerIndex playerIndex;
 
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
+            {
                 OnSelectEntry(selectedEntry, playerIndex);
+                moteurAudio.SoundBank.PlayCue("menuBouge");
+            }
         }
 
         /// <summary>
