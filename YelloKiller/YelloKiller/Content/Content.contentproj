@@ -38,16 +38,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\arbre.png">
-      <Name>arbre</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\arbre2.png">
-      <Name>arbre2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="ascenseur.png">
       <Name>ascenseur</Name>
       <Importer>TextureImporter</Importer>
@@ -78,11 +68,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\fond.png">
-      <Name>fond</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Game Over.png">
       <Name>Game Over</Name>
       <Importer>TextureImporter</Importer>
@@ -95,11 +80,6 @@
     </Compile>
     <Compile Include="LevelSelection.jpg">
       <Name>LevelSelection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\maison.png">
-      <Name>maison</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -154,8 +134,16 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="Textures\arbre.png">
+      <Name>arbre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\arbre2.png">
+      <Name>arbre2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="Textures\bois.png">
       <Name>bois</Name>
       <Importer>TextureImporter</Importer>
@@ -166,13 +154,18 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\CoussinRougeBC.png">
-      <Name>CoussinRougeBC</Name>
+    <Compile Include="Textures\buissonSurHerbe.png">
+      <Name>buissonSurHerbe</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\HBuisson.png">
-      <Name>HBuisson</Name>
+    <Compile Include="Textures\fond.png">
+      <Name>fond</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\fondNoir.png">
+      <Name>fondNoir</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -181,23 +174,28 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\HerbeFonce.png">
-      <Name>HerbeFonce</Name>
+    <Compile Include="Textures\herbeFoncee.png">
+      <Name>herbeFoncee</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\MurBlanc.png">
-      <Name>MurBlanc</Name>
+    <Compile Include="Textures\murBlanc.png">
+      <Name>murBlanc</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\PiedDeMurBois.png">
-      <Name>PiedDeMurBois</Name>
+    <Compile Include="Textures\piedDeMurBois.png">
+      <Name>piedDeMurBois</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\TableauMurBlanc.png">
-      <Name>TableauMurBlanc</Name>
+    <Compile Include="Textures\tableauMurBlanc.png">
+      <Name>tableauMurBlanc</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\tapisRougeBC.png">
+      <Name>tapisRougeBC</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
