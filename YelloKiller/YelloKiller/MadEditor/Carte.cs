@@ -101,20 +101,41 @@ namespace YelloKiller
                 {
                     switch (line[x])
                     {
+                        case ('a'):
+                            _case[y,x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
+                            break;
+                        case ('A'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
+                            break;
+                        case ('s'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.buissonSurHerbe);
+                            break;
+                        case ('m'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.murBlanc);
+                            break;
+                        case ('t'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tableauMurBlanc);
+                            break;
+                        case ('b'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.bois);
+                            break;
+                        case ('B'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.boisCarre);
+                            break;
+                        case ('T'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tapisRougeBC);
+                            break;
                         case ('h'):
-                            _case[y,x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             break;
                         case ('H'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
                             break;
-                        case ('a'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
+                        case ('p'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.piedDeMurBois);
                             break;
-                        case ('m'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.mur);
-                            break;            
-                        case ('M'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.maison);
+                        case ('r'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.terre);
                             break;
                         case ('E'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
@@ -128,9 +149,6 @@ namespace YelloKiller
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             origineJoueur2 = new Vector2(x, y);
                             break;
-                        case ('A'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
-                            break; 
                     }
                 }
             }
@@ -166,20 +184,41 @@ namespace YelloKiller
                 {
                     switch (line[x])
                     {
+                        case ('a'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
+                            break;
+                        case ('A'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
+                            break;
+                        case ('s'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.buissonSurHerbe);
+                            break;
+                        case ('m'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.murBlanc);
+                            break;
+                        case ('t'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tableauMurBlanc);
+                            break;
+                        case ('b'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.bois);
+                            break;
+                        case ('B'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.boisCarre);
+                            break;
+                        case ('T'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tapisRougeBC);
+                            break;
                         case ('h'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             break;
                         case ('H'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
                             break;
-                        case ('a'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
+                        case ('p'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.piedDeMurBois);
                             break;
-                        case ('m'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.mur);
-                            break;
-                        case ('M'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.maison);
+                        case ('r'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.terre);
                             break;
                         case ('E'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
@@ -193,9 +232,6 @@ namespace YelloKiller
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             origineJoueur1 = new Vector2(x, y);
                             break;
-                        case ('A'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
-                            break; 
                     }
                 }
             }

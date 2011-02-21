@@ -34,23 +34,41 @@ namespace YelloKiller
         {
             switch (type)
             {
+                case TypeCase.arbre:
+                    nomTexture = @"Textures\arbre";
+                    break;
+                case TypeCase.arbre2:
+                    nomTexture = @"Textures\arbre2";
+                    break;
+                case TypeCase.buissonSurHerbe:
+                    nomTexture = @"Textures\buissonSurHerbe";
+                    break;
+                case TypeCase.murBlanc:
+                    nomTexture = @"Textures\murBlanc";
+                    break;
+                case TypeCase.tableauMurBlanc:
+                    nomTexture = @"Textures\tableauMurBlanc";
+                    break;
+                case TypeCase.bois:
+                    nomTexture = @"Textures\bois";
+                    break;
+                case TypeCase.boisCarre:
+                    nomTexture = @"Textures\boisCarre";
+                    break;
+                case TypeCase.tapisRougeBC:
+                    nomTexture = @"Textures\tapisRougeBC";
+                    break;
                 case TypeCase.herbe:
-                    nomTexture = "Herbe2";
+                    nomTexture = @"Textures\herbe";
                     break;
                 case TypeCase.herbeFoncee:
-                    nomTexture = "herbeFonce";
+                    nomTexture = @"Textures\herbeFoncee";
                     break;
-                case TypeCase.arbre:
-                    nomTexture = "HBuisson";
+                case TypeCase.piedDeMurBois:
+                    nomTexture = @"Textures\piedDeMurBois";
                     break;
-                case TypeCase.mur:
-                    nomTexture = "MurBlanc";
-                    break;
-                case TypeCase.maison:
-                    nomTexture = "maison";
-                    break;
-                case TypeCase.Ennemi:
-                    nomTexture = "origineEnnemi1";
+                case TypeCase.terre:
+                    nomTexture = @"Textures\terre";
                     break;
                 case TypeCase.Joueur1:
                     nomTexture = "origine1";
@@ -58,9 +76,6 @@ namespace YelloKiller
                 case TypeCase.Joueur2:
                     nomTexture = "origine2";
                     break;
-                case TypeCase.arbre2:
-                    nomTexture = "arbre2";
-                    break;   
             }
             texture = content.Load<Texture2D>(nomTexture);
         }
