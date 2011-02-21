@@ -42,8 +42,8 @@ namespace YelloKiller
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
-            // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu.
-            menu = new Menu(content, 9);
+            // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu ci-dessous.
+            menu = new Menu(content, 15);
             curseur = new Cursor(content);
             ascenseur = new Ascenseur(content);
 
@@ -60,6 +60,9 @@ namespace YelloKiller
             if (afficheMessageErreur)
                 chronometre += gameTime.ElapsedGameTime.TotalSeconds;
 
+            ascenseur.Update();
+            menu.Update(ascenseur);
+            curseur.Update(content, menu);
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
@@ -70,10 +73,6 @@ namespace YelloKiller
                 throw new ArgumentNullException("input");
 
             int playerIndex = (int)ControllingPlayer.Value;
-
-            ascenseur.Update();
-            menu.Update(ascenseur);
-            curseur.Update(content, menu);
 
             GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
 
@@ -106,13 +105,13 @@ namespace YelloKiller
                     if (curseur.Type == TypeCase.arbre2)
                     {
                         if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.mur;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.murBlanc;
 
                         if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.mur;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.murBlanc;
 
                         if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.mur;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.murBlanc;
                     }
                 }
 
@@ -165,20 +164,41 @@ namespace YelloKiller
                         {
                             switch (carte.Cases[y, x].Type)
                             {
+                                case (TypeCase.arbre):
+                                    ligne += 'a';
+                                    break;
+                                case (TypeCase.arbre2):
+                                    ligne += 'A';
+                                    break;
+                                case (TypeCase.buissonSurHerbe):
+                                    ligne += 's';
+                                    break;
+                                case (TypeCase.murBlanc):
+                                    ligne += 'm';
+                                    break;
+                                case (TypeCase.tableauMurBlanc):
+                                    ligne += 't';
+                                    break;
+                                case (TypeCase.bois):
+                                    ligne += 'b';
+                                    break;
+                                case (TypeCase.boisCarre):
+                                    ligne += 'B';
+                                    break;
+                                case (TypeCase.tapisRougeBC):
+                                    ligne += 'T';
+                                    break;
                                 case (TypeCase.herbe):
                                     ligne += 'h';
                                     break;
                                 case (TypeCase.herbeFoncee):
                                     ligne += 'H';
                                     break;
-                                case (TypeCase.arbre):
-                                    ligne += 'a';
+                                case (TypeCase.piedDeMurBois):
+                                    ligne += 'p';
                                     break;
-                                case (TypeCase.mur):
-                                    ligne += 'm';
-                                    break;
-                                case (TypeCase.maison):
-                                    ligne += 'M';
+                                case (TypeCase.terre):
+                                    ligne += 'r';
                                     break;
                                 case (TypeCase.Ennemi):
                                     ligne += 'E';
@@ -188,9 +208,6 @@ namespace YelloKiller
                                     break;
                                 case (TypeCase.Joueur2):
                                     ligne += 'O';
-                                    break;
-                                case (TypeCase.arbre2):
-                                    ligne += 'A';
                                     break;
                             }
                         }
@@ -227,8 +244,7 @@ namespace YelloKiller
             }
             else if (chronometre > 0)
                 spriteBatch.DrawString(ScreenManager.font, "Le ou les personnages n'a / n'ont pas été placé.\n\nVeuillez placer un ou deux personnages avant de sauvegarder.\n\nMerci", new Vector2(10), Color.White);
-
-
+            
             if (!enableSave)
                 spriteBatch.DrawString(ScreenManager.font, "Fichier sauvegardé sous " + nomSauvegarde.ToString() + ".txt" + "\n\nAppuyez sur ECHAP pour quitter.", new Vector2(10), Color.White);
 

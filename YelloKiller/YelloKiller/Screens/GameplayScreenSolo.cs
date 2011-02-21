@@ -10,15 +10,23 @@ namespace YelloKiller
 {
     public enum TypeCase // Valeur strictement positive pour les cases franchissables, negative sinon.
     {
-        herbe = 1,
-        herbeFoncee = 2,
         arbre = -1,
-        mur = -2,
-        maison = -3,
-        Ennemi = 3,
-        Joueur1 = 4,
-        Joueur2 = 5,
-        arbre2 = -4
+        arbre2 = -2,
+        buissonSurHerbe = -3,
+        murBlanc = -4,
+        tableauMurBlanc = -5,
+
+        bois = 1,
+        boisCarre = 2,
+        tapisRougeBC = 3,
+        herbe = 4,
+        herbeFoncee = 5,
+        piedDeMurBois = 6,
+        terre = 7,
+
+        Ennemi = 100,
+        Joueur1 = 101,
+        Joueur2 = 102
     }
 
     public class GameplayScreenSolo : GameScreen

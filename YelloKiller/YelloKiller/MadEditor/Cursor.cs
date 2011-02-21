@@ -17,7 +17,7 @@ namespace YelloKiller
         public Cursor(ContentManager content)
         {
             position = new Vector2(0, 0);
-            texture = content.Load<Texture2D>("herbefoncee");
+            texture = content.Load<Texture2D>(@"Textures\herbeFoncee");
             fond = content.Load<Texture2D>("fond");
             type = TypeCase.herbeFoncee;
             tailleFond = 1;
@@ -47,35 +47,53 @@ namespace YelloKiller
                     switch (i)
                     {
                         case (0):
-                            type = TypeCase.herbe;
-                            break;
-                        case (1):
-                            type = TypeCase.herbeFoncee;
-                            break;
-                        case (2):
-                            type = TypeCase.mur;
-                            break;
-                        case (3):
-                            type = TypeCase.maison;
-                            break;
-                        case (4):
                             type = TypeCase.arbre;
                             break;
+                        case (1):
+                            type = TypeCase.arbre2;
+                            break;
+                        case (2):
+                            type = TypeCase.buissonSurHerbe;
+                            break;
+                        case (3):
+                            type = TypeCase.murBlanc;
+                            break;
+                        case (4):
+                            type = TypeCase.tableauMurBlanc;
+                            break;
                         case (5):
-                            type = TypeCase.Ennemi;
+                            type = TypeCase.bois;
                             break;
                         case (6):
-                            type = TypeCase.Joueur1;
+                            type = TypeCase.boisCarre;
                             break;
                         case (7):
-                            type = TypeCase.Joueur2;
+                            type = TypeCase.tapisRougeBC;
                             break;
                         case (8):
-                            type = TypeCase.arbre2;
+                            type = TypeCase.herbe;
+                            break;
+                        case (9):
+                            type = TypeCase.herbeFoncee;
+                            break;
+                        case (10):
+                            type = TypeCase.piedDeMurBois;
+                            break;
+                        case (11):
+                            type = TypeCase.terre;
+                            break;
+                        case (12):
+                            type = TypeCase.Ennemi;
+                            break;
+                        case (13):
+                            type = TypeCase.Joueur1;
+                            break;
+                        case (14):
+                            type = TypeCase.Joueur2;
                             break;
                     }
 
-                    if (i >= 0 && i <= 7)
+                    if (i == 0 || i == 5 || i == 8 || i == 9 || i == 10 || i == 11 || i == 12 || i == 13 || i == 14)
                         tailleFond = 1;
                     else
                         tailleFond = 1.88f;

@@ -21,15 +21,21 @@ namespace YelloKiller
             for (int i = 0; i < nbTextures; i++)
                 listeRectangles.Add(new Rectangle(0, 0, 28, 28));
 
-            listeTextures.Add(content.Load<Texture2D>("herbe"));
-            listeTextures.Add(content.Load<Texture2D>("herbeFoncee"));
-            listeTextures.Add(content.Load<Texture2D>("mur"));
-            listeTextures.Add(content.Load<Texture2D>("maison"));
-            listeTextures.Add(content.Load<Texture2D>("arbre"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\arbre"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\arbre2"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\buissonSurHerbe"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\murBlanc"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\tableauMurBlanc"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\bois"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\boisCarre"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\tapisRougeBC"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\herbe"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\herbeFoncee"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\piedDeMurBois"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\terre"));
             listeTextures.Add(content.Load<Texture2D>("origineEnnemi1"));
             listeTextures.Add(content.Load<Texture2D>("origine1"));
             listeTextures.Add(content.Load<Texture2D>("origine2"));
-            listeTextures.Add(content.Load<Texture2D>("arbre2"));
 
             fond = content.Load<Texture2D>("fond");
         }
