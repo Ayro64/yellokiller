@@ -58,7 +58,7 @@ namespace YelloKiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, GameplayScreenSolo yk, ref Rectangle camera, List<Shuriken> _shuriken)
+        public void Update(GameTime gameTime, Carte carte, GameplayScreenSolo yk, ref Rectangle camera, List<Shuriken> _shuriken, MoteurAudio moteurAudio)
         {
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
@@ -68,6 +68,7 @@ namespace YelloKiller
                 countshuriken--;
                 ishero = true;
                 _shuriken.Add(new Shuriken(yk, new Vector2(position.X, position.Y), this.texture.Width, this));
+                moteurAudio.SoundBank.PlayCue("shuriken");
             }
             else
                 ishero = false;
