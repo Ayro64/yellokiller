@@ -133,9 +133,6 @@
     <Compile Include="YelloKiller\Hero1.cs" />
     <Compile Include="YelloKiller\Hero2.cs" />
     <Compile Include="YelloKiller\Moteur physique.cs" />
-    <Compile Include="YelloKiller\Node.cs" />
-    <Compile Include="YelloKiller\NodeList.cs" />
-    <Compile Include="YelloKiller\PathFinding.cs" />
     <Compile Include="YelloKiller\Shuriken.cs" />
     <Compile Include="YelloKiller\Souris.cs" />
   </ItemGroup>
