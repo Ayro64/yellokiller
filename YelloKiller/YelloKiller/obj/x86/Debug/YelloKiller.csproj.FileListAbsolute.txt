@@ -109,3 +109,50 @@ C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Conten
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe.config
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.pdb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\background.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\blank.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ennemi.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Game Over.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\gradient.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\LevelSelection.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Ninja2Trans.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\NinjaTrans.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine1.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine2.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origineEnnemi1.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\shuriken.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre2.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\bois.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\boisCarre.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\buissonSurHerbe.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fond.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fondNoir.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbeFoncee.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\murBlanc.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\piedDeMurBois.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableauMurBlanc.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tapisRougeBC.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\terre.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\collision.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\cri.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\CriMortHero.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\menuBouge.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\pasBois.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\pasGravier.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\shuriken.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\shurikenCollision.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\sonMenuBoutton.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\courier.xnb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Ambiance sonore.xgs
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Wave Bank.xwb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Sound Bank.xsb
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe.config
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe
+D:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.pdb
+D:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\YelloKiller.exe
+D:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\YelloKiller.pdb
