@@ -24,6 +24,8 @@ namespace YelloKiller
         piedDeMurBois = 6,
         terre = 7,
 
+        fond = -6,
+
         Ennemi = 100,
         Joueur1 = 101,
         Joueur2 = 102
