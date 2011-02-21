@@ -169,6 +169,7 @@ namespace YelloKiller
                 {
                     _shuriken.Remove(m);
                     Console.WriteLine("suppresion shuriken");
+                    moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
             }
 
