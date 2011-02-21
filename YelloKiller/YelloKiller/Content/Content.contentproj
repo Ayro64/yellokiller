@@ -38,12 +38,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="arbre.png">
+    <Compile Include="Textures\arbre.png">
       <Name>arbre</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="arbre2.png">
+    <Compile Include="Textures\arbre2.png">
       <Name>arbre2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -63,12 +63,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="collision.wav">
+    <Compile Include="Sons\collision.wav">
       <Name>collision</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="cri.wav">
+    <Compile Include="Sons\cri.wav">
       <Name>cri</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
@@ -78,7 +78,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="fond.png">
+    <Compile Include="Textures\fond.png">
       <Name>fond</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -98,7 +98,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="maison.png">
+    <Compile Include="Textures\maison.png">
       <Name>maison</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -142,66 +142,66 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ambiance sonore.xap">
+    <Compile Include="Sons\Ambiance sonore.xap">
       <Name>Ambiance sonore</Name>
       <Importer>XactImporter</Importer>
       <Processor>XactProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CriMortHero.wav">
+    <Compile Include="Sons\CriMortHero.wav">
       <Name>CriMortHero</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bois.png">
+    <Compile Include="Textures\bois.png">
       <Name>bois</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="BoisCarre.png">
+    <Compile Include="Textures\BoisCarre.png">
       <Name>BoisCarre</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="CoussinRougeBC.png">
+    <Compile Include="Textures\CoussinRougeBC.png">
       <Name>CoussinRougeBC</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="HBuisson.png">
+    <Compile Include="Textures\HBuisson.png">
       <Name>HBuisson</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="herbe2.png">
+    <Compile Include="Textures\herbe2.png">
       <Name>herbe2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="HerbeFonce.png">
+    <Compile Include="Textures\HerbeFonce.png">
       <Name>HerbeFonce</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="MurBlanc.png">
+    <Compile Include="Textures\MurBlanc.png">
       <Name>MurBlanc</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="PiedDeMurBois.png">
+    <Compile Include="Textures\PiedDeMurBois.png">
       <Name>PiedDeMurBois</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="TableauMurBlanc.png">
+    <Compile Include="Textures\TableauMurBlanc.png">
       <Name>TableauMurBlanc</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="terre.png">
+    <Compile Include="Textures\terre.png">
       <Name>terre</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
