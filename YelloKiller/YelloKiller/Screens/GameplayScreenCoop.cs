@@ -103,8 +103,8 @@ namespace YelloKiller
 
                 moteurAudio.Update();
 
-                hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken);
-                hero2.Update(gameTime, carte, hero1, this, _shuriken);
+                hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken, moteurAudio);
+                hero2.Update(gameTime, carte, hero1, this, _shuriken, moteurAudio);
                 
                 foreach (Ennemi ennemi in _ennemis)
                     ennemi.Update(gameTime, carte/*, this, hero1, hero2*/);
@@ -152,6 +152,7 @@ namespace YelloKiller
                 {
                     _shuriken.Remove(m);
                     Console.WriteLine("suppresion shuriken");
+                    moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
             }
 
