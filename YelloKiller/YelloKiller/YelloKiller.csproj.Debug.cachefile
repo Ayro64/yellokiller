@@ -1,27 +1,40 @@
-Content\arbre.xnb
-Content\arbre2.xnb
 Content\ascenseur.xnb
 Content\background.xnb
 Content\blank.xnb
 Content\ennemi.xnb
-Content\fond.xnb
 Content\Game Over.xnb
 Content\gradient.xnb
-Content\herbe.xnb
-Content\herbeFoncee.xnb
 Content\LevelSelection.xnb
-Content\maison.xnb
-Content\mur.xnb
 Content\Ninja2Trans.xnb
 Content\NinjaTrans.xnb
 Content\origine1.xnb
 Content\origine2.xnb
 Content\origineEnnemi1.xnb
 Content\shuriken.xnb
-Content\collision.xnb
-Content\cri.xnb
-Content\CriMortHero.xnb
+Content\Textures\arbre.xnb
+Content\Textures\arbre2.xnb
+Content\Textures\bois.xnb
+Content\Textures\boisCarre.xnb
+Content\Textures\buissonSurHerbe.xnb
+Content\Textures\fond.xnb
+Content\Textures\fondNoir.xnb
+Content\Textures\herbe.xnb
+Content\Textures\herbeFoncee.xnb
+Content\Textures\murBlanc.xnb
+Content\Textures\piedDeMurBois.xnb
+Content\Textures\tableauMurBlanc.xnb
+Content\Textures\tapisRougeBC.xnb
+Content\Textures\terre.xnb
+Content\Sons\collision.xnb
+Content\Sons\cri.xnb
+Content\Sons\CriMortHero.xnb
+Content\Sons\menuBouge.xnb
+Content\Sons\pasBois.xnb
+Content\Sons\pasGravier.xnb
+Content\Sons\shuriken.xnb
+Content\Sons\shurikenCollision.xnb
+Content\Sons\sonMenuBoutton.xnb
 Content\courier.xnb
-Content\Ambiance sonore.xgs
-Content\Wave Bank.xwb
-Content\Sound Bank.xsb
+Content\Sons\Ambiance sonore.xgs
+Content\Sons\Wave Bank.xwb
+Content\Sons\Sound Bank.xsb

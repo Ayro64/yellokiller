@@ -1,0 +1,3 @@
+Content\Sons\Ambiance sonore.xgs
+Content\Sons\Wave Bank.xwb
+Content\Sons\Sound Bank.xsb
