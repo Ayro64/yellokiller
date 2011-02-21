@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sections>
+  <WaveBank Name="Wave Bank">Wave Bank
+{
+    Name = Wave Bank;
+    Xbox File = Xbox\Wave Bank.xwb;
+    Windows File = Win\Wave Bank.xwb;
+    Xbox Bank Path Edited = 0;
+    Windows Bank Path Edited = 0;
+    Seek Tables = 1;
+    Compression Preset Name = &lt;none&gt;;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 1901980292;
+    PC Bank Last Modified High = 30134796;
+    Bank Last Revised Low = 1072642856;
+    Bank Last Revised High = 30134796;
+
+    Wave
+    {
+        Name = collision;
+        File = collision.wav;
+        Build Settings Last Modified Low = 2905637370;
+        Build Settings Last Modified High = 30134736;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 9092;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3400407635;
+            Last Modified High = 30134795;
+        }
+    }
+
+    Wave
+    {
+        Name = cri;
+        File = cri.wav;
+        Build Settings Last Modified Low = 2905793371;
+        Build Settings Last Modified High = 30134736;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 235748;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3400467638;
+            Last Modified High = 30134795;
+        }
+    }
+
+    Wave
+    {
+        Name = CriMortHero;
+        File = CriMortHero.wav;
+        Build Settings Last Modified Low = 1351241630;
+        Build Settings Last Modified High = 30134742;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 79380;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3400527642;
+            Last Modified High = 30134795;
+        }
+    }
+
+    Wave
+    {
+        Name = menuBouge;
+        File = menuBouge.wav;
+        Build Settings Last Modified Low = 994528389;
+        Build Settings Last Modified High = 30134796;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 46;
+            Play Region Length = 339016;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3758293167;
+            Last Modified High = 30134789;
+        }
+    }
+
+    Wave
+    {
+        Name = pasBois;
+        File = pasBois.wav;
+        Build Settings Last Modified Low = 994528389;
+        Build Settings Last Modified High = 30134796;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 46;
+            Play Region Length = 506824;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1464575605;
+            Last Modified High = 30134766;
+        }
+    }
+
+    Wave
+    {
+        Name = pasGravier;
+        File = pasGravier.wav;
+        Build Settings Last Modified Low = 994538389;
+        Build Settings Last Modified High = 30134796;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 30100;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1272786519;
+            Last Modified High = 30134747;
+        }
+    }
+
+    Wave
+    {
+        Name = shuriken;
+        File = shuriken.wav;
+        Build Settings Last Modified Low = 994538389;
+        Build Settings Last Modified High = 30134796;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 54028;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1917392811;
+            Last Modified High = 30134795;
+        }
+    }
+
+    Wave
+    {
+        Name = shurikenCollision;
+        File = shurikenCollision.wav;
+        Build Settings Last Modified Low = 994548390;
+        Build Settings Last Modified High = 30134796;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 62604;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2612812587;
+            Last Modified High = 30134795;
+        }
+    }
+
+    Wave
+    {
+        Name = sonMenuBoutton;
+        File = sonMenuBoutton.wav;
+        Build Settings Last Modified Low = 994548390;
+        Build Settings Last Modified High = 30134796;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 46;
+            Play Region Length = 492596;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 4258739891;
+            Last Modified High = 30134778;
+        }
+    }
+}
+
+</WaveBank>
+</Sections>
