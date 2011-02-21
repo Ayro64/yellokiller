@@ -22,7 +22,7 @@ namespace YelloKiller
         Texture2D texture;
 
         float vitesse_animation, index;
-        int maxIndex, countshuriken, vitesse_sprite, etienne;
+        int maxIndex, countshuriken, vitesse_sprite;
         public bool ishero;
         bool bougerHaut, bougerBas, bougerDroite, bougerGauche;
         
@@ -37,8 +37,7 @@ namespace YelloKiller
             maxIndex = 0;
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             countshuriken = 100;
-            ishero = false;        
-            etienne = 0;
+            ishero = false;   
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
         }
 
@@ -63,7 +62,7 @@ namespace YelloKiller
         {
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
-            
+
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl) && countshuriken > 0)
             {
                 countshuriken--;
@@ -192,55 +191,37 @@ namespace YelloKiller
                 if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) &&
                     (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0)
                 {
-                    etienne++;
-
-                    if (etienne > 4)
-                    {
-                        positionDesiree.X = position.X;
-                        positionDesiree.Y = position.Y - 28;
-                        bougerHaut = false;
-                    }
-                    else
-                        sourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
+                    positionDesiree.X = position.X;
+                    positionDesiree.Y = position.Y - 28;
+                    bougerHaut = false;
                 }
 
 
                 else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down) &&
                           (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0)
                 {
-                    etienne++;
-
-                    if (etienne > 4)
-                    {
-                        positionDesiree.X = position.X;
-                        positionDesiree.Y = position.Y + 28;
-                        bougerBas = false;
-                    }
-                    else
-                        sourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
+                    positionDesiree.X = position.X;
+                    positionDesiree.Y = position.Y + 28;
+                    bougerBas = false;
                 }
 
 
                 else if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) &&
                     (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0)
                 {
-                    etienne++;
-
-                    if (etienne > 4)
-                    {
-                        positionDesiree.X = position.X - 28;
-                        positionDesiree.Y = position.Y;
-                        bougerGauche = false;
-                    }
-                    else
-                        sourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
+                    positionDesiree.X = position.X - 28;
+                    positionDesiree.Y = position.Y;
+                    bougerGauche = false;
                 }
 
 
                 else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right) &&
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0)
                 {
-                    etienne++;
+                    positionDesiree.X = position.X + 28;
+                    positionDesiree.Y = position.Y;
+                    bougerDroite = false;
+                    /*etienne++;
 
                     if (etienne > 4)
                     {
@@ -249,12 +230,10 @@ namespace YelloKiller
                         bougerDroite = false;
                     }
                     else
-                        sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
+                        sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);*/
                 }
             }
-            else
-                etienne = 0;
-        }    
+        }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera, Carte carte, Hero hero2)
         {
