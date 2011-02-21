@@ -10,9 +10,9 @@ namespace YelloKiller
 
         public MoteurAudio()
         {
-            engine = new AudioEngine(@"Content\Ambiance sonore.xgs");
-            waveBank = new WaveBank(engine, @"Content\Wave Bank.xwb");
-            soundBank = new SoundBank(engine, @"Content\Sound Bank.xsb");
+            engine = new AudioEngine(@"Content\Sons\Ambiance sonore.xgs");
+            waveBank = new WaveBank(engine, @"Content\Sons\Wave Bank.xwb");
+            soundBank = new SoundBank(engine, @"Content\Sons\Sound Bank.xsb");
         }
 
         public SoundBank SoundBank
