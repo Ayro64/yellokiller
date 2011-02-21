@@ -150,7 +150,7 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
     <Compile Include="Textures\BoisCarre.png">
-      <Name>BoisCarre</Name>
+      <Name>boisCarre</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
