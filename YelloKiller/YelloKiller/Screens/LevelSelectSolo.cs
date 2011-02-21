@@ -19,7 +19,7 @@ namespace YelloKiller
         int selectedEntry = 0;
         ContentManager content;
         Texture2D levelSelectBkground, blankTexture;
-
+        MoteurAudio moteurAudio;
         Color Color;
 
         #endregion
@@ -74,6 +74,8 @@ namespace YelloKiller
             Levels.Add(levelFive);
             Levels.Add(levelSix);
             Levels.Add(abortMenuEntry);
+
+            moteurAudio = new MoteurAudio();
         }
 
         /// <summary>
@@ -116,6 +118,7 @@ namespace YelloKiller
             // Move to the left menu entry?
             if (input.IsMenuLeft(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry > 0)
                     selectedEntry--;
             }
@@ -123,6 +126,7 @@ namespace YelloKiller
             // Move to the right menu entry?
             if (input.IsMenuRight(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry < (levels.Count - 1))
                     selectedEntry++;
             }
@@ -130,6 +134,7 @@ namespace YelloKiller
             // Move to the up menu entry?
             if (input.IsMenuUp(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry > 2)
                     selectedEntry -= 3;
                 else
@@ -139,6 +144,7 @@ namespace YelloKiller
             // Move to the down menu entry?
             if (input.IsMenuDown(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry < levels.Count - 3)
                     selectedEntry += 3;
                 else
@@ -153,7 +159,10 @@ namespace YelloKiller
             PlayerIndex playerIndex;
 
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
+            {
+                moteurAudio.SoundBank.PlayCue("menuBouge");
                 OnSelectEntry(selectedEntry, playerIndex);
+            }
         }
 
         /// <summary>
