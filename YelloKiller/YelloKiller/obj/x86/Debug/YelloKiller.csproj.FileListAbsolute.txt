@@ -62,3 +62,7 @@ C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKill
 C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe
 C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.pdb
 C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\YelloKiller.pdb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\YelloKiller.exe
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\YelloKiller.pdb
