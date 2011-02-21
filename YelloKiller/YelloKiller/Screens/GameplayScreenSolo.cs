@@ -205,6 +205,7 @@ namespace YelloKiller
 
             if (input.IsPauseGame(ControllingPlayer) || gamePadDisconnected)
             {
+                moteurAudio.SoundBank.PlayCue("menuBouge");
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1), ControllingPlayer, true);
             }
