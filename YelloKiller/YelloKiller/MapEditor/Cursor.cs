@@ -83,20 +83,35 @@ namespace YelloKiller
                             type = TypeCase.terre;
                             break;
                         case (12):
-                            type = TypeCase.Ennemi;
+                            type = TypeCase.carlageNoir;
                             break;
                         case (13):
-                            type = TypeCase.Joueur1;
+                            type = TypeCase.fondNoir;
                             break;
                         case (14):
+                            type = TypeCase.finMurFN;
+                            break;
+                        case (15):
+                            type = TypeCase.finMurGauche;
+                            break;
+                        case (16):
+                            type = TypeCase.finMurDroite;
+                            break;
+                        case (17):
+                            type = TypeCase.Ennemi;
+                            break;
+                        case (18):
+                            type = TypeCase.Joueur1;
+                            break;
+                        case (19):
                             type = TypeCase.Joueur2;
                             break;
                     }
 
-                    if (i == 0 || i == 5 || i == 8 || i == 9 || i == 10 || i == 11 || i == 12 || i == 13 || i == 14)
-                        tailleFond = 1;
-                    else
+                    if (i == 1 || i == 3 || i == 4)
                         tailleFond = 1.88f;
+                    else
+                        tailleFond = 1;
                 }
             }
         }
