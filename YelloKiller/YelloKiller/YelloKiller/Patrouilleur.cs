@@ -49,6 +49,7 @@ namespace YelloKiller.YelloKiller
         public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
             Position = position;
+
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
 
@@ -61,12 +62,10 @@ namespace YelloKiller.YelloKiller
                         Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
             }
 
-            if (chemin.Count != 0)
+            if (chemin != null && chemin.Count != 0)
             {
                 if (monter && descendre && droite && gauche)
                 {
-                    Console.WriteLine("Position : X = " + (int)position.X / 28 + " ; Y = " + (int)position.Y / 28 + " _ Chemin : X = " + (int)chemin[chemin.Count - 1].Position.X / 28 + " ; Y = " + (int)chemin[chemin.Count - 1].Position.Y / 28);
-
                     if ((int)chemin[chemin.Count - 1].Position.X / 28 < (int)position.X / 28)
                     {
                         positionDesiree.X = position.X - 28;
