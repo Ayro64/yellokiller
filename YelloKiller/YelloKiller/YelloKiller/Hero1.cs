@@ -188,7 +188,7 @@ namespace YelloKiller
                     vitesse_animation = 0.008f;
                 }
 
-                if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Z) &&
+                if (position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Z) &&
                     (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0 &&
                     (position.X != hero2.PositionDesiree.X || position.Y - 28 != hero2.PositionDesiree.Y))
                 {
@@ -208,7 +208,7 @@ namespace YelloKiller
                     bougerBas = false;
                 }
 
-                else if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Q) &&
+                else if (position.X > 10 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Q) &&
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0 &&
                          (position.Y != hero2.PositionDesiree.Y || position.X - 28 != hero2.PositionDesiree.X))
                 {

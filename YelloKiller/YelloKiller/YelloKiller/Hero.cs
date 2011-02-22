@@ -182,7 +182,7 @@ namespace YelloKiller
                     vitesse_animation = 0.008f;
                 }
 
-                if (position.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) &&
+                if (position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up) &&
                     (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0)
                 {
                     moteurAudio.SoundBank.PlayCue("pasBois");
@@ -202,7 +202,7 @@ namespace YelloKiller
                 }
 
 
-                else if (position.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) &&
+                else if (position.X > 10 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left) &&
                     (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0)
                 {
                     moteurAudio.SoundBank.PlayCue("pasBois");
