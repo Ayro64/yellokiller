@@ -397,6 +397,51 @@
       <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero2.xnb</Output>
       <Time>2011-02-22T15:46:13.8048208+01:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\Commode.png</Source>
+      <Name>Textures\Commode</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Commode.xnb</Output>
+      <Time>2011-02-22T19:23:13.6224055+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\finMurBas.png</Source>
+      <Name>Textures\finMurBas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\finMurBas.xnb</Output>
+      <Time>2011-02-22T19:23:13.6324061+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable.png</Source>
+      <Name>Textures\grandeTable</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable.xnb</Output>
+      <Time>2011-02-22T19:23:13.6034044+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lit.png</Source>
+      <Name>Textures\lit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit.xnb</Output>
+      <Time>2011-02-22T19:23:13.6414066+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\tableMoyenne.png</Source>
+      <Name>Textures\tableMoyenne</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne.xnb</Output>
+      <Time>2011-02-22T19:23:13.613405+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
