@@ -28,6 +28,31 @@ namespace YelloKiller
                             return "Quitter";
                         case ("MainQuitMsg"):
                             return "Êtes-vous sûr de vouloir quitter le jeu?\n";
+                        case("EditorExCharacters"):
+                            return "Le ou les personnages n'a / n'ont pas été placé.\n\nVeuillez placer un ou deux personnages avant de sauvegarder.";
+                        case("EditorSave1"):
+                            return "Fichier sauvegardé sous ";
+                        case("EditorSave2"):
+                            return ".txt\n\nAppuyez sur ECHAP pour quitter.";
+                        case("GORetry"):
+                            return "Réessayer";
+                        case("GOAbort"):
+                            return "Quitter";
+                        case("GOMsg"):
+                            return "Vous avez été capturé!";
+                        case("Multi"):
+                            return "Choix du Niveau\n     Co-op";
+                        case("Solo"):
+                            return "Choix du Niveau\n      Solo";
+                        case("Level"):
+                            return "Niveau";
+                        case("BckToMenu"):
+                            return "Retour au Menu";
+                        case("Loading"):
+                            return "Chargement...";
+                        case("MsgBox"):
+                            return "\nBouton A, Espace, Entrée : OK" +
+                                   "\nBouton B, Echap : Annuler";
                         default:
                             return "";
                     }
