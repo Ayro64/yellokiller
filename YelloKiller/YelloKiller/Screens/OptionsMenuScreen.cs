@@ -108,6 +108,7 @@ namespace YelloKiller
             Properties.Settings.Default.MusicVolume = soundVolume;
             Properties.Settings.Default.FXVolume = fxVolume;
 
+            this.TitleUpdate(Langue.tr("Options"));
             languageMenuEntry.Text = Langue.tr("OptLan") + language[currentLanguage];
             sonMenuEntry.Text = Langue.tr("OptSound") + son[currentSon];
             soundVolumeMenuEntry.Text = Langue.tr("OptMusic") + (uint)soundVolume;
