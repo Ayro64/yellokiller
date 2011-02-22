@@ -210,14 +210,29 @@ namespace YelloKiller
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
 
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
                             if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
                                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
 
+                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
+                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
+
+                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
+                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
+
                             if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
                                 carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
+
+                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
+                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
+
+                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
+                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
+
+                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
+                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
+
+                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
+                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
                         }
                     }
                     else
