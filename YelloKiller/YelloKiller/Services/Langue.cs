@@ -47,7 +47,9 @@ namespace YelloKiller
                         case("Level"):
                             return "Niveau";
                         case("BckToMenu"):
-                            return "Retour au Menu";
+                            return "Retour au Menu Principal";
+                        case("Back"):
+                            return "Retour";
                         case("Loading"):
                             return "Chargement...";
                         case("PauseTitle"):
@@ -67,6 +69,18 @@ namespace YelloKiller
                             return "Êtes-vous sûr de vouloir quitter l'édition?\nToute édition non sauvegardée sera perdue.\n";
                         case("GameMsgBox"):
                             return "Êtes-vous sûr de vouloir quitter la partie?\n";
+                        case("SoundDefault"):
+                            return "Défault";
+                        case("SoundNone"):
+                            return "Aucun";
+                        case("OptLan"):
+                            return "Langage: ";
+                        case("OptSound"):
+                            return "Mode de son: ";
+                        case("OptMusic"):
+                            return "Volume de la musique : ";
+                        case("OptFX"):
+                            return "Volume des sons : ";
                         default:
                             return "";
                     }
