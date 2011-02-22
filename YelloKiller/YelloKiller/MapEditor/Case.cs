@@ -207,16 +207,16 @@ namespace YelloKiller
                     nomTexture = @"Textures\FinMurDroite";
                     break;
                 case TypeCase.commode:
-                    nomTexture = @"Texture\Commode";
+                    nomTexture = @"Textures\Commode";
                     break;
                 case TypeCase.TableMoyenne:
-                    nomTexture = @"Texture\tableMoyenne";
+                    nomTexture = @"Textures\tableMoyenne";
                     break;
                 case TypeCase.GrandeTable:
-                    nomTexture = @"Texture\grandeTable";
+                    nomTexture = @"Textures\grandeTable";
                     break;
                 case TypeCase.Lit:
-                    nomTexture = @"Texture\lit";
+                    nomTexture = @"Textures\lit";
                     break;
 
                 case TypeCase.Joueur1:
