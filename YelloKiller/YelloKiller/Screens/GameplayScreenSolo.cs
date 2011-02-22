@@ -106,7 +106,7 @@ namespace YelloKiller
             
             _patrouilleurs_a_cheval = new List<patrouilleur_a_cheval>();
             foreach (Vector2 position in carte._originesPatrouilleur_a_cheval)
-                _patrouilleurs_a_cheval.Add(new patrouilleur_a_cheval(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 1, 16, 23), TypeCase.Patrouilleur_a_cheval));
+                _patrouilleurs_a_cheval.Add(new patrouilleur_a_cheval(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 0, 23, 30), TypeCase.Patrouilleur_a_cheval));
 
 
             temps = 0;
