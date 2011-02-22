@@ -62,7 +62,7 @@ namespace YelloKiller.YelloKiller
                         Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
             }
             
-            if (chemin.Count != 0)
+            if (chemin != null && chemin.Count != 0)
             {
                 if (monter && descendre && droite && gauche)
                 {
