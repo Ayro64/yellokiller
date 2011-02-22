@@ -24,7 +24,6 @@ namespace YelloKiller
             rectangle = new Rectangle((int)position.X, (int)position.Y, 16, 28);
             maxIndex = 0;
             positionDesiree = position;
-
         }
 
         public Rectangle Rectangle

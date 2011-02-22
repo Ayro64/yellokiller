@@ -58,6 +58,8 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, Hero2 hero2, GameplayScreenCoop yk, ref Rectangle camera, List<Shuriken> _shuriken, MoteurAudio moteurAudio)
         {
+            Position = position;
+
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
 

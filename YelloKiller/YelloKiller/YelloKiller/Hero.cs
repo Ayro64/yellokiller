@@ -54,8 +54,11 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, GameplayScreenSolo yk, ref Rectangle camera, List<Shuriken> _shuriken, MoteurAudio moteurAudio)
         {
+            Position = position;
+
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
+
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl) && countshuriken > 0)
             {
                 countshuriken--;
