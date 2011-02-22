@@ -33,6 +33,12 @@ namespace YelloKiller
             listeTextures.Add(content.Load<Texture2D>(@"Textures\herbeFoncee"));
             listeTextures.Add(content.Load<Texture2D>(@"Textures\piedDeMurBois"));
             listeTextures.Add(content.Load<Texture2D>(@"Textures\terre"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\carlageNoir"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\fondNoir"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\FinMurFN"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\FinMurGauche"));
+            listeTextures.Add(content.Load<Texture2D>(@"Textures\FinMurDroite"));
+
             listeTextures.Add(content.Load<Texture2D>("origineEnnemi1"));
             listeTextures.Add(content.Load<Texture2D>("origine1"));
             listeTextures.Add(content.Load<Texture2D>("origine2"));
