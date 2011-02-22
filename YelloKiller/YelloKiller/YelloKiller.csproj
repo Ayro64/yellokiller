@@ -143,7 +143,6 @@
     <Compile Include="YelloKiller\Patrouilleur.cs" />
     <Compile Include="YelloKiller\patrouilleur_a_cheval.cs" />
     <Compile Include="YelloKiller\Shuriken.cs" />
-    <Compile Include="YelloKiller\Souris.cs" />
     <Compile Include="YelloKiller\Sprite.cs" />
   </ItemGroup>
   <ItemGroup>

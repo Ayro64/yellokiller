@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
-using YelloKiller.YelloKiller;
 
 namespace YelloKiller.YelloKiller
 {
-    class Patrouilleur : Ennemi
+    class patrouilleur_a_cheval : Ennemi
     {
         Vector2 position, positionDesiree;
         float vitesse_animation;
@@ -24,12 +23,12 @@ namespace YelloKiller.YelloKiller
         List<Case> chemin;
         float autochemin;
 
-        public Patrouilleur(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
+        public patrouilleur_a_cheval(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 16, 28);
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 15, 30);
             vitesse_animation = 0.008f;
             vitesse_sprite = 1;
             index = 0;
@@ -42,60 +41,14 @@ namespace YelloKiller.YelloKiller
 
         public void LoadContent(ContentManager content, int maxIndex)
         {
-            texture = content.Load<Texture2D>("Patrouilleur");
+            texture = content.Load<Texture2D>("Patrouilleur_a_cheval");
             this.maxIndex = maxIndex;
         }
 
         public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
-            Position = position;
-
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
-
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
-            {
-                chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)position.Y / 28, (int)position.X / 28], carte.Cases[(int)hero.Position.Y / 28, (int)hero.Position.X / 28], camera);
-                Console.WriteLine("Depart : X = " + (int)position.X / 28 + " ; Y = " + (int)position.Y / 28 + " _ Arrivee : X = " + (int)hero.Position.X / 28 + " ; Y = " + (int)hero.Position.Y / 28);
-                if(chemin != null)
-                    foreach (Case sisi in chemin)
-                        Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
-            }
-
-            if (chemin != null && chemin.Count != 0)
-            {
-                if (monter && descendre && droite && gauche)
-                {
-                    if ((int)chemin[chemin.Count - 1].Position.X / 28 < (int)position.X / 28)
-                    {
-                        positionDesiree.X = position.X - 28;
-                        gauche = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                        Console.WriteLine("Je vais a gauche.");
-                    }
-                    else if ((int)chemin[chemin.Count - 1].Position.X / 28 > (int)position.X / 28)
-                    {
-                        positionDesiree.X = position.X + 28;
-                        droite = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                        Console.WriteLine("Je vais a droite.");
-                    }
-                    else if ((int)chemin[chemin.Count - 1].Position.Y / 28 < (int)position.Y / 28)
-                    {
-                        positionDesiree.Y = position.Y - 28;
-                        monter = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                        Console.WriteLine("Je vais en haut.");
-                    }
-                    else if ((int)chemin[chemin.Count - 1].Position.Y / 28 > (int)position.Y / 28)
-                    {
-                        positionDesiree.Y = position.Y + 28;
-                        descendre = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                        Console.WriteLine("Je vais en bas.");
-                    }
-                }
-            }
 
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
@@ -225,7 +178,7 @@ namespace YelloKiller.YelloKiller
 
         }
 
-        public void UpdateInCoop(GameTime gameTime, Carte carte, Hero1 hero1, Hero2 hero2)
+        public void UpdateInCoop(GameTime gameTime, Carte carte, Hero1 hero1, Hero2 hero2/*, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2*/)
         {
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
