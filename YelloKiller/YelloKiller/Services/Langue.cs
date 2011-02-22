@@ -7,26 +7,32 @@ namespace YelloKiller
 {
     class Langue
     {
-        public string tr(string sentence)
+        public static string tr(string sentence)
         {
             switch (Properties.Settings.Default.Language)
             {
-                case(0):
+                case (0):
                     switch (sentence)
                     {
-                        case("MainMenuTitle"):
+                        case ("MainMenuTitle"):
                             return " Yello Killer\nMenu Principal";
-                        case("MainMenuSolo"):
+                        case ("MainMenuSolo"):
                             return "Mode Solo";
-                        case("MainMenuCoop"):
+                        case ("MainMenuCoop"):
                             return "Mode Co-op";
-                        case("MainMenuEditor"):
+                        case ("MainMenuEditor"):
                             return "Editeur de cartes";
-                        case("MainMenuOptions"):
+                        case ("MainMenuOptions"):
                             return "Options";
-                        case("MainMenuQuit"):
+                        case ("MainMenuQuit"):
                             return "Quitter";
+                        case ("MainQuitMsg"):
+                            return "Êtes-vous sûr de vouloir quitter le jeu?\n";
+                        default:
+                            return "";
                     }
+                default:
+                    return "";
             }
         }
     }
