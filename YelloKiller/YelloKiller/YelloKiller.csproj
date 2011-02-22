@@ -71,6 +71,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -122,6 +123,7 @@
     <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Services\IMouseService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
+    <Compile Include="Services\Langue.cs" />
     <Compile Include="Services\MouseService.cs" />
     <Compile Include="Services\ServiceHelper.cs" />
     <Compile Include="Services\Temps.cs" />
@@ -173,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Properties\Français.settings" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
