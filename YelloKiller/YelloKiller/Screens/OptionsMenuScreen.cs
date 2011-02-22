@@ -37,8 +37,8 @@ namespace YelloKiller
 
         int mod;
 
-        string[] language = { "Français", "English", "Deutsch" };
-        string[] son = { "Défault", "Player", "Aucun" };
+        string[] language = { "Français", "Deutsch", "English" };
+        string[] son = { Langue.tr("SoundDefault"), "Player", Langue.tr("SoundNone") };
 
         uint currentLanguage;
         uint currentSon;
@@ -60,9 +60,8 @@ namespace YelloKiller
         /// Constructor.
         /// </summary>
         public OptionsMenuScreen(int mode)
-            : base("Options")
+            : base(Langue.tr("Options"))
         {
-
             // Fetches Settings.
             currentLanguage = Properties.Settings.Default.Language;
             currentSon = Properties.Settings.Default.AudioType;
@@ -83,7 +82,7 @@ namespace YelloKiller
 
             SetMenuEntryText();
 
-            MenuEntry backMenuEntry = new MenuEntry("Retour");
+            MenuEntry backMenuEntry = new MenuEntry(Langue.tr("Back"));
 
             // Hook up menu event handlers.
             languageMenuEntry.Selected += LanguageMenuEntrySelected;
@@ -104,10 +103,10 @@ namespace YelloKiller
         /// </summary>
         void SetMenuEntryText()
         {
-            languageMenuEntry.Text = "Langage: " + language[currentLanguage];
-            sonMenuEntry.Text = "Mode de son: " + son[currentSon];
-            soundVolumeMenuEntry.Text = "Volume de la musique : " + (uint)soundVolume;
-            fxVolumeMenuEntry.Text = "Volume des sons : " + fxVolume;
+            languageMenuEntry.Text = Langue.tr("OptLan") + language[currentLanguage];
+            sonMenuEntry.Text = Langue.tr("OptSound") + son[currentSon];
+            soundVolumeMenuEntry.Text = Langue.tr("OptMusic") + (uint)soundVolume;
+            fxVolumeMenuEntry.Text = Langue.tr("OptFX") + fxVolume;
 
             Properties.Settings.Default.Language = currentLanguage;
             Properties.Settings.Default.AudioType = currentSon;
@@ -201,8 +200,8 @@ namespace YelloKiller
         /// </summary>
         void LanguageMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            currentLanguage = (uint)((currentLanguage + 1) % language.Length);
-            SetMenuEntryText();
+                currentLanguage = (uint)((currentLanguage + 1) % language.Length);
+                SetMenuEntryText();
         }
 
 
