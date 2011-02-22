@@ -108,7 +108,6 @@ namespace YelloKiller
 
         public void SaveMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            OnCancel(e);
         }
 
         /// <summary>
