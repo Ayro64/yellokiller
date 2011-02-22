@@ -208,5 +208,14 @@ namespace YelloKiller
 
 
         #endregion
+
+        #region Public Methods
+
+        public void TitleUpdate(string newTitle)
+        {
+            this.menuTitle = newTitle;
+        }
+
+        #endregion
     }
 }
