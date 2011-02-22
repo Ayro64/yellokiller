@@ -337,7 +337,7 @@ namespace YelloKiller
                 chronometre = 0;
             }
             else if (chronometre > 0)
-                spriteBatch.DrawString(ScreenManager.font, "Le ou les personnages n'a / n'ont pas été placé.\n\nVeuillez placer un ou deux personnages avant de sauvegarder.\n\nMerci", new Vector2(10), Color.White);
+                spriteBatch.DrawString(ScreenManager.font, "Le ou les personnages n'a / n'ont pas été placé.\n\nVeuillez placer un ou deux personnages avant de sauvegarder.", new Vector2(10), Color.White);
             
             if (!enableSave)
                 spriteBatch.DrawString(ScreenManager.font, "Fichier sauvegardé sous " + nomSauvegarde.ToString() + ".txt" + "\n\nAppuyez sur ECHAP pour quitter.", new Vector2(10), Color.White);
