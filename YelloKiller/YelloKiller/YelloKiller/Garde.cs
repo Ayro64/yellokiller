@@ -57,11 +57,11 @@ namespace YelloKiller.YelloKiller
             {
                 chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)position.Y / 28, (int)position.X / 28], carte.Cases[(int)hero.Position.Y / 28, (int)hero.Position.X / 28], camera);
                 Console.WriteLine("Depart : X = " + (int)position.X / 28 + " ; Y = " + (int)position.Y / 28 + " _ Arrivee : X = " + (int)hero.Position.X / 28 + " ; Y = " + (int)hero.Position.Y / 28);
-                foreach (Case sisi in chemin)
-                    Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
+                if (chemin != null)
+                    foreach (Case sisi in chemin)
+                        Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
             }
-
-
+            
             if (chemin.Count != 0)
             {
                 if (monter && descendre && droite && gauche)

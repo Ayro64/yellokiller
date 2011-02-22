@@ -37,18 +37,18 @@ namespace YelloKiller
         {
             List<Noeud> result = new List<Noeud>();
             // Bas
-            if ((int)_case.Position.Y / 28 + (int)camera.Y / 28 + 1 < Taille_Map.HAUTEUR_MAP && carte.Cases[(int)_case.Position.Y / 28 + (int)camera.Y / 28 + 1, (int)_case.Position.X / 28 + (int)camera.X / 28].Type > 0)
+            if ((int)_case.Position.Y / 28 + 1 < Taille_Map.HAUTEUR_MAP && (int)_case.Position.Y >= 0 && (int)_case.Position.X / 28 >= 0 && carte.Cases[(int)_case.Position.Y / 28 + 1, (int)_case.Position.X / 28].Type > 0)
                 result.Add(new Noeud(carte.Cases[(int)_case.Position.Y / 28 + 1, (int)_case.Position.X / 28], this, destination));
             // Droite
-            if ((int)_case.Position.X / 28 + (int)camera.X / 28 + 1 < Taille_Map.LARGEUR_MAP && carte.Cases[(int)_case.Position.Y / 28 + (int)camera.Y / 28, (int)_case.Position.X / 28 + 1 + (int)camera.X / 28].Type > 0)
+            if ((int)_case.Position.X / 28 + 1 < Taille_Map.LARGEUR_MAP && (int)_case.Position.X / 28 + 1 >= 0 && (int)_case.Position.Y / 28 > 0 && carte.Cases[(int)_case.Position.Y / 28, (int)_case.Position.X / 28 + 1].Type > 0)
                 result.Add(new Noeud(carte.Cases[(int)_case.Position.Y / 28, (int)_case.Position.X / 28 + 1], this, destination));
             // Haut
-            if ((int)_case.Position.Y / 28 + (int)camera.Y / 28 - 1 >= 0 && carte.Cases[(int)_case.Position.Y / 28 + (int)camera.Y / 28 - 1, (int)_case.Position.X / 28 + (int)camera.X / 28].Type > 0)
+            if ((int)_case.Position.Y / 28 - 1 >= 0 && (int)_case.Position.X / 28 >= 0 && carte.Cases[(int)_case.Position.Y / 28 - 1, (int)_case.Position.X / 28].Type > 0)
                 result.Add(new Noeud(carte.Cases[(int)_case.Position.Y / 28 - 1, (int)_case.Position.X / 28], this, destination));
             // Gauche
-            if ((int)_case.Position.X / 28 + (int)camera.X / 28 - 1 >= 0 && carte.Cases[(int)_case.Position.Y / 28 + (int)camera.Y / 28, (int)_case.Position.X / 28 + (int)camera.X / 28 - 1].Type > 0)
+            if ((int)_case.Position.X / 28 - 1 >= 0 && (int)_case.Position.Y >= 0 && carte.Cases[(int)_case.Position.Y / 28, (int)_case.Position.X / 28 - 1].Type > 0)
                 result.Add(new Noeud(carte.Cases[(int)_case.Position.Y / 28, (int)_case.Position.X / 28 - 1], this, destination));
-
+            
             return result;
         }
     }
