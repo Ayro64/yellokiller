@@ -237,6 +237,14 @@ namespace YelloKiller
                     else
                         sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);*/
                 }
+                if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.P))
+                {
+                    if (sourceRectangle.Value.Y == 198)
+                    {
+                        sourceRectangle = new Rectangle(194, 198, 20, 28);
+                    }
+
+                }
             }
         }
 
