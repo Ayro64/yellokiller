@@ -126,10 +126,7 @@ namespace YelloKiller
                             break;
                     }
 
-                    if (i == 1 || i == 3 || i == 4)
-                        tailleFond = 1.88f;
-                    else
-                        tailleFond = 1;
+                    tailleFond = 1 + 0.88f * (texture.Width / 28 - 1);
                 }
             }
         }
