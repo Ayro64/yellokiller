@@ -16,7 +16,7 @@ namespace YelloKiller
 
         MoteurAudio moteurAudio;
 
-        const string menuTitle = "Choix du Niveau\n      Coop";
+        string menuTitle = Langue.tr("Multi"), level = Langue.tr("Level");
         int selectedEntry = 0;
         ContentManager content;
         Texture2D levelSelectBkground, blankTexture;
@@ -52,13 +52,13 @@ namespace YelloKiller
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
             // Create our menu entries.
-            levelOne = new MenuEntry("Level One");
-            levelTwo = new MenuEntry("Level Two");
-            levelThree = new MenuEntry("Level Three");
-            levelFour = new MenuEntry("Level Four");
-            levelFive = new MenuEntry("Level Five");
-            levelSix = new MenuEntry("Level Six");
-            abortMenuEntry = new MenuEntry("Retour au Menu");
+            levelOne = new MenuEntry(level + " 1");
+            levelTwo = new MenuEntry(level + " 2");
+            levelThree = new MenuEntry(level + " 3");
+            levelFour = new MenuEntry(level + " 4");
+            levelFive = new MenuEntry(level + " 5");
+            levelSix = new MenuEntry(level + " 6");
+            abortMenuEntry = new MenuEntry(Langue.tr("BckToMenu"));
 
             // Hook up menu event handlers.
             levelOne.Selected += LevelOneMenuEntrySelected;
