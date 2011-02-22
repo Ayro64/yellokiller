@@ -306,6 +306,18 @@ namespace YelloKiller
                             case (TypeCase.fond):
                                 ligne += 'a';
                                 break;
+                            case (TypeCase.commode):
+                                ligne += 'l';
+                                break;
+                            case (TypeCase.Lit):
+                                ligne += 'L';
+                                break;
+                            case (TypeCase.TableMoyenne):
+                                ligne += 'y';
+                                break;
+                            case (TypeCase.GrandeTable):
+                                ligne += 'Y';
+                                break;
                             case (TypeCase.Garde):
                                 ligne += 'G';
                                 break;
