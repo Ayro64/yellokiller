@@ -138,6 +138,22 @@ namespace YelloKiller
                         case ('r'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.terre);
                             break;
+                        case ('f'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.fondNoir);
+                            break;
+                        case ('F'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurFN);
+                            break;
+                        case ('d'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurDroite);
+                            break;
+                        case ('g'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurGauche);
+                            break;
+                        case ('c'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
+                            break;
+                        
                         case ('E'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             _originesEnnemis.Add(new Vector2(x, y));
@@ -221,6 +237,22 @@ namespace YelloKiller
                         case ('r'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.terre);
                             break;
+                        case ('f'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.fondNoir);
+                            break;
+                        case ('F'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurFN);
+                            break;
+                        case ('d'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurDroite);
+                            break;
+                        case ('g'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurGauche);
+                            break;
+                        case ('c'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
+                            break;
+                        
                         case ('E'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                             _originesEnnemis.Add(new Vector2(x, y));
