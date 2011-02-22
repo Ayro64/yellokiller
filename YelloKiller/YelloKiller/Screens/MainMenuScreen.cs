@@ -28,14 +28,14 @@ namespace YelloKiller
         /// Constructor fills in the menu contents.
         /// </summary>
         public MainMenuScreen()
-            : base(" Yello Killer\nMenu Principal")
+            : base(Langue.tr("MainMenuTitle"))
         {
             // Create our menu entries.
-            MenuEntry soloMenuEntry = new MenuEntry("Mode Solo");
-            MenuEntry coopMenuEntry = new MenuEntry("Mode Co-op");
-            MenuEntry editorMenuEntry = new MenuEntry("Editeur de cartes");
-            MenuEntry optionsMenuEntry = new MenuEntry("Options");
-            MenuEntry exitMenuEntry = new MenuEntry("Quitter");
+            MenuEntry soloMenuEntry = new MenuEntry(Langue.tr("MainMenuSolo"));
+            MenuEntry coopMenuEntry = new MenuEntry(Langue.tr("MainMenuCoop"));
+            MenuEntry editorMenuEntry = new MenuEntry(Langue.tr("MainMenuEditor"));
+            MenuEntry optionsMenuEntry = new MenuEntry(Langue.tr("MainMenuOptions"));
+            MenuEntry exitMenuEntry = new MenuEntry(Langue.tr("MainMenuQuit"));
 
             // Hook up menu event handlers.
             soloMenuEntry.Selected += SoloMenuEntrySelected;
@@ -105,7 +105,7 @@ namespace YelloKiller
         /// </summary>
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-            const string message = "Êtes-vous sûr de vouloir quitter le jeu?\n";
+            string message = Langue.tr("MainQuitMsg");
 
             MessageBoxScreen confirmExitMessageBox = new MessageBoxScreen(message);
 
