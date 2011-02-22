@@ -83,11 +83,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Ninja2Trans.png">
-      <Name>Ninja2Trans</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="NinjaTrans.png">
       <Name>NinjaTrans</Name>
       <Importer>TextureImporter</Importer>
@@ -206,6 +201,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ninja2Trans.png">
+      <Name>Ninja2Trans</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="Sons\menuBouge.wav">
       <Name>menuBouge</Name>
       <Importer>WavImporter</Importer>
