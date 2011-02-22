@@ -172,13 +172,12 @@ namespace YelloKiller
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
-                Shuriken m = _shuriken[i];
-                m.Update(gameTime, carte);
-                m.Draw(spriteBatch, camera);
+                _shuriken[i].Update(gameTime, carte);
+                _shuriken[i].Draw(spriteBatch, camera);
 
-                if (m.Position.X > Taille_Map.LARGEUR_MAP * 28 || _shuriken[i].existshuriken == false)
+                if (_shuriken[i].Position.X > Taille_Map.LARGEUR_MAP * 28 || _shuriken[i].existshuriken == false)
                 {
-                    _shuriken.Remove(m);
+                    _shuriken.Remove(_shuriken[i]);
                     Console.WriteLine("suppresion shuriken");
                     moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
