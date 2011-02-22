@@ -379,10 +379,10 @@ namespace YelloKiller
                             case (TypeCase.fond):
                                 ligne += 'a';
                                 break;
-                            case (TypeCase.commode):
+                            case (TypeCase.Lit):
                                 ligne += 'l';
                                 break;
-                            case (TypeCase.Lit):
+                            case (TypeCase.commode):
                                 ligne += 'L';
                                 break;
                             case (TypeCase.TableMoyenne):
