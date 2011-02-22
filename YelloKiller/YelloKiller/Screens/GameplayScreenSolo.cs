@@ -15,6 +15,11 @@ namespace YelloKiller
         buissonSurHerbe = -3,
         murBlanc = -4,
         tableauMurBlanc = -5,
+        finMurDroite = -7,
+        finMurFN = -8,
+        finMurGauche = -9,
+        fondNoir = -10,
+        
 
         bois = 1,
         boisCarre = 2,
@@ -23,6 +28,7 @@ namespace YelloKiller
         herbeFoncee = 5,
         piedDeMurBois = 6,
         terre = 7,
+        carlageNoir = 8,
 
         fond = -6,
 
