@@ -294,6 +294,9 @@ namespace YelloKiller
                                 case (TypeCase.terre):
                                     ligne += 'r';
                                     break;
+                                case (TypeCase.fond):
+                                    ligne += 'm';
+                                    break;
                                 case (TypeCase.Ennemi):
                                     ligne += 'E';
                                     break;
