@@ -95,19 +95,19 @@ namespace YelloKiller
                             type = TypeCase.finMurGauche;
                             break;
                         case (16):
-                            type = TypeCase.commode;
+                            type = TypeCase.finMurDroite;
                             break;
                         case (17):
                             type = TypeCase.Lit;
                             break;
                         case (18):
-                            type = TypeCase.TableMoyenne;
+                            type = TypeCase.commode;
                             break;
                         case (19):
-                            type = TypeCase.GrandeTable;
+                            type = TypeCase.TableMoyenne;
                             break;
                         case (20):
-                            type = TypeCase.finMurDroite;
+                            type = TypeCase.GrandeTable;
                             break;
                         case (21):
                             type = TypeCase.Garde;
