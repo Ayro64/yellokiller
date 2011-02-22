@@ -135,7 +135,7 @@ namespace YelloKiller
                     pasgentil.UpdateInSolo(gameTime, carte, hero, camera/*, this, hero*/);
                 
                 Moteur_physique.Collision_Shuriken_Ennemi(_gardes, _shuriken, moteurAudio.SoundBank);
-                Moteur_physique.Collision_Shuriken_Shuriken(_shuriken);
+              
                 if(Moteur_physique.Collision_Ennemi_Hero(_gardes, hero, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
 
