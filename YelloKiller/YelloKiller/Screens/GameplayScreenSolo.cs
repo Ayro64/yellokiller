@@ -20,6 +20,10 @@ namespace YelloKiller
         finMurFN = -8,
         finMurGauche = -9,
         fondNoir = -10,
+        commode = -11,
+        GrandeTable = -12,
+        Lit = -13,
+        TableMoyenne = -14,
 
         bois = 1,
         boisCarre = 2,

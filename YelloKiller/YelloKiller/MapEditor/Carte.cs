@@ -106,6 +106,7 @@ namespace YelloKiller
                 {
                     switch (line[x])
                     {
+                            // a, A ,s, m, t, b, B, T, h, H, p, r, f, F, d, g, c, G, P, C, o, O
                         case ('a'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
                             break;
@@ -156,6 +157,19 @@ namespace YelloKiller
                             break;
                         case ('c'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
+                            break;
+
+                        case ('l'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Lit);
+                            break;
+                        case ('L'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.commode);
+                            break;
+                        case ('y'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.TableMoyenne);
+                            break;
+                        case ('Y'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.GrandeTable);
                             break;
 
                         case ('G'):
@@ -263,6 +277,19 @@ namespace YelloKiller
                             break;
                         case ('c'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
+                            break;
+
+                        case ('l'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Lit);
+                            break;
+                        case ('L'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.commode);
+                            break;
+                        case ('y'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.TableMoyenne);
+                            break;
+                        case ('Y'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.GrandeTable);
                             break;
 
                         case ('G'):

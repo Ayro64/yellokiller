@@ -95,21 +95,33 @@ namespace YelloKiller
                             type = TypeCase.finMurGauche;
                             break;
                         case (16):
-                            type = TypeCase.finMurDroite;
+                            type = TypeCase.commode;
                             break;
                         case (17):
-                            type = TypeCase.Garde;
+                            type = TypeCase.Lit;
                             break;
                         case (18):
-                            type = TypeCase.Patrouilleur;
+                            type = TypeCase.TableMoyenne;
                             break;
                         case (19):
-                            type = TypeCase.Patrouilleur_a_cheval;
+                            type = TypeCase.GrandeTable;
                             break;
                         case (20):
-                            type = TypeCase.Joueur1;
+                            type = TypeCase.finMurDroite;
                             break;
                         case (21):
+                            type = TypeCase.Garde;
+                            break;
+                        case (22):
+                            type = TypeCase.Patrouilleur;
+                            break;
+                        case (23):
+                            type = TypeCase.Patrouilleur_a_cheval;
+                            break;
+                        case (24):
+                            type = TypeCase.Joueur1;
+                            break;
+                        case (25):
                             type = TypeCase.Joueur2;
                             break;
                     }
