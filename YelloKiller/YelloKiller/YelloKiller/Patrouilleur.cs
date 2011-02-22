@@ -29,7 +29,7 @@ namespace YelloKiller.YelloKiller
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 16, 28);
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 19, 26);
             vitesse_animation = 0.008f;
             vitesse_sprite = 1;
             index = 0;
@@ -54,67 +54,23 @@ namespace YelloKiller.YelloKiller
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
 
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
-            {
-                chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)position.Y / 28 + (int)camera.Y / 28, (int)position.X / 28 + (int)camera.X / 28], carte.Cases[(int)hero.Position.Y / 28 + (int)camera.Y / 28, (int)hero.Position.X / 28 + (int)camera.X / 28], camera);
-                Console.WriteLine("Depart : X = " + (int)position.X / 28 + " ; Y = " + (int)position.Y / 28 + " _ Arrivee : X = " + (int)hero.Position.X / 28 + " ; Y = " + (int)hero.Position.Y / 28);
-                if (chemin != null)
-                    foreach (Case sisi in chemin)
-                        Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
-            }
-
-            if (chemin != null && chemin.Count != 0)
-            {
-                if (monter && descendre && droite && gauche)
-                {
-                    if ((int)chemin[chemin.Count - 1].Position.X / 28 < (int)position.X / 28)
-                    {
-                        positionDesiree.X = position.X - 28;
-                        gauche = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                        Console.WriteLine("Je vais a gauche.");
-                    }
-                    else if ((int)chemin[chemin.Count - 1].Position.X / 28 > (int)position.X / 28)
-                    {
-                        positionDesiree.X = position.X + 28;
-                        droite = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                        Console.WriteLine("Je vais a droite.");
-                    }
-                    else if ((int)chemin[chemin.Count - 1].Position.Y / 28 < (int)position.Y / 28)
-                    {
-                        positionDesiree.Y = position.Y - 28;
-                        monter = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                        Console.WriteLine("Je vais en haut.");
-                    }
-                    else if ((int)chemin[chemin.Count - 1].Position.Y / 28 > (int)position.Y / 28)
-                    {
-                        positionDesiree.Y = position.Y + 28;
-                        descendre = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                        Console.WriteLine("Je vais en bas.");
-                    }
-                }
-            }
-
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
-            if (sourceRectangle.Value.Y == 1)
-                sourceRectangle = new Rectangle(5, 1, 16, 23);
-            if (sourceRectangle.Value.Y == 33)
-                sourceRectangle = new Rectangle(5, 33, 16, 23);
-            if (sourceRectangle.Value.Y == 65)
-                sourceRectangle = new Rectangle(5, 65, 16, 23);
-            if (sourceRectangle.Value.Y == 98)
-                sourceRectangle = new Rectangle(5, 98, 16, 23);
+            if (sourceRectangle.Value.Y == 0)
+                sourceRectangle = new Rectangle(24, 0, 19, 26);
+            if (sourceRectangle.Value.Y == 32)
+                sourceRectangle = new Rectangle(24, 32, 19, 26);
+            if (sourceRectangle.Value.Y == 63)
+                sourceRectangle = new Rectangle(24, 63, 19, 26);
+            if (sourceRectangle.Value.Y == 96)
+                sourceRectangle = new Rectangle(24, 96, 19, 26);
 
             if (!monter)
             {
                 if (position != positionDesiree)
                 {
                     position.Y -= vitesse_sprite;
-                    sourceRectangle = new Rectangle((int)index * 5, 33, 16, 23);
+                    sourceRectangle = new Rectangle((int)index * 24, 0, 19, 26);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                     if (index >= maxIndex)
@@ -134,7 +90,7 @@ namespace YelloKiller.YelloKiller
                 if (position != positionDesiree)
                 {
                     position.Y += vitesse_sprite;
-                    sourceRectangle = new Rectangle((int)index * 5, 65, 16, 23);
+                    sourceRectangle = new Rectangle((int)index * 24, 63, 19, 26);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                     if (index >= maxIndex)
@@ -153,7 +109,7 @@ namespace YelloKiller.YelloKiller
                 if (position != positionDesiree)
                 {
                     position.X -= vitesse_sprite;
-                    sourceRectangle = new Rectangle((int)index * 5, 98, 16, 23);
+                    sourceRectangle = new Rectangle((int)index * 24, 96, 19, 26);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                     if (index >= maxIndex)
@@ -173,7 +129,7 @@ namespace YelloKiller.YelloKiller
                 if (position != positionDesiree)
                 {
                     position.X += vitesse_sprite;
-                    sourceRectangle = new Rectangle((int)index * 5, 1, 16, 23);
+                    sourceRectangle = new Rectangle((int)index * 24, 32, 19, 26);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                     if (index >= maxIndex)

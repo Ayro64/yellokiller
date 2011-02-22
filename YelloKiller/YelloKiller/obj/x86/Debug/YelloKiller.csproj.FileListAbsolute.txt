@@ -244,3 +244,6 @@ C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\S
 C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Ambiance sonore.xgs
 C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Wave Bank.xwb
 C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Sound Bank.xsb
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Garde.xnb
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur.xnb
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur_a_cheval.xnb
