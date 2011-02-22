@@ -54,8 +54,7 @@ namespace YelloKiller
         /// </summary>
         public MessageBoxScreen(string message, bool includeUsageText)
         {
-            const string usageText = "\nBouton A, Espace, Entrée : OK" +
-                                     "\nBouton B, Echap : Annuler"; 
+            string usageText = Langue.tr("MsgBox"); 
             
             if (includeUsageText)
                 this.message = message + usageText;
