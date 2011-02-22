@@ -41,6 +41,7 @@ namespace YelloKiller
             MenuEntry optionsGameMenuEntry = new MenuEntry(Langue.tr("Options"));
             MenuEntry quitGameMenuEntry;
 
+
             if (mode == 2)
             {
                 resumeGameMenuEntry = new MenuEntry(Langue.tr("PausEditRes"));
@@ -60,6 +61,14 @@ namespace YelloKiller
 
             // Add entries to the menu.
             MenuEntries.Add(resumeGameMenuEntry);
+
+            if (mode == 2)
+            {
+                MenuEntry loadMapMenuEntry = new MenuEntry(Langue.tr("PausEditLoad"));
+                loadMapMenuEntry.Selected += LoadMapMenuEntrySelected;
+                MenuEntries.Add(loadMapMenuEntry);
+            }
+
             MenuEntries.Add(optionsGameMenuEntry);
             MenuEntries.Add(quitGameMenuEntry);
         }
@@ -90,6 +99,15 @@ namespace YelloKiller
             ScreenManager.AddScreen(confirmQuitMessageBox, ControllingPlayer);
         }
 
+        /// <summary>
+        /// Event handler for when the Load Map menu entry is selected.
+        /// </summary>
+
+        public void LoadMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            ScreenManager.AddScreen(new LoadMapMenuScreen(), e.PlayerIndex, true);
+            ScreenManager.RemoveScreen(this);
+        }
 
         /// <summary>
         /// Event handler for when the Options menu entry is selected.
