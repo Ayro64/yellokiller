@@ -49,16 +49,21 @@ namespace YelloKiller
             hero1 = new Hero1(new Vector2(28 * carte.origineJoueur1.X + 5, 28 * carte.origineJoueur1.Y), new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
             hero2 = new Hero2(new Vector2(28 * carte.origineJoueur2.X + 5, 28 * carte.origineJoueur2.Y), new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
 
-            if (28 * carte.origineJoueur1.X - 440 >= 0)
-                camera.X = 28 * (int)carte.origineJoueur1.X - 440;
-            else
+            // Centre la camera sur le personnage.
+            if (28 * carte.origineJoueur1.X - 440 < 0)
                 camera.X = 0;
-
-            if (28 * carte.origineJoueur1.Y - 322 >= 0)
-                camera.Y = 28 * (int)carte.origineJoueur1.Y - 322;
+            else if (28 * carte.origineJoueur1.X + 440 > 28 * Taille_Map.LARGEUR_MAP)
+                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 34);
             else
+                camera.X = 28 * (int)carte.origineJoueur1.X - 500;
+
+            if (28 * carte.origineJoueur1.Y - 322 < 0)
                 camera.Y = 0;
- 
+            else if (28 * carte.origineJoueur1.Y + 322 > 28 * Taille_Map.HAUTEUR_MAP)
+                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 26);
+            else
+                camera.Y = 28 * (int)carte.origineJoueur1.Y - 400;
+
             _gardes = new List<Garde>();
 
             foreach (Vector2 position in carte._originesEnnemis)
