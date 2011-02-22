@@ -190,111 +190,7 @@ namespace YelloKiller
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) && enableSave)
-            {
-                if (enableOrigine1 && enableOrigine2)
-                    afficheMessageErreur = true;
-                else
-                {
-                    /*fileExist = File.Exists(nomSauvegarde + ".txt");
-               while (fileExist)
-               {
-                   compteur += 1;
-                   nomSauvegarde = nomSauvegarde.Substring(0, 4) + compteur.ToString();
-                   fileExist = File.Exists(nomSauvegarde + ".txt");
-               }*/
-
-                    if (origine1 == -Vector2.One || origine2 == -Vector2.One)
-                        nomSauvegarde = 'S' + nomSauvegarde;
-                    else
-                        nomSauvegarde = 'C' + nomSauvegarde;
-                    
-                    sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
-
-                    for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
-                    {
-                        for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
-                        {
-                            switch (carte.Cases[y, x].Type)
-                            {
-                                case (TypeCase.arbre):
-                                    ligne += 'a';
-                                    break;
-                                case (TypeCase.arbre2):
-                                    ligne += 'A';
-                                    break;
-                                case (TypeCase.buissonSurHerbe):
-                                    ligne += 's';
-                                    break;
-                                case (TypeCase.murBlanc):
-                                    ligne += 'm';
-                                    break;
-                                case (TypeCase.tableauMurBlanc):
-                                    ligne += 't';
-                                    break;
-                                case (TypeCase.bois):
-                                    ligne += 'b';
-                                    break;
-                                case (TypeCase.boisCarre):
-                                    ligne += 'B';
-                                    break;
-                                case (TypeCase.tapisRougeBC):
-                                    ligne += 'T';
-                                    break;
-                                case (TypeCase.herbe):
-                                    ligne += 'h';
-                                    break;
-                                case (TypeCase.herbeFoncee):
-                                    ligne += 'H';
-                                    break;
-                                case (TypeCase.piedDeMurBois):
-                                    ligne += 'p';
-                                    break;
-                                case (TypeCase.terre):
-                                    ligne += 'r';
-                                    break;
-                                case (TypeCase.carlageNoir):
-                                    ligne += 'c';
-                                    break;
-                                case (TypeCase.fondNoir):
-                                    ligne += 'f';
-                                    break;
-                                case (TypeCase.finMurFN):
-                                    ligne += 'F';
-                                    break;
-                                case (TypeCase.finMurGauche):
-                                    ligne += 'g';
-                                    break;
-                                case (TypeCase.finMurDroite):
-                                    ligne += 'd';
-                                    break;
-                                case (TypeCase.fond):
-                                    ligne += 'a';
-                                    break;
-                                case (TypeCase.Garde):
-                                    ligne += 'G';
-                                    break;
-                                case (TypeCase.Patrouilleur):
-                                    ligne += 'P';
-                                    break;
-                                case (TypeCase.Patrouilleur_a_cheval):
-                                    ligne += 'C';
-                                    break;
-                                case (TypeCase.Joueur1):
-                                    ligne += 'o';
-                                    break;
-                                case (TypeCase.Joueur2):
-                                    ligne += 'O';
-                                    break;
-                            }
-                        }
-                        sauvegarde.WriteLine(ligne);
-                        ligne = "";
-                    }
-                    
-                    sauvegarde.Close();
-                    enableSave = false;
-                }
-            }
+                SauvegardeMap();
 
             ScreenManager.Game.IsMouseVisible = !ServiceHelper.Get<IMouseService>().DansLaCarte();
         }
@@ -327,6 +223,113 @@ namespace YelloKiller
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void SauvegardeMap()
+        {
+            if (enableOrigine1 && enableOrigine2)
+                afficheMessageErreur = true;
+            else
+            {
+                /*fileExist = File.Exists(nomSauvegarde + ".txt");
+           while (fileExist)
+           {
+               compteur += 1;
+               nomSauvegarde = nomSauvegarde.Substring(0, 4) + compteur.ToString();
+               fileExist = File.Exists(nomSauvegarde + ".txt");
+           }*/
+
+                if (origine1 == -Vector2.One || origine2 == -Vector2.One)
+                    nomSauvegarde = 'S' + nomSauvegarde;
+                else
+                    nomSauvegarde = 'C' + nomSauvegarde;
+
+                sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
+
+                for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
+                {
+                    for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
+                    {
+                        switch (carte.Cases[y, x].Type)
+                        {
+                            case (TypeCase.arbre):
+                                ligne += 'a';
+                                break;
+                            case (TypeCase.arbre2):
+                                ligne += 'A';
+                                break;
+                            case (TypeCase.buissonSurHerbe):
+                                ligne += 's';
+                                break;
+                            case (TypeCase.murBlanc):
+                                ligne += 'm';
+                                break;
+                            case (TypeCase.tableauMurBlanc):
+                                ligne += 't';
+                                break;
+                            case (TypeCase.bois):
+                                ligne += 'b';
+                                break;
+                            case (TypeCase.boisCarre):
+                                ligne += 'B';
+                                break;
+                            case (TypeCase.tapisRougeBC):
+                                ligne += 'T';
+                                break;
+                            case (TypeCase.herbe):
+                                ligne += 'h';
+                                break;
+                            case (TypeCase.herbeFoncee):
+                                ligne += 'H';
+                                break;
+                            case (TypeCase.piedDeMurBois):
+                                ligne += 'p';
+                                break;
+                            case (TypeCase.terre):
+                                ligne += 'r';
+                                break;
+                            case (TypeCase.carlageNoir):
+                                ligne += 'c';
+                                break;
+                            case (TypeCase.fondNoir):
+                                ligne += 'f';
+                                break;
+                            case (TypeCase.finMurFN):
+                                ligne += 'F';
+                                break;
+                            case (TypeCase.finMurGauche):
+                                ligne += 'g';
+                                break;
+                            case (TypeCase.finMurDroite):
+                                ligne += 'd';
+                                break;
+                            case (TypeCase.fond):
+                                ligne += 'a';
+                                break;
+                            case (TypeCase.Garde):
+                                ligne += 'G';
+                                break;
+                            case (TypeCase.Patrouilleur):
+                                ligne += 'P';
+                                break;
+                            case (TypeCase.Patrouilleur_a_cheval):
+                                ligne += 'C';
+                                break;
+                            case (TypeCase.Joueur1):
+                                ligne += 'o';
+                                break;
+                            case (TypeCase.Joueur2):
+                                ligne += 'O';
+                                break;
+                        }
+                    }
+                    sauvegarde.WriteLine(ligne);
+                    ligne = "";
+                }
+
+                sauvegarde.Close();
+                enableSave = false;
+            }
         }
     }
 }
