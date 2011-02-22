@@ -66,7 +66,7 @@ namespace YelloKiller
             {
                 MenuEntry saveMapMenuEntry = new MenuEntry(Langue.tr("PausEditSave"));
                 MenuEntry loadMapMenuEntry = new MenuEntry(Langue.tr("PausEditLoad"));
-                saveMapMenuEntry.Selected += SaveMapMenuEntrySelected;
+                //saveMapMenuEntry.Selected += SaveMapMenuEntrySelected;
                 loadMapMenuEntry.Selected += LoadMapMenuEntrySelected;
                 MenuEntries.Add(saveMapMenuEntry);
                 MenuEntries.Add(loadMapMenuEntry);
@@ -106,9 +106,9 @@ namespace YelloKiller
         /// Event handler for when the Save Map menu entry is selected.
         /// </summary>
 
-        public void SaveMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        /*public void SaveMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-        }
+        }*/
 
         /// <summary>
         /// Event handler for when the Load Map menu entry is selected.

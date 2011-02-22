@@ -1,9 +1,9 @@
 C:\Users\Adrien\Documents\Visual Studio 2008\Projects\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\Ambiance sonore.xml
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\Sons\Ambiance sonore.xml
 D:\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\Sons\Ambiance sonore.xml
 C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\Content\obj\x86\Debug\Sons\Ambiance sonore.xml
+C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\Sons\Ambiance sonore.xml

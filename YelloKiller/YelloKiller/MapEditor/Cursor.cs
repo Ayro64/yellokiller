@@ -18,7 +18,7 @@ namespace YelloKiller
         {
             position = new Vector2(0, 0);
             texture = content.Load<Texture2D>(@"Textures\herbeFoncee");
-            fond = content.Load<Texture2D>("fond");
+            fond = content.Load<Texture2D>(@"Textures\fond");
             type = TypeCase.herbeFoncee;
             tailleFond = 1;
         }

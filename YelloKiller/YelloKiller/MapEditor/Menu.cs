@@ -49,7 +49,7 @@ namespace YelloKiller
             listeTextures.Add(content.Load<Texture2D>("origine_hero1"));
             listeTextures.Add(content.Load<Texture2D>("origine_hero2"));
 
-            fond = content.Load<Texture2D>("fond");
+            fond = content.Load<Texture2D>(@"Textures\fond");
         }
 
         public List<Rectangle> ListeRectangles
