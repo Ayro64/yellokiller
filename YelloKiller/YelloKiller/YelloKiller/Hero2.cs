@@ -11,7 +11,7 @@ using YelloKiller.YelloKiller;
     Ta mère est tellement vieille que dans sa première photo de classe on voit Jésus !
 
     Ta mère est tellement grosse que quand elle passe devant le soleil tout le monde crie : "une éclipse "!
-
+s
     Ta mère est tellement radine que quand elle va aux toilettes elle utilise les deux côtés du papier toilette.
  
 */
