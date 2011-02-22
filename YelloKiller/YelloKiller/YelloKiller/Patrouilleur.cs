@@ -49,15 +49,16 @@ namespace YelloKiller.YelloKiller
         public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
             Position = position;
+            Console.WriteLine("Hero : X = " + (int)hero.Position.X / 28 + " Y = " + (int)hero.Position.Y / 28 + "\nPatrouilleur : X = " + (int)position.X / 28 + " Y = " + (int)position.Y / 28);
 
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
             {
-                chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)position.Y / 28, (int)position.X / 28], carte.Cases[(int)hero.Position.Y / 28, (int)hero.Position.X / 28], camera);
+                chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)position.Y / 28 + (int)camera.Y / 28, (int)position.X / 28 + (int)camera.X / 28], carte.Cases[(int)hero.Position.Y / 28 + (int)camera.Y / 28, (int)hero.Position.X / 28 + (int)camera.X / 28], camera);
                 Console.WriteLine("Depart : X = " + (int)position.X / 28 + " ; Y = " + (int)position.Y / 28 + " _ Arrivee : X = " + (int)hero.Position.X / 28 + " ; Y = " + (int)hero.Position.Y / 28);
-                if(chemin != null)
+                if (chemin != null)
                     foreach (Case sisi in chemin)
                         Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
             }
