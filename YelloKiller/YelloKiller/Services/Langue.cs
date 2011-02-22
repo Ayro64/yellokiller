@@ -90,25 +90,25 @@ namespace YelloKiller
                         case ("MainMenuTitle"):
                             return " Yello Killer\nHauptmenü";
                         case ("MainMenuSolo"):
-                            return "Allein spielen";
+                            return "Einzelspiel";
                         case ("MainMenuCoop"):
-                            return "Zusammen spielen";
+                            return "Koop-Modus";
                         case ("MainMenuEditor"):
                             return "Karteneditor";
                         case ("Options"):
                             return "Einstellungen";
                         case ("MainMenuQuit"):
-                            return "Quitter";
+                            return "Spiel verlassen";
                         case ("MainQuitMsg"):
-                            return "Êtes-vous sûr de vouloir quitter le jeu?\n";
+                            return "Sind Sie sicher, dass Sie das Spiel verlassen möchten?\n";
                         case ("EditorExCharacters"):
-                            return "Le ou les personnages n'a / n'ont pas été placé.\n\nVeuillez placer un ou deux personnages avant de sauvegarder.";
+                            return "Der Charakter/Die Charaktere wurde/wurden noch nicht plaziert.\n\nBitte platziere vor dem Speichern einen Startpunkt.";
                         case ("EditorSave1"):
-                            return "Fichier sauvegardé sous ";
+                            return "Datei wurde gespeichert als ";
                         case ("EditorSave2"):
-                            return ".txt\n\nAppuyez sur ECHAP pour quitter.";
+                            return ".txt.\n\nESC drücken um der Karteneditor zu verlassen.";
                         case ("GORetry"):
-                            return "Réessayer";
+                            return "Wiederholen";
                         case ("GOAbort"):
                             return "Quitter";
                         case ("GOMsg"):
@@ -175,11 +175,11 @@ namespace YelloKiller
                         case ("MainQuitMsg"):
                             return "Are you sure you want to exit the game?\n";
                         case ("EditorExCharacters"):
-                            return "The character(s) has not been placed yet\n\nPlease set a starting point before saving.";
+                            return "The character(s) has not been placed yet.\n\nPlease set a starting point before saving.";
                         case ("EditorSave1"):
                             return "File saved as ";
                         case ("EditorSave2"):
-                            return ".txt\n\nPres ESC to exit.";
+                            return ".txt.\n\nPres ESC to exit.";
                         case ("GORetry"):
                             return "Retry";
                         case ("GOAbort"):
