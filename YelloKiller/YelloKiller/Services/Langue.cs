@@ -22,7 +22,7 @@ namespace YelloKiller
                             return "Mode Co-op";
                         case ("MainMenuEditor"):
                             return "Editeur de cartes";
-                        case ("MainMenuOptions"):
+                        case ("Options"):
                             return "Options";
                         case ("MainMenuQuit"):
                             return "Quitter";
@@ -50,9 +50,23 @@ namespace YelloKiller
                             return "Retour au Menu";
                         case("Loading"):
                             return "Chargement...";
+                        case("PauseTitle"):
+                            return "En Pause";
+                        case("PausEditRes"):
+                            return "Reprendre l'édition";
+                        case("PausEditQuit"):
+                            return "Quitter l'édition";
+                        case("PausGameRes"):
+                            return "Reprendre le jeu";
+                        case("PausGameQuit"):
+                            return "Quitter la partie";
                         case("MsgBox"):
                             return "\nBouton A, Espace, Entrée : OK" +
                                    "\nBouton B, Echap : Annuler";
+                        case("EditMsgBox"):
+                            return "Êtes-vous sûr de vouloir quitter l'édition?\nToute édition non sauvegardée sera perdue.\n";
+                        case("GameMsgBox"):
+                            return "Êtes-vous sûr de vouloir quitter la partie?\n";
                         default:
                             return "";
                     }
