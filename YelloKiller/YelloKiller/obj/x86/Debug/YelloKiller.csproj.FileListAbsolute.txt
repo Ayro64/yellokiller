@@ -210,3 +210,10 @@ C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Conten
 C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_garde.xnb
 C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero1.xnb
 C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero2.xnb
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Properties\Settings.Designer.cs
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Properties\Settings.settings
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Commode.xnb
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\finMurBas.xnb
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable.xnb
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit.xnb
+C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne.xnb

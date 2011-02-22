@@ -42,6 +42,13 @@ Content\Hero2.xnb
 Content\origine_garde.xnb
 Content\origine_hero1.xnb
 Content\origine_hero2.xnb
+Content\Textures\Commode.xnb
+Content\Textures\finMurBas.xnb
+Content\Textures\grandeTable.xnb
+Content\Textures\lit.xnb
+Content\Textures\tableMoyenne.xnb
 Content\Sons\Ambiance sonore.xgs
 Content\Sons\Wave Bank.xwb
 Content\Sons\Sound Bank.xsb
+Properties\Settings.Designer.cs
+Properties\Settings.settings
