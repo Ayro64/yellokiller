@@ -16,8 +16,8 @@ Global Settings
     Header File = Ambiance sonore.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
-    Last Modified Low = 1901900287;
-    Last Modified High = 30134796;
+    Last Modified Low = 3948200957;
+    Last Modified High = 30134840;
 
     Category
     {
@@ -227,33 +227,10 @@ Wave Bank
     Compression Preset Name = <none>;
     Xbox Bank Last Modified Low = 0;
     Xbox Bank Last Modified High = 0;
-    PC Bank Last Modified Low = 1901980292;
-    PC Bank Last Modified High = 30134796;
-    Bank Last Revised Low = 1072642856;
-    Bank Last Revised High = 30134796;
-
-    Wave
-    {
-        Name = collision;
-        File = collision.wav;
-        Build Settings Last Modified Low = 2905637370;
-        Build Settings Last Modified High = 30134736;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 1;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 9092;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 3400407635;
-            Last Modified High = 30134795;
-        }
-    }
+    PC Bank Last Modified Low = 3948275959;
+    PC Bank Last Modified High = 30134840;
+    Bank Last Revised Low = 3948275959;
+    Bank Last Revised High = 30134840;
 
     Wave
     {
@@ -273,8 +250,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3400467638;
-            Last Modified High = 30134795;
+            Last Modified Low = 3226235794;
+            Last Modified High = 30134821;
         }
     }
 
@@ -296,8 +273,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3400527642;
-            Last Modified High = 30134795;
+            Last Modified Low = 3226310795;
+            Last Modified High = 30134821;
         }
     }
 
@@ -319,8 +296,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3758293167;
-            Last Modified High = 30134789;
+            Last Modified Low = 3225835788;
+            Last Modified High = 30134821;
         }
     }
 
@@ -337,13 +314,13 @@ Wave Bank
             Channels = 2;
             Sampling Rate = 44100;
             Bits Per Sample = 1;
-            Play Region Offset = 46;
-            Play Region Length = 506824;
+            Play Region Offset = 44;
+            Play Region Length = 21264;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1464575605;
-            Last Modified High = 30134766;
+            Last Modified Low = 3226485798;
+            Last Modified High = 30134821;
         }
     }
 
@@ -365,8 +342,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1272786519;
-            Last Modified High = 30134747;
+            Last Modified Low = 3225660785;
+            Last Modified High = 30134821;
         }
     }
 
@@ -388,8 +365,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1917392811;
-            Last Modified High = 30134795;
+            Last Modified Low = 3226085792;
+            Last Modified High = 30134821;
         }
     }
 
@@ -411,8 +388,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2612812587;
-            Last Modified High = 30134795;
+            Last Modified Low = 3225735786;
+            Last Modified High = 30134821;
         }
     }
 
@@ -429,13 +406,13 @@ Wave Bank
             Channels = 2;
             Sampling Rate = 44100;
             Bits Per Sample = 1;
-            Play Region Offset = 46;
-            Play Region Length = 492596;
+            Play Region Offset = 44;
+            Play Region Length = 22948;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4258739891;
-            Last Modified High = 30134778;
+            Last Modified Low = 3226360796;
+            Last Modified High = 30134821;
         }
     }
 }
@@ -447,8 +424,8 @@ Sound Bank
     Windows File = Win\Sound Bank.xsb;
     Xbox Bank Path Edited = 0;
     Windows Bank Path Edited = 0;
-    Bank Last Modified Low = 1902040295;
-    Bank Last Modified High = 30134796;
+    Bank Last Modified Low = 3948325959;
+    Bank Last Modified High = 30134840;
     Header Last Modified High = 0;
     Header Last Modified Low = 0;
 
@@ -491,53 +468,6 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = cri;
-                    Entry Index = 1;
-                    Weight = 255;
-                    Weight Min = 0;
-                }
-            }
-        }
-    }
-
-    Sound
-    {
-        Name = collision;
-        Volume = -1200;
-        Pitch = 0;
-        Priority = 0;
-
-        Category Entry
-        {
-            Name = Default;
-        }
-
-        Track
-        {
-            Volume = 0;
-            Use Filter = 0;
-
-            Play Wave Event
-            {
-                Break Loop = 0;
-                Use Speaker Position = 0;
-                Use Center Speaker = 1;
-                New Speaker Position On Loop = 1;
-                Speaker Position Angle = 0.000000;
-                Speaer Position Arc = 0.000000;
-
-                Event Header
-                {
-                    Timestamp = 0;
-                    Relative = 0;
-                    Random Recurrence = 0;
-                    Random Offset = 0;
-                }
-
-                Wave Entry
-                {
-                    Bank Name = Wave Bank;
-                    Bank Index = 0;
-                    Entry Name = collision;
                     Entry Index = 0;
                     Weight = 255;
                     Weight Min = 0;
@@ -585,7 +515,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = CriMortHero;
-                    Entry Index = 2;
+                    Entry Index = 1;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -632,7 +562,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = menuBouge;
-                    Entry Index = 3;
+                    Entry Index = 2;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -679,7 +609,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = pasBois;
-                    Entry Index = 4;
+                    Entry Index = 3;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -726,7 +656,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = pasGravier;
-                    Entry Index = 5;
+                    Entry Index = 4;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -773,7 +703,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = shuriken;
-                    Entry Index = 6;
+                    Entry Index = 5;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -820,7 +750,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = shurikenCollision;
-                    Entry Index = 7;
+                    Entry Index = 6;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -867,7 +797,7 @@ Sound Bank
                     Bank Name = Wave Bank;
                     Bank Index = 0;
                     Entry Name = sonMenuBoutton;
-                    Entry Index = 8;
+                    Entry Index = 7;
                     Weight = 255;
                     Weight Min = 0;
                 }
@@ -897,26 +827,6 @@ Sound Bank
 
     Cue
     {
-        Name = collision;
-
-        Variation
-        {
-            Variation Type = 3;
-            Variation Table Type = 1;
-            New Variation on Loop = 0;
-        }
-
-        Sound Entry
-        {
-            Name = collision;
-            Index = 1;
-            Weight Min = 0;
-            Weight Max = 255;
-        }
-    }
-
-    Cue
-    {
         Name = CriMortHero;
 
         Variation
@@ -929,7 +839,7 @@ Sound Bank
         Sound Entry
         {
             Name = CriMortHero;
-            Index = 2;
+            Index = 1;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -949,7 +859,7 @@ Sound Bank
         Sound Entry
         {
             Name = menuBouge;
-            Index = 3;
+            Index = 2;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -969,7 +879,7 @@ Sound Bank
         Sound Entry
         {
             Name = pasBois;
-            Index = 4;
+            Index = 3;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -989,7 +899,7 @@ Sound Bank
         Sound Entry
         {
             Name = pasGravier;
-            Index = 5;
+            Index = 4;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1009,7 +919,7 @@ Sound Bank
         Sound Entry
         {
             Name = shuriken;
-            Index = 6;
+            Index = 5;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1029,7 +939,7 @@ Sound Bank
         Sound Entry
         {
             Name = shurikenCollision;
-            Index = 7;
+            Index = 6;
             Weight Min = 0;
             Weight Max = 255;
         }
@@ -1049,7 +959,7 @@ Sound Bank
         Sound Entry
         {
             Name = sonMenuBoutton;
-            Index = 8;
+            Index = 7;
             Weight Min = 0;
             Weight Max = 255;
         }

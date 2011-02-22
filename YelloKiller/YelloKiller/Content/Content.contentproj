@@ -53,11 +53,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sons\collision.wav">
-      <Name>collision</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
     <Compile Include="Sons\cri.wav">
       <Name>cri</Name>
       <Importer>WavImporter</Importer>
