@@ -18,7 +18,7 @@ namespace YelloKiller
         int selectedEntry = 0, comingfrom;
         ContentManager content;
         Texture2D gameoverTexture, blankTexture;
-        string GOmessage = "Vous avez été capturé!";
+        string GOmessage = Langue.tr("GOMsg");
 
         Color Color;
 
@@ -52,8 +52,8 @@ namespace YelloKiller
 
 
             // Create our menu entries.
-            restartMenuEntry = new MenuEntry("Réessayer");
-            abortMenuEntry = new MenuEntry("Quitter");
+            restartMenuEntry = new MenuEntry(Langue.tr("GORetry"));
+            abortMenuEntry = new MenuEntry(Langue.tr("GOAbort"));
 
             // Hook up menu event handlers.
             restartMenuEntry.Selected += RestartMenuEntrySelected;
