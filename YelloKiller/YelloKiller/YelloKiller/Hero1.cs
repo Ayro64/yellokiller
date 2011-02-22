@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.YelloKiller;
 
 /* Quelle est la différence entre une blonde et une boule de bowling ?
    On ne peut mettre que trois doigts dans la boule de bowling.
@@ -11,10 +12,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    class Hero1 : Case
+    class Hero1 : Sprite
     {
         Vector2 position, positionDesiree;
-        Rectangle? sourceRectangle;
+       public Rectangle? sourceRectangle;
         Rectangle rectangle;
         Texture2D texture;
 
@@ -37,13 +38,7 @@ namespace YelloKiller
             ishero1 = false;
             positionDesiree = position;
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
-        }
-
-        public Rectangle? SourceRectangle
-        {
-            get { return sourceRectangle; }
-            set { sourceRectangle = value; }
-        }
+        }    
 
         public Rectangle Rectangle
         {

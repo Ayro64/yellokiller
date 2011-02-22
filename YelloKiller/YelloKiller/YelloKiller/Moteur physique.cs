@@ -1,34 +1,47 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
+using YelloKiller.YelloKiller;
+using System;
 
 namespace YelloKiller
 {
     static class Moteur_physique
     {
-        static public void Collision_Shuriken_Ennemi(List<Ennemi> listeEnnemis, List<Shuriken> listeShuriken, SoundBank soundBank)
+        static public void Collision_Shuriken_Ennemi(List<Garde> listeGardes, List<Shuriken> listeShuriken, SoundBank soundBank)
         {
-            if (listeEnnemis.Count != 0)
+            if (listeGardes.Count != 0)
             {
-                for (int i = 0; i < listeEnnemis.Count; i++)
+                for (int i = 0; i < listeGardes.Count; i++)
                     for (int j = 0; j < listeShuriken.Count; j++)
-                        if (listeEnnemis[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
+                        if (listeGardes[i].rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
                             soundBank.PlayCue("cri");
-                            listeEnnemis.Remove(listeEnnemis[i]);
+                            listeGardes.Remove(listeGardes[i]);
                             listeShuriken.Remove(listeShuriken[j]);
                             break;
                         }
             }
         }
 
+        static public void Collision_Shuriken_Shuriken(List<Shuriken> listeShuriken)
+        {
+            if (listeShuriken.Count != 0)
+            {
+                if (listeShuriken[0].Rectangle.Intersects(listeShuriken[1].Rectangle))
+                {
+                    Console.WriteLine("Collision");
+                }
+            }
+        }
+
         //Commentaire destine a Etienne : Bite avec un 'T'
         
-        static public bool Collision_Ennemi_Heros(List<Ennemi> listeEnnemis, Hero1 hero1, Hero2 hero2, SoundBank soundBank)
+        static public bool Collision_Ennemi_Heros(List<Garde> listeGardes, Hero1 hero1, Hero2 hero2, SoundBank soundBank)
         {
-            for (int b = 0; b < listeEnnemis.Count; b++)
+            for (int b = 0; b < listeGardes.Count; b++)
             {
-                if (listeEnnemis[b].Rectangle.Intersects(hero1.Rectangle) || listeEnnemis[b].Rectangle.Intersects(hero2.Rectangle))
+                if (listeGardes[b].Rectangle.Intersects(hero1.Rectangle) || listeGardes[b].rectangle.Intersects(hero2.Rectangle))
                 {
                     soundBank.PlayCue("CriMortHero");
                     return true;
@@ -37,11 +50,11 @@ namespace YelloKiller
             return false;
         }
 
-        static public bool Collision_Ennemi_Hero(List<Ennemi> listeEnnemis, Hero hero, SoundBank soundBank)
+        static public bool Collision_Ennemi_Hero(List<Garde> listeGardes, Hero hero, SoundBank soundBank)
         {
-            for (int b = 0; b < listeEnnemis.Count; b++)
+            for (int b = 0; b < listeGardes.Count; b++)
             {
-                if (listeEnnemis[b].Rectangle.Intersects(hero.Rectangle))
+                if (listeGardes[b].rectangle.Intersects(hero.Rectangle))
                 {
                     soundBank.PlayCue("CriMortHero");
                     return true;

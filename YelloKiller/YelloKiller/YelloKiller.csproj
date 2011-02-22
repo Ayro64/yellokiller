@@ -135,12 +135,15 @@
     <Compile Include="Settings.cs" />
     <Compile Include="YelloKiller\Dimensions.cs" />
     <Compile Include="YelloKiller\Ennemi.cs" />
+    <Compile Include="YelloKiller\Garde.cs" />
     <Compile Include="YelloKiller\Hero.cs" />
     <Compile Include="YelloKiller\Hero1.cs" />
     <Compile Include="YelloKiller\Hero2.cs" />
     <Compile Include="YelloKiller\Moteur physique.cs" />
+    <Compile Include="YelloKiller\Patrouilleur.cs" />
     <Compile Include="YelloKiller\Shuriken.cs" />
     <Compile Include="YelloKiller\Souris.cs" />
+    <Compile Include="YelloKiller\Sprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

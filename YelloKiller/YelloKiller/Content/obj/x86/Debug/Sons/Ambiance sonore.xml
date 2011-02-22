@@ -11,33 +11,10 @@
     Compression Preset Name = &lt;none&gt;;
     Xbox Bank Last Modified Low = 0;
     Xbox Bank Last Modified High = 0;
-    PC Bank Last Modified Low = 1901980292;
-    PC Bank Last Modified High = 30134796;
-    Bank Last Revised Low = 1072642856;
-    Bank Last Revised High = 30134796;
-
-    Wave
-    {
-        Name = collision;
-        File = collision.wav;
-        Build Settings Last Modified Low = 2905637370;
-        Build Settings Last Modified High = 30134736;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 1;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 44;
-            Play Region Length = 9092;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 3400407635;
-            Last Modified High = 30134795;
-        }
-    }
+    PC Bank Last Modified Low = 3948275959;
+    PC Bank Last Modified High = 30134840;
+    Bank Last Revised Low = 3948275959;
+    Bank Last Revised High = 30134840;
 
     Wave
     {
@@ -57,8 +34,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3400467638;
-            Last Modified High = 30134795;
+            Last Modified Low = 3226235794;
+            Last Modified High = 30134821;
         }
     }
 
@@ -80,8 +57,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3400527642;
-            Last Modified High = 30134795;
+            Last Modified Low = 3226310795;
+            Last Modified High = 30134821;
         }
     }
 
@@ -103,8 +80,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3758293167;
-            Last Modified High = 30134789;
+            Last Modified Low = 3225835788;
+            Last Modified High = 30134821;
         }
     }
 
@@ -121,13 +98,13 @@
             Channels = 2;
             Sampling Rate = 44100;
             Bits Per Sample = 1;
-            Play Region Offset = 46;
-            Play Region Length = 506824;
+            Play Region Offset = 44;
+            Play Region Length = 21264;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1464575605;
-            Last Modified High = 30134766;
+            Last Modified Low = 3226485798;
+            Last Modified High = 30134821;
         }
     }
 
@@ -149,8 +126,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1272786519;
-            Last Modified High = 30134747;
+            Last Modified Low = 3225660785;
+            Last Modified High = 30134821;
         }
     }
 
@@ -172,8 +149,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1917392811;
-            Last Modified High = 30134795;
+            Last Modified Low = 3226085792;
+            Last Modified High = 30134821;
         }
     }
 
@@ -195,8 +172,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2612812587;
-            Last Modified High = 30134795;
+            Last Modified Low = 3225735786;
+            Last Modified High = 30134821;
         }
     }
 
@@ -213,13 +190,13 @@
             Channels = 2;
             Sampling Rate = 44100;
             Bits Per Sample = 1;
-            Play Region Offset = 46;
-            Play Region Length = 492596;
+            Play Region Offset = 44;
+            Play Region Length = 22948;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4258739891;
-            Last Modified High = 30134778;
+            Last Modified Low = 3226360796;
+            Last Modified High = 30134821;
         }
     }
 }

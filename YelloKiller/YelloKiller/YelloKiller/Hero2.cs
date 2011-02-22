@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.YelloKiller;
 
 /* Si tu vois un bateau qui flotte sur l'eau c'est que ta mère n'est pas à bord !!!!!
 
@@ -17,10 +18,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    class Hero2 : Case
+    class Hero2 : Sprite
     {
         Vector2 position, positionDesiree;
-        Rectangle? sourceRectangle;
+        public Rectangle? sourceRectangle;
         Rectangle rectangle;
         Texture2D texture;
 
@@ -45,11 +46,7 @@ namespace YelloKiller
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
         }
 
-        public Rectangle? SourceRectangle
-        {
-            get { return sourceRectangle; }
-            set { sourceRectangle = value; }
-        }
+
 
         public Rectangle Rectangle
         {

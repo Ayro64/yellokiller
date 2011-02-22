@@ -5,7 +5,6 @@ Content\ennemi.xnb
 Content\Game Over.xnb
 Content\gradient.xnb
 Content\LevelSelection.xnb
-Content\Ninja2Trans.xnb
 Content\NinjaTrans.xnb
 Content\origine1.xnb
 Content\origine2.xnb
@@ -25,7 +24,11 @@ Content\Textures\piedDeMurBois.xnb
 Content\Textures\tableauMurBlanc.xnb
 Content\Textures\tapisRougeBC.xnb
 Content\Textures\terre.xnb
-Content\Sons\collision.xnb
+Content\Ninja2Trans.xnb
+Content\Textures\carlageNoir.xnb
+Content\Textures\FinMurDroite.xnb
+Content\Textures\FinMurFN.xnb
+Content\Textures\FinMurGauche.xnb
 Content\Sons\cri.xnb
 Content\Sons\CriMortHero.xnb
 Content\Sons\menuBouge.xnb

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace YelloKiller
 {
@@ -24,24 +25,24 @@ namespace YelloKiller
 
             if (hero1.ishero1 == true)
             {
-                if (hero1.SourceRectangle.Value.Y == 230)
+                if (hero1.sourceRectangle.Value.Y == 230)
                     direction = -Vector2.UnitX;
-                else if (hero1.SourceRectangle.Value.Y == 198)
+                else if (hero1.sourceRectangle.Value.Y == 198)
                     direction = Vector2.UnitY;
-                else if (hero1.SourceRectangle.Value.Y == 166)
+                else if (hero1.sourceRectangle.Value.Y == 166)
                     direction = Vector2.UnitX;
-                else if (hero1.SourceRectangle.Value.Y == 133)
+                else if (hero1.sourceRectangle.Value.Y == 133)
                     direction = -Vector2.UnitY;
             }
             if (hero2.ishero2 == true)
             {
-                if (hero2.SourceRectangle.Value.Y == 230)
+                if (hero2.sourceRectangle.Value.Y == 230)
                     direction = -Vector2.UnitX;
-                else if (hero2.SourceRectangle.Value.Y == 198)
+                else if (hero2.sourceRectangle.Value.Y == 198)
                     direction = Vector2.UnitY;
-                else if (hero2.SourceRectangle.Value.Y == 166)
+                else if (hero2.sourceRectangle.Value.Y == 166)
                     direction = Vector2.UnitX;
-                else if (hero2.SourceRectangle.Value.Y == 133)
+                else if (hero2.sourceRectangle.Value.Y == 133)
                     direction = -Vector2.UnitY;
             }           
         }
@@ -59,13 +60,14 @@ namespace YelloKiller
 
             if (hero.ishero == true)
             {
-                if (hero.SourceRectangle.Value.Y == 230)
+                Console.WriteLine("sourcerectangle hero = " + hero.sourceRectangle.Value.Y);
+                if (hero.sourceRectangle.Value.Y == 230)
                     direction = -Vector2.UnitX;
-                else if (hero.SourceRectangle.Value.Y == 198)
+                else if (hero.sourceRectangle.Value.Y == 198)
                     direction = Vector2.UnitY;
-                else if (hero.SourceRectangle.Value.Y == 166)
+                else if (hero.sourceRectangle.Value.Y == 166)
                     direction = Vector2.UnitX;
-                else if (hero.SourceRectangle.Value.Y == 133)
+                else if (hero.sourceRectangle.Value.Y == 133)
                     direction = -Vector2.UnitY;
             }
         }
