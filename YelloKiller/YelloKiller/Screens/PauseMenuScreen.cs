@@ -29,7 +29,7 @@ namespace YelloKiller
         /// Constructor.
         /// </summary>
         public PauseMenuScreen(int comingfrom, int mode)
-            : base("En pause")
+            : base(Langue.tr("PauseTitle"))
         {
             //Conserve la sélection
             selectedEntry = comingfrom;
@@ -38,18 +38,18 @@ namespace YelloKiller
 
             // Create our menu entries.
             MenuEntry resumeGameMenuEntry;
-            MenuEntry optionsGameMenuEntry = new MenuEntry("Options");
+            MenuEntry optionsGameMenuEntry = new MenuEntry(Langue.tr("Options"));
             MenuEntry quitGameMenuEntry;
 
             if (mode == 2)
             {
-                resumeGameMenuEntry = new MenuEntry("Reprendre l'édition");
-                quitGameMenuEntry = new MenuEntry("Quitter l'édition");
+                resumeGameMenuEntry = new MenuEntry(Langue.tr("PausEditRes"));
+                quitGameMenuEntry = new MenuEntry(Langue.tr("PausEditQuit"));
             }
             else
             {
-                resumeGameMenuEntry = new MenuEntry("Reprendre le jeu");
-                quitGameMenuEntry = new MenuEntry("Quitter la partie");
+                resumeGameMenuEntry = new MenuEntry(Langue.tr("PausGameRes"));
+                quitGameMenuEntry = new MenuEntry(Langue.tr("PausGameQuit"));
             }
 
 
@@ -78,10 +78,10 @@ namespace YelloKiller
             string message;
 
             if (mod == 2)
-                message = "Êtes-vous sûr de vouloir quitter l'édition?\nToute édition non sauvegardée sera perdue.\n";
+                message = Langue.tr("EditMsgBox");
 
             else
-                message = "Êtes-vous sûr de vouloir quitter la partie?\n";
+                message = Langue.tr("GameMsgBox");
 
             MessageBoxScreen confirmQuitMessageBox = new MessageBoxScreen(message);
 
