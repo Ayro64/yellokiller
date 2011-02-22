@@ -24,17 +24,6 @@ namespace YelloKiller
             }
         }
 
-        static public void Collision_Shuriken_Shuriken(List<Shuriken> listeShuriken)
-        {
-            if (listeShuriken.Count != 0)
-            {
-                if (listeShuriken[0].Rectangle.Intersects(listeShuriken[1].Rectangle))
-                {
-                    Console.WriteLine("Collision");
-                }
-            }
-        }
-
         //Commentaire destine a Etienne : Bite avec un 'T'
         
         static public bool Collision_Ennemi_Heros(List<Garde> listeGardes, Hero1 hero1, Hero2 hero2, SoundBank soundBank)
