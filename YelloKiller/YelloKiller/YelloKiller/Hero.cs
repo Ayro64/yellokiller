@@ -48,7 +48,7 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content, int maxIndex)
         {
-            texture = content.Load<Texture2D>("Ninja2Trans");
+            texture = content.Load<Texture2D>("Hero1");
             this.maxIndex = maxIndex;
         }
 

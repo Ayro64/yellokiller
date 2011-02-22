@@ -66,8 +66,8 @@ namespace YelloKiller
 
             _gardes = new List<Garde>();
 
-            foreach (Vector2 position in carte._originesEnnemis)
-                _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 1, 16, 23), TypeCase.Ennemi));
+            foreach (Vector2 position in carte._originesGarde)
+                _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 1, 16, 23), TypeCase.Garde));
 
             temps = 0;
         }

@@ -10,14 +10,18 @@ namespace YelloKiller
     {
         Case[,] _case;
         public Vector2 origineJoueur1, origineJoueur2;
-        public List<Vector2> _originesEnnemis;
+        public List<Vector2> _originesGarde;
+        public List<Vector2> _originesPatrouilleur;
+        public List<Vector2> _originesPatrouilleur_a_cheval;
 
         public Carte(Vector2 size)
         {
             _case = new Case[(int)size.Y, (int)size.X];
             origineJoueur1 = new Vector2(0, 0);
             origineJoueur2 = new Vector2(0, 0);
-            _originesEnnemis = new List<Vector2>();
+            _originesGarde = new List<Vector2>();
+            _originesPatrouilleur = new List<Vector2>();
+            _originesPatrouilleur_a_cheval = new List<Vector2>();
         }
 
         public Case[,] Cases
@@ -47,7 +51,7 @@ namespace YelloKiller
                 for (int x = camera.X / 28 + camera.Width; x >= 0; x--)
                 {
                     _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
-                    
+
                     _case[y, x].DrawInGame(spriteBatch, content);
                 }
             }
@@ -59,9 +63,9 @@ namespace YelloKiller
             {
                 for (int x = camera.X + camera.Width - 1; x >= 0; x--)
                 {
-                        _case[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
+                    _case[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
 
-                        _case[y, x].DrawInMapEditor(spriteBatch, content);
+                    _case[y, x].DrawInMapEditor(spriteBatch, content);
                 }
             }
         }
@@ -83,7 +87,7 @@ namespace YelloKiller
         {
             for (int y = 0; y < size.Y; y++)
                 for (int x = 0; x < size.X; x++)
-                    _case[y, x] = new Case(new Vector2(x, y ),new Rectangle(), TypeCase.herbe);
+                    _case[y, x] = new Case(new Vector2(x, y), new Rectangle(), TypeCase.herbe);
         }
 
         public void OuvrirCarteCoop(string nomDeFichier)
@@ -103,7 +107,7 @@ namespace YelloKiller
                     switch (line[x])
                     {
                         case ('a'):
-                            _case[y,x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
                             break;
                         case ('A'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
@@ -153,10 +157,18 @@ namespace YelloKiller
                         case ('c'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
                             break;
-                        
-                        case ('E'):
+
+                        case ('G'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            _originesEnnemis.Add(new Vector2(x, y));
+                            _originesGarde.Add(new Vector2(x, y));
+                            break;
+                        case ('P'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            _originesPatrouilleur.Add(new Vector2(x, y));
+                            break;
+                        case ('C'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            _originesPatrouilleur_a_cheval.Add(new Vector2(x, y));
                             break;
                         case ('o'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
@@ -252,10 +264,18 @@ namespace YelloKiller
                         case ('c'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
                             break;
-                        
-                        case ('E'):
+
+                        case ('G'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            _originesEnnemis.Add(new Vector2(x, y));
+                            _originesGarde.Add(new Vector2(x, y));
+                            break;
+                        case ('P'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            _originesPatrouilleur.Add(new Vector2(x, y));
+                            break;
+                        case ('C'):
+                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                            _originesPatrouilleur_a_cheval.Add(new Vector2(x, y));
                             break;
                         case ('o'):
                             _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
@@ -268,7 +288,7 @@ namespace YelloKiller
                     }
                 }
             }
-            
+
             /*line = file.ReadLine();
             origineJoueur1.X = stringToInt(line);
 
