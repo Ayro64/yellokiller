@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.YelloKiller;
 
 /*Avant que vous ne gueuliez tous en disant "Hey mais c'est koi ce putain de hero, on en a pas assez ?", et bah la reponse est non.
  Pour le mode solo, on a besoin que d'un hero (hehe), or, les fonctions update des hero1 et hero2 ont besoin respectivement de hero2 et hero1.
@@ -14,18 +15,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    class Hero : Case
+    class Hero : Sprite
     {
         Vector2 position, positionDesiree;
-        Rectangle? sourceRectangle;
+        public Rectangle? sourceRectangle;
         Rectangle rectangle;
         Texture2D texture;
-
         float vitesse_animation, index;
         int maxIndex, countshuriken, vitesse_sprite;
         public bool ishero;
         bool bougerHaut, bougerBas, bougerDroite, bougerGauche;
-        
+
         public Hero(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
         {
@@ -37,14 +37,8 @@ namespace YelloKiller
             maxIndex = 0;
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
             countshuriken = 100;
-            ishero = false;   
+            ishero = false;
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
-        }
-
-        public Rectangle? SourceRectangle
-        {
-            get { return sourceRectangle; }
-            set { sourceRectangle = value; }
         }
 
         public Rectangle Rectangle
@@ -62,7 +56,6 @@ namespace YelloKiller
         {
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
-
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.RightControl) && countshuriken > 0)
             {
                 countshuriken--;

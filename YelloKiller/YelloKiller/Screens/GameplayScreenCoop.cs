@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.YelloKiller;
 
 namespace YelloKiller
 {
@@ -21,7 +22,7 @@ namespace YelloKiller
         Carte carte;
         Rectangle camera;
         List<Shuriken> _shuriken;
-        List<Ennemi> _ennemis;
+        List<Garde> _gardes;
         Player audio;
         MoteurAudio moteurAudio;
         double temps;
@@ -58,10 +59,10 @@ namespace YelloKiller
             else
                 camera.Y = 0;
  
-            _ennemis = new List<Ennemi>();
+            _gardes = new List<Garde>();
 
             foreach (Vector2 position in carte._originesEnnemis)
-                _ennemis.Add(new Ennemi(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 1, 16, 23), TypeCase.Ennemi));
+                _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 1, 16, 23), TypeCase.Ennemi));
 
             temps = 0;
         }
@@ -78,8 +79,8 @@ namespace YelloKiller
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
 
-            foreach (Ennemi ennemi in _ennemis)
-                ennemi.LoadContent(content, 2);
+            foreach (Garde garde in _gardes)
+                garde.LoadContent(content, 2);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -106,12 +107,12 @@ namespace YelloKiller
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken, moteurAudio);
                 hero2.Update(gameTime, carte, hero1, this, _shuriken, moteurAudio);
                 
-                foreach (Ennemi ennemi in _ennemis)
+                foreach (Garde ennemi in _gardes)
                     ennemi.UpdateInCoop(gameTime, carte, hero1, hero2/*, this, hero1, hero2*/);
 
 
-                Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken, moteurAudio.SoundBank);
-                if(Moteur_physique.Collision_Ennemi_Heros(_ennemis, hero1, hero2, moteurAudio.SoundBank))
+                Moteur_physique.Collision_Shuriken_Ennemi(_gardes, _shuriken, moteurAudio.SoundBank);
+                if(Moteur_physique.Collision_Ennemi_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(2));
 
                 audio.Update(gameTime);
@@ -135,11 +136,11 @@ namespace YelloKiller
             hero1.Draw(spriteBatch, gameTime, camera, carte);
             hero2.Draw(spriteBatch, gameTime, camera, carte);
 
-            spriteBatch.DrawString(ScreenManager.font, "Il reste " + _ennemis.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.BurlyWood);
+            spriteBatch.DrawString(ScreenManager.font, "Il reste " + _gardes.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.BurlyWood);
 
             spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
        
-            foreach (Ennemi ennemi in _ennemis)
+            foreach (Garde ennemi in _gardes)
                 ennemi.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
