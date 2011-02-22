@@ -175,7 +175,7 @@ namespace YelloKiller
                 _shuriken[i].Update(gameTime, carte);
                 _shuriken[i].Draw(spriteBatch, camera);
 
-                if (_shuriken[i].Position.X > Taille_Map.LARGEUR_MAP * 28 || _shuriken[i].existshuriken == false)
+                if (_shuriken[i].existshuriken == false)
                 {
                     _shuriken.Remove(_shuriken[i]);
                     Console.WriteLine("suppresion shuriken");

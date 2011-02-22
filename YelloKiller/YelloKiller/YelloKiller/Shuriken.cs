@@ -86,7 +86,7 @@ namespace YelloKiller
         {
             rectangle = new Rectangle((int)position.X, (int)position.Y, 12, 12);
 
-            if (position.X > 0 && position.X < 28 * (Taille_Map.LARGEUR_MAP - 1) && position.Y > 0 && position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) &&
+            if (position.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP && position.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP &&
                 carte.Cases[(int)position.Y / 28, (int)position.X / 28].Type > 0)
             {
                 existshuriken = true;
