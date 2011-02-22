@@ -28,9 +28,9 @@ namespace YelloKiller.YelloKiller
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 23, 30);
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 23, 32);
             vitesse_animation = 0.008f;
-            vitesse_sprite = 1;
+            vitesse_sprite = 2;
             index = 0;
             maxIndex = 0;
             autochemin = 0;
@@ -53,20 +53,20 @@ namespace YelloKiller.YelloKiller
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
             if (sourceRectangle.Value.Y == 0)
-                sourceRectangle = new Rectangle(5, 0, 23, 30);
+                sourceRectangle = new Rectangle(24, 0, 23, 30);
             if (sourceRectangle.Value.Y == 34)
-                sourceRectangle = new Rectangle(5, 34, 23, 30);
+                sourceRectangle = new Rectangle(24, 34, 23, 30);
             if (sourceRectangle.Value.Y == 65)
-                sourceRectangle = new Rectangle(5, 65, 23, 30);
+                sourceRectangle = new Rectangle(24, 65, 23, 30);
             if (sourceRectangle.Value.Y == 98)
-                sourceRectangle = new Rectangle(5, 98, 23, 30);
+                sourceRectangle = new Rectangle(24, 98, 23, 30);
 
             if (!monter)
             {
                 if (position != positionDesiree)
                 {
                     position.Y -= vitesse_sprite;
-                    sourceRectangle = new Rectangle((int)index * 5, 34, 23, 30);
+                    sourceRectangle = new Rectangle((int)index * 24, 0, 23, 30);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                     if (index >= maxIndex)
@@ -86,7 +86,7 @@ namespace YelloKiller.YelloKiller
                 if (position != positionDesiree)
                 {
                     position.Y += vitesse_sprite;
-                    sourceRectangle = new Rectangle((int)index * 5, 65, 23, 30);
+                    sourceRectangle = new Rectangle((int)index * 24, 65, 23, 30);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                     if (index >= maxIndex)
@@ -105,7 +105,7 @@ namespace YelloKiller.YelloKiller
                 if (position != positionDesiree)
                 {
                     position.X -= vitesse_sprite;
-                    sourceRectangle = new Rectangle((int)index * 5, 98, 23, 30);
+                    sourceRectangle = new Rectangle((int)index * 24, 98, 23, 30);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                     if (index >= maxIndex)
@@ -125,7 +125,7 @@ namespace YelloKiller.YelloKiller
                 if (position != positionDesiree)
                 {
                     position.X += vitesse_sprite;
-                    sourceRectangle = new Rectangle((int)index * 5, 0, 23, 30);
+                    sourceRectangle = new Rectangle((int)index * 24, 34, 23, 30);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesse_animation;
 
                     if (index >= maxIndex)
