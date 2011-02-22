@@ -23,7 +23,6 @@ namespace YelloKiller.YelloKiller
         bool monter, descendre, droite, gauche;
         List<Case> chemin;
         float autochemin;
-        int msElapsed;
 
         public Patrouilleur(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
@@ -36,7 +35,6 @@ namespace YelloKiller.YelloKiller
             index = 0;
             maxIndex = 0;
             autochemin = 0;
-            msElapsed = 0;
             positionDesiree = position;
             monter = descendre = droite = gauche = true;
             chemin = new List<Case>();
@@ -48,8 +46,9 @@ namespace YelloKiller.YelloKiller
             this.maxIndex = maxIndex;
         }
 
-        public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera/*, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2*/)
+        public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
+            Position = position;
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
 
@@ -57,11 +56,10 @@ namespace YelloKiller.YelloKiller
             {
                 chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)position.Y / 28, (int)position.X / 28], carte.Cases[(int)hero.Position.Y / 28, (int)hero.Position.X / 28], camera);
                 Console.WriteLine("Depart : X = " + (int)position.X / 28 + " ; Y = " + (int)position.Y / 28 + " _ Arrivee : X = " + (int)hero.Position.X / 28 + " ; Y = " + (int)hero.Position.Y / 28);
-                foreach (Case sisi in chemin)
-                    Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
+                if(chemin != null)
+                    foreach (Case sisi in chemin)
+                        Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
             }
-
-            msElapsed += gameTime.ElapsedGameTime.Milliseconds;
 
             if (chemin.Count != 0)
             {
@@ -228,7 +226,7 @@ namespace YelloKiller.YelloKiller
 
         }
 
-        public void UpdateInCoop(GameTime gameTime, Carte carte, Hero1 hero1, Hero2 hero2/*, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2*/)
+        public void UpdateInCoop(GameTime gameTime, Carte carte, Hero1 hero1, Hero2 hero2)
         {
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
