@@ -34,7 +34,7 @@ namespace YelloKiller
             MenuEntry soloMenuEntry = new MenuEntry(Langue.tr("MainMenuSolo"));
             MenuEntry coopMenuEntry = new MenuEntry(Langue.tr("MainMenuCoop"));
             MenuEntry editorMenuEntry = new MenuEntry(Langue.tr("MainMenuEditor"));
-            MenuEntry optionsMenuEntry = new MenuEntry(Langue.tr("MainMenuOptions"));
+            MenuEntry optionsMenuEntry = new MenuEntry(Langue.tr("Options"));
             MenuEntry exitMenuEntry = new MenuEntry(Langue.tr("MainMenuQuit"));
 
             // Hook up menu event handlers.
