@@ -103,97 +103,7 @@ namespace YelloKiller
                 else if (line == null)
                     break;
                 for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
-                {
-                    switch (line[x])
-                    {
-                            // a, A ,s, m, t, b, B, T, h, H, p, r, f, F, d, g, c, G, P, C, o, O
-                        case ('a'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
-                            break;
-                        case ('A'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
-                            break;
-                        case ('s'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.buissonSurHerbe);
-                            break;
-                        case ('m'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.murBlanc);
-                            break;
-                        case ('t'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tableauMurBlanc);
-                            break;
-                        case ('b'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.bois);
-                            break;
-                        case ('B'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.boisCarre);
-                            break;
-                        case ('T'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tapisRougeBC);
-                            break;
-                        case ('h'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            break;
-                        case ('H'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
-                            break;
-                        case ('p'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.piedDeMurBois);
-                            break;
-                        case ('r'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.terre);
-                            break;
-                        case ('f'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.fondNoir);
-                            break;
-                        case ('F'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurFN);
-                            break;
-                        case ('d'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurDroite);
-                            break;
-                        case ('g'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurGauche);
-                            break;
-                        case ('c'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
-                            break;
-
-                        case ('l'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Lit);
-                            break;
-                        case ('L'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.commode);
-                            break;
-                        case ('y'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.TableMoyenne);
-                            break;
-                        case ('Y'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.GrandeTable);
-                            break;
-
-                        case ('G'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            _originesGarde.Add(new Vector2(x, y));
-                            break;
-                        case ('P'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            _originesPatrouilleur.Add(new Vector2(x, y));
-                            break;
-                        case ('C'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            _originesPatrouilleur_a_cheval.Add(new Vector2(x, y));
-                            break;
-                        case ('o'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            origineJoueur1 = new Vector2(x, y);
-                            break;
-                        case ('O'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            origineJoueur2 = new Vector2(x, y);
-                            break;
-                    }
-                }
+                    SwitchOpen(line[x], ref _case[y, x], x, y, ref _originesGarde, ref _originesPatrouilleur, ref _originesPatrouilleur_a_cheval);
             }
             /*
             line = file.ReadLine();
@@ -224,96 +134,7 @@ namespace YelloKiller
                 else if (line == null)
                     break;
                 for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
-                {
-                    switch (line[x])
-                    {
-                        case ('a'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
-                            break;
-                        case ('A'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
-                            break;
-                        case ('s'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.buissonSurHerbe);
-                            break;
-                        case ('m'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.murBlanc);
-                            break;
-                        case ('t'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tableauMurBlanc);
-                            break;
-                        case ('b'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.bois);
-                            break;
-                        case ('B'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.boisCarre);
-                            break;
-                        case ('T'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tapisRougeBC);
-                            break;
-                        case ('h'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            break;
-                        case ('H'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
-                            break;
-                        case ('p'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.piedDeMurBois);
-                            break;
-                        case ('r'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.terre);
-                            break;
-                        case ('f'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.fondNoir);
-                            break;
-                        case ('F'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurFN);
-                            break;
-                        case ('d'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurDroite);
-                            break;
-                        case ('g'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurGauche);
-                            break;
-                        case ('c'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
-                            break;
-
-                        case ('l'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Lit);
-                            break;
-                        case ('L'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.commode);
-                            break;
-                        case ('y'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.TableMoyenne);
-                            break;
-                        case ('Y'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.GrandeTable);
-                            break;
-
-                        case ('G'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            _originesGarde.Add(new Vector2(x, y));
-                            break;
-                        case ('P'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            _originesPatrouilleur.Add(new Vector2(x, y));
-                            break;
-                        case ('C'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            _originesPatrouilleur_a_cheval.Add(new Vector2(x, y));
-                            break;
-                        case ('o'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            origineJoueur1 = new Vector2(x, y);
-                            break;
-                        case ('O'):
-                            _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
-                            origineJoueur1 = new Vector2(x, y);
-                            break;
-                    }
-                }
+                    SwitchOpen(line[x], ref _case[y, x], x, y, ref _originesGarde, ref _originesPatrouilleur, ref _originesPatrouilleur_a_cheval);
             }
 
             /*line = file.ReadLine();
@@ -330,5 +151,204 @@ namespace YelloKiller
 
             file.Close();
         }
+
+        public void EditerMapSolo(string nomDeFichier)
+        {
+            StreamReader file = new StreamReader(nomDeFichier);
+            string line;
+
+            for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
+            {
+                line = file.ReadLine();
+                if (line == "")
+                    line = file.ReadLine();
+                else if (line == null)
+                    break;
+                for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
+                    SwitchEdit(line[x], ref _case[y, x], x, y);
+            }
+        }
+
+        public void SwitchOpen(char c, ref Case _case, int x, int y, ref List<Vector2> _originesGarde, ref List<Vector2> _originesPatrouilleur, ref List<Vector2> _originesPatrouilleur_a_cheval)
+        {
+            switch (c)
+            {
+                // a, A ,s, m, t, b, B, T, h, H, p, r, f, F, d, g, c, G, P, C, o, O
+                case ('a'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
+                    break;
+                case ('A'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
+                    break;
+                case ('s'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.buissonSurHerbe);
+                    break;
+                case ('m'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.murBlanc);
+                    break;
+                case ('t'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tableauMurBlanc);
+                    break;
+                case ('b'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.bois);
+                    break;
+                case ('B'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.boisCarre);
+                    break;
+                case ('T'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tapisRougeBC);
+                    break;
+                case ('h'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                    break;
+                case ('H'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
+                    break;
+                case ('p'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.piedDeMurBois);
+                    break;
+                case ('r'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.terre);
+                    break;
+                case ('f'):
+                    _case= new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.fondNoir);
+                    break;
+                case ('F'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurFN);
+                    break;
+                case ('d'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurDroite);
+                    break;
+                case ('g'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurGauche);
+                    break;
+                case ('c'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
+                    break;
+
+                case ('l'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Lit);
+                    break;
+                case ('L'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.commode);
+                    break;
+                case ('y'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.TableMoyenne);
+                    break;
+                case ('Y'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.GrandeTable);
+                    break;
+
+                case ('G'):
+                    _case= new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                    _originesGarde.Add(new Vector2(x, y));
+                    break;
+                case ('P'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                    _originesPatrouilleur.Add(new Vector2(x, y));
+                    break;
+                case ('C'):
+                    _case= new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                    _originesPatrouilleur_a_cheval.Add(new Vector2(x, y));
+                    break;
+                case ('o'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                    origineJoueur1 = new Vector2(x, y);
+                    break;
+                case ('O'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                    origineJoueur2 = new Vector2(x, y);
+                    break;
+            }
+        }
+
+        public void SwitchEdit(char c, ref Case _case, int x, int y)
+        {
+            switch (c)
+            {
+                // a, A ,s, m, t, b, B, T, h, H, p, r, f, F, d, g, c, G, P, C, o, O
+                case ('a'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre);
+                    break;
+                case ('A'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.arbre2);
+                    break;
+                case ('s'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.buissonSurHerbe);
+                    break;
+                case ('m'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.murBlanc);
+                    break;
+                case ('t'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tableauMurBlanc);
+                    break;
+                case ('b'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.bois);
+                    break;
+                case ('B'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.boisCarre);
+                    break;
+                case ('T'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.tapisRougeBC);
+                    break;
+                case ('h'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
+                    break;
+                case ('H'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbeFoncee);
+                    break;
+                case ('p'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.piedDeMurBois);
+                    break;
+                case ('r'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.terre);
+                    break;
+                case ('f'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.fondNoir);
+                    break;
+                case ('F'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurFN);
+                    break;
+                case ('d'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurDroite);
+                    break;
+                case ('g'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.finMurGauche);
+                    break;
+                case ('c'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
+                    break;
+
+                case ('l'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Lit);
+                    break;
+                case ('L'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.commode);
+                    break;
+                case ('y'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.TableMoyenne);
+                    break;
+                case ('Y'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.GrandeTable);
+                    break;
+
+                case ('G'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Garde);
+                    break;
+                case ('P'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Patrouilleur);
+                    break;
+                case ('C'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Patrouilleur_a_cheval);
+                    break;
+                case ('o'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Joueur1);
+                    break;
+                case ('O'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Joueur2);
+                    break;
+            }
+        }
+
     }
 }
