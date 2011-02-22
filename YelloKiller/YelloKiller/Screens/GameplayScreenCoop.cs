@@ -107,7 +107,7 @@ namespace YelloKiller
                 hero2.Update(gameTime, carte, hero1, this, _shuriken, moteurAudio);
                 
                 foreach (Ennemi ennemi in _ennemis)
-                    ennemi.Update(gameTime, carte/*, this, hero1, hero2*/);
+                    ennemi.UpdateInCoop(gameTime, carte, hero1, hero2/*, this, hero1, hero2*/);
 
 
                 Moteur_physique.Collision_Shuriken_Ennemi(_ennemis, _shuriken, moteurAudio.SoundBank);

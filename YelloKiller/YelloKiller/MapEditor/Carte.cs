@@ -26,16 +26,17 @@ namespace YelloKiller
             set { _case = value; }
         }
 
-        public bool ValidCoordinates(float x,float y)
+        public bool ValidCoordinates(Case _case)
         {
-            if (x < 0)
+            if (_case.Position.X < 0)
                 return false;
-            if (y < 0)
+            if (_case.Position.Y < 0)
                 return false;
-            if (x >= Cases.GetLength(1))
+            if ((int)_case.Position.X / 28 >= Taille_Map.LARGEUR_MAP)
                 return false;
-            if (y >= Cases.GetLength(0))
+            if ((int)_case.Position.Y / 28 >= Taille_Map.HAUTEUR_MAP)
                 return false;
+
             return true;
         }
 
