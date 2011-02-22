@@ -98,12 +98,18 @@ namespace YelloKiller
                             type = TypeCase.finMurDroite;
                             break;
                         case (17):
-                            type = TypeCase.Ennemi;
+                            type = TypeCase.Garde;
                             break;
                         case (18):
-                            type = TypeCase.Joueur1;
+                            type = TypeCase.Patrouilleur;
                             break;
                         case (19):
+                            type = TypeCase.Patrouilleur_a_cheval;
+                            break;
+                        case (20):
+                            type = TypeCase.Joueur1;
+                            break;
+                        case (21):
                             type = TypeCase.Joueur2;
                             break;
                     }

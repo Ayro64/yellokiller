@@ -58,11 +58,6 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="ennemi.png">
-      <Name>ennemi</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Game Over.png">
       <Name>Game Over</Name>
       <Importer>TextureImporter</Importer>
@@ -75,26 +70,6 @@
     </Compile>
     <Compile Include="LevelSelection.jpg">
       <Name>LevelSelection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="NinjaTrans.png">
-      <Name>NinjaTrans</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="origine1.png">
-      <Name>origine1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="origine2.png">
-      <Name>origine2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="origineEnnemi1.png">
-      <Name>origineEnnemi1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -196,11 +171,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ninja2Trans.png">
-      <Name>Ninja2Trans</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Sons\menuBouge.wav">
       <Name>menuBouge</Name>
       <Importer>WavImporter</Importer>
@@ -250,6 +220,58 @@
     </Compile>
     <Compile Include="Textures\FinMurGauche.png">
       <Name>FinMurGauche</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Garde.png">
+      <Name>Garde</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Hero1.png">
+      <Name>Hero1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Hero2.png">
+      <Name>Hero2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="origine_garde.png">
+      <Name>origine_garde</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="origine_hero1.png">
+      <Name>origine_hero1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="origine_hero2.png">
+      <Name>origine_hero2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="origine_patrouilleur.png">
+      <Name>origine_patrouilleur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="origine_patrouilleur_a_cheval.png">
+      <Name>origine_patrouilleur_a_cheval</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Patrouilleur.png">
+      <Name>Patrouilleur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Patrouilleur_a_cheval.png">
+      <Name>Patrouilleur_a_cheval</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -29,15 +29,6 @@
       <Time>2011-02-22T15:46:13.8048208+01:00</Time>
     </Item>
     <Item>
-      <Source>ennemi.png</Source>
-      <Name>ennemi</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\ennemi.xnb</Output>
-      <Time>2011-02-22T15:46:13.7892208+01:00</Time>
-    </Item>
-    <Item>
       <Source>Game Over.png</Source>
       <Name>Game Over</Name>
       <Importer>TextureImporter</Importer>
@@ -62,42 +53,6 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\LevelSelection.xnb</Output>
-      <Time>2011-02-22T15:46:13.7736207+01:00</Time>
-    </Item>
-    <Item>
-      <Source>NinjaTrans.png</Source>
-      <Name>NinjaTrans</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\NinjaTrans.xnb</Output>
-      <Time>2011-02-22T15:46:13.7580207+01:00</Time>
-    </Item>
-    <Item>
-      <Source>origine1.png</Source>
-      <Name>origine1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine1.xnb</Output>
-      <Time>2011-02-22T15:46:13.7892208+01:00</Time>
-    </Item>
-    <Item>
-      <Source>origine2.png</Source>
-      <Name>origine2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine2.xnb</Output>
-      <Time>2011-02-22T15:46:13.8048208+01:00</Time>
-    </Item>
-    <Item>
-      <Source>origineEnnemi1.png</Source>
-      <Name>origineEnnemi1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origineEnnemi1.xnb</Output>
       <Time>2011-02-22T15:46:13.7736207+01:00</Time>
     </Item>
     <Item>
@@ -236,15 +191,6 @@
       <Time>2011-02-22T15:46:11.1684162+01:00</Time>
     </Item>
     <Item>
-      <Source>Ninja2Trans.png</Source>
-      <Name>Ninja2Trans</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Ninja2Trans.xnb</Output>
-      <Time>2011-02-22T15:46:13.8360208+01:00</Time>
-    </Item>
-    <Item>
       <Source>Textures\carlageNoir.png</Source>
       <Name>Textures\carlageNoir</Name>
       <Importer>TextureImporter</Importer>
@@ -359,6 +305,96 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\courier.xnb</Output>
+      <Time>2011-02-22T15:46:13.8048208+01:00</Time>
+    </Item>
+    <Item>
+      <Source>patrouilleur_a_cheval.png</Source>
+      <Name>patrouilleur_a_cheval</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\patrouilleur_a_cheval.xnb</Output>
+      <Time>2011-02-22T17:48:29.0631987+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origine_patrouilleur.png</Source>
+      <Name>origine_patrouilleur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur.xnb</Output>
+      <Time>2011-02-22T18:08:14.3583241+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Origine_patrouilleur_a_cheval.png</Source>
+      <Name>Origine_patrouilleur_a_cheval</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Origine_patrouilleur_a_cheval.xnb</Output>
+      <Time>2011-02-22T18:16:30.4957847+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Patrouilleur.png</Source>
+      <Name>Patrouilleur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur.xnb</Output>
+      <Time>2011-02-22T18:05:53.6395848+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Garde.png</Source>
+      <Name>Garde</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Garde.xnb</Output>
+      <Time>2011-02-22T15:46:13.7892208+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Hero1.png</Source>
+      <Name>Hero1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero1.xnb</Output>
+      <Time>2011-02-22T15:46:13.7580207+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Hero2.png</Source>
+      <Name>Hero2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero2.xnb</Output>
+      <Time>2011-02-22T15:46:13.8360208+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origine_garde.png</Source>
+      <Name>origine_garde</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_garde.xnb</Output>
+      <Time>2011-02-22T15:46:13.7736207+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origine_hero1.png</Source>
+      <Name>origine_hero1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero1.xnb</Output>
+      <Time>2011-02-22T15:46:13.7892208+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origine_hero2.png</Source>
+      <Name>origine_hero2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero2.xnb</Output>
       <Time>2011-02-22T15:46:13.8048208+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>

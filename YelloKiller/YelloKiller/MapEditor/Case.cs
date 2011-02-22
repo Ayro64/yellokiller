@@ -207,14 +207,21 @@ namespace YelloKiller
                     nomTexture = @"Textures\FinMurDroite";
                     break;
                 case TypeCase.Joueur1:
-                    nomTexture = "origine1";
+                    nomTexture = "origine_hero1";
                     break;
                 case TypeCase.Joueur2:
-                    nomTexture = "origine2";
+                    nomTexture = "origine_hero2";
                     break;
-                case TypeCase.Ennemi:
-                    nomTexture = "origineEnnemi1";
+                case TypeCase.Garde:
+                    nomTexture = "origine_garde";
                     break;
+                case TypeCase.Patrouilleur:
+                    nomTexture = "origine_patrouilleur";
+                    break;
+                case TypeCase.Patrouilleur_a_cheval:
+                    nomTexture = "origine_patrouilleur_a_cheval";
+                    break;
+
             }
             texture = content.Load<Texture2D>(nomTexture);
         }
