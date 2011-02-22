@@ -103,15 +103,17 @@ namespace YelloKiller
         /// </summary>
         void SetMenuEntryText()
         {
+            Properties.Settings.Default.Language = currentLanguage;
+            Properties.Settings.Default.AudioType = currentSon;
+            Properties.Settings.Default.MusicVolume = soundVolume;
+            Properties.Settings.Default.FXVolume = fxVolume;
+
             languageMenuEntry.Text = Langue.tr("OptLan") + language[currentLanguage];
             sonMenuEntry.Text = Langue.tr("OptSound") + son[currentSon];
             soundVolumeMenuEntry.Text = Langue.tr("OptMusic") + (uint)soundVolume;
             fxVolumeMenuEntry.Text = Langue.tr("OptFX") + fxVolume;
 
-            Properties.Settings.Default.Language = currentLanguage;
-            Properties.Settings.Default.AudioType = currentSon;
-            Properties.Settings.Default.MusicVolume = soundVolume;
-            Properties.Settings.Default.FXVolume = fxVolume;
+            
         }
 
         // Sert qu'aux rectangles
