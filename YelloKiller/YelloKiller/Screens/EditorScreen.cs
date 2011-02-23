@@ -28,7 +28,7 @@ namespace YelloKiller
         string ligne = "", nomSauvegarde = "save0";
         Rectangle camera;
         Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
-        List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux;
+        List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux, _originesBoss;
 
         bool enableOrigine1 = true, enableOrigine2 = true, enableSave = true, afficheMessageErreur = false;
         double chronometre = 0;
@@ -43,6 +43,7 @@ namespace YelloKiller
             _originesGardes = new List<Vector2>();
             _originesPatrouilleurs = new List<Vector2>();
             _originesPatrouilleursAChevaux = new List<Vector2>();
+            _originesBoss = new List<Vector2>();
         }
 
         public override void LoadContent()
@@ -113,6 +114,9 @@ namespace YelloKiller
 
                 else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
                     _originesPatrouilleursAChevaux.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+
+                else if (curseur.Type == TypeCase.Boss)
+                    _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
             }
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
@@ -137,7 +141,7 @@ namespace YelloKiller
                     origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
                     //carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.Joueur2;
                 }
-                else if (curseur.Type != TypeCase.Garde && curseur.Type != TypeCase.Patrouilleur_a_cheval && curseur.Type != TypeCase.Patrouilleur && (int)carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type != -6 /*-6 = fond*/)
+                else if (curseur.Type != TypeCase.Garde && curseur.Type != TypeCase.Patrouilleur_a_cheval && curseur.Type != TypeCase.Patrouilleur && curseur.Type != TypeCase.Boss && (int)carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type != -6 /*-6 = fond*/)
                 {
                     if (curseur.Type == TypeCase.arbre2)
                     {
@@ -309,6 +313,9 @@ namespace YelloKiller
             foreach (Vector2 position in _originesPatrouilleursAChevaux)
                 spriteBatch.Draw(menu.ListeTextures[4], 28 * position, Color.White);
 
+            foreach (Vector2 position in _originesBoss)
+                spriteBatch.Draw(menu.ListeTextures[5], 28 * position, Color.White);
+
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
 
@@ -472,6 +479,13 @@ namespace YelloKiller
 
                 sauvegarde.WriteLine("Patrouilleurs A Chevaux");
                 foreach (Vector2 position in _originesPatrouilleursAChevaux)
+                {
+                    sauvegarde.WriteLine(position.X);
+                    sauvegarde.WriteLine(position.Y);
+                }
+
+                sauvegarde.WriteLine("Boss");
+                foreach (Vector2 position in _originesBoss)
                 {
                     sauvegarde.WriteLine(position.X);
                     sauvegarde.WriteLine(position.Y);

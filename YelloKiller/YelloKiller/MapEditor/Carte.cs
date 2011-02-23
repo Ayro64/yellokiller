@@ -14,6 +14,7 @@ namespace YelloKiller
         public List<Vector2> _originesGarde;
         public List<Vector2> _originesPatrouilleur;
         public List<Vector2> _originesPatrouilleur_a_cheval;
+        public List<Vector2> _originesBoss;
 
         public Carte(Vector2 size)
         {
@@ -24,6 +25,7 @@ namespace YelloKiller
             _originesGarde = new List<Vector2>();
             _originesPatrouilleur = new List<Vector2>();
             _originesPatrouilleur_a_cheval = new List<Vector2>();
+            _originesBoss = new List<Vector2>();
         }
 
         public Case[,] Cases
@@ -146,12 +148,23 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != null)
+            while (line != "Boss")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
                 positionTemporaire.Y = Convert.ToInt32(line);
                 _originesPatrouilleur_a_cheval.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
+
+            line = file.ReadLine();
+
+            while (line != null)
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesBoss.Add(positionTemporaire);
                 line = file.ReadLine();
             }
 
@@ -206,12 +219,23 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != null)
+            while (line != "Boss")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
                 positionTemporaire.Y = Convert.ToInt32(line);
                 _originesPatrouilleur_a_cheval.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
+
+            line = file.ReadLine();
+
+            while (line != null)
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesBoss.Add(positionTemporaire);
                 line = file.ReadLine();
             }
 
@@ -406,6 +430,9 @@ namespace YelloKiller
                     break;
                 case ('C'):
                     _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Patrouilleur_a_cheval);
+                    break;
+                case ('S'):
+                    _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Boss);
                     break;
                 case ('o'):
                     _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Joueur1);

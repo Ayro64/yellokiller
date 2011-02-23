@@ -62,66 +62,69 @@ namespace YelloKiller
                             type = TypeCase.Patrouilleur_a_cheval;
                             break;
                         case (5):
-                            type = TypeCase.arbre;
+                            type = TypeCase.Boss;
                             break;
                         case (6):
-                            type = TypeCase.arbre2;
+                            type = TypeCase.arbre;
                             break;
                         case (7):
-                            type = TypeCase.buissonSurHerbe;
+                            type = TypeCase.arbre2;
                             break;
                         case (8):
-                            type = TypeCase.murBlanc;
+                            type = TypeCase.buissonSurHerbe;
                             break;
                         case (9):
-                            type = TypeCase.tableauMurBlanc;
+                            type = TypeCase.murBlanc;
                             break;
                         case (10):
-                            type = TypeCase.bois;
+                            type = TypeCase.tableauMurBlanc;
                             break;
                         case (11):
-                            type = TypeCase.boisCarre;
+                            type = TypeCase.bois;
                             break;
                         case (12):
-                            type = TypeCase.tapisRougeBC;
+                            type = TypeCase.boisCarre;
                             break;
                         case (13):
-                            type = TypeCase.herbe;
+                            type = TypeCase.tapisRougeBC;
                             break;
                         case (14):
-                            type = TypeCase.herbeFoncee;
+                            type = TypeCase.herbe;
                             break;
                         case (15):
-                            type = TypeCase.piedDeMurBois;
+                            type = TypeCase.herbeFoncee;
                             break;
                         case (16):
-                            type = TypeCase.terre;
+                            type = TypeCase.piedDeMurBois;
                             break;
                         case (17):
-                            type = TypeCase.carlageNoir;
+                            type = TypeCase.terre;
                             break;
                         case (18):
-                            type = TypeCase.fondNoir;
+                            type = TypeCase.carlageNoir;
                             break;
                         case (19):
-                            type = TypeCase.finMurFN;
+                            type = TypeCase.fondNoir;
                             break;
                         case (20):
-                            type = TypeCase.finMurGauche;
+                            type = TypeCase.finMurFN;
                             break;
                         case (21):
-                            type = TypeCase.finMurDroite;
+                            type = TypeCase.finMurGauche;
                             break;
                         case (22):
-                            type = TypeCase.Lit;
+                            type = TypeCase.finMurDroite;
                             break;
                         case (23):
-                            type = TypeCase.commode;
+                            type = TypeCase.Lit;
                             break;
                         case (24):
-                            type = TypeCase.TableMoyenne;
+                            type = TypeCase.commode;
                             break;
                         case (25):
+                            type = TypeCase.TableMoyenne;
+                            break;
+                        case (26):
                             type = TypeCase.GrandeTable;
                             break;
                     }

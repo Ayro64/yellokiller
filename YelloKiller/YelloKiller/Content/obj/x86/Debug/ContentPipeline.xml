@@ -469,6 +469,24 @@
       <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\courier.xnb</Output>
       <Time>2011-02-22T15:46:13.8048208+01:00</Time>
     </Item>
+    <Item>
+      <Source>Boss.png</Source>
+      <Name>Boss</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Boss.xnb</Output>
+      <Time>2011-02-23T15:12:17.4923308+01:00</Time>
+    </Item>
+    <Item>
+      <Source>origine_boss.png</Source>
+      <Name>origine_boss</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_boss.xnb</Output>
+      <Time>2011-02-23T15:36:08.519397+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
