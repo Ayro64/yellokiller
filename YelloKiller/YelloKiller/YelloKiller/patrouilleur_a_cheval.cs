@@ -47,8 +47,10 @@ namespace YelloKiller
 
         public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
+            Position = position;
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
+            Rectangle = rectangle;
 
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
@@ -180,8 +182,10 @@ namespace YelloKiller
 
         public void UpdateInCoop(GameTime gameTime, Carte carte, Hero1 hero1, Hero2 hero2/*, GameplayScreenCoop yk, Hero1 hero1, Hero2 hero2*/)
         {
+            Position = position;
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
+            Rectangle = rectangle;
 
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 

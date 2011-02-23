@@ -49,9 +49,9 @@ namespace YelloKiller
         public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
             Position = position;
-
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
+            Rectangle = rectangle;
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
             {
@@ -228,9 +228,9 @@ namespace YelloKiller
         public void UpdateInCoop(GameTime gameTime, Carte carte, Hero1 hero1, Hero2 hero2)
         {
             Position = position;
-
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
+            Rectangle = rectangle;
 
             if (sourceRectangle.Value.Y == 1)
                 sourceRectangle = new Rectangle(5, 1, 16, 23);
