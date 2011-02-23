@@ -34,7 +34,7 @@ namespace YelloKiller
             index = 0;
             maxIndex = 0;
             rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
-            countshuriken = 20;
+            countshuriken = 5;
             ishero1 = false;
             positionDesiree = position;
             bougerBas = bougerDroite = bougerGauche = bougerHaut = true;
