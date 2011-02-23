@@ -139,13 +139,13 @@ namespace YelloKiller
                 Moteur_physique.Collision_Shuriken_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _shuriken, moteurAudio.SoundBank);
 
                 if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(0));
 
                 if (Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(0));
 
                 if (Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(0));
 
                 audio.Update(gameTime);
             }
