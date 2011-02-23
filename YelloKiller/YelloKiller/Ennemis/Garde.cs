@@ -51,16 +51,16 @@ namespace YelloKiller
             rectangle.Y = (int)position.Y;
             Rectangle = rectangle;
 
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheRelevee(Keys.Enter))
             {
                 chemin = Pathfinding.CalculChemin(carte, new Vector2((int)this.position.X / 28 + (int)camera.X / 28, (int)this.position.Y / 28 + (int)camera.Y / 28), new Vector2((int)hero.Position.X / 28 + (int)camera.X / 28, (int)hero.Position.Y / 28 + (int)camera.Y / 28), camera);
-               
+
                 Console.WriteLine("Depart : X = " + (int)position.X / 28 + " ; Y = " + (int)position.Y / 28 + " _ Arrivee : X = " + (int)hero.Position.X / 28 + " ; Y = " + (int)hero.Position.Y / 28);
                 if (chemin != null)
                     foreach (Case sisi in chemin)
                         Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
             }
-            
+
             if (chemin != null && chemin.Count != 0)
             {
                 if (monter && descendre && droite && gauche)
@@ -186,7 +186,7 @@ namespace YelloKiller
                     position = positionDesiree;
                     index = 0f;
                 }
-            }         
+            }
         }
 
         public void UpdateInCoop(GameTime gameTime, Carte carte, Hero1 hero1, Hero2 hero2)

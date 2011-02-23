@@ -74,7 +74,7 @@ namespace YelloKiller
             else
                 ishero1 = false;
             
-            if (!ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Z))                        // arreter le sprite
+            if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Z))                        // arreter le sprite
             {
                 if (sourceRectangle.Value.Y == 133)
                     sourceRectangle = new Rectangle(24, 133, 16, 28);
@@ -179,7 +179,7 @@ namespace YelloKiller
 
             if (bougerHaut && bougerBas && bougerDroite && bougerGauche)
             {
-                if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftShift))
+                if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftShift))
                 {
                     vitesse_sprite = 4;
                     vitesse_animation = 0.016f;
@@ -190,7 +190,7 @@ namespace YelloKiller
                     vitesse_animation = 0.008f;
                 }
 
-                if (position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Z) &&
+                if (position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Z) &&
                     (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0 &&
                     (position.X != hero2.PositionDesiree.X || position.Y - 28 != hero2.PositionDesiree.Y))
                 {
@@ -200,7 +200,7 @@ namespace YelloKiller
                         bougerHaut = false;
                 }
 
-                else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) &&
+                else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.S) &&
                          (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0 &&
                          (position.X != hero2.PositionDesiree.X || position.Y + 28 != hero2.PositionDesiree.Y))
                 {
@@ -210,7 +210,7 @@ namespace YelloKiller
                     bougerBas = false;
                 }
 
-                else if (position.X > 10 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Q) &&
+                else if (position.X > 10 && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Q) &&
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0 &&
                          (position.Y != hero2.PositionDesiree.Y || position.X - 28 != hero2.PositionDesiree.X))
                 {
@@ -220,7 +220,7 @@ namespace YelloKiller
                     bougerGauche = false;
                 }
 
-                else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.D) &&
+                else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.D) &&
                          (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0 &&
                          (position.Y != hero2.PositionDesiree.Y || position.X + 28 != hero2.PositionDesiree.X))
                 {

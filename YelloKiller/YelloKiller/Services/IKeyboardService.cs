@@ -4,7 +4,8 @@ namespace YelloKiller
 {
     interface IKeyboardService
     {
-        bool TouchePresse(Keys key);
+        bool TouchePressee(Keys key);
         bool ToucheAEtePressee(Keys key);
+        bool ToucheRelevee(Keys key);
     }
 }
