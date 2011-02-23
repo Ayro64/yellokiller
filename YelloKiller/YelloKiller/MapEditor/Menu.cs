@@ -21,6 +21,12 @@ namespace YelloKiller
             for (int i = 0; i < nbTextures; i++)
                 listeRectangles.Add(new Rectangle(0, 0, 28, 28));
 
+            listeTextures.Add(content.Load<Texture2D>("origine_hero1"));
+            listeTextures.Add(content.Load<Texture2D>("origine_hero2"));
+            listeTextures.Add(content.Load<Texture2D>("origine_garde"));
+            listeTextures.Add(content.Load<Texture2D>("origine_patrouilleur"));
+            listeTextures.Add(content.Load<Texture2D>("origine_patrouilleur_a_cheval"));
+
             listeTextures.Add(content.Load<Texture2D>(@"Textures\arbre"));
             listeTextures.Add(content.Load<Texture2D>(@"Textures\arbre2"));
             listeTextures.Add(content.Load<Texture2D>(@"Textures\buissonSurHerbe"));
@@ -42,12 +48,6 @@ namespace YelloKiller
             listeTextures.Add(content.Load<Texture2D>(@"Textures\Commode"));
             listeTextures.Add(content.Load<Texture2D>(@"Textures\tableMoyenne"));
             listeTextures.Add(content.Load<Texture2D>(@"Textures\grandeTable"));
-
-            listeTextures.Add(content.Load<Texture2D>("origine_garde"));
-            listeTextures.Add(content.Load<Texture2D>("origine_patrouilleur"));
-            listeTextures.Add(content.Load<Texture2D>("origine_patrouilleur_a_cheval"));
-            listeTextures.Add(content.Load<Texture2D>("origine_hero1"));
-            listeTextures.Add(content.Load<Texture2D>("origine_hero2"));
 
             fond = content.Load<Texture2D>(@"Textures\fond");
         }
