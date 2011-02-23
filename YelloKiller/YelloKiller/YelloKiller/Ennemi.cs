@@ -29,6 +29,7 @@ namespace YelloKiller
         public Rectangle Rectangle
         {
             get { return rectangle; }
+            set { rectangle = value; }
         }
 
         public Vector2 PositionDesiree
