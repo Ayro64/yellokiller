@@ -39,7 +39,9 @@ namespace YelloKiller
             nomSauvegarde = "save0";
             origine1 = -Vector2.One;
             origine2 = -Vector2.One;
-            enableOrigine1 = enableOrigine2 = enableSave = true;
+            enableOrigine1 = true;
+            enableOrigine2 = true;
+            enableSave = true;
             afficheMessageErreur = false;
             camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
@@ -306,21 +308,21 @@ namespace YelloKiller
             carte.DrawInMapEditor(spriteBatch, content, camera);
 
             if (!enableOrigine1)
-                spriteBatch.Draw(menu.ListeTextures[0], 28 * origine1, Color.White);
+                spriteBatch.Draw(menu.ListeTextures[0], 28 * new Vector2(origine1.X - camera.X, origine1.Y - camera.Y), Color.White);
             if (!enableOrigine2)
-                spriteBatch.Draw(menu.ListeTextures[1], 28 * origine2, Color.White);
+                spriteBatch.Draw(menu.ListeTextures[1], 28 * new Vector2(origine2.X - camera.X, origine2.Y - camera.Y), Color.White);
 
             foreach (Vector2 position in _originesGardes)
-                spriteBatch.Draw(menu.ListeTextures[2], 28 * position, Color.White);
+                spriteBatch.Draw(menu.ListeTextures[2], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
 
             foreach (Vector2 position in _originesPatrouilleurs)
-                spriteBatch.Draw(menu.ListeTextures[3], 28 * position, Color.White);
+                spriteBatch.Draw(menu.ListeTextures[3], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
 
             foreach (Vector2 position in _originesPatrouilleursAChevaux)
-                spriteBatch.Draw(menu.ListeTextures[4], 28 * position, Color.White);
+                spriteBatch.Draw(menu.ListeTextures[4], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
 
             foreach (Vector2 position in _originesBoss)
-                spriteBatch.Draw(menu.ListeTextures[5], 28 * position, Color.White);
+                spriteBatch.Draw(menu.ListeTextures[5], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
 
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
