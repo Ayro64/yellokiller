@@ -16,7 +16,7 @@ namespace YelloKiller
                 int count = this.Count;
                 for (int i = 0; i < count; i++)
                 {
-                    if (this[i].Case == noeud.Case)
+                    if (this[i].Position.X == noeud.Position.X && this[i].Position.Y == noeud.Position.Y)
                         return this[i];
                 }
                 return default(T);

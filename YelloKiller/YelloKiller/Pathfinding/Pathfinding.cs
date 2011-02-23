@@ -5,7 +5,7 @@ namespace YelloKiller
 {
     class Pathfinding
     {
-        public static List<Case> CalculChemin(Carte carte, Case depart, Case arrivee, Rectangle camera)
+        public static List<Case> CalculChemin(Carte carte, Vector2 depart, Vector2 arrivee, Rectangle camera)
         {
             List<Case> resultat = new List<Case>();
             ListeNoeuds<Noeud> listeOuverte = new ListeNoeuds<Noeud>();
@@ -13,7 +13,7 @@ namespace YelloKiller
             List<Noeud> NoeudsPossibles;
             int nombreNoeudsPossibles;
 
-            Noeud noeudDepart = new Noeud(depart, null, arrivee);
+            Noeud noeudDepart = new Noeud(depart, null, arrivee, camera);
 
             listeOuverte.Add(noeudDepart);
 
@@ -23,12 +23,12 @@ namespace YelloKiller
                 listeOuverte.RemoveAt(0);
                 listeFermee.Add(courant);
 
-                if (courant.Case == arrivee)
+                if (courant.Position == arrivee)
                 {
                     List<Case> solution = new List<Case>();
                     while (courant.Parent != null)
                     {
-                        solution.Add(courant.Case);
+                        solution.Add(carte.Cases[(int)courant.Position.Y, (int)courant.Position.X]);
                         courant = courant.Parent;
                     }
                     return solution;
