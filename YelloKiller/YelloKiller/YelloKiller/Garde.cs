@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using YelloKiller.YelloKiller;
 
-namespace YelloKiller.YelloKiller
+namespace YelloKiller
 {
     class Garde : Ennemi
     {

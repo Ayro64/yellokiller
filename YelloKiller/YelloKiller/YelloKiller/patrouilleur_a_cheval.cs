@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
-namespace YelloKiller.YelloKiller
+namespace YelloKiller
 {
     class patrouilleur_a_cheval : Ennemi
     {
