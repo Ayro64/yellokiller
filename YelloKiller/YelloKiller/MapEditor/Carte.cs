@@ -16,8 +16,8 @@ namespace YelloKiller
         public Carte(Vector2 size)
         {
             _case = new Case[(int)size.Y, (int)size.X];
-            origineJoueur1 = Vector2.Zero;
-            origineJoueur2 = Vector2.Zero; 
+            origineJoueur1 = -Vector2.One;
+            origineJoueur2 = -Vector2.One; 
             positionTemporaire = Vector2.Zero;
             _originesGarde = new List<Vector2>();
             _originesPatrouilleur = new List<Vector2>();
@@ -137,23 +137,6 @@ namespace YelloKiller
 
             file.Close();
         }
-
-        /*public void EditerMapSolo(string nomDeFichier)
-        {
-            StreamReader file = new StreamReader(nomDeFichier);
-            string line;
-
-            for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
-            {
-                line = file.ReadLine();
-                if (line == "")
-                    line = file.ReadLine();
-                else if (line == null)
-                    break;
-                for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
-                    Switch(line[x], x, y);
-            }
-        }*/
 
         public void Switch(char c, int x, int y)
         {
