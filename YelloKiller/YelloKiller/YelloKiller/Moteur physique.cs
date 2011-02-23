@@ -8,6 +8,7 @@ namespace YelloKiller
 {
     static class Moteur_physique
     {
+       static int vie = 5;
         static public void Collision_Shuriken_Ennemis(List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, SoundBank soundBank)
         {
             if (_gardes.Count != 0)
@@ -46,17 +47,26 @@ namespace YelloKiller
                             break;
                         }
             }
+
             if (_Boss.Count != 0)
-            {
+            {               
                 for (int i = 0; i < _Boss.Count; i++)
+                {
                     for (int j = 0; j < listeShuriken.Count; j++)
+                    {
                         if (_Boss[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
-                            soundBank.PlayCue("cri");
-                            _Boss.Remove(_Boss[i]);
+                            vie--;
                             listeShuriken.Remove(listeShuriken[j]);
+                            soundBank.PlayCue("cri");
+
+                            if (vie == 0)
+                                _Boss.Remove(_Boss[i]);
+
                             break;
                         }
+                    }
+                }
             }
         }
 
