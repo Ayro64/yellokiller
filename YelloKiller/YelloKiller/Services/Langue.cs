@@ -85,6 +85,12 @@ namespace YelloKiller
                             return "Volume de la musique : ";
                         case ("OptFX"):
                             return "Volume des sons : ";
+                        case("WinMsg"):
+                            return "Cible éliminée!";
+                        case("WiNext"):
+                            return "Niveau suivant";
+                        case("WiRetry"):
+                            return "Refaire le niveau";
                         default:
                             return "";
                     }
@@ -162,6 +168,12 @@ namespace YelloKiller
                             return "Volume de la musique : ";
                         case ("OptFX"):
                             return "Volume des effets sonores : ";
+                        case ("WinMsg"):
+                            return "Cible éliminée!";
+                        case ("WiNext"):
+                            return "Niveau suivant";
+                        case ("WiRetry"):
+                            return "Refaire le niveau";
                         default:
                             return "";
                     }
@@ -213,7 +225,7 @@ namespace YelloKiller
                         case ("PausEditQuit"):
                             return "Stop editing";
                         case ("PausEditSave"):
-                            return "Sauver la carte";
+                            return "Save the map";
                         case ("PausEditLoad"):
                             return "Load a map";
                         case ("PausGameRes"):
@@ -239,6 +251,12 @@ namespace YelloKiller
                             return "Music Volume : ";
                         case ("OptFX"):
                             return "FX Volume : ";
+                        case ("WinMsg"):
+                            return "Target terminated!";
+                        case ("WiNext"):
+                            return "Next level";
+                        case ("WiRetry"):
+                            return "Do this level again";
                         default:
                             return "";
                     }
