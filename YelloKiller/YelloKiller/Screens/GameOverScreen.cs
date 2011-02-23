@@ -23,20 +23,7 @@ namespace YelloKiller
         Color Color;
 
         #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets the list of menu entries, so derived classes can add
-        /// or change the menu contents.
-        /// </summary>
-        protected IList<MenuEntry> MenuEntries
-        {
-            get { return menuEntries; }
-        }
-
-        #endregion
-
+        
         #region Initialization
 
         /// <summary>
@@ -60,8 +47,8 @@ namespace YelloKiller
             abortMenuEntry.Selected += AbortMenuEntrySelected;
 
             // Add entries to the menu.
-            MenuEntries.Add(restartMenuEntry);
-            MenuEntries.Add(abortMenuEntry);
+            menuEntries.Add(restartMenuEntry);
+            menuEntries.Add(abortMenuEntry);
         }
 
         /// <summary>
@@ -171,7 +158,7 @@ namespace YelloKiller
                                                        bool coveredByOtherScreen)
         {
             // Update each nested MenuEntry object.
-            for (int i = 0; i < MenuEntries.Count; i++)
+            for (int i = 0; i < menuEntries.Count; i++)
             {
                 bool isSelected = IsActive && (i == selectedEntry);
                 menuEntries[i].Update(this, isSelected, gameTime);
