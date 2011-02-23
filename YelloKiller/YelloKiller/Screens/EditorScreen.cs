@@ -37,14 +37,12 @@ namespace YelloKiller
         {
             ligne = "";
             nomSauvegarde = "save0";
-            //origine1 = -Vector2.One;
-            //origine2 = -Vector2.One;
             enableSave = true;
             afficheMessageErreur = false;
             camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            //carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.OuvrirCarte("Ssave0.txt", 1);
+            carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+            //carte.OuvrirCarte("Ssave0.txt", 1);
 
             _originesGardes = carte.OriginesGardes;
             _originesPatrouilleurs = carte.OriginesPatrouilleurs;
