@@ -37,21 +37,24 @@ namespace YelloKiller
         {
             ligne = "";
             nomSauvegarde = "save0";
-            origine1 = -Vector2.One;
-            origine2 = -Vector2.One;
-            enableOrigine1 = true;
-            enableOrigine2 = true;
+            //origine1 = -Vector2.One;
+            //origine2 = -Vector2.One;
             enableSave = true;
             afficheMessageErreur = false;
             camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            //carte.EditerMapSolo("Ssave0.txt");
+            //carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+            carte.OuvrirCarte("Ssave0.txt", 1);
 
-            _originesGardes = new List<Vector2>();
-            _originesPatrouilleurs = new List<Vector2>();
-            _originesPatrouilleursAChevaux = new List<Vector2>();
-            _originesBoss = new List<Vector2>();
+            _originesGardes = carte.OriginesGardes;
+            _originesPatrouilleurs = carte.OriginesPatrouilleurs;
+            _originesPatrouilleursAChevaux = carte.OriginesPatrouilleursAChevaux;
+            _originesBoss = carte.OriginesBoss;
+            origine1 = carte.OrigineJoueur1;
+            origine2 = carte.OrigineJoueur2;
+
+            enableOrigine1 = (carte.OrigineJoueur1 == -Vector2.One);
+            enableOrigine2 = (carte.OrigineJoueur2 == -Vector2.One);
         }
 
         public override void LoadContent()
@@ -289,8 +292,6 @@ namespace YelloKiller
                     else
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
                 }
-
-
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) && enableSave)
@@ -439,21 +440,6 @@ namespace YelloKiller
                             case (TypeCase.GrandeTable):
                                 ligne += 'Y';
                                 break;
-                            /*case (TypeCase.Garde):
-                                ligne += 'G';
-                                break;
-                            case (TypeCase.Patrouilleur):
-                                ligne += 'P';
-                                break;
-                            case (TypeCase.Patrouilleur_a_cheval):
-                                ligne += 'C';
-                                break;
-                            case (TypeCase.Joueur1):
-                                ligne += 'o';
-                                break;
-                            case (TypeCase.Joueur2):
-                                ligne += 'O';
-                                break;*/
                         }
                     }
                     sauvegarde.WriteLine(ligne);
