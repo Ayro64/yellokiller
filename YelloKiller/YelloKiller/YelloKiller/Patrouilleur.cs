@@ -49,7 +49,6 @@ namespace YelloKiller
         public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
             Position = position;
-            Console.WriteLine("Hero : X = " + (int)hero.Position.X / 28 + " Y = " + (int)hero.Position.Y / 28 + "\nPatrouilleur : X = " + (int)position.X / 28 + " Y = " + (int)position.Y / 28);
 
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
