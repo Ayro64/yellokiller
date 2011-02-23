@@ -84,37 +84,37 @@ namespace YelloKiller
 
             _shuriken = new List<Shuriken>();
 
-            hero = new Hero(new Vector2(28 * carte.origineJoueur1.X + 5, 28 * carte.origineJoueur1.Y + 1), new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
+            hero = new Hero(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), new Rectangle(25, 133, 16, 25), TypeCase.Joueur1);
 
             // Centre la camera sur le personnage.
-            if (28 * carte.origineJoueur1.X - 440 < 0)
+            if (28 * carte.OrigineJoueur1.X - 440 < 0)
                 camera.X = 0;
-            else if (28 * carte.origineJoueur1.X + 440 > 28 * Taille_Map.LARGEUR_MAP)
+            else if (28 * carte.OrigineJoueur1.X + 440 > 28 * Taille_Map.LARGEUR_MAP)
                 camera.X = 28 * (Taille_Map.LARGEUR_MAP - 34);
             else
-                camera.X = 28 * (int)carte.origineJoueur1.X - 500;
+                camera.X = 28 * (int)carte.OrigineJoueur1.X - 500;
 
-            if (28 * carte.origineJoueur1.Y - 322 < 0)
+            if (28 * carte.OrigineJoueur1.Y - 322 < 0)
                 camera.Y = 0;
-            else if (28 * carte.origineJoueur1.Y + 322 > 28 * Taille_Map.HAUTEUR_MAP)
+            else if (28 * carte.OrigineJoueur1.Y + 322 > 28 * Taille_Map.HAUTEUR_MAP)
                 camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 26);
             else
-                camera.Y = 28 * (int)carte.origineJoueur1.Y - 400;
+                camera.Y = 28 * (int)carte.OrigineJoueur1.Y - 400;
 
             _gardes = new List<Garde>();
-            foreach (Vector2 position in carte._originesGarde)
+            foreach (Vector2 position in carte.OriginesGardes)
                 _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(24, 64, 16, 24), TypeCase.Garde));
 
             _patrouilleurs = new List<Patrouilleur>();
-            foreach (Vector2 position in carte._originesPatrouilleur)
+            foreach (Vector2 position in carte.OriginesPatrouilleurs)
                 _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(24, 0, 19, 26), TypeCase.Patrouilleur));
             
             _patrouilleurs_a_chevaux = new List<patrouilleur_a_cheval>();
-            foreach (Vector2 position in carte._originesPatrouilleur_a_cheval)
+            foreach (Vector2 position in carte.OriginesPatrouilleursAChevaux)
                 _patrouilleurs_a_chevaux.Add(new patrouilleur_a_cheval(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(24, 0, 23, 30), TypeCase.Patrouilleur_a_cheval));
 
             _boss = new List<Boss>();
-            foreach (Vector2 position in carte._originesBoss)
+            foreach (Vector2 position in carte.OriginesBoss)
                 _boss.Add(new Boss(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(26, 64, 18, 26), TypeCase.Boss));
 
             temps = 0;

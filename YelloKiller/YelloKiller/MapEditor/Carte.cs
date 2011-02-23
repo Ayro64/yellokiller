@@ -10,11 +10,8 @@ namespace YelloKiller
     class Carte
     {
         Case[,] _case;
-        public Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
-        public List<Vector2> _originesGarde;
-        public List<Vector2> _originesPatrouilleur;
-        public List<Vector2> _originesPatrouilleur_a_cheval;
-        public List<Vector2> _originesBoss;
+        Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
+        List<Vector2> _originesGarde, _originesPatrouilleur, _originesPatrouilleur_a_cheval, _originesBoss;
 
         public Carte(Vector2 size)
         {
@@ -28,24 +25,40 @@ namespace YelloKiller
             _originesBoss = new List<Vector2>();
         }
 
+        public List<Vector2> OriginesGardes
+        {
+            get { return _originesGarde; }
+        }
+
+        public List<Vector2> OriginesPatrouilleurs
+        {
+            get { return _originesPatrouilleur; }
+        }
+
+        public List<Vector2> OriginesPatrouilleursAChevaux
+        {
+            get { return _originesPatrouilleur_a_cheval; }
+        }
+
+        public List<Vector2> OriginesBoss
+        {
+            get { return _originesBoss; }
+        }
+
+        public Vector2 OrigineJoueur1
+        {
+            get { return origineJoueur1; }
+        }
+
+        public Vector2 OrigineJoueur2
+        {
+            get { return origineJoueur2; }
+        }
+
         public Case[,] Cases
         {
             get { return _case; }
             set { _case = value; }
-        }
-
-        public bool ValidCoordinates(Case _case)
-        {
-            if (_case.Position.X < 0)
-                return false;
-            if (_case.Position.Y < 0)
-                return false;
-            if ((int)_case.Position.X / 28 >= Taille_Map.LARGEUR_MAP)
-                return false;
-            if ((int)_case.Position.Y / 28 >= Taille_Map.HAUTEUR_MAP)
-                return false;
-
-            return true;
         }
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
@@ -73,19 +86,6 @@ namespace YelloKiller
                 }
             }
         }
-
-        /*private int stringToInt(string s)
-        {
-            int ret = 0, dec = 1;
-
-            for (int i = s.Length - 1; i >= 0; i--)
-            {
-                ret += dec * (int)(s[i] - 48);
-                dec *= 10;
-            }
-
-            return ret;
-        }*/
 
         public void Initialisation(Vector2 size)
         {
