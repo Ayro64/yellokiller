@@ -194,8 +194,8 @@ namespace YelloKiller
 
             //Entrées Menu
             Vector2 positionL = new Vector2(285, 610);
-            Vector2 positionR = new Vector2(530, 610);
             Vector2 positionM = new Vector2(400, 610);
+            Vector2 positionR = new Vector2(530, 610);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -229,9 +229,9 @@ namespace YelloKiller
             // Draw each menu entry in turn.
 
             bool isSelected = IsActive && (0 == selectedEntry);
-            nextMenuEntry.Draw(this, positionM, isSelected, gameTime, Color);
+            nextMenuEntry.Draw(this, positionL, isSelected, gameTime, Color);
             isSelected = IsActive && (1 == selectedEntry);
-            restartMenuEntry.Draw(this, positionL, isSelected, gameTime, Color);
+            restartMenuEntry.Draw(this, positionM, isSelected, gameTime, Color);
             isSelected = IsActive && (2 == selectedEntry);
             abortMenuEntry.Draw(this, positionR, isSelected, gameTime, Color);
 
