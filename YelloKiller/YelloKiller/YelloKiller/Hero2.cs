@@ -175,12 +175,12 @@ namespace YelloKiller
             {
                 if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.RightShift))
                 {
-                    vitesse_sprite = 2;
+                    vitesse_sprite = 4;
                     vitesse_animation = 0.016f;
                 }
                 else
                 {
-                    vitesse_sprite = 1;
+                    vitesse_sprite = 2;
                     vitesse_animation = 0.008f;
                 }
 
