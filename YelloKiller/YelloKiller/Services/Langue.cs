@@ -58,7 +58,9 @@ namespace YelloKiller
                             return "Reprendre l'édition";
                         case ("PausEditQuit"):
                             return "Quitter l'édition";
-                        case("PausEditLoad"):
+                        case ("PausEditSave"):
+                            return "Sauver la carte";
+                        case ("PausEditLoad"):
                             return "Charger une carte";
                         case ("PausGameRes"):
                             return "Reprendre le jeu";
@@ -133,6 +135,8 @@ namespace YelloKiller
                             return "Reprendre l'édition";
                         case ("PausEditQuit"):
                             return "Quitter l'édition";
+                        case ("PausEditSave"):
+                            return "Sauver la carte";
                         case ("PausEditLoad"):
                             return "Charger une carte";
                         case ("PausGameRes"):
@@ -208,6 +212,8 @@ namespace YelloKiller
                             return "Resume editing";
                         case ("PausEditQuit"):
                             return "Stop editing";
+                        case ("PausEditSave"):
+                            return "Sauver la carte";
                         case ("PausEditLoad"):
                             return "Load a map";
                         case ("PausGameRes"):
