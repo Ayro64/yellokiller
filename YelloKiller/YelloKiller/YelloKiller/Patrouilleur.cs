@@ -31,7 +31,7 @@ namespace YelloKiller
             this.sourceRectangle = sourceRectangle;
             rectangle = new Rectangle((int)position.X, (int)position.Y, 19, 26);
             vitesse_animation = 0.008f;
-            vitesse_sprite = 1;
+            vitesse_sprite = 2;
             index = 0;
             maxIndex = 0;
             autochemin = 0;
