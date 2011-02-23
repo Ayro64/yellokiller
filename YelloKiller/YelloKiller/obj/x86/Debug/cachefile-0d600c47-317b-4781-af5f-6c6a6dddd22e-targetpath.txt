@@ -50,6 +50,8 @@ Content\Sons\shuriken.xnb
 Content\Sons\shurikenCollision.xnb
 Content\Sons\sonMenuBoutton.xnb
 Content\courier.xnb
+Content\Boss.xnb
+Content\origine_boss.xnb
 Content\Sons\Ambiance sonore.xgs
 Content\Sons\Wave Bank.xwb
 Content\Sons\Sound Bank.xsb
