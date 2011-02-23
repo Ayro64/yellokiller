@@ -113,8 +113,6 @@ namespace YelloKiller
             sonMenuEntry.Text = Langue.tr("OptSound") + son[currentSon];
             soundVolumeMenuEntry.Text = Langue.tr("OptMusic") + (uint)soundVolume;
             fxVolumeMenuEntry.Text = Langue.tr("OptFX") + fxVolume;
-
-            
         }
 
         // Sert qu'aux rectangles
