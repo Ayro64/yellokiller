@@ -278,6 +278,11 @@ namespace YelloKiller
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
             }
 
+            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.W))
+            {
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(1));
+            }
+
             // Looks up input for the Media Player.
             audio.HandleInput();
         }
