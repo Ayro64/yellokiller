@@ -6,20 +6,27 @@ namespace YelloKiller
 {
     class Noeud
     {
-        Case _case;
+        //Case _case;
+        Vector2 position;
         Noeud parent;
-        int estimatedMovement;
+        float estimatedMovement;
 
-        public Noeud(Case _case, Noeud parent, Case destination)
+        public Noeud(Vector2 position, Noeud parent, Vector2 destination, Rectangle camera)
         {
-            this._case = _case;
+            //this._case = _case;
+            this.position = position;
             this.parent = parent;
-            this.estimatedMovement = Math.Abs((int)_case.Position.X / 28 - (int)destination.Position.X / 28) + Math.Abs((int)_case.Position.Y / 28 - (int)destination.Position.Y / 28);
+            this.estimatedMovement = Math.Abs(position.X - destination.X/* + (int)camera.X / 28*/) + Math.Abs(position.Y - destination.Y /*+ (int)camera.Y / 28*/);
         }
 
-        public Case Case
+        /*public Case Case
         {
             get { return _case; }
+        }*/
+
+        public Vector2 Position
+        {
+            get { return position; }
         }
 
         public Noeud Parent
@@ -28,27 +35,28 @@ namespace YelloKiller
             set { parent = value; }
         }
 
-        public int EstimatedMovement
+        public float EstimatedMovement
         {
             get { return estimatedMovement; }
         }
         
-        public List<Noeud> NoeudPossibles(Carte carte, Case destination, Rectangle camera)
+        public List<Noeud> NoeudPossibles(Carte carte, Vector2 destination, Rectangle camera)
         {
             List<Noeud> result = new List<Noeud>();
+
             // Bas
-            if ((int)_case.Position.Y / 28 + 1 < Taille_Map.HAUTEUR_MAP && (int)_case.Position.Y >= 0 && (int)_case.Position.X / 28 >= 0 && carte.Cases[(int)_case.Position.Y / 28 + 1, (int)_case.Position.X / 28].Type > 0)
-                result.Add(new Noeud(carte.Cases[(int)_case.Position.Y / 28 + 1, (int)_case.Position.X / 28], this, destination));
+            if (carte.Cases[(int)position.Y + 1, (int)position.X].Type > 0)
+                result.Add(new Noeud(new Vector2(position.X, position.Y + 1), this, destination, camera/* new Rectangle(camera.X, camera.Y + 1, camera.Width, camera.Height)*/));
             // Droite
-            if ((int)_case.Position.X / 28 + 1 < Taille_Map.LARGEUR_MAP && (int)_case.Position.X / 28 + 1 >= 0 && (int)_case.Position.Y / 28 > 0 && carte.Cases[(int)_case.Position.Y / 28, (int)_case.Position.X / 28 + 1].Type > 0)
-                result.Add(new Noeud(carte.Cases[(int)_case.Position.Y / 28, (int)_case.Position.X / 28 + 1], this, destination));
+            if (carte.Cases[(int)position.Y, (int)position.X + 1].Type > 0)
+                result.Add(new Noeud(new Vector2(position.X + 1, position.Y), this, destination, camera/*new Rectangle(camera.X + 1, camera.Y, camera.Width, camera.Height)*/));
             // Haut
-            if ((int)_case.Position.Y / 28 - 1 >= 0 && (int)_case.Position.X / 28 >= 0 && carte.Cases[(int)_case.Position.Y / 28 - 1, (int)_case.Position.X / 28].Type > 0)
-                result.Add(new Noeud(carte.Cases[(int)_case.Position.Y / 28 - 1, (int)_case.Position.X / 28], this, destination));
+            if ((int)position.Y - 1 >= 0 && carte.Cases[(int)position.Y - 1, (int)position.X].Type > 0)
+                result.Add(new Noeud(new Vector2(position.X, position.Y - 1), this, destination, camera/*new Rectangle(camera.X, camera.Y - 1, camera.Width, camera.Height)*/));
             // Gauche
-            if ((int)_case.Position.X / 28 - 1 >= 0 && (int)_case.Position.Y >= 0 && carte.Cases[(int)_case.Position.Y / 28, (int)_case.Position.X / 28 - 1].Type > 0)
-                result.Add(new Noeud(carte.Cases[(int)_case.Position.Y / 28, (int)_case.Position.X / 28 - 1], this, destination));
-            
+            if ((int)position.X - 1 >= 0 && carte.Cases[(int)position.Y, (int)position.X - 1].Type > 0)
+                result.Add(new Noeud(new Vector2(position.X - 1, position.Y), this, destination, camera/*new Rectangle(camera.X - 1, camera.Y, camera.Width, camera.Height)*/));
+
             return result;
         }
     }
