@@ -116,6 +116,7 @@
     <Compile Include="Screens\GameOverScreen.cs" />
     <Compile Include="Screens\GameplayScreenCoop.cs" />
     <Compile Include="Screens\GameplayScreenSolo.cs" />
+    <Compile Include="Screens\GameWin.cs" />
     <Compile Include="Screens\LevelSelectMulti.cs" />
     <Compile Include="Screens\LevelSelectSolo.cs" />
     <Compile Include="Screens\LoadingScreen.cs" />
