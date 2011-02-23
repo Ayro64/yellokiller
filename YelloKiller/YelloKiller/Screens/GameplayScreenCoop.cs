@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using YelloKiller.YelloKiller;
 
 namespace YelloKiller
 {
@@ -21,8 +20,12 @@ namespace YelloKiller
         Hero2 hero2;
         Carte carte;
         Rectangle camera;
+
         List<Shuriken> _shuriken;
         List<Garde> _gardes;
+        List<Patrouilleur> _patrouilleurs;
+        List<patrouilleur_a_cheval> _patrouilleurs_a_cheval;
+
         Player audio;
         MoteurAudio moteurAudio;
         double temps;
@@ -65,10 +68,17 @@ namespace YelloKiller
                 camera.Y = 28 * (int)carte.origineJoueur1.Y - 400;
 
             _gardes = new List<Garde>();
-
             foreach (Vector2 position in carte._originesGarde)
                 _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 1, 16, 23), TypeCase.Garde));
 
+            _patrouilleurs = new List<Patrouilleur>();
+            foreach (Vector2 position in carte._originesPatrouilleur)
+                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 1, 16, 23), TypeCase.Patrouilleur));
+
+            _patrouilleurs_a_cheval = new List<patrouilleur_a_cheval>();
+            foreach (Vector2 position in carte._originesPatrouilleur_a_cheval)
+                _patrouilleurs_a_cheval.Add(new patrouilleur_a_cheval(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(5, 0, 23, 30), TypeCase.Patrouilleur_a_cheval));
+            
             temps = 0;
         }
 
@@ -84,8 +94,14 @@ namespace YelloKiller
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
 
-            foreach (Garde garde in _gardes)
-                garde.LoadContent(content, 2);
+            foreach (Garde mechant in _gardes)
+                mechant.LoadContent(content, 2);
+
+            foreach (Patrouilleur mechant in _patrouilleurs)
+                mechant.LoadContent(content, 2);
+
+            foreach (patrouilleur_a_cheval mechant in _patrouilleurs_a_cheval)
+                mechant.LoadContent(content, 2);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -95,7 +111,6 @@ namespace YelloKiller
         {
             content.Unload();
         }
-
 
         #endregion
 
@@ -111,12 +126,18 @@ namespace YelloKiller
 
                 hero1.Update(gameTime, carte, hero2, this, ref camera, _shuriken, moteurAudio);
                 hero2.Update(gameTime, carte, hero1, this, _shuriken, moteurAudio);
-                
-                foreach (Garde ennemi in _gardes)
-                    ennemi.UpdateInCoop(gameTime, carte, hero1, hero2/*, this, hero1, hero2*/);
 
+                foreach (Garde pasgentil in _gardes)
+                    pasgentil.UpdateInCoop(gameTime, carte, hero1, hero2);
+
+                foreach (Patrouilleur pasgentil in _patrouilleurs)
+                    pasgentil.UpdateInCoop(gameTime, carte, hero1, hero2);
+
+                foreach (patrouilleur_a_cheval pasgentil in _patrouilleurs_a_cheval)
+                    pasgentil.UpdateInCoop(gameTime, carte, hero1, hero2);
 
                 Moteur_physique.Collision_Shuriken_Ennemi(_gardes, _shuriken, moteurAudio.SoundBank);
+
                 if(Moteur_physique.Collision_Ennemi_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(2));
 
@@ -124,8 +145,6 @@ namespace YelloKiller
             }
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
-
-
 
         public override void Draw(GameTime gameTime)
         {
@@ -144,19 +163,24 @@ namespace YelloKiller
             spriteBatch.DrawString(ScreenManager.font, "Il reste " + _gardes.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.BurlyWood);
 
             spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
-       
-            foreach (Garde ennemi in _gardes)
-                ennemi.Draw(spriteBatch, camera);
+
+            foreach (Garde connard in _gardes)
+                connard.Draw(spriteBatch, camera);
+
+            foreach (Patrouilleur connard in _patrouilleurs)
+                connard.Draw(spriteBatch, camera);
+
+            foreach (patrouilleur_a_cheval connard in _patrouilleurs_a_cheval)
+                connard.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
-                Shuriken m = _shuriken[i];
-                m.Update(gameTime, carte);
-                m.Draw(spriteBatch, camera);
+                _shuriken[i].Update(gameTime, carte);
+                _shuriken[i].Draw(spriteBatch, camera);
 
-                if (m.Position.X > Taille_Map.LARGEUR_MAP * 28 || _shuriken[i].existshuriken == false)
+                if (_shuriken[i].existshuriken == false)
                 {
-                    _shuriken.Remove(m);
+                    _shuriken.Remove(_shuriken[i]);
                     Console.WriteLine("suppresion shuriken");
                     moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
