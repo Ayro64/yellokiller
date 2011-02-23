@@ -78,7 +78,7 @@ namespace YelloKiller
             moteurAudio = new MoteurAudio();
 
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.OuvrirCarteSolo("Ssave0.txt");
+            carte.OuvrirCarte("Ssave0.txt", 1);
 
             camera = new Rectangle(0, 0, 32, 24);
 

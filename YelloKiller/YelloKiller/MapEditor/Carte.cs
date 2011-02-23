@@ -16,46 +16,13 @@ namespace YelloKiller
         public Carte(Vector2 size)
         {
             _case = new Case[(int)size.Y, (int)size.X];
-            origineJoueur1 = new Vector2(0);
-            origineJoueur2 = new Vector2(0);
-            positionTemporaire = new Vector2(0);
-            _originesGarde = _originesPatrouilleur = _originesPatrouilleur_a_cheval = _originesBoss = new List<Vector2>();
-        }
-
-        public List<Vector2> OriginesGardes
-        {
-            get { return _originesGarde; }
-        }
-
-        public List<Vector2> OriginesPatrouilleurs
-        {
-            get { return _originesPatrouilleur; }
-        }
-
-        public List<Vector2> OriginesPatrouilleursAChevaux
-        {
-            get { return _originesPatrouilleur_a_cheval; }
-        }
-
-        public List<Vector2> OriginesBoss
-        {
-            get { return _originesBoss; }
-        }
-
-        public Vector2 OrigineJoueur1
-        {
-            get { return origineJoueur1; }
-        }
-
-        public Vector2 OrigineJoueur2
-        {
-            get { return origineJoueur2; }
-        }
-
-        public Case[,] Cases
-        {
-            get { return _case; }
-            set { _case = value; }
+            origineJoueur1 = Vector2.Zero;
+            origineJoueur2 = Vector2.Zero; 
+            positionTemporaire = Vector2.Zero;
+            _originesGarde = new List<Vector2>();
+            _originesPatrouilleur = new List<Vector2>();
+            _originesPatrouilleur_a_cheval = new List<Vector2>();
+            _originesBoss = new List<Vector2>();
         }
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
@@ -91,7 +58,7 @@ namespace YelloKiller
                     _case[y, x] = new Case(new Vector2(x, y), new Rectangle(), TypeCase.herbe);
         }
 
-        public void OuvrirCarteCoop(string nomDeFichier)
+        public void OuvrirCarte(string nomDeFichier, int nbJoueurs)
         {
             StreamReader file = new StreamReader(nomDeFichier);
             string line;
@@ -114,11 +81,14 @@ namespace YelloKiller
             line = file.ReadLine();
             origineJoueur1.Y = Convert.ToInt32(line);
 
-            line = file.ReadLine();
-            origineJoueur2.X = Convert.ToInt32(line);
+            if (nbJoueurs == 2)
+            {
+                line = file.ReadLine();
+                origineJoueur2.X = Convert.ToInt32(line);
 
-            line = file.ReadLine();
-            origineJoueur2.Y = Convert.ToInt32(line);
+                line = file.ReadLine();
+                origineJoueur2.Y = Convert.ToInt32(line);
+            }
 
             line = file.ReadLine();
             line = file.ReadLine();
@@ -168,7 +138,7 @@ namespace YelloKiller
             file.Close();
         }
 
-        public void OuvrirCarteSolo(string nomDeFichier)
+        /*public void EditerMapSolo(string nomDeFichier)
         {
             StreamReader file = new StreamReader(nomDeFichier);
             string line;
@@ -183,78 +153,7 @@ namespace YelloKiller
                 for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
                     Switch(line[x], x, y);
             }
-
-            line = file.ReadLine();
-            line = file.ReadLine();
-            origineJoueur1.X = Convert.ToInt32(line);
-
-            line = file.ReadLine();
-            origineJoueur1.Y = Convert.ToInt32(line);
-
-            line = file.ReadLine();
-            line = file.ReadLine();
-
-            while (line != "Patrouilleurs")
-            {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
-                _originesGarde.Add(positionTemporaire);
-                line = file.ReadLine();
-            }
-
-            line = file.ReadLine();
-
-            while (line != "Patrouilleurs A Chevaux")
-            {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
-                _originesPatrouilleur.Add(positionTemporaire);
-                line = file.ReadLine();
-            }
-
-            line = file.ReadLine();
-
-            while (line != "Boss")
-            {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
-                _originesPatrouilleur_a_cheval.Add(positionTemporaire);
-                line = file.ReadLine();
-            }
-
-            line = file.ReadLine();
-
-            while (line != null)
-            {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
-                _originesBoss.Add(positionTemporaire);
-                line = file.ReadLine();
-            }
-
-            file.Close();
-        }
-
-        public void EditerMapSolo(string nomDeFichier)
-        {
-            StreamReader file = new StreamReader(nomDeFichier);
-            string line;
-
-            for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
-            {
-                line = file.ReadLine();
-                if (line == "")
-                    line = file.ReadLine();
-                else if (line == null)
-                    break;
-                for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
-                    Switch(line[x], x, y);
-            }
-        }
+        }*/
 
         public void Switch(char c, int x, int y)
         {
@@ -312,7 +211,6 @@ namespace YelloKiller
                 case ('c'):
                     _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.carlageNoir);
                     break;
-
                 case ('l'):
                     _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.Lit);
                     break;
@@ -326,6 +224,42 @@ namespace YelloKiller
                     _case[y, x] = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.GrandeTable);
                     break;
             }
+        }
+
+        public List<Vector2> OriginesGardes
+        {
+            get { return _originesGarde; }
+        }
+
+        public List<Vector2> OriginesPatrouilleurs
+        {
+            get { return _originesPatrouilleur; }
+        }
+
+        public List<Vector2> OriginesPatrouilleursAChevaux
+        {
+            get { return _originesPatrouilleur_a_cheval; }
+        }
+
+        public List<Vector2> OriginesBoss
+        {
+            get { return _originesBoss; }
+        }
+
+        public Vector2 OrigineJoueur1
+        {
+            get { return origineJoueur1; }
+        }
+
+        public Vector2 OrigineJoueur2
+        {
+            get { return origineJoueur2; }
+        }
+
+        public Case[,] Cases
+        {
+            get { return _case; }
+            set { _case = value; }
         }
     }
 }
