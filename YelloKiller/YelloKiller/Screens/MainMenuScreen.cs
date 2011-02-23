@@ -21,6 +21,16 @@ namespace YelloKiller
         #endregion
         //
 
+        #region Fields
+
+        MenuEntry soloMenuEntry;
+        MenuEntry coopMenuEntry;
+        MenuEntry editorMenuEntry;
+        MenuEntry optionsMenuEntry;
+        MenuEntry exitMenuEntry;
+
+        #endregion
+
         #region Initialization
 
 
@@ -31,11 +41,11 @@ namespace YelloKiller
             : base(Langue.tr("MainMenuTitle"))
         {
             // Create our menu entries.
-            MenuEntry soloMenuEntry = new MenuEntry(Langue.tr("MainMenuSolo"));
-            MenuEntry coopMenuEntry = new MenuEntry(Langue.tr("MainMenuCoop"));
-            MenuEntry editorMenuEntry = new MenuEntry(Langue.tr("MainMenuEditor"));
-            MenuEntry optionsMenuEntry = new MenuEntry(Langue.tr("Options"));
-            MenuEntry exitMenuEntry = new MenuEntry(Langue.tr("MainMenuQuit"));
+            soloMenuEntry = new MenuEntry(Langue.tr("MainMenuSolo"));
+            coopMenuEntry = new MenuEntry(Langue.tr("MainMenuCoop"));
+            editorMenuEntry = new MenuEntry(Langue.tr("MainMenuEditor"));
+            optionsMenuEntry = new MenuEntry(Langue.tr("Options"));
+            exitMenuEntry = new MenuEntry(Langue.tr("MainMenuQuit"));
 
             // Hook up menu event handlers.
             soloMenuEntry.Selected += SoloMenuEntrySelected;
@@ -50,6 +60,19 @@ namespace YelloKiller
             MenuEntries.Add(editorMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
+        }
+
+        /// <summary>
+        /// Fills in the latest values for the main menu screen menu text.
+        /// </summary>
+        void SetMenuEntryText()
+        {
+            this.TitleUpdate(Langue.tr("MainMenuTitle"));
+            soloMenuEntry.Text = Langue.tr("MainMenuSolo");
+            coopMenuEntry.Text = Langue.tr("MainMenuCoop");
+            editorMenuEntry.Text = Langue.tr("MainMenuEditor");
+            optionsMenuEntry.Text = Langue.tr("Options");
+            exitMenuEntry.Text = Langue.tr("MainMenuQuit");
         }
 
         // Sert qu'aux rectangles
@@ -127,7 +150,13 @@ namespace YelloKiller
 
         #endregion
 
-        #region Draw
+        #region Update and Draw
+
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
+        {
+            SetMenuEntryText();
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+        }
 
         public override void Draw(GameTime gameTime)
         {
