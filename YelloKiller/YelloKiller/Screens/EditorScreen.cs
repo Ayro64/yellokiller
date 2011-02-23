@@ -25,16 +25,22 @@ namespace YelloKiller
         Ascenseur ascenseur;
 
         StreamWriter sauvegarde;
-        string ligne = "", nomSauvegarde = "save0";
+        string ligne, nomSauvegarde;
         Rectangle camera;
-        Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
+        Vector2 origine1, origine2;
         List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux, _originesBoss;
 
-        bool enableOrigine1 = true, enableOrigine2 = true, enableSave = true, afficheMessageErreur = false;
+        bool enableOrigine1, enableOrigine2, enableSave, afficheMessageErreur;
         double chronometre = 0;
 
         public EditorScreen()
         {
+            ligne = "";
+            nomSauvegarde = "save0";
+            origine1 = -Vector2.One;
+            origine2 = -Vector2.One;
+            enableOrigine1 = enableOrigine2 = enableSave = true;
+            afficheMessageErreur = false;
             camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
