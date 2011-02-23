@@ -246,12 +246,12 @@ namespace YelloKiller
                 moteurAudio.SoundBank.PlayCue("menuBouge");
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.G))
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
             {
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(2));
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.W))
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(2));
             }

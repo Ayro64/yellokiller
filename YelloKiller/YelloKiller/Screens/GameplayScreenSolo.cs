@@ -273,12 +273,12 @@ namespace YelloKiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1), ControllingPlayer, true);
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.G))
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
             {
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.W))
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(1));
             }

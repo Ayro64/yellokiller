@@ -101,16 +101,16 @@ namespace YelloKiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 2), ControllingPlayer, true);
             }
 
-            if (camera.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Left))
+            if (camera.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Left))
                 camera.X--;
 
-            else if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Right))
+            else if (camera.X < Taille_Map.LARGEUR_MAP - camera.Width && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Right))
                 camera.X++;
 
-            else if (camera.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Up))
+            else if (camera.Y > 0 && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Up))
                 camera.Y--;
 
-            else if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down))
+            else if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Down))
                 camera.Y++;
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte())
@@ -292,7 +292,7 @@ namespace YelloKiller
                 }
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) && enableSave)
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.S) && enableSave)
                 SauvegardeMap();
 
             ScreenManager.Game.IsMouseVisible = !ServiceHelper.Get<IMouseService>().DansLaCarte();

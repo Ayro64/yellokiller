@@ -18,7 +18,12 @@ namespace YelloKiller
             return lastKBState.IsKeyUp(key) && KBState.IsKeyDown(key);
         }
 
-        public bool TouchePresse(Keys key)
+        public bool ToucheRelevee(Keys key)
+        {
+            return KBState.IsKeyUp(key);
+        }
+
+        public bool TouchePressee(Keys key)
         {
             return KBState.IsKeyDown(key);
         }
