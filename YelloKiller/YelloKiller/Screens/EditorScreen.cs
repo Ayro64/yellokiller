@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,6 +28,7 @@ namespace YelloKiller
         string ligne = "", nomSauvegarde = "save0";
         Rectangle camera;
         Vector2 origine1 = new Vector2(-1, -1), origine2 = new Vector2(-1, -1);
+        List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux;
 
         bool enableOrigine1 = true, enableOrigine2 = true, enableSave = true, afficheMessageErreur = false;
         double chronometre = 0;
@@ -35,8 +37,12 @@ namespace YelloKiller
         {
             camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            //carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.EditerMapSolo("Ssave0.txt");
+            carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+            //carte.EditerMapSolo("Ssave0.txt");
+
+            _originesGardes = new List<Vector2>();
+            _originesPatrouilleurs = new List<Vector2>();
+            _originesPatrouilleursAChevaux = new List<Vector2>();
         }
 
         public override void LoadContent()
@@ -97,9 +103,41 @@ namespace YelloKiller
             else if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.Down))
                 camera.Y++;
 
-            if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
+            if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
-                if (curseur.Type != TypeCase.Joueur1 && curseur.Type != TypeCase.Joueur2 && (int)carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type != -6 /*-6 = fond*/)
+                if (curseur.Type == TypeCase.Garde)
+                    _originesGardes.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+
+                else if (curseur.Type == TypeCase.Patrouilleur)
+                    _originesPatrouilleurs.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+
+                else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
+                    _originesPatrouilleursAChevaux.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+            }
+
+            if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
+            {                
+                if (curseur.Type == TypeCase.Joueur1)
+                {
+                    if (!enableOrigine1)
+                        carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
+                    else
+                        enableOrigine1 = false;
+
+                    origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
+                    //carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.Joueur1;
+                }
+                else if (curseur.Type == TypeCase.Joueur2)
+                {
+                    if (!enableOrigine2)
+                        carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
+                    else
+                        enableOrigine2 = false;
+
+                    origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
+                    //carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.Joueur2;
+                }
+                else if (curseur.Type != TypeCase.Garde && curseur.Type != TypeCase.Patrouilleur_a_cheval && curseur.Type != TypeCase.Patrouilleur && (int)carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type != -6 /*-6 = fond*/)
                 {
                     if (curseur.Type == TypeCase.arbre2)
                     {
@@ -237,29 +275,10 @@ namespace YelloKiller
                         }
                     }
                     else
-                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;                
+                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
                 }
 
-                else if (curseur.Type == TypeCase.Joueur1)
-                {
-                    if (!enableOrigine1)
-                        carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
-                    else
-                        enableOrigine1 = false;
 
-                    origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
-                    carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.Joueur1;
-                }
-                else if (curseur.Type == TypeCase.Joueur2)
-                {
-                    if (!enableOrigine2)
-                        carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
-                    else
-                        enableOrigine2 = false;
-
-                    origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
-                    carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.Joueur2;
-                }
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePresse(Keys.S) && enableSave)
@@ -276,6 +295,20 @@ namespace YelloKiller
 
             carte.DrawInMapEditor(spriteBatch, content, camera);
 
+            if (!enableOrigine1)
+                spriteBatch.Draw(menu.ListeTextures[0], 28 * origine1, Color.White);
+            if (!enableOrigine2)
+                spriteBatch.Draw(menu.ListeTextures[1], 28 * origine2, Color.White);
+
+            foreach (Vector2 position in _originesGardes)
+                spriteBatch.Draw(menu.ListeTextures[2], 28 * position, Color.White);
+
+            foreach (Vector2 position in _originesPatrouilleurs)
+                spriteBatch.Draw(menu.ListeTextures[3], 28 * position, Color.White);
+
+            foreach (Vector2 position in _originesPatrouilleursAChevaux)
+                spriteBatch.Draw(menu.ListeTextures[4], 28 * position, Color.White);
+
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
 
@@ -289,7 +322,7 @@ namespace YelloKiller
             }
             else if (chronometre > 0)
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorExCharacters"), new Vector2(10), Color.White);
-            
+
             if (!enableSave)
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorSave1") + nomSauvegarde.ToString() + Langue.tr("EditorSave2"), new Vector2(10), Color.White);
 
@@ -391,7 +424,7 @@ namespace YelloKiller
                             case (TypeCase.GrandeTable):
                                 ligne += 'Y';
                                 break;
-                            case (TypeCase.Garde):
+                            /*case (TypeCase.Garde):
                                 ligne += 'G';
                                 break;
                             case (TypeCase.Patrouilleur):
@@ -405,11 +438,43 @@ namespace YelloKiller
                                 break;
                             case (TypeCase.Joueur2):
                                 ligne += 'O';
-                                break;
+                                break;*/
                         }
                     }
                     sauvegarde.WriteLine(ligne);
                     ligne = "";
+                }
+
+                sauvegarde.WriteLine("Joueurs");
+                if (origine1 != -Vector2.One)
+                {
+                    sauvegarde.WriteLine(origine1.X);
+                    sauvegarde.WriteLine(origine1.Y);
+                }
+                if (origine2 != -Vector2.One)
+                {
+                    sauvegarde.WriteLine(origine2.X);
+                    sauvegarde.WriteLine(origine2.Y);
+                }
+                sauvegarde.WriteLine("Gardes");
+                foreach (Vector2 position in _originesGardes)
+                {
+                    sauvegarde.WriteLine(position.X);
+                    sauvegarde.WriteLine(position.Y);
+                }
+
+                sauvegarde.WriteLine("Patrouilleurs");
+                foreach (Vector2 position in _originesPatrouilleurs)
+                {
+                    sauvegarde.WriteLine(position.X);
+                    sauvegarde.WriteLine(position.Y);
+                }
+
+                sauvegarde.WriteLine("Patrouilleurs A Chevaux");
+                foreach (Vector2 position in _originesPatrouilleursAChevaux)
+                {
+                    sauvegarde.WriteLine(position.X);
+                    sauvegarde.WriteLine(position.Y);
                 }
 
                 sauvegarde.Close();

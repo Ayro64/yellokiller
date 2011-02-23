@@ -47,82 +47,82 @@ namespace YelloKiller
                     switch (i)
                     {
                         case (0):
-                            type = TypeCase.arbre;
-                            break;
-                        case (1):
-                            type = TypeCase.arbre2;
-                            break;
-                        case (2):
-                            type = TypeCase.buissonSurHerbe;
-                            break;
-                        case (3):
-                            type = TypeCase.murBlanc;
-                            break;
-                        case (4):
-                            type = TypeCase.tableauMurBlanc;
-                            break;
-                        case (5):
-                            type = TypeCase.bois;
-                            break;
-                        case (6):
-                            type = TypeCase.boisCarre;
-                            break;
-                        case (7):
-                            type = TypeCase.tapisRougeBC;
-                            break;
-                        case (8):
-                            type = TypeCase.herbe;
-                            break;
-                        case (9):
-                            type = TypeCase.herbeFoncee;
-                            break;
-                        case (10):
-                            type = TypeCase.piedDeMurBois;
-                            break;
-                        case (11):
-                            type = TypeCase.terre;
-                            break;
-                        case (12):
-                            type = TypeCase.carlageNoir;
-                            break;
-                        case (13):
-                            type = TypeCase.fondNoir;
-                            break;
-                        case (14):
-                            type = TypeCase.finMurFN;
-                            break;
-                        case (15):
-                            type = TypeCase.finMurGauche;
-                            break;
-                        case (16):
-                            type = TypeCase.finMurDroite;
-                            break;
-                        case (17):
-                            type = TypeCase.Lit;
-                            break;
-                        case (18):
-                            type = TypeCase.commode;
-                            break;
-                        case (19):
-                            type = TypeCase.TableMoyenne;
-                            break;
-                        case (20):
-                            type = TypeCase.GrandeTable;
-                            break;
-                        case (21):
-                            type = TypeCase.Garde;
-                            break;
-                        case (22):
-                            type = TypeCase.Patrouilleur;
-                            break;
-                        case (23):
-                            type = TypeCase.Patrouilleur_a_cheval;
-                            break;
-                        case (24):
                             type = TypeCase.Joueur1;
                             break;
-                        case (25):
+                        case (1):
                             type = TypeCase.Joueur2;
+                            break;
+                        case (2):
+                            type = TypeCase.Garde;
+                            break;
+                        case (3):
+                            type = TypeCase.Patrouilleur;
+                            break;
+                        case (4):
+                            type = TypeCase.Patrouilleur_a_cheval;
+                            break;
+                        case (5):
+                            type = TypeCase.arbre;
+                            break;
+                        case (6):
+                            type = TypeCase.arbre2;
+                            break;
+                        case (7):
+                            type = TypeCase.buissonSurHerbe;
+                            break;
+                        case (8):
+                            type = TypeCase.murBlanc;
+                            break;
+                        case (9):
+                            type = TypeCase.tableauMurBlanc;
+                            break;
+                        case (10):
+                            type = TypeCase.bois;
+                            break;
+                        case (11):
+                            type = TypeCase.boisCarre;
+                            break;
+                        case (12):
+                            type = TypeCase.tapisRougeBC;
+                            break;
+                        case (13):
+                            type = TypeCase.herbe;
+                            break;
+                        case (14):
+                            type = TypeCase.herbeFoncee;
+                            break;
+                        case (15):
+                            type = TypeCase.piedDeMurBois;
+                            break;
+                        case (16):
+                            type = TypeCase.terre;
+                            break;
+                        case (17):
+                            type = TypeCase.carlageNoir;
+                            break;
+                        case (18):
+                            type = TypeCase.fondNoir;
+                            break;
+                        case (19):
+                            type = TypeCase.finMurFN;
+                            break;
+                        case (20):
+                            type = TypeCase.finMurGauche;
+                            break;
+                        case (21):
+                            type = TypeCase.finMurDroite;
+                            break;
+                        case (22):
+                            type = TypeCase.Lit;
+                            break;
+                        case (23):
+                            type = TypeCase.commode;
+                            break;
+                        case (24):
+                            type = TypeCase.TableMoyenne;
+                            break;
+                        case (25):
+                            type = TypeCase.GrandeTable;
                             break;
                     }
 

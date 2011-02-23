@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
@@ -9,7 +10,7 @@ namespace YelloKiller
     class Carte
     {
         Case[,] _case;
-        public Vector2 origineJoueur1, origineJoueur2;
+        public Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
         public List<Vector2> _originesGarde;
         public List<Vector2> _originesPatrouilleur;
         public List<Vector2> _originesPatrouilleur_a_cheval;
@@ -17,8 +18,9 @@ namespace YelloKiller
         public Carte(Vector2 size)
         {
             _case = new Case[(int)size.Y, (int)size.X];
-            origineJoueur1 = new Vector2(0, 0);
-            origineJoueur2 = new Vector2(0, 0);
+            origineJoueur1 = new Vector2(0);
+            origineJoueur2 = new Vector2(0);
+            positionTemporaire = new Vector2(0);
             _originesGarde = new List<Vector2>();
             _originesPatrouilleur = new List<Vector2>();
             _originesPatrouilleur_a_cheval = new List<Vector2>();
@@ -105,18 +107,53 @@ namespace YelloKiller
                 for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
                     SwitchOpen(line[x], ref _case[y, x], x, y, ref _originesGarde, ref _originesPatrouilleur, ref _originesPatrouilleur_a_cheval);
             }
-            /*
-            line = file.ReadLine();
-            origineJoueur1.X = stringToInt(line);
 
             line = file.ReadLine();
-            origineJoueur1.Y = stringToInt(line);
+            line = file.ReadLine();
+            origineJoueur1.X = Convert.ToInt32(line);
 
             line = file.ReadLine();
-            origineJoueur2.X = stringToInt(line);
+            origineJoueur1.Y = Convert.ToInt32(line);
 
             line = file.ReadLine();
-            origineJoueur2.Y = stringToInt(line);*/
+            origineJoueur2.X = Convert.ToInt32(line);
+
+            line = file.ReadLine();
+            origineJoueur2.Y = Convert.ToInt32(line);
+
+            line = file.ReadLine();
+            line = file.ReadLine();
+
+            while (line != "Patrouilleurs")
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesGarde.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
+
+            line = file.ReadLine();
+
+            while (line != "Patrouilleurs A Chevaux")
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesPatrouilleur.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
+
+            line = file.ReadLine();
+
+            while (line != null)
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesPatrouilleur_a_cheval.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
 
             file.Close();
         }
@@ -137,17 +174,46 @@ namespace YelloKiller
                     SwitchOpen(line[x], ref _case[y, x], x, y, ref _originesGarde, ref _originesPatrouilleur, ref _originesPatrouilleur_a_cheval);
             }
 
-            /*line = file.ReadLine();
-            origineJoueur1.X = stringToInt(line);
+            line = file.ReadLine();
+            line = file.ReadLine();
+            origineJoueur1.X = Convert.ToInt32(line);
 
             line = file.ReadLine();
-            origineJoueur1.Y = stringToInt(line);
+            origineJoueur1.Y = Convert.ToInt32(line);
 
             line = file.ReadLine();
-            origineJoueur2.X = stringToInt(line);
+            line = file.ReadLine();
+
+            while (line != "Patrouilleurs")
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesGarde.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
 
             line = file.ReadLine();
-            origineJoueur2.Y = stringToInt(line);*/
+
+            while (line != "Patrouilleurs A Chevaux")
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesPatrouilleur.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
+
+            line = file.ReadLine();
+
+            while (line != null)
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesPatrouilleur_a_cheval.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
 
             file.Close();
         }
@@ -239,7 +305,7 @@ namespace YelloKiller
                     _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.GrandeTable);
                     break;
 
-                case ('G'):
+                /*case ('G'):
                     _case= new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                     _originesGarde.Add(new Vector2(x, y));
                     break;
@@ -258,7 +324,7 @@ namespace YelloKiller
                 case ('O'):
                     _case = new Case(28 * new Vector2(x, y), new Rectangle(), TypeCase.herbe);
                     origineJoueur2 = new Vector2(x, y);
-                    break;
+                    break;*/
             }
         }
 
@@ -349,6 +415,5 @@ namespace YelloKiller
                     break;
             }
         }
-
     }
 }
