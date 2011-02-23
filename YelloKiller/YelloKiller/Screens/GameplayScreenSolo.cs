@@ -57,7 +57,7 @@ namespace YelloKiller
         List<Shuriken> _shuriken;
         List<Garde> _gardes;
         List<Patrouilleur> _patrouilleurs;
-        List<patrouilleur_a_cheval> _patrouilleurs_a_cheval;
+        List<patrouilleur_a_cheval> _patrouilleurs_a_chevaux;
 
         Player audio;
         MoteurAudio moteurAudio;
@@ -107,9 +107,9 @@ namespace YelloKiller
             foreach (Vector2 position in carte._originesPatrouilleur)
                 _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(24, 0, 19, 26), TypeCase.Patrouilleur));
             
-            _patrouilleurs_a_cheval = new List<patrouilleur_a_cheval>();
+            _patrouilleurs_a_chevaux = new List<patrouilleur_a_cheval>();
             foreach (Vector2 position in carte._originesPatrouilleur_a_cheval)
-                _patrouilleurs_a_cheval.Add(new patrouilleur_a_cheval(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(24, 0, 23, 30), TypeCase.Patrouilleur_a_cheval));
+                _patrouilleurs_a_chevaux.Add(new patrouilleur_a_cheval(new Vector2(28 * position.X + 5, 28 * position.Y), new Rectangle(24, 0, 23, 30), TypeCase.Patrouilleur_a_cheval));
 
 
             temps = 0;
@@ -132,7 +132,7 @@ namespace YelloKiller
             foreach (Patrouilleur mechant in _patrouilleurs)
                 mechant.LoadContent(content, 2);
 
-            foreach (patrouilleur_a_cheval mechant in _patrouilleurs_a_cheval)
+            foreach (patrouilleur_a_cheval mechant in _patrouilleurs_a_chevaux)
                 mechant.LoadContent(content, 2);
 
             Thread.Sleep(1000);
@@ -164,12 +164,16 @@ namespace YelloKiller
                 foreach (Patrouilleur pasgentil in _patrouilleurs)
                     pasgentil.UpdateInSolo(gameTime, carte, hero, camera);
 
-                foreach (patrouilleur_a_cheval pasgentil in _patrouilleurs_a_cheval)
+                foreach (patrouilleur_a_cheval pasgentil in _patrouilleurs_a_chevaux)
                     pasgentil.UpdateInSolo(gameTime, carte, hero, camera);
 
-                Moteur_physique.Collision_Shuriken_Ennemi(_gardes, _shuriken, moteurAudio.SoundBank);
+                Moteur_physique.Collision_Shuriken_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _shuriken, moteurAudio.SoundBank);
 
-                if (Moteur_physique.Collision_Ennemi_Hero(_gardes, hero, moteurAudio.SoundBank))
+                if (Moteur_physique.Collision_Garde_Hero(_gardes, hero, moteurAudio.SoundBank))
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
+                if (Moteur_physique.Collision_Patrouilleur_Hero(_patrouilleurs, hero, moteurAudio.SoundBank))
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
+                if (Moteur_physique.Collision_PatrouilleurACheval_Hero(_patrouilleurs_a_chevaux, hero, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(1));
 
                 audio.Update(gameTime);
@@ -200,7 +204,7 @@ namespace YelloKiller
             foreach (Patrouilleur connard in _patrouilleurs)
                 connard.Draw(spriteBatch, camera);
 
-            foreach (patrouilleur_a_cheval connard in _patrouilleurs_a_cheval)
+            foreach (patrouilleur_a_cheval connard in _patrouilleurs_a_chevaux)
                 connard.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
