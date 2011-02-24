@@ -167,6 +167,7 @@ namespace YelloKiller
                 if (_boss.Count == 0)
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));
+                    audio.Close();
                     moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 }
 
@@ -263,6 +264,7 @@ namespace YelloKiller
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {              
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));
+                audio.Close();
                 moteurAudio.SoundBank.PlayCue("11 Fanfare");
             }
 
