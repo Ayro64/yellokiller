@@ -29,23 +29,25 @@ namespace YelloKiller
         Rectangle camera;
         Vector2 origine1, origine2;
         List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux, _originesBoss;
+        bool fileExist;
+        int compteur;
 
         bool enableOrigine1, enableOrigine2, enableSave, afficheMessageErreur;
         double chronometre = 0;
 
         public EditorScreen(string nomCarte)
         {
+            compteur = 0;
             ligne = "";
-            //nomSauvegarde = "save0";
             nomSauvegarde = nomCarte;
             enableSave = true;
             afficheMessageErreur = false;
             camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            if(nomCarte == "")
+            if (nomCarte == "")
                 carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             else
-                carte.OuvrirCarte(nomCarte/*"Ssave0.txt"*/);
+                carte.OuvrirCarte(nomCarte);
 
             _originesGardes = carte.OriginesGardes;
             _originesPatrouilleurs = carte.OriginesPatrouilleurs;
@@ -132,7 +134,7 @@ namespace YelloKiller
             }
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
-            {                
+            {
                 if (curseur.Type == TypeCase.Joueur1)
                 {
                     if (!enableOrigine1)
@@ -141,7 +143,6 @@ namespace YelloKiller
                         enableOrigine1 = false;
 
                     origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
-                    //carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.Joueur1;
                 }
                 else if (curseur.Type == TypeCase.Joueur2)
                 {
@@ -151,7 +152,6 @@ namespace YelloKiller
                         enableOrigine2 = false;
 
                     origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
-                    //carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.Joueur2;
                 }
                 else if (curseur.Type != TypeCase.Garde && curseur.Type != TypeCase.Patrouilleur_a_cheval && curseur.Type != TypeCase.Patrouilleur && curseur.Type != TypeCase.Boss && (int)carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type != -6 /*-6 = fond*/)
                 {
@@ -295,7 +295,7 @@ namespace YelloKiller
                 }
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.S) && enableSave)
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.S))
                 SauvegardeMap();
 
             ScreenManager.Game.IsMouseVisible = !ServiceHelper.Get<IMouseService>().DansLaCarte();
@@ -354,18 +354,30 @@ namespace YelloKiller
                 afficheMessageErreur = true;
             else
             {
-                /*fileExist = File.Exists(nomSauvegarde + ".txt");
-           while (fileExist)
-           {
-               compteur += 1;
-               nomSauvegarde = nomSauvegarde.Substring(0, 4) + compteur.ToString();
-               fileExist = File.Exists(nomSauvegarde + ".txt");
-           }*/
+                if (enableSave)
+                {
+                    if (origine1 == -Vector2.One || origine2 == -Vector2.One)
+                        nomSauvegarde = "S0";
+                    else
+                        nomSauvegarde = "C0";
+                }
 
-                if (origine1 == -Vector2.One || origine2 == -Vector2.One)
-                    nomSauvegarde = 'S' + nomSauvegarde;
-                else
-                    nomSauvegarde = 'C' + nomSauvegarde;
+                if (!enableSave)
+                {
+                    if (nomSauvegarde[0] == 'S' && (!enableOrigine1 && !enableOrigine2))
+                        nomSauvegarde = 'C' + compteur.ToString();
+                    else if (nomSauvegarde[0] == 'C' && ((enableOrigine1 && !enableOrigine2) || (!enableOrigine1 && enableOrigine2)))
+                        nomSauvegarde = 'S' + compteur.ToString();
+                }
+
+                fileExist = File.Exists(nomSauvegarde + ".txt");
+                while (fileExist && enableSave)
+                {
+                    compteur++;
+                    nomSauvegarde = nomSauvegarde[0] + compteur.ToString();
+                    fileExist = File.Exists(nomSauvegarde + ".txt");
+                }
+
 
                 sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
 
@@ -472,7 +484,7 @@ namespace YelloKiller
                     sauvegarde.WriteLine(position.Y);
                 }
 
-                sauvegarde.WriteLine("Patrouilleurs A Chevaux");
+                sauvegarde.WriteLine("Patrouilleurs A Cheval");
                 foreach (Vector2 position in _originesPatrouilleursAChevaux)
                 {
                     sauvegarde.WriteLine(position.X);
