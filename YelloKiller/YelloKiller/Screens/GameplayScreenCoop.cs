@@ -44,7 +44,7 @@ namespace YelloKiller
             moteurAudio = new MoteurAudio();
 
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.OuvrirCarte("Csave0.txt", 2);
+            carte.OuvrirCarte("Csave0.txt");
 
             _shuriken = new List<Shuriken>();
 

@@ -1,14 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
-using YelloKiller.YelloKiller;
-using System;
 
 namespace YelloKiller
 {
     static class Moteur_physique
     {
-       static int vie = 5;
+        static int vie = 5;
         static public void Collision_Shuriken_Ennemis(List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, SoundBank soundBank)
         {
             if (_gardes.Count != 0)
@@ -49,7 +46,7 @@ namespace YelloKiller
             }
 
             if (_Boss.Count != 0)
-            {               
+            {
                 for (int i = 0; i < _Boss.Count; i++)
                 {
                     for (int j = 0; j < listeShuriken.Count; j++)

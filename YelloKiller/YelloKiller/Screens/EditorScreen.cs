@@ -33,16 +33,19 @@ namespace YelloKiller
         bool enableOrigine1, enableOrigine2, enableSave, afficheMessageErreur;
         double chronometre = 0;
 
-        public EditorScreen()
+        public EditorScreen(string nomCarte)
         {
             ligne = "";
-            nomSauvegarde = "save0";
+            //nomSauvegarde = "save0";
+            nomSauvegarde = nomCarte;
             enableSave = true;
             afficheMessageErreur = false;
             camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            //carte.OuvrirCarte("Ssave0.txt", 1);
+            if(nomCarte == "")
+                carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+            else
+                carte.OuvrirCarte(nomCarte/*"Ssave0.txt"*/);
 
             _originesGardes = carte.OriginesGardes;
             _originesPatrouilleurs = carte.OriginesPatrouilleurs;

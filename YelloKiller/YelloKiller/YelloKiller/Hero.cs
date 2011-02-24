@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using YelloKiller.YelloKiller;
 
 /*Avant que vous ne gueuliez tous en disant "Hey mais c'est koi ce putain de hero, on en a pas assez ?", et bah la reponse est non.
  Pour le mode solo, on a besoin que d'un hero (hehe), or, les fonctions update des hero1 et hero2 ont besoin respectivement de hero2 et hero1.
