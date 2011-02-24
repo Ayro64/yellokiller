@@ -98,7 +98,7 @@ namespace YelloKiller
                     switch (sentence)
                     {
                         case ("MainMenuTitle"):
-                            return " Yello Killer\nHauptmenü";
+                            return " Yello Killer\nHauptmenu";
                         case ("MainMenuSolo"):
                             return "Einzelspiel";
                         case ("MainMenuCoop"):
@@ -116,7 +116,7 @@ namespace YelloKiller
                         case ("EditorSave1"):
                             return "Datei wurde gespeichert als ";
                         case ("EditorSave2"):
-                            return ".txt.\n\nESC drücken um der Karteneditor zu verlassen.";
+                            return ".txt.\n\nESC drucken um der Karteneditor zu verlassen.";
                         case ("GORetry"):
                             return "Wiederholen";
                         case ("GOAbort"):
