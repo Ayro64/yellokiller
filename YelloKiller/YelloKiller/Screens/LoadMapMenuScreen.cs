@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Microsoft.Xna.Framework;
 
 namespace YelloKiller
 {
@@ -28,6 +29,12 @@ namespace YelloKiller
             // MenuEntry selected = (MenuEntry) sender;
             MenuEntry selected = sender as MenuEntry;
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(selected.Text));
+        }
+
+        protected override void OnCancel(PlayerIndex playerIndex)
+        {
+            ScreenManager.AddScreen(new PauseMenuScreen(2, 2), playerIndex, true);
+            ExitScreen();
         }
     }
 }
