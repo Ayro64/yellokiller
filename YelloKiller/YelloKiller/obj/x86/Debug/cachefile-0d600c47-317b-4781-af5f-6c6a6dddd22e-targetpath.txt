@@ -53,6 +53,7 @@ Content\courier.xnb
 Content\Boss.xnb
 Content\origine_boss.xnb
 Content\WinTex.xnb
+Content\Sons\11 Fanfare.xnb
 Content\Sons\Ambiance sonore.xgs
 Content\Sons\Wave Bank.xwb
 Content\Sons\Sound Bank.xsb

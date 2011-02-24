@@ -53,15 +53,17 @@ namespace YelloKiller
                     {
                         if (_Boss[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
+                            Console.WriteLine(_Boss[i].vie);
+
                            _Boss[i].vie--;
                             listeShuriken.Remove(listeShuriken[j]);
 
-
                             if (_Boss[i].vie == 0)
                             {
+                                _Boss[i].vie = 5;
                                 _Boss.Remove(_Boss[i]);
                                 soundBank.PlayCue("cri");
-                                _Boss[i].vie = 5;
+                                
                             }
                             break;
                         }
