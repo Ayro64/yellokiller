@@ -6,23 +6,16 @@ namespace YelloKiller
 {
     class Noeud
     {
-        //Case _case;
         Vector2 position;
         Noeud parent;
         float estimatedMovement;
 
         public Noeud(Vector2 position, Noeud parent, Vector2 destination, Rectangle camera)
         {
-            //this._case = _case;
             this.position = position;
             this.parent = parent;
             this.estimatedMovement = Math.Abs(position.X - destination.X/* + (int)camera.X / 28*/) + Math.Abs(position.Y - destination.Y /*+ (int)camera.Y / 28*/);
         }
-
-        /*public Case Case
-        {
-            get { return _case; }
-        }*/
 
         public Vector2 Position
         {
