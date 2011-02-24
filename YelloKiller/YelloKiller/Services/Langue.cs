@@ -98,7 +98,7 @@ namespace YelloKiller
                     switch (sentence)
                     {
                         case ("MainMenuTitle"):
-                            return " Yello Killer\nHauptmenu";
+                            return " Yello Killer\n  Hauptmenu";
                         case ("MainMenuSolo"):
                             return "Einzelspiel";
                         case ("MainMenuCoop"):
@@ -120,11 +120,11 @@ namespace YelloKiller
                         case ("GORetry"):
                             return "Wiederholen";
                         case ("GOAbort"):
-                            return "Quitter";
+                            return "Zuruck zum Hauptmenu";
                         case ("GOMsg"):
-                            return "Vous avez été capturé!";
+                            return "Sie wurden erwischt!";
                         case ("Multi"):
-                            return "Choix du Niveau\n     Co-op";
+                            return "Choix du Niveau\n     Koop";
                         case ("Solo"):
                             return "Choix du Niveau\n      Solo";
                         case ("Level"):
