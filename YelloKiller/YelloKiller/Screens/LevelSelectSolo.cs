@@ -251,7 +251,8 @@ namespace YelloKiller
             }
 
             // Bouton Retour
-            position = new Vector2(130, 580);
+            position.X -= (levels.Count % 3) * 150;
+            position.Y = 580;
             abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black);
 
             // Draw the menu title.
