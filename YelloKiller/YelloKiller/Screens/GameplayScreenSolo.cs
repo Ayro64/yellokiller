@@ -192,6 +192,9 @@ namespace YelloKiller
                 if (Moteur_physique.Collision_Boss_Hero(_boss, hero, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
 
+                if (_boss.Count == 0)
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));
+
                 audio.Update(gameTime);
             }
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
