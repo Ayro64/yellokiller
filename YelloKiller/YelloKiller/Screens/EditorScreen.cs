@@ -40,7 +40,7 @@ namespace YelloKiller
             if (nomCarte == "")
             {
                 nomSauvegarde = nomCarte;
-                compteur = 0;
+                compteur = 1;
             }
             else
             {
@@ -369,9 +369,9 @@ namespace YelloKiller
                 if (enableSave && nomCarte == "")
                 {
                     if (origine1 == -Vector2.One || origine2 == -Vector2.One)
-                        nomSauvegarde = "Ssave0";
+                        nomSauvegarde = "Ssave1";
                     else
-                        nomSauvegarde = "Csave0";
+                        nomSauvegarde = "Csave1";
                 }
 
                 if (!enableSave || nomCarte != "")
