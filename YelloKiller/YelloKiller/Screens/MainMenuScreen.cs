@@ -105,13 +105,12 @@ namespace YelloKiller
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new LevelSelectMulti());
         }
 
-
         ///<summary>
         ///Event handler for when the Map Editor menu entry is selected.
         ///</summary>
         void EditorMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(""));
         }
 
         /// <summary>

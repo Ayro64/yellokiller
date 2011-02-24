@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using YelloKiller.YelloKiller;
 
 /* Si tu vois un bateau qui flotte sur l'eau c'est que ta mère n'est pas à bord !!!!!
 

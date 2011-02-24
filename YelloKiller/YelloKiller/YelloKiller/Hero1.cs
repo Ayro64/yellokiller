@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using YelloKiller.YelloKiller;
 
 /* Quelle est la différence entre une blonde et une boule de bowling ?
    On ne peut mettre que trois doigts dans la boule de bowling.
