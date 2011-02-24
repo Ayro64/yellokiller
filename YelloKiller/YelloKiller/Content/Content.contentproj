@@ -333,6 +333,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sons\11 Fanfare.wav">
+      <Name>11 Fanfare</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
     <Compile Include="WinTex.jpg">
       <Name>WinTex</Name>
       <Importer>TextureImporter</Importer>
