@@ -44,8 +44,8 @@ namespace YelloKiller
         public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
             Position = position;
-            rectangle.X = (int)position.X;
-            rectangle.Y = (int)position.Y;
+            rectangle.X = (int)position.X + 1;
+            rectangle.Y = (int)position.Y + 1;
             Rectangle = rectangle;
 
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;

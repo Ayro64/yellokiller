@@ -32,7 +32,7 @@ namespace YelloKiller
             vitesse_sprite = 1;
             index = 0;
             maxIndex = 0;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 18, 28);
+            rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 26);
             countshuriken = 5;
             ishero1 = false;
             positionDesiree = position;
@@ -59,8 +59,8 @@ namespace YelloKiller
         {
             Position = position;
 
-            rectangle.X = (int)position.X;
-            rectangle.Y = (int)position.Y;
+            rectangle.X = (int)position.X + 1;
+            rectangle.Y = (int)position.Y + 1;
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Space) && countshuriken > 0)
             {

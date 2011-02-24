@@ -17,7 +17,7 @@ namespace YelloKiller
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 16, 28);
+            rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 26);
             maxIndex = 0;
             positionDesiree = position;
         }
