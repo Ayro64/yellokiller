@@ -14,10 +14,10 @@ namespace YelloKiller
         List<MenuEntry> menuEntries = new List<MenuEntry>();
         MenuEntry restartMenuEntry, abortMenuEntry;
 
-        int selectedEntry = 0, comingfrom;
+        int selectedEntry = 0;
         ContentManager content;
         Texture2D gameoverTexture, blankTexture;
-        string GOmessage = Langue.tr("GOMsg");
+        string GOmessage, comingfrom;
 
         Color Color;
 
@@ -28,9 +28,10 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public GameOverScreen(int comingfrom)
+        public GameOverScreen(string comingfrom)
         {
             this.comingfrom = comingfrom;
+            GOmessage = Langue.tr("GOMsg");
 
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
@@ -129,10 +130,10 @@ namespace YelloKiller
         /// </summary>
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            if (comingfrom == 1)
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
-            else
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenCoop());
+            if (comingfrom[0] == 'S')
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo(comingfrom));
+            else 
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenCoop(comingfrom));
         }
 
         /// <summary>
