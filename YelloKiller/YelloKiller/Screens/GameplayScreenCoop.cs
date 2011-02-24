@@ -165,7 +165,10 @@ namespace YelloKiller
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
 
                 if (_boss.Count == 0)
+                {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));
+                    moteurAudio.SoundBank.PlayCue("11 Fanfare");
+                }
 
                 audio.Update(gameTime);
             }
@@ -258,8 +261,9 @@ namespace YelloKiller
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
-            {
+            {              
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));
+                moteurAudio.SoundBank.PlayCue("11 Fanfare");
             }
 
             // Looks up input for the Media Player.
