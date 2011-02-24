@@ -19,23 +19,16 @@ namespace YelloKiller
                 if (str.Substring(str.Length - 3) == "txt")
                 {
                     MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10));
-                    if (str[str.Length - 10] == 'C')
-                        menuEntry.Selected += CoopMenuEntrySelected;
-                    else if (str[str.Length - 10] == 'S')
-                        menuEntry.Selected += SoloMenuEntrySelected;
+                    menuEntry.Selected += MenuEntrySelected;
                     MenuEntries.Add(menuEntry);
                 }
             }
         }
 
-        void CoopMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        void MenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenCoop());
-        }
-
-        void SoloMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
+            MenuEntry selected = sender as MenuEntry;
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(selected.Text));
         }
     }
 }
