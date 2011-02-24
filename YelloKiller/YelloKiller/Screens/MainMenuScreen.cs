@@ -165,7 +165,7 @@ namespace YelloKiller
             spriteBatch.Begin();
             // Rectangle noir des entrées menu
             spriteBatch.Draw(blankTexture,
-                             new Rectangle(115, 220, 215, 190),
+                             new Rectangle(115, 220, 230, 190),
                              new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
             // Celui du titre
