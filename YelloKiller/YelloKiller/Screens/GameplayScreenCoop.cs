@@ -35,7 +35,7 @@ namespace YelloKiller
 
         #region Initialization
 
-        public GameplayScreenCoop()
+        public GameplayScreenCoop(string nomDeCarte)
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -44,7 +44,7 @@ namespace YelloKiller
             moteurAudio = new MoteurAudio();
 
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.OuvrirCarte("Csave0.txt");
+            carte.OuvrirCarte(nomDeCarte);
 
             _shuriken = new List<Shuriken>();
 
