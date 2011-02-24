@@ -83,12 +83,12 @@ namespace YelloKiller
         public void Update(GameTime gameTime)
         {
             // Change to the next track when the last one ends.
-            if (MediaPlayer.State == MediaState.Stopped)
-            {
-                musique = rand.Next(0, sampleMediaLibrary.Albums[album].Songs.Count);
-                MediaPlayer.Play(sampleMediaLibrary.Albums[album].Songs[musique]);
-                songName = sampleMediaLibrary.Albums[album].Songs[musique].Artist + " - " + sampleMediaLibrary.Albums[album].Songs[musique];
-            }
+            // if (MediaPlayer.State == MediaState.Stopped)
+            // {
+            //     musique = rand.Next(0, sampleMediaLibrary.Albums[album].Songs.Count);
+            //     MediaPlayer.Play(sampleMediaLibrary.Albums[album].Songs[musique]);
+            //     songName = sampleMediaLibrary.Albums[album].Songs[musique].Artist + " - " + sampleMediaLibrary.Albums[album].Songs[musique];
+            // }
         }
 
         public void Draw(GameTime gameTime)
