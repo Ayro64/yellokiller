@@ -55,11 +55,13 @@ namespace YelloKiller
                         {
                             vie--;
                             listeShuriken.Remove(listeShuriken[j]);
-                            soundBank.PlayCue("cri");
+
 
                             if (vie == 0)
+                            {
                                 _Boss.Remove(_Boss[i]);
-
+                                soundBank.PlayCue("cri");
+                            }
                             break;
                         }
                     }
