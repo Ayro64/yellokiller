@@ -27,6 +27,7 @@ namespace YelloKiller
 
         void MenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
+            // MenuEntry selected = (MenuEntry) sender;
             MenuEntry selected = sender as MenuEntry;
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(selected.Text));
         }
