@@ -131,6 +131,8 @@ namespace YelloKiller
                 moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry < levels.Count - 3)
                     selectedEntry += 3;
+                else if (selectedEntry < levels.Count - 1)
+                    selectedEntry = levels.Count - 1;
                 else
                     selectedEntry = selectedEntry % 3;
             }
