@@ -37,7 +37,7 @@ namespace YelloKiller
             {
                 if (str.Substring(str.Length - 3) == "txt" && str[str.Length - 10] == 'C')
                 {
-                    MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10));
+                    MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10, 6));
                     menuEntry.Selected += LevelMenuEntrySelected;
                     levels.Add(menuEntry);
 
@@ -163,7 +163,7 @@ namespace YelloKiller
         void LevelMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             MenuEntry selectedLevel = (MenuEntry)sender;
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo(selectedLevel.Text));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo(selectedLevel.Text + ".txt"));
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace YelloKiller
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
 
-            Vector2 position = new Vector2(130, 280);
+            Vector2 position = new Vector2(130, 300);
 
             byte fade = TransitionAlpha;
 
@@ -238,7 +238,7 @@ namespace YelloKiller
                 menuEntry.Draw(this, position, isSelected, gameTime, Color.Black);
 
                 // Miniatures
-                miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 20, position.Y - 150));
+                miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 45, position.Y - 150));
 
                 if ((i % 3 == 0) || (i % 3 == 1))
                     position.X += 250;
