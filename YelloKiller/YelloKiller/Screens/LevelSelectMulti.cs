@@ -250,7 +250,9 @@ namespace YelloKiller
             }
 
             // Bouton Retour
-            position.X -= (levels.Count % 3) * 150;
+            if ((levels.Count % 3 == 1) || (levels.Count % 3 == 2))
+                position.X -= ((levels.Count - 1) % 3) * 250;
+            position.X -= 30;
             position.Y = 580;
             abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black);
 
