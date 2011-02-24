@@ -80,8 +80,6 @@ Gardes
 1
 73
 1
-73
-2
 34
 13
 34
@@ -89,3 +87,5 @@ Gardes
 Patrouilleurs
 Patrouilleurs A Cheval
 Boss
+73
+2
