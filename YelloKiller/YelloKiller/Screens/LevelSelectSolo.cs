@@ -1,10 +1,8 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Media;
 
 namespace YelloKiller
 {
@@ -21,6 +19,7 @@ namespace YelloKiller
         Texture2D levelSelectBkground, blankTexture;
         MoteurAudio moteurAudio;
         Color Color;
+        Carte carte1;
 
         #endregion
 
@@ -44,6 +43,8 @@ namespace YelloKiller
         /// </summary>
         public LevelSelectSolo()
         {
+            carte1 = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+            carte1.OuvrirCarte("Ssave0.txt");
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -279,7 +280,7 @@ namespace YelloKiller
                 position.X += transitionOffset * 512;
 
             spriteBatch.Begin();
-
+            
             spriteBatch.Draw(levelSelectBkground, fullscreen,
                              new Color(fade, fade, fade));
 
@@ -311,6 +312,8 @@ namespace YelloKiller
 
             spriteBatch.DrawString(font, menuTitle, titlePosition, titleColor, 0,
                                    titleOrigin, titleScale, SpriteEffects.None, 0);
+
+            carte1.DrawInMenu(spriteBatch, content, new Vector2(95, 300));
 
             spriteBatch.End();
         }

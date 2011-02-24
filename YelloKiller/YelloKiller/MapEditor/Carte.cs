@@ -51,6 +51,19 @@ namespace YelloKiller
             }
         }
 
+        public void DrawInMenu(SpriteBatch spriteBatch, ContentManager content, Vector2 origine)
+        {
+            for (int y = Taille_Map.HAUTEUR_MAP - 1; y >= 0; y--)
+            {
+                for (int x = Taille_Map.LARGEUR_MAP - 1; x >= 0; x--)
+                {
+                    _case[y, x].Position = new Vector2(x, y);
+
+                    _case[y, x].DrawInMenu(spriteBatch, content, origine);
+                }
+            }
+        }
+
         public void Initialisation(Vector2 size)
         {
             for (int y = 0; y < size.Y; y++)
@@ -104,7 +117,7 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != "Patrouilleurs A Cheval")
+            while (line != "Patrouilleurs A Chevaux")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
