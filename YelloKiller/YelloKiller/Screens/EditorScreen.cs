@@ -25,7 +25,7 @@ namespace YelloKiller
         Ascenseur ascenseur;
 
         StreamWriter sauvegarde;
-        string ligne, nomSauvegarde;
+        string ligne, nomSauvegarde, nomCarte;
         Rectangle camera;
         Vector2 origine1, origine2;
         List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux, _originesBoss;
@@ -39,6 +39,7 @@ namespace YelloKiller
         {
             compteur = 0;
             ligne = "";
+            this.nomCarte = nomCarte;
             nomSauvegarde = nomCarte;
             enableSave = true;
             afficheMessageErreur = false;
@@ -362,7 +363,7 @@ namespace YelloKiller
                         nomSauvegarde = "Csave0";
                 }
 
-                if (!enableSave)
+                if (!enableSave && nomCarte != "")
                 {
                     if (nomSauvegarde[0] == 'S' && (!enableOrigine1 && !enableOrigine2))
                         nomSauvegarde = "Csave" + compteur.ToString();
