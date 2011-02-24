@@ -222,7 +222,7 @@ namespace YelloKiller
 
             // Rectangle noir
             spriteBatch.Draw(blankTexture,
-                             new Rectangle(220, 530, 450, 110),
+                             new Rectangle(120, 580, 650, 110),
                              new Color(0, 0, 0, (byte)(fade * 2 / 3)));
             spriteBatch.Draw(blankTexture,
                              new Rectangle((int)WinPosition.X - (int)(font.MeasureString(WinMessage).X / 1.4f), (int)(WinPosition.Y - font.MeasureString(WinMessage).Y), (int)(font.MeasureString(WinMessage).X * 1.4f), 45),
