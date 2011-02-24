@@ -496,6 +496,15 @@
       <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\WinTex.xnb</Output>
       <Time>2011-02-24T19:07:25.2388489+01:00</Time>
     </Item>
+    <Item>
+      <Source>Sons\11 Fanfare.wav</Source>
+      <Name>Sons\11 Fanfare</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\11 Fanfare.xnb</Output>
+      <Time>2011-02-24T19:56:34.1629098+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

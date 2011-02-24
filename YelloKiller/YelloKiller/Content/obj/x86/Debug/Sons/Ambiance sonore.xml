@@ -11,10 +11,12 @@
     Compression Preset Name = &lt;none&gt;;
     Xbox Bank Last Modified Low = 0;
     Xbox Bank Last Modified High = 0;
-    PC Bank Last Modified Low = 3948275959;
-    PC Bank Last Modified High = 30134840;
-    Bank Last Revised Low = 3948275959;
-    Bank Last Revised High = 30134840;
+    PC Bank Last Modified Low = 1476380327;
+    PC Bank Last Modified High = 30135379;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
+    Bank Last Revised Low = 2458621500;
+    Bank Last Revised High = 30135375;
 
     Wave
     {
@@ -34,8 +36,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3226235794;
-            Last Modified High = 30134821;
+            Last Modified Low = 1124185933;
+            Last Modified High = 30135375;
         }
     }
 
@@ -57,8 +59,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3226310795;
-            Last Modified High = 30134821;
+            Last Modified Low = 1124210933;
+            Last Modified High = 30135375;
         }
     }
 
@@ -80,8 +82,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3225835788;
-            Last Modified High = 30134821;
+            Last Modified Low = 1124035930;
+            Last Modified High = 30135375;
         }
     }
 
@@ -103,8 +105,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3226485798;
-            Last Modified High = 30134821;
+            Last Modified Low = 1124335935;
+            Last Modified High = 30135375;
         }
     }
 
@@ -126,8 +128,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3225660785;
-            Last Modified High = 30134821;
+            Last Modified Low = 1123860928;
+            Last Modified High = 30135375;
         }
     }
 
@@ -149,8 +151,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3226085792;
-            Last Modified High = 30134821;
+            Last Modified Low = 1124085931;
+            Last Modified High = 30135375;
         }
     }
 
@@ -172,8 +174,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3225735786;
-            Last Modified High = 30134821;
+            Last Modified Low = 1123935929;
+            Last Modified High = 30135375;
         }
     }
 
@@ -195,8 +197,31 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3226360796;
-            Last Modified High = 30134821;
+            Last Modified Low = 1124260934;
+            Last Modified High = 30135375;
+        }
+    }
+
+    Wave
+    {
+        Name = 11 Fanfare;
+        File = 11 Fanfare.wav;
+        Build Settings Last Modified Low = 2431671086;
+        Build Settings Last Modified High = 30135375;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 46;
+            Play Region Length = 9722880;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2947845141;
+            Last Modified High = 30135374;
         }
     }
 }
