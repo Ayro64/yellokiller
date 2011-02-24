@@ -90,7 +90,7 @@ namespace YelloKiller
                 carte.Cases[(int)position.Y / 28, (int)position.X / 28].Type > 0)
             {
                 existshuriken = true;
-                position += 3 * direction;
+                position += 4 * direction;
 
                 float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 RotationAngle += elapsed + 50;
