@@ -363,7 +363,7 @@ namespace YelloKiller
                         nomSauvegarde = "Csave0";
                 }
 
-                if (!enableSave && nomCarte != "")
+                if (!enableSave)
                 {
                     if (nomSauvegarde[0] == 'S' && (!enableOrigine1 && !enableOrigine2))
                         nomSauvegarde = "Csave" + compteur.ToString();
@@ -375,7 +375,7 @@ namespace YelloKiller
                 while (fileExist && enableSave)
                 {
                     compteur++;
-                    nomSauvegarde = nomSauvegarde[0] + compteur.ToString();
+                    nomSauvegarde = nomSauvegarde.Substring(0, 5) + compteur.ToString();
                     fileExist = File.Exists(nomSauvegarde + ".txt");
                 }
 
