@@ -45,10 +45,10 @@ namespace YelloKiller
             List<Noeud> result = new List<Noeud>();
 
             // Bas
-            if (carte.Cases[(int)position.Y + 1, (int)position.X].Type > 0)
+            if ((int)position.Y + 2 < Taille_Map.HAUTEUR_MAP && carte.Cases[(int)position.Y + 1, (int)position.X].Type > 0)
                 result.Add(new Noeud(new Vector2(position.X, position.Y + 1), this, destination, camera/* new Rectangle(camera.X, camera.Y + 1, camera.Width, camera.Height)*/));
             // Droite
-            if (carte.Cases[(int)position.Y, (int)position.X + 1].Type > 0)
+            if ((int)position.X + 2 < Taille_Map.LARGEUR_MAP && carte.Cases[(int)position.Y, (int)position.X + 1].Type > 0)
                 result.Add(new Noeud(new Vector2(position.X + 1, position.Y), this, destination, camera/*new Rectangle(camera.X + 1, camera.Y, camera.Width, camera.Height)*/));
             // Haut
             if ((int)position.Y - 1 >= 0 && carte.Cases[(int)position.Y - 1, (int)position.X].Type > 0)
