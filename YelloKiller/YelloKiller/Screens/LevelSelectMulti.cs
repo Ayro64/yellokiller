@@ -229,13 +229,16 @@ namespace YelloKiller
                              new Color(fade, fade, fade));
 
             // Draw each menu entry in turn.
-            for (int i = 0; i < levels.Count; i++)
+            for (int i = 0; i < levels.Count - 1; i++)
             {
                 MenuEntry menuEntry = levels[i];
 
                 bool isSelected = IsActive && (i == selectedEntry);
 
                 menuEntry.Draw(this, position, isSelected, gameTime, Color.Black);
+
+                // Miniatures
+                miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 20, position.Y - 150));
 
                 if ((i % 3 == 0) || (i % 3 == 1))
                     position.X += 250;
@@ -245,6 +248,11 @@ namespace YelloKiller
                     position.X -= 500;
                 }
             }
+
+            // Bouton Retour
+            position = new Vector2(130, 580);
+            bool isSelectd = IsActive && (levels.Count - 1 == selectedEntry);
+            abortMenuEntry.Draw(this, position, isSelectd, gameTime, Color.Black);
 
             // Draw the menu title.
             Vector2 titlePosition = new Vector2(450, 100);
@@ -257,10 +265,7 @@ namespace YelloKiller
             spriteBatch.DrawString(font, menuTitle, titlePosition, titleColor, 0,
                                    titleOrigin, titleScale, SpriteEffects.None, 0);
 
-            foreach (Carte map in miniCartes)
-            {
-                map.DrawInMenu(spriteBatch, content, new Vector2(95, 300));
-            }
+            
 
             spriteBatch.End();
         }
