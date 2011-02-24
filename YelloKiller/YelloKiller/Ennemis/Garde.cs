@@ -48,7 +48,7 @@ namespace YelloKiller
             rectangle.Y = (int)position.Y;
             Rectangle = rectangle;
 
-            if (ServiceHelper.Get<IKeyboardService>().ToucheRelevee(Keys.Enter))
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Enter))
             {
                 chemin = Pathfinding.CalculChemin(carte, new Vector2((int)this.position.X / 28 + (int)camera.X / 28, (int)this.position.Y / 28 + (int)camera.Y / 28), new Vector2((int)hero.Position.X / 28 + (int)camera.X / 28, (int)hero.Position.Y / 28 + (int)camera.Y / 28), camera);
 
