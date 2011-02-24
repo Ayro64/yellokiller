@@ -357,17 +357,17 @@ namespace YelloKiller
                 if (enableSave)
                 {
                     if (origine1 == -Vector2.One || origine2 == -Vector2.One)
-                        nomSauvegarde = "S0";
+                        nomSauvegarde = "Ssave0";
                     else
-                        nomSauvegarde = "C0";
+                        nomSauvegarde = "Csave0";
                 }
 
                 if (!enableSave)
                 {
                     if (nomSauvegarde[0] == 'S' && (!enableOrigine1 && !enableOrigine2))
-                        nomSauvegarde = 'C' + compteur.ToString();
+                        nomSauvegarde = "Csave" + compteur.ToString();
                     else if (nomSauvegarde[0] == 'C' && ((enableOrigine1 && !enableOrigine2) || (!enableOrigine1 && enableOrigine2)))
-                        nomSauvegarde = 'S' + compteur.ToString();
+                        nomSauvegarde = "Ssave" + compteur.ToString();
                 }
 
                 fileExist = File.Exists(nomSauvegarde + ".txt");
