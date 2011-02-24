@@ -18,7 +18,7 @@ namespace YelloKiller
         bool isPlayer = true;
 
         float Volume;
-        int n;
+        int musique, album;
         string songName;
         MediaLibrary sampleMediaLibrary;
         Random rand;
@@ -34,9 +34,10 @@ namespace YelloKiller
             sampleMediaLibrary = new MediaLibrary();
             rand = new Random();
 
-            n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
-            MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
-            songName = sampleMediaLibrary.Albums[1].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[1].Songs[n];
+            album = 0;
+            musique = rand.Next(0, sampleMediaLibrary.Albums[album].Songs.Count);
+            MediaPlayer.Play(sampleMediaLibrary.Albums[album].Songs[musique]);
+            songName = sampleMediaLibrary.Albums[album].Songs[musique].Artist + " - " + sampleMediaLibrary.Albums[album].Songs[musique];
             Volume = (Properties.Settings.Default.MusicVolume / 10);
             MediaPlayer.Volume = (float)Volume;
         }
@@ -60,9 +61,10 @@ namespace YelloKiller
             // Change track
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.K))
             {
-                n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
-                MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
-                songName = sampleMediaLibrary.Albums[1].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[1].Songs[n];
+                album++;
+                musique = rand.Next(0, sampleMediaLibrary.Albums[album].Songs.Count);
+                MediaPlayer.Play(sampleMediaLibrary.Albums[album].Songs[musique]);
+                songName = sampleMediaLibrary.Albums[album].Songs[musique].Artist + " - " + sampleMediaLibrary.Albums[album].Songs[musique];
             }
 
             // Pause player
@@ -84,9 +86,9 @@ namespace YelloKiller
             // Change to the next track when the last one ends.
             if (MediaPlayer.State == MediaState.Stopped)
             {
-                n = rand.Next(0, sampleMediaLibrary.Albums[1].Songs.Count);
-                MediaPlayer.Play(sampleMediaLibrary.Albums[1].Songs[n]);
-                songName = sampleMediaLibrary.Albums[1].Songs[n].Artist + " - " + sampleMediaLibrary.Albums[1].Songs[n];
+                musique = rand.Next(0, sampleMediaLibrary.Albums[album].Songs.Count);
+                MediaPlayer.Play(sampleMediaLibrary.Albums[album].Songs[musique]);
+                songName = sampleMediaLibrary.Albums[album].Songs[musique].Artist + " - " + sampleMediaLibrary.Albums[album].Songs[musique];
             }
         }
 
@@ -98,9 +100,7 @@ namespace YelloKiller
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(blankTexture,
-                                 new Rectangle(0, 0, (songName.Length * 12), 45),
-                                 new Color(0, 0, 0, (byte)(170)));
+            spriteBatch.Draw(blankTexture, new Rectangle(0, 0, (songName.Length * 12), 45), new Color(0, 0, 0, (byte)(170)));
 
             spriteBatch.DrawString(font, songName, new Vector2(10, 10), Color.Red);
             spriteBatch.End();
