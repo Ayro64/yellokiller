@@ -13,6 +13,7 @@ namespace YelloKiller
         public Rectangle rectangle;
         Texture2D texture;
         List<Case> chemin;
+        public int vie = 5;
 
         public Boss(Vector2 position, Rectangle? sourceRectangle, TypeCase type)
             : base(position, sourceRectangle, type)
@@ -36,7 +37,8 @@ namespace YelloKiller
             Position = position;
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
-            Rectangle = rectangle;             
+            Rectangle = rectangle;
+            
         }
 
         public void UpdateInCoop(GameTime gameTime, Carte carte, Hero1 hero1, Hero2 hero2)
