@@ -87,4 +87,5 @@ Gardes
 34
 14
 Patrouilleurs
-Patrouilleurs A Chevaux
+Patrouilleurs A Cheval
+Boss
