@@ -30,6 +30,7 @@ namespace YelloKiller
         Player audio;
         MoteurAudio moteurAudio;
         double temps;
+        string nomDeCarte;
 
         #endregion
 
@@ -37,6 +38,8 @@ namespace YelloKiller
 
         public GameplayScreenCoop(string nomDeCarte)
         {
+            this.nomDeCarte = nomDeCarte;
+
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
@@ -150,16 +153,16 @@ namespace YelloKiller
                 Moteur_physique.Collision_Shuriken_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurAudio.SoundBank);
 
                 if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(0));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
 
                 if (Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(0));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
 
                 if (Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(0));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
 
                 if (Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(0));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
 
                 audio.Update(gameTime);
             }
@@ -248,12 +251,12 @@ namespace YelloKiller
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
             {
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(2));
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(2));
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));
             }
 
             // Looks up input for the Media Player.

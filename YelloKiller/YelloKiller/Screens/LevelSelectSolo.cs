@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace YelloKiller
 {
@@ -11,28 +12,17 @@ namespace YelloKiller
         #region Fields
 
         List<MenuEntry> levels = new List<MenuEntry>();
-        MenuEntry levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix, abortMenuEntry;
+        List<Carte> miniCartes = new List<Carte>();
+        MenuEntry abortMenuEntry;
+
+        MoteurAudio moteurAudio;
 
         string menuTitle = Langue.tr("Solo"), level = Langue.tr("Level");
         int selectedEntry = 0;
         ContentManager content;
         Texture2D levelSelectBkground, blankTexture;
-        MoteurAudio moteurAudio;
         Color Color;
-        Carte carte1;
 
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets the list of menu entries, so derived classes can add
-        /// or change the menu contents.
-        /// </summary>
-        protected IList<MenuEntry> Levels
-        {
-            get { return levels; }
-        }
 
         #endregion
 
@@ -43,38 +33,32 @@ namespace YelloKiller
         /// </summary>
         public LevelSelectSolo()
         {
-            carte1 = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte1.OuvrirCarte("Ssave0.txt");
+            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath);
+            foreach (string str in fileEntries)
+            {
+                if (str.Substring(str.Length - 3) == "txt" && str[str.Length - 10] == 'S')
+                {
+                    MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10));
+                    menuEntry.Selected += LevelMenuEntrySelected;
+                    levels.Add(menuEntry);
+
+                    Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+                    map.OuvrirCarte(str.Substring(str.Length - 10));
+                    miniCartes.Add(map);
+                }
+            }
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
             // Create our menu entries.
-            levelOne = new MenuEntry(level + " 1");
-            levelTwo = new MenuEntry(level + " 2");
-            levelThree = new MenuEntry(level + " 3");
-            levelFour = new MenuEntry(level + " 4");
-            levelFive = new MenuEntry(level + " 5");
-            levelSix = new MenuEntry(level + " 6");
             abortMenuEntry = new MenuEntry(Langue.tr("BckToMenu"));
 
             // Hook up menu event handlers.
-            levelOne.Selected += LevelOneMenuEntrySelected;
-            levelTwo.Selected += LevelTwoMenuEntrySelected;
-            levelThree.Selected += LevelThreeMenuEntrySelected;
-            levelFour.Selected += LevelFourMenuEntrySelected;
-            levelFive.Selected += LevelFiveMenuEntrySelected;
-            levelSix.Selected += LevelSixMenuEntrySelected;
             abortMenuEntry.Selected += AbortMenuEntrySelected;
 
             // Add entries to the menu.
-            Levels.Add(levelOne);
-            Levels.Add(levelTwo);
-            Levels.Add(levelThree);
-            Levels.Add(levelFour);
-            Levels.Add(levelFive);
-            Levels.Add(levelSix);
-            Levels.Add(abortMenuEntry);
+            levels.Add(abortMenuEntry);
 
             moteurAudio = new MoteurAudio();
         }
@@ -175,51 +159,12 @@ namespace YelloKiller
         }
 
         /// <summary>
-        /// Event handler for when the Level One menu entry is selected.
+        /// Event handler for when the Level X menu entry is selected.
         /// </summary>
-        void LevelOneMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        void LevelMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
-        }
-
-        /// <summary>
-        /// Event handler for when the Level Two menu entry is selected.
-        /// </summary>
-        void LevelTwoMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
-        }
-
-        /// <summary>
-        /// Event handler for when the Level Three menu entry is selected.
-        /// </summary>
-        void LevelThreeMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
-        }
-
-        /// <summary>
-        /// Event handler for when the Level Four menu entry is selected.
-        /// </summary>
-        void LevelFourMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
-        }
-
-        /// <summary>
-        /// Event handler for when the Level Five menu entry is selected.
-        /// </summary>
-        void LevelFiveMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
-        }
-
-        /// <summary>
-        /// Event handler for when the Level Six menu entry is selected.
-        /// </summary>
-        void LevelSixMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo());
+            MenuEntry selectedLevel = (MenuEntry)sender;
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo(selectedLevel.Text));
         }
 
         /// <summary>
@@ -243,7 +188,7 @@ namespace YelloKiller
                                                        bool coveredByOtherScreen)
         {
             // Update each nested MenuEntry object.
-            for (int i = 0; i < Levels.Count; i++)
+            for (int i = 0; i < levels.Count; i++)
             {
                 bool isSelected = IsActive && (i == selectedEntry);
                 levels[i].Update(this, isSelected, gameTime);
@@ -280,7 +225,7 @@ namespace YelloKiller
                 position.X += transitionOffset * 512;
 
             spriteBatch.Begin();
-            
+
             spriteBatch.Draw(levelSelectBkground, fullscreen,
                              new Color(fade, fade, fade));
 
@@ -313,7 +258,11 @@ namespace YelloKiller
             spriteBatch.DrawString(font, menuTitle, titlePosition, titleColor, 0,
                                    titleOrigin, titleScale, SpriteEffects.None, 0);
 
-            carte1.DrawInMenu(spriteBatch, content, new Vector2(95, 300));
+            foreach (Carte map in miniCartes)
+            {
+                map.DrawInMenu(spriteBatch, content, new Vector2(95, 300));
+            }
+
 
             spriteBatch.End();
         }
