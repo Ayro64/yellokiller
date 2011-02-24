@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
+using System;
 
 namespace YelloKiller
 {
@@ -9,7 +10,7 @@ namespace YelloKiller
         static public void Collision_Shuriken_Ennemis(List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, SoundBank soundBank)
         {
             if (_gardes.Count != 0)
-            {
+            {           
                 for (int i = 0; i < _gardes.Count; i++)
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
@@ -61,6 +62,7 @@ namespace YelloKiller
                             {
                                 _Boss.Remove(_Boss[i]);
                                 soundBank.PlayCue("cri");
+                                vie = 5;
                             }
                             break;
                         }
