@@ -193,9 +193,10 @@ namespace YelloKiller
             byte fade = TransitionAlpha;
 
             //Entrées Menu
-            Vector2 positionL = new Vector2(285, 610);
-            Vector2 positionM = new Vector2(400, 610);
-            Vector2 positionR = new Vector2(530, 610);
+            Vector2 positionL = new Vector2(viewport.Width / 2 - ((font.MeasureString(nextMenuEntry.Text).X + font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X + 60) / 2), 610);
+            Vector2 positionM = new Vector2(positionL.X + font.MeasureString(nextMenuEntry.Text).X + 30, 610);
+            Vector2 positionR = new Vector2(positionM.X + font.MeasureString(restartMenuEntry.Text).X + 30, 610);
+            Vector2 WinPosition = new Vector2(viewport.Width / 2, 65);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -224,6 +225,9 @@ namespace YelloKiller
             spriteBatch.Draw(blankTexture,
                              new Rectangle(220, 530, 450, 110),
                              new Color(0, 0, 0, (byte)(fade * 2 / 3)));
+            spriteBatch.Draw(blankTexture,
+                             new Rectangle((int)WinPosition.X - (int)(font.MeasureString(WinMessage).X / 1.4f), (int)(WinPosition.Y - font.MeasureString(WinMessage).Y), (int)(font.MeasureString(WinMessage).X * 1.4f), 45),
+                             new Color(0, 0, 0, (byte)(fade * 2 / 3)));
 
 
             // Draw each menu entry in turn.
@@ -237,7 +241,7 @@ namespace YelloKiller
 
 
             // Draw the menu title.
-            Vector2 WinPosition = new Vector2(450, 565);
+            
             Vector2 WinOrigin = font.MeasureString(WinMessage) / 2;
             float WinScale = 1.25f;
 
