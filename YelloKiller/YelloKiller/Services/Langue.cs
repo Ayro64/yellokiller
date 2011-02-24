@@ -181,7 +181,7 @@ namespace YelloKiller
                     switch (sentence)
                     {
                         case ("MainMenuTitle"):
-                            return " Yello Killer\nMain Menu";
+                            return " Yello Killer\n  Main Menu";
                         case ("MainMenuSolo"):
                             return "Play in Solo Mode";
                         case ("MainMenuCoop"):
