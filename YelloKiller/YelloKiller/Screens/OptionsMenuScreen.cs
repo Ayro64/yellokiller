@@ -18,7 +18,6 @@ namespace YelloKiller
     {
         #region Fields
 
-        Player audio;
         KeyboardState keyboardState, lastKeyboardState;
 
         MenuEntry languageMenuEntry;
@@ -61,8 +60,6 @@ namespace YelloKiller
             soundVolume = Properties.Settings.Default.MusicVolume;
             fxVolume = Properties.Settings.Default.FXVolume;
 
-
-            audio = new Player();
             mod = mode;
 
             // Create our menu entries.
@@ -113,8 +110,6 @@ namespace YelloKiller
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
             blankTexture = content.Load<Texture2D>("blank");
-
-            audio.LoadContent(content);
         }
 
         public override void UnloadContent()
@@ -145,8 +140,6 @@ namespace YelloKiller
 
             lastKeyboardState = keyboardState;
             keyboardState = input.CurrentKeyboardStates[playerIndex];
-
-            audio.HandleInput();
 
             if (input.IsMenuSelect(ControllingPlayer, out PlayerIndex))
             {
@@ -208,7 +201,6 @@ namespace YelloKiller
 
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-            audio.Close();
             Properties.Settings.Default.Save();
 
             if (IsPopup)
@@ -223,14 +215,11 @@ namespace YelloKiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                        bool coveredByOtherScreen)
         {
-            audio.Update(gameTime);
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            audio.Draw(gameTime);
-
             if ((mod != 1) && (mod != 2))
             {
                 // Tout ça ne sert qu'à faire les pauvres rectangles noirs.
