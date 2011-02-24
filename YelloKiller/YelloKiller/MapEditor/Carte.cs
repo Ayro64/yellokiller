@@ -117,7 +117,7 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != "Patrouilleurs A Chevaux")
+            while (line != "Patrouilleurs A Cheval")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
