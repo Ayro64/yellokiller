@@ -37,10 +37,19 @@ namespace YelloKiller
 
         public EditorScreen(string nomCarte)
         {
-            compteur = 0;
+            if (nomCarte == "")
+            {
+                nomSauvegarde = nomCarte;
+                compteur = 0;
+            }
+            else
+            {
+                nomSauvegarde = nomCarte.Substring(0, 6);
+                compteur = nomCarte[nomCarte.Length - 4];
+            }
+
             ligne = "";
             this.nomCarte = nomCarte;
-            nomSauvegarde = nomCarte;
             enableSave = true;
             afficheMessageErreur = false;
             camera = new Rectangle(0, 0, 30, 24);
@@ -355,7 +364,7 @@ namespace YelloKiller
                 afficheMessageErreur = true;
             else
             {
-                if (enableSave)
+                if (enableSave && nomCarte == "")
                 {
                     if (origine1 == -Vector2.One || origine2 == -Vector2.One)
                         nomSauvegarde = "Ssave0";
@@ -363,7 +372,7 @@ namespace YelloKiller
                         nomSauvegarde = "Csave0";
                 }
 
-                if (!enableSave)
+                if (!enableSave || nomCarte != "")
                 {
                     if (nomSauvegarde[0] == 'S' && (!enableOrigine1 && !enableOrigine2))
                         nomSauvegarde = "Csave" + compteur.ToString();
