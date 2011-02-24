@@ -16,8 +16,8 @@ Global Settings
     Header File = Ambiance sonore.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
-    Last Modified Low = 2559223045;
-    Last Modified High = 30135375;
+    Last Modified Low = 1476280321;
+    Last Modified High = 30135379;
 
     Category
     {
@@ -227,8 +227,10 @@ Wave Bank
     Compression Preset Name = <none>;
     Xbox Bank Last Modified Low = 0;
     Xbox Bank Last Modified High = 0;
-    PC Bank Last Modified Low = 2559298046;
-    PC Bank Last Modified High = 30135375;
+    PC Bank Last Modified Low = 1476380327;
+    PC Bank Last Modified High = 30135379;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
     Bank Last Revised Low = 2458621500;
     Bank Last Revised High = 30135375;
 
@@ -447,8 +449,8 @@ Sound Bank
     Windows File = Win\Sound Bank.xsb;
     Xbox Bank Path Edited = 0;
     Windows Bank Path Edited = 0;
-    Bank Last Modified Low = 2559498049;
-    Bank Last Modified High = 30135375;
+    Bank Last Modified Low = 1476680344;
+    Bank Last Modified High = 30135379;
     Header Last Modified High = 0;
     Header Last Modified Low = 0;
 
