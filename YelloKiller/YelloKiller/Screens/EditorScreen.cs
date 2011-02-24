@@ -48,12 +48,14 @@ namespace YelloKiller
                 compteur = nomCarte[nomCarte.Length - 4];
             }
 
-            ligne = "";
             this.nomCarte = nomCarte;
+
+            ligne = "";
             enableSave = true;
             afficheMessageErreur = false;
             camera = new Rectangle(0, 0, 30, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+
             if (nomCarte == "")
                 carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             else
