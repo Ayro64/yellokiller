@@ -221,7 +221,7 @@ namespace YelloKiller
                              new Color(fade, fade, fade));
 
             // Rectangle noir
-            spriteBatch.Draw(blankTexture,
+            // spriteBatch.Draw(blankTexture,
                              new Rectangle(120, 580, 650, 110),
                              new Color(0, 0, 0, (byte)(fade * 2 / 3)));
             spriteBatch.Draw(blankTexture,
