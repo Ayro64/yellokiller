@@ -372,7 +372,7 @@ namespace YelloKiller
                 }
 
                 fileExist = File.Exists(nomSauvegarde + ".txt");
-                while (fileExist && enableSave)
+                while (fileExist && enableSave && nomCarte == "")
                 {
                     compteur++;
                     nomSauvegarde = nomSauvegarde.Substring(0, 5) + compteur.ToString();
