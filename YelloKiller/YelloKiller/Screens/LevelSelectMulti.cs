@@ -264,8 +264,6 @@ namespace YelloKiller
             spriteBatch.DrawString(font, menuTitle, titlePosition, titleColor, 0,
                                    titleOrigin, titleScale, SpriteEffects.None, 0);
 
-            
-
             spriteBatch.End();
         }
 
