@@ -8,12 +8,10 @@ namespace YelloKiller
 {
     class LoadMapMenuScreen : MenuScreen
     {
-        string path = System.Windows.Forms.Application.StartupPath;
-
         public LoadMapMenuScreen()
             : base(Langue.tr("PausEditLoad"))
         {
-            string[] fileEntries = Directory.GetFiles(path);
+            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath);
             foreach (string str in fileEntries)
             {
                 if (str.Substring(str.Length - 3) == "txt")
