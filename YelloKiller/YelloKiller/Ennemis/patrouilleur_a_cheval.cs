@@ -24,7 +24,7 @@ namespace YelloKiller
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 23, 32);
+            rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 22, 30);
             vitesse_animation = 0.008f;
             vitesse_sprite = 2;
             index = 0;
@@ -44,8 +44,8 @@ namespace YelloKiller
         public void UpdateInSolo(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
             Position = position;
-            rectangle.X = (int)position.X;
-            rectangle.Y = (int)position.Y;
+            rectangle.X = (int)position.X + 1;
+            rectangle.Y = (int)position.Y + 1;
             Rectangle = rectangle;
 
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
