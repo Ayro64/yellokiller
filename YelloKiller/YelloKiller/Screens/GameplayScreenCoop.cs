@@ -93,6 +93,7 @@ namespace YelloKiller
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
+
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
 
@@ -101,17 +102,17 @@ namespace YelloKiller
             hero1.LoadContent(content, 2);
             hero2.LoadContent(content, 2);
 
-            foreach (Garde mechant in _gardes)
-                mechant.LoadContent(content, 2);
+            foreach (Garde garde in _gardes)
+                garde.LoadContent(content, 2);
 
-            foreach (Patrouilleur mechant in _patrouilleurs)
-                mechant.LoadContent(content, 2);
+            foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                patrouilleur.LoadContent(content, 2);
 
-            foreach (Patrouilleur_a_cheval mechant in _patrouilleurs_a_chevaux)
-                mechant.LoadContent(content, 2);
+            foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
+                patrouilleurACheval.LoadContent(content, 2);
 
-            foreach (Boss mechant in _boss)
-                mechant.LoadContent(content, 2);
+            foreach (Boss boss in _boss)
+                boss.LoadContent(content, 2);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -137,18 +138,18 @@ namespace YelloKiller
                 hero1.Update(gameTime, carte, ref camera, _shuriken, moteurAudio, content, hero2);
                 hero2.Update(gameTime, carte, ref camera, _shuriken, moteurAudio, content, hero1);
 
-                foreach (Garde pasgentil in _gardes)
-                    pasgentil.Update(gameTime, carte, hero1, camera);
+                foreach (Garde garde in _gardes)
+                    garde.Update(gameTime, carte, hero1, camera);
 
-                foreach (Patrouilleur pasgentil in _patrouilleurs)
-                    pasgentil.Update(gameTime, carte, hero1, camera);
+                foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                    patrouilleur.Update(gameTime, carte, hero1, camera);
 
-                foreach (Patrouilleur_a_cheval pasgentil in _patrouilleurs_a_chevaux)
-                    pasgentil.Update(gameTime, carte, hero1, camera);
-                /*
-                foreach (Boss pasgentil in _boss)
-                    pasgentil.Update(gameTime, carte, hero1, camera);
-                */
+                foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
+                    patrouilleurACheval.Update(gameTime, carte, hero1, camera);
+                
+                /*foreach (Boss boss in _boss)
+                    boss.Update(gameTime, carte, hero1, camera);*/
+                
                 Moteur_physique.Collision_Shuriken_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurAudio.SoundBank);
 
                 if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
@@ -188,25 +189,22 @@ namespace YelloKiller
             carte.DrawInGame(spriteBatch, content, camera);
             hero1.Draw(spriteBatch, gameTime, camera);
             hero2.Draw(spriteBatch, gameTime, camera);
-            /*
-            hero1.Draw(spriteBatch, gameTime, camera, carte);
-            hero2.Draw(spriteBatch, gameTime, camera, carte);
-            */
+
             spriteBatch.DrawString(ScreenManager.font, "Il reste " + _gardes.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.BurlyWood);
 
             spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
 
-            foreach (Garde connard in _gardes)
-                connard.Draw(spriteBatch, camera);
+            foreach (Garde garde in _gardes)
+                garde.Draw(spriteBatch, camera);
 
-            foreach (Patrouilleur connard in _patrouilleurs)
-                connard.Draw(spriteBatch, camera);
+            foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                patrouilleur.Draw(spriteBatch, camera);
 
-            foreach (Patrouilleur_a_cheval connard in _patrouilleurs_a_chevaux)
-                connard.Draw(spriteBatch, camera);
+            foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
+                patrouilleurACheval.Draw(spriteBatch, camera);
 
-            foreach (Boss connard in _boss)
-                connard.Draw(spriteBatch, camera);
+            foreach (Boss boss in _boss)
+                boss.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
@@ -216,7 +214,6 @@ namespace YelloKiller
                 if (_shuriken[i].ShurikenExists == false)
                 {
                     _shuriken.Remove(_shuriken[i]);
-                    Console.WriteLine("suppresion shuriken");
                     moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
             }
@@ -253,21 +250,19 @@ namespace YelloKiller
 
             if (input.IsPauseGame(ControllingPlayer) || gamePadDisconnected)
             {
-                ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
-                ScreenManager.AddScreen(new PauseMenuScreen(0, 1), ControllingPlayer, true);
                 moteurAudio.SoundBank.PlayCue("menuBouge");
+                ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
+                ScreenManager.AddScreen(new PauseMenuScreen(0, 1), ControllingPlayer, true);                
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
-            {
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
-            }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {              
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));
-                audio.Close();
                 moteurAudio.SoundBank.PlayCue("11 Fanfare");
+                audio.Close();
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));                
             }
 
             // Looks up input for the Media Player.
