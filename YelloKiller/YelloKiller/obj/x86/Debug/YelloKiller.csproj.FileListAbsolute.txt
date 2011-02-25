@@ -50,15 +50,9 @@ C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\YelloK
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\background.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\blank.xnb
-C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ennemi.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Game Over.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\gradient.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\LevelSelection.xnb
-C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Ninja2Trans.xnb
-C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\NinjaTrans.xnb
-C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine1.xnb
-C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine2.xnb
-C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origineEnnemi1.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\shuriken.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre2.xnb
@@ -74,7 +68,6 @@ C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Conten
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableauMurBlanc.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tapisRougeBC.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\terre.xnb
-C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\collision.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\cri.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\CriMortHero.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\menuBouge.xnb
@@ -251,3 +244,31 @@ C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Conten
 C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_boss.xnb
 C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\WinTex.xnb
 C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\11 Fanfare.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Properties\Settings.Designer.cs
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Properties\Settings.settings
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_garde.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Boss.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\11 Fanfare.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurGauche.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Garde.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_boss.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero1.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero1.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\carlageNoir.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\finMurBas.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero2.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero2.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur_a_cheval.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur_a_cheval.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Garde.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\WinTex.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurFN.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurDroite.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur_a_cheval.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Commode.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable.xnb
