@@ -161,13 +161,13 @@ namespace YelloKiller
                         case ("SoundNone"):
                             return "Aucun";
                         case ("OptLan"):
-                            return "Langage: ";
+                            return "Sprache: ";
                         case ("OptSound"):
-                            return "Mode de son: ";
+                            return "Audio Mode: ";
                         case ("OptMusic"):
-                            return "Volume de la musique : ";
+                            return "Musik lautstarke : ";
                         case ("OptFX"):
-                            return "Volume des effets sonores : ";
+                            return "Effekte lautstarke : ";
                         case ("WinMsg"):
                             return "Cible éliminée!";
                         case ("WiNext"):
