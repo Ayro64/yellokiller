@@ -2,13 +2,12 @@
 
 namespace YelloKiller
 {
-    class ListeNoeuds<T> : List<T> where T : Noeud
+    class NodeList<T> : List<T> where T : Noeud
     {
-        public new bool Contains(T noeud)
+        public new bool Contains(T node)
         {
-            return this[noeud] != null;
+            return this[node] != null;
         }
-
         public T this[T noeud]
         {
             get
@@ -16,13 +15,12 @@ namespace YelloKiller
                 int count = this.Count;
                 for (int i = 0; i < count; i++)
                 {
-                    if (this[i].Position.X == noeud.Position.X && this[i].Position.Y == noeud.Position.Y)
+                    if (this[i].Case == noeud.Case)
                         return this[i];
                 }
                 return default(T);
             }
         }
-
         public void DichotomicInsertion(T noeud)
         {
             int left = 0;
@@ -31,9 +29,9 @@ namespace YelloKiller
             while (left <= right)
             {
                 center = (left + right) / 2;
-                if (noeud.EstimatedMovement < this[center].EstimatedMovement)
+                if (noeud.Manhattan < this[center].Manhattan)
                     right = center - 1;
-                else if (noeud.EstimatedMovement > this[center].EstimatedMovement)
+                else if (noeud.Manhattan > this[center].Manhattan)
                     left = center + 1;
                 else
                 {

@@ -5,53 +5,52 @@ namespace YelloKiller
 {
     class Pathfinding
     {
-        public static List<Case> CalculChemin(Carte carte, Vector2 depart, Vector2 arrivee, Rectangle camera)
+        public static List<Case> CalculChemin(Carte carte, Case depart, Case arrivee)
         {
             List<Case> resultat = new List<Case>();
-            ListeNoeuds<Noeud> listeOuverte = new ListeNoeuds<Noeud>();
-            ListeNoeuds<Noeud> listeFermee = new ListeNoeuds<Noeud>();
-            List<Noeud> NoeudsPossibles;
+            NodeList<Noeud> listeOuverte = new NodeList<Noeud>();
+            NodeList<Noeud> listeFermee = new NodeList<Noeud>();
+            List<Noeud> noeudsPossibles;
             int nombreNoeudsPossibles;
 
-            Noeud noeudDepart = new Noeud(depart, null, arrivee, camera);
-
-            listeOuverte.Add(noeudDepart);
+            Noeud premier = new Noeud(depart, null, arrivee);
+            
+            listeOuverte.Add(premier);
 
             while (listeOuverte.Count > 0)
             {
-                Noeud courant = listeOuverte[0];
+                Noeud current = listeOuverte[0];
                 listeOuverte.RemoveAt(0);
-                listeFermee.Add(courant);
+                listeFermee.Add(current);
 
-                if (courant.Position == arrivee)
+                if (current.Case == arrivee)
                 {
                     List<Case> solution = new List<Case>();
-                    while (courant.Parent != null)
+                    while (current.Parent != null)
                     {
-                        solution.Add(carte.Cases[(int)courant.Position.Y, (int)courant.Position.X]);
-                        courant = courant.Parent;
+                        solution.Add(current.Case);
+                        current = current.Parent;
                     }
                     return solution;
                 }
 
-                NoeudsPossibles = courant.NoeudPossibles(carte, arrivee, camera);
-                nombreNoeudsPossibles = NoeudsPossibles.Count;
+                noeudsPossibles = current.NoeudsPossibles(carte, arrivee);
+                nombreNoeudsPossibles = noeudsPossibles.Count;
 
                 for (int i = 0; i < nombreNoeudsPossibles; i++)
                 {
-                    if (!listeFermee.Contains(NoeudsPossibles[i]))
+                    if (!listeFermee.Contains(noeudsPossibles[i]))
                     {
-                        if (listeOuverte.Contains(NoeudsPossibles[i]))
+                        if (listeOuverte.Contains(noeudsPossibles[i]))
                         {
-                            if (NoeudsPossibles[i].EstimatedMovement < listeOuverte[NoeudsPossibles[i]].EstimatedMovement)
-                                listeOuverte[NoeudsPossibles[i]].Parent = courant;
+                            if (noeudsPossibles[i].Manhattan < listeOuverte[noeudsPossibles[i]].Manhattan)
+                                listeOuverte[noeudsPossibles[i]].Parent = current;
                         }
                         else
-                            listeOuverte.DichotomicInsertion(NoeudsPossibles[i]);
+                            listeOuverte.DichotomicInsertion(noeudsPossibles[i]);
                     }
                 }
             }
-
             return null;
         }
     }

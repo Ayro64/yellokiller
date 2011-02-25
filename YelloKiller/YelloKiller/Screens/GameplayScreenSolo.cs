@@ -93,14 +93,14 @@ namespace YelloKiller
             if (28 * carte.OrigineJoueur1.X - 440 < 0)
                 camera.X = 0;
             else if (28 * carte.OrigineJoueur1.X + 440 > 28 * Taille_Map.LARGEUR_MAP)
-                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 34);
+                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 32);
             else
                 camera.X = 28 * (int)carte.OrigineJoueur1.X - 500;
 
             if (28 * carte.OrigineJoueur1.Y - 322 < 0)
                 camera.Y = 0;
             else if (28 * carte.OrigineJoueur1.Y + 322 > 28 * Taille_Map.HAUTEUR_MAP)
-                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 26);
+                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 28);
             else
                 camera.Y = 28 * (int)carte.OrigineJoueur1.Y - 400;
 
@@ -171,6 +171,8 @@ namespace YelloKiller
 
                 foreach (Garde pasgentil in _gardes)
                     pasgentil.Update(gameTime, carte, hero, camera);
+
+                ServiceHelper.Game.Window.Title = "Camera.X = " + (int)camera.X + " ; Camera.Y = " + (int)camera.Y;
 
                 foreach (Patrouilleur pasgentil in _patrouilleurs)
                     pasgentil.Update(gameTime, carte, hero, camera);

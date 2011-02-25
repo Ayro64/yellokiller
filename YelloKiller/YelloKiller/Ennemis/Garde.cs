@@ -31,16 +31,20 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Enter))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
             {
-                chemin = Pathfinding.CalculChemin(carte, new Vector2((int)Position.X / 28 + (int)camera.X / 28, (int)Position.Y / 28 + (int)camera.Y / 28), new Vector2((int)hero.Position.X / 28 + (int)camera.X / 28, (int)hero.Position.Y / 28 + (int)camera.Y / 28), camera);
+                Console.WriteLine("Camera.X = " + (int)camera.X / 28 + " ; Camera.Y = " + (int)camera.Y / 28);
+                chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)this.position.Y / 28 - (int)camera.Y / 28 - 1, (int)this.position.X / 28 - (int)camera.X / 28], carte.Cases[(int)hero.position.Y / 28 - (int)camera.Y / 28 - 1, (int)hero.position.X / 28 - (int)camera.X / 28]);
 
-                Console.WriteLine("Depart : X = " + (int)Position.X / 28 + " ; Y = " + (int)Position.Y / 28 + " _ Arrivee : X = " + (int)hero.Position.X / 28 + " ; Y = " + (int)hero.Position.Y / 28);
+                if (chemin == null)
+                    Console.WriteLine("CHEMIN NULL");
+
+                Console.WriteLine("Depart : X = " + carte.Cases[(int)this.position.Y / 28 - (int)camera.Y / 28 - 1, (int)this.position.X / 28 - (int)camera.X / 28].X + " ; Y = " + carte.Cases[(int)this.position.Y / 28 - (int)camera.Y / 28 - 1, (int)this.position.X / 28 - (int)camera.X / 28].Y + " _ Arrivee : X = " + carte.Cases[(int)hero.position.Y / 28 - (int)camera.Y / 28 - 1, (int)hero.position.X / 28 - (int)camera.X / 28].X + " ; Y = " + carte.Cases[(int)hero.position.Y / 28 - (int)camera.Y / 28 - 1, (int)hero.position.X / 28 - (int)camera.X / 28].Y);
                 if (chemin != null)
                     foreach (Case sisi in chemin)
                         Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
             }
-
+            /*
             if (chemin != null && chemin.Count != 0)
             {
                 if (Monter && Descendre && Droite && Gauche)
@@ -72,7 +76,7 @@ namespace YelloKiller
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                 }
-            }
+            }*/
         }
     }
 }
