@@ -172,7 +172,7 @@ namespace YelloKiller
                 foreach (Garde pasgentil in _gardes)
                     pasgentil.Update(gameTime, carte, hero, camera);
 
-                ServiceHelper.Game.Window.Title = "Camera.X = " + (int)camera.X + " ; Camera.Y = " + (int)camera.Y;
+                ServiceHelper.Game.Window.Title = "Camera.X = " + (int)camera.X + " ; Camera.Y = " + (int)camera.Y + " _ Hero.X = " + hero.position.X + " ; Hero.Y = " + hero.position.Y;
 
                 foreach (Patrouilleur pasgentil in _patrouilleurs)
                     pasgentil.Update(gameTime, carte, hero, camera);
