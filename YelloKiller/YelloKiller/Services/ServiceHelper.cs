@@ -8,6 +8,7 @@ namespace YelloKiller
 
         public static Game Game
         {
+            get { return game; }
             set { game = value; }
         }
 

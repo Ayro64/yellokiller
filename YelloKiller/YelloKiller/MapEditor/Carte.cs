@@ -222,6 +222,20 @@ namespace YelloKiller
             }
         }
 
+        public bool CaseValide(int x, int y)
+        {
+            if (x < 0)
+                return false;
+            if (y < 0)
+                return false;
+            if (x >= Taille_Map.LARGEUR_MAP)
+                return false;
+            if (y >= Taille_Map.HAUTEUR_MAP)
+                return false;
+
+            return true;
+        }
+
         public List<Vector2> OriginesGardes
         {
             get { return _originesGarde; }

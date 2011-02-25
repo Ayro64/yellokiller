@@ -6,20 +6,20 @@ namespace YelloKiller
 {
     class Noeud
     {
-        Vector2 position;
+        Case _case;
         Noeud parent;
-        float estimatedMovement;
+        int manhattan;
 
-        public Noeud(Vector2 position, Noeud parent, Vector2 destination, Rectangle camera)
+        public Noeud(Case _case, Noeud parent, Case destination)
         {
-            this.position = position;
+            this._case = _case;
             this.parent = parent;
-            this.estimatedMovement = Math.Abs(position.X - destination.X/* + (int)camera.X / 28*/) + Math.Abs(position.Y - destination.Y /*+ (int)camera.Y / 28*/);
+            this.manhattan = Math.Abs(_case.X - destination.X) + Math.Abs(_case.Y - destination.Y);
         }
 
-        public Vector2 Position
+        public Case Case
         {
-            get { return position; }
+            get { return _case; }
         }
 
         public Noeud Parent
@@ -28,27 +28,26 @@ namespace YelloKiller
             set { parent = value; }
         }
 
-        public float EstimatedMovement
+        public int Manhattan
         {
-            get { return estimatedMovement; }
+            get { return manhattan; }
         }
-        
-        public List<Noeud> NoeudPossibles(Carte carte, Vector2 destination, Rectangle camera)
+
+        public List<Noeud> NoeudsPossibles(Carte carte, Case destination)
         {
             List<Noeud> result = new List<Noeud>();
-
             // Bas
-            if ((int)position.Y + 2 < Taille_Map.HAUTEUR_MAP && carte.Cases[(int)position.Y + 1, (int)position.X].Type > 0)
-                result.Add(new Noeud(new Vector2(position.X, position.Y + 1), this, destination, camera/* new Rectangle(camera.X, camera.Y + 1, camera.Width, camera.Height)*/));
+            if (carte.CaseValide(_case.X, _case.Y + 1) && carte.Cases[_case.Y + 1, _case.X].Type > 0)
+                result.Add(new Noeud(carte.Cases[_case.Y + 1, _case.X], this, destination));
             // Droite
-            if ((int)position.X + 2 < Taille_Map.LARGEUR_MAP && carte.Cases[(int)position.Y, (int)position.X + 1].Type > 0)
-                result.Add(new Noeud(new Vector2(position.X + 1, position.Y), this, destination, camera/*new Rectangle(camera.X + 1, camera.Y, camera.Width, camera.Height)*/));
+            if (carte.CaseValide(_case.X + 1, _case.Y) && carte.Cases[_case.Y, _case.X + 1].Type > 0)
+                result.Add(new Noeud(carte.Cases[_case.Y, _case.X + 1], this, destination));
             // Haut
-            if ((int)position.Y - 1 >= 0 && carte.Cases[(int)position.Y - 1, (int)position.X].Type > 0)
-                result.Add(new Noeud(new Vector2(position.X, position.Y - 1), this, destination, camera/*new Rectangle(camera.X, camera.Y - 1, camera.Width, camera.Height)*/));
+            if (carte.CaseValide(_case.X, _case.Y - 1) && carte.Cases[_case.Y - 1, _case.X].Type > 0)
+                result.Add(new Noeud(carte.Cases[_case.Y - 1, _case.X], this, destination));
             // Gauche
-            if ((int)position.X - 1 >= 0 && carte.Cases[(int)position.Y, (int)position.X - 1].Type > 0)
-                result.Add(new Noeud(new Vector2(position.X - 1, position.Y), this, destination, camera/*new Rectangle(camera.X - 1, camera.Y, camera.Width, camera.Height)*/));
+            if (carte.CaseValide(_case.X - 1, _case.Y) && carte.Cases[_case.Y, _case.X - 1].Type > 0)
+                result.Add(new Noeud(carte.Cases[_case.Y, _case.X - 1], this, destination));
 
             return result;
         }

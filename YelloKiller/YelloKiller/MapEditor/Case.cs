@@ -10,17 +10,31 @@ namespace YelloKiller
         Texture2D texture;
         TypeCase type;
         string nomTexture;
+        int x, y;
 
         public Case(Vector2 position, TypeCase type)
         {
             this.position = position;
             this.type = type;
+            x = (int)position.X / 28;
+            y = (int)position.Y / 28;
+            //System.Console.WriteLine("X = " + x + " ; Y = " + y);
         }
 
         public Vector2 Position
         {
             get { return position; }
             set { position = value; }
+        }
+
+        public int X
+        {
+            get { return x; }
+        }
+
+        public int Y
+        {
+            get { return y; }
         }
 
         public TypeCase Type
