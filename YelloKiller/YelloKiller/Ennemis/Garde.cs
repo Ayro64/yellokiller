@@ -34,7 +34,7 @@ namespace YelloKiller
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
             {
                 Console.WriteLine("Camera.X = " + (int)camera.X / 28 + " ; Camera.Y = " + (int)camera.Y / 28);
-                chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)this.position.Y / 28 - (int)camera.Y / 28 - 1, (int)this.position.X / 28 - (int)camera.X / 28], carte.Cases[(int)hero.position.Y / 28 - (int)camera.Y / 28 - 1, (int)hero.position.X / 28 - (int)camera.X / 28]);
+                chemin = Pathfinding.CalculChemin(carte, carte.Cases[(int)this.position.Y / 28 + ((int)camera.Y + 2) / 28, (int)this.position.X / 28 + (int)camera.X / 28], carte.Cases[(int)hero.position.Y / 28 + ((int)camera.Y + 2) / 28 , (int)hero.position.X / 28 + (int)camera.X / 28]);
 
                 if (chemin == null)
                     Console.WriteLine("CHEMIN NULL");
@@ -44,7 +44,7 @@ namespace YelloKiller
                     foreach (Case sisi in chemin)
                         Console.WriteLine("X = " + (int)sisi.Position.X / 28 + " ; Y = " + (int)sisi.Position.Y / 28);
             }
-            /*
+            
             if (chemin != null && chemin.Count != 0)
             {
                 if (Monter && Descendre && Droite && Gauche)
@@ -76,7 +76,7 @@ namespace YelloKiller
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                 }
-            }*/
+            }
         }
     }
 }
