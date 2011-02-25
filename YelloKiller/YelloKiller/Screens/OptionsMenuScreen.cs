@@ -27,7 +27,7 @@ namespace YelloKiller
 
         int mod;
 
-        string[] language = { "Français", "Deutsch", "English" };
+        string[] language = { "Français", "Deutsch" , "English"};
         string[] son = { Langue.tr("SoundDefault"), "Player", Langue.tr("SoundNone") };
 
         uint currentLanguage;
