@@ -103,8 +103,11 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
-                        camera.Y -= vitesseSprite;
+                    if (numeroHero == 1)
+                    {
+                        if (camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
+                            camera.Y -= vitesseSprite;
+                    }
                 }
 
                 else
@@ -126,8 +129,11 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (camera.Y + vitesseSprite < 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 200)
-                        camera.Y += vitesseSprite;
+                    if (numeroHero == 1)
+                    {
+                        if (camera.Y + vitesseSprite < 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 200)
+                            camera.Y += vitesseSprite;
+                    }
                 }
                 else
                 {
@@ -148,8 +154,11 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (camera.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
-                        camera.X -= vitesseSprite;
+                    if (numeroHero == 1)
+                    {
+                        if (camera.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
+                            camera.X -= vitesseSprite;
+                    }
                 }
 
                 else
@@ -171,8 +180,11 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (camera.X + vitesseSprite < 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 200)
-                        camera.X += vitesseSprite;
+                    if (numeroHero == 1)
+                    {
+                        if (camera.X + vitesseSprite < 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 200)
+                            camera.X += vitesseSprite;
+                    }
                 }
 
                 else
