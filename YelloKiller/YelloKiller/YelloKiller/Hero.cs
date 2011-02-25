@@ -210,7 +210,6 @@ namespace YelloKiller
 
                 if (hero2 == null)
                 {
-
                     if (position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePressee(up) &&
                         (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0)
                     {
@@ -219,7 +218,6 @@ namespace YelloKiller
                         positionDesiree.Y = position.Y - 28;
                         monter = false;
                     }
-
 
                     else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePressee(down) &&
                              (int)carte.Cases[(int)((position.Y + 28) / 28), (int)(position.X) / 28].Type > 0)
@@ -230,7 +228,6 @@ namespace YelloKiller
                         descendre = false;
                     }
 
-
                     else if (position.X > 10 && ServiceHelper.Get<IKeyboardService>().TouchePressee(left) &&
                              (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0)
                     {
@@ -239,7 +236,6 @@ namespace YelloKiller
                         positionDesiree.Y = position.Y;
                         gauche = false;
                     }
-
 
                     else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePressee(right) &&
                              (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0)
