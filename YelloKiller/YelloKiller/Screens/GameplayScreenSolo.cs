@@ -93,14 +93,14 @@ namespace YelloKiller
             if (28 * carte.OrigineJoueur1.X - 440 < 0)
                 camera.X = 0;
             else if (28 * carte.OrigineJoueur1.X + 440 > 28 * Taille_Map.LARGEUR_MAP)
-                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 32);
+                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 34);
             else
                 camera.X = 28 * (int)carte.OrigineJoueur1.X - 500;
 
             if (28 * carte.OrigineJoueur1.Y - 322 < 0)
                 camera.Y = 0;
             else if (28 * carte.OrigineJoueur1.Y + 322 > 28 * Taille_Map.HAUTEUR_MAP)
-                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 28);
+                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 26);
             else
                 camera.Y = 28 * (int)carte.OrigineJoueur1.Y - 400;
 
@@ -134,17 +134,17 @@ namespace YelloKiller
 
             hero.LoadContent(content, 2);
 
-            foreach (Garde mechant in _gardes)
-                mechant.LoadContent(content, 2);
+            foreach (Garde garde in _gardes)
+                garde.LoadContent(content, 2);
 
-            foreach (Patrouilleur mechant in _patrouilleurs)
-                mechant.LoadContent(content, 2);
+            foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                patrouilleur.LoadContent(content, 2);
 
-            foreach (Patrouilleur_a_cheval mechant in _patrouilleurs_a_chevaux)
-                mechant.LoadContent(content, 2);
+            foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
+                patrouilleurACheval.LoadContent(content, 2);
 
-            foreach (Boss mechant in _boss)
-                mechant.LoadContent(content, 2);
+            foreach (Boss boss in _boss)
+                boss.LoadContent(content, 2);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -169,28 +169,31 @@ namespace YelloKiller
 
                 hero.Update(gameTime, carte, ref camera, _shuriken, moteurAudio, content, null);
 
-                foreach (Garde pasgentil in _gardes)
-                    pasgentil.Update(gameTime, carte, hero, camera);
-
                 ServiceHelper.Game.Window.Title = "Camera.X = " + (int)camera.X + " ; Camera.Y = " + (int)camera.Y + " _ Hero.X = " + hero.position.X + " ; Hero.Y = " + hero.position.Y;
 
-                foreach (Patrouilleur pasgentil in _patrouilleurs)
-                    pasgentil.Update(gameTime, carte, hero, camera);
+                foreach (Garde garde in _gardes)
+                    garde.Update(gameTime, carte, hero, camera);
 
-                foreach (Patrouilleur_a_cheval pasgentil in _patrouilleurs_a_chevaux)
-                    pasgentil.Update(gameTime, carte, hero, camera);
-                /*
-                foreach (Boss pasgentil in _boss)
-                    pasgentil.Update(gameTime);*/
+                foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                    patrouilleur.Update(gameTime, carte, hero, camera);
 
+                foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
+                    patrouilleurACheval.Update(gameTime, carte, hero, camera);
+
+                /*foreach (Boss boss in _boss)
+                    boss.Update(gameTime, carte, hero1, camera);*/
+                
                 Moteur_physique.Collision_Shuriken_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurAudio.SoundBank);
 
                 if (Moteur_physique.Collision_Garde_Hero(_gardes, hero, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
+                
                 if (Moteur_physique.Collision_Patrouilleur_Hero(_patrouilleurs, hero, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
+                
                 if (Moteur_physique.Collision_PatrouilleurACheval_Hero(_patrouilleurs_a_chevaux, hero, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
+                
                 if (Moteur_physique.Collision_Boss_Hero(_boss, hero, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
 
@@ -223,17 +226,17 @@ namespace YelloKiller
 
             spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
 
-            foreach (Garde connard in _gardes)
-                connard.Draw(spriteBatch, camera);
+            foreach (Garde garde in _gardes)
+                garde.Draw(spriteBatch, camera);
 
-            foreach (Patrouilleur connard in _patrouilleurs)
-                connard.Draw(spriteBatch, camera);
+            foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                patrouilleur.Draw(spriteBatch, camera);
 
-            foreach (Patrouilleur_a_cheval connard in _patrouilleurs_a_chevaux)
-                connard.Draw(spriteBatch, camera);
+            foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
+                patrouilleurACheval.Draw(spriteBatch, camera);
 
-            foreach (Boss connard in _boss)
-                connard.Draw(spriteBatch, camera);
+            foreach (Boss boss in _boss)
+                boss.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
@@ -243,7 +246,6 @@ namespace YelloKiller
                 if (_shuriken[i].ShurikenExists == false)
                 {
                     _shuriken.Remove(_shuriken[i]);
-                    Console.WriteLine("suppresion shuriken");
                     moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
             }
@@ -286,14 +288,12 @@ namespace YelloKiller
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
-            {
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
-            }
-
+            
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {
-                audio.Close();
                 moteurAudio.SoundBank.PlayCue("11 Fanfare");
+                audio.Close();
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));
             }
 
