@@ -1,110 +1,77 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace YelloKiller
 {
-    class Shuriken
+    class Shuriken : Sprite
     {
-        Texture2D _shuriken;
-        Vector2 position, origin, direction;
+        Vector2 direction;
         Rectangle rectangle;
-        float RotationAngle;
-        public bool existshuriken = false;
+        bool shurikenExists;
+        float elapsed, circle;
 
-        public Shuriken(GameplayScreenCoop yk, Vector2 position_ini, int largeur, Hero1 hero1, Hero2 hero2)
+        public Shuriken(Vector2 position, Hero hero, ContentManager content)
+            : base(position)
         {
-            _shuriken = yk.Content.Load<Texture2D>("shuriken");
-            origin.X = _shuriken.Width / 2;
-            origin.Y = _shuriken.Height / 2;
+            base.LoadContent(content, "shuriken");
+            Origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
 
-            position.X = position_ini.X + 8;
-            position.Y = position_ini.Y + 4;
-
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 12, 12);
-
-            if (hero1.ishero1 == true)
-            {
-                if (hero1.sourceRectangle.Value.Y == 230)
-                    direction = -Vector2.UnitX;
-                else if (hero1.sourceRectangle.Value.Y == 198)
-                    direction = Vector2.UnitY;
-                else if (hero1.sourceRectangle.Value.Y == 166)
-                    direction = Vector2.UnitX;
-                else if (hero1.sourceRectangle.Value.Y == 133)
-                    direction = -Vector2.UnitY;
-            }
-            if (hero2.ishero2 == true)
-            {
-                if (hero2.sourceRectangle.Value.Y == 230)
-                    direction = -Vector2.UnitX;
-                else if (hero2.sourceRectangle.Value.Y == 198)
-                    direction = Vector2.UnitY;
-                else if (hero2.sourceRectangle.Value.Y == 166)
-                    direction = Vector2.UnitX;
-                else if (hero2.sourceRectangle.Value.Y == 133)
-                    direction = -Vector2.UnitY;
-            }           
-        }
-
-        public Shuriken(GameplayScreenSolo yk, Vector2 position_ini, int largeur, Hero hero)
-        {
-            _shuriken = yk.Content.Load<Texture2D>("shuriken");
-            origin.X = _shuriken.Width / 2;
-            origin.Y = _shuriken.Height / 2;
-
-            position.X = position_ini.X + 8;
-            position.Y = position_ini.Y + 4;
+            this.position.X = position.X + 8;
+            this.position.Y = position.Y + 4;
+            elapsed = 0;
+            circle = MathHelper.Pi * 2;
+            shurikenExists = false;
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 12, 12);
 
             if (hero.ishero == true)
             {
-                Console.WriteLine("sourcerectangle hero = " + hero.sourceRectangle.Value.Y);
-                if (hero.sourceRectangle.Value.Y == 230)
+                if (hero.SourceRectangle.Value.Y == 230)
                     direction = -Vector2.UnitX;
-                else if (hero.sourceRectangle.Value.Y == 198)
+                else if (hero.SourceRectangle.Value.Y == 198)
                     direction = Vector2.UnitY;
-                else if (hero.sourceRectangle.Value.Y == 166)
+                else if (hero.SourceRectangle.Value.Y == 166)
                     direction = Vector2.UnitX;
-                else if (hero.sourceRectangle.Value.Y == 133)
+                else if (hero.SourceRectangle.Value.Y == 133)
                     direction = -Vector2.UnitY;
             }
         }
 
-        public Vector2 Position
+        public void Update(GameTime gameTime, Carte carte)
         {
-            get { return position; }
+            rectangle.X = (int)position.X + 1;
+            rectangle.Y = (int)position.Y + 1;
+
+            if (position.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP && position.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP &&
+                carte.Cases[(int)position.Y / 28, (int)position.X / 28].Type > 0)
+            {
+                shurikenExists = true;
+                position += 4 * direction;
+
+                elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Rotation += elapsed + 50;
+                Rotation = Rotation % circle;
+            }
+            else
+                shurikenExists = false;
         }
+
 
         public Rectangle Rectangle
         {
             get { return rectangle; }
         }
 
-        public void Update(GameTime gameTime, Carte carte)
+        public bool ShurikenExists
         {
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 12, 12);
-
-            if (position.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP && position.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP &&
-                carte.Cases[(int)position.Y / 28, (int)position.X / 28].Type > 0)
-            { 
-                existshuriken = true;
-                position += 4 * direction;
-
-                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-                RotationAngle += elapsed + 50;
-                float circle = MathHelper.Pi * 2;
-                RotationAngle = RotationAngle % circle;
-            }
-            else
-                existshuriken = false;
+            get { return shurikenExists; }
         }
 
-        public void Draw(SpriteBatch sb, Rectangle camera)
+        public void LoadContent(ContentManager content)
         {
-            sb.Draw(_shuriken, new Vector2(position.X - camera.X, position.Y - camera.Y), null, Color.White, RotationAngle, origin, 1.0f,
-                SpriteEffects.None, 0f);
+            base.LoadContent(content, "shuriken");
         }
     }
 }
