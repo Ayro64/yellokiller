@@ -26,6 +26,7 @@ namespace YelloKiller
         public void Update(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 19, 26), new Rectangle((int)Index * 24, 63, 19, 26), new Rectangle((int)Index * 24, 96, 19, 26), new Rectangle((int)Index * 24, 32, 19, 26));
+
             autochemin += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
             if (Monter && Descendre && Droite && Gauche)

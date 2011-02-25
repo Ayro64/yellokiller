@@ -30,6 +30,7 @@ namespace YelloKiller
         public void Update(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
+
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Enter))
             {
                 chemin = Pathfinding.CalculChemin(carte, new Vector2((int)Position.X / 28 + (int)camera.X / 28, (int)Position.Y / 28 + (int)camera.Y / 28), new Vector2((int)hero.Position.X / 28 + (int)camera.X / 28, (int)hero.Position.Y / 28 + (int)camera.Y / 28), camera);
@@ -72,15 +73,6 @@ namespace YelloKiller
                     }
                 }
             }
-
-            if (SourceRectangle.Value.Y == 0)
-                SourceRectangle = new Rectangle(24, 0, 16, 24);
-            if (SourceRectangle.Value.Y == 33)
-                SourceRectangle = new Rectangle(24, 33, 16, 24);
-            if (SourceRectangle.Value.Y == 64)
-                SourceRectangle = new Rectangle(24, 64, 16, 24);
-            if (SourceRectangle.Value.Y == 97)
-                SourceRectangle = new Rectangle(24, 97, 16, 24);
         }
     }
 }
