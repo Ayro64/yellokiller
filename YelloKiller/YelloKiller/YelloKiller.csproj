@@ -96,7 +96,7 @@
     <Compile Include="Ennemis\Ennemi.cs" />
     <Compile Include="Ennemis\Garde.cs" />
     <Compile Include="Ennemis\Patrouilleur.cs" />
-    <Compile Include="Ennemis\patrouilleur_a_cheval.cs" />
+    <Compile Include="Ennemis\Patrouilleur à cheval.cs" />
     <Compile Include="MapEditor\Ascenseur.cs" />
     <Compile Include="MapEditor\Carte.cs" />
     <Compile Include="MapEditor\Case.cs" />
@@ -144,8 +144,6 @@
     <Compile Include="Settings.cs" />
     <Compile Include="YelloKiller\Dimensions.cs" />
     <Compile Include="YelloKiller\Hero.cs" />
-    <Compile Include="YelloKiller\Hero1.cs" />
-    <Compile Include="YelloKiller\Hero2.cs" />
     <Compile Include="YelloKiller\Moteur physique.cs" />
     <Compile Include="YelloKiller\Shuriken.cs" />
     <Compile Include="YelloKiller\Sprite.cs" />
