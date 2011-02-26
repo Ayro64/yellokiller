@@ -5,13 +5,6 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-/*Avant que vous ne gueuliez tous en disant "Hey mais c'est koi ce putain de hero, on en a pas assez ?", et bah la reponse est non.
- Pour le mode solo, on a besoin que d'un hero (hehe), or, les fonctions update des hero1 et hero2 ont besoin respectivement de hero2 et hero1.
- De plus, il n'y a pas a détecter les collisions entre les deux héros puisqu'il n'y en a d'un (héhé). Il a donc été plus simple de faire une classe
- GameplayScreenSolo plus adaptée, très ressemblante à la classe GamePlayScreenCoop (que j'ai renommé au passage). De plus le shuriken a un deuxieme constructeur, 
- qui ne fait appelle qu'au hero.
- La classe Ennemi a également une deuxieme fonction Update (appelée UpdateInSolo) qui ne prend que hero en parametre, et pas hero1 et hero2.*/
-
 namespace YelloKiller
 {
     class Hero : Sprite
