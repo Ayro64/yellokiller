@@ -7,7 +7,7 @@ namespace YelloKiller
 {
     class Boss : Ennemi
     {
-        public int vie = 5;
+        int vie;
 
         public Boss(Vector2 position)
             : base(position)
@@ -17,6 +17,7 @@ namespace YelloKiller
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 18, 26);
             MaxIndex = 0;
             positionDesiree = position;
+            vie = 5;
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -24,6 +25,13 @@ namespace YelloKiller
             base.LoadContent(content, "Boss");
             MaxIndex = maxIndex;
         }
+
+        public int Vie
+        {
+            get { return vie; }
+            set { vie = value; }
+        }
+
         /*
         public void Update(GameTime gameTime)
         {
