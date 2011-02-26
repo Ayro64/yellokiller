@@ -8,7 +8,42 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    public class GameplayScreenCoop : GameScreen
+    public enum TypeCase // Valeur strictement positive pour les cases franchissables, negative sinon.
+    {
+        arbre = -1,
+        arbre2 = -2,
+        buissonSurHerbe = -3,
+        murBlanc = -4,
+        tableauMurBlanc = -5,
+        finMurDroite = -7,
+        finMurFN = -8,
+        finMurGauche = -9,
+        fondNoir = -10,
+        commode = -11,
+        GrandeTable = -12,
+        Lit = -13,
+        TableMoyenne = -14,
+
+        bois = 1,
+        boisCarre = 2,
+        tapisRougeBC = 3,
+        herbe = 4,
+        herbeFoncee = 5,
+        piedDeMurBois = 6,
+        terre = 7,
+        carlageNoir = 8,
+
+        fond = -6,
+
+        Joueur1 = 100,
+        Joueur2 = 101,
+        Garde = 102,
+        Patrouilleur = 103,
+        Patrouilleur_a_cheval = 104,
+        Boss = 105,
+    }
+
+    public class GameplayScreen : GameScreen
     {
         #region Fields
 
@@ -30,14 +65,16 @@ namespace YelloKiller
         MoteurAudio moteurAudio;
         double temps;
         string nomDeCarte;
+        bool jeuEnCoop;
 
         #endregion
 
         #region Initialization
 
-        public GameplayScreenCoop(string nomDeCarte)
+        public GameplayScreen(string nomDeCarte)
         {
             this.nomDeCarte = nomDeCarte;
+            jeuEnCoop = nomDeCarte[0] == 'C';
 
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -53,7 +90,8 @@ namespace YelloKiller
             camera = new Rectangle(0, 0, 32, 24);
 
             hero1 = new Hero(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.Space, Keys.LeftShift, 1, 50);
-            hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightControl, Keys.RightShift, 2, 25);
+            if(jeuEnCoop)
+                hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightControl, Keys.RightShift, 2, 25);
             
             // Centre la camera sur le personnage.
             if (28 * carte.OrigineJoueur1.X - 440 < 0)
@@ -100,7 +138,8 @@ namespace YelloKiller
             audio.LoadContent(content);
 
             hero1.LoadContent(content, 2);
-            hero2.LoadContent(content, 2);
+            if (jeuEnCoop)
+                hero2.LoadContent(content, 2);
 
             foreach (Garde garde in _gardes)
                 garde.LoadContent(content, 2);
@@ -136,7 +175,8 @@ namespace YelloKiller
                 moteurAudio.Update();
 
                 hero1.Update(gameTime, carte, ref camera, _shuriken, moteurAudio, content, hero2);
-                hero2.Update(gameTime, carte, ref camera, _shuriken, moteurAudio, content, hero1);
+                if (jeuEnCoop)
+                    hero2.Update(gameTime, carte, ref camera, _shuriken, moteurAudio, content, hero1);
 
                 foreach (Garde garde in _gardes)
                     garde.Update(gameTime, carte, hero1, camera);
@@ -188,7 +228,8 @@ namespace YelloKiller
 
             carte.DrawInGame(spriteBatch, content, camera);
             hero1.Draw(spriteBatch, gameTime, camera);
-            hero2.Draw(spriteBatch, gameTime, camera);
+            if (jeuEnCoop)
+                hero2.Draw(spriteBatch, gameTime, camera);
 
             spriteBatch.DrawString(ScreenManager.font, "Il reste " + _gardes.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.BurlyWood);
 

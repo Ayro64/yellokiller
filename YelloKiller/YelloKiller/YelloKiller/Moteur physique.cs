@@ -78,10 +78,21 @@ namespace YelloKiller
         {
             for (int b = 0; b < _gardes.Count; b++)
             {
-                if (_gardes[b].Rectangle.Intersects(hero1.Rectangle) || _gardes[b].Rectangle.Intersects(hero2.Rectangle))
+                if (_gardes[b].Rectangle.Intersects(hero1.Rectangle))
                 {
                     soundBank.PlayCue("CriMortHero");
                     return true;
+                }
+            }
+            if (hero2 != null)
+            {
+                for (int b = 0; b < _gardes.Count; b++)
+                {
+                    if (_gardes[b].Rectangle.Intersects(hero2.Rectangle))
+                    {
+                        soundBank.PlayCue("CriMortHero");
+                        return true;
+                    }
                 }
             }
             return false;
@@ -91,10 +102,21 @@ namespace YelloKiller
         {
             for (int b = 0; b < _patrouilleurs.Count; b++)
             {
-                if (_patrouilleurs[b].Rectangle.Intersects(hero1.Rectangle) || _patrouilleurs[b].Rectangle.Intersects(hero2.Rectangle))
+                if (_patrouilleurs[b].Rectangle.Intersects(hero1.Rectangle))
                 {
                     soundBank.PlayCue("CriMortHero");
                     return true;
+                }
+            }
+            if (hero2 != null)
+            {
+                for (int b = 0; b < _patrouilleurs.Count; b++)
+                {
+                    if (_patrouilleurs[b].Rectangle.Intersects(hero2.Rectangle))
+                    {
+                        soundBank.PlayCue("CriMortHero");
+                        return true;
+                    }
                 }
             }
             return false;
@@ -104,10 +126,21 @@ namespace YelloKiller
         {
             for (int b = 0; b < _patrouilleursAChevaux.Count; b++)
             {
-                if (_patrouilleursAChevaux[b].Rectangle.Intersects(hero1.Rectangle) || _patrouilleursAChevaux[b].Rectangle.Intersects(hero2.Rectangle))
+                if (_patrouilleursAChevaux[b].Rectangle.Intersects(hero1.Rectangle))
                 {
                     soundBank.PlayCue("CriMortHero");
                     return true;
+                }
+            }
+            if (hero2 != null)
+            {
+                for (int b = 0; b < _patrouilleursAChevaux.Count; b++)
+                {
+                    if (_patrouilleursAChevaux[b].Rectangle.Intersects(hero2.Rectangle))
+                    {
+                        soundBank.PlayCue("CriMortHero");
+                        return true;
+                    }
                 }
             }
             return false;
@@ -117,10 +150,21 @@ namespace YelloKiller
         {
             for (int b = 0; b < _Boss.Count; b++)
             {
-                if (_Boss[b].Rectangle.Intersects(hero1.Rectangle) || _Boss[b].Rectangle.Intersects(hero2.Rectangle))
+                if (_Boss[b].Rectangle.Intersects(hero1.Rectangle))
                 {
                     soundBank.PlayCue("CriMortHero");
                     return true;
+                }
+            }
+            if (hero2 != null)
+            {
+                for (int b = 0; b < _Boss.Count; b++)
+                {
+                    if (_Boss[b].Rectangle.Intersects(hero2.Rectangle))
+                    {
+                        soundBank.PlayCue("CriMortHero");
+                        return true;
+                    }
                 }
             }
             return false;

@@ -167,7 +167,7 @@ namespace YelloKiller
         void LevelMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             MenuEntry selectedLevel = (MenuEntry)sender;
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreenSolo(selectedLevel.Text + ".txt"));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(selectedLevel.Text + ".txt"));
         }
 
         /// <summary>
