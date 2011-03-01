@@ -301,7 +301,7 @@ namespace YelloKiller
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {              
-                moteurAudio.SoundBank.PlayCue("11 Fanfare");
+                moteurAudio.SoundBank.PlayCue("metalgear");
                 audio.Close();
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));                
             }

@@ -11,12 +11,12 @@
     Compression Preset Name = &lt;none&gt;;
     Xbox Bank Last Modified Low = 0;
     Xbox Bank Last Modified High = 0;
-    PC Bank Last Modified Low = 1476380327;
-    PC Bank Last Modified High = 30135379;
+    PC Bank Last Modified Low = 1679145484;
+    PC Bank Last Modified High = 30136418;
     Header Last Modified Low = 0;
     Header Last Modified High = 0;
-    Bank Last Revised Low = 2458621500;
-    Bank Last Revised High = 30135375;
+    Bank Last Revised Low = 1566489040;
+    Bank Last Revised High = 30136418;
 
     Wave
     {
@@ -36,8 +36,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1124185933;
-            Last Modified High = 30135375;
+            Last Modified Low = 2749637426;
+            Last Modified High = 30135574;
         }
     }
 
@@ -59,8 +59,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1124210933;
-            Last Modified High = 30135375;
+            Last Modified Low = 2749737426;
+            Last Modified High = 30135574;
         }
     }
 
@@ -82,8 +82,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1124035930;
-            Last Modified High = 30135375;
+            Last Modified Low = 2749437425;
+            Last Modified High = 30135574;
         }
     }
 
@@ -105,8 +105,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1124335935;
-            Last Modified High = 30135375;
+            Last Modified Low = 2750087426;
+            Last Modified High = 30135574;
         }
     }
 
@@ -128,8 +128,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1123860928;
-            Last Modified High = 30135375;
+            Last Modified Low = 2746987422;
+            Last Modified High = 30135574;
         }
     }
 
@@ -151,8 +151,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1124085931;
-            Last Modified High = 30135375;
+            Last Modified Low = 2749537425;
+            Last Modified High = 30135574;
         }
     }
 
@@ -174,8 +174,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1123935929;
-            Last Modified High = 30135375;
+            Last Modified Low = 2747737423;
+            Last Modified High = 30135574;
         }
     }
 
@@ -197,8 +197,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 1124260934;
-            Last Modified High = 30135375;
+            Last Modified Low = 2749837426;
+            Last Modified High = 30135574;
         }
     }
 
@@ -220,8 +220,31 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2947845141;
-            Last Modified High = 30135374;
+            Last Modified Low = 2747537423;
+            Last Modified High = 30135574;
+        }
+    }
+
+    Wave
+    {
+        Name = metalgear;
+        File = metalgear.wav;
+        Build Settings Last Modified Low = 1340736128;
+        Build Settings Last Modified High = 30136418;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 41061888;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2009427651;
+            Last Modified High = 30136416;
         }
     }
 }
