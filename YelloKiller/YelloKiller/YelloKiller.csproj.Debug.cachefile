@@ -1,61 +1,61 @@
-Content\Textures\tapisRougeBC.xnb
-Content\gradient.xnb
-Content\Textures\fond.xnb
-Content\Textures\lit.xnb
-Content\background.xnb
-Content\origine_patrouilleur.xnb
-Content\Sons\pasGravier.xnb
-Content\Sons\Sound Bank.xsb
-Content\Sons\Ambiance sonore.xgs
-Content\Textures\tableMoyenne.xnb
-Content\Textures\buissonSurHerbe.xnb
-Content\origine_garde.xnb
-Content\Boss.xnb
-Content\Sons\11 Fanfare.xnb
-Content\Sons\Wave Bank.xwb
-Content\Textures\Patrouilleur.xnb
-Content\Sons\cri.xnb
-Content\Textures\tableauMurBlanc.xnb
-Content\courier.xnb
-Content\Textures\FinMurGauche.xnb
-Content\Game Over.xnb
-Content\Textures\piedDeMurBois.xnb
-Content\Garde.xnb
-Content\origine_boss.xnb
-Content\origine_hero1.xnb
-Content\Textures\arbre2.xnb
-Content\Sons\CriMortHero.xnb
-Content\Hero1.xnb
-Content\Textures\herbeFoncee.xnb
-Content\Textures\carlageNoir.xnb
-Content\Textures\finMurBas.xnb
-Content\origine_hero2.xnb
-Content\Textures\terre.xnb
-Content\Sons\menuBouge.xnb
-Content\LevelSelection.xnb
-Content\Textures\bois.xnb
-Content\Hero2.xnb
-Content\origine_patrouilleur_a_cheval.xnb
-Content\Sons\sonMenuBoutton.xnb
-Content\Textures\herbe.xnb
-Content\Textures\Patrouilleur_a_cheval.xnb
-Content\Textures\Garde.xnb
-Content\WinTex.xnb
-Content\Textures\FinMurFN.xnb
-Content\Textures\arbre.xnb
 Content\ascenseur.xnb
+Content\background.xnb
 Content\blank.xnb
-Content\Patrouilleur.xnb
-Content\Sons\shurikenCollision.xnb
-Content\Textures\FinMurDroite.xnb
-Content\Patrouilleur_a_cheval.xnb
-Content\Textures\murBlanc.xnb
-Content\Sons\shuriken.xnb
-Content\Textures\Commode.xnb
-Content\Textures\grandeTable.xnb
-Content\Sons\pasBois.xnb
+Content\Game Over.xnb
+Content\gradient.xnb
+Content\LevelSelection.xnb
 Content\shuriken.xnb
+Content\Textures\arbre.xnb
+Content\Textures\arbre2.xnb
+Content\Textures\bois.xnb
 Content\Textures\boisCarre.xnb
+Content\Textures\buissonSurHerbe.xnb
+Content\Textures\fond.xnb
 Content\Textures\fondNoir.xnb
+Content\Textures\herbe.xnb
+Content\Textures\herbeFoncee.xnb
+Content\Textures\murBlanc.xnb
+Content\Textures\piedDeMurBois.xnb
+Content\Textures\tableauMurBlanc.xnb
+Content\Textures\tapisRougeBC.xnb
+Content\Textures\terre.xnb
+Content\Textures\carlageNoir.xnb
+Content\Textures\FinMurDroite.xnb
+Content\Textures\FinMurFN.xnb
+Content\Textures\FinMurGauche.xnb
+Content\Garde.xnb
+Content\Hero1.xnb
+Content\Hero2.xnb
+Content\origine_garde.xnb
+Content\origine_hero1.xnb
+Content\origine_hero2.xnb
+Content\origine_patrouilleur.xnb
+Content\origine_patrouilleur_a_cheval.xnb
+Content\Patrouilleur.xnb
+Content\Patrouilleur_a_cheval.xnb
+Content\Textures\Commode.xnb
+Content\Textures\finMurBas.xnb
+Content\Textures\grandeTable.xnb
+Content\Textures\lit.xnb
+Content\Textures\tableMoyenne.xnb
+Content\Textures\Garde.xnb
+Content\Textures\Patrouilleur.xnb
+Content\Textures\Patrouilleur_a_cheval.xnb
+Content\Boss.xnb
+Content\origine_boss.xnb
+Content\WinTex.xnb
+Content\Sons\cri.xnb
+Content\Sons\CriMortHero.xnb
+Content\Sons\menuBouge.xnb
+Content\Sons\pasBois.xnb
+Content\Sons\pasGravier.xnb
+Content\Sons\shuriken.xnb
+Content\Sons\shurikenCollision.xnb
+Content\Sons\sonMenuBoutton.xnb
+Content\Sons\11 Fanfare.xnb
+Content\courier.xnb
+Content\Sons\Ambiance sonore.xgs
+Content\Sons\Wave Bank.xwb
+Content\Sons\Sound Bank.xsb
 Properties\Settings.Designer.cs
 Properties\Settings.settings

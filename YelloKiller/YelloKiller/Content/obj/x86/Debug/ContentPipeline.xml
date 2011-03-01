@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb</Output>
-      <Time>2011-02-25T18:39:47.9505219+01:00</Time>
+      <Time>2011-03-01T16:15:27.2304688+01:00</Time>
     </Item>
     <Item>
       <Source>background.jpg</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2011-02-25T18:39:47.8405156+01:00</Time>
+      <Time>2011-03-01T16:15:26.5585938+01:00</Time>
     </Item>
     <Item>
       <Source>blank.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\blank.xnb</Output>
-      <Time>2011-02-25T18:39:47.9265206+01:00</Time>
+      <Time>2011-03-01T16:15:26.8085938+01:00</Time>
     </Item>
     <Item>
       <Source>Game Over.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Game Over.xnb</Output>
-      <Time>2011-02-25T18:39:47.7825123+01:00</Time>
+      <Time>2011-03-01T16:15:26.5117188+01:00</Time>
     </Item>
     <Item>
       <Source>gradient.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\gradient.xnb</Output>
-      <Time>2011-02-25T18:39:47.6945073+01:00</Time>
+      <Time>2011-03-01T16:15:26.0898438+01:00</Time>
     </Item>
     <Item>
       <Source>LevelSelection.jpg</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\LevelSelection.xnb</Output>
-      <Time>2011-02-25T18:39:47.8045136+01:00</Time>
+      <Time>2011-03-01T16:15:26.5273438+01:00</Time>
     </Item>
     <Item>
       <Source>shuriken.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\shuriken.xnb</Output>
-      <Time>2011-02-25T18:39:47.9395213+01:00</Time>
+      <Time>2011-03-01T16:15:27.2148438+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\arbre.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre.xnb</Output>
-      <Time>2011-02-25T18:39:45.1493617+01:00</Time>
+      <Time>2011-03-01T16:15:09.4804688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\arbre2.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre2.xnb</Output>
-      <Time>2011-02-25T18:39:44.9743517+01:00</Time>
+      <Time>2011-03-01T16:15:05.9804688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\bois.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\bois.xnb</Output>
-      <Time>2011-02-25T18:39:44.8863467+01:00</Time>
+      <Time>2011-03-01T16:15:04.2929688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\BoisCarre.png</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\boisCarre.xnb</Output>
-      <Time>2011-02-25T18:39:44.9523504+01:00</Time>
+      <Time>2011-03-01T16:15:05.8398438+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\buissonSurHerbe.png</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\buissonSurHerbe.xnb</Output>
-      <Time>2011-02-25T18:39:45.0373553+01:00</Time>
+      <Time>2011-03-01T16:15:06.3554688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\fond.png</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fond.xnb</Output>
-      <Time>2011-02-25T18:39:45.0933585+01:00</Time>
+      <Time>2011-03-01T16:15:08.5585938+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\fondNoir.png</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fondNoir.xnb</Output>
-      <Time>2011-02-25T18:39:44.9953529+01:00</Time>
+      <Time>2011-03-01T16:15:06.1992188+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\herbe.png</Source>
@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe.xnb</Output>
-      <Time>2011-02-25T18:39:45.0713573+01:00</Time>
+      <Time>2011-03-01T16:15:08.3710938+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\herbeFoncee.png</Source>
@@ -143,7 +143,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbeFoncee.xnb</Output>
-      <Time>2011-02-25T18:39:44.9203486+01:00</Time>
+      <Time>2011-03-01T16:15:05.4492188+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\murBlanc.png</Source>
@@ -152,7 +152,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\murBlanc.xnb</Output>
-      <Time>2011-02-25T18:39:44.9073479+01:00</Time>
+      <Time>2011-03-01T16:15:04.4804688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\piedDeMurBois.png</Source>
@@ -161,7 +161,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\piedDeMurBois.xnb</Output>
-      <Time>2011-02-25T18:39:45.1603623+01:00</Time>
+      <Time>2011-03-01T16:15:09.5898438+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\tableauMurBlanc.png</Source>
@@ -170,7 +170,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableauMurBlanc.xnb</Output>
-      <Time>2011-02-25T18:39:44.8963472+01:00</Time>
+      <Time>2011-03-01T16:15:04.4335938+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\tapisRougeBC.png</Source>
@@ -179,7 +179,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tapisRougeBC.xnb</Output>
-      <Time>2011-02-25T18:39:45.1153598+01:00</Time>
+      <Time>2011-03-01T16:15:08.7460938+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\terre.png</Source>
@@ -188,7 +188,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\terre.xnb</Output>
-      <Time>2011-02-25T18:39:45.0053535+01:00</Time>
+      <Time>2011-03-01T16:15:06.2148438+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\carlageNoir.png</Source>
@@ -197,7 +197,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\carlageNoir.xnb</Output>
-      <Time>2011-02-25T18:39:45.0823579+01:00</Time>
+      <Time>2011-03-01T16:15:08.3867188+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\FinMurDroite.png</Source>
@@ -206,7 +206,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurDroite.xnb</Output>
-      <Time>2011-02-25T18:39:44.9313492+01:00</Time>
+      <Time>2011-03-01T16:15:05.7460938+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\FinMurFN.png</Source>
@@ -215,7 +215,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurFN.xnb</Output>
-      <Time>2011-02-25T18:39:45.0603566+01:00</Time>
+      <Time>2011-03-01T16:15:06.7304688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\FinMurGauche.png</Source>
@@ -224,7 +224,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurGauche.xnb</Output>
-      <Time>2011-02-25T18:39:44.9843523+01:00</Time>
+      <Time>2011-03-01T16:15:06.0742188+01:00</Time>
     </Item>
     <Item>
       <Source>Garde.png</Source>
@@ -233,7 +233,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Garde.xnb</Output>
-      <Time>2011-02-25T18:39:47.8915186+01:00</Time>
+      <Time>2011-03-01T16:15:26.7773438+01:00</Time>
     </Item>
     <Item>
       <Source>Hero1.png</Source>
@@ -242,7 +242,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero1.xnb</Output>
-      <Time>2011-02-25T18:39:47.8515163+01:00</Time>
+      <Time>2011-03-01T16:15:26.6835938+01:00</Time>
     </Item>
     <Item>
       <Source>Hero2.png</Source>
@@ -251,7 +251,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero2.xnb</Output>
-      <Time>2011-02-25T18:39:47.863517+01:00</Time>
+      <Time>2011-03-01T16:15:26.7304688+01:00</Time>
     </Item>
     <Item>
       <Source>origine_garde.png</Source>
@@ -260,7 +260,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_garde.xnb</Output>
-      <Time>2011-02-25T18:39:47.706508+01:00</Time>
+      <Time>2011-03-01T16:15:26.1210938+01:00</Time>
     </Item>
     <Item>
       <Source>origine_hero1.png</Source>
@@ -269,7 +269,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero1.xnb</Output>
-      <Time>2011-02-25T18:39:47.9625226+01:00</Time>
+      <Time>2011-03-01T16:15:27.5429688+01:00</Time>
     </Item>
     <Item>
       <Source>origine_hero2.png</Source>
@@ -278,7 +278,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero2.xnb</Output>
-      <Time>2011-02-25T18:39:47.9735232+01:00</Time>
+      <Time>2011-03-01T16:15:27.5429688+01:00</Time>
     </Item>
     <Item>
       <Source>origine_patrouilleur.png</Source>
@@ -287,7 +287,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur.xnb</Output>
-      <Time>2011-02-25T18:39:47.7185087+01:00</Time>
+      <Time>2011-03-01T16:15:26.1210938+01:00</Time>
     </Item>
     <Item>
       <Source>origine_patrouilleur_a_cheval.png</Source>
@@ -296,7 +296,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur_a_cheval.xnb</Output>
-      <Time>2011-02-25T18:39:47.9035192+01:00</Time>
+      <Time>2011-03-01T16:15:26.7773438+01:00</Time>
     </Item>
     <Item>
       <Source>Patrouilleur.png</Source>
@@ -305,7 +305,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur.xnb</Output>
-      <Time>2011-02-25T18:39:47.9155199+01:00</Time>
+      <Time>2011-03-01T16:15:26.7929688+01:00</Time>
     </Item>
     <Item>
       <Source>Patrouilleur_a_cheval.png</Source>
@@ -314,7 +314,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur_a_cheval.xnb</Output>
-      <Time>2011-02-25T18:39:47.8155142+01:00</Time>
+      <Time>2011-03-01T16:15:26.5429688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\Commode.png</Source>
@@ -323,7 +323,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Commode.xnb</Output>
-      <Time>2011-02-25T18:39:45.0483559+01:00</Time>
+      <Time>2011-03-01T16:15:06.7304688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\finMurBas.png</Source>
@@ -332,7 +332,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\finMurBas.xnb</Output>
-      <Time>2011-02-25T18:39:45.1043591+01:00</Time>
+      <Time>2011-03-01T16:15:08.6054688+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\grandeTable.png</Source>
@@ -341,7 +341,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable.xnb</Output>
-      <Time>2011-02-25T18:39:44.9413498+01:00</Time>
+      <Time>2011-03-01T16:15:05.8242188+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\lit.png</Source>
@@ -350,7 +350,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit.xnb</Output>
-      <Time>2011-02-25T18:39:45.1383611+01:00</Time>
+      <Time>2011-03-01T16:15:09.4335938+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\tableMoyenne.png</Source>
@@ -359,7 +359,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne.xnb</Output>
-      <Time>2011-02-25T18:39:45.0163541+01:00</Time>
+      <Time>2011-03-01T16:15:06.2617188+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\Garde.png</Source>
@@ -368,7 +368,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Garde.xnb</Output>
-      <Time>2011-02-25T18:39:45.0273547+01:00</Time>
+      <Time>2011-03-01T16:15:06.2773438+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\Patrouilleur.png</Source>
@@ -377,7 +377,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur.xnb</Output>
-      <Time>2011-02-25T18:39:45.1263604+01:00</Time>
+      <Time>2011-03-01T16:15:09.2773438+01:00</Time>
     </Item>
     <Item>
       <Source>Textures\Patrouilleur_a_cheval.png</Source>
@@ -386,7 +386,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur_a_cheval.xnb</Output>
-      <Time>2011-02-25T18:39:44.962351+01:00</Time>
+      <Time>2011-03-01T16:15:05.8867188+01:00</Time>
     </Item>
     <Item>
       <Source>Boss.png</Source>
@@ -395,7 +395,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Boss.xnb</Output>
-      <Time>2011-02-25T18:39:47.793513+01:00</Time>
+      <Time>2011-03-01T16:15:26.5117188+01:00</Time>
     </Item>
     <Item>
       <Source>origine_boss.png</Source>
@@ -404,7 +404,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_boss.xnb</Output>
-      <Time>2011-02-25T18:39:47.8805179+01:00</Time>
+      <Time>2011-03-01T16:15:26.7460938+01:00</Time>
     </Item>
     <Item>
       <Source>WinTex.jpg</Source>
@@ -413,7 +413,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\WinTex.xnb</Output>
-      <Time>2011-02-25T18:39:47.8275149+01:00</Time>
+      <Time>2011-03-01T16:15:26.5429688+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\cri.wav</Source>
@@ -422,7 +422,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\cri.xnb</Output>
-      <Time>2011-02-25T18:39:44.2953129+01:00</Time>
+      <Time>2011-03-01T16:14:59.4804688+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\CriMortHero.wav</Source>
@@ -431,7 +431,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\CriMortHero.xnb</Output>
-      <Time>2011-02-25T18:39:44.3063135+01:00</Time>
+      <Time>2011-03-01T16:14:59.4804688+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\menuBouge.wav</Source>
@@ -440,7 +440,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\menuBouge.xnb</Output>
-      <Time>2011-02-25T18:39:44.2713115+01:00</Time>
+      <Time>2011-03-01T16:14:59.4648438+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\pasBois.wav</Source>
@@ -449,7 +449,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\pasBois.xnb</Output>
-      <Time>2011-02-25T18:39:44.3373153+01:00</Time>
+      <Time>2011-03-01T16:14:59.5898438+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\pasGravier.wav</Source>
@@ -458,7 +458,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\pasGravier.xnb</Output>
-      <Time>2011-02-25T18:39:44.158305+01:00</Time>
+      <Time>2011-03-01T16:14:58.4335938+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\shuriken.wav</Source>
@@ -467,7 +467,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\shuriken.xnb</Output>
-      <Time>2011-02-25T18:39:44.2833122+01:00</Time>
+      <Time>2011-03-01T16:14:59.4648438+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\shurikenCollision.wav</Source>
@@ -476,7 +476,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\shurikenCollision.xnb</Output>
-      <Time>2011-02-25T18:39:44.2433099+01:00</Time>
+      <Time>2011-03-01T16:14:59.3242188+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\sonMenuBoutton.wav</Source>
@@ -485,7 +485,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\sonMenuBoutton.xnb</Output>
-      <Time>2011-02-25T18:39:44.3183142+01:00</Time>
+      <Time>2011-03-01T16:14:59.5742188+01:00</Time>
     </Item>
     <Item>
       <Source>Sons\11 Fanfare.wav</Source>
@@ -494,7 +494,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\11 Fanfare.xnb</Output>
-      <Time>2011-02-25T18:39:44.2073078+01:00</Time>
+      <Time>2011-03-01T16:14:58.9960938+01:00</Time>
     </Item>
     <Item>
       <Source>courier.spritefont</Source>
@@ -503,7 +503,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\courier.xnb</Output>
-      <Time>2011-02-25T18:39:47.8705174+01:00</Time>
+      <Time>2011-03-01T16:15:26.7460938+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -518,31 +518,31 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2009-05-28T01:16:14+02:00</Value>
+        <Value>2009-05-28T09:16:14+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2009-05-28T01:16:06+02:00</Value>
+        <Value>2009-05-28T09:16:06+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2009-05-28T01:16:16+02:00</Value>
+        <Value>2009-05-28T09:16:16+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2009-05-28T01:16:26+02:00</Value>
+        <Value>2009-05-28T09:16:26+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2009-05-28T01:16:12+02:00</Value>
+        <Value>2009-05-28T09:16:12+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2009-05-28T01:16:06+02:00</Value>
+        <Value>2009-05-28T09:16:06+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-12-04T14:06:59.8917689+01:00</Value>
+        <Value>2010-08-05T02:46:55.8294694+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
