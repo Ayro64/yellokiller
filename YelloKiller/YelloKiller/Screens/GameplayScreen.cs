@@ -297,13 +297,23 @@ namespace YelloKiller
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
+            {
+                moteurAudio.SoundBank.PlayCue("metalgear");
+                audio.Close();
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte));
+            }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {              
-                moteurAudio.SoundBank.PlayCue("metalgear");
+                moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 audio.Close();
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte));                
+            }
+
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.M))
+            {
+                moteurAudio.SoundBank.PlayCue("metalgear");
+                audio.Close();
             }
 
             // Looks up input for the Media Player.

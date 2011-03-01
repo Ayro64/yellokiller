@@ -9,14 +9,8 @@
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = &lt;none&gt;;
-    Xbox Bank Last Modified Low = 0;
-    Xbox Bank Last Modified High = 0;
-    PC Bank Last Modified Low = 1679145484;
-    PC Bank Last Modified High = 30136418;
-    Header Last Modified Low = 0;
-    Header Last Modified High = 0;
-    Bank Last Revised Low = 1566489040;
-    Bank Last Revised High = 30136418;
+    Bank Last Revised Low = 2598674723;
+    Bank Last Revised High = 30136425;
 
     Wave
     {
@@ -204,33 +198,10 @@
 
     Wave
     {
-        Name = 11 Fanfare;
-        File = 11 Fanfare.wav;
-        Build Settings Last Modified Low = 2431671086;
-        Build Settings Last Modified High = 30135375;
-
-        Cache
-        {
-            Format Tag = 0;
-            Channels = 2;
-            Sampling Rate = 44100;
-            Bits Per Sample = 1;
-            Play Region Offset = 46;
-            Play Region Length = 9722880;
-            Loop Region Offset = 0;
-            Loop Region Length = 0;
-            File Type = 1;
-            Last Modified Low = 2747537423;
-            Last Modified High = 30135574;
-        }
-    }
-
-    Wave
-    {
         Name = metalgear;
         File = metalgear.wav;
-        Build Settings Last Modified Low = 1340736128;
-        Build Settings Last Modified High = 30136418;
+        Build Settings Last Modified Low = 1608368081;
+        Build Settings Last Modified High = 30136425;
 
         Cache
         {
@@ -239,12 +210,35 @@
             Sampling Rate = 44100;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 41061888;
+            Play Region Length = 12692216;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2009427651;
-            Last Modified High = 30136416;
+            Last Modified Low = 4250000811;
+            Last Modified High = 30136424;
+        }
+    }
+
+    Wave
+    {
+        Name = 11 Fanfare;
+        File = 11 Fanfare.wav;
+        Build Settings Last Modified Low = 1608388082;
+        Build Settings Last Modified High = 30136425;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 8521436;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 4273392149;
+            Last Modified High = 30136424;
         }
     }
 }

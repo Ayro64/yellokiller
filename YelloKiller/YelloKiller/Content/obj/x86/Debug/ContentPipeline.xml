@@ -494,7 +494,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\11 Fanfare.xnb</Output>
-      <Time>2011-02-25T19:05:52.3725327+01:00</Time>
+      <Time>2011-03-02T00:32:57.1781653+01:00</Time>
     </Item>
     <Item>
       <Source>courier.spritefont</Source>
@@ -512,7 +512,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\metalgear.xnb</Output>
-      <Time>2011-03-01T23:54:04.0819088+01:00</Time>
+      <Time>2011-03-02T00:32:54.8390315+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
