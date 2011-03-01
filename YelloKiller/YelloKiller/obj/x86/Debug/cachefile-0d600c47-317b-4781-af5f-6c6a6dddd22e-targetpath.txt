@@ -54,6 +54,7 @@ Content\Sons\shurikenCollision.xnb
 Content\Sons\sonMenuBoutton.xnb
 Content\Sons\11 Fanfare.xnb
 Content\courier.xnb
+Content\Sons\metalgear.xnb
 Content\Sons\Ambiance sonore.xgs
 Content\Sons\Wave Bank.xwb
 Content\Sons\Sound Bank.xsb
