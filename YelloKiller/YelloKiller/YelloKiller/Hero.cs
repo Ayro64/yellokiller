@@ -105,7 +105,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
+                    if (numeroHero == 1 && camera.Y - vitesseSprite > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
                         camera.Y -= vitesseSprite;
                 }
 
@@ -150,7 +150,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
+                    if (numeroHero == 1 && camera.X - vitesseSprite > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
                         camera.X -= vitesseSprite;
                 }
 
