@@ -11,7 +11,8 @@ namespace YelloKiller
     {
         Vector2 positionDesiree;
         Rectangle rectangle;
-        float vitesseAnimation, index;
+        Texture2D flamme;
+        float vitesseAnimation, index, tempsCourir;
         int maxIndex, nombreShuriken, vitesseSprite, numeroHero;
         public bool ishero;
         bool monter, descendre, droite, gauche;
@@ -41,6 +42,8 @@ namespace YelloKiller
             this.left = left;
             this.shuriken = shuriken;
             this.courir = courir;
+            tempsCourir = 0;
+            
         }
 
         public Rectangle Rectangle
@@ -56,12 +59,15 @@ namespace YelloKiller
                 base.LoadContent(content, "Hero2");
 
             this.maxIndex = maxIndex;
+            flamme = content.Load<Texture2D>("flamme");
         }
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
+
+            ServiceHelper.Game.Window.Title = monter.ToString() + descendre.ToString() + droite.ToString() + gauche.ToString();
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(shuriken) && nombreShuriken > 0)
             {
@@ -72,6 +78,11 @@ namespace YelloKiller
             }
             else
                 ishero = false;
+
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && tempsCourir < flamme.Height && !(monter && descendre && droite && gauche))
+                tempsCourir += 0.1f * gameTime.ElapsedGameTime.Milliseconds;
+            else if (tempsCourir > 0 && (ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) || (monter && descendre && droite && gauche)))
+                tempsCourir -= 0.1f * gameTime.ElapsedGameTime.Milliseconds;
 
             if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(up))    // arreter le sprite
             {
@@ -190,7 +201,7 @@ namespace YelloKiller
 
             if (monter && descendre && droite && gauche)
             {
-                if (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir))
+                if (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && (int)tempsCourir != flamme.Height)
                 {
                     vitesseSprite = 4;
                     vitesseAnimation = 0.016f;
@@ -302,7 +313,13 @@ namespace YelloKiller
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
         {
+            if (numeroHero == 1)
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 50, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
+            else
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 100, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
+            
             base.Draw(spriteBatch, camera);
+
             if (numeroHero == 1)
                 spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.BurlyWood);
             else
