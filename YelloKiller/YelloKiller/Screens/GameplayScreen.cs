@@ -94,19 +94,19 @@ namespace YelloKiller
                 hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.Space, Keys.LeftShift, 2, 25);
 
             // Centre la camera sur le personnage.
-            if (28 * carte.OrigineJoueur1.X - 440 < 0)
+            if (28 * carte.OrigineJoueur1.X - 448 < 0)
                 camera.X = 0;
-            else if (28 * carte.OrigineJoueur1.X + 440 > 28 * Taille_Map.LARGEUR_MAP)
-                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 34);
+            else if (28 * carte.OrigineJoueur1.X + 448 > 28 * Taille_Map.LARGEUR_MAP)
+                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 33);
             else
-                camera.X = 28 * (int)carte.OrigineJoueur1.X - 500;
+                camera.X = 28 * (int)carte.OrigineJoueur1.X - 448;
 
-            if (28 * carte.OrigineJoueur1.Y - 322 < 0)
+            if (28 * carte.OrigineJoueur1.Y - 336 < 0)
                 camera.Y = 0;
-            else if (28 * carte.OrigineJoueur1.Y + 322 > 28 * Taille_Map.HAUTEUR_MAP)
-                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 26);
+            else if (28 * carte.OrigineJoueur1.Y + 336 > 28 * Taille_Map.HAUTEUR_MAP)
+                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 25);
             else
-                camera.Y = 28 * (int)carte.OrigineJoueur1.Y - 400;
+                camera.Y = 28 * (int)carte.OrigineJoueur1.Y - 336;
 
             _gardes = new List<Garde>();
             foreach (Vector2 position in carte.OriginesGardes)
