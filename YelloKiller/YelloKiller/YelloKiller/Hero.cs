@@ -67,8 +67,6 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
-            ServiceHelper.Game.Window.Title = monter.ToString() + descendre.ToString() + droite.ToString() + gauche.ToString();
-
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(shuriken) && nombreShuriken > 0)
             {
                 nombreShuriken--;
