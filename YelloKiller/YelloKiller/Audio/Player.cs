@@ -34,7 +34,7 @@ namespace YelloKiller
             sampleMediaLibrary = new MediaLibrary();
             rand = new Random();
 
-            album = 3;
+            album = 0;
             musique = rand.Next(0, sampleMediaLibrary.Albums[album].Songs.Count);
             MediaPlayer.Play(sampleMediaLibrary.Albums[album].Songs[musique]);
             songName = sampleMediaLibrary.Albums[album].Songs[musique].Artist + " - " + sampleMediaLibrary.Albums[album].Songs[musique];
