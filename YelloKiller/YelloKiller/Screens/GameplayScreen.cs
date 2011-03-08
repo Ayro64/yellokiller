@@ -93,20 +93,32 @@ namespace YelloKiller
             if (jeuEnCoop)
                 hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.Space, Keys.LeftShift, 2, 25);
 
-            // Centre la camera sur le personnage.
+            // Centre la camera sur le personnage... plus ou moins...
             if (carte.OrigineJoueur1.X - 16 < 0)
                 camera.X = 0;
             else if (carte.OrigineJoueur1.X + 16 > Taille_Map.LARGEUR_MAP - 1)
+            {
+                Console.WriteLine("X 1");
                 camera.X = 28 * (Taille_Map.LARGEUR_MAP - 33);
+            }
             else
+            {
+                Console.WriteLine("X 2");
                 camera.X = 28 * ((int)carte.OrigineJoueur1.X - 16);
+            }
 
             if (carte.OrigineJoueur1.Y - 12 < 0)
                 camera.Y = 0;
             else if (carte.OrigineJoueur1.Y + 12 > Taille_Map.HAUTEUR_MAP - 1)
+            {
+                Console.WriteLine("Y 1");
                 camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 25);
+            }
             else
+            {
+                Console.WriteLine("Y 2");
                 camera.Y = 28 * ((int)carte.OrigineJoueur1.Y - 12);
+            }
 
             _gardes = new List<Garde>();
             foreach (Vector2 position in carte.OriginesGardes)
@@ -171,6 +183,7 @@ namespace YelloKiller
             if (IsActive)
             {
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
+                ServiceHelper.Game.Window.Title = "X = " + camera.X + " Y = " + camera.Y;
 
                 moteurAudio.Update();
 
