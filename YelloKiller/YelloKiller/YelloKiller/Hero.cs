@@ -105,7 +105,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.Y - vitesseSprite > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 200)
+                    if (numeroHero == 1 && camera.Y - vitesseSprite > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 202)
                         camera.Y -= vitesseSprite;
                 }
 
@@ -128,8 +128,10 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.Y + vitesseSprite < 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 200)
+                    if (numeroHero == 1 && camera.Y + vitesseSprite < 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 198)
+                    {
                         camera.Y += vitesseSprite;
+                    }
                 }
                 else
                 {
@@ -150,7 +152,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.X - vitesseSprite > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 200)
+                    if (numeroHero == 1 && camera.X - vitesseSprite > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 198)
                         camera.X -= vitesseSprite;
                 }
 
@@ -173,7 +175,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.X + vitesseSprite < 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 200)
+                    if (numeroHero == 1 && camera.X + vitesseSprite < 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 198)
                         camera.X += vitesseSprite;
                 }
 
