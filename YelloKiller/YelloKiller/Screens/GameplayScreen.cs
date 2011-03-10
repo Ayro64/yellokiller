@@ -183,7 +183,7 @@ namespace YelloKiller
             if (IsActive)
             {
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
-                ServiceHelper.Game.Window.Title = "X = " + camera.X + " Y = " + camera.Y;
+                //ServiceHelper.Game.Window.Title = "X = " + camera.X + " Y = " + camera.Y;
 
                 moteurAudio.Update();
 
