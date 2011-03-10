@@ -31,7 +31,10 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
 
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
+            //Console.WriteLine("X = " + Math.Abs((hero.position.X / 28 - this.position.X / 28)) + " , Y = " + Math.Abs((hero.position.Y / 28 - this.position.Y / 28)));
+            // if(Math.Abs((hero.position.X / 28 - this.position.X / 28)) < 5 && Math.Abs((hero.position.Y / 28 - this.position.Y / 28)) < 5)
+
+         if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))           
             {
                 Console.WriteLine("Camera.X = " + (int)camera.X / 28 + " ; Camera.Y = " + (int)camera.Y / 28);
                 chemin = Pathfinding.CalculChemin(carte, carte.Cases[25, 18], carte.Cases[42, 21]);

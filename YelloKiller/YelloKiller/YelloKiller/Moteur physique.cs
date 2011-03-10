@@ -9,7 +9,7 @@ namespace YelloKiller
         static public void Collision_Shuriken_Ennemis(List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, SoundBank soundBank)
         {
             if (_gardes.Count != 0)
-            {           
+            {
                 for (int i = 0; i < _gardes.Count; i++)
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
@@ -48,14 +48,11 @@ namespace YelloKiller
             if (_Boss.Count != 0)
             {
                 for (int i = 0; i < _Boss.Count; i++)
-                {
                     for (int j = 0; j < listeShuriken.Count; j++)
-                    {
                         if (_Boss[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
                             Console.WriteLine(_Boss[i].Vie);
-
-                           _Boss[i].Vie--;
+                            _Boss[i].Vie--;
                             listeShuriken.Remove(listeShuriken[j]);
 
                             if (_Boss[i].Vie == 0)
@@ -63,12 +60,10 @@ namespace YelloKiller
                                 _Boss[i].Vie = 5;
                                 _Boss.Remove(_Boss[i]);
                                 soundBank.PlayCue("cri");
-                                
+
                             }
                             break;
                         }
-                    }
-                }
             }
         }
 
