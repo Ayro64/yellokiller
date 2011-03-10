@@ -48,7 +48,7 @@ namespace YelloKiller
                 carte.Cases[(int)position.Y / 28, (int)position.X / 28].Type > 0)
             {
                 shurikenExists = true;
-                position += 4 * direction;
+                position += 7 * direction;
 
                 elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 Rotation += elapsed + 50;
@@ -62,6 +62,11 @@ namespace YelloKiller
         public Rectangle Rectangle
         {
             get { return rectangle; }
+        }
+
+        public Vector2 Direction
+        {
+            get { return direction; }
         }
 
         public bool ShurikenExists

@@ -200,8 +200,8 @@ namespace YelloKiller
                 foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
                     patrouilleurACheval.Update(gameTime, carte, hero1, camera);
                 
-                /*foreach (Boss boss in _boss)
-                    boss.Update(gameTime, carte, hero1, camera);*/
+                foreach (Boss boss in _boss)
+                    boss.Update(gameTime, _shuriken, carte, hero1, camera);
                 
                 Moteur_physique.Collision_Shuriken_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurAudio.SoundBank);
 
@@ -267,6 +267,7 @@ namespace YelloKiller
 
                 if (_shuriken[i].ShurikenExists == false)
                 {
+                    
                     _shuriken.Remove(_shuriken[i]);
                     moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
