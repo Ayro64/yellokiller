@@ -19,7 +19,7 @@ namespace YelloKiller
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 18, 26);
             MaxIndex = 0;
             positionDesiree = position;
-            vie = 50;
+            vie = 5;
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
