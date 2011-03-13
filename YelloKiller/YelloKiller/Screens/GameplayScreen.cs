@@ -97,28 +97,16 @@ namespace YelloKiller
             if (carte.OrigineJoueur1.X - 16 < 0)
                 camera.X = 0;
             else if (carte.OrigineJoueur1.X + 16 > Taille_Map.LARGEUR_MAP - 1)
-            {
-                Console.WriteLine("X 1");
                 camera.X = 28 * (Taille_Map.LARGEUR_MAP - 33);
-            }
             else
-            {
-                Console.WriteLine("X 2");
                 camera.X = 28 * ((int)carte.OrigineJoueur1.X - 16);
-            }
 
             if (carte.OrigineJoueur1.Y - 12 < 0)
                 camera.Y = 0;
             else if (carte.OrigineJoueur1.Y + 12 > Taille_Map.HAUTEUR_MAP - 1)
-            {
-                Console.WriteLine("Y 1");
                 camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 25);
-            }
             else
-            {
-                Console.WriteLine("Y 2");
                 camera.Y = 28 * ((int)carte.OrigineJoueur1.Y - 12);
-            }
 
             _gardes = new List<Garde>();
             foreach (Vector2 position in carte.OriginesGardes)
