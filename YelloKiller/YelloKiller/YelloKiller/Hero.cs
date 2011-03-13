@@ -42,8 +42,6 @@ namespace YelloKiller
             this.left = left;
             this.shuriken = shuriken;
             this.courir = courir;
-            tempsCourir = 0;
-            
         }
 
         public Rectangle Rectangle
@@ -60,6 +58,7 @@ namespace YelloKiller
 
             this.maxIndex = maxIndex;
             flamme = content.Load<Texture2D>("flamme");
+            tempsCourir = flamme.Height;
         }
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
@@ -77,10 +76,10 @@ namespace YelloKiller
             else
                 ishero = false;
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && tempsCourir < flamme.Height && !(monter && descendre && droite && gauche))
-                tempsCourir += 0.1f * gameTime.ElapsedGameTime.Milliseconds;
-            else if (tempsCourir > 0 && (ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) || (monter && descendre && droite && gauche)))
+            if (tempsCourir > 0 && ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && !(monter && descendre && droite && gauche))
                 tempsCourir -= 0.1f * gameTime.ElapsedGameTime.Milliseconds;
+            else if (tempsCourir < flamme.Height && (ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) || (monter && descendre && droite && gauche)))
+                tempsCourir += 0.1f * gameTime.ElapsedGameTime.Milliseconds;
 
             if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(up))    // arreter le sprite
             {
@@ -129,9 +128,7 @@ namespace YelloKiller
                         index = 0f;
 
                     if (numeroHero == 1 && camera.Y + vitesseSprite <= 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 198)
-                    {
                         camera.Y += vitesseSprite;
-                    }
                 }
                 else
                 {
@@ -189,7 +186,7 @@ namespace YelloKiller
 
             if (monter && descendre && droite && gauche)
             {
-                if (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && (int)tempsCourir != flamme.Height)
+                if (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && (int)tempsCourir != 0)
                 {
                     vitesseSprite = 4;
                     vitesseAnimation = 0.016f;
@@ -248,7 +245,6 @@ namespace YelloKiller
                             sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);*/
                     }
                 }
-
                 else
                 {
                     if (position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePressee(up) &&
@@ -302,16 +298,16 @@ namespace YelloKiller
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
         {
             if (numeroHero == 1)
-                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 50, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
-            else
-                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 100, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
-            
-            base.Draw(spriteBatch, camera);
-
-            if (numeroHero == 1)
+            {
                 spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.BurlyWood);
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 50, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
+            }
             else
+            {
                 spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.BurlyWood);
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 100, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
+            }
+            base.Draw(spriteBatch, camera);
         }
     }
 }
