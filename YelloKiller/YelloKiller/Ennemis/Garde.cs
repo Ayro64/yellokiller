@@ -33,7 +33,9 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
 
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
+          //  if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
+            if (Math.Abs((int)(hero.position.X / 28) - (int)(position.X / 28)) < 4 && Math.Abs((int)(hero.position.Y / 28) - (int)(position.Y / 28)) < 4
+                || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
             {
                 Console.WriteLine("Camera : X = " + camera.X / 28 + " Y = " + camera.Y / 28);
                 Console.WriteLine("Origines\nGarde : X = " + (int)position.X / 28 + " Y = " + (int)position.Y / 28 + " Hero : X = " + (int)hero.position.X / 28 + " Y = " + (int)hero.position.Y / 28);
