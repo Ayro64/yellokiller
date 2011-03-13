@@ -18,7 +18,6 @@ namespace YelloKiller
             this.type = type;
             x = (int)position.X / 28;
             y = (int)position.Y / 28;
-            //System.Console.WriteLine("X = " + x + " ; Y = " + y);
         }
 
         public Vector2 Position

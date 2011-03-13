@@ -248,7 +248,9 @@ namespace YelloKiller
 
         public bool CaseValide(int x, int y)
         {
-            if (x < 0)
+            return (x >= 0 && x < Taille_Map.LARGEUR_MAP && y >= 0 && y < Taille_Map.HAUTEUR_MAP);
+
+            /*if (x < 0)
                 return false;
             if (y < 0)
                 return false;
@@ -257,7 +259,7 @@ namespace YelloKiller
             if (y >= Taille_Map.HAUTEUR_MAP)
                 return false;
 
-            return true;
+            return true;*/
         }
 
         public List<Vector2> OriginesGardes
