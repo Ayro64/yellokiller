@@ -27,35 +27,17 @@ namespace YelloKiller
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
-            for (int y = camera.Y / 28 + camera.Height - 1; y >= camera.Y / 28; y--)
+            for (int y = camera.Y / 28 + camera.Height; y >= camera.Y / 28 - 2; y--)
             {
-                for (int x = camera.X / 28 + camera.Width - 1; x >= camera.X / 28; x--)
+                if (y < 60 && y >= 0)
                 {
-                    _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
-                    
-                    _case[y, x].DrawInGame(spriteBatch, content);
-
-                    if (camera.X < 1344)
+                    for (int x = camera.X / 28 + camera.Width; x >= camera.X / 28 - 2; x--)
                     {
-                        _case[y, x + 1].Position = 28 * new Vector2(x + 1, y) - new Vector2(camera.X, camera.Y);
-
-                        _case[y, x + 1].DrawInGame(spriteBatch, content);
-                    }
-                }
-
-                if (camera.Y < 1008)
-                {
-                    for (int x = camera.X / 28 + camera.Width - 1 ; x >= camera.X / 28; x--)
-                    {
-                        _case[y + 1, x].Position = 28 * new Vector2(x, y + 1) - new Vector2(camera.X, camera.Y);
-
-                        _case[y + 1, x].DrawInGame(spriteBatch, content);
-
-                        if (camera.X < 1344)
+                        if (x < 80 && x >= 0)
                         {
-                            _case[y, x + 1].Position = 28 * new Vector2(x + 1, y) - new Vector2(camera.X, camera.Y);
+                            _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
 
-                            _case[y, x + 1].DrawInGame(spriteBatch, content);
+                            _case[y, x].DrawInGame(spriteBatch, content);
                         }
                     }
                 }
@@ -244,22 +226,6 @@ namespace YelloKiller
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.GrandeTable);
                     break;
             }
-        }
-
-        public bool CaseValide(int x, int y)
-        {
-            return (x >= 0 && x < Taille_Map.LARGEUR_MAP && y >= 0 && y < Taille_Map.HAUTEUR_MAP);
-
-            /*if (x < 0)
-                return false;
-            if (y < 0)
-                return false;
-            if (x >= Taille_Map.LARGEUR_MAP)
-                return false;
-            if (y >= Taille_Map.HAUTEUR_MAP)
-                return false;
-
-            return true;*/
         }
 
         public List<Vector2> OriginesGardes

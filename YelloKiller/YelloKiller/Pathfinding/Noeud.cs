@@ -37,19 +37,24 @@ namespace YelloKiller
         {
             List<Noeud> result = new List<Noeud>();
             // Bas
-            if (carte.CaseValide(_case.X, _case.Y + 1) && carte.Cases[_case.Y + 1, _case.X].Type > 0)
+            if (CaseValide(_case.X, _case.Y + 1) && carte.Cases[_case.Y + 1, _case.X].Type > 0)
                 result.Add(new Noeud(carte.Cases[_case.Y + 1, _case.X], this, destination));
             // Droite
-            if (carte.CaseValide(_case.X + 1, _case.Y) && carte.Cases[_case.Y, _case.X + 1].Type > 0)
+            if (CaseValide(_case.X + 1, _case.Y) && carte.Cases[_case.Y, _case.X + 1].Type > 0)
                 result.Add(new Noeud(carte.Cases[_case.Y, _case.X + 1], this, destination));
             // Haut
-            if (carte.CaseValide(_case.X, _case.Y - 1) && carte.Cases[_case.Y - 1, _case.X].Type > 0)
+            if (CaseValide(_case.X, _case.Y - 1) && carte.Cases[_case.Y - 1, _case.X].Type > 0)
                 result.Add(new Noeud(carte.Cases[_case.Y - 1, _case.X], this, destination));
             // Gauche
-            if (carte.CaseValide(_case.X - 1, _case.Y) && carte.Cases[_case.Y, _case.X - 1].Type > 0)
+            if (CaseValide(_case.X - 1, _case.Y) && carte.Cases[_case.Y, _case.X - 1].Type > 0)
                 result.Add(new Noeud(carte.Cases[_case.Y, _case.X - 1], this, destination));
 
             return result;
+        }
+
+        private bool CaseValide(int x, int y)
+        {
+            return (x >= 0 && x < Taille_Map.LARGEUR_MAP && y >= 0 && y < Taille_Map.HAUTEUR_MAP);
         }
     }
 }
