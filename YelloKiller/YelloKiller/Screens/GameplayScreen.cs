@@ -54,6 +54,7 @@ namespace YelloKiller
         Hero hero1, hero2;
         Carte carte;
         Rectangle camera;
+        Case caseDepart;
 
         List<Shuriken> _shuriken;
         List<Garde> _gardes;
@@ -90,6 +91,7 @@ namespace YelloKiller
             camera = new Rectangle(0, 0, 32, 24);
 
             hero1 = new Hero(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightControl, Keys.RightShift, 1, 50);
+            caseDepart = carte.Cases[(int)carte.OrigineJoueur1.Y, (int)carte.OrigineJoueur1.X];
             if (jeuEnCoop)
                 hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.Space, Keys.LeftShift, 2, 25);
 
@@ -168,6 +170,7 @@ namespace YelloKiller
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
+            ServiceHelper.Game.Window.Title = "Origine X = " + caseDepart.X + " Y = " + caseDepart.Y;
             if (IsActive)
             {
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
