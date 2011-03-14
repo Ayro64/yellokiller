@@ -14,7 +14,6 @@ namespace YelloKiller
         Case depart;
         Case arrivee;
 
-
         public Boss(Vector2 position)
             : base(position)
         {
@@ -46,8 +45,8 @@ namespace YelloKiller
 
             if (Math.Abs((int)(hero.position.X / 28) - (int)(position.X / 28)) < 4 && Math.Abs((int)(hero.position.Y / 28) - (int)(position.Y / 28)) < 4)
             {                
-                depart = carte.Cases[((int)position.Y) / 28 /*- (camera.X / 28)*/, ((int)position.X) / 28 /*- (camera.Y / 28)*/];
-                arrivee = carte.Cases[((int)hero.position.Y) / 28 /*- (camera.X / 28)*/, ((int)hero.position.X) / 28 /*- (camera.Y / 28)*/];
+                depart = carte.Cases[((int)position.Y) / 28, ((int)position.X) / 28];
+                arrivee = carte.Cases[((int)hero.position.Y) / 28, ((int)hero.position.X) / 28];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);               
             }
 
@@ -55,32 +54,26 @@ namespace YelloKiller
             {
                 if (Monter && Descendre && Droite && Gauche)
                 {
-                    Console.WriteLine("Position : X = " + (int)Position.X / 28 + " ; Y = " + (int)Position.Y / 28 + " _ Chemin : X = " + (int)chemin[chemin.Count - 1].Position.X / 28 + " ; Y = " + (int)chemin[chemin.Count - 1].Position.Y / 28);
-
                     if ((int)chemin[chemin.Count - 1].X < (int)Position.X / 28)
                     {
-                        Console.WriteLine("Je vais a gauche");
                         positionDesiree.X -= 28;
                         Gauche = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                     else if ((int)chemin[chemin.Count - 1].X > (int)Position.X / 28)
                     {
-                        Console.WriteLine("Je vais a droite");
                         positionDesiree.X += 28;
                         Droite = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                     else if ((int)chemin[chemin.Count - 1].Y < (int)Position.Y / 28)
                     {
-                        Console.WriteLine("Je vais en haut");
                         positionDesiree.Y -= 28;
                         Monter = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                     else if ((int)chemin[chemin.Count - 1].Y > (int)Position.Y / 28)
                     {
-                        Console.WriteLine("Je vais en bas");
                         positionDesiree.Y += 28;
                         Descendre = false;
                         chemin.RemoveAt(chemin.Count - 1);

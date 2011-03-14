@@ -7,7 +7,6 @@ namespace YelloKiller
     {
         public static List<Case> CalculChemin(Carte carte, Case depart, Case arrivee)
         {
-            System.Console.WriteLine("Dans pathfinding : Depart X = " + depart.X + " Y = " + depart.Y + " Arrivee X = " + arrivee.X + " Y = " + arrivee.Y);
             List<Case> resultat = new List<Case>();
             NodeList<Noeud> listeOuverte = new NodeList<Noeud>();
             NodeList<Noeud> listeFermee = new NodeList<Noeud>();
@@ -24,17 +23,14 @@ namespace YelloKiller
                 listeOuverte.RemoveAt(0);
                 listeFermee.Add(current);
 
-                System.Console.WriteLine("Current X = " + current.Case.X + " Y = " + current.Case.Y);
-                if (current.Case.X == arrivee.X && current.Case.Y == arrivee.Y)
+                if (current.Case == arrivee)
                 {
                     List<Case> solution = new List<Case>();
                     while (current.Parent != null)
                     {
-                        System.Console.WriteLine("Dans boucle de retour Current X = " + current.Case.X + " Y = " + current.Case.Y);
                         solution.Add(current.Case);
                         current = current.Parent;
                     }
-                    System.Console.WriteLine("Pathfinding REUSSI AVEC SUCCES");
                     return solution;
                 }
 
