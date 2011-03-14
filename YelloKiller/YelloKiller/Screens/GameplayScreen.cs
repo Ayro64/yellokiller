@@ -170,7 +170,6 @@ namespace YelloKiller
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            ServiceHelper.Game.Window.Title = "Origine X = " + caseDepart.X + " Y = " + caseDepart.Y;
             if (IsActive)
             {
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
