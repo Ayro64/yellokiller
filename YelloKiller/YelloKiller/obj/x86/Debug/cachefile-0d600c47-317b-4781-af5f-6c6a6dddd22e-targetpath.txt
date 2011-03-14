@@ -44,6 +44,7 @@ Content\Textures\Patrouilleur_a_cheval.xnb
 Content\Boss.xnb
 Content\origine_boss.xnb
 Content\WinTex.xnb
+Content\flamme.xnb
 Content\Sons\cri.xnb
 Content\Sons\CriMortHero.xnb
 Content\Sons\menuBouge.xnb
@@ -55,7 +56,6 @@ Content\Sons\sonMenuBoutton.xnb
 Content\Sons\11 Fanfare.xnb
 Content\Sons\metalgear.xnb
 Content\courier.xnb
-Content\flamme.xnb
 Content\Sons\Ambiance sonore.xgs
 Content\Sons\Wave Bank.xwb
 Content\Sons\Sound Bank.xsb
