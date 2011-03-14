@@ -100,7 +100,7 @@
     <Compile Include="MapEditor\Ascenseur.cs" />
     <Compile Include="MapEditor\Carte.cs" />
     <Compile Include="MapEditor\Case.cs" />
-    <Compile Include="MapEditor\Cursor.cs" />
+    <Compile Include="MapEditor\Curseur.cs" />
     <Compile Include="MapEditor\Menu.cs" />
     <Compile Include="Pathfinding\ListeNoeuds.cs" />
     <Compile Include="Pathfinding\Noeud.cs" />
