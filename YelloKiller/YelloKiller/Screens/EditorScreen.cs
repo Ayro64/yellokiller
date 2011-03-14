@@ -20,7 +20,7 @@ namespace YelloKiller
         ContentManager content;
 
         Carte carte;
-        Cursor curseur;
+        Curseur curseur;
         Menu menu;
         Ascenseur ascenseur;
 
@@ -78,7 +78,7 @@ namespace YelloKiller
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu ci-dessous.
             menu = new Menu(content, 26);
-            curseur = new Cursor(content);
+            curseur = new Curseur(content);
             ascenseur = new Ascenseur(content);
 
             spriteBatch = ScreenManager.SpriteBatch;
@@ -129,6 +129,9 @@ namespace YelloKiller
 
             else if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Down))
                 camera.Y++;
+
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Delete))
+                SupprimerEnnemi();
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
@@ -555,6 +558,25 @@ namespace YelloKiller
                 sauvegarde.Close();
                 enableSave = false;
             }
+        }
+        
+        private void SupprimerEnnemi()
+        {
+            for (int t = 0; t < _originesGardes.Count; t++)
+                if (_originesGardes[t].X == curseur.Position.X + camera.X && _originesGardes[t].Y == curseur.Position.Y + camera.Y)
+                    _originesGardes.RemoveAt(t);
+
+            for (int t = 0; t < _originesPatrouilleurs.Count; t++)
+                if (_originesPatrouilleurs[t].X == curseur.Position.X + camera.X && _originesPatrouilleurs[t].Y == curseur.Position.Y + camera.Y)
+                    _originesPatrouilleurs.RemoveAt(t);
+
+            for (int t = 0; t < _originesPatrouilleursAChevaux.Count; t++)
+                if (_originesPatrouilleursAChevaux[t].X == curseur.Position.X + camera.X && _originesPatrouilleursAChevaux[t].Y == curseur.Position.Y + camera.Y)
+                    _originesPatrouilleursAChevaux.RemoveAt(t);
+
+            for (int t = 0; t < _originesBoss.Count; t++)
+                if (_originesBoss[t].X == curseur.Position.X + camera.X && _originesBoss[t].Y == curseur.Position.Y + camera.Y)
+                    _originesBoss.RemoveAt(t);
         }
     }
 }

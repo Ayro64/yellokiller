@@ -7,14 +7,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    class Cursor
+    class Curseur
     {
         Texture2D texture, fond;
         Vector2 position;
         TypeCase type;
         float tailleFond;
 
-        public Cursor(ContentManager content)
+        public Curseur(ContentManager content)
         {
             position = new Vector2(0, 0);
             texture = content.Load<Texture2D>(@"Textures\herbeFoncee");
@@ -36,6 +36,7 @@ namespace YelloKiller
 
         public void Update(ContentManager content, Menu menu)
         {
+            ServiceHelper.Game.Window.Title = "Curseur X = " + position.X + " Y = " + position.Y;
             if (ServiceHelper.Get<IMouseService>().DansLEcran())
                 position = new Vector2((int)ServiceHelper.Get<IMouseService>().Coordonnees().X / 28, (int)ServiceHelper.Get<IMouseService>().Coordonnees().Y / 28);
 
