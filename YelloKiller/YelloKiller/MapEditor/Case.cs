@@ -109,6 +109,9 @@ namespace YelloKiller
                 case TypeCase.Lit:
                     nomTexture = @"Textures\lit";
                     break;
+                case TypeCase.fond:
+                    nomTexture = @"Textures\fondNoir";
+                    break;
 
                 case TypeCase.Joueur1:
                     nomTexture = "origine_hero1";

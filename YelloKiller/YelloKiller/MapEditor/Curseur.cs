@@ -36,7 +36,6 @@ namespace YelloKiller
 
         public void Update(ContentManager content, Menu menu)
         {
-            ServiceHelper.Game.Window.Title = "Curseur X = " + position.X + " Y = " + position.Y;
             if (ServiceHelper.Get<IMouseService>().DansLEcran())
                 position = new Vector2((int)ServiceHelper.Get<IMouseService>().Coordonnees().X / 28, (int)ServiceHelper.Get<IMouseService>().Coordonnees().Y / 28);
 
