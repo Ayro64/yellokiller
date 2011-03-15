@@ -51,7 +51,7 @@ namespace YelloKiller
             ligne = "";
             enableSave = true;
             afficheMessageErreur = false;
-            camera = new Rectangle(0, 0, 30, 24);
+            camera = new Rectangle(0, 0, 34, 27);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
 
             if (nomCarte == "")

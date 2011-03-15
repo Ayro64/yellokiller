@@ -8,7 +8,7 @@
 
     static class Taille_Ecran
     {
-        static public int LARGEUR_ECRAN = 896;
-        static public int HAUTEUR_ECRAN = 672;
+        static public int LARGEUR_ECRAN = 1008;
+        static public int HAUTEUR_ECRAN = 756;
     }
 }

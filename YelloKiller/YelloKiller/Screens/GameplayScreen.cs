@@ -88,7 +88,7 @@ namespace YelloKiller
 
             _shuriken = new List<Shuriken>();
 
-            camera = new Rectangle(0, 0, 32, 24);
+            camera = new Rectangle(0, 0, 36, 27);
 
             hero1 = new Hero(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightControl, Keys.RightShift, 1, 50);
             caseDepart = carte.Cases[(int)carte.OrigineJoueur1.Y, (int)carte.OrigineJoueur1.X];
@@ -99,14 +99,14 @@ namespace YelloKiller
             if (carte.OrigineJoueur1.X - 16 < 0)
                 camera.X = 0;
             else if (carte.OrigineJoueur1.X + 16 > Taille_Map.LARGEUR_MAP - 1)
-                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 33);
+                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 37);
             else
                 camera.X = 28 * ((int)carte.OrigineJoueur1.X - 16);
 
             if (carte.OrigineJoueur1.Y - 12 < 0)
                 camera.Y = 0;
             else if (carte.OrigineJoueur1.Y + 12 > Taille_Map.HAUTEUR_MAP - 1)
-                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 25);
+                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 28);
             else
                 camera.Y = 28 * ((int)carte.OrigineJoueur1.Y - 12);
 
