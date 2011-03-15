@@ -63,6 +63,7 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
+            ServiceHelper.Game.Window.Title = "Camera X = " + camera.X + " Y = " + camera.Y;
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
@@ -104,7 +105,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.Y - vitesseSprite >= 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 196)
+                    if (numeroHero == 1 && camera.Y - vitesseSprite >= 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 308)
                         camera.Y -= vitesseSprite;
                 }
 
@@ -127,7 +128,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.Y + vitesseSprite <= 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 198)
+                    if (numeroHero == 1 && camera.Y + vitesseSprite <= 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 310)
                         camera.Y += vitesseSprite;
                 }
                 else
@@ -149,7 +150,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.X - vitesseSprite >= 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 192)
+                    if (numeroHero == 1 && camera.X - vitesseSprite >= 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 304)
                         camera.X -= vitesseSprite;
                 }
 
@@ -172,7 +173,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.X + vitesseSprite <= 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 202)
+                    if (numeroHero == 1 && camera.X + vitesseSprite <= 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 314)
                         camera.X += vitesseSprite;
                 }
 
