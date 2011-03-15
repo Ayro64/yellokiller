@@ -31,7 +31,7 @@ namespace YelloKiller
 
             graphics.PreferredBackBufferHeight = Taille_Ecran.HAUTEUR_ECRAN;
             graphics.PreferredBackBufferWidth = Taille_Ecran.LARGEUR_ECRAN;
-            // graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             ServiceHelper.Game = this;
             Components.Add(new KeyboardService(this));
             Components.Add(new MouseService(this));
