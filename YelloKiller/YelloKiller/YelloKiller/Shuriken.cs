@@ -11,6 +11,7 @@ namespace YelloKiller
         Rectangle rectangle;
         bool shurikenExists;
         float elapsed, circle;
+        float tmpshuriken = 0;
 
         public Shuriken(Vector2 position, Hero hero, ContentManager content)
             : base(position)
@@ -44,6 +45,9 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
+
+            tmpshuriken += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+
             if (position.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP && position.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP &&
                 carte.Cases[(int)position.Y / 28, (int)position.X / 28].Type > 0)
             {
@@ -56,6 +60,14 @@ namespace YelloKiller
             }
             else
                 shurikenExists = false;
+
+            if (tmpshuriken > 1)
+            {
+                shurikenExists = false;
+                tmpshuriken = 0;
+            }
+
+
         }
 
 
