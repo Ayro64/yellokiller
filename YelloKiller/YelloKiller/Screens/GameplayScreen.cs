@@ -173,7 +173,6 @@ namespace YelloKiller
             if (IsActive)
             {
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
-                //ServiceHelper.Game.Window.Title = "X = " + camera.X + " Y = " + camera.Y;
 
                 moteurAudio.Update();
 
@@ -182,7 +181,7 @@ namespace YelloKiller
                     hero2.Update(gameTime, carte, ref camera, _shuriken, moteurAudio, content, hero1);
 
                 foreach (Garde garde in _gardes)
-                    garde.Update(gameTime, carte, hero1, camera);
+                    garde.Update(gameTime, carte, hero1, hero2, camera);
 
                 foreach (Patrouilleur patrouilleur in _patrouilleurs)
                     patrouilleur.Update(gameTime, carte, hero1, camera);
