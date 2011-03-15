@@ -23,7 +23,7 @@ namespace YelloKiller
             descendre = true;
             droite = true;
             gauche = true;
-            vitesseSprite = 1;
+            vitesseSprite = 2;
             vitesseAnimation = 0.008f;
         }
 
