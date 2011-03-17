@@ -190,7 +190,7 @@ namespace YelloKiller
                     patrouilleurACheval.Update(gameTime, carte, hero1, camera);
                 
                 foreach (Boss boss in _boss)
-                    boss.Update(gameTime, _shuriken, carte, hero1, camera);
+                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
                 
                 Moteur_physique.Collision_Shuriken_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurAudio.SoundBank);
 
