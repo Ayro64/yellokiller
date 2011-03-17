@@ -16,7 +16,7 @@ namespace YelloKiller.IA
 
                 if (boss.Monter && boss.Descendre && boss.Droite && boss.Gauche)
                 {
-                    if (_shuriken.Direction == Vector2.UnitX && (int)(boss.position.X / 28) - (int)(_shuriken.position.X) / 28 < 7
+                    if ((_shuriken.Direction == Vector2.UnitX) && (int)(boss.position.X / 28) - (int)(_shuriken.position.X) / 28 < 7
                         && (int)(boss.position.Y) / 28 == (int)(_shuriken.position.Y) / 28)
                     {
                         if (boss.position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) &&

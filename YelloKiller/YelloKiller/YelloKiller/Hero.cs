@@ -16,6 +16,7 @@ namespace YelloKiller
         int maxIndex, nombreShuriken, vitesseSprite, numeroHero;
         public bool ishero;
         bool monter, descendre, droite, gauche;
+        bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, shuriken, courir;
 
         public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys shuriken, Keys courir, int numeroHero, int nombreShuriken)
@@ -29,6 +30,10 @@ namespace YelloKiller
             descendre = true;
             droite = true;
             gauche = true;
+            regarde_droite = true;
+            regarde_gauche = true;
+            regarde_haut = true;
+            regarde_bas = true;
             vitesseSprite = 4;
             vitesseAnimation = 0.008f;
             index = 0;
@@ -85,13 +90,36 @@ namespace YelloKiller
             if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(up))    // arreter le sprite
             {
                 if (SourceRectangle.Value.Y == 133)
+                {
+                    regarde_haut = true;
                     SourceRectangle = new Rectangle(24, 133, 16, 28);
+                }
+                else
+                    regarde_haut = false;
+
                 if (SourceRectangle.Value.Y == 198)
+                {
+                    regarde_bas = true;
                     SourceRectangle = new Rectangle(24, 198, 16, 28);
+                }
+                else
+                    regarde_bas = false;
+
                 if (SourceRectangle.Value.Y == 230)
+                {
                     SourceRectangle = new Rectangle(24, 230, 16, 28);
+                    regarde_gauche = true;
+                }
+                else
+                    regarde_gauche = false;
+
                 if (SourceRectangle.Value.Y == 166)
+                {
                     SourceRectangle = new Rectangle(24, 166, 16, 28);
+                    regarde_droite = true;
+                }
+                else
+                    regarde_droite = false;
             }
 
             if (!monter)
@@ -294,6 +322,30 @@ namespace YelloKiller
         public Vector2 PositionDesiree
         {
             get { return positionDesiree; }
+        }
+
+        public bool Regarder_Haut
+        {
+            get { return regarde_haut; }
+            set { regarde_haut = value; }
+        }
+
+        public bool Regarder_Bas
+        {
+            get { return regarde_bas; }
+            set { regarde_bas = value; }
+        }
+
+        public bool Regarder_Droite
+        {
+            get { return regarde_droite; }
+            set { regarde_droite = value; }
+        }
+
+        public bool Regarder_Gauche
+        {
+            get { return regarde_gauche; }
+            set { regarde_gauche = value; }
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
