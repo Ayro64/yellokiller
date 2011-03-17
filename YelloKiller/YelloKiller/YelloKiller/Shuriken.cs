@@ -28,14 +28,14 @@ namespace YelloKiller
             rectangle = new Rectangle((int)position.X, (int)position.Y, 12, 12);
 
             if (hero.ishero == true)
-            {
-                if (hero.SourceRectangle.Value.Y == 230)
+            { 
+                if (hero.Regarder_Gauche)
                     direction = -Vector2.UnitX;
-                else if (hero.SourceRectangle.Value.Y == 198)
+                else if (hero.Regarder_Bas)
                     direction = Vector2.UnitY;
-                else if (hero.SourceRectangle.Value.Y == 166)
+                else if (hero.Regarder_Droite)
                     direction = Vector2.UnitX;
-                else if (hero.SourceRectangle.Value.Y == 133)
+                else if (hero.Regarder_Haut)
                     direction = -Vector2.UnitY;
             }
         }

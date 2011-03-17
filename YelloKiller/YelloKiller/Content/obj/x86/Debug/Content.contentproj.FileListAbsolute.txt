@@ -9,3 +9,5 @@ C:\Users\Théo\Desktop\Yello Killer\YelloKiller\YelloKiller\Content\obj\x86\Debu
 C:\Users\max\Desktop\yellokiller\YelloKiller\YelloKiller\Content\obj\x86\Debug\Sons\Ambiance sonore.xml
 C:\Users\Théo\Desktop\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Théo\Desktop\YelloKiller\YelloKiller\Content\obj\x86\Debug\Sons\Ambiance sonore.xml
+C:\Users\Théo Sellem\Desktop\YelloKiller\YelloKiller\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Théo Sellem\Desktop\YelloKiller\YelloKiller\Content\obj\x86\Debug\Sons\Ambiance sonore.xml

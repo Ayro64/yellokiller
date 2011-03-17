@@ -10,6 +10,7 @@ namespace YelloKiller
         int maxIndex, vitesseSprite;
         float index, vitesseAnimation;
         bool monter, descendre, droite, gauche;
+        bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
 
         public Vector2 positionDesiree;
 
@@ -23,6 +24,10 @@ namespace YelloKiller
             descendre = true;
             droite = true;
             gauche = true;
+            regarde_droite = true;
+            regarde_gauche = true;
+            regarde_haut = true;
+            regarde_bas = true;
             vitesseSprite = 2;
             vitesseAnimation = 0.008f;
         }
@@ -81,6 +86,30 @@ namespace YelloKiller
             set { gauche = value; }
         }
 
+        public bool Regarder_Haut
+        {
+            get { return regarde_haut; }
+            set { regarde_haut = value; }
+        }
+
+        public bool Regarder_Bas
+        {
+            get { return regarde_bas; }
+            set { regarde_bas = value; }
+        }
+
+        public bool Regarder_Droite
+        {
+            get { return regarde_droite; }
+            set { regarde_droite = value; }
+        }
+
+        public bool Regarder_Gauche
+        {
+            get { return regarde_gauche; }
+            set { regarde_gauche = value; }
+        }
+
         public void LoadContent(ContentManager content, int maxIndex, string Assetname)
         {
             LoadContent(content, Assetname);
@@ -93,13 +122,22 @@ namespace YelloKiller
             rectangle.Y = (int)position.Y + 1;
 
             if (SourceRectangle.Value.Y == sourceRectangle1.Y)
+            {
                 SourceRectangle = sourceRectangle1;
+            }
+
             if (SourceRectangle.Value.Y == sourceRectangle3.Y)
-                SourceRectangle = sourceRectangle3;
+            { 
+                SourceRectangle = sourceRectangle3; 
+            }
             if (SourceRectangle.Value.Y == sourceRectangle2.Y)
+            {
                 SourceRectangle = sourceRectangle2;
+            }
             if (SourceRectangle.Value.Y == sourceRectangle4.Y)
-                SourceRectangle = sourceRectangle4;
+            { 
+                SourceRectangle = sourceRectangle4; 
+            }
 
             if (!monter)
             {
