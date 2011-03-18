@@ -124,20 +124,35 @@ namespace YelloKiller
             if (SourceRectangle.Value.Y == sourceRectangle1.Y)
             {
                 SourceRectangle = sourceRectangle1;
+                regarde_haut = true;
             }
+            else
+                regarde_haut = false;
 
             if (SourceRectangle.Value.Y == sourceRectangle3.Y)
-            { 
-                SourceRectangle = sourceRectangle3; 
+            {
+                SourceRectangle = sourceRectangle3;
+                    regarde_gauche = true;
             }
+            else
+                regarde_gauche = false;
+                
+
             if (SourceRectangle.Value.Y == sourceRectangle2.Y)
             {
                 SourceRectangle = sourceRectangle2;
+                Regarder_Bas = true;
             }
+            else
+                Regarder_Bas = false;            
+
             if (SourceRectangle.Value.Y == sourceRectangle4.Y)
-            { 
-                SourceRectangle = sourceRectangle4; 
+            {
+                SourceRectangle = sourceRectangle4;
+                regarde_droite = true;
             }
+            else
+                regarde_droite = false;
 
             if (!monter)
             {

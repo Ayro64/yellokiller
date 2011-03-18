@@ -68,9 +68,31 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
-            ServiceHelper.Game.Window.Title = "Camera X = " + camera.X + " Y = " + camera.Y;
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
+
+            if (SourceRectangle.Value.Y == 133)
+                regarde_haut = true;
+            else
+                regarde_haut = false;
+
+            if (SourceRectangle.Value.Y == 198)
+                regarde_bas = true;
+            else
+                regarde_bas = false;
+
+            if (SourceRectangle.Value.Y == 230)
+                regarde_gauche = true;
+            else
+                regarde_gauche = false;
+
+            if (SourceRectangle.Value.Y == 166)
+                regarde_droite = true;
+            else
+                regarde_droite = false;
+
+
+            
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(shuriken) && nombreShuriken > 0)
             {
@@ -90,36 +112,17 @@ namespace YelloKiller
             if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(up))    // arreter le sprite
             {
                 if (SourceRectangle.Value.Y == 133)
-                {
-                    regarde_haut = true;
-                    SourceRectangle = new Rectangle(24, 133, 16, 28);
-                }
-                else
-                    regarde_haut = false;
+                { SourceRectangle = new Rectangle(24, 133, 16, 28); }
 
                 if (SourceRectangle.Value.Y == 198)
-                {
-                    regarde_bas = true;
-                    SourceRectangle = new Rectangle(24, 198, 16, 28);
-                }
-                else
-                    regarde_bas = false;
+                { SourceRectangle = new Rectangle(24, 198, 16, 28); }
 
                 if (SourceRectangle.Value.Y == 230)
-                {
-                    SourceRectangle = new Rectangle(24, 230, 16, 28);
-                    regarde_gauche = true;
-                }
-                else
-                    regarde_gauche = false;
+                { SourceRectangle = new Rectangle(24, 230, 16, 28); }
+
 
                 if (SourceRectangle.Value.Y == 166)
-                {
-                    SourceRectangle = new Rectangle(24, 166, 16, 28);
-                    regarde_droite = true;
-                }
-                else
-                    regarde_droite = false;
+                { SourceRectangle = new Rectangle(24, 166, 16, 28); }
             }
 
             if (!monter)
