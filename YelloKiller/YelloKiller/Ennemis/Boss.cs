@@ -43,6 +43,8 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
 
+            ServiceHelper.Game.Window.Title = "Haut = " + Regarder_Haut + "  Droit = " + Regarder_Droite + "  Bas = " + Regarder_Bas + "  Gauche = " + Regarder_Gauche;
+
             if (Math.Abs((int)(hero1.position.X / 28) - (int)(position.X / 28)) < 4 && Math.Abs((int)(hero1.position.Y / 28) - (int)(position.Y / 28)) < 4)
             {
                 depart = carte.Cases[((int)position.Y) / 28, ((int)position.X) / 28];
