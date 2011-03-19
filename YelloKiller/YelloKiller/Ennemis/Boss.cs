@@ -43,7 +43,7 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
 
-            ServiceHelper.Game.Window.Title = "Haut = " + Regarder_Haut + "  Droit = " + Regarder_Droite + "  Bas = " + Regarder_Bas + "  Gauche = " + Regarder_Gauche;
+            ServiceHelper.Game.Window.Title = "chemin =" + (chemin.Count) + "   Haut = " + Regarder_Haut + "  Droit = " + Regarder_Droite + "  Bas = " + Regarder_Bas + "  Gauche = " + Regarder_Gauche;
 
             if (Math.Abs((int)(hero1.position.X / 28) - (int)(position.X / 28)) < 4 && Math.Abs((int)(hero1.position.Y / 28) - (int)(position.Y / 28)) < 4)
             {
@@ -90,6 +90,18 @@ namespace YelloKiller
             }
 
             IA.Esquive_Shuriken.Boss_Esquive_Shuriken(hero1, this, shuriken, carte, camera);
+
+            if (vie < 5 && chemin.Count == 0)
+            {
+                if (hero1.Regarder_Bas && position.Y > hero1.position.Y)
+                    SourceRectangle = new Rectangle(26, 0, 16, 24);
+                else if (hero1.Regarder_Gauche && position.X < hero1.position.X)
+                    SourceRectangle = new Rectangle(26, 33, 16, 24);
+               else if (hero1.Regarder_Haut && position.Y < hero1.position.Y)
+                    SourceRectangle = new Rectangle(26, 64, 16, 24);
+                else if (hero1.Regarder_Droite && position.X > hero1.position.X)
+                    SourceRectangle = new Rectangle(26, 97, 16, 24);
+            }
         }
     }
 }
