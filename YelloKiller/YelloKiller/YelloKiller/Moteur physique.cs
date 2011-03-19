@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace YelloKiller
@@ -51,6 +52,16 @@ namespace YelloKiller
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_Boss[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
+                            // une fois que le shuriken a touché le boss, le boss regarder vers le hero
+                            if (listeShuriken[j].Direction == Vector2.UnitY)
+                                _Boss[i].SourceRectangle = new Rectangle(26, 0, 16, 24);
+                            else if (listeShuriken[j].Direction == -Vector2.UnitX)
+                                _Boss[i].SourceRectangle = new Rectangle(26, 33, 16, 24);
+                            else if (listeShuriken[j].Direction == -Vector2.UnitY)
+                                _Boss[i].SourceRectangle = new Rectangle(26, 64, 16, 24);
+                            else if (listeShuriken[j].Direction == Vector2.UnitX)
+                                _Boss[i].SourceRectangle = new Rectangle(26, 97, 16, 24);
+
                             Console.WriteLine(_Boss[i].Vie);
                             _Boss[i].Vie--;
                             listeShuriken.Remove(listeShuriken[j]);
