@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    class Carte
+   public class Carte
     {
         Case[,] _case;
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;

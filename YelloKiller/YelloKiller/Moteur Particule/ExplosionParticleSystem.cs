@@ -1,0 +1,67 @@
+#region File Description
+//-----------------------------------------------------------------------------
+// ExplosionParticleSystem.cs
+//
+// Microsoft XNA Community Game Platform
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using YelloKiller;
+#endregion
+
+namespace ParticleSample
+{
+   
+    public class ExplosionParticleSystem : ParticleSystem
+    {
+        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects)
+            : base(game, howManyEffects)
+        {
+        }
+
+       
+        protected override void InitializeConstants()
+        {
+            textureFilename = "explosion";
+
+            minInitialSpeed = 40;
+            maxInitialSpeed = 500;
+
+           
+            minAcceleration = 0;
+            maxAcceleration = 0;
+
+           
+            minLifetime = .5f;
+            maxLifetime = 1.0f;
+
+            minScale = .3f;
+            maxScale = 1.0f;
+
+            minNumParticles = 100;
+            maxNumParticles = 200;
+
+            minRotationSpeed = -MathHelper.PiOver4;
+            maxRotationSpeed = MathHelper.PiOver4;
+
+            // additive blending is very good at creating fiery effects.
+            spriteBlendMode = SpriteBlendMode.Additive;
+
+            DrawOrder = AdditiveDrawOrder;
+        }
+
+        protected override void InitializeParticle(Particle p, Vector2 where)
+        {
+            base.InitializeParticle(p, where);
+            
+             p.Acceleration = -p.Velocity / p.Lifetime;
+        }
+    }
+}
