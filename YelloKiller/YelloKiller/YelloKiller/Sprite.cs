@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    class Sprite
+    public class Sprite
     {
         public Vector2 position;
         Texture2D texture;

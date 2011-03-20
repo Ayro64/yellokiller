@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    class Hero : Sprite
+   public class Hero : Sprite
     {
         Vector2 positionDesiree;
         Rectangle rectangle;

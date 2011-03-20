@@ -2,7 +2,7 @@
 
 namespace YelloKiller
 {
-    class MoteurAudio
+   public class MoteurAudio
     {
         AudioEngine engine;
         WaveBank waveBank;
