@@ -46,7 +46,7 @@ namespace ParticleSample
             maxLifetime = 2.5f;
 
             minScale = 1.0f;
-            maxScale = 2.0f;
+            maxScale = 3.0f;
 
             minNumParticles = 100;
             maxNumParticles = 200;
