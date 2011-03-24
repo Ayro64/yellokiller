@@ -39,7 +39,6 @@ namespace YelloKiller
         State currentState = State.Explosions;
 
         const float TimeBetweenExplosions = 2.0f;
-        float timeTillExplosion = 0.0f;
 
         const float TimeBetweenSmokePlumePuffs = .5f;
         float timeTillPuff = 0.0f;
@@ -135,15 +134,9 @@ namespace YelloKiller
 
         private void UpdateExplosions(float dt)
         {
-           // timeTillExplosion -= dt;
-          //  if (timeTillExplosion < 0)
-          //  {
+          
                 explosion.AddParticles(position());
                 smoke.AddParticles(position());
-
-
-                timeTillExplosion = TimeBetweenExplosions;
-            //}
         }
         #region Draw
 
