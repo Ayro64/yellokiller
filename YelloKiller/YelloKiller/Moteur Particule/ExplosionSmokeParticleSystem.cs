@@ -33,23 +33,22 @@ namespace ParticleSample
             textureFilename = "smoke";
 
             // less initial speed than the explosion itself
-            minInitialSpeed = 20;
-            maxInitialSpeed = 200;
+            minInitialSpeed = 10;
+            maxInitialSpeed = 50;
 
-          
             minAcceleration = -10;
-            maxAcceleration = -50;
+            maxAcceleration = -30;
 
             // explosion smoke lasts for longer than the explosion itself, but not
             // as long as the plumes do.
             minLifetime = 1.0f;
-            maxLifetime = 2.5f;
+            maxLifetime = 2f;
 
             minScale = 1.0f;
             maxScale = 3.0f;
 
-            minNumParticles = 100;
-            maxNumParticles = 200;
+            minNumParticles = 10;
+            maxNumParticles = 20;
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;

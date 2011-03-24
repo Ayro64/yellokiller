@@ -45,8 +45,8 @@ namespace ParticleSample
             minScale = 1f;
             maxScale = 10f;
 
-            minNumParticles = 10000;
-            maxNumParticles = 20000;
+            minNumParticles = 30;
+            maxNumParticles = 50;
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;
