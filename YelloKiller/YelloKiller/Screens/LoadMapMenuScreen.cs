@@ -9,9 +9,12 @@ namespace YelloKiller
 {
     class LoadMapMenuScreen : MenuScreen
     {
-        public LoadMapMenuScreen()
+        YellokillerGame game;
+
+        public LoadMapMenuScreen(YellokillerGame game)
             : base(Langue.tr("PausEditLoad"))
         {
+            this.game = game;
             string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath);
             foreach (string str in fileEntries)
             {
@@ -28,12 +31,12 @@ namespace YelloKiller
         {
             // MenuEntry selected = (MenuEntry) sender;
             MenuEntry selected = sender as MenuEntry;
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(selected.Text));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(selected.Text, game));
         }
 
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-            ScreenManager.AddScreen(new PauseMenuScreen(2, 2), playerIndex, true);
+            ScreenManager.AddScreen(new PauseMenuScreen(2, 2, game), playerIndex, true);
             ExitScreen();
         }
     }

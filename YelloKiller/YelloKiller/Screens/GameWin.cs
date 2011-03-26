@@ -16,6 +16,7 @@ namespace YelloKiller
         ContentManager content;
         Texture2D winTexture, blankTexture;
         string WinMessage, comingfrom;
+        YellokillerGame game;
 
         Color Color;
 
@@ -26,8 +27,9 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public GameWin(string comingfrom)
+        public GameWin(string comingfrom, YellokillerGame game)
         {
+            this.game = game;
             this.comingfrom = comingfrom;
             WinMessage = Langue.tr("WinMsg");
 
@@ -132,9 +134,9 @@ namespace YelloKiller
         void NextMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             if (comingfrom[0] == 'S')
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
             else
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
         }
 
         /// <summary>
@@ -143,9 +145,9 @@ namespace YelloKiller
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             if (comingfrom[0] == 'S')
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
             else
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
         }
 
         /// <summary>
@@ -155,7 +157,7 @@ namespace YelloKiller
         void AbortMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
-                                                           new MainMenuScreen());
+                                                           new MainMenuScreen(game));
         }
 
         #endregion

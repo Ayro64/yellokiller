@@ -28,8 +28,11 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public GameOverScreen(string comingfrom)
+        /// 
+        YellokillerGame game = null;
+        public GameOverScreen(string comingfrom, YellokillerGame game)
         {
+            this.game = game;
             this.comingfrom = comingfrom;
             GOmessage = Langue.tr("GOMsg");
 
@@ -131,9 +134,9 @@ namespace YelloKiller
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             if (comingfrom[0] == 'S')
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
             else 
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
         }
 
         /// <summary>
@@ -144,7 +147,7 @@ namespace YelloKiller
         {
             MediaPlayer.Stop();
             LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
-                                                           new MainMenuScreen());
+                                                           new MainMenuScreen(game));
         }
 
         #endregion

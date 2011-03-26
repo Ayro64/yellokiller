@@ -14,6 +14,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using YelloKiller;
+using YelloKiller.Moteur_Particule;
 #endregion
 
 namespace ParticleSample
@@ -21,8 +22,8 @@ namespace ParticleSample
    
     public class SmokePlumeParticleSystem : ParticleSystem
     {
-        public SmokePlumeParticleSystem(YellokillerGame game, int howManyEffects)
-            : base(game,howManyEffects)
+        public SmokePlumeParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
+            : base(game,howManyEffects, spriteBatch )
         {
         }
 
@@ -64,7 +65,7 @@ namespace ParticleSample
         {
             // Point the particles somewhere between 80 and 100 degrees.
             // tweak this to make the smoke have more or less spread.
-            float radians = YellokillerGame.RandomBetween(
+            float radians = MoteurParticule.RandomBetween(
                 MathHelper.ToRadians(80), MathHelper.ToRadians(100));
 
             Vector2 direction = Vector2.Zero;
@@ -81,7 +82,7 @@ namespace ParticleSample
 
             // the base is mostly good, but we want to simulate a little bit of wind
             // heading to the right.
-            p.Acceleration.X += YellokillerGame.RandomBetween(10, 50);
+            p.Acceleration.X += MoteurParticule.RandomBetween(10, 50);
         }
     }
 }

@@ -14,6 +14,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using YelloKiller;
+using YelloKiller.Moteur_Particule;
 #endregion
 
 namespace ParticleSample
@@ -92,7 +93,7 @@ namespace ParticleSample
             this.TimeSinceStart = 0.0f;
 
             // set rotation to some random value between 0 and 360 degrees.
-            this.Rotation = YellokillerGame.RandomBetween(0, MathHelper.TwoPi);
+            this.Rotation = MoteurParticule.RandomBetween(0, MathHelper.TwoPi);
         }
 
         // update is called by the ParticleSystem on every frame. This is where the

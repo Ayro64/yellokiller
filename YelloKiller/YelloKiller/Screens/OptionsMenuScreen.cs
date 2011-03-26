@@ -24,6 +24,7 @@ namespace YelloKiller
         MenuEntry sonMenuEntry;
         MenuEntry soundVolumeMenuEntry;
         MenuEntry fxVolumeMenuEntry;
+        YellokillerGame game;
 
         int mod;
 
@@ -49,9 +50,10 @@ namespace YelloKiller
         /// <summary>
         /// Constructor.
         /// </summary>
-        public OptionsMenuScreen(int mode)
+        public OptionsMenuScreen(int mode, YellokillerGame game)
             : base(Langue.tr("Options"))
         {
+            this.game = game;
             // Fetches Settings.
             currentLanguage = Properties.Settings.Default.Language;
             currentSon = Properties.Settings.Default.AudioType;
@@ -204,7 +206,7 @@ namespace YelloKiller
             Properties.Settings.Default.Save();
 
             if (IsPopup)
-                ScreenManager.AddScreen(new PauseMenuScreen(1, mod), playerIndex, true);
+                ScreenManager.AddScreen(new PauseMenuScreen(1, mod, game), playerIndex, true);
 
             ExitScreen();
         }
