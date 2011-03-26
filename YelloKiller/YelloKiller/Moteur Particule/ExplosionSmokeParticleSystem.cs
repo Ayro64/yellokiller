@@ -34,10 +34,10 @@ namespace ParticleSample
 
             // less initial speed than the explosion itself
             minInitialSpeed = 10;
-            maxInitialSpeed = 50;
+            maxInitialSpeed = 20;
 
-            minAcceleration = -10;
-            maxAcceleration = -30;
+            minAcceleration = -20;
+            maxAcceleration = -10;
 
             // explosion smoke lasts for longer than the explosion itself, but not
             // as long as the plumes do.
