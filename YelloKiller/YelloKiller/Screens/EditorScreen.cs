@@ -21,7 +21,7 @@ namespace YelloKiller
         Curseur curseur;
         Menu menu;
         Ascenseur ascenseur;
-
+        YellokillerGame game;
         StreamWriter sauvegarde;
         string ligne, nomSauvegarde, nomCarte;
         Rectangle camera;
@@ -33,8 +33,9 @@ namespace YelloKiller
         bool enableOrigine1, enableOrigine2, enableSave, afficheMessageErreur;
         double chronometre = 0;
 
-        public EditorScreen(string nomCarte)
+        public EditorScreen(string nomCarte, YellokillerGame game)
         {
+            this.game = game;
             if (nomCarte == "")
             {
                 nomSauvegarde = nomCarte;
@@ -113,7 +114,7 @@ namespace YelloKiller
             if (input.IsPauseGame(ControllingPlayer) || gamePadDisconnected)
             {
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
-                ScreenManager.AddScreen(new PauseMenuScreen(0, 2), ControllingPlayer, true);
+                ScreenManager.AddScreen(new PauseMenuScreen(0, 2, game), ControllingPlayer, true);
             }
 
             if (camera.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Left))

@@ -14,6 +14,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using YelloKiller;
+using YelloKiller.Moteur_Particule;
 #endregion
 
 namespace ParticleSample
@@ -27,6 +28,7 @@ namespace ParticleSample
 
        
         private YellokillerGame game;
+        protected SpriteBatch spriteBatch;
 
         // the texture this particle system will use.
         private Texture2D texture;
@@ -125,11 +127,12 @@ namespace ParticleSample
 
         #endregion
   
-        protected ParticleSystem(YellokillerGame game, int howManyEffects)
+        protected ParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game)
         {            
             this.game = game;
             this.howManyEffects = howManyEffects;
+            this.spriteBatch = spriteBatch;
         }
 
       
@@ -179,7 +182,7 @@ namespace ParticleSample
             // the number of particles we want for this effect is a random number
             // somewhere between the two constants specified by the subclasses.
             int numParticles = 
-                YellokillerGame.Random.Next(minNumParticles, maxNumParticles);
+                MoteurParticule.Random.Next(minNumParticles, maxNumParticles);
 
             // create that many particles, if you can.
             for (int i = 0; i < numParticles && freeParticles.Count > 0; i++)
@@ -197,16 +200,16 @@ namespace ParticleSample
             Vector2 direction = PickRandomDirection();
 
             // pick some random values for our particle
-            float velocity = 
-                YellokillerGame.RandomBetween(minInitialSpeed, maxInitialSpeed);
-            float acceleration = 
-                YellokillerGame.RandomBetween(minAcceleration, maxAcceleration);
+            float velocity =
+                MoteurParticule.RandomBetween(minInitialSpeed, maxInitialSpeed);
+            float acceleration =
+                MoteurParticule.RandomBetween(minAcceleration, maxAcceleration);
             float lifetime =
-                YellokillerGame.RandomBetween(minLifetime, maxLifetime);
+                MoteurParticule.RandomBetween(minLifetime, maxLifetime);
             float scale =
-                YellokillerGame.RandomBetween(minScale, maxScale);
+                MoteurParticule.RandomBetween(minScale, maxScale);
             float rotationSpeed =
-                YellokillerGame.RandomBetween(minRotationSpeed, maxRotationSpeed);
+                MoteurParticule.RandomBetween(minRotationSpeed, maxRotationSpeed);
 
             // then initialize it with those random values. initialize will save those,
             // and make sure it is marked as active.
@@ -252,7 +255,8 @@ namespace ParticleSample
         {
             // tell sprite batch to begin, using the spriteBlendMode specified in
             // initializeConstants
-            game.SpriteBatch.Begin(spriteBlendMode);
+            spriteBatch.Begin(spriteBlendMode);
+            
             
             foreach (Particle p in particles)
             {
@@ -271,11 +275,11 @@ namespace ParticleSample
                 // and increase to 100% once they're finished.
                 float scale = p.Scale * (.1f + .05f * normalizedLifetime);
 
-                game.SpriteBatch.Draw(texture, p.Position, null, color,
+                spriteBatch.Draw(texture, p.Position, null, color,
                     p.Rotation, origin, scale, SpriteEffects.None, 0.0f);
             }
 
-            game.SpriteBatch.End();
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

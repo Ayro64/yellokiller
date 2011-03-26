@@ -14,7 +14,7 @@ namespace YelloKiller
         List<MenuEntry> levels = new List<MenuEntry>();
         List<Carte> miniCartes = new List<Carte>();
         MenuEntry abortMenuEntry;
-
+        YellokillerGame game;
         MoteurAudio moteurAudio;
 
         string menuTitle = Langue.tr("Solo"), level = Langue.tr("Level");
@@ -31,8 +31,9 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public LevelSelectSolo()
+        public LevelSelectSolo(YellokillerGame game)
         {
+            this.game = game;
             string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath);
             foreach (string str in fileEntries)
             {
@@ -167,7 +168,7 @@ namespace YelloKiller
         void LevelMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             MenuEntry selectedLevel = (MenuEntry)sender;
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(selectedLevel.Text + ".txt"));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(selectedLevel.Text + ".txt", game));
         }
 
         /// <summary>
@@ -177,7 +178,7 @@ namespace YelloKiller
         void AbortMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
-                                                           new MainMenuScreen());
+                                                           new MainMenuScreen(game));
         }
 
         #endregion

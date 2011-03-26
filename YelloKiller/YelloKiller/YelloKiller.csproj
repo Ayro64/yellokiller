@@ -108,6 +108,7 @@
     <Compile Include="IA\Pathfinding\Pathfinding.cs" />
     <Compile Include="Moteur Particule\ExplosionParticleSystem.cs" />
     <Compile Include="Moteur Particule\ExplosionSmokeParticleSystem.cs" />
+    <Compile Include="Moteur Particule\MoteurParticule.cs" />
     <Compile Include="Moteur Particule\Particle.cs" />
     <Compile Include="Moteur Particule\ParticleSystem.cs" />
     <Compile Include="Moteur Particule\SmokePlumeParticleSystem.cs" />

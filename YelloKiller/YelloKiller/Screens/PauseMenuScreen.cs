@@ -14,14 +14,15 @@ namespace YelloKiller
         int mod;
 
         #region Initialization
-
+        YellokillerGame game;
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public PauseMenuScreen(int comingfrom, int mode)
+        public PauseMenuScreen(int comingfrom, int mode, YellokillerGame game)
             : base(Langue.tr("PauseTitle"))
         {
+            this.game = game;
             //Conserve la sélection
             selectedEntry = comingfrom;
 
@@ -107,7 +108,7 @@ namespace YelloKiller
 
         public void LoadMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new LoadMapMenuScreen(), e.PlayerIndex, true);
+            ScreenManager.AddScreen(new LoadMapMenuScreen(game), e.PlayerIndex, true);
             ScreenManager.RemoveScreen(this);
         }
 
@@ -117,7 +118,7 @@ namespace YelloKiller
 
         public void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new OptionsMenuScreen(mod), e.PlayerIndex, true);
+            ScreenManager.AddScreen(new OptionsMenuScreen(mod, game), e.PlayerIndex, true);
             ScreenManager.RemoveScreen(this);
         }
 
@@ -129,7 +130,7 @@ namespace YelloKiller
         void ConfirmQuitMessageBoxAccepted(object sender, PlayerIndexEventArgs e)
         {
             LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
-                                                           new MainMenuScreen());
+                                                           new MainMenuScreen(game));
             MediaPlayer.Stop();
         }
 

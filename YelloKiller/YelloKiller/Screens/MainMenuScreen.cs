@@ -28,6 +28,7 @@ namespace YelloKiller
         MenuEntry editorMenuEntry;
         MenuEntry optionsMenuEntry;
         MenuEntry exitMenuEntry;
+        YellokillerGame game;
 
         #endregion
 
@@ -37,9 +38,10 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public MainMenuScreen()
+        public MainMenuScreen(YellokillerGame game)
             : base(Langue.tr("MainMenuTitle"))
         {
+            this.game = game;
             // Create our menu entries.
             soloMenuEntry = new MenuEntry(Langue.tr("MainMenuSolo"));
             coopMenuEntry = new MenuEntry(Langue.tr("MainMenuCoop"));
@@ -94,7 +96,7 @@ namespace YelloKiller
         /// </summary>
         void SoloMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, false, e.PlayerIndex, new LevelSelectSolo());
+            LoadingScreen.Load(ScreenManager, false, e.PlayerIndex, new LevelSelectSolo(game));
         }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace YelloKiller
         /// </summary>
         void CoopMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new LevelSelectMulti());
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new LevelSelectMulti(game));
         }
 
         ///<summary>
@@ -110,7 +112,7 @@ namespace YelloKiller
         ///</summary>
         void EditorMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(""));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen("", game));
         }
 
         /// <summary>
@@ -118,7 +120,7 @@ namespace YelloKiller
         /// </summary>
         void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new OptionsMenuScreen(0), e.PlayerIndex);
+            ScreenManager.AddScreen(new OptionsMenuScreen(0, game), e.PlayerIndex);
         }
 
 
