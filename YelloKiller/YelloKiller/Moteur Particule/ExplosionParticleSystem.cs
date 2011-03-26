@@ -35,8 +35,8 @@ namespace ParticleSample
             maxInitialSpeed = 500;
 
            
-            minAcceleration = 0;
-            maxAcceleration = 0;
+            minAcceleration = -20;
+            maxAcceleration = -10;
 
            
             minLifetime = .5f;
@@ -46,7 +46,7 @@ namespace ParticleSample
             maxScale = 10f;
 
             minNumParticles = 30;
-            maxNumParticles = 50;
+            maxNumParticles = 100;
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;
