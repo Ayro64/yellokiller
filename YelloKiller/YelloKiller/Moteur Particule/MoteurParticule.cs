@@ -15,10 +15,18 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
+        
         private static Random random = new Random();
         public static Random Random
         {
             get { return random; }
+        }
+
+        Rectangle hadoken;
+
+        public Rectangle Hadoken
+        {
+            get { return hadoken; }
         }
 
         ExplosionParticleSystem explosion;
@@ -45,15 +53,19 @@ namespace YelloKiller.Moteur_Particule
 
         #region Initialization
 
-        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch)
+        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Hero hero, Rectangle camera)
         {
             this.game = game;
             this.spriteBatch = spriteBatch;
-            
+
+            // rectangle qui prend la taille de l explosion, j'ai prix des valeur approximative pour l'instant
+            // par contre je sais pas si les width et height du rectangle c'est en case ou en pixel...
+            hadoken = new Rectangle((int)(hero.position.X - camera.X) , (int)(hero.position.Y - camera.Y), 28, 224);
+
             explosion = new ExplosionParticleSystem(game, 1, spriteBatch);
             game.Components.Add(explosion);
 
-            
+
 
             smoke = new ExplosionSmokeParticleSystem(game, 2, spriteBatch);
             game.Components.Add(smoke);
@@ -75,7 +87,6 @@ namespace YelloKiller.Moteur_Particule
                 float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 switch (currentState)
                 {
-
                     case State.Explosions:
                         UpdateExplosions(dt, hero, camera);
                         break;
@@ -85,13 +96,11 @@ namespace YelloKiller.Moteur_Particule
                         break;
                 }
             }
-          }
+        }
 
         public Vector2 position(Hero hero, Rectangle camera)
         {
-            Console.WriteLine("" + (hero.position.X - Taille_Ecran.LARGEUR_ECRAN) + " , " + (hero.position.Y - -Taille_Ecran.HAUTEUR_ECRAN));
-       Vector2 where = new Vector2(hero.position.X - camera.X  , hero.position.Y - camera.Y);
-          //Vector2 where = new Vector2(400, 400);
+            Vector2 where = new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y);
             return where;
         }
 
@@ -110,7 +119,7 @@ namespace YelloKiller.Moteur_Particule
         {
 
             explosion.AddParticles(position(hero, camera));
-            smoke.AddParticles(position(hero ,camera));
+            smoke.AddParticles(position(hero, camera));
         }
         #region Draw
 

@@ -2,16 +2,18 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
 using System;
+using YelloKiller.Moteur_Particule;
 
 namespace YelloKiller
 {
     static class Moteur_physique
     {
-        static public void Collision_Shuriken_Ennemis(List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, SoundBank soundBank)
+        static public void Collision_Armes_Ennemis(List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank)
         {
             if (_gardes.Count != 0)
             {
                 for (int i = 0; i < _gardes.Count; i++)
+                {
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
@@ -20,6 +22,15 @@ namespace YelloKiller
                             listeShuriken.Remove(listeShuriken[j]);
                             break;
                         }
+                    // pour momo : je pens que c un truc comme ca que fau faire, je me trompe peut etre :s
+                    // le rectangle se trouve dans le MoteurParticule.cs
+                    if (_gardes[i].Rectangle.Intersects(particule.Hadoken))
+                    {
+                        soundBank.PlayCue("cri");
+                        _gardes.Remove(_gardes[i]);
+                        break;
+                    }
+                }
             }
             if (_Patrouilleurs.Count != 0)
             {
