@@ -140,7 +140,7 @@ namespace YelloKiller
 
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
-            moteurparticule = new MoteurParticule(game, spriteBatch);
+            moteurparticule = new MoteurParticule(game, spriteBatch, hero1, camera);
 
             audio.LoadContent(content);
 
@@ -199,7 +199,7 @@ namespace YelloKiller
                 foreach (Boss boss in _boss)
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
                 
-                Moteur_physique.Collision_Shuriken_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurAudio.SoundBank);
+                Moteur_physique.Collision_Armes_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
 
                 if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game));
