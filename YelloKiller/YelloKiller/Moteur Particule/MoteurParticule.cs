@@ -110,7 +110,7 @@ namespace YelloKiller.Moteur_Particule
             if (timeTillPuff < 0)
             {
 
-                smokePlume.AddParticles(position(hero, camera));
+                smokePlume.AddParticles(position(hero, camera), hero);
                 timeTillPuff = TimeBetweenSmokePlumePuffs;
             }
         }
@@ -118,8 +118,8 @@ namespace YelloKiller.Moteur_Particule
         private void UpdateExplosions(float dt, Hero hero, Rectangle camera)
         {
 
-            explosion.AddParticles(position(hero, camera));
-            smoke.AddParticles(position(hero, camera));
+            explosion.AddParticles(position(hero, camera), hero);
+            smoke.AddParticles(position(hero, camera), hero);
         }
         #region Draw
 
