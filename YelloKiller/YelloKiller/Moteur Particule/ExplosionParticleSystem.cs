@@ -57,9 +57,9 @@ namespace ParticleSample
             DrawOrder = AdditiveDrawOrder;
         }
 
-        protected override void InitializeParticle(Particle p, Vector2 where)
+        protected override void InitializeParticle(Particle p, Vector2 where, Hero hero)
         {
-            base.InitializeParticle(p, where);
+            base.InitializeParticle(p, where, hero);
             
              p.Acceleration = -p.Velocity / p.Lifetime;
         }

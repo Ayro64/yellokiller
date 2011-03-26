@@ -61,7 +61,7 @@ namespace ParticleSample
         }
 
       
-        protected override Vector2 PickRandomDirection()
+        protected override Vector2 PickRandomDirection(Hero hero)
         {
             // Point the particles somewhere between 80 and 100 degrees.
             // tweak this to make the smoke have more or less spread.
@@ -76,9 +76,9 @@ namespace ParticleSample
         }
 
 
-        protected override void InitializeParticle(Particle p, Vector2 where)
+        protected override void InitializeParticle(Particle p, Vector2 where, Hero hero)
         {
-            base.InitializeParticle(p, where);
+            base.InitializeParticle(p, where, hero);
 
             // the base is mostly good, but we want to simulate a little bit of wind
             // heading to the right.

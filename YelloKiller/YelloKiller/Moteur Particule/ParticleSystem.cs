@@ -19,14 +19,14 @@ using YelloKiller.Moteur_Particule;
 
 namespace ParticleSample
 {
-  
+
     public abstract class ParticleSystem : DrawableGameComponent
     {
-        
+
         public const int AlphaBlendDrawOrder = 100;
         public const int AdditiveDrawOrder = 200;
 
-       
+
         private YellokillerGame game;
         protected SpriteBatch spriteBatch;
 
@@ -41,21 +41,21 @@ namespace ParticleSample
         // will be expected to draw at one time. this is set in the constructor and is
         // used to calculate how many particles we will need.
         private int howManyEffects;
-        
+
         // the array of particles used by this system. these are reused, so that calling
         // AddParticles will not cause any allocations.
         Particle[] particles;
 
-        
+
         Queue<Particle> freeParticles;
-      
+
         public int FreeParticleCount
         {
             get { return freeParticles.Count; }
         }
 
 
-       
+
         #region constants to be set by subclasses
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace ParticleSample
         /// </summary>
         protected int minNumParticles;
         protected int maxNumParticles;
-       
+
         /// <summary>
         /// this controls the texture that the particle system uses. It will be used as
         /// an argument to ContentManager.Load.
@@ -126,20 +126,20 @@ namespace ParticleSample
         protected SpriteBlendMode spriteBlendMode;
 
         #endregion
-  
+
         protected ParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game)
-        {            
+        {
             this.game = game;
             this.howManyEffects = howManyEffects;
             this.spriteBatch = spriteBatch;
         }
 
-      
+
         public override void Initialize()
         {
             InitializeConstants();
-           
+
             particles = new Particle[howManyEffects * maxNumParticles];
             freeParticles = new Queue<Particle>(howManyEffects * maxNumParticles);
             for (int i = 0; i < particles.Length; i++)
@@ -150,10 +150,10 @@ namespace ParticleSample
             base.Initialize();
         }
 
-    
+
         protected abstract void InitializeConstants();
 
-        
+
         protected override void LoadContent()
         {
             // make sure sub classes properly set textureFilename.
@@ -176,12 +176,12 @@ namespace ParticleSample
             base.LoadContent();
         }
 
-       
-        public void AddParticles(Vector2 where)
+
+        public void AddParticles(Vector2 where, Hero hero)
         {
             // the number of particles we want for this effect is a random number
             // somewhere between the two constants specified by the subclasses.
-            int numParticles = 
+            int numParticles =
                 MoteurParticule.Random.Next(minNumParticles, maxNumParticles);
 
             // create that many particles, if you can.
@@ -189,15 +189,15 @@ namespace ParticleSample
             {
                 // grab a particle from the freeParticles queue, and Initialize it.
                 Particle p = freeParticles.Dequeue();
-                InitializeParticle(p, where);               
+                InitializeParticle(p, where, hero);
             }
         }
 
-        protected virtual void InitializeParticle(Particle p, Vector2 where)
+        protected virtual void InitializeParticle(Particle p, Vector2 where, Hero hero)
         {
             // first, call PickRandomDirection to figure out which way the particle
             // will be moving. velocity and acceleration's values will come from this.
-            Vector2 direction = PickRandomDirection();
+            Vector2 direction = PickRandomDirection(hero);
 
             // pick some random values for our particle
             float velocity =
@@ -218,10 +218,19 @@ namespace ParticleSample
                 lifetime, scale, rotationSpeed);
         }
 
-        protected virtual Vector2 PickRandomDirection()
+        protected virtual Vector2 PickRandomDirection(Hero hero)
         {
-           // float angle = 4.7f; //ParticleSampleGame.RandomBetween(0, MathHelper.TwoPi);
-            return new Vector2(0, -1);//(float)Math.Cos(angle), (float)Math.Sin(angle));
+            if (hero.SourceRectangle.Value.Y == 133)
+                return new Vector2(0, -1);
+
+            else if (hero.SourceRectangle.Value.Y == 198)
+                return new Vector2(0, 1);
+
+            else if (hero.SourceRectangle.Value.Y == 230)
+                return new Vector2(-1, 0);
+
+            else
+                return new Vector2(1, 0);
         }
 
         public override void Update(GameTime gameTime)
@@ -233,7 +242,7 @@ namespace ParticleSample
             // go through all of the particles...
             foreach (Particle p in particles)
             {
-                
+
                 if (p.Active)
                 {
                     // ... and if they're active, update them.
@@ -244,30 +253,30 @@ namespace ParticleSample
                     {
                         freeParticles.Enqueue(p);
                     }
-                }   
+                }
             }
 
             base.Update(gameTime);
         }
 
-        
+
         public override void Draw(GameTime gameTime)
         {
             // tell sprite batch to begin, using the spriteBlendMode specified in
             // initializeConstants
             spriteBatch.Begin(spriteBlendMode);
-            
-            
+
+
             foreach (Particle p in particles)
             {
                 // skip inactive particles
                 if (!p.Active)
                     continue;
 
-              
+
                 float normalizedLifetime = p.TimeSinceStart / p.Lifetime;
 
-               
+
                 float alpha = 4 * normalizedLifetime * (1 - normalizedLifetime);
                 Color color = new Color(new Vector4(1, 1, 1, alpha));
 
