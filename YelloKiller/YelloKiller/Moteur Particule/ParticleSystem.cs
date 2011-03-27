@@ -20,7 +20,7 @@ using YelloKiller.Moteur_Particule;
 namespace ParticleSample
 {
 
-    public abstract class ParticleSystem : DrawableGameComponent
+   abstract class ParticleSystem : DrawableGameComponent
     {
 
         public const int AlphaBlendDrawOrder = 100;

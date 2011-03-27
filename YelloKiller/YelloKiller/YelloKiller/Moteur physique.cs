@@ -24,7 +24,7 @@ namespace YelloKiller
                         }
                     // pour momo : je pens que c un truc comme ca que fau faire, je me trompe peut etre :s
                     // le rectangle se trouve dans le MoteurParticule.cs
-                    if (_gardes[i].Rectangle.Intersects(particule.Hadoken))
+                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken))
                     {
                         soundBank.PlayCue("cri");
                         _gardes.Remove(_gardes[i]);

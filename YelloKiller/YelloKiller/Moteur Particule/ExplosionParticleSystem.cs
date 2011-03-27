@@ -19,7 +19,7 @@ using YelloKiller;
 namespace ParticleSample
 {
    
-    public class ExplosionParticleSystem : ParticleSystem
+  class ExplosionParticleSystem : ParticleSystem
     {
         public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game, howManyEffects, spriteBatch)
