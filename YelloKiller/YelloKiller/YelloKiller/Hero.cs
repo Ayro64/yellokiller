@@ -21,7 +21,7 @@ namespace YelloKiller
         Rectangle rectangle;
         Texture2D flamme;
         float vitesseAnimation, index, tempsCourir;
-        int maxIndex, nombreShuriken, nombreHadoken, vitesseSprite, numeroHero;
+        int maxIndex, nombreShuriken, nombreHadoken, nombreFumigene = 100, vitesseSprite, numeroHero;
         public bool ishero;
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
@@ -140,10 +140,13 @@ namespace YelloKiller
                     break;
 
                 case State.state_fume:
-                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
+                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreFumigene > 0)
+                    {
+                        nombreFumigene--;
                         particule.UpdateSmokePlume(dt, this, camera);
+                    }
                     break;
-                  
+
                 case State.state_shuriken:
                     if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreShuriken > 0)
                     {
@@ -408,12 +411,36 @@ namespace YelloKiller
         {
             if (numeroHero == 1)
             {
-                spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.BurlyWood);
+                switch (currentState)
+                {
+                    case State.state_hadoken:
+                        spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreHadoken.ToString() + " hadoken au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        break;
+                    case State.state_fume:
+                        spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreFumigene.ToString() + " fumigènes au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        break;
+                    case State.state_shuriken:
+                        spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        break;
+                }
+
                 spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 50, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
             }
             else
             {
-                spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.BurlyWood);
+                switch (currentState)
+                {
+                    case State.state_hadoken:
+                        spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreHadoken.ToString() + " hadoken au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        break;
+                    case State.state_fume:
+                        spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreFumigene.ToString() + " fumigènes au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        break;
+                    case State.state_shuriken:
+                        spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        break;
+                }
+
                 spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 100, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
             }
             base.Draw(spriteBatch, camera);
