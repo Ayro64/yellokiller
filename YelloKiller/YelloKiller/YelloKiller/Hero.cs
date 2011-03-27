@@ -11,7 +11,7 @@ namespace YelloKiller
     public enum State
     {
         state_hadoken,
-        state_fume_hadoken,
+        state_fume,
         state_shuriken
     };
 
@@ -21,7 +21,7 @@ namespace YelloKiller
         Rectangle rectangle;
         Texture2D flamme;
         float vitesseAnimation, index, tempsCourir;
-        int maxIndex, nombreShuriken, vitesseSprite, numeroHero;
+        int maxIndex, nombreShuriken, nombreHadoken, vitesseSprite, numeroHero;
         public bool ishero;
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
@@ -31,7 +31,7 @@ namespace YelloKiller
 
         KeyboardState lastKeyboardState;
 
-        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero, int nombreShuriken)
+        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero, int nombreShuriken, int nombreHadoken)
             : base(position)
         {
             this.position = position;
@@ -52,6 +52,7 @@ namespace YelloKiller
             maxIndex = 0;
             rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 26);
             this.nombreShuriken = nombreShuriken;
+            this.nombreHadoken = nombreHadoken;
             ishero = false;
             this.up = up;
             this.down = down;
@@ -131,15 +132,18 @@ namespace YelloKiller
             switch (currentState)
             {
                 case State.state_hadoken:
-                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
+                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreHadoken > 0)
+                    {
+                        nombreHadoken--;
                         particule.UpdateExplosions(dt, this, camera);
+                    }
                     break;
 
-                case State.state_fume_hadoken:
+                case State.state_fume:
                     if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
                         particule.UpdateSmokePlume(dt, this, camera);
                     break;
-
+                  
                 case State.state_shuriken:
                     if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreShuriken > 0)
                     {
