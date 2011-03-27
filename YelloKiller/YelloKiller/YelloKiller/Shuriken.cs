@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace YelloKiller
 {
-    public class Shuriken : Sprite
+     class Shuriken : Sprite
     {
         Vector2 direction;
         Rectangle rectangle;

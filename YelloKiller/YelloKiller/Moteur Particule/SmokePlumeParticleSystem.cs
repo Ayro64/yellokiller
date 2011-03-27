@@ -20,7 +20,7 @@ using YelloKiller.Moteur_Particule;
 namespace ParticleSample
 {
    
-    public class SmokePlumeParticleSystem : ParticleSystem
+     class SmokePlumeParticleSystem : ParticleSystem
     {
         public SmokePlumeParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game,howManyEffects, spriteBatch )

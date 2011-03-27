@@ -4,10 +4,18 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.Moteur_Particule;
 
 namespace YelloKiller
 {
-   public class Hero : Sprite
+    public enum State
+    {
+        state_hadoken,
+        state_fume_hadoken,
+        state_shuriken
+    };
+
+    class Hero : Sprite
     {
         Vector2 positionDesiree;
         Rectangle rectangle;
@@ -17,9 +25,13 @@ namespace YelloKiller
         public bool ishero;
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
-        Keys up, down, right, left, shuriken, courir;
+        Keys up, down, right, left, changer_arme, courir, tirer;
+        const int NumStates = 3;
+        State currentState = State.state_hadoken;
 
-        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys shuriken, Keys courir, int numeroHero, int nombreShuriken)
+        KeyboardState lastKeyboardState;
+
+        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero, int nombreShuriken)
             : base(position)
         {
             this.position = position;
@@ -45,7 +57,8 @@ namespace YelloKiller
             this.down = down;
             this.right = right;
             this.left = left;
-            this.shuriken = shuriken;
+            this.changer_arme = changer_arme;
+            this.tirer = tirer;
             this.courir = courir;
         }
 
@@ -66,7 +79,27 @@ namespace YelloKiller
             tempsCourir = flamme.Height;
         }
 
-        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
+
+        private void HandleInput()
+        {
+            KeyboardState currentKeyboardState = Keyboard.GetState();
+
+
+            bool keyboardSpace =
+                currentKeyboardState.IsKeyUp(changer_arme) &&
+                lastKeyboardState.IsKeyDown(changer_arme);
+
+
+
+            if (keyboardSpace)
+            {
+                currentState = (State)((int)(currentState + 1) % NumStates);
+            }
+
+            lastKeyboardState = currentKeyboardState;
+        }
+
+        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
@@ -91,18 +124,34 @@ namespace YelloKiller
             else
                 regarde_droite = false;
 
+            //armes
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            HandleInput();
 
-            
-
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(shuriken) && nombreShuriken > 0)
+            switch (currentState)
             {
-                nombreShuriken--;
-                ishero = true;
-                _shuriken.Add(new Shuriken(position, this, content));
-                moteurAudio.SoundBank.PlayCue("shuriken");
+                case State.state_hadoken:
+                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
+                        particule.UpdateExplosions(dt, this, camera);
+                    break;
+
+                case State.state_fume_hadoken:
+                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
+                        particule.UpdateSmokePlume(dt, this, camera);
+                    break;
+
+                case State.state_shuriken:
+                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreShuriken > 0)
+                    {
+                        nombreShuriken--;
+                        ishero = true;
+                        _shuriken.Add(new Shuriken(position, this, content));
+                        moteurAudio.SoundBank.PlayCue("shuriken");
+                    }
+                    else
+                        ishero = false;
+                    break;
             }
-            else
-                ishero = false;
 
             if (tempsCourir > 0 && ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && !(monter && descendre && droite && gauche))
                 tempsCourir -= 0.1f * gameTime.ElapsedGameTime.Milliseconds;
