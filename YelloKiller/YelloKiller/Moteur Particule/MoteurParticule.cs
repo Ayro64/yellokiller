@@ -38,7 +38,7 @@ namespace YelloKiller.Moteur_Particule
         const float TimeBetweenExplosions = 2.0f;
 
         const float TimeBetweenSmokePlumePuffs = .5f;
-        float timeTillPuff = 0.0f;
+
 
 
         #endregion
@@ -70,8 +70,6 @@ namespace YelloKiller.Moteur_Particule
         #endregion
 
 
-       
-
         public Vector2 position(Hero hero, Rectangle camera)
         {
             Vector2 where = new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y);
@@ -80,13 +78,8 @@ namespace YelloKiller.Moteur_Particule
 
         public void UpdateSmokePlume(float dt, Hero hero, Rectangle camera)
         {
-            timeTillPuff -= dt;
-            if (timeTillPuff < 0)
-            {
-
-                fume.AddParticles(position(hero, camera), hero);
-                timeTillPuff = TimeBetweenSmokePlumePuffs;
-            }
+       fume.AddParticles(position(hero, camera), hero);
+            
         }
 
         public void UpdateExplosions(float dt, Hero hero, Rectangle camera)
