@@ -24,16 +24,33 @@ namespace YelloKiller.Moteur_Particule
 
         Rectangle rectangle_hadoken;
 
-        public Rectangle Rectangle_Hadoken
+        public Rectangle Rectangle_Hadoken(Hero hero)
         {
-            get { return rectangle_hadoken; }
+            if (hadoken.FreeParticleCount < 100)
+            {
+                if (hero.SourceRectangle.Value.Y == 133) // haut
+                    return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y - 224, 28, 224);
+
+                else if (hero.SourceRectangle.Value.Y == 198) // bas
+                    return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, 224);
+
+                else if (hero.SourceRectangle.Value.Y == 230) // gauche
+                    return rectangle_hadoken = new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, 224, 28);
+
+                else // droite
+                    return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y, 224, 28);
+            }
+            else
+                return rectangle_hadoken = new Rectangle(0, 0, 0, 0);
+
         }
+
 
         ExplosionParticleSystem hadoken;
         ExplosionSmokeParticleSystem fume_hadoken;
         SmokePlumeParticleSystem fume;
 
-        
+
 
         const float TimeBetweenExplosions = 2.0f;
 
@@ -45,14 +62,14 @@ namespace YelloKiller.Moteur_Particule
 
         #region Initialization
 
-        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Hero hero, Rectangle camera)
+        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch)
         {
             this.game = game;
             this.spriteBatch = spriteBatch;
 
             // rectangle qui prend la taille de l explosion, j'ai prix des valeur approximative pour l'instant
             // par contre je sais pas si les width et height du rectangle c'est en case ou en pixel...
-            rectangle_hadoken = new Rectangle((int)(hero.position.X - camera.X), (int)(hero.position.Y - camera.Y), 28, 224);
+
 
             hadoken = new ExplosionParticleSystem(game, 1, spriteBatch);
             game.Components.Add(hadoken);
@@ -78,12 +95,14 @@ namespace YelloKiller.Moteur_Particule
 
         public void UpdateSmokePlume(float dt, Hero hero, Rectangle camera)
         {
-       fume.AddParticles(position(hero, camera), hero);
-            
+            fume.AddParticles(position(hero, camera), hero);
+
         }
 
         public void UpdateExplosions(float dt, Hero hero, Rectangle camera)
         {
+
+            Console.WriteLine(rectangle_hadoken.X + " , " + rectangle_hadoken.Y + " , " + rectangle_hadoken.Width + " , " + rectangle_hadoken.Height);
 
             hadoken.AddParticles(position(hero, camera), hero);
             fume_hadoken.AddParticles(position(hero, camera), hero);
@@ -100,8 +119,6 @@ namespace YelloKiller.Moteur_Particule
         }
 
         #endregion
-
-       
 
 
         public static float RandomBetween(float min, float max)

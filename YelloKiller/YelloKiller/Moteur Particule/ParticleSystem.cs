@@ -64,7 +64,7 @@ namespace ParticleSample
         /// number between minNumParticles and maxNumParticles.
         /// </summary>
         protected int minNumParticles;
-        protected int maxNumParticles;
+        static public int maxNumParticles; // on le reutilise dans moteur particule
 
         /// <summary>
         /// this controls the texture that the particle system uses. It will be used as
