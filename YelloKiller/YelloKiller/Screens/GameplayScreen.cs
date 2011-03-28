@@ -47,7 +47,7 @@ namespace YelloKiller
     public class GameplayScreen : GameScreen
     {
         #region Fields
-        
+
         ContentManager content;
         public ContentManager Content { get { return content; } }
         SpriteFont gameFont;
@@ -83,7 +83,7 @@ namespace YelloKiller
 
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
-            
+
             audio = new Player();
             moteurAudio = new MoteurAudio();
 
@@ -94,10 +94,10 @@ namespace YelloKiller
 
             camera = new Rectangle(0, 0, 36, 27);
 
-            hero1 = new Hero(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightAlt, Keys.RightControl, Keys.RightShift, 1, 25, 5);
+            hero1 = new Hero(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightAlt, Keys.RightControl, Keys.RightShift, 1, 25, 50);
             caseDepart = carte.Cases[(int)carte.OrigineJoueur1.Y, (int)carte.OrigineJoueur1.X];
             if (jeuEnCoop)
-                hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.A, Keys.Space, Keys.LeftShift,2, 25, 5);
+                hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.A, Keys.Space, Keys.LeftShift, 2, 25, 50);
 
             // Centre la camera sur le personnage... plus ou moins...
             if (carte.OrigineJoueur1.X - 16 < 0)
@@ -117,6 +117,8 @@ namespace YelloKiller
             _gardes = new List<Garde>();
             foreach (Vector2 position in carte.OriginesGardes)
                 _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y)));
+
+
 
             _patrouilleurs = new List<Patrouilleur>();
             foreach (Vector2 position in carte.OriginesPatrouilleurs)
@@ -140,7 +142,7 @@ namespace YelloKiller
 
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
-            moteurparticule = new MoteurParticule(game, spriteBatch, hero1, camera);
+            moteurparticule = new MoteurParticule(game, spriteBatch);
 
             audio.LoadContent(content);
 
@@ -149,7 +151,10 @@ namespace YelloKiller
                 hero2.LoadContent(content, 2);
 
             foreach (Garde garde in _gardes)
+            {
                 garde.LoadContent(content, 2);
+                Console.WriteLine(garde.Rectangle.X + " , " + garde.Rectangle.Y + " , " + garde.Rectangle.Width + " , " + garde.Rectangle.Height);
+            }
 
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
                 patrouilleur.LoadContent(content, 2);
@@ -159,7 +164,7 @@ namespace YelloKiller
 
             foreach (Boss boss in _boss)
                 boss.LoadContent(content, 2);
-            
+
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
         }
@@ -181,7 +186,7 @@ namespace YelloKiller
 
                 moteurAudio.Update();
 
-                hero1.Update(gameTime, carte, ref camera, moteurparticule,  _shuriken, moteurAudio, content, hero2);
+                hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero2);
                 if (jeuEnCoop)
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero1);
 
@@ -193,11 +198,11 @@ namespace YelloKiller
 
                 foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
                     patrouilleurACheval.Update(gameTime, carte, hero1, camera);
-                
+
                 foreach (Boss boss in _boss)
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
-                
-                Moteur_physique.Collision_Armes_Ennemis(_gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
+
+                Moteur_physique.Collision_Armes_Ennemis(hero1, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
 
                 if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game));
@@ -260,7 +265,7 @@ namespace YelloKiller
 
                 if (_shuriken[i].ShurikenExists == false)
                 {
-                    
+
                     _shuriken.Remove(_shuriken[i]);
                     moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
@@ -300,7 +305,7 @@ namespace YelloKiller
             {
                 moteurAudio.SoundBank.PlayCue("menuBouge");
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
-                ScreenManager.AddScreen(new PauseMenuScreen(0, 1, game), ControllingPlayer, true);                
+                ScreenManager.AddScreen(new PauseMenuScreen(0, 1, game), ControllingPlayer, true);
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
@@ -311,10 +316,10 @@ namespace YelloKiller
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
-            {              
+            {
                 moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 audio.Close();
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, game));                
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, game));
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.M))

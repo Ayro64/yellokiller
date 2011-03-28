@@ -8,12 +8,19 @@ namespace YelloKiller
 {
     static class Moteur_physique
     {
-        static public void Collision_Armes_Ennemis(List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank)
+
+        static public void Collision_Armes_Ennemis(Hero hero, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank)
         {
             if (_gardes.Count != 0)
             {
                 for (int i = 0; i < _gardes.Count; i++)
                 {
+                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
+                    {
+                        soundBank.PlayCue("cri");
+                        _gardes.Remove(_gardes[i]);
+                        break;
+                    }
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
@@ -27,6 +34,13 @@ namespace YelloKiller
             if (_Patrouilleurs.Count != 0)
             {
                 for (int i = 0; i < _Patrouilleurs.Count; i++)
+                {
+                    if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
+                    {
+                        soundBank.PlayCue("cri");
+                        _Patrouilleurs.Remove(_Patrouilleurs[i]);
+                        break;
+                    }
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_Patrouilleurs[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
@@ -35,10 +49,18 @@ namespace YelloKiller
                             listeShuriken.Remove(listeShuriken[j]);
                             break;
                         }
+                }
             }
             if (_PatrouilleursAChevaux.Count != 0)
             {
                 for (int i = 0; i < _PatrouilleursAChevaux.Count; i++)
+                {
+                    if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
+                    {
+                        soundBank.PlayCue("cri");
+                        _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
+                        break;
+                    }
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_PatrouilleursAChevaux[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
@@ -47,11 +69,28 @@ namespace YelloKiller
                             listeShuriken.Remove(listeShuriken[j]);
                             break;
                         }
-            }
+                }
+            }                      
 
             if (_Boss.Count != 0)
             {
                 for (int i = 0; i < _Boss.Count; i++)
+                { // problème avec le boss, il perd toute sa vie d'un cou lors du hadoken.
+                    Console.WriteLine(_Boss[i].Vie);
+                    if (_Boss[i].Vie == 0)
+                    {
+                        _Boss[i].Vie = 5;
+                        _Boss.Remove(_Boss[i]);
+                        soundBank.PlayCue("cri");
+                        
+
+                    }
+                    else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
+                    {
+                        _Boss[i].Vie--;
+                        break;
+                    } 
+
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_Boss[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
@@ -65,23 +104,13 @@ namespace YelloKiller
                             else if (listeShuriken[j].Direction == Vector2.UnitX)
                                 _Boss[i].SourceRectangle = new Rectangle(26, 97, 16, 24);
 
-                            Console.WriteLine(_Boss[i].Vie);
                             _Boss[i].Vie--;
                             listeShuriken.Remove(listeShuriken[j]);
-
-                            if (_Boss[i].Vie == 0)
-                            {
-                                _Boss[i].Vie = 5;
-                                _Boss.Remove(_Boss[i]);
-                                soundBank.PlayCue("cri");
-
-                            }
                             break;
                         }
+                }
             }
         }
-
-        //Commentaire destine a Etienne : Bite avec un 'T'
 
         static public bool Collision_Garde_Heros(List<Garde> _gardes, Hero hero1, Hero hero2, SoundBank soundBank)
         {
