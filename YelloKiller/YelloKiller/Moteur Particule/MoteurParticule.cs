@@ -16,17 +16,27 @@ namespace YelloKiller.Moteur_Particule
         YellokillerGame game;
         SpriteBatch spriteBatch;
 
+        bool rectangle_est_present = true; // utiliser pour effacer le rectangle apres collision contre boss
+        public bool Rectang_Est_Present
+        {
+            get { return rectangle_est_present; }
+            set { rectangle_est_present = value; }
+        }
+
         private static Random random = new Random();
         public static Random Random
         {
             get { return random; }
         }
 
-        Rectangle rectangle_hadoken;
-
-        public Rectangle Rectangle_Hadoken(Hero hero)
+        Rectangle rectangle_hadoken; // rectangle qui approxime la hauteur et la largeur de mon hadoken 
+        public Rectangle Rectangle_Hadoken(Hero hero) // pour gerer les collisions
         {
-            if (hadoken.FreeParticleCount < 100)
+
+            if (hadoken.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
+                rectangle_est_present = true;     // je reinitialise donc mon rectangle
+
+            if (hadoken.FreeParticleCount < 100 && rectangle_est_present)
             {
                 if (hero.SourceRectangle.Value.Y == 133) // haut
                     return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y - 224, 28, 224);
@@ -40,15 +50,15 @@ namespace YelloKiller.Moteur_Particule
                 else // droite
                     return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y, 224, 28);
             }
-            else
+            else // pas de rectangle
                 return rectangle_hadoken = new Rectangle(0, 0, 0, 0);
 
         }
 
 
-        ExplosionParticleSystem hadoken;
-        ExplosionSmokeParticleSystem fume_hadoken;
-        SmokePlumeParticleSystem fume;
+        ExplosionParticleSystem hadoken;  // explosion 
+        ExplosionSmokeParticleSystem fume_hadoken; // fume apres explosion
+        SmokePlumeParticleSystem fume; // fumigene
 
 
 
@@ -65,10 +75,7 @@ namespace YelloKiller.Moteur_Particule
         public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch)
         {
             this.game = game;
-            this.spriteBatch = spriteBatch;
-
-            // rectangle qui prend la taille de l explosion, j'ai prix des valeur approximative pour l'instant
-            // par contre je sais pas si les width et height du rectangle c'est en case ou en pixel...
+            this.spriteBatch = spriteBatch;      
 
 
             hadoken = new ExplosionParticleSystem(game, 1, spriteBatch);
@@ -87,7 +94,7 @@ namespace YelloKiller.Moteur_Particule
         #endregion
 
 
-        public Vector2 position(Hero hero, Rectangle camera)
+        public Vector2 position(Hero hero, Rectangle camera) // position d origine de mon hadoken
         {
             Vector2 where = new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y);
             return where;
@@ -103,26 +110,12 @@ namespace YelloKiller.Moteur_Particule
         {
 
             Console.WriteLine(rectangle_hadoken.X + " , " + rectangle_hadoken.Y + " , " + rectangle_hadoken.Width + " , " + rectangle_hadoken.Height);
-
             hadoken.AddParticles(position(hero, camera), hero);
             fume_hadoken.AddParticles(position(hero, camera), hero);
         }
-        #region Draw
-
-        public void Draw(GameTime gameTime)
-        {
-
-            spriteBatch.Begin();
-
-            spriteBatch.End();
-
-        }
-
-        #endregion
-
-
-        public static float RandomBetween(float min, float max)
-        {
+    
+        public static float RandomBetween(float min, float max) // random utiliser pour toutes les proprietes 
+        {                                                       // des particules
             return min + (float)random.NextDouble() * (max - min);
         }
     }
