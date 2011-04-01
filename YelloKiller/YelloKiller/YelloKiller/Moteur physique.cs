@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework;
 using System;
 using YelloKiller.Moteur_Particule;
+using ParticleSample;
 
 namespace YelloKiller
 {
@@ -22,7 +23,8 @@ namespace YelloKiller
                         break;
                     }
                     for (int j = 0; j < listeShuriken.Count; j++)
-                        if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
+                        if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle) 
+                            || _gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
                         {
                             soundBank.PlayCue("cri");
                             _gardes.Remove(_gardes[i]);
@@ -75,20 +77,21 @@ namespace YelloKiller
             if (_Boss.Count != 0)
             {
                 for (int i = 0; i < _Boss.Count; i++)
-                { // problème avec le boss, il perd toute sa vie d'un cou lors du hadoken.
+                {
                     Console.WriteLine(_Boss[i].Vie);
-                    if (_Boss[i].Vie == 0)
+                    if (_Boss[i].Vie < 0)
                     {
                         _Boss[i].Vie = 5;
                         _Boss.Remove(_Boss[i]);
-                        soundBank.PlayCue("cri");
-                        
+                        soundBank.PlayCue("cri");                        
 
                     }
                     else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
                     {
-                        _Boss[i].Vie--;
-                        break;
+                        _Boss[i].Vie = _Boss[i].Vie - 2;
+                        // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
+                        // appel sinon le boss perd sa vie d un coup.
+                        particule.Rectang_Est_Present = false;       
                     } 
 
                     for (int j = 0; j < listeShuriken.Count; j++)

@@ -20,9 +20,9 @@ using YelloKiller.Moteur_Particule;
 namespace ParticleSample
 {
 
-   abstract class ParticleSystem : DrawableGameComponent
-    {
-
+    abstract class ParticleSystem : DrawableGameComponent // c est a cause de cet heritage que jai du rajouter des 
+    {                                                     // YelloKiller game; un peu partout
+      
         public const int AlphaBlendDrawOrder = 100;
         public const int AdditiveDrawOrder = 200;
 
@@ -47,9 +47,9 @@ namespace ParticleSample
         Particle[] particles;
 
 
-        Queue<Particle> freeParticles;
+        Queue<Particle> freeParticles; // comparable a une liste chaine
 
-        public int FreeParticleCount
+        public int FreeParticleCount 
         {
             get { return freeParticles.Count; }
         }
