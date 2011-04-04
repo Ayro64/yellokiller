@@ -66,10 +66,17 @@ namespace YelloKiller
                 shurikenExists = false;
                 tmpshuriken = 0;
             }
-
-
         }
 
+        public int X
+        {
+            get { return (int)position.X / 28; }
+        }
+
+        public int Y
+        {
+            get { return (int)position.Y / 28; }
+        }
 
         public Rectangle Rectangle
         {

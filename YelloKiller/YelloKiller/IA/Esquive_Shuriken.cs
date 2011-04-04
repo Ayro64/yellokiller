@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace YelloKiller.IA
 {
@@ -12,12 +10,9 @@ namespace YelloKiller.IA
         {
             foreach (Shuriken _shuriken in shuriken)
             {
-
-
                 if (boss.Monter && boss.Descendre && boss.Droite && boss.Gauche)
                 {
-                    if (_shuriken.Direction == Vector2.UnitX && boss.Regarder_Gauche && Math.Abs(boss.X - (int)(_shuriken.position.X) / 28) < 4
-                        && boss.Y == (int)(_shuriken.position.Y) / 28)
+                    if (_shuriken.Direction == Vector2.UnitX && boss.Regarder_Gauche && Math.Abs(boss.X - _shuriken.X) < 4 && boss.Y == _shuriken.Y)
                     // si le shuriken va a droite , le shuriken est a moins de 7 cases du boss et que le shuriken
                     // et le boss sont sur la meme position en Y alors :
                     {
@@ -37,8 +32,7 @@ namespace YelloKiller.IA
                             break;
                         }
                     }
-                    else if (_shuriken.Direction == Vector2.UnitY && boss.Regarder_Haut && Math.Abs(boss.Y - (int)(_shuriken.position.Y) / 28) < 4
-                        && boss.X == (int)(_shuriken.position.X) / 28)
+                    else if (_shuriken.Direction == Vector2.UnitY && boss.Regarder_Haut && Math.Abs(boss.Y - _shuriken.Y) < 4 && boss.X == _shuriken.X)
                     // si le shuriken va en bas, le shuriken est a moins de 7 cases du boss et que le shuriken
                     // et le boss sont sur la meme position en X alors :
                     {
@@ -56,8 +50,7 @@ namespace YelloKiller.IA
                             break;
                         }
                     }
-                    else if (_shuriken.Direction == -Vector2.UnitX && boss.Regarder_Droite && Math.Abs(boss.X - (int)(_shuriken.position.X) / 28) < 4
-                          && boss.Y == (int)(_shuriken.position.Y) / 28)
+                    else if (_shuriken.Direction == -Vector2.UnitX && boss.Regarder_Droite && Math.Abs(boss.X - _shuriken.X) < 4 && boss.Y == _shuriken.Y)
                     // si le shuriken va a droite , le shuriken est a moins de 7 cases du boss et que le shuriken
                     // et le boss sont sur la meme position en Y alors :
                     {
@@ -77,8 +70,7 @@ namespace YelloKiller.IA
                             break;
                         }
                     }
-                    else if (_shuriken.Direction == -Vector2.UnitY && boss.Regarder_Bas && Math.Abs(boss.Y - (int)(_shuriken.position.Y) / 28) < 4
-                  && boss.X == (int)(_shuriken.position.X) / 28)
+                    else if (_shuriken.Direction == -Vector2.UnitY && boss.Regarder_Bas && Math.Abs(boss.Y - _shuriken.Y) < 4 && boss.X == _shuriken.X)
                     // si le shuriken va en bas, le shuriken est a moins de 7 cases du boss et que le shuriken
                     // et le boss sont sur la meme position en X alors :
                     {
