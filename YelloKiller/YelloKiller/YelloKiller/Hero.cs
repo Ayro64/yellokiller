@@ -85,12 +85,9 @@ namespace YelloKiller
         {
             KeyboardState currentKeyboardState = Keyboard.GetState();
 
-
             bool keyboardSpace =
                 currentKeyboardState.IsKeyUp(changer_arme) &&
                 lastKeyboardState.IsKeyDown(changer_arme);
-
-
 
             if (keyboardSpace)
             {
@@ -134,8 +131,12 @@ namespace YelloKiller
                 case State.state_hadoken:
                     if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreHadoken > 0)
                     {
-                        nombreHadoken--;
-                        particule.UpdateExplosions(dt, this, camera);
+                        GameplayScreen.Enable_Timer = true; // je lance le timer                       
+                        if (GameplayScreen.Timer == 0)
+                        {
+                            nombreHadoken--;
+                            particule.UpdateExplosions(dt, this, camera);
+                        }
                     }
                     break;
 

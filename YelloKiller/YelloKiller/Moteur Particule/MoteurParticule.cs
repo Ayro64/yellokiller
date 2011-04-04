@@ -15,6 +15,7 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
+        int direction_hero_appele;
 
         bool rectangle_est_present = true; // utiliser pour effacer le rectangle apres collision contre boss
         public bool Rectang_Est_Present
@@ -32,19 +33,30 @@ namespace YelloKiller.Moteur_Particule
         Rectangle rectangle_hadoken; // rectangle qui approxime la hauteur et la largeur de mon hadoken 
         public Rectangle Rectangle_Hadoken(Hero hero) // pour gerer les collisions
         {
+            Console.WriteLine(GameplayScreen.Enable_Timer + " , " + GameplayScreen.Timer);
+
+            if (GameplayScreen.Timer > 1) // apres une seconde mon timer se remet a zero
+            {
+                GameplayScreen.Enable_Timer = false;
+                GameplayScreen.Timer = 0;
+            }
 
             if (hadoken.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
-                rectangle_est_present = true;     // je reinitialise donc mon rectangle
-
-            if (hadoken.FreeParticleCount < 100 && rectangle_est_present)
             {
-                if (hero.SourceRectangle.Value.Y == 133) // haut
+                rectangle_est_present = true;// je reinitialise donc mon rectangle
+                direction_hero_appele = hero.SourceRectangle.Value.Y;
+            }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
+
+
+            if (hadoken.FreeParticleCount < 100 && rectangle_est_present && GameplayScreen.Timer > 0.5)
+            { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
+                if (direction_hero_appele == 133) // haut
                     return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y - 224, 28, 224);
 
-                else if (hero.SourceRectangle.Value.Y == 198) // bas
+                else if (direction_hero_appele == 198) // bas
                     return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, 224);
 
-                else if (hero.SourceRectangle.Value.Y == 230) // gauche
+                else if (direction_hero_appele == 230) // gauche
                     return rectangle_hadoken = new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, 224, 28);
 
                 else // droite
@@ -75,7 +87,7 @@ namespace YelloKiller.Moteur_Particule
         public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch)
         {
             this.game = game;
-            this.spriteBatch = spriteBatch;      
+            this.spriteBatch = spriteBatch;
 
 
             hadoken = new ExplosionParticleSystem(game, 1, spriteBatch);
@@ -109,11 +121,11 @@ namespace YelloKiller.Moteur_Particule
         public void UpdateExplosions(float dt, Hero hero, Rectangle camera)
         {
 
-            Console.WriteLine(rectangle_hadoken.X + " , " + rectangle_hadoken.Y + " , " + rectangle_hadoken.Width + " , " + rectangle_hadoken.Height);
+            //  Console.WriteLine(rectangle_hadoken.X + " , " + rectangle_hadoken.Y + " , " + rectangle_hadoken.Width + " , " + rectangle_hadoken.Height);
             hadoken.AddParticles(position(hero, camera), hero);
             fume_hadoken.AddParticles(position(hero, camera), hero);
         }
-    
+
         public static float RandomBetween(float min, float max) // random utiliser pour toutes les proprietes 
         {                                                       // des particules
             return min + (float)random.NextDouble() * (max - min);

@@ -78,7 +78,6 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _Boss.Count; i++)
                 {
-                    Console.WriteLine(_Boss[i].Vie);
                     if (_Boss[i].Vie < 0)
                     {
                         _Boss[i].Vie = 5;
