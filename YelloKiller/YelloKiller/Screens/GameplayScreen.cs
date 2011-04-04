@@ -63,6 +63,22 @@ namespace YelloKiller
         List<Patrouilleur_a_cheval> _patrouilleurs_a_chevaux;
         List<Boss> _boss;
 
+
+        private static double timer = 0;
+        public static double Timer
+        {
+            get { return timer; }
+            set { timer = value; }
+        }
+
+        private static bool enable_timer = false;
+        public static bool Enable_Timer
+        {
+            get { return enable_timer; }
+            set { enable_timer = value; }
+        }
+
+
         Player audio;
         MoteurAudio moteurAudio;
         double temps;
@@ -150,11 +166,8 @@ namespace YelloKiller
             if (jeuEnCoop)
                 hero2.LoadContent(content, 2);
 
-            foreach (Garde garde in _gardes)
-            {
-                garde.LoadContent(content, 2);
-                Console.WriteLine(garde.Rectangle.X + " , " + garde.Rectangle.Y + " , " + garde.Rectangle.Width + " , " + garde.Rectangle.Height);
-            }
+            foreach (Garde garde in _gardes)            
+                garde.LoadContent(content, 2);            
 
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
                 patrouilleur.LoadContent(content, 2);
@@ -182,6 +195,9 @@ namespace YelloKiller
         {
             if (IsActive)
             {
+               if (Enable_Timer)
+                    timer += gameTime.ElapsedGameTime.TotalSeconds;
+
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
 
                 moteurAudio.Update();
