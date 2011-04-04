@@ -34,29 +34,25 @@ namespace YelloKiller
 
             if (Monter && Descendre && Droite && Gauche)
             {
-                if (autoChemin < 5 && position.X < 28 * Taille_Map.LARGEUR_MAP - 1 &&
-                    (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X + 28) / 28].Type > 0)
+                if (autoChemin < 5 && position.X < 28 * Taille_Map.LARGEUR_MAP - 1 && (int)carte.Cases[Y, X + 1].Type > 0)
                 {
                     positionDesiree.X = position.X + 28;
                     positionDesiree.Y = position.Y;
                     Droite = false;
                 }
-                else if (autoChemin < 10 && position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) &&
-                         (int)carte.Cases[(int)(position.Y + 28) / 28, (int)(position.X) / 28].Type > 0)
+                else if (autoChemin < 10 && position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && (int)carte.Cases[Y + 1, X].Type > 0)
                 {
                     positionDesiree.Y = position.Y + 28;
                     positionDesiree.X = position.X;
                     Descendre = false;
                 }
-                else if (autoChemin < 15 && position.X > 0 &&
-                         (int)carte.Cases[(int)(position.Y) / 28, (int)(position.X - 28) / 28].Type > 0)
+                else if (autoChemin < 15 && position.X > 0 && (int)carte.Cases[Y, X - 1].Type > 0)
                 {
                     positionDesiree.X = position.X - 28;
                     positionDesiree.Y = position.Y;
                     Gauche = false;
                 }
-                else if (autoChemin < 20 && position.Y > 0 &&
-                         (int)carte.Cases[(int)(position.Y - 28) / 28, (int)(position.X) / 28].Type > 0)
+                else if (autoChemin < 20 && position.Y > 0 && (int)carte.Cases[Y - 1, X].Type > 0)
                 {
                     positionDesiree.Y = position.Y - 28;
                     positionDesiree.X = position.X;
