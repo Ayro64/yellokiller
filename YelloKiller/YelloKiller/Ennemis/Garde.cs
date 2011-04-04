@@ -33,19 +33,17 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
 
-            if (Math.Abs((int)(hero1.position.X / 28) - (int)(position.X / 28)) < 4 && Math.Abs((int)(hero1.position.Y / 28) - (int)(position.Y / 28)) < 4
-                || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
+            if (Math.Abs(hero1.X - X) < 4 && Math.Abs(hero1.Y - Y) < 4 || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
             {
-                depart = carte.Cases[((int)position.Y) / 28, ((int)position.X) / 28];
-                arrivee = carte.Cases[((int)hero1.position.Y) / 28, ((int)hero1.position.X) / 28];
+                depart = carte.Cases[Y, X];
+                arrivee = carte.Cases[hero1.Y, hero1.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
 
-            else if (hero2 != null && (Math.Abs((int)(hero2.position.X / 28) - (int)(position.X / 28)) < 4 && Math.Abs((int)(hero2.position.Y / 28) - (int)(position.Y / 28)) < 4
-                || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)))
+            else if (hero2 != null && (Math.Abs(hero2.X - X) < 4 && Math.Abs(hero2.Y - Y) < 4 || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)))
             {
-                depart = carte.Cases[((int)position.Y) / 28, ((int)position.X) / 28];
-                arrivee = carte.Cases[((int)hero2.position.Y) / 28, ((int)hero2.position.X) / 28];
+                depart = carte.Cases[Y, X];
+                arrivee = carte.Cases[hero2.Y, hero2.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
 
@@ -53,25 +51,25 @@ namespace YelloKiller
             {
                 if (Monter && Descendre && Droite && Gauche)
                 {
-                    if ((int)chemin[chemin.Count - 1].X < (int)Position.X / 28)
+                    if ((int)chemin[chemin.Count - 1].X < X)
                     {
                         positionDesiree.X -= 28;
                         Gauche = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
-                    else if ((int)chemin[chemin.Count - 1].X > (int)Position.X / 28)
+                    else if ((int)chemin[chemin.Count - 1].X > X)
                     {
                         positionDesiree.X += 28;
                         Droite = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
-                    else if ((int)chemin[chemin.Count - 1].Y < (int)Position.Y / 28)
+                    else if ((int)chemin[chemin.Count - 1].Y < Y)
                     {
                         positionDesiree.Y -= 28;
                         Monter = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
-                    else if ((int)chemin[chemin.Count - 1].Y > (int)Position.Y / 28)
+                    else if ((int)chemin[chemin.Count - 1].Y > Y)
                     {
                         positionDesiree.Y += 28;
                         Descendre = false;
