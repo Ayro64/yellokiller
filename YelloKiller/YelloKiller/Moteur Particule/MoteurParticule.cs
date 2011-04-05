@@ -33,7 +33,7 @@ namespace YelloKiller.Moteur_Particule
         Rectangle rectangle_hadoken; // rectangle qui approxime la hauteur et la largeur de mon hadoken 
         public Rectangle Rectangle_Hadoken(Hero hero) // pour gerer les collisions
         {
-            Console.WriteLine(GameplayScreen.Enable_Timer + " , " + GameplayScreen.Timer);
+         //   Console.WriteLine(GameplayScreen.Enable_Timer + " , " + GameplayScreen.Timer);
 
             if (GameplayScreen.Timer > 1) // apres une seconde mon timer se remet a zero
             {
