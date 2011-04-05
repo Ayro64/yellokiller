@@ -32,7 +32,7 @@ namespace ParticleSample
             textureFilename = "explosion";
 
             minInitialSpeed = 40;
-            maxInitialSpeed = 500;
+            maxInitialSpeed = 50;
 
            
             minAcceleration = -20;
