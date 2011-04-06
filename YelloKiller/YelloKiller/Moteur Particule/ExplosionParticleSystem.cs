@@ -21,18 +21,20 @@ namespace ParticleSample
    
   class ExplosionParticleSystem : ParticleSystem
     {
+      int distance;
+
         public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game, howManyEffects, spriteBatch)
-        {
+        {             
         }
-
        
         protected override void InitializeConstants()
         {
+           
             textureFilename = "explosion";
 
             minInitialSpeed = 40;
-            maxInitialSpeed = 50;
+            maxInitialSpeed = 50 * distance;
 
            
             minAcceleration = -20;
@@ -63,5 +65,29 @@ namespace ParticleSample
             
              p.Acceleration = -p.Velocity / p.Lifetime;
         }
+
+        public Hero Hero // solution trouvé pour pas passé hero et Carte en parametre dans update override
+        { get; set; }
+        public Carte Carte
+        { get; set; }
+
+        public int LongueurHadoken
+        {
+            get { return distance; }
+        }
+
+        public override void Update(GameTime gameTime)
+            
+        {
+            base.Update(gameTime);
+            if (Hero != null)
+            {                
+                distance = Hero.Distance_Hero_Mur(Carte);
+                Console.WriteLine(distance);
+                maxInitialSpeed = 50 * distance;
+            }
+
+        }
+
     }
 }
