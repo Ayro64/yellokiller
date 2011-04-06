@@ -158,7 +158,7 @@ namespace YelloKiller
 
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
-            moteurparticule = new MoteurParticule(game, spriteBatch);
+            moteurparticule = new MoteurParticule(game,hero1, carte, spriteBatch);
 
             audio.LoadContent(content);
 
@@ -199,8 +199,9 @@ namespace YelloKiller
                     timer += gameTime.ElapsedGameTime.TotalSeconds;
 
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
-
                 moteurAudio.Update();
+
+
 
                 hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero2);
                 if (jeuEnCoop)

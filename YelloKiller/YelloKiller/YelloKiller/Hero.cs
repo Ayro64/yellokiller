@@ -28,14 +28,11 @@ namespace YelloKiller
         Keys up, down, right, left, changer_arme, courir, tirer;
         const int NumStates = 3;
         State currentState = State.state_hadoken;
-        /* static int position_case_x, position_case_y;*/
         KeyboardState lastKeyboardState;
 
         public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero, int nombreShuriken, int nombreHadoken)
             : base(position)
-        {
-            /* Hero.position_case_x = (int)position.X / 28;
-             Hero.position_case_y = (int)position.Y / 28;*/
+        {          
             this.position = position;
             positionDesiree = position;
             this.numeroHero = numeroHero;
@@ -80,41 +77,29 @@ namespace YelloKiller
             get { return (int)position.Y / 28; }
         }
 
-        /* public static int Position_Case_X
-              {
-                  get { return position_case_x; }
-              }
-
-           public static int Position_Case_Y
-              {
-                  get { return position_case_y; }
-              }*/
-
         public int Distance_Hero_Mur(Carte carte)
         {
             int distance = 0;
             if (Regarder_Haut)
-            {
-                for (int i = 0; carte.Cases[this.X, this.Y - i].Type > 0; i++)
-                { distance++; }
-            }
-            else if (Regarder_Droite)
-            {
-                for (int i = 0; carte.Cases[this.X + i, this.Y].Type > 0; i++)
-                { distance++; }
-            }
-            else if (Regarder_Gauche)
-            {
-                for (int i = 0; carte.Cases[this.X - i, this.Y].Type > 0; i++)
-                { distance++; }
-            }
-            else if (Regarder_Bas)
-            {
-                for (int i = 0; carte.Cases[this.X, this.Y + i].Type > 0; i++)
-                { distance++; }
-            }
+                for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
+                    distance++;
 
-            return distance;
+            else if (Regarder_Droite)
+                for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
+                    distance++;
+
+            else if (Regarder_Gauche)
+                for (int i = 0; this.X - i > 0 && carte.Cases[this.Y, this.X - i].Type > 0; i++)
+                    distance++;
+
+            else if (Regarder_Bas)
+                for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
+                    distance++;
+
+            if (distance < 6)
+                return distance;
+            else
+                return 6;
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -148,6 +133,8 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
+            this.Distance_Hero_Mur(carte);
+
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
@@ -184,7 +171,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer == 0)
                         {
                             nombreHadoken--;
-                            particule.UpdateExplosions(dt, this, camera);
+                            particule.UpdateExplosions(dt, this, carte, camera);
                         }
                     }
                     break;
