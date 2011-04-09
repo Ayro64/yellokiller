@@ -33,7 +33,7 @@ namespace YelloKiller.Moteur_Particule
         Rectangle rectangle_hadoken; // rectangle qui approxime la hauteur et la largeur de mon hadoken 
         public Rectangle Rectangle_Hadoken(Hero hero) // pour gerer les collisions
         {
-         //   Console.WriteLine(GameplayScreen.Enable_Timer + " , " + GameplayScreen.Timer);
+            //   Console.WriteLine(GameplayScreen.Enable_Timer + " , " + GameplayScreen.Timer);
 
             if (GameplayScreen.Timer > 1) // apres une seconde mon timer se remet a zero
             {
@@ -47,7 +47,7 @@ namespace YelloKiller.Moteur_Particule
                 direction_hero_appele = hero.SourceRectangle.Value.Y;
             }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
 
-            
+
             if (hadoken.FreeParticleCount < 100 && rectangle_est_present && GameplayScreen.Timer > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
                 if (direction_hero_appele == 133) // haut
@@ -71,6 +71,7 @@ namespace YelloKiller.Moteur_Particule
         ExplosionParticleSystem hadoken;  // explosion 
         ExplosionSmokeParticleSystem fume_hadoken; // fume apres explosion
         SmokePlumeParticleSystem fume; // fumigene
+        BallParticleSystem ball;
 
 
 
@@ -93,7 +94,8 @@ namespace YelloKiller.Moteur_Particule
             hadoken = new ExplosionParticleSystem(game, 1, spriteBatch);
             game.Components.Add(hadoken);
 
-
+            ball = new BallParticleSystem(game, 1, spriteBatch);
+            game.Components.Add(ball);
 
             fume_hadoken = new ExplosionSmokeParticleSystem(game, 2, spriteBatch);
             game.Components.Add(fume_hadoken);
@@ -101,6 +103,8 @@ namespace YelloKiller.Moteur_Particule
 
             fume = new SmokePlumeParticleSystem(game, 9, spriteBatch);
             game.Components.Add(fume);
+
+
         }
 
         #endregion
@@ -121,8 +125,16 @@ namespace YelloKiller.Moteur_Particule
         public void UpdateExplosions(float dt, Hero hero, Carte carte, Rectangle camera)
         {
             hadoken.Hero = hero; // initialisation des propriétés de explosion particule system
-            hadoken.Carte = carte; 
+            hadoken.Carte = carte;
             hadoken.AddParticles(position(hero, camera), hero);
+            fume_hadoken.AddParticles(position(hero, camera), hero);
+        }
+
+        public void UpdateBall(float dt, Hero hero, Carte carte, Rectangle camera)
+        {
+            ball.Hero = hero; // initialisation des propriétés de explosion particule system
+            ball.Carte = carte;
+            ball.AddParticles(position(hero, camera), hero);
             fume_hadoken.AddParticles(position(hero, camera), hero);
         }
 

@@ -106,6 +106,7 @@
     <Compile Include="IA\Pathfinding\ListeNoeuds.cs" />
     <Compile Include="IA\Pathfinding\Noeud.cs" />
     <Compile Include="IA\Pathfinding\Pathfinding.cs" />
+    <Compile Include="Moteur Particule\BallParticleSystem.cs" />
     <Compile Include="Moteur Particule\ExplosionParticleSystem.cs" />
     <Compile Include="Moteur Particule\ExplosionSmokeParticleSystem.cs" />
     <Compile Include="Moteur Particule\MoteurParticule.cs" />
