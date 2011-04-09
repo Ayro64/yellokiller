@@ -12,7 +12,8 @@ namespace YelloKiller
     {
         state_hadoken,
         state_fume,
-        state_shuriken
+        state_shuriken,
+        state_ball,
     };
 
     class Hero : Sprite
@@ -26,8 +27,8 @@ namespace YelloKiller
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, changer_arme, courir, tirer;
-        const int NumStates = 3;
-        State currentState = State.state_hadoken;
+        const int NumStates = 4;
+        State currentState = State.state_ball;
         KeyboardState lastKeyboardState;
 
         public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero, int nombreShuriken, int nombreHadoken)
@@ -172,6 +173,17 @@ namespace YelloKiller
                         {
                             nombreHadoken--;
                             particule.UpdateExplosions(dt, this, carte, camera);
+                        }
+                    }
+                    break;
+
+                case State.state_ball:
+                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
+                    {
+                        GameplayScreen.Enable_Timer = true; // je lance le timer                       
+                        if (GameplayScreen.Timer == 0)
+                        {                            
+                            particule.UpdateBall(dt, this, carte, camera);
                         }
                     }
                     break;
