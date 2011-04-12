@@ -124,42 +124,42 @@ namespace YelloKiller
                         case ("GOMsg"):
                             return "Sie wurden erwischt!";
                         case ("Multi"):
-                            return "Choix du Niveau\n     Koop";
+                            return "  Kartenauswahl\n     Koop";
                         case ("Solo"):
-                            return "Choix du Niveau\n      Solo";
+                            return "  Kartenauswahl\n      Solo";
                         case ("Level"):
-                            return "Niveau";
+                            return "Karte";
                         case ("BckToMenu"):
-                            return "Retour au Menu Principal";
+                            return "Zuruck zum Hauptmenu";
                         case ("Back"):
-                            return "Retour";
+                            return "Zuruck";
                         case ("Loading"):
-                            return "Chargement...";
+                            return "Ladung...";
                         case ("PauseTitle"):
-                            return "En Pause";
+                            return "Pause";
                         case ("PausEditRes"):
-                            return "Reprendre l'édition";
+                            return "Weiter bearbeiten";
                         case ("PausEditQuit"):
-                            return "Quitter l'édition";
+                            return "Zuruck zum Hauptmenu";
                         case ("PausEditSave"):
-                            return "Sauver la carte";
+                            return "Karte speichern";
                         case ("PausEditLoad"):
-                            return "Charger une carte";
+                            return "Karte laden";
                         case ("PausGameRes"):
-                            return "Reprendre le jeu";
+                            return "Weiter spielen";
                         case ("PausGameQuit"):
-                            return "Quitter la partie";
+                            return "Zuruck zum Hauptmenu";
                         case ("MsgBox"):
-                            return "\nBouton A, Espace, Entrée : OK" +
-                                   "\nBouton B, Echap : Annuler";
+                            return "\nA Taste, Leertaste, Enter : Ja" +
+                                   "\nB Taste, Esc : Nein";
                         case ("EditMsgBox"):
-                            return "Êtes-vous sûr de vouloir quitter l'édition?\nToute édition non sauvegardée sera perdue.\n";
+                            return "Sind Sie sicher, dass sie zum bearbeiten aufhoren mochten?\nAlle ungespeicherte Anderungenser werden verliert.\n";
                         case ("GameMsgBox"):
-                            return "Êtes-vous sûr de vouloir quitter la partie?\n";
+                            return "Sind sie sicher, dass Sie den Spiel verlassen mochten?\n";
                         case ("SoundDefault"):
-                            return "Défault";
+                            return "Standard";
                         case ("SoundNone"):
-                            return "Aucun";
+                            return "Keine";
                         case ("OptLan"):
                             return "Sprache: ";
                         case ("OptSound"):
@@ -169,11 +169,11 @@ namespace YelloKiller
                         case ("OptFX"):
                             return "Effekte lautstarke : ";
                         case ("WinMsg"):
-                            return "Cible éliminée!";
+                            return "Ziel erreischt!";
                         case ("WiNext"):
-                            return "Niveau suivant";
+                            return "Nachste Karte";
                         case ("WiRetry"):
-                            return "Refaire le niveau";
+                            return "Noch mal";
                         default:
                             return "";
                     }
