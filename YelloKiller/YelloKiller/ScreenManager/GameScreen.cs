@@ -1,11 +1,12 @@
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 #endregion
 
 namespace YelloKiller
 {
-   
+
     public enum ScreenState
     {
         TransitionOn,
@@ -19,7 +20,7 @@ namespace YelloKiller
         #region Properties
 
 
-        
+
         public bool IsPopup
         {
             get { return isPopup; }
@@ -29,7 +30,7 @@ namespace YelloKiller
         bool isPopup = false;
 
 
-        
+
         public TimeSpan TransitionOnTime
         {
             get { return transitionOnTime; }
@@ -39,7 +40,7 @@ namespace YelloKiller
         TimeSpan transitionOnTime = TimeSpan.Zero;
 
 
-        
+
         public TimeSpan TransitionOffTime
         {
             get { return transitionOffTime; }
@@ -106,6 +107,13 @@ namespace YelloKiller
 
         PlayerIndex? controllingPlayer;
 
+        public SpriteBatch Spritebatch
+        {
+            get { return spriteBatch; }
+            internal set { spriteBatch = value; }
+        }
+
+        SpriteBatch spriteBatch;
 
         #endregion
 
