@@ -37,7 +37,7 @@ namespace YelloKiller.Moteur_Particule
                 GameplayScreen.Timer = 0;
             }
 
-            if (hadoken.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
+            if (hadoken.FreeParticleCount == 100 || ball.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
                 rectangle_est_present = true;// je reinitialise donc mon rectangle
                 direction_hero_appele = hero.SourceRectangle.Value.Y;
@@ -130,7 +130,6 @@ namespace YelloKiller.Moteur_Particule
             ball.Hero = hero; // initialisation des propriétés de explosion particule system
             ball.Carte = carte;
             ball.AddParticles(position(hero, camera), hero);
-            fume_hadoken.AddParticles(position(hero, camera), hero);
         }
 
         public static float RandomBetween(float min, float max) // random utiliser pour toutes les proprietes 

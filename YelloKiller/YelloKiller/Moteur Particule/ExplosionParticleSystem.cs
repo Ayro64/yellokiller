@@ -10,7 +10,7 @@ namespace ParticleSample
    
   class ExplosionParticleSystem : ParticleSystem
     {
-      int distance;
+      int distance = 6;
 
         public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game, howManyEffects, spriteBatch)
