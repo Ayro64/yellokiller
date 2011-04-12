@@ -37,7 +37,7 @@ namespace YelloKiller.Moteur_Particule
                 GameplayScreen.Timer = 0;
             }
 
-            if (hadoken.FreeParticleCount == 100 || ball.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
+            if (hadoken.FreeParticleCount == 100 && ball.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
                 rectangle_est_present = true;// je reinitialise donc mon rectangle
                 direction_hero_appele = hero.SourceRectangle.Value.Y;
