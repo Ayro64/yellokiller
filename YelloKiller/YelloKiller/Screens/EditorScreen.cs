@@ -134,21 +134,6 @@ namespace YelloKiller
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
-                if (curseur.Type == TypeCase.Garde)
-                    _originesGardes.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-
-                else if (curseur.Type == TypeCase.Patrouilleur)
-                    _originesPatrouilleurs.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-
-                else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
-                    _originesPatrouilleursAChevaux.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-
-                else if (curseur.Type == TypeCase.Boss)
-                    _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-            }
-
-            if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
-            {
                 if (curseur.Type == TypeCase.Joueur1)
                 {
                     if (!enableOrigine1)
@@ -167,189 +152,21 @@ namespace YelloKiller
 
                     origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
                 }
-                else if (curseur.Type != TypeCase.Garde && curseur.Type != TypeCase.Patrouilleur_a_cheval && curseur.Type != TypeCase.Patrouilleur && curseur.Type != TypeCase.Boss && (int)carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type != -6 /*-6 = fond*/)
-                {
-                    if (curseur.Type == TypeCase.arbre2)
-                    {
-                        if (curseur.Position.Y + camera.Y - 1 >= 0 && curseur.Position.X + camera.X - 1 >= 0 && curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.arbre2 &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.arbre2 &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.arbre2 &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type != TypeCase.arbre2 &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X - 1].Type != TypeCase.arbre2)
-                        {
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
+                else if (curseur.Type == TypeCase.Garde)
+                    _originesGardes.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
+                else if (curseur.Type == TypeCase.Patrouilleur)
+                    _originesPatrouilleurs.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
+                else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
+                    _originesPatrouilleursAChevaux.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-                        }
-                    }
-                    else if (curseur.Type == TypeCase.murBlanc)
-                    {
-                        if (curseur.Position.Y + camera.Y - 1 >= 0 && curseur.Position.X + camera.X - 1 >= 0 && curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.murBlanc &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.murBlanc &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.murBlanc &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type != TypeCase.murBlanc &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X - 1].Type != TypeCase.murBlanc)
-                        {
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-                        }
-                    }
-                    else if (curseur.Type == TypeCase.tableauMurBlanc)
-                    {
-                        if (curseur.Position.Y + camera.Y - 1 >= 0 && curseur.Position.X + camera.X - 1 >= 0 && curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.tableauMurBlanc &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.tableauMurBlanc &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.tableauMurBlanc &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type != TypeCase.tableauMurBlanc &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X - 1].Type != TypeCase.tableauMurBlanc)
-                        {
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-                        }
-                    }
-                    else if (curseur.Type == TypeCase.commode)
-                    {
-                        if (curseur.Position.Y + camera.Y - 1 >= 0 && curseur.Position.X + camera.X - 1 >= 0 && curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.commode &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.commode &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.commode &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type != TypeCase.commode &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X - 1].Type != TypeCase.commode)
-                        {
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-                        }
-                    }
-                    else if (curseur.Type == TypeCase.TableMoyenne)
-                    {
-                        if (curseur.Position.Y + camera.Y - 1 >= 0 && curseur.Position.X + camera.X - 1 >= 0 && curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.TableMoyenne &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.TableMoyenne &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.TableMoyenne &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type != TypeCase.TableMoyenne &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X - 1].Type != TypeCase.TableMoyenne)
-                        {
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-                        }
-                    }
-                    else if (curseur.Type == TypeCase.Lit)
-                    {
-                        if (curseur.Position.Y + camera.Y - 1 >= 0 && curseur.Position.X + camera.X - 1 >= 0 && curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.Lit &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.Lit &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.Lit &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type != TypeCase.Lit &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X - 1].Type != TypeCase.Lit)
-                        {
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
-                        }
-                    }
-                    else if (curseur.Type == TypeCase.GrandeTable)
-                    {
-                        if (curseur.Position.Y + camera.Y - 1 >= 0 && curseur.Position.X + camera.X - 1 >= 0 && curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.GrandeTable &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y - 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.GrandeTable &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type != TypeCase.GrandeTable &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type != TypeCase.GrandeTable &&
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X - 1].Type != TypeCase.GrandeTable)
-                        {
-                            carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 1, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X + 1].Type = TypeCase.fond;
-
-                            if ((int)curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP)
-                                carte.Cases[(int)curseur.Position.Y + camera.Y + 2, (int)curseur.Position.X + camera.X + 2].Type = TypeCase.fond;
-                        }
-                    }
-                    else
-                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-                }
+                else if (curseur.Type == TypeCase.Boss)
+                    _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
             }
+
+            if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
+                PlacerUneCaseInfranchissable();
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.S))
                 SauvegardeMap();
@@ -576,6 +393,51 @@ namespace YelloKiller
             for (int t = 0; t < _originesBoss.Count; t++)
                 if (_originesBoss[t].X == curseur.Position.X + camera.X && _originesBoss[t].Y == curseur.Position.Y + camera.Y)
                     _originesBoss.RemoveAt(t);
+        }
+        
+        private void PlacerUneCaseInfranchissable()
+        {
+            if ((int)curseur.Type <= -50 && (int)curseur.Type > -75)
+            {
+                if (curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 2))
+                {
+                    carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
+
+                    for (int x = 0; x < 2; x++)
+                        for (int y = 0; y < 2; y++)
+                            if ((x != 0 || y != 0) && (int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
+                                if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
+                                    carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = TypeCase.fond;
+                }
+            }
+            else if ((int)curseur.Type <= -75 && (int)curseur.Type > -100)
+            {
+                if (curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP && EmplacementPossible(3, 3))
+                {
+                    carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
+
+                    for (int x = 0; x < 3; x++)
+                        for (int y = 0; y < 3; y++)
+                            if ((x != 0 || y != 0) && (int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
+                                if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
+                                    carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = TypeCase.fond;
+                }
+            }
+            else
+                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
+        }
+
+        private bool EmplacementPossible(int largeur, int hauteur)
+        {
+            for (int x = 0; x < largeur; x++)
+                for (int y = 0; y < hauteur; y++)
+                    if (carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type == TypeCase.fond)
+                        return false;
+
+            if ((int)carte.Cases[(int)curseur.Position.Y + camera.Y + hauteur - 1, (int)curseur.Position.X + camera.X + largeur - 1].Type < 0)
+                return false;
+
+            return true;
         }
     }
 }
