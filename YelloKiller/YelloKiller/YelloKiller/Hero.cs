@@ -14,6 +14,7 @@ namespace YelloKiller
         state_fume,
         state_shuriken,
         state_ball,
+        state_sabre,
     };
 
     class Hero : Sprite
@@ -27,17 +28,18 @@ namespace YelloKiller
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, changer_arme, courir, tirer;
-        const int NumStates = 4;
-        State currentState = State.state_ball;
+        const int NumStates = 5;
+        State currentState = State.state_shuriken;
         KeyboardState lastKeyboardState;
+        int state_sabre = 0;
 
         public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero, int nombreShuriken, int nombreHadoken)
             : base(position)
-        {          
+        {           
             this.position = position;
             positionDesiree = position;
             this.numeroHero = numeroHero;
-            SourceRectangle = new Rectangle(25, 133, 16, 25);
+            SourceRectangle = new Rectangle(25, 133 - state_sabre, 16, 26);
             monter = true;
             descendre = true;
             droite = true;
@@ -135,27 +137,33 @@ namespace YelloKiller
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
             this.Distance_Hero_Mur(carte);
+            if (currentState == State.state_sabre)
+                state_sabre = 133;
+            else
+                state_sabre = 0;
 
-            Console.WriteLine();
+            Console.WriteLine(SourceRectangle.Value.Y);
+            Console.WriteLine(state_sabre);
+
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
-            if (SourceRectangle.Value.Y == 133)
+            if (SourceRectangle.Value.Y == 133 - state_sabre)
                 regarde_haut = true;
             else
                 regarde_haut = false;
 
-            if (SourceRectangle.Value.Y == 198)
+            if (SourceRectangle.Value.Y == 198 - state_sabre)
                 regarde_bas = true;
             else
                 regarde_bas = false;
 
-            if (SourceRectangle.Value.Y == 230)
+            if (SourceRectangle.Value.Y == 230 - state_sabre)
                 regarde_gauche = true;
             else
                 regarde_gauche = false;
 
-            if (SourceRectangle.Value.Y == 166)
+            if (SourceRectangle.Value.Y == 166 - state_sabre)
                 regarde_droite = true;
             else
                 regarde_droite = false;
@@ -218,18 +226,18 @@ namespace YelloKiller
 
             if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(up))    // arreter le sprite
             {
-                if (SourceRectangle.Value.Y == 133)
-                { SourceRectangle = new Rectangle(24, 133, 16, 28); }
+                if (SourceRectangle.Value.Y == 133 - state_sabre)
+                { SourceRectangle = new Rectangle(24, 133 - state_sabre, 16, 26); }
 
-                if (SourceRectangle.Value.Y == 198)
-                { SourceRectangle = new Rectangle(24, 198, 16, 28); }
+                if (SourceRectangle.Value.Y == 198 - state_sabre)
+                { SourceRectangle = new Rectangle(24, 198 - state_sabre, 16, 26); }
 
-                if (SourceRectangle.Value.Y == 230)
-                { SourceRectangle = new Rectangle(24, 230, 16, 28); }
+                if (SourceRectangle.Value.Y == 230 - state_sabre)
+                { SourceRectangle = new Rectangle(24, 230 - state_sabre, 16, 26); }
 
 
-                if (SourceRectangle.Value.Y == 166)
-                { SourceRectangle = new Rectangle(24, 166, 16, 28); }
+                if (SourceRectangle.Value.Y == 166 - state_sabre)
+                { SourceRectangle = new Rectangle(24, 166 - state_sabre, 16, 26); }
             }
 
             if (!monter)
@@ -237,7 +245,7 @@ namespace YelloKiller
                 if (position != positionDesiree)
                 {
                     position.Y -= vitesseSprite;
-                    SourceRectangle = new Rectangle((int)index * 48, 133, 16, 28);
+                    SourceRectangle = new Rectangle((int)index * 48, 133 - state_sabre, 16, 26);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
 
                     if (index >= maxIndex)
@@ -260,7 +268,7 @@ namespace YelloKiller
                 if (position != positionDesiree)
                 {
                     position.Y += vitesseSprite;
-                    SourceRectangle = new Rectangle((int)index * 48, 198, 16, 28);
+                    SourceRectangle = new Rectangle((int)index * 48, 198 - state_sabre, 16, 26);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
 
                     if (index >= maxIndex)
@@ -282,7 +290,7 @@ namespace YelloKiller
                 if (position != positionDesiree)
                 {
                     position.X -= vitesseSprite;
-                    SourceRectangle = new Rectangle((int)index * 48, 230, 16, 28);
+                    SourceRectangle = new Rectangle((int)index * 48, 230 - state_sabre, 16, 26);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
 
                     if (index >= maxIndex)
@@ -305,7 +313,7 @@ namespace YelloKiller
                 if (position != positionDesiree)
                 {
                     position.X += vitesseSprite;
-                    SourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);
+                    SourceRectangle = new Rectangle((int)index * 48, 166 - state_sabre, 16, 26);
                     index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
 
                     if (index >= maxIndex)
