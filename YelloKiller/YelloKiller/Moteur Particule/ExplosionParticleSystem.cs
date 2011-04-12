@@ -70,9 +70,9 @@ namespace ParticleSample
         {
             base.Update(gameTime);
             if (Hero != null)
-            {                
+            {
+                
                 distance = Hero.Distance_Hero_Mur(Carte);
-                Console.WriteLine(distance);
                 maxInitialSpeed = 50 * distance;
             }
 
