@@ -251,6 +251,7 @@ namespace YelloKiller
             screen.ScreenManager = this;
             screen.IsExiting = false;
             screen.IsPopup = IsPopUp;
+            screen.Spritebatch = this.SpriteBatch;
 
             // If we have a graphics device, tell the screen to load content.
             if (isInitialized)
