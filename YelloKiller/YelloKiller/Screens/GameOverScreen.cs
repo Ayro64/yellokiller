@@ -182,11 +182,9 @@ namespace YelloKiller
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
             byte fade = TransitionAlpha;
-            int RectangleX = (viewport.Width / 2) - (int)(font.MeasureString(GOmessage).X);
-            int totalLength = (int)(font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X);
 
             //Entrées Menu
-            Vector2 positionL = new Vector2((viewport.Width / 2) - (totalLength / 1.6f), 610);
+            Vector2 positionL = new Vector2((viewport.Width / 2) - (font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X / 1.6f), 610);
             Vector2 positionR = new Vector2((viewport.Width / 2 + 15), 610);
 
             // Make the menu slide into place during transitions, using a
@@ -212,7 +210,7 @@ namespace YelloKiller
 
             // Rectangle noir
             spriteBatch.Draw(blankTexture,
-                             new Rectangle(RectangleX, 530, (int)(font.MeasureString(GOmessage).X * 2f), 110),
+                             new Rectangle((viewport.Width / 2) - (int)(font.MeasureString(GOmessage).X), 530, (int)(font.MeasureString(GOmessage).X * 2f), 110),
                              new Color(0, 0, 0, (byte)(fade * 2 / 3)));
 
 
