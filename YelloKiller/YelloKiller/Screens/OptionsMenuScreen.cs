@@ -24,6 +24,7 @@ namespace YelloKiller
         MenuEntry sonMenuEntry;
         MenuEntry soundVolumeMenuEntry;
         MenuEntry fxVolumeMenuEntry;
+        MenuEntry backMenuEntry;
         YellokillerGame game;
 
         int mod;
@@ -69,10 +70,11 @@ namespace YelloKiller
             sonMenuEntry = new MenuEntry(string.Empty);
             soundVolumeMenuEntry = new MenuEntry(string.Empty);
             fxVolumeMenuEntry = new MenuEntry(string.Empty);
+            backMenuEntry = new MenuEntry(string.Empty);
 
             SetMenuEntryText();
 
-            MenuEntry backMenuEntry = new MenuEntry(Langue.tr("Back"));
+            
 
             // Hook up menu event handlers.
             languageMenuEntry.Selected += LanguageMenuEntrySelected;
@@ -103,6 +105,7 @@ namespace YelloKiller
             sonMenuEntry.Text = Langue.tr("OptSound") + son[currentSon];
             soundVolumeMenuEntry.Text = Langue.tr("OptMusic") + (uint)soundVolume;
             fxVolumeMenuEntry.Text = Langue.tr("OptFX") + fxVolume;
+            backMenuEntry.Text = Langue.tr("Back");
         }
 
         // Sert qu'aux rectangles
