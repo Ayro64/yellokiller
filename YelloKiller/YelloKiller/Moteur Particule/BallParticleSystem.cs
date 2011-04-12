@@ -10,7 +10,7 @@ namespace ParticleSample
 
     class BallParticleSystem : ParticleSystem
     {
-        int distance;
+        int distance = 6;
 
         public BallParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game, howManyEffects, spriteBatch)
@@ -22,13 +22,11 @@ namespace ParticleSample
 
             textureFilename = "explosion";
 
-            minInitialSpeed = 500;
-            maxInitialSpeed = 500;
-
+            maxInitialSpeed = 50 * distance;
+            minInitialSpeed = 50 * distance;
 
             minAcceleration = -20;
             maxAcceleration = -10;
-
 
             minLifetime = .5f;
             maxLifetime = 1.0f;
@@ -60,13 +58,10 @@ namespace ParticleSample
         public Carte Carte
         { get; set; }
 
-        public int LongueurHadoken
+        public int LongueurBall
         {
             get { return distance; }
         }
-
-        public float Maxvitesse
-        { get { return maxInitialSpeed; } }
 
         public override void Update(GameTime gameTime)
         {
@@ -74,7 +69,9 @@ namespace ParticleSample
             if (Hero != null)
             {
                 distance = Hero.Distance_Hero_Mur(Carte);
-                maxInitialSpeed = 500;
+                maxInitialSpeed = 50 * distance;
+                minInitialSpeed = 50 * distance;
+
             }
 
         }
