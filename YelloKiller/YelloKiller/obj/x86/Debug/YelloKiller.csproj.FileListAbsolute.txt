@@ -489,3 +489,6 @@ F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe
 F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.pdb
 F:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\ResolveAssemblyReference.cache
 F:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\explosion.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\hadoken.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\smoke.xnb
