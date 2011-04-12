@@ -107,14 +107,6 @@ namespace YelloKiller
 
         PlayerIndex? controllingPlayer;
 
-        public SpriteBatch Spritebatch
-        {
-            get { return spriteBatch; }
-            internal set { spriteBatch = value; }
-        }
-
-        SpriteBatch spriteBatch;
-
         #endregion
 
         #region Initialization
