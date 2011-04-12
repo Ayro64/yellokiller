@@ -120,7 +120,7 @@ namespace YelloKiller
                         case ("GORetry"):
                             return "Wiederholen";
                         case ("GOAbort"):
-                            return "Zuruck zum Hauptmenu";
+                            return "Abbrechen";
                         case ("GOMsg"):
                             return "Sie wurden erwischt!";
                         case ("Multi"):
