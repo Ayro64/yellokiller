@@ -1,9 +1,9 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.IO;
 
 namespace YelloKiller
 {

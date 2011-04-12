@@ -1,19 +1,5 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// Particle.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
 #region Using Statements
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using YelloKiller;
 using YelloKiller.Moteur_Particule;
 #endregion
 
@@ -23,9 +9,7 @@ namespace ParticleSample
     public class Particle
     {
 
-        public Vector2 Position;
-        public Vector2 Velocity;
-        public Vector2 Acceleration;
+        public Vector2 Position, Velocity, Acceleration;
 
         // how long this particle will "live"
         private float lifetime;
