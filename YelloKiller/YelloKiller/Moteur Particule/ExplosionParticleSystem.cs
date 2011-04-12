@@ -7,29 +7,34 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ParticleSample
 {
-   
-  class ExplosionParticleSystem : ParticleSystem
+
+    class ExplosionParticleSystem : ParticleSystem
     {
-      int distance = 6;
+
+        public Hero Hero // solution trouvé pour pas passé hero et Carte en parametre dans update override
+        { get; set; }
+        public Carte Carte
+        { get; set; }
+
+        int distance = 3;
 
         public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game, howManyEffects, spriteBatch)
-        {             
+        {
+
         }
-       
+
         protected override void InitializeConstants()
         {
-           
+
             textureFilename = "explosion";
 
             minInitialSpeed = 40;
             maxInitialSpeed = 50 * distance;
 
-           
             minAcceleration = -20;
             maxAcceleration = -10;
 
-           
             minLifetime = .5f;
             maxLifetime = 1.0f;
 
@@ -51,14 +56,9 @@ namespace ParticleSample
         protected override void InitializeParticle(Particle p, Vector2 where, Hero hero)
         {
             base.InitializeParticle(p, where, hero);
-            
-             p.Acceleration = -p.Velocity / p.Lifetime;
-        }
 
-        public Hero Hero // solution trouvé pour pas passé hero et Carte en parametre dans update override
-        { get; set; }
-        public Carte Carte
-        { get; set; }
+            p.Acceleration = -p.Velocity / p.Lifetime;
+        }
 
         public int LongueurHadoken
         {
@@ -66,12 +66,10 @@ namespace ParticleSample
         }
 
         public override void Update(GameTime gameTime)
-            
         {
             base.Update(gameTime);
             if (Hero != null)
             {
-                
                 distance = Hero.Distance_Hero_Mur(Carte);
                 maxInitialSpeed = 50 * distance;
             }

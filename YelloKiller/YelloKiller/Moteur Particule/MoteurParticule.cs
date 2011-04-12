@@ -44,7 +44,7 @@ namespace YelloKiller.Moteur_Particule
             }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
 
 
-            if (hadoken.FreeParticleCount < 100 && rectangle_est_present && GameplayScreen.Timer > 0.5)
+            if ((hadoken.FreeParticleCount < 100 || ball.FreeParticleCount < 100) && rectangle_est_present && GameplayScreen.Timer > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
                 if (direction_hero_appele == 133) // haut
                     return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y - (hadoken.LongueurHadoken * 28), 28, (hadoken.LongueurHadoken * 28));
@@ -60,7 +60,7 @@ namespace YelloKiller.Moteur_Particule
             }
             else // pas de rectangle
                 return rectangle_hadoken = new Rectangle(0, 0, 0, 0);
-
+          
         }
 
 
