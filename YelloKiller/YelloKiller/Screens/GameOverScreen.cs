@@ -184,8 +184,8 @@ namespace YelloKiller
             byte fade = TransitionAlpha;
 
             //Entrées Menu
-            Vector2 positionL = new Vector2((viewport.Width / 2) - (font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X / 1.6f), 610);
-            Vector2 positionR = new Vector2((viewport.Width / 2 + 15), 610);
+            Vector2 positionL = new Vector2((viewport.Width / 2) - (font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X / 1.6f), viewport.Height - 45);
+            Vector2 positionR = new Vector2((viewport.Width / 2 + 15), viewport.Height - 45);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -223,7 +223,7 @@ namespace YelloKiller
 
 
             // Draw the menu title.
-            Vector2 GOPosition = new Vector2(viewport.Width / 2, 565);
+            Vector2 GOPosition = new Vector2(viewport.Width / 2, viewport.Height - 90);
             Vector2 GOOrigin = font.MeasureString(GOmessage) / 2;
             float GOScale = 1.5f;
 
