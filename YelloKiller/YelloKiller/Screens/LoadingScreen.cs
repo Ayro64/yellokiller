@@ -134,9 +134,8 @@ namespace YelloKiller
 
                 // Center the text in the viewport.
                 Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
-                Vector2 viewportSize = new Vector2( 0, viewport.Height);
                 Vector2 textSize = font.MeasureString(message);
-                Vector2 textPosition = new Vector2( 25, viewportSize.Y - (textSize.Y + 25));
+                Vector2 textPosition = new Vector2( 25, viewport.Height - (textSize.Y + 25));
 
                 Color color = new Color(255, 255, 255, TransitionAlpha);
 
