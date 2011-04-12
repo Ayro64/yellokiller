@@ -136,6 +136,7 @@ namespace YelloKiller
         {
             this.Distance_Hero_Mur(carte);
 
+            Console.WriteLine();
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
@@ -173,6 +174,7 @@ namespace YelloKiller
                         {
                             nombreHadoken--;
                             particule.UpdateExplosions(dt, this, carte, camera);
+                            moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
                     break;

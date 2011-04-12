@@ -7,29 +7,29 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ParticleSample
 {
-   
-  class BallParticleSystem : ParticleSystem
+
+    class BallParticleSystem : ParticleSystem
     {
-      int distance;
+        int distance;
 
         public BallParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game, howManyEffects, spriteBatch)
-        {             
+        {
         }
-       
+
         protected override void InitializeConstants()
         {
-           
+
             textureFilename = "explosion";
 
             minInitialSpeed = 500;
             maxInitialSpeed = 500;
 
-           
+
             minAcceleration = -20;
             maxAcceleration = -10;
 
-           
+
             minLifetime = .5f;
             maxLifetime = 1.0f;
 
@@ -51,8 +51,8 @@ namespace ParticleSample
         protected override void InitializeParticle(Particle p, Vector2 where, Hero hero)
         {
             base.InitializeParticle(p, where, hero);
-            
-             p.Acceleration = -p.Velocity / p.Lifetime;
+
+            p.Acceleration = -p.Velocity / p.Lifetime;
         }
 
         public Hero Hero // solution trouvé pour pas passé hero et Carte en parametre dans update override
@@ -65,14 +65,15 @@ namespace ParticleSample
             get { return distance; }
         }
 
+        public float Maxvitesse
+        { get { return maxInitialSpeed; } }
+
         public override void Update(GameTime gameTime)
-            
         {
             base.Update(gameTime);
             if (Hero != null)
-            {                
+            {
                 distance = Hero.Distance_Hero_Mur(Carte);
-                Console.WriteLine(distance);
                 maxInitialSpeed = 500;
             }
 

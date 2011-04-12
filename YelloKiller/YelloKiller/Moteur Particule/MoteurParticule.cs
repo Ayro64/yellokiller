@@ -115,7 +115,6 @@ namespace YelloKiller.Moteur_Particule
         public void UpdateSmokePlume(float dt, Hero hero, Rectangle camera)
         {
             fume.AddParticles(position(hero, camera), hero);
-
         }
 
         public void UpdateExplosions(float dt, Hero hero, Carte carte, Rectangle camera)
