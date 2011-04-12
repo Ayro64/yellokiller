@@ -11,7 +11,9 @@ namespace YelloKiller
         #region Fields
 
         List<MenuEntry> menuEntries = new List<MenuEntry>();
-        MenuEntry nextMenuEntry, restartMenuEntry, abortMenuEntry;
+        MenuEntry nextMenuEntry;
+        MenuEntry restartMenuEntry;
+        MenuEntry abortMenuEntry;
         int selectedEntry = 0;
         ContentManager content;
         Texture2D winTexture, blankTexture;
@@ -194,9 +196,9 @@ namespace YelloKiller
             byte fade = TransitionAlpha;
 
             //Entrées Menu
-            Vector2 positionL = new Vector2(viewport.Width / 2 - ((font.MeasureString(nextMenuEntry.Text).X + font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X + 60) / 2), 610);
-            Vector2 positionM = new Vector2(positionL.X + font.MeasureString(nextMenuEntry.Text).X + 30, 610);
-            Vector2 positionR = new Vector2(positionM.X + font.MeasureString(restartMenuEntry.Text).X + 30, 610);
+            Vector2 positionL = new Vector2(viewport.Width / 2 - ((font.MeasureString(nextMenuEntry.Text).X + font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X + 60) / 2), viewport.Height - 45);
+            Vector2 positionM = new Vector2(positionL.X + font.MeasureString(nextMenuEntry.Text).X + 30, viewport.Height - 45);
+            Vector2 positionR = new Vector2(positionM.X + font.MeasureString(restartMenuEntry.Text).X + 30, viewport.Height - 45);
             Vector2 WinPosition = new Vector2(viewport.Width / 2, 65);
 
             // Make the menu slide into place during transitions, using a
@@ -222,10 +224,6 @@ namespace YelloKiller
             spriteBatch.Draw(winTexture, fullscreen,
                              new Color(fade, fade, fade));
 
-            // Rectangle noir
-            // spriteBatch.Draw(blankTexture,
-            //                  new Rectangle(120, 580, 650, 110),
-            //                  new Color(0, 0, 0, (byte)(fade * 2 / 3)));
             spriteBatch.Draw(blankTexture,
                              new Rectangle((int)WinPosition.X - (int)(font.MeasureString(WinMessage).X / 1.4f), (int)(WinPosition.Y - font.MeasureString(WinMessage).Y), (int)(font.MeasureString(WinMessage).X * 1.4f), 45),
                              new Color(0, 0, 0, (byte)(fade * 2 / 3)));
