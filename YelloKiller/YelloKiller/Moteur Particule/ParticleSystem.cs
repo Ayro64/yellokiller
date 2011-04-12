@@ -1,20 +1,10 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// SmokePlumeParticleSystem.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
 #region Using Statements
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using YelloKiller;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using YelloKiller.Moteur_Particule;
+using Microsoft.Xna.Framework.Graphics;
 #endregion
 
 namespace ParticleSample

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework;
-using System;
-using YelloKiller.Moteur_Particule;
+﻿using System;
 using ParticleSample;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using YelloKiller.Moteur_Particule;
+using Microsoft.Xna.Framework.Audio;
 
 namespace YelloKiller
 {

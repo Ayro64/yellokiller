@@ -1,19 +1,8 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// ExplosionParticleSystem.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
 #region Using Statements
 using System;
-using System.Collections.Generic;
-using System.Text;
+using YelloKiller;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using YelloKiller;
 #endregion
 
 namespace ParticleSample
