@@ -10,16 +10,16 @@ namespace ParticleSample
 
     class BallParticleSystem : ParticleSystem
     {
-        int distance = 6;
+        int distance = 3 ;
 
         public BallParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
             : base(game, howManyEffects, spriteBatch)
         {
+            
         }
 
         protected override void InitializeConstants()
         {
-
             textureFilename = "explosion";
 
             maxInitialSpeed = 50 * distance;
@@ -71,7 +71,6 @@ namespace ParticleSample
                 distance = Hero.Distance_Hero_Mur(Carte);
                 maxInitialSpeed = 50 * distance;
                 minInitialSpeed = 50 * distance;
-
             }
 
         }
