@@ -23,6 +23,7 @@ namespace YelloKiller
             : base(Langue.tr("PauseTitle"))
         {
             this.game = game;
+
             //Conserve la sélection
             selectedEntry = comingfrom;
 
