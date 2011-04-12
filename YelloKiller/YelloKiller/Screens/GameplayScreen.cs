@@ -12,18 +12,20 @@ namespace YelloKiller
     public enum TypeCase // Valeur strictement positive pour les cases franchissables, negative sinon.
     {
         arbre = -1,
-        arbre2 = -2,
-        buissonSurHerbe = -3,
-        murBlanc = -4,
-        tableauMurBlanc = -5,
-        finMurDroite = -7,
-        finMurFN = -8,
-        finMurGauche = -9,
-        fondNoir = -10,
-        commode = -11,
-        GrandeTable = -12,
-        Lit = -13,
-        TableMoyenne = -14,
+        buissonSurHerbe = -2,
+        finMurDroite = -3,
+        finMurFN = -4,
+        finMurGauche = -5,
+        fondNoir = -7,
+        /*Entre -50 et -74 pour des carres de 2*2 */
+        arbre2 = -50,
+        commode = -51,
+        tableauMurBlanc = -52,
+        TableMoyenne = -53,
+        murBlanc = -54,
+        /*Entre -75 et -99 pour des carres de 3*3 */
+        GrandeTable = -75,
+        Lit = -76,
 
         bois = 1,
         boisCarre = 2,
