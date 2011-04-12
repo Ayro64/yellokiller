@@ -25,6 +25,7 @@ namespace YelloKiller
         float vitesseAnimation, index, tempsCourir;
         int maxIndex, nombreShuriken, nombreHadoken, nombreFumigene = 100, vitesseSprite, numeroHero;
         public bool ishero;
+        bool animation_sabre;
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, changer_arme, courir, tirer;
@@ -35,7 +36,7 @@ namespace YelloKiller
 
         public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero, int nombreShuriken, int nombreHadoken)
             : base(position)
-        {           
+        {
             this.position = position;
             positionDesiree = position;
             this.numeroHero = numeroHero;
@@ -44,6 +45,7 @@ namespace YelloKiller
             descendre = true;
             droite = true;
             gauche = true;
+            animation_sabre = false;
             regarde_droite = true;
             regarde_gauche = true;
             regarde_haut = true;
@@ -137,13 +139,6 @@ namespace YelloKiller
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
             this.Distance_Hero_Mur(carte);
-            if (currentState == State.state_sabre)
-                state_sabre = 133;
-            else
-                state_sabre = 0;
-
-            Console.WriteLine(SourceRectangle.Value.Y);
-            Console.WriteLine(state_sabre);
 
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
@@ -169,6 +164,57 @@ namespace YelloKiller
                 regarde_droite = false;
 
             //armes
+
+          /*  // animation attaque au sabre
+            if (currentState == State.state_sabre)
+                state_sabre = 133;
+            else
+                state_sabre = 0;
+
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && (currentState == State.state_sabre))
+                animation_sabre = true;
+            else
+                animation_sabre = false;
+
+            if (regarde_haut && animation_sabre)
+            {
+                Console.WriteLine(SourceRectangle);
+                SourceRectangle = new Rectangle((int)index * 48, 0, 16, 26);
+                index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
+
+                if (index >= maxIndex)
+                    index = 0f;
+            }
+            else if (Regarder_Bas && animation_sabre)
+            {
+                Console.WriteLine(SourceRectangle);
+                SourceRectangle = new Rectangle((int)index * 48, 65, 16, 26);
+                index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
+
+                if (index >= maxIndex)
+                    index = 0f;
+            }
+            else if (regarde_gauche && animation_sabre)
+            {
+                Console.WriteLine(SourceRectangle);
+                SourceRectangle = new Rectangle((int)index * 48, 97, 16, 26);
+                index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
+
+                if (index >= maxIndex)
+                    index = 0f;
+            }
+            else if (regarde_droite && animation_sabre)
+            {
+                Console.WriteLine(SourceRectangle);
+                SourceRectangle = new Rectangle((int)index * 48, 33, 16, 26);
+                index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
+
+                if (index >= maxIndex)
+                    index = 0f;
+            }*/
+
+
+            // animation moteur particule
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             HandleInput();
 
@@ -192,7 +238,7 @@ namespace YelloKiller
                     {
                         GameplayScreen.Enable_Timer = true; // je lance le timer                       
                         if (GameplayScreen.Timer == 0)
-                        {                            
+                        {
                             particule.UpdateBall(dt, this, carte, camera);
                         }
                     }
@@ -254,7 +300,6 @@ namespace YelloKiller
                     if (numeroHero == 1 && camera.Y - vitesseSprite >= 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 308)
                         camera.Y -= vitesseSprite;
                 }
-
                 else
                 {
                     monter = true;
@@ -436,6 +481,7 @@ namespace YelloKiller
                 }
             }
         }
+
 
         public Vector2 PositionDesiree
         {
