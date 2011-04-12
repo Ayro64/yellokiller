@@ -12,7 +12,7 @@ namespace YelloKiller
     class MainMenuScreen : MenuScreen
     {
         // Sert à keud'
-        #region Properties (provisoire)
+        #region Properties
 
         ContentManager content;
         SpriteBatch spriteBatch;
@@ -41,7 +41,7 @@ namespace YelloKiller
         public MainMenuScreen(YellokillerGame game)
             : base(Langue.tr("MainMenuTitle"))
         {
-            spriteBatch = ScreenManager.SpriteBatch;
+            
             this.game = game;
 
             // Create our menu entries.
@@ -167,8 +167,8 @@ namespace YelloKiller
             SpriteFont font = ScreenManager.Font;
             float titleSize = font.MeasureString(Langue.tr("MainMenuTitle")).X;
 
-            // Tout ça ne sert qu'à faire les pauvres rectangles noirs.
-            
+            // Sert qu'aux rectangles noirs.
+            spriteBatch = ScreenManager.SpriteBatch;
 
             spriteBatch.Begin();
             // Rectangle noir des entrées menu
