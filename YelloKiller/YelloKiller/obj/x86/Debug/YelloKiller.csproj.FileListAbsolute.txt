@@ -416,3 +416,76 @@ C:\Users\Théo Sellem\Desktop\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.
 C:\Users\Théo Sellem\Desktop\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe
 C:\Users\Théo Sellem\Desktop\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.pdb
 C:\Users\Théo Sellem\Desktop\YelloKiller\YelloKiller\obj\x86\Debug\YelloKiller.pdb
+F:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\YelloKiller.exe
+F:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\YelloKiller.pdb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Properties\Settings.Designer.cs
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Properties\Settings.settings
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\pasBois.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\terre.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbeFoncee.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\gradient.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\pasGravier.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurFN.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero2.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero1.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\shurikenCollision.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur_a_cheval.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\background.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre2.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tapisRougeBC.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Sound Bank.xsb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableauMurBlanc.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Commode.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\piedDeMurBois.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\carlageNoir.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Boss.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\LevelSelection.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur_a_cheval.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurDroite.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fond.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\cri.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\explosion.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\boisCarre.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_boss.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\CriMortHero.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\buissonSurHerbe.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\murBlanc.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Wave Bank.xwb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\shuriken.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\courier.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\metalgear.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_garde.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\smoke.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur_a_cheval.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Ambiance sonore.xgs
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Game Over.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero2.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Garde.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Garde.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\finMurBas.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurGauche.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\hadoken.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero1.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\WinTex.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\bois.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\sonMenuBoutton.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\flamme.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\11 Fanfare.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\blank.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\shuriken.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fondNoir.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\menuBouge.xnb
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe.config
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.exe
+F:\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\YelloKiller.pdb
+F:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt

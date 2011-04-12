@@ -9,8 +9,12 @@
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = &lt;none&gt;;
-    Bank Last Revised Low = 2598674723;
-    Bank Last Revised High = 30136425;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 2605155638;
+    PC Bank Last Modified High = 30144824;
+    Bank Last Revised Low = 2540415524;
+    Bank Last Revised High = 30144824;
 
     Wave
     {
@@ -30,8 +34,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2749637426;
-            Last Modified High = 30135574;
+            Last Modified Low = 1557687921;
+            Last Modified High = 30144823;
         }
     }
 
@@ -53,8 +57,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2749737426;
-            Last Modified High = 30135574;
+            Last Modified Low = 1557687921;
+            Last Modified High = 30144823;
         }
     }
 
@@ -76,8 +80,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2749437425;
-            Last Modified High = 30135574;
+            Last Modified Low = 1557375921;
+            Last Modified High = 30144823;
         }
     }
 
@@ -99,8 +103,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2750087426;
-            Last Modified High = 30135574;
+            Last Modified Low = 1557843921;
+            Last Modified High = 30144823;
         }
     }
 
@@ -122,8 +126,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2746987422;
-            Last Modified High = 30135574;
+            Last Modified Low = 1556907920;
+            Last Modified High = 30144823;
         }
     }
 
@@ -145,8 +149,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2749537425;
-            Last Modified High = 30135574;
+            Last Modified Low = 1557531921;
+            Last Modified High = 30144823;
         }
     }
 
@@ -168,8 +172,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2747737423;
-            Last Modified High = 30135574;
+            Last Modified Low = 1557375921;
+            Last Modified High = 30144823;
         }
     }
 
@@ -191,8 +195,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 2749837426;
-            Last Modified High = 30135574;
+            Last Modified Low = 1557843921;
+            Last Modified High = 30144823;
         }
     }
 
@@ -214,8 +218,8 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4250000811;
-            Last Modified High = 30136424;
+            Last Modified Low = 1558155922;
+            Last Modified High = 30144823;
         }
     }
 
@@ -237,8 +241,31 @@
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4273392149;
-            Last Modified High = 30136424;
+            Last Modified Low = 1557375921;
+            Last Modified High = 30144823;
+        }
+    }
+
+    Wave
+    {
+        Name = hadoken;
+        File = hadoken.wav;
+        Build Settings Last Modified Low = 2268831050;
+        Build Settings Last Modified High = 30144824;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 138788;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3911291392;
+            Last Modified High = 30144823;
         }
     }
 }
