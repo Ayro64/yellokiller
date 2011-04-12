@@ -22,8 +22,7 @@ namespace YelloKiller
         ContentManager content;
         Texture2D levelSelectBkground, blankTexture;
         Color Color;
-
-
+        
         #endregion
 
         #region Initialization
@@ -262,7 +261,7 @@ namespace YelloKiller
             abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black);
 
             // Draw the menu title.
-            Vector2 titlePosition = new Vector2(450, 100);
+            Vector2 titlePosition = new Vector2(viewport.Width / 2, 100);
             Vector2 titleOrigin = font.MeasureString(menuTitle) / 2;
             Color titleColor = new Color(0, 0, 0, TransitionAlpha);
             float titleScale = 1.25f;
