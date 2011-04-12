@@ -224,14 +224,17 @@ namespace YelloKiller
         }
 
         public override void Draw(GameTime gameTime)
-        {
-            if ((mod != 1) && (mod != 2))
+        {            
+            if (mod == 0)
             {
+                Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
+                SpriteFont font = ScreenManager.Font;
+                float titleSize = font.MeasureString(Langue.tr("MainMenuTitle")).X;
+
                 // Tout ça ne sert qu'à faire les pauvres rectangles noirs.
                 spriteBatch = ScreenManager.SpriteBatch;
 
                 spriteBatch.Begin();
-
                 // Rectangle noir des entrées menu.
                 spriteBatch.Draw(blankTexture,
                                  new Rectangle(115, 210, 300, 200),
@@ -239,8 +242,8 @@ namespace YelloKiller
 
                 // Celui du titre.
                 spriteBatch.Draw(blankTexture,
-                                new Rectangle(334, 60, 230, 80),
-                                new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
+                             new Rectangle((int)((viewport.Width / 2) - ((titleSize * 1.25f / 2) + 10)), 60, (int)(titleSize * 1.25f) + 20, 80),
+                             new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
                 spriteBatch.End();
             }
