@@ -265,8 +265,13 @@ namespace YelloKiller
             Vector2 titleOrigin = font.MeasureString(menuTitle) / 2;
             Color titleColor = new Color(0, 0, 0, TransitionAlpha);
             float titleScale = 1.25f;
+            float titleSize = font.MeasureString(menuTitle).X;
 
             titlePosition.Y -= transitionOffset * 100;
+
+            spriteBatch.Draw(blankTexture,
+                             new Rectangle((int)((viewport.Width / 2) - ((titleSize * 1.25f / 2) + 10)), 60, (int)(titleSize * 1.25f) + 20, 80),
+                             new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
             spriteBatch.DrawString(font, menuTitle, titlePosition, titleColor, 0,
                                    titleOrigin, titleScale, SpriteEffects.None, 0);
