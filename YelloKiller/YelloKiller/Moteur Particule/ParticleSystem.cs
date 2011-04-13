@@ -7,7 +7,7 @@ using YelloKiller.Moteur_Particule;
 using Microsoft.Xna.Framework.Graphics;
 #endregion
 
-namespace ParticleSample
+namespace YelloKiller.Moteur_Particule
 {
 
     abstract class ParticleSystem : DrawableGameComponent // c est a cause de cet heritage que jai du rajouter des 
@@ -54,7 +54,7 @@ namespace ParticleSample
         /// number between minNumParticles and maxNumParticles.
         /// </summary>
         protected int minNumParticles;
-        static public int maxNumParticles; // on le reutilise dans moteur particule
+        protected int maxNumParticles; // on le reutilise dans moteur particule
 
         /// <summary>
         /// this controls the texture that the particle system uses. It will be used as

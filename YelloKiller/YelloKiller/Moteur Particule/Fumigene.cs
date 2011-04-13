@@ -1,4 +1,4 @@
-#region Using Statements
+﻿#region Using Statements
 using System;
 using YelloKiller;
 using Microsoft.Xna.Framework;
@@ -8,10 +8,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller.Moteur_Particule
 {
-   
-     class SmokePlumeParticleSystem : ParticleSystem
+    class Fumigene : ParticleSystem
     {
-        public SmokePlumeParticleSystem(YellokillerGame game, int howManyEffects)
+
+        public Hero Hero // solution trouvé pour pas passé hero et Carte en parametre dans update override
+        { get; set; }
+        public Carte Carte
+        { get; set; }
+
+        public Fumigene(YellokillerGame game, int howManyEffects)
             : base(game,howManyEffects)
         {
         }
@@ -21,21 +26,21 @@ namespace YelloKiller.Moteur_Particule
         {
             textureFilename = "smoke";
 
-            minInitialSpeed = 50;
-            maxInitialSpeed = 500;
+            minInitialSpeed = 10;
+            maxInitialSpeed = 10;
 
             // we don't want the particles to accelerate at all, aside from what we
             // do in our overriden InitializeParticle.
-            minAcceleration = 0;
-            maxAcceleration = 0;
+            minAcceleration = -10;
+            maxAcceleration = -10;
 
             // long lifetime, this can be changed to create thinner or thicker smoke.
             // tweak minNumParticles and maxNumParticles to complement the effect.
-            minLifetime = 5.0f;
-            maxLifetime = 7.0f;
+            minLifetime = 1.0f;
+            maxLifetime = 3.0f;
 
-            minScale = 5f;
-            maxScale = 10.0f;
+            minScale = 2.5f;
+            maxScale = 5.0f;
 
             minNumParticles = 7;
             maxNumParticles = 15;
@@ -59,7 +64,7 @@ namespace YelloKiller.Moteur_Particule
             // Point the particles somewhere between 80 and 100 degrees.
             // tweak this to make the smoke have more or less spread.
             float radians = MoteurParticule.RandomBetween(
-                MathHelper.ToRadians(80), MathHelper.ToRadians(100));
+                MathHelper.ToRadians(89), MathHelper.ToRadians(91));
 
             Vector2 direction = Vector2.Zero;
            
@@ -69,9 +74,9 @@ namespace YelloKiller.Moteur_Particule
         }
 
 
-        protected override void InitializeParticle(Particle p, Vector2 where)
+        protected override void InitializeParticle(Particle p, Vector2 where, Hero hero)
         {
-            base.InitializeParticle(p, where);
+            base.InitializeParticle(p, where, hero);
 
             // the base is mostly good, but we want to simulate a little bit of wind
             // heading to the right.
@@ -79,3 +84,4 @@ namespace YelloKiller.Moteur_Particule
         }
     }
 }
+

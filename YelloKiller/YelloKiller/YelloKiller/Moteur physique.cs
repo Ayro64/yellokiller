@@ -1,5 +1,4 @@
 ﻿using System;
-using ParticleSample;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using YelloKiller.Moteur_Particule;
