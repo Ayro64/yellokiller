@@ -25,7 +25,7 @@ namespace YelloKiller
         float vitesseAnimation, index, tempsCourir;
         int maxIndex, nombreShuriken = 25, nombreHadoken = 5, nombreFumigene = 10, nombre_ball = 5, vitesseSprite, numeroHero;
         public bool ishero;
-     //   bool animation_sabre;
+        bool animation_sabre;
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, changer_arme, courir, tirer;
@@ -45,7 +45,7 @@ namespace YelloKiller
             descendre = true;
             droite = true;
             gauche = true;
-          //  animation_sabre = false;
+           animation_sabre = false;
             regarde_droite = true;
             regarde_gauche = true;
             regarde_haut = true;
@@ -163,7 +163,7 @@ namespace YelloKiller
 
             //armes
 
-          /*  // animation attaque au sabre
+           // animation attaque au sabre
             if (currentState == State.state_sabre)
                 state_sabre = 133;
             else
@@ -209,7 +209,7 @@ namespace YelloKiller
 
                 if (index >= maxIndex)
                     index = 0f;
-            }*/
+            }
 
 
             // animation moteur particule
