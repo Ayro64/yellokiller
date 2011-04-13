@@ -45,7 +45,7 @@ namespace YelloKiller
             descendre = true;
             droite = true;
             gauche = true;
-           animation_sabre = false;
+            animation_sabre = false;
             regarde_droite = true;
             regarde_gauche = true;
             regarde_haut = true;
@@ -55,7 +55,7 @@ namespace YelloKiller
             index = 0;
             maxIndex = 0;
             rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 26);
-        ishero = false;
+            ishero = false;
             this.up = up;
             this.down = down;
             this.right = right;
@@ -163,7 +163,7 @@ namespace YelloKiller
 
             //armes
 
-           // animation attaque au sabre
+            // animation attaque au sabre
             if (currentState == State.state_sabre)
                 state_sabre = 133;
             else
