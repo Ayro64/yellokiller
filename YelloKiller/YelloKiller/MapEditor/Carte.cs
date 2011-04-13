@@ -59,9 +59,9 @@ namespace YelloKiller
 
         public void DrawInMenu(SpriteBatch spriteBatch, ContentManager content, Vector2 origine)
         {
-            for (int y = Taille_Map.HAUTEUR_MAP - 1; y >= 0; y--)
+            for (int y = Taille_Map.HAUTEUR_MAP - 1; y >= 0; y-=2)
             {
-                for (int x = Taille_Map.LARGEUR_MAP - 1; x >= 0; x--)
+                for (int x = Taille_Map.LARGEUR_MAP - 1; x >= 0; x-=2)
                 {
                     _case[y, x].Position = new Vector2(x, y);
 
