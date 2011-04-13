@@ -214,6 +214,10 @@ namespace YelloKiller
             ExitScreen();
         }
 
+        #endregion
+
+        #region Update and Draw
+
         /// <summary>
         /// Updates the menu.
         /// </summary>
@@ -229,7 +233,7 @@ namespace YelloKiller
             {
                 Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
                 SpriteFont font = ScreenManager.Font;
-                float titleSize = font.MeasureString(Langue.tr("MainMenuTitle")).X;
+                float titleSize = font.MeasureString(Langue.tr("Options")).X;
 
                 // Tout ça ne sert qu'à faire les pauvres rectangles noirs.
                 spriteBatch = ScreenManager.SpriteBatch;
@@ -242,7 +246,7 @@ namespace YelloKiller
 
                 // Celui du titre.
                 spriteBatch.Draw(blankTexture,
-                             new Rectangle((int)((viewport.Width / 2) - ((titleSize * 1.25f / 2) + 10)), 60, (int)(titleSize * 1.25f) + 20, 80),
+                             new Rectangle((int)((viewport.Width / 2) - ((titleSize * 1.25f / 2) + 10)), 75, (int)(titleSize * 1.25f) + 20, 50),
                              new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
                 spriteBatch.End();
