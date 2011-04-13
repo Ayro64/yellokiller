@@ -17,8 +17,8 @@ namespace YelloKiller
         int selectedEntry = 0;
         ContentManager content;
         Texture2D winTexture, blankTexture, scroll;
-        string WinMessage, comingfrom;
         YellokillerGame game;
+        string WinMessage, comingfrom, time, killed, retries, score;
 
         Color Color;
 
@@ -34,7 +34,11 @@ namespace YelloKiller
             this.game = game;
             this.comingfrom = comingfrom;
             WinMessage = Langue.tr("WinMsg");
-
+            time = Langue.tr("Time");
+            killed = Langue.tr("Killed");
+            retries = Langue.tr("Retries");
+            score = Langue.tr("Score");
+            
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
             TransitionOffTime = TimeSpan.FromSeconds(1.2);
@@ -190,7 +194,7 @@ namespace YelloKiller
         /// </summary>
         public override void Draw(GameTime gameTime)
         {
-            Color = new Color(255, 0, 0, TransitionAlpha);
+            Color = new Color(0, 0, 0, TransitionAlpha);
 
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             SpriteFont font = ScreenManager.Font;
@@ -244,6 +248,7 @@ namespace YelloKiller
             // Draw the menu title.
             
             Vector2 WinOrigin = font.MeasureString(WinMessage) / 2;
+
             float WinScale = 1.25f;
 
             WinPosition.Y -= transitionOffset * 100;
