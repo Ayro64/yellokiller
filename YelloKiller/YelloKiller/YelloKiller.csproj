@@ -110,6 +110,7 @@
     <Compile Include="Moteur Particule\BallParticleSystem.cs" />
     <Compile Include="Moteur Particule\ExplosionParticleSystem.cs" />
     <Compile Include="Moteur Particule\ExplosionSmokeParticleSystem.cs" />
+    <Compile Include="Moteur Particule\Fumigene.cs" />
     <Compile Include="Moteur Particule\MoteurParticule.cs" />
     <Compile Include="Moteur Particule\Particle.cs" />
     <Compile Include="Moteur Particule\ParticleSystem.cs" />

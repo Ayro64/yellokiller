@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 #endregion
 
-namespace ParticleSample
+namespace YelloKiller.Moteur_Particule
 {
 
     class ExplosionParticleSystem : ParticleSystem
@@ -41,7 +41,7 @@ namespace ParticleSample
             minScale = 1f;
             maxScale = 10f;
 
-            minNumParticles = 30;
+            minNumParticles = 15;
             maxNumParticles = 100;
 
             minRotationSpeed = -MathHelper.PiOver4;

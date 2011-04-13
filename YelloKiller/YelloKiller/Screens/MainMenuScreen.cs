@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using ParticleSample;
+using YelloKiller.Moteur_Particule;
 #endregion
 
 namespace YelloKiller

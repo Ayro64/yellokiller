@@ -1,5 +1,4 @@
 ﻿using System;
-using ParticleSample;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -68,6 +67,7 @@ namespace YelloKiller.Moteur_Particule
         ExplosionSmokeParticleSystem fume_hadoken; // fume apres explosion
         SmokePlumeParticleSystem fume; // fumigene
         BallParticleSystem ball;
+        Fumigene fumigene;
 
 
 
@@ -86,7 +86,6 @@ namespace YelloKiller.Moteur_Particule
             this.game = game;
             this.spriteBatch = spriteBatch;
 
-
             hadoken = new ExplosionParticleSystem(game, 1);
             game.Components.Add(hadoken);
 
@@ -96,6 +95,8 @@ namespace YelloKiller.Moteur_Particule
             fume_hadoken = new ExplosionSmokeParticleSystem(game, 2);
             game.Components.Add(fume_hadoken);
 
+            fumigene = new Fumigene(game, 9);
+            game.Components.Add(fumigene);
 
             fume = new SmokePlumeParticleSystem(game, 9);
             game.Components.Add(fume);
@@ -112,9 +113,11 @@ namespace YelloKiller.Moteur_Particule
             return where;
         }
 
-        public void UpdateSmokePlume(float dt, Hero hero, Rectangle camera)
+        public void UpdateFumigene(float dt, Hero hero, Carte carte, Rectangle camera)
         {
-            fume.AddParticles(position(hero, camera), hero);
+            fumigene.Hero = hero;
+            fumigene.Carte = carte;
+            fumigene.AddParticles(position(hero, camera), hero);
         }
 
         public void UpdateExplosions(float dt, Hero hero, Carte carte, Rectangle camera)

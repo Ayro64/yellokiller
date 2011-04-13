@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using YelloKiller.Moteur_Particule;
 #endregion
 
-namespace ParticleSample
+namespace YelloKiller.Moteur_Particule
 {
     
     public class Particle

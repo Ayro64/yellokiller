@@ -23,7 +23,7 @@ namespace YelloKiller
         Rectangle rectangle;
         Texture2D flamme;
         float vitesseAnimation, index, tempsCourir;
-        int maxIndex, nombreShuriken, nombreHadoken, nombreFumigene = 100, vitesseSprite, numeroHero;
+        int maxIndex, nombreShuriken = 25, nombreHadoken = 5, nombreFumigene = 10, nombre_ball = 5, vitesseSprite, numeroHero;
         public bool ishero;
      //   bool animation_sabre;
         bool monter, descendre, droite, gauche;
@@ -34,7 +34,7 @@ namespace YelloKiller
         KeyboardState lastKeyboardState;
         int state_sabre = 0;
 
-        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero, int nombreShuriken, int nombreHadoken)
+        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero)
             : base(position)
         {
             this.position = position;
@@ -55,9 +55,7 @@ namespace YelloKiller
             index = 0;
             maxIndex = 0;
             rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 26);
-            this.nombreShuriken = nombreShuriken;
-            this.nombreHadoken = nombreHadoken;
-            ishero = false;
+        ishero = false;
             this.up = up;
             this.down = down;
             this.right = right;
@@ -234,12 +232,14 @@ namespace YelloKiller
                     break;
 
                 case State.state_ball:
-                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
+                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombre_ball > 0)
                     {
                         GameplayScreen.Enable_Timer = true; // je lance le timer                       
                         if (GameplayScreen.Timer == 0)
                         {
+                            nombre_ball--;
                             particule.UpdateBall(dt, this, carte, camera);
+                            moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
                     break;
@@ -248,7 +248,7 @@ namespace YelloKiller
                     if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreFumigene > 0)
                     {
                         nombreFumigene--;
-                        particule.UpdateSmokePlume(dt, this, camera);
+                        particule.UpdateFumigene(dt, this, carte, camera);
                     }
                     break;
 
