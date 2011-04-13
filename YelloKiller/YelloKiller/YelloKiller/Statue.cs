@@ -16,9 +16,10 @@ namespace YelloKiller.YelloKiller
         Rectangle rectangle;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         int distance;
-        State currentState = State.state_shuriken;
-
-        
+        State currentState = State.state_hadoken;
+        float timer = 0;
+        public Carte Carte
+        { get; set; }
 
         public Statue(Vector2 position)
             : base(position)
@@ -26,7 +27,7 @@ namespace YelloKiller.YelloKiller
             this.position = position;
             SourceRectangle = new Rectangle(0, 0, 120, 120);
             rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 120, 120);
-         // distance = this.Distance_Statue_Mur(Carte);
+        // distance = this.Distance_Statue_Mur(Carte);
         }
 
         public int Distance_Statue_Mur(Carte carte)
@@ -85,18 +86,25 @@ namespace YelloKiller.YelloKiller
                 regarde_droite = false;
 
 
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            switch (currentState)
-            {
-                case State.state_hadoken:
-                    particule.UpdateExplosions(dt, this, carte, camera);
-                    moteurAudio.SoundBank.PlayCue("hadoken");
-                    break;
 
-                case State.state_ball:
-                    particule.UpdateBall(dt, this, carte, camera);
-                    moteurAudio.SoundBank.PlayCue("hadoken");
-                    break;
+
+            timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (timer > 5)
+            {
+                switch (currentState)
+                {
+                    case State.state_hadoken:
+                        particule.UpdateExplosions(dt, this, carte);
+                        moteurAudio.SoundBank.PlayCue("hadoken");
+                        break;
+
+                    case State.state_ball:
+                        particule.UpdateBall(dt, this, carte);
+                        moteurAudio.SoundBank.PlayCue("hadoken");
+                        break;
+                }
+                timer = 0;
             }
         }
 
