@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using YelloKiller.Moteur_Particule;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.YelloKiller;
 #endregion
 
 namespace YelloKiller.Moteur_Particule
@@ -127,6 +128,23 @@ namespace YelloKiller.Moteur_Particule
             }
         }
 
+        public void AddParticles(Vector2 where, Statue statue) // surcharge 
+        {
+            // the number of particles we want for this effect is a random number
+            // somewhere between the two constants specified by the subclasses.
+            int numParticles =
+                MoteurParticule.Random.Next(minNumParticles, maxNumParticles);
+
+            // create that many particles, if you can.
+            for (int i = 0; i < numParticles && freeParticles.Count > 0; i++)
+            {
+                // grab a particle from the freeParticles queue, and Initialize it.
+                Particle p = freeParticles[0];
+                freeParticles.RemoveAt(0);
+                InitializeParticle(p, where, statue);
+            }
+        }
+
         public void AddParticles(Vector2 where)
         {
             // the number of particles we want for this effect is a random number
@@ -149,6 +167,31 @@ namespace YelloKiller.Moteur_Particule
             // first, call PickRandomDirection to figure out which way the particle
             // will be moving. velocity and acceleration's values will come from this.
             Vector2 direction = PickRandomDirection(hero);
+
+            // pick some random values for our particle
+            float velocity =
+                MoteurParticule.RandomBetween(minInitialSpeed, maxInitialSpeed);
+            float acceleration =
+                MoteurParticule.RandomBetween(minAcceleration, maxAcceleration);
+            float lifetime =
+                MoteurParticule.RandomBetween(minLifetime, maxLifetime);
+            float scale =
+                MoteurParticule.RandomBetween(minScale, maxScale);
+            float rotationSpeed =
+                MoteurParticule.RandomBetween(minRotationSpeed, maxRotationSpeed);
+
+            // then initialize it with those random values. initialize will save those,
+            // and make sure it is marked as active.
+            p.Initialize(
+                where, velocity * direction, acceleration * direction,
+                lifetime, scale, rotationSpeed);
+        }
+
+        protected virtual void InitializeParticle(Particle p, Vector2 where, Statue statue) // surcharge
+        {
+            // first, call PickRandomDirection to figure out which way the particle
+            // will be moving. velocity and acceleration's values will come from this.
+            Vector2 direction = PickRandomDirection(statue);
 
             // pick some random values for our particle
             float velocity =
@@ -209,6 +252,21 @@ namespace YelloKiller.Moteur_Particule
                 return new Vector2(0, 1);
 
             else if (hero.SourceRectangle.Value.Y == 230)
+                return new Vector2(-1, 0);
+
+            else
+                return new Vector2(1, 0);
+        }
+
+        protected virtual Vector2 PickRandomDirection(Statue statue)
+        {
+            if (statue.SourceRectangle.Value.Y == 133)
+                return new Vector2(0, -1);
+
+            else if (statue.SourceRectangle.Value.Y == 198)
+                return new Vector2(0, 1);
+
+            else if (statue.SourceRectangle.Value.Y == 230)
                 return new Vector2(-1, 0);
 
             else

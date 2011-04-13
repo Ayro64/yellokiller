@@ -11,7 +11,7 @@ namespace YelloKiller
     {
         Case[,] _case;
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
-        List<Vector2> _originesGarde, _originesPatrouilleur, _originesPatrouilleur_a_cheval, _originesBoss;
+        List<Vector2> _originesGarde, _originesPatrouilleur, _originesPatrouilleur_a_cheval, _originesBoss, _originesStatues;
 
         public Carte(Vector2 size)
         {
@@ -23,6 +23,7 @@ namespace YelloKiller
             _originesPatrouilleur = new List<Vector2>();
             _originesPatrouilleur_a_cheval = new List<Vector2>();
             _originesBoss = new List<Vector2>();
+            _originesStatues = new List<Vector2>();
         }
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
@@ -143,9 +144,10 @@ namespace YelloKiller
                 line = file.ReadLine();
             }
 
-            line = file.ReadLine();
+            line = file.ReadLine();        
 
-            while (line != null)
+
+           while (line != "statue_dragon")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
@@ -153,6 +155,18 @@ namespace YelloKiller
                 _originesBoss.Add(positionTemporaire);
                 line = file.ReadLine();
             }
+
+            line = file.ReadLine();
+
+            while (line != null)
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                _originesStatues.Add(positionTemporaire);
+                line = file.ReadLine();
+           }
+            
 
             file.Close();
         }
@@ -246,6 +260,11 @@ namespace YelloKiller
         public List<Vector2> OriginesBoss
         {
             get { return _originesBoss; }
+        }
+
+        public List<Vector2> OriginesStatues
+        {
+            get { return _originesGarde; }
         }
 
         public Vector2 OrigineJoueur1
