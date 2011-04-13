@@ -21,6 +21,7 @@ namespace YelloKiller
         string WinMessage, comingfrom, time, killed, retries, score;
 
         Color Color;
+        Color EntriesColor;
 
         #endregion
 
@@ -29,12 +30,13 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public GameWin(string comingfrom, YellokillerGame game)
+        public GameWin(string comingfrom, string levelTime, YellokillerGame game)
         {
             this.game = game;
             this.comingfrom = comingfrom;
+
             WinMessage = Langue.tr("WinMsg");
-            time = Langue.tr("Time");
+            time = Langue.tr("Time") + levelTime;
             killed = Langue.tr("Killed");
             retries = Langue.tr("Retries");
             score = Langue.tr("Score");
@@ -195,6 +197,7 @@ namespace YelloKiller
         public override void Draw(GameTime gameTime)
         {
             Color = new Color(0, 0, 0, TransitionAlpha);
+            EntriesColor = new Color(255, 0, 0, TransitionAlpha);
 
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             SpriteFont font = ScreenManager.Font;
@@ -207,6 +210,7 @@ namespace YelloKiller
             Vector2 positionM = new Vector2(positionL.X + font.MeasureString(nextMenuEntry.Text).X + 30, viewport.Height - 45);
             Vector2 positionR = new Vector2(positionM.X + font.MeasureString(restartMenuEntry.Text).X + 30, viewport.Height - 45);
             Vector2 WinPosition = new Vector2(viewport.Width / 2, 85);
+            Vector2 ScoresPosition = new Vector2((viewport.Width / 3), 150);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -238,11 +242,11 @@ namespace YelloKiller
             // Draw each menu entry in turn.
 
             bool isSelected = IsActive && (0 == selectedEntry);
-            nextMenuEntry.Draw(this, positionL, isSelected, gameTime, Color);
+            nextMenuEntry.Draw(this, positionL, isSelected, gameTime, EntriesColor);
             isSelected = IsActive && (1 == selectedEntry);
-            restartMenuEntry.Draw(this, positionM, isSelected, gameTime, Color);
+            restartMenuEntry.Draw(this, positionM, isSelected, gameTime, EntriesColor);
             isSelected = IsActive && (2 == selectedEntry);
-            abortMenuEntry.Draw(this, positionR, isSelected, gameTime, Color);
+            abortMenuEntry.Draw(this, positionR, isSelected, gameTime, EntriesColor);
 
 
             // Draw the menu title.
@@ -255,6 +259,11 @@ namespace YelloKiller
 
             spriteBatch.DrawString(font, WinMessage, WinPosition, Color, 0,
                                    WinOrigin, WinScale, SpriteEffects.None, 0);
+
+            spriteBatch.DrawString(font, time, ScoresPosition, Color);
+
+            ScoresPosition.Y += 65;
+
 
             spriteBatch.End();
         }
