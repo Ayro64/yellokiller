@@ -91,6 +91,14 @@ namespace YelloKiller
                             return "Niveau suivant";
                         case("WiRetry"):
                             return "Refaire le niveau";
+                        case("Time"):
+                            return "Temps : ";
+                        case("Killed"):
+                            return "Gardes tués : ";
+                        case("Retries"):
+                            return "Tentatives : ";
+                        case("Score"):
+                            return "Solde : ";
                         default:
                             return "";
                     }
@@ -174,6 +182,14 @@ namespace YelloKiller
                             return "Nachste Karte";
                         case ("WiRetry"):
                             return "Noch mal";
+                        case ("Time"):
+                            return "Zeit : ";
+                        case ("Killed"):
+                            return "Wächeter umgebracht : ";
+                        case ("Retries"):
+                            return "Versuche : ";
+                        case ("Score"):
+                            return "Lohn : ";
                         default:
                             return "";
                     }
@@ -257,6 +273,14 @@ namespace YelloKiller
                             return "Next level";
                         case ("WiRetry"):
                             return "Do this level again";
+                        case ("Time"):
+                            return "Time : ";
+                        case ("Killed"):
+                            return "Killed guards : ";
+                        case ("Retries"):
+                            return "Retries : ";
+                        case ("Score"):
+                            return "Pay : ";
                         default:
                             return "";
                     }
