@@ -44,7 +44,7 @@ namespace YelloKiller
         Garde = 102,
         Patrouilleur = 103,
         Patrouilleur_a_cheval = 104,
-      //  Statues = 106,
+        Statues = 106,
         Boss = 105,
     }
 
@@ -59,14 +59,14 @@ namespace YelloKiller
         Hero hero1, hero2;
 
         Carte carte;
-        Rectangle camera;   
+        Rectangle camera;
         MoteurParticule moteurparticule;
         List<Shuriken> _shuriken;
         List<Garde> _gardes;
         List<Patrouilleur> _patrouilleurs;
         List<Patrouilleur_a_cheval> _patrouilleurs_a_chevaux;
         List<Boss> _boss;
-       // List<Statue> _statues;
+        List<Statue> _statues;
 
         //timer
         private static double timer = 0;
@@ -102,7 +102,7 @@ namespace YelloKiller
             this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[0] == 'C';
-            
+
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
@@ -151,9 +151,9 @@ namespace YelloKiller
             foreach (Vector2 position in carte.OriginesBoss)
                 _boss.Add(new Boss(new Vector2(28 * position.X + 5, 28 * position.Y)));
 
-         //  _statues = new List<Statue>();
-         //   foreach (Vector2 position in carte.OriginesStatues)
-         //       _statues.Add(new Statue(new Vector2(28 * position.X + 5, 28 * position.Y)));        
+            _statues = new List<Statue>();
+            foreach (Vector2 position in carte.OriginesStatues)
+                _statues.Add(new Statue(new Vector2(28 * position.X + 5, 28 * position.Y)));
 
             temps = 0;
         }
@@ -165,7 +165,7 @@ namespace YelloKiller
 
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
-            moteurparticule = new MoteurParticule(game,hero1, carte, spriteBatch);
+            moteurparticule = new MoteurParticule(game, hero1, carte, spriteBatch);
 
             audio.LoadContent(content);
 
@@ -173,8 +173,8 @@ namespace YelloKiller
             if (jeuEnCoop)
                 hero2.LoadContent(content, 2);
 
-            foreach (Garde garde in _gardes)            
-                garde.LoadContent(content, 2);            
+            foreach (Garde garde in _gardes)
+                garde.LoadContent(content, 2);
 
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
                 patrouilleur.LoadContent(content, 2);
@@ -185,8 +185,8 @@ namespace YelloKiller
             foreach (Boss boss in _boss)
                 boss.LoadContent(content, 2);
 
-        //    foreach (Statue statue in _statues)
-           //     statue.LoadContent(content);
+            foreach (Statue statue in _statues)
+                statue.LoadContent(content);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -205,7 +205,7 @@ namespace YelloKiller
         {
             if (IsActive)
             {
-               if (Enable_Timer)
+                if (Enable_Timer)
                     timer += gameTime.ElapsedGameTime.TotalSeconds;
 
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
@@ -229,8 +229,8 @@ namespace YelloKiller
                 foreach (Boss boss in _boss)
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
 
-                //   foreach (Statue statue in _statues)
-              //      statue.Update(gameTime, carte ,ref camera, moteurparticule, moteurAudio, content);
+                foreach (Statue statue in _statues)
+                    statue.Update(gameTime, carte, ref camera, moteurparticule, moteurAudio, content);
 
 
                 Moteur_physique.Collision_Armes_Ennemis(hero1, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
@@ -262,7 +262,7 @@ namespace YelloKiller
         public override void Draw(GameTime gameTime)
         {
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 0, 0);
-            
+
             // If the game is transitioning on or off, fade it out to black.
             if (TransitionPosition > 0)
                 ScreenManager.FadeBackBufferToBlack(255 - TransitionAlpha);
@@ -289,8 +289,8 @@ namespace YelloKiller
             foreach (Boss boss in _boss)
                 boss.Draw(spriteBatch, camera);
 
-           // foreach (Statue statue in _statues)
-          //      statue.Draw(spriteBatch, camera);
+            foreach (Statue statue in _statues)
+                statue.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
@@ -314,10 +314,7 @@ namespace YelloKiller
 
         #region Handle Input
 
-        /// <summary>
-        /// Lets the game respond to player input. Unlike the Update method,
-        /// this will only be called when the gameplay screen is active.
-        /// </summary>
+  
         public override void HandleInput(InputState input)
         {
             if (input == null)
@@ -328,10 +325,6 @@ namespace YelloKiller
 
             GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
 
-            // The game pauses either if the user presses the pause button, or if
-            // they unplug the active gamepad. This requires us to keep track of
-            // whether a gamepad was ever plugged in, because we don't want to pause
-            // on PC if they are playing with a keyboard and have no gamepad at all!
             bool gamePadDisconnected = !gamePadState.IsConnected &&
                                        input.GamePadWasConnected[playerIndex];
 
