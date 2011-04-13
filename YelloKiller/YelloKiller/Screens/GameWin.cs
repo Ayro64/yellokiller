@@ -252,8 +252,10 @@ namespace YelloKiller
             // Draw the menu title.
             
             Vector2 WinOrigin = font.MeasureString(WinMessage) / 2;
+            Vector2 ScOrigin = new Vector2(0, 0);
 
             float WinScale = 1.25f;
+            float Scorale = 2f;
 
             WinPosition.Y -= transitionOffset * 100;
 
@@ -261,9 +263,15 @@ namespace YelloKiller
                                    WinOrigin, WinScale, SpriteEffects.None, 0);
 
             spriteBatch.DrawString(font, time, ScoresPosition, Color);
-
             ScoresPosition.Y += 65;
-
+            spriteBatch.DrawString(font, killed, ScoresPosition, Color);
+            ScoresPosition.Y += 65;
+            spriteBatch.DrawString(font, retries, ScoresPosition, Color);
+            ScoresPosition.Y += 80;
+            ScoresPosition.X += 40;
+            spriteBatch.DrawString(font, score, ScoresPosition, Color, 0,
+                                   ScOrigin, Scorale, SpriteEffects.None, 0);
+                                   
 
             spriteBatch.End();
         }
