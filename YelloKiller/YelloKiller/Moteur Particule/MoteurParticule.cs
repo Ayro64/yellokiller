@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.YelloKiller;
 
 namespace YelloKiller.Moteur_Particule
 {
@@ -59,7 +60,7 @@ namespace YelloKiller.Moteur_Particule
             }
             else // pas de rectangle
                 return rectangle_hadoken = new Rectangle(0, 0, 0, 0);
-          
+
         }
 
 
@@ -113,6 +114,12 @@ namespace YelloKiller.Moteur_Particule
             return where;
         }
 
+        public Vector2 position(Statue statue, Rectangle camera) // position d origine de mon hadoken
+        {
+            Vector2 where = new Vector2(statue.position.X - camera.X, statue.position.Y - camera.Y);
+            return where;
+        }
+
         public void UpdateFumigene(float dt, Hero hero, Carte carte, Rectangle camera)
         {
             fumigene.Hero = hero;
@@ -128,11 +135,26 @@ namespace YelloKiller.Moteur_Particule
             fume_hadoken.AddParticles(position(hero, camera), hero);
         }
 
+        public void UpdateExplosions(float dt, Statue statue, Carte carte, Rectangle camera)
+        {
+            hadoken.statue = statue; // initialisation des propriétés de explosion particule system
+            hadoken.Carte = carte;
+            hadoken.AddParticles(position(statue, camera), statue);
+            fume_hadoken.AddParticles(position(statue, camera), statue);
+        }
+
         public void UpdateBall(float dt, Hero hero, Carte carte, Rectangle camera)
         {
             ball.Hero = hero; // initialisation des propriétés de explosion particule system
             ball.Carte = carte;
             ball.AddParticles(position(hero, camera), hero);
+        }
+
+        public void UpdateBall(float dt, Statue statue, Carte carte, Rectangle camera)
+        {
+            ball.statue = statue; // initialisation des propriétés de explosion particule system
+            ball.Carte = carte;
+            ball.AddParticles(position(statue, camera), statue);
         }
 
         public static float RandomBetween(float min, float max) // random utiliser pour toutes les proprietes 

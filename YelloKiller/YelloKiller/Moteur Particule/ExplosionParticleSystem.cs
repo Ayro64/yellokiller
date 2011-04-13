@@ -3,6 +3,7 @@ using System;
 using YelloKiller;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.YelloKiller;
 #endregion
 
 namespace YelloKiller.Moteur_Particule
@@ -14,6 +15,8 @@ namespace YelloKiller.Moteur_Particule
         public Hero Hero // solution trouvé pour pas passé hero et Carte en parametre dans update override
         { get; set; }
         public Carte Carte
+        { get; set; }
+        public Statue statue// solution trouvé pour pas passé hero et Carte en parametre dans update override
         { get; set; }
 
         int distance = 3;

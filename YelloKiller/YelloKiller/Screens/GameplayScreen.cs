@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using YelloKiller.Moteur_Particule;
+using YelloKiller.YelloKiller;
 
 namespace YelloKiller
 {
@@ -43,6 +44,7 @@ namespace YelloKiller
         Garde = 102,
         Patrouilleur = 103,
         Patrouilleur_a_cheval = 104,
+      //  Statues = 106,
         Boss = 105,
     }
 
@@ -55,15 +57,16 @@ namespace YelloKiller
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
         Hero hero1, hero2;
+
         Carte carte;
-        Rectangle camera;
-    //    Case caseDepart; // n'est jamais utilisé;
+        Rectangle camera;   
         MoteurParticule moteurparticule;
         List<Shuriken> _shuriken;
         List<Garde> _gardes;
         List<Patrouilleur> _patrouilleurs;
         List<Patrouilleur_a_cheval> _patrouilleurs_a_chevaux;
         List<Boss> _boss;
+       // List<Statue> _statues;
 
         //timer
         private static double timer = 0;
@@ -99,7 +102,7 @@ namespace YelloKiller
             this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[0] == 'C';
-
+            
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
@@ -136,8 +139,6 @@ namespace YelloKiller
             foreach (Vector2 position in carte.OriginesGardes)
                 _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y)));
 
-
-
             _patrouilleurs = new List<Patrouilleur>();
             foreach (Vector2 position in carte.OriginesPatrouilleurs)
                 _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * position.X + 5, 28 * position.Y)));
@@ -149,6 +150,10 @@ namespace YelloKiller
             _boss = new List<Boss>();
             foreach (Vector2 position in carte.OriginesBoss)
                 _boss.Add(new Boss(new Vector2(28 * position.X + 5, 28 * position.Y)));
+
+         //  _statues = new List<Statue>();
+         //   foreach (Vector2 position in carte.OriginesStatues)
+         //       _statues.Add(new Statue(new Vector2(28 * position.X + 5, 28 * position.Y)));        
 
             temps = 0;
         }
@@ -179,6 +184,9 @@ namespace YelloKiller
 
             foreach (Boss boss in _boss)
                 boss.LoadContent(content, 2);
+
+        //    foreach (Statue statue in _statues)
+           //     statue.LoadContent(content);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -220,6 +228,10 @@ namespace YelloKiller
 
                 foreach (Boss boss in _boss)
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
+
+                //   foreach (Statue statue in _statues)
+              //      statue.Update(gameTime, carte ,ref camera, moteurparticule, moteurAudio, content);
+
 
                 Moteur_physique.Collision_Armes_Ennemis(hero1, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
 
@@ -276,6 +288,9 @@ namespace YelloKiller
 
             foreach (Boss boss in _boss)
                 boss.Draw(spriteBatch, camera);
+
+           // foreach (Statue statue in _statues)
+          //      statue.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
