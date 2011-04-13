@@ -111,7 +111,7 @@ namespace YelloKiller
         /// </summary>
         void CoopMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new LevelSelectMulti(game));
+            LoadingScreen.Load(ScreenManager, false, e.PlayerIndex, new LevelSelectMulti(game));
         }
 
         ///<summary>
