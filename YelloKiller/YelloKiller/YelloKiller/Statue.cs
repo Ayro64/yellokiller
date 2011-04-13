@@ -10,7 +10,7 @@ using YelloKiller.Moteur_Particule;
 
 namespace YelloKiller.YelloKiller
 {
-    class Statue : Sprite
+    class Statue : Ennemi
     {
 
         Rectangle rectangle;
@@ -24,24 +24,9 @@ namespace YelloKiller.YelloKiller
             : base(position)
         {
             this.position = position;
-            SourceRectangle = new Rectangle(25, 133, 16, 26);
-            rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 26);
-        //   distance = this.Distance_Statue_Mur(Carte);
-        }
-
-        public Rectangle Rectangle
-        {
-            get { return rectangle; }
-        }
-
-        public int X
-        {
-            get { return (int)position.X / 28; }
-        }
-
-        public int Y
-        {
-            get { return (int)position.Y / 28; }
+            SourceRectangle = new Rectangle(0, 0, 120, 120);
+            rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 120, 120);
+         // distance = this.Distance_Statue_Mur(Carte);
         }
 
         public int Distance_Statue_Mur(Carte carte)
@@ -79,22 +64,22 @@ namespace YelloKiller.YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
-            if (SourceRectangle.Value.Y == 133)
+            if (SourceRectangle.Value.Y == 168)
                 regarde_haut = true;
             else
                 regarde_haut = false;
 
-            if (SourceRectangle.Value.Y == 198)
+            if (SourceRectangle.Value.Y == 0)
                 regarde_bas = true;
             else
                 regarde_bas = false;
 
-            if (SourceRectangle.Value.Y == 230)
+            if (SourceRectangle.Value.Y == 56)
                 regarde_gauche = true;
             else
                 regarde_gauche = false;
 
-            if (SourceRectangle.Value.Y == 166)
+            if (SourceRectangle.Value.Y == 112)
                 regarde_droite = true;
             else
                 regarde_droite = false;
@@ -113,32 +98,6 @@ namespace YelloKiller.YelloKiller
                     moteurAudio.SoundBank.PlayCue("hadoken");
                     break;
             }
-        }
-
-
-
-        public bool Regarder_Haut
-        {
-            get { return regarde_haut; }
-            set { regarde_haut = value; }
-        }
-
-        public bool Regarder_Bas
-        {
-            get { return regarde_bas; }
-            set { regarde_bas = value; }
-        }
-
-        public bool Regarder_Droite
-        {
-            get { return regarde_droite; }
-            set { regarde_droite = value; }
-        }
-
-        public bool Regarder_Gauche
-        {
-            get { return regarde_gauche; }
-            set { regarde_gauche = value; }
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)

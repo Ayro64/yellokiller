@@ -26,7 +26,7 @@ namespace YelloKiller
         string ligne, nomSauvegarde, nomCarte;
         Rectangle camera;
         Vector2 origine1, origine2;
-        List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux, _originesBoss;
+        List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux, _originesBoss, _originesStatues;
         bool fileExist;
         int compteur;
 
@@ -64,6 +64,7 @@ namespace YelloKiller
             _originesPatrouilleurs = carte.OriginesPatrouilleurs;
             _originesPatrouilleursAChevaux = carte.OriginesPatrouilleursAChevaux;
             _originesBoss = carte.OriginesBoss;
+            _originesStatues = carte.OriginesStatues;
             origine1 = carte.OrigineJoueur1;
             origine2 = carte.OrigineJoueur2;
 
@@ -76,7 +77,7 @@ namespace YelloKiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu ci-dessous.
-            menu = new Menu(content, 26);
+            menu = new Menu(content, 27);
             curseur = new Curseur(content);
             ascenseur = new Ascenseur(content);
 
@@ -163,6 +164,9 @@ namespace YelloKiller
 
                 else if (curseur.Type == TypeCase.Boss)
                     _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+
+                else if (curseur.Type == TypeCase.Statues)
+                    _originesStatues.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
             }
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
@@ -198,6 +202,9 @@ namespace YelloKiller
 
             foreach (Vector2 position in _originesBoss)
                 spriteBatch.Draw(menu.ListeTextures[5], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
+
+            foreach (Vector2 position in _originesStatues)
+                spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
 
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
@@ -371,6 +378,13 @@ namespace YelloKiller
                     sauvegarde.WriteLine(position.Y);
                 }
 
+                sauvegarde.WriteLine("statue_dragon");
+                foreach (Vector2 position in _originesStatues)
+                {
+                    sauvegarde.WriteLine(position.X);
+                    sauvegarde.WriteLine(position.Y);
+                }
+
                 sauvegarde.Close();
                 enableSave = false;
             }
@@ -393,6 +407,10 @@ namespace YelloKiller
             for (int t = 0; t < _originesBoss.Count; t++)
                 if (_originesBoss[t].X == curseur.Position.X + camera.X && _originesBoss[t].Y == curseur.Position.Y + camera.Y)
                     _originesBoss.RemoveAt(t);
+
+            for (int t = 0; t < _originesStatues.Count; t++)
+                if (_originesStatues[t].X == curseur.Position.X + camera.X && _originesStatues[t].Y == curseur.Position.Y + camera.Y)
+                    _originesStatues.RemoveAt(t);
         }
         
         private void PlacerUneCaseInfranchissable()
@@ -423,7 +441,7 @@ namespace YelloKiller
                                     carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = TypeCase.fond;
                 }
             }
-            else
+            else if((int)curseur.Type < 100)
                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
         }
 
