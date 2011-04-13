@@ -87,17 +87,17 @@ namespace YelloKiller.Moteur_Particule
             this.spriteBatch = spriteBatch;
 
 
-            hadoken = new ExplosionParticleSystem(game, 1, spriteBatch);
+            hadoken = new ExplosionParticleSystem(game, 1);
             game.Components.Add(hadoken);
 
-            ball = new BallParticleSystem(game, 1, spriteBatch);
+            ball = new BallParticleSystem(game, 1);
             game.Components.Add(ball);
 
-            fume_hadoken = new ExplosionSmokeParticleSystem(game, 2, spriteBatch);
+            fume_hadoken = new ExplosionSmokeParticleSystem(game, 2);
             game.Components.Add(fume_hadoken);
 
 
-            fume = new SmokePlumeParticleSystem(game, 9, spriteBatch);
+            fume = new SmokePlumeParticleSystem(game, 9);
             game.Components.Add(fume);
 
 

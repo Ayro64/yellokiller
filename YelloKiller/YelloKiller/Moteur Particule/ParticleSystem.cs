@@ -117,12 +117,11 @@ namespace ParticleSample
 
         #endregion
 
-        protected ParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
+        protected ParticleSystem(YellokillerGame game, int howManyEffects)
             : base(game)
         {
             this.game = game;
             this.howManyEffects = howManyEffects;
-            this.spriteBatch = spriteBatch;
         }
 
 
@@ -183,6 +182,22 @@ namespace ParticleSample
             }
         }
 
+        public void AddParticles(Vector2 where)
+        {
+            // the number of particles we want for this effect is a random number
+            // somewhere between the two constants specified by the subclasses.
+            int numParticles =
+                MoteurParticule.Random.Next(minNumParticles, maxNumParticles);
+
+            // create that many particles, if you can.
+            for (int i = 0; i < numParticles && freeParticles.Count > 0; i++)
+            {
+                // grab a particle from the freeParticles queue, and Initialize it.
+                Particle p = freeParticles.Dequeue();
+                InitializeParticle(p, where);
+            }
+        }
+
         protected virtual void InitializeParticle(Particle p, Vector2 where, Hero hero)
         {
             // first, call PickRandomDirection to figure out which way the particle
@@ -206,6 +221,37 @@ namespace ParticleSample
             p.Initialize(
                 where, velocity * direction, acceleration * direction,
                 lifetime, scale, rotationSpeed);
+        }
+
+        protected virtual void InitializeParticle(Particle p, Vector2 where)
+        {
+            // first, call PickRandomDirection to figure out which way the particle
+            // will be moving. velocity and acceleration's values will come from this.
+            Vector2 direction = PickRandomDirection();
+
+            // pick some random values for our particle
+            float velocity =
+                MoteurParticule.RandomBetween(minInitialSpeed, maxInitialSpeed);
+            float acceleration =
+                MoteurParticule.RandomBetween(minAcceleration, maxAcceleration);
+            float lifetime =
+                MoteurParticule.RandomBetween(minLifetime, maxLifetime);
+            float scale =
+                MoteurParticule.RandomBetween(minScale, maxScale);
+            float rotationSpeed =
+                MoteurParticule.RandomBetween(minRotationSpeed, maxRotationSpeed);
+
+            // then initialize it with those random values. initialize will save those,
+            // and make sure it is marked as active.
+            p.Initialize(
+                where, velocity * direction, acceleration * direction,
+                lifetime, scale, rotationSpeed);
+        }
+
+        protected virtual Vector2 PickRandomDirection()
+        {
+            float angle = MoteurParticule.RandomBetween(0, MathHelper.TwoPi);
+            return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
         }
 
         protected virtual Vector2 PickRandomDirection(Hero hero)
@@ -252,6 +298,9 @@ namespace ParticleSample
 
         public override void Draw(GameTime gameTime)
         {
+            if (spriteBatch == null)
+                spriteBatch = new SpriteBatch(GraphicsDevice);
+
             // tell sprite batch to begin, using the spriteBlendMode specified in
             // initializeConstants
             spriteBatch.Begin(spriteBlendMode);

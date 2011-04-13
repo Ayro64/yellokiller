@@ -25,7 +25,7 @@ namespace YelloKiller
         float vitesseAnimation, index, tempsCourir;
         int maxIndex, nombreShuriken, nombreHadoken, nombreFumigene = 100, vitesseSprite, numeroHero;
         public bool ishero;
-        bool animation_sabre;
+     //   bool animation_sabre;
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, changer_arme, courir, tirer;
@@ -45,7 +45,7 @@ namespace YelloKiller
             descendre = true;
             droite = true;
             gauche = true;
-            animation_sabre = false;
+          //  animation_sabre = false;
             regarde_droite = true;
             regarde_gauche = true;
             regarde_haut = true;
