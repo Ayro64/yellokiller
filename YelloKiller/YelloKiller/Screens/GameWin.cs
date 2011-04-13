@@ -229,12 +229,7 @@ namespace YelloKiller
 
             spriteBatch.Draw(scroll,
                              new Rectangle((int)(viewport.Width - (scroll.Width * 1.5f)) / 2, 40, (int)(scroll.Width * 1.5f), (int)(viewport.Height / 1.5f)),
-                             new Color(fade, fade, fade, (byte)(fade * 2 / 3)));
-
-            spriteBatch.Draw(blankTexture,
-                             new Rectangle((int)WinPosition.X - (int)(font.MeasureString(WinMessage).X / 1.4f), (int)(WinPosition.Y - font.MeasureString(WinMessage).Y), (int)(font.MeasureString(WinMessage).X * 1.4f), 45),
-                             new Color(0, 0, 0));
-
+                             new Color(fade, fade, fade));
 
             // Draw each menu entry in turn.
 

@@ -378,8 +378,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ScoresScroll.png">
-      <Name>ScoresScroll</Name>
+    <Compile Include="ScoresScrollFil.png">
+      <Name>ScoresScrollFil</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
