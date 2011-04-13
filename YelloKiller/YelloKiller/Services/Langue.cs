@@ -43,7 +43,7 @@ namespace YelloKiller
                         case ("Multi"):
                             return "Choix du Niveau\n     Co-op";
                         case ("Solo"):
-                            return "Choix du Niveau\n      Solo";
+                            return "Choix du Niveau\n     Solo";
                         case ("Level"):
                             return "Niveau";
                         case ("BckToMenu"):
@@ -98,7 +98,7 @@ namespace YelloKiller
                     switch (sentence)
                     {
                         case ("MainMenuTitle"):
-                            return " Yello Killer\n  Hauptmenu";
+                            return "Yello Killer\n Hauptmenu";
                         case ("MainMenuSolo"):
                             return "Einzelspiel";
                         case ("MainMenuCoop"):
@@ -124,9 +124,9 @@ namespace YelloKiller
                         case ("GOMsg"):
                             return "Sie wurden erwischt!";
                         case ("Multi"):
-                            return "  Kartenauswahl\n     Koop";
+                            return "Kartenauswahl\n    Koop";
                         case ("Solo"):
-                            return "  Kartenauswahl\n      Solo";
+                            return "Kartenauswahl\n    Solo";
                         case ("Level"):
                             return "Karte";
                         case ("BckToMenu"):
@@ -181,7 +181,7 @@ namespace YelloKiller
                     switch (sentence)
                     {
                         case ("MainMenuTitle"):
-                            return " Yello Killer\n  Main Menu";
+                            return "Yello Killer\n Main Menu";
                         case ("MainMenuSolo"):
                             return "Play in Solo Mode";
                         case ("MainMenuCoop"):
@@ -209,7 +209,7 @@ namespace YelloKiller
                         case ("Multi"):
                             return "Select a level\n     Co-op";
                         case ("Solo"):
-                            return "Select a level\n      Solo";
+                            return "Select a level\n     Solo";
                         case ("Level"):
                             return "Level";
                         case ("BckToMenu"):
