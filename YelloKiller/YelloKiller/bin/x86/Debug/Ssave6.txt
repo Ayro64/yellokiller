@@ -75,3 +75,4 @@ Patrouilleurs A Cheval
 Boss
 42
 42
+statue_dragon
