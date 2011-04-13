@@ -262,7 +262,7 @@ namespace YelloKiller
             // Draw the menu title.
             Vector2 titlePosition = new Vector2(viewport.Width / 2, 100);
             Vector2 titleOrigin = font.MeasureString(menuTitle) / 2;
-            Color titleColor = new Color(0, 0, 0, TransitionAlpha);
+            Color titleColor = new Color(192, 192, 192, TransitionAlpha);
             float titleScale = 1.25f;
             float titleSize = font.MeasureString(menuTitle).X;
 
