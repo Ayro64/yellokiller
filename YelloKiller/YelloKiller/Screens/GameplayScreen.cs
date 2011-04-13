@@ -67,6 +67,7 @@ namespace YelloKiller
 
         //timer 
         private static double timer = 0;
+
         public static double Timer
         {
             get { return timer; }
