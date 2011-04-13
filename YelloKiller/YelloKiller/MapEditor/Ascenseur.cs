@@ -49,7 +49,6 @@ namespace YelloKiller
 
             if (ServiceHelper.Get<IMouseService>().MoletteATournee())
             {
-
                 if (position.Y < 0)
                     position.Y = 0;
                 else if (position.Y + texture.Height > Taille_Ecran.HAUTEUR_ECRAN)
