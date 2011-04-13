@@ -65,7 +65,7 @@ namespace YelloKiller
         List<Patrouilleur_a_cheval> _patrouilleurs_a_chevaux;
         List<Boss> _boss;
 
-        //timer 
+        //timer
         private static double timer = 0;
 
         public static double Timer
@@ -237,7 +237,7 @@ namespace YelloKiller
 
                 if (_boss.Count == 0)
                 {
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, game));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, Temps.Conversion(temps), game));
                     audio.Close();
                     moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 }
@@ -338,7 +338,7 @@ namespace YelloKiller
             {
                 moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 audio.Close();
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, game));
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, Temps.Conversion(temps), game));
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.M))
