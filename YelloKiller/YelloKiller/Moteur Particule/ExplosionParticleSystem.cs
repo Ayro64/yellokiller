@@ -18,8 +18,8 @@ namespace ParticleSample
 
         int distance = 3;
 
-        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
-            : base(game, howManyEffects, spriteBatch)
+        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects)
+            : base(game, howManyEffects)
         {
 
         }

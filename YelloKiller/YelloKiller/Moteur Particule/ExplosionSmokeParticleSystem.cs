@@ -9,8 +9,8 @@ namespace ParticleSample
    
      class ExplosionSmokeParticleSystem : ParticleSystem
     {
-        public ExplosionSmokeParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
-            : base(game, howManyEffects, spriteBatch)
+        public ExplosionSmokeParticleSystem(YellokillerGame game, int howManyEffects)
+            : base(game, howManyEffects)
         {            
         }
 

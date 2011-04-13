@@ -12,8 +12,8 @@ namespace ParticleSample
     {
         int distance = 3 ;
 
-        public BallParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
-            : base(game, howManyEffects, spriteBatch)
+        public BallParticleSystem(YellokillerGame game, int howManyEffects)
+            : base(game, howManyEffects)
         {
             
         }

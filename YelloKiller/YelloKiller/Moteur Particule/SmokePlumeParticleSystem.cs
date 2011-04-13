@@ -11,8 +11,8 @@ namespace ParticleSample
    
      class SmokePlumeParticleSystem : ParticleSystem
     {
-        public SmokePlumeParticleSystem(YellokillerGame game, int howManyEffects, SpriteBatch spriteBatch)
-            : base(game,howManyEffects, spriteBatch )
+        public SmokePlumeParticleSystem(YellokillerGame game, int howManyEffects)
+            : base(game,howManyEffects)
         {
         }
 
@@ -21,8 +21,8 @@ namespace ParticleSample
         {
             textureFilename = "smoke";
 
-            minInitialSpeed = 20;
-            maxInitialSpeed = 100;
+            minInitialSpeed = 50;
+            maxInitialSpeed = 500;
 
             // we don't want the particles to accelerate at all, aside from what we
             // do in our overriden InitializeParticle.
@@ -34,15 +34,19 @@ namespace ParticleSample
             minLifetime = 5.0f;
             maxLifetime = 7.0f;
 
-            minScale = 0.5f;
-            maxScale = 1f;
+            minScale = 5f;
+            maxScale = 10.0f;
 
-            minNumParticles = 100;
-            maxNumParticles =200;
+            minNumParticles = 7;
+            maxNumParticles = 15;
 
             // rotate slowly, we want a fairly relaxed effect
             minRotationSpeed = -MathHelper.PiOver4 / 2.0f;
             maxRotationSpeed = MathHelper.PiOver4 / 2.0f;
+
+            spriteBlendMode = SpriteBlendMode.AlphaBlend;
+
+            DrawOrder = AlphaBlendDrawOrder;
 
             spriteBlendMode = SpriteBlendMode.AlphaBlend;
 

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using ParticleSample;
 #endregion
 
 namespace YelloKiller
@@ -14,8 +15,8 @@ namespace YelloKiller
         // Sert à keud'
         #region Properties
 
-        ContentManager content;
         SpriteBatch spriteBatch;
+        ContentManager content;
         Texture2D blankTexture;
 
         #endregion
@@ -29,6 +30,7 @@ namespace YelloKiller
         MenuEntry optionsMenuEntry;
         MenuEntry exitMenuEntry;
         YellokillerGame game;
+        SmokePlumeParticleSystem fume; // fumigene
 
         #endregion
 
@@ -85,6 +87,9 @@ namespace YelloKiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             blankTexture = content.Load<Texture2D>("blank");
+
+            fume = new SmokePlumeParticleSystem(game, 9);
+            game.Components.Add(fume);
         }
         //
 
@@ -158,7 +163,9 @@ namespace YelloKiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             SetMenuEntryText();
+            fume.AddParticles(new Vector2(Taille_Ecran.HAUTEUR_ECRAN / 2, Taille_Ecran.LARGEUR_ECRAN));
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
         }
 
         public override void Draw(GameTime gameTime)
