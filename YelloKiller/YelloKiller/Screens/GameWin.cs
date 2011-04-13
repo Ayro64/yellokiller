@@ -16,7 +16,7 @@ namespace YelloKiller
         MenuEntry abortMenuEntry;
         int selectedEntry = 0;
         ContentManager content;
-        Texture2D winTexture, blankTexture;
+        Texture2D winTexture, blankTexture, scroll;
         string WinMessage, comingfrom;
         YellokillerGame game;
 
@@ -70,6 +70,9 @@ namespace YelloKiller
 
             //Ecran Game Over.
             winTexture = content.Load<Texture2D>("WinTex");
+
+            // Parchemin
+            scroll = content.Load<Texture2D>("ScoresScroll");
 
             //Carré noir.
             blankTexture = content.Load<Texture2D>("blank");
@@ -199,7 +202,7 @@ namespace YelloKiller
             Vector2 positionL = new Vector2(viewport.Width / 2 - ((font.MeasureString(nextMenuEntry.Text).X + font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X + 60) / 2), viewport.Height - 45);
             Vector2 positionM = new Vector2(positionL.X + font.MeasureString(nextMenuEntry.Text).X + 30, viewport.Height - 45);
             Vector2 positionR = new Vector2(positionM.X + font.MeasureString(restartMenuEntry.Text).X + 30, viewport.Height - 45);
-            Vector2 WinPosition = new Vector2(viewport.Width / 2, 65);
+            Vector2 WinPosition = new Vector2(viewport.Width / 2, 85);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -224,9 +227,13 @@ namespace YelloKiller
             spriteBatch.Draw(winTexture, fullscreen,
                              new Color(fade, fade, fade));
 
+            spriteBatch.Draw(scroll,
+                             new Rectangle((int)(viewport.Width - (scroll.Width * 1.5f)) / 2, 40, (int)(scroll.Width * 1.5f), (int)(viewport.Height / 1.5f)),
+                             new Color(fade, fade, fade, (byte)(fade * 2 / 3)));
+
             spriteBatch.Draw(blankTexture,
                              new Rectangle((int)WinPosition.X - (int)(font.MeasureString(WinMessage).X / 1.4f), (int)(WinPosition.Y - font.MeasureString(WinMessage).Y), (int)(font.MeasureString(WinMessage).X * 1.4f), 45),
-                             new Color(0, 0, 0, (byte)(fade * 2 / 3)));
+                             new Color(0, 0, 0));
 
 
             // Draw each menu entry in turn.
