@@ -14,6 +14,10 @@ namespace YelloKiller
 
         bool DansLaCarte();
 
+        int Molette();
+
+        bool MoletteATournee();
+
         Vector2 Coordonnees();
         
         Rectangle Rectangle();

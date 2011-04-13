@@ -39,6 +39,16 @@ namespace YelloKiller
             return rectangle;
         }
 
+        public int Molette()
+        {
+            return MState.ScrollWheelValue / 12 - LastMState.ScrollWheelValue / 12;
+        }
+
+        public bool MoletteATournee()
+        {
+            return MState.ScrollWheelValue != LastMState.ScrollWheelValue;
+        }
+
         public bool DansLEcran()
         {
             if (MState.X < 0)
