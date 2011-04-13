@@ -129,7 +129,10 @@ namespace YelloKiller
                     nomTexture = "origine_patrouilleur_a_cheval";
                     break;
                 case TypeCase.Boss:
-                    nomTexture = "origine_patrouilleur_a_cheval";
+                    nomTexture = "origine_boss";
+                    break;
+                case TypeCase.Statues:
+                    nomTexture = "origine_statue";
                     break;
             }
             texture = content.Load<Texture2D>(nomTexture);

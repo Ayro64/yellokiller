@@ -27,6 +27,7 @@ namespace YelloKiller
             listeTextures.Add(content.Load<Texture2D>("origine_patrouilleur"));
             listeTextures.Add(content.Load<Texture2D>("origine_patrouilleur_a_cheval"));
             listeTextures.Add(content.Load<Texture2D>("origine_boss"));
+            listeTextures.Add(content.Load<Texture2D>("origine_statue"));
 
             listeTextures.Add(content.Load<Texture2D>(@"Textures\arbre"));
             listeTextures.Add(content.Load<Texture2D>(@"Textures\arbre2"));

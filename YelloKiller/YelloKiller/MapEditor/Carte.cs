@@ -144,10 +144,9 @@ namespace YelloKiller
                 line = file.ReadLine();
             }
 
-            line = file.ReadLine();        
+            line = file.ReadLine();
 
-
-           while (line != "statue_dragon")
+            while (line != "statue_dragon")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
@@ -166,7 +165,6 @@ namespace YelloKiller
                 _originesStatues.Add(positionTemporaire);
                 line = file.ReadLine();
            }
-            
 
             file.Close();
         }
@@ -264,7 +262,7 @@ namespace YelloKiller
 
         public List<Vector2> OriginesStatues
         {
-            get { return _originesGarde; }
+            get { return _originesStatues; }
         }
 
         public Vector2 OrigineJoueur1
