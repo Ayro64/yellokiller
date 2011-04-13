@@ -71,3 +71,5 @@ Boss
 6
 11
 4
+statue_dragon
+
