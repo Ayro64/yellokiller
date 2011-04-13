@@ -72,7 +72,7 @@ namespace YelloKiller
             winTexture = content.Load<Texture2D>("WinTex");
 
             // Parchemin
-            scroll = content.Load<Texture2D>("ScoresScroll");
+            scroll = content.Load<Texture2D>("ScoresScrollFil");
 
             //Carré noir.
             blankTexture = content.Load<Texture2D>("blank");
