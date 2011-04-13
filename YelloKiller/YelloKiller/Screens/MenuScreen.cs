@@ -154,10 +154,9 @@ namespace YelloKiller
         /// </summary>
         public override void Draw(GameTime gameTime)
         {
-            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             SpriteFont font = ScreenManager.Font;
+            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
-
             Vector2 position = new Vector2(130, 250);
 
             // Make the menu slide into place during transitions, using a

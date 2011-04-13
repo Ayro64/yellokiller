@@ -183,9 +183,9 @@ namespace YelloKiller
                              new Rectangle(115, 220, 230, 190),
                              new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
-            // Celui du titre
+            // Rectangle noir du titre
             spriteBatch.Draw(blankTexture,
-                             new Rectangle((int)((viewport.Width / 2) - ((titleSize * 1.25f / 2) + 10)) , 60, (int)(titleSize * 1.25f) + 20, 80),
+                             new Rectangle((int)((viewport.Width / 2) - ((titleSize * 1.25f / 2) + 10)), 60, (int)(titleSize * 1.25f) + 20, 80),
                              new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
             spriteBatch.End();
