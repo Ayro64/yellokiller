@@ -95,13 +95,11 @@ namespace YelloKiller.YelloKiller
                 switch (currentState)
                 {
                     case State.state_hadoken:
-                        particule.UpdateExplosions(dt, this, carte);
-                        moteurAudio.SoundBank.PlayCue("hadoken");
+                        particule.UpdateExplosions(dt, this, carte, camera);
                         break;
 
                     case State.state_ball:
-                        particule.UpdateBall(dt, this, carte);
-                        moteurAudio.SoundBank.PlayCue("hadoken");
+                        particule.UpdateBall(dt, this, carte, camera);
                         break;
                 }
                 timer = 0;
