@@ -118,7 +118,7 @@ namespace YelloKiller
             {
                 otherScreensAreGone = true;
             }
-
+            
             // The gameplay screen takes a while to load, so we display a loading
             // message while that is going on, but the menus load very quickly, and
             // it would look silly if we flashed this up for just a fraction of a
@@ -132,7 +132,7 @@ namespace YelloKiller
 
                 string message = Langue.tr("Loading");
 
-                // Center the text in the viewport.
+                // Locates the text in the viewport.
                 Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
                 Vector2 textPosition = new Vector2( 25, viewport.Height - (font.MeasureString(message).Y + 25));
 
