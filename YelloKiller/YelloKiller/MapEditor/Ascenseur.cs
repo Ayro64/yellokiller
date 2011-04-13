@@ -46,6 +46,17 @@ namespace YelloKiller
                 else
                     position = new Vector2(position.X, ServiceHelper.Get<IMouseService>().Coordonnees().Y - difference);
             }
+
+            if (ServiceHelper.Get<IMouseService>().MoletteATournee())
+            {
+
+                if (position.Y < 0)
+                    position.Y = 0;
+                else if (position.Y + texture.Height > Taille_Ecran.HAUTEUR_ECRAN)
+                    position.Y = Taille_Ecran.HAUTEUR_ECRAN - texture.Height;
+                else
+                    position.Y -= ServiceHelper.Get<IMouseService>().Molette();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
