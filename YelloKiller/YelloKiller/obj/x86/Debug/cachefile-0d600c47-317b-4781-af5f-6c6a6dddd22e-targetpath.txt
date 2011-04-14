@@ -59,6 +59,10 @@ Content\Sons\11 Fanfare.xnb
 Content\Sons\metalgear.xnb
 Content\Sons\hadoken.xnb
 Content\courier.xnb
+Content\ScoresScrollFil.xnb
+Content\statue_dragon.xnb
+Content\origine_statue.xnb
+Content\pied.xnb
 Content\Sons\Ambiance sonore.xgs
 Content\Sons\Wave Bank.xwb
 Content\Sons\Sound Bank.xsb

@@ -1,12 +1,14 @@
 Content\Textures\tapisRougeBC.xnb
+Content\origine_statue.xnb
 Content\gradient.xnb
 Content\Textures\fond.xnb
+Content\statue_dragon.xnb
 Content\Textures\lit.xnb
 Content\background.xnb
 Content\origine_patrouilleur.xnb
 Content\flamme.xnb
 Content\Sons\Sound Bank.xsb
-Content\Sons\Ambiance sonore.xgs
+Content\pied.xnb
 Content\Textures\tableMoyenne.xnb
 Content\Textures\buissonSurHerbe.xnb
 Content\origine_garde.xnb
@@ -50,6 +52,7 @@ Content\ascenseur.xnb
 Content\blank.xnb
 Content\Patrouilleur.xnb
 Content\Sons\shurikenCollision.xnb
+Content\Sons\Ambiance sonore.xgs
 Content\Sons\pasGravier.xnb
 Content\Textures\FinMurDroite.xnb
 Content\Patrouilleur_a_cheval.xnb
@@ -59,6 +62,7 @@ Content\Textures\Commode.xnb
 Content\Textures\grandeTable.xnb
 Content\Sons\pasBois.xnb
 Content\smoke.xnb
+Content\ScoresScrollFil.xnb
 Content\shuriken.xnb
 Content\Textures\boisCarre.xnb
 Content\Textures\fondNoir.xnb
