@@ -143,6 +143,8 @@
     <Compile Include="Screens\Pausebckground.cs" />
     <Compile Include="Screens\PauseMenuScreen.cs" />
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
+    <Compile Include="Services\GamePadService.cs" />
+    <Compile Include="Services\IGamePadService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
     <Compile Include="Services\IMouseService.cs" />
     <Compile Include="Services\KeyboardService.cs" />
