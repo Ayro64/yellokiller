@@ -29,6 +29,7 @@ namespace YelloKiller
             ServiceHelper.Game = this;
             Components.Add(new KeyboardService(this));
             Components.Add(new MouseService(this));
+            Components.Add(new GamePadService(this));
 
             // Create the screen manager component.
             screenManager = new ScreenManager(this);
