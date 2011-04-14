@@ -178,7 +178,7 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != "statue_dragon")
+            while (line != "Statue dragon")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();

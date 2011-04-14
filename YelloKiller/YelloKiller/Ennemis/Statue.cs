@@ -56,9 +56,9 @@ namespace YelloKiller.YelloKiller
         }
 
         public void LoadContent(ContentManager content)
-        { base.LoadContent(content, "statue_dragon"); }
-
-
+        { 
+            base.LoadContent(content, "statue_dragon");
+        }
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, MoteurAudio moteurAudio, ContentManager content)
         {
