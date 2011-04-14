@@ -90,4 +90,3 @@ Boss
 73
 2
 statue_dragon
-

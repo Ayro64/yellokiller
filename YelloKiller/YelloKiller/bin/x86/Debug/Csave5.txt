@@ -70,4 +70,3 @@ Boss
 42
 42
 statue_dragon
-
