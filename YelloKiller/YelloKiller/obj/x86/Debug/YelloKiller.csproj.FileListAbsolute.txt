@@ -492,3 +492,7 @@ F:\yellokiller\YelloKiller\YelloKiller\obj\x86\Debug\Microsoft.Xna.Framework.Run
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\explosion.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\hadoken.xnb
 C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\smoke.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_statue.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\statue_dragon.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\pied.xnb
+C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ScoresScrollFil.xnb
