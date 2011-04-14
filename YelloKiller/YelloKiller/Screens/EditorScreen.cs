@@ -417,7 +417,7 @@ namespace YelloKiller
                     sauvegarde.WriteLine(position.Y);
                 }
 
-                sauvegarde.WriteLine("statue_dragon");
+                sauvegarde.WriteLine("Statue dragon");
                 foreach (Vector2 position in _originesStatues)
                 {
                     sauvegarde.WriteLine(position.X);
