@@ -99,4 +99,4 @@ Boss
 14
 66
 29
-statue_dragon
+Statue dragon
