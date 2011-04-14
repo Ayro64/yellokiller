@@ -18,6 +18,8 @@ namespace YelloKiller
         {
             texture = content.Load<Texture2D>("ascenseur");
             position = new Vector2(Taille_Ecran.LARGEUR_ECRAN - texture.Width, 0);
+            rectangle.Width = texture.Width;
+            rectangle.Height = texture.Height;
         }
 
         public Vector2 Position
@@ -27,7 +29,13 @@ namespace YelloKiller
 
         public void Update()
         {
-            rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+            rectangle.X = (int)position.X;
+            rectangle.Y = (int)position.Y;
+
+            if (position.Y < 0)
+                position.Y = 0;
+            else if (position.Y + texture.Height > Taille_Ecran.HAUTEUR_ECRAN)
+                position.Y = Taille_Ecran.HAUTEUR_ECRAN - texture.Height;
 
             if (rectangle.Intersects(ServiceHelper.Get<IMouseService>().Rectangle()) && ServiceHelper.Get<IMouseService>().BoutonGaucheEnfonce())
             {
@@ -49,12 +57,7 @@ namespace YelloKiller
 
             if (ServiceHelper.Get<IMouseService>().MoletteATournee())
             {
-                if (position.Y < 0)
-                    position.Y = 0;
-                else if (position.Y + texture.Height > Taille_Ecran.HAUTEUR_ECRAN)
-                    position.Y = Taille_Ecran.HAUTEUR_ECRAN - texture.Height;
-                else
-                    position.Y -= ServiceHelper.Get<IMouseService>().Molette();
+                position.Y -= ServiceHelper.Get<IMouseService>().Molette();
             }
         }
 

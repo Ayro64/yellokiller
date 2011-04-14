@@ -21,8 +21,8 @@ namespace YelloKiller.YelloKiller
         public Carte Carte
         { get; set; }
 
-        public Statue(Vector2 position)
-            : base(position)
+        public Statue(Vector2 position, Carte carte)
+            : base(position, carte)
         {
             this.position = position;
             SourceRectangle = new Rectangle(0, 0, 120, 120);

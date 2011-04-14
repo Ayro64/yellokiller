@@ -13,8 +13,8 @@ namespace YelloKiller
         Case depart;
         Case arrivee;
 
-        public Garde(Vector2 position)
-            : base(position)
+        public Garde(Vector2 position, Carte carte)
+            : base(position, carte)
         {
             Position = position;
             SourceRectangle = new Rectangle(24, 64, 16, 24);

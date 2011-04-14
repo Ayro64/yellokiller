@@ -11,17 +11,18 @@ namespace YelloKiller
     {
         Case[,] _case;
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
-        List<Vector2> _originesGarde, _originesPatrouilleur, _originesPatrouilleur_a_cheval, _originesBoss, _originesStatues;
+        List<Vector2> _originesGarde, _originesBoss, _originesStatues;
+        List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
 
         public Carte(Vector2 size)
         {
             _case = new Case[(int)size.Y, (int)size.X];
             origineJoueur1 = -Vector2.One;
-            origineJoueur2 = -Vector2.One; 
+            origineJoueur2 = -Vector2.One;
             positionTemporaire = Vector2.Zero;
             _originesGarde = new List<Vector2>();
-            _originesPatrouilleur = new List<Vector2>();
-            _originesPatrouilleur_a_cheval = new List<Vector2>();
+            _originesPatrouilleur = new List<List<Vector2>>();
+            _originesPatrouilleur_a_cheval = new List<List<Vector2>>();
             _originesBoss = new List<Vector2>();
             _originesStatues = new List<Vector2>();
         }
@@ -78,6 +79,25 @@ namespace YelloKiller
                     _case[y, x] = new Case(new Vector2(x, y), TypeCase.herbe);
         }
 
+        public void OuvrirCartePourMenu(string nomDeFichier)
+        {
+            StreamReader file = new StreamReader(nomDeFichier);
+            string line;
+
+            for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
+            {
+                line = file.ReadLine();
+                if (line == "")
+                    line = file.ReadLine();
+                else if (line == null)
+                    break;
+                for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
+                    Switch(line[x], x, y);
+            }
+
+            file.Close();
+        }
+
         public void OuvrirCarte(string nomDeFichier)
         {
             StreamReader file = new StreamReader(nomDeFichier);
@@ -126,22 +146,34 @@ namespace YelloKiller
 
             while (line != "Patrouilleurs A Cheval")
             {
-                positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
-                _originesPatrouilleur.Add(positionTemporaire);
-                line = file.ReadLine();
+                _originesPatrouilleur.Add(new List<Vector2>());
+
+                while (line != "New" && line != "Patrouilleurs A Cheval")
+                {
+                    positionTemporaire.X = Convert.ToInt32(line);
+                    line = file.ReadLine();
+                    positionTemporaire.Y = Convert.ToInt32(line);
+                    _originesPatrouilleur[_originesPatrouilleur.Count - 1].Add(positionTemporaire);
+                    line = file.ReadLine();
+                }
             }
 
             line = file.ReadLine();
 
             while (line != "Boss")
             {
-                positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
-                _originesPatrouilleur_a_cheval.Add(positionTemporaire);
-                line = file.ReadLine();
+                _originesPatrouilleur_a_cheval.Add(new List<Vector2>());
+
+                while (line != "New" && line != "Boss")
+                {
+                    positionTemporaire.X = Convert.ToInt32(line);
+                    line = file.ReadLine();
+                    positionTemporaire.Y = Convert.ToInt32(line);
+                    _originesPatrouilleur_a_cheval[_originesPatrouilleur_a_cheval.Count - 1].Add(positionTemporaire);
+                    line = file.ReadLine();
+                }
             }
 
             line = file.ReadLine();
@@ -245,12 +277,12 @@ namespace YelloKiller
             get { return _originesGarde; }
         }
 
-        public List<Vector2> OriginesPatrouilleurs
+        public List<List<Vector2>> OriginesPatrouilleurs
         {
             get { return _originesPatrouilleur; }
         }
 
-        public List<Vector2> OriginesPatrouilleursAChevaux
+        public List<List<Vector2>> OriginesPatrouilleursAChevaux
         {
             get { return _originesPatrouilleur_a_cheval; }
         }
