@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Windows.Forms;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using YelloKiller.Moteur_Particule;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller.YelloKiller
 {
     class Statue : Ennemi
     {
-
         Rectangle rectangle;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         int distance;
@@ -84,9 +78,6 @@ namespace YelloKiller.YelloKiller
                 regarde_droite = true;
             else
                 regarde_droite = false;
-
-
-
 
             timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
