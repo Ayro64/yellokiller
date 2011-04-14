@@ -117,23 +117,6 @@ namespace YelloKiller
             tempsCourir = flamme.Height;
         }
 
-
-        private void HandleInput()
-        {
-            KeyboardState currentKeyboardState = Keyboard.GetState();
-
-            bool keyboardSpace =
-                currentKeyboardState.IsKeyUp(changer_arme) &&
-                lastKeyboardState.IsKeyDown(changer_arme);
-
-            if (keyboardSpace)
-            {
-                currentState = (State)((int)(currentState + 1) % NumStates);
-            }
-
-            lastKeyboardState = currentKeyboardState;
-        }
-
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
             this.Distance_Hero_Mur(carte);
@@ -214,7 +197,6 @@ namespace YelloKiller
 
             // animation moteur particule
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            HandleInput();
 
             switch (currentState)
             {
