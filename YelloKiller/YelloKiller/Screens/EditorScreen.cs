@@ -184,15 +184,9 @@ namespace YelloKiller
             if (ServiceHelper.Get<IMouseService>().ClicBoutonDroit() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
                 if (curseur.Type == TypeCase.Patrouilleur)
-                {
                     _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                    Console.WriteLine("Nouveau passage de patrouilleur");
-                }
                 else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
-                {
                     _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                    Console.WriteLine("Nouveau passage de patrouilleur a cheval");
-                }
             }
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
