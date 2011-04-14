@@ -57,16 +57,6 @@ namespace YelloKiller
         public bool DansLEcran()
         {
             return MState.X >= 0 && MState.X <= Taille_Ecran.LARGEUR_ECRAN && MState.Y >= 0 && MState.Y <= Taille_Ecran.HAUTEUR_ECRAN;
-
-            /*if (MState.X < 0)
-                return false;
-            if (MState.Y < 0)
-                return false;
-            if (MState.X > Taille_Ecran.LARGEUR_ECRAN)
-                return false;
-            if (MState.Y > Taille_Ecran.HAUTEUR_ECRAN)
-                return false;
-            return true;*/
         }
 
 
