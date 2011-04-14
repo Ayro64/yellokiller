@@ -6,6 +6,8 @@ namespace YelloKiller
     {
         bool ClicBoutonGauche();
 
+        bool ClicBoutonDroit();
+
         bool BoutonGauchePresse();
 
         bool BoutonGaucheEnfonce();
@@ -19,7 +21,7 @@ namespace YelloKiller
         bool MoletteATournee();
 
         Vector2 Coordonnees();
-        
+
         Rectangle Rectangle();
     }
 }

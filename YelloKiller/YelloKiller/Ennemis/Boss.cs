@@ -14,8 +14,8 @@ namespace YelloKiller
         Case depart;
         Case arrivee;
 
-        public Boss(Vector2 position)
-            : base(position)
+        public Boss(Vector2 position, Carte carte)
+            : base(position, carte)
         {
             Position = position;
             SourceRectangle = new Rectangle(26, 64, 18, 26);
@@ -24,7 +24,6 @@ namespace YelloKiller
             positionDesiree = position;
             vie = 5;
             chemin = new List<Case>();
-
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -42,8 +41,6 @@ namespace YelloKiller
         public void Update(GameTime gameTime, List<Shuriken> shuriken, Carte carte, Hero hero1, Hero hero2, Rectangle camera)
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
-
-            ServiceHelper.Game.Window.Title = "chemin =" + (chemin.Count) + "   Haut = " + Regarder_Haut + "  Droit = " + Regarder_Droite + "  Bas = " + Regarder_Bas + "  Gauche = " + Regarder_Gauche;
 
             if (Math.Abs(hero1.X - X) < 4 && Math.Abs(hero1.Y - Y) < 4)
             {

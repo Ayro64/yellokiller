@@ -19,6 +19,11 @@ namespace YelloKiller
             return MState.LeftButton == ButtonState.Released && LastMState.LeftButton == ButtonState.Pressed;
         }
 
+        public bool ClicBoutonDroit()
+        {
+            return MState.RightButton == ButtonState.Released && LastMState.RightButton == ButtonState.Pressed;
+        }
+
         public bool BoutonGauchePresse()
         {
             return MState.LeftButton == ButtonState.Pressed;
@@ -41,7 +46,7 @@ namespace YelloKiller
 
         public int Molette()
         {
-            return MState.ScrollWheelValue / 12 - LastMState.ScrollWheelValue / 12;
+            return MState.ScrollWheelValue / 6 - LastMState.ScrollWheelValue / 6;
         }
 
         public bool MoletteATournee()
@@ -51,7 +56,9 @@ namespace YelloKiller
 
         public bool DansLEcran()
         {
-            if (MState.X < 0)
+            return MState.X >= 0 && MState.X <= Taille_Ecran.LARGEUR_ECRAN && MState.Y >= 0 && MState.Y <= Taille_Ecran.HAUTEUR_ECRAN;
+
+            /*if (MState.X < 0)
                 return false;
             if (MState.Y < 0)
                 return false;
@@ -59,16 +66,13 @@ namespace YelloKiller
                 return false;
             if (MState.Y > Taille_Ecran.HAUTEUR_ECRAN)
                 return false;
-            return true;
+            return true;*/
         }
-         
+
 
         public bool DansLaCarte()
         {
-                if (MState.X > 0 && MState.X < Taille_Ecran.LARGEUR_ECRAN - 56 && MState.Y > 0 && MState.Y < Taille_Ecran.HAUTEUR_ECRAN)
-                    return true;
-                else
-                    return false;
+            return MState.X > 0 && MState.X < Taille_Ecran.LARGEUR_ECRAN - 56 && MState.Y > 0 && MState.Y < Taille_Ecran.HAUTEUR_ECRAN;
         }
 
         public override void Update(GameTime gameTime)

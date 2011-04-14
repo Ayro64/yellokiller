@@ -26,7 +26,9 @@ namespace YelloKiller
         string ligne, nomSauvegarde, nomCarte;
         Rectangle camera;
         Vector2 origine1, origine2;
-        List<Vector2> _originesGardes, _originesPatrouilleurs, _originesPatrouilleursAChevaux, _originesBoss, _originesStatues;
+        List<Vector2> _originesGardes, _originesBoss, _originesStatues;
+        List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
+        Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval;
         bool fileExist;
         int compteur;
 
@@ -80,6 +82,8 @@ namespace YelloKiller
             menu = new Menu(content, 27);
             curseur = new Curseur(content);
             ascenseur = new Ascenseur(content);
+            pointDePassagePatrouilleur = content.Load<Texture2D>("pied");
+            pointDePassagePatrouilleurACheval = content.Load<Texture2D>("pied");
 
             spriteBatch = ScreenManager.SpriteBatch;
         }
@@ -157,16 +161,38 @@ namespace YelloKiller
                     _originesGardes.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
                 else if (curseur.Type == TypeCase.Patrouilleur)
-                    _originesPatrouilleurs.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-
+                {
+                    _originesPatrouilleurs.Add(new List<Vector2>());
+                    _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+                }
+                
                 else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
-                    _originesPatrouilleursAChevaux.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-
+                {
+                    _originesPatrouilleursAChevaux.Add(new List<Vector2>());
+                    _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+                }
                 else if (curseur.Type == TypeCase.Boss)
                     _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
                 else if (curseur.Type == TypeCase.Statues)
                     _originesStatues.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+                
+                else
+                    carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
+            }
+
+            if (ServiceHelper.Get<IMouseService>().ClicBoutonDroit() && ServiceHelper.Get<IMouseService>().DansLaCarte())
+            {
+                if (curseur.Type == TypeCase.Patrouilleur)
+                {
+                    _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+                    Console.WriteLine("Nouveau passage de patrouilleur");
+                }
+                else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
+                {
+                    _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+                    Console.WriteLine("Nouveau passage de patrouilleur a cheval");
+                }
             }
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
@@ -194,11 +220,23 @@ namespace YelloKiller
             foreach (Vector2 position in _originesGardes)
                 spriteBatch.Draw(menu.ListeTextures[2], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
 
-            foreach (Vector2 position in _originesPatrouilleurs)
-                spriteBatch.Draw(menu.ListeTextures[3], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
+            foreach (List<Vector2> parcours in _originesPatrouilleurs)
+                for (int z = 0; z < parcours.Count; z++)
+                {
+                    if (z == 0)
+                        spriteBatch.Draw(menu.ListeTextures[3], 28 * new Vector2(parcours[z].X - camera.X, parcours[z].Y - camera.Y), Color.White);
+                    else
+                        spriteBatch.Draw(pointDePassagePatrouilleur, 28 * new Vector2(parcours[z].X - camera.X, parcours[z].Y - camera.Y), Color.White);
+                }
 
-            foreach (Vector2 position in _originesPatrouilleursAChevaux)
-                spriteBatch.Draw(menu.ListeTextures[4], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
+            foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
+                for (int v = 0; v < parcours.Count; v++)
+                {
+                    if (v == 0)
+                        spriteBatch.Draw(menu.ListeTextures[4], 28 * new Vector2(parcours[v].X - camera.X, parcours[v].Y - camera.Y), Color.White);
+                    else
+                        spriteBatch.Draw(pointDePassagePatrouilleurACheval, 28 * new Vector2(parcours[v].X - camera.X, parcours[v].Y - camera.Y), Color.White);
+                }
 
             foreach (Vector2 position in _originesBoss)
                 spriteBatch.Draw(menu.ListeTextures[5], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
@@ -257,7 +295,6 @@ namespace YelloKiller
                     nomSauvegarde = nomSauvegarde.Substring(0, 5) + compteur.ToString();
                     fileExist = File.Exists(nomSauvegarde + ".txt");
                 }
-
 
                 sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
 
@@ -358,17 +395,25 @@ namespace YelloKiller
                 }
 
                 sauvegarde.WriteLine("Patrouilleurs");
-                foreach (Vector2 position in _originesPatrouilleurs)
+                foreach (List<Vector2> parcours in _originesPatrouilleurs)
                 {
-                    sauvegarde.WriteLine(position.X);
-                    sauvegarde.WriteLine(position.Y);
+                    sauvegarde.WriteLine("New");
+                    foreach (Vector2 position in parcours)
+                    {
+                        sauvegarde.WriteLine(position.X);
+                        sauvegarde.WriteLine(position.Y);
+                    }
                 }
 
                 sauvegarde.WriteLine("Patrouilleurs A Cheval");
-                foreach (Vector2 position in _originesPatrouilleursAChevaux)
+                foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
                 {
-                    sauvegarde.WriteLine(position.X);
-                    sauvegarde.WriteLine(position.Y);
+                    sauvegarde.WriteLine("New");
+                    foreach (Vector2 position in parcours)
+                    {
+                        sauvegarde.WriteLine(position.X);
+                        sauvegarde.WriteLine(position.Y);
+                    }
                 }
 
                 sauvegarde.WriteLine("Boss");
@@ -397,11 +442,11 @@ namespace YelloKiller
                     _originesGardes.RemoveAt(t);
 
             for (int t = 0; t < _originesPatrouilleurs.Count; t++)
-                if (_originesPatrouilleurs[t].X == curseur.Position.X + camera.X && _originesPatrouilleurs[t].Y == curseur.Position.Y + camera.Y)
+                if (_originesPatrouilleurs[t][0].X == curseur.Position.X + camera.X && _originesPatrouilleurs[t][0].Y == curseur.Position.Y + camera.Y)
                     _originesPatrouilleurs.RemoveAt(t);
 
             for (int t = 0; t < _originesPatrouilleursAChevaux.Count; t++)
-                if (_originesPatrouilleursAChevaux[t].X == curseur.Position.X + camera.X && _originesPatrouilleursAChevaux[t].Y == curseur.Position.Y + camera.Y)
+                if (_originesPatrouilleursAChevaux[t][0].X == curseur.Position.X + camera.X && _originesPatrouilleursAChevaux[t][0].Y == curseur.Position.Y + camera.Y)
                     _originesPatrouilleursAChevaux.RemoveAt(t);
 
             for (int t = 0; t < _originesBoss.Count; t++)

@@ -43,7 +43,7 @@ namespace YelloKiller
                     levels.Add(menuEntry);
 
                     Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-                    map.OuvrirCarte(str.Substring(str.Length - 10));
+                    map.OuvrirCartePourMenu(str.Substring(str.Length - 10));
                     miniCartes.Add(map);
                 }
             }

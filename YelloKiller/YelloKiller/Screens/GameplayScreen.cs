@@ -44,8 +44,8 @@ namespace YelloKiller
         Garde = 102,
         Patrouilleur = 103,
         Patrouilleur_a_cheval = 104,
-        Statues = 106,
         Boss = 105,
+        Statues = 106,
     }
 
     public class GameplayScreen : GameScreen
@@ -137,23 +137,35 @@ namespace YelloKiller
 
             _gardes = new List<Garde>();
             foreach (Vector2 position in carte.OriginesGardes)
-                _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y)));
+                _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y), carte));
 
             _patrouilleurs = new List<Patrouilleur>();
-            foreach (Vector2 position in carte.OriginesPatrouilleurs)
-                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * position.X + 5, 28 * position.Y)));
+            foreach (List<Vector2> parcours in carte.OriginesPatrouilleurs)
+            {
+                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * parcours[0].X + 5, 28 * parcours[0].Y), carte));
+                foreach (Vector2 passage in parcours)
+                    _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
+
+                _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet();
+            }
 
             _patrouilleurs_a_chevaux = new List<Patrouilleur_a_cheval>();
-            foreach (Vector2 position in carte.OriginesPatrouilleursAChevaux)
-                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * position.X + 5, 28 * position.Y)));
+            foreach (List<Vector2> parcours in carte.OriginesPatrouilleursAChevaux)
+            {
+                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * parcours[0].X + 5, 28 * parcours[0].Y), carte));
+                foreach (Vector2 passage in parcours)
+                    _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
+
+                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet();
+            }
 
             _boss = new List<Boss>();
             foreach (Vector2 position in carte.OriginesBoss)
-                _boss.Add(new Boss(new Vector2(28 * position.X + 5, 28 * position.Y)));
+                _boss.Add(new Boss(new Vector2(28 * position.X + 5, 28 * position.Y), carte));
 
             _statues = new List<Statue>();
             foreach (Vector2 position in carte.OriginesStatues)
-                _statues.Add(new Statue(new Vector2(28 * position.X + 5, 28 * position.Y)));
+                _statues.Add(new Statue(new Vector2(28 * position.X + 5, 28 * position.Y), carte));
 
             temps = 0;
         }
