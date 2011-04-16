@@ -31,7 +31,6 @@ namespace YelloKiller
         Keys up, down, right, left, changer_arme, courir, tirer;
         const int NumStates = 5;
         State currentState = State.state_shuriken;
-        KeyboardState lastKeyboardState;
         int state_sabre = 0;
 
         public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero)
@@ -145,6 +144,8 @@ namespace YelloKiller
                 regarde_droite = false;
 
             //armes
+            if(ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(changer_arme) || ServiceHelper.Get<IGamePadService>().ChangerArme())
+                currentState = (State)((int)(currentState + 1) % NumStates);
 
             // animation attaque au sabre
             if (currentState == State.state_sabre)
@@ -152,7 +153,7 @@ namespace YelloKiller
             else
                 state_sabre = 0;
 
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && (currentState == State.state_sabre))
+            if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && (currentState == State.state_sabre))
                 animation_sabre = true;
             else
                 animation_sabre = false;
@@ -201,7 +202,7 @@ namespace YelloKiller
             switch (currentState)
             {
                 case State.state_hadoken:
-                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreHadoken > 0)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0)
                     {
                         GameplayScreen.Enable_Timer = true; // je lance le timer                       
                         if (GameplayScreen.Timer == 0)
@@ -214,7 +215,7 @@ namespace YelloKiller
                     break;
 
                 case State.state_ball:
-                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombre_ball > 0)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0)
                     {
                         GameplayScreen.Enable_Timer = true; // je lance le timer                       
                         if (GameplayScreen.Timer == 0)
@@ -227,7 +228,7 @@ namespace YelloKiller
                     break;
 
                 case State.state_fume:
-                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreFumigene > 0)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreFumigene > 0)
                     {
                         nombreFumigene--;
                         particule.UpdateFumigene(dt, this, carte, camera);
@@ -235,7 +236,7 @@ namespace YelloKiller
                     break;
 
                 case State.state_shuriken:
-                    if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) && nombreShuriken > 0)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreShuriken > 0)
                     {
                         nombreShuriken--;
                         ishero = true;
@@ -247,9 +248,9 @@ namespace YelloKiller
                     break;
             }
 
-            if (tempsCourir > 0 && ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && !(monter && descendre && droite && gauche))
+            if (tempsCourir > 0 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) || ServiceHelper.Get<IGamePadService>().Courir()) && !(monter && descendre && droite && gauche))
                 tempsCourir -= 0.1f * gameTime.ElapsedGameTime.Milliseconds;
-            else if (tempsCourir < flamme.Height && (ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) || (monter && descendre && droite && gauche)))
+            else if (tempsCourir < flamme.Height && ((ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) || ServiceHelper.Get<IGamePadService>().Courir()) || (monter && descendre && droite && gauche)))
                 tempsCourir += 0.1f * gameTime.ElapsedGameTime.Milliseconds;
 
             if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(up))    // arreter le sprite
@@ -360,7 +361,7 @@ namespace YelloKiller
 
             if (monter && descendre && droite && gauche)
             {
-                if (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) && (int)tempsCourir != 0)
+                if ((ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) || ServiceHelper.Get<IGamePadService>().Courir()) && (int)tempsCourir != 0)
                 {
                     vitesseSprite = 4;
                     vitesseAnimation = 0.016f;
@@ -373,7 +374,7 @@ namespace YelloKiller
 
                 if (hero2 == null)
                 {
-                    if (position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePressee(up) &&
+                    if ((position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePressee(up) || ServiceHelper.Get<IGamePadService>().AllerEnHaut()) &&
                         (int)carte.Cases[Y - 1, X].Type > 0)
                     {
                         moteurAudio.SoundBank.PlayCue("pasBois");
@@ -382,7 +383,7 @@ namespace YelloKiller
                         monter = false;
                     }
 
-                    else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePressee(down) &&
+                    else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && (ServiceHelper.Get<IKeyboardService>().TouchePressee(down) || ServiceHelper.Get<IGamePadService>().AllerEnBas()) &&
                              (int)carte.Cases[Y + 1, X].Type > 0)
                     {
                         moteurAudio.SoundBank.PlayCue("pasBois");
@@ -391,7 +392,7 @@ namespace YelloKiller
                         descendre = false;
                     }
 
-                    else if (position.X > 8 && ServiceHelper.Get<IKeyboardService>().TouchePressee(left) &&
+                    else if (position.X > 8 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(left) || ServiceHelper.Get<IGamePadService>().AllerAGauche()) &&
                              (int)carte.Cases[Y, X - 1].Type > 0)
                     {
                         moteurAudio.SoundBank.PlayCue("pasBois");
@@ -400,7 +401,7 @@ namespace YelloKiller
                         gauche = false;
                     }
 
-                    else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePressee(right) &&
+                    else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(right) || ServiceHelper.Get<IGamePadService>().AllerADroite()) &&
                              (int)carte.Cases[Y, X + 1].Type > 0)
                     {
                         moteurAudio.SoundBank.PlayCue("pasBois");
