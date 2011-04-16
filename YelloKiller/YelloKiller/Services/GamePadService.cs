@@ -41,7 +41,7 @@ namespace YelloKiller
 
         public bool Tirer()
         {
-            return GPState.Buttons.A == ButtonState.Released && lastGPState.Buttons.A == ButtonState.Pressed;
+            return GPState.Buttons.A == ButtonState.Pressed && lastGPState.Buttons.A == ButtonState.Released;
         }
 
         public bool ChangerArme()

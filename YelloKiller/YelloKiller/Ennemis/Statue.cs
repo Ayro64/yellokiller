@@ -3,7 +3,7 @@ using YelloKiller.Moteur_Particule;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace YelloKiller.YelloKiller
+namespace YelloKiller
 {
     class Statue : Ennemi
     {
