@@ -31,8 +31,6 @@ namespace YelloKiller.Moteur_Particule
             get { return freeParticles.Count; }
         }
 
-
-
         #region constants to be set by subclasses
 
 
@@ -259,17 +257,14 @@ namespace YelloKiller.Moteur_Particule
 
         protected virtual Vector2 PickRandomDirection(Statue statue)
         {
-            if (statue.SourceRectangle.Value.Y == 133)
+            if (statue.SourceRectangle.Value.Y == 357)
                 return new Vector2(0, -1);
-
-            else if (statue.SourceRectangle.Value.Y == 198)
+            else if (statue.SourceRectangle.Value.Y == 0)
                 return new Vector2(0, 1);
-
-            else if (statue.SourceRectangle.Value.Y == 230)
+            else if (statue.SourceRectangle.Value.Y == 123)
                 return new Vector2(-1, 0);
-
             else
-                return new Vector2(0, 1);
+                return new Vector2(1, 0);
         }
 
         public override void Update(GameTime gameTime)
@@ -281,7 +276,6 @@ namespace YelloKiller.Moteur_Particule
             // go through all of the particles...
             foreach (Particle p in particles)
             {
-
                 if (p.Active)
                 {
                     // ... and if they're active, update them.
@@ -289,9 +283,7 @@ namespace YelloKiller.Moteur_Particule
                     // if that update finishes them, put them onto the free particles
                     // queue.
                     if (!p.Active)
-                    {
                         freeParticles.Add(p);
-                    }
                 }
             }
             base.Update(gameTime);
