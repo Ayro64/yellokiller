@@ -26,6 +26,7 @@ namespace YelloKiller
                             || _gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
                         {
                             soundBank.PlayCue("cri");
+                            ServiceHelper.Get<IGamePadService>().Vibration(20);
                             _gardes.Remove(_gardes[i]);
                             listeShuriken.Remove(listeShuriken[j]);
                             break;
@@ -119,6 +120,7 @@ namespace YelloKiller
             {
                 if (_gardes[b].Rectangle.Intersects(hero1.Rectangle))
                 {
+                    ServiceHelper.Get<IGamePadService>().Vibration(50);
                     soundBank.PlayCue("CriMortHero");
                     return true;
                 }
@@ -129,6 +131,7 @@ namespace YelloKiller
                 {
                     if (_gardes[b].Rectangle.Intersects(hero2.Rectangle))
                     {
+                        ServiceHelper.Get<IGamePadService>().Vibration(50);
                         soundBank.PlayCue("CriMortHero");
                         return true;
                     }
@@ -143,6 +146,7 @@ namespace YelloKiller
             {
                 if (_patrouilleurs[b].Rectangle.Intersects(hero1.Rectangle))
                 {
+                    ServiceHelper.Get<IGamePadService>().Vibration(50);
                     soundBank.PlayCue("CriMortHero");
                     return true;
                 }
@@ -153,6 +157,7 @@ namespace YelloKiller
                 {
                     if (_patrouilleurs[b].Rectangle.Intersects(hero2.Rectangle))
                     {
+                        ServiceHelper.Get<IGamePadService>().Vibration(50);
                         soundBank.PlayCue("CriMortHero");
                         return true;
                     }
@@ -167,6 +172,7 @@ namespace YelloKiller
             {
                 if (_patrouilleursAChevaux[b].Rectangle.Intersects(hero1.Rectangle))
                 {
+                    ServiceHelper.Get<IGamePadService>().Vibration(50);
                     soundBank.PlayCue("CriMortHero");
                     return true;
                 }
@@ -177,6 +183,7 @@ namespace YelloKiller
                 {
                     if (_patrouilleursAChevaux[b].Rectangle.Intersects(hero2.Rectangle))
                     {
+                        ServiceHelper.Get<IGamePadService>().Vibration(50);
                         soundBank.PlayCue("CriMortHero");
                         return true;
                     }
@@ -191,6 +198,7 @@ namespace YelloKiller
             {
                 if (_Boss[b].Rectangle.Intersects(hero1.Rectangle))
                 {
+                    ServiceHelper.Get<IGamePadService>().Vibration(50);
                     soundBank.PlayCue("CriMortHero");
                     return true;
                 }
@@ -201,6 +209,7 @@ namespace YelloKiller
                 {
                     if (_Boss[b].Rectangle.Intersects(hero2.Rectangle))
                     {
+                        ServiceHelper.Get<IGamePadService>().Vibration(50);
                         soundBank.PlayCue("CriMortHero");
                         return true;
                     }
@@ -215,6 +224,7 @@ namespace YelloKiller
             {
                 if (_gardes[b].Rectangle.Intersects(hero.Rectangle))
                 {
+                    ServiceHelper.Get<IGamePadService>().Vibration(50);
                     soundBank.PlayCue("CriMortHero");
                     return true;
                 }
@@ -228,6 +238,7 @@ namespace YelloKiller
             {
                 if (_patrouilleurs[b].Rectangle.Intersects(hero.Rectangle))
                 {
+                    ServiceHelper.Get<IGamePadService>().Vibration(50);
                     soundBank.PlayCue("CriMortHero");
                     return true;
                 }
@@ -241,6 +252,7 @@ namespace YelloKiller
             {
                 if (_patrouilleursAChevaux[b].Rectangle.Intersects(hero.Rectangle))
                 {
+                    ServiceHelper.Get<IGamePadService>().Vibration(50);
                     soundBank.PlayCue("CriMortHero");
                     return true;
                 }
@@ -254,6 +266,7 @@ namespace YelloKiller
             {
                 if (_Boss[b].Rectangle.Intersects(hero.Rectangle))
                 {
+                    ServiceHelper.Get<IGamePadService>().Vibration(50);
                     soundBank.PlayCue("CriMortHero");
                     return true;
                 }
