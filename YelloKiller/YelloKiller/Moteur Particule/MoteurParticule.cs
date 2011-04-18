@@ -19,6 +19,7 @@ namespace YelloKiller.Moteur_Particule
         }
 
         int direction_hero_appele;
+        int direction_statue_appele;
 
         bool rectangle_hadoken_est_present = true; // utiliser pour effacer le rectangle apres collision contre boss
         public bool Rectangle_Hadoken_Est_Present
@@ -47,6 +48,7 @@ namespace YelloKiller.Moteur_Particule
         #endregion
 
         #region Rectangle tout moche
+
         public Rectangle Rectangle_Hadoken(Hero hero) // pour gerer les collisions
         {
             //   Console.WriteLine(GameplayScreen.Enable_Timer + " , " + GameplayScreen.Timer);
@@ -93,22 +95,22 @@ namespace YelloKiller.Moteur_Particule
             if (ball.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
                 Rectangle_Ball_Est_Present = true;// je reinitialise donc mon rectangle
-                direction_hero_appele = hero.SourceRectangle.Value.Y;
+                direction_statue_appele = hero.SourceRectangle.Value.Y;
             }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
 
 
             if (ball.FreeParticleCount < 100 && Rectangle_Ball_Est_Present && GameplayScreen.Timer > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
-                if (direction_hero_appele == 133) // haut
+                if (direction_statue_appele == 357) // haut
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y - (ball.LongueurBall * 28), 28, (ball.LongueurBall * 28));
 
-                else if (direction_hero_appele == 198) // bas
+                else if (direction_statue_appele == 0) // bas
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (ball.LongueurBall * 28));
 
-                else if (direction_hero_appele == 230) // gauche
+                else if (direction_statue_appele == 123) // gauche
                     return new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, (ball.LongueurBall * 28), 28);
 
-                else // droite
+                else // droite (243)
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, (ball.LongueurBall * 28), 28);
             }
             else // pas de rectangle

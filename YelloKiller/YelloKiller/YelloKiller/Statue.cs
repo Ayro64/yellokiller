@@ -23,26 +23,16 @@ namespace YelloKiller
             this.direction = direction;
 
             if (direction == 0) // bas
-            {
-                SourceRectangle = new Rectangle(0, 0, 100, 90);
-                Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 100, 90);
-            }
+                SourceRectangle = new Rectangle(0, 0, 112, 94);
             else if (direction == 1) // gauche
-            {
-                SourceRectangle = new Rectangle(0, 123, 95, 90);
-                Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 95, 90);
-            }
+                SourceRectangle = new Rectangle(0, 123, 112, 94);
             else if (direction == 2) // haut
-            {
-                SourceRectangle = new Rectangle(0, 357, 95, 90);
-                Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 95, 90);
-            }
+                SourceRectangle = new Rectangle(0, 357, 112, 94);
             else if (direction == 3) // droite
-            {
-                SourceRectangle = new Rectangle(0, 243, 110, 90);
-                Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 110, 90);
-            }
+                SourceRectangle = new Rectangle(0, 243, 112, 94);
+
             distance = this.Distance_Statue_Mur(carte);
+            Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 112, 94);
         }
 
         public int Distance_Statue_Mur(Carte carte)
