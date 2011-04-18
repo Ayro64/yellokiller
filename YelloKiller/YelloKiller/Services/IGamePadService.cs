@@ -19,5 +19,7 @@ namespace YelloKiller
         bool ChangerArme();
 
         bool Courir();
+
+        void Vibration(int tempsDurantLequelLaManetteVibre);
     }
 }
