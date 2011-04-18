@@ -3,6 +3,7 @@ using System;
 using YelloKiller;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using YelloKiller.YelloKiller;
 #endregion
 
 namespace YelloKiller.Moteur_Particule
