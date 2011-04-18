@@ -20,6 +20,12 @@ namespace YelloKiller
                         _gardes.Remove(_gardes[i]);
                         break;
                     }
+                    else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball(hero)))
+                    {
+                        soundBank.PlayCue("cri");
+                        _gardes.Remove(_gardes[i]);
+                        break;
+                    }
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle) 
                             || _gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
@@ -43,6 +49,12 @@ namespace YelloKiller
                         _Patrouilleurs.Remove(_Patrouilleurs[i]);
                         break;
                     }
+                    else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball(hero)))
+                    {
+                        soundBank.PlayCue("cri");
+                        _gardes.Remove(_gardes[i]);
+                        break;
+                    }
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_Patrouilleurs[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
@@ -62,6 +74,12 @@ namespace YelloKiller
                     {
                         soundBank.PlayCue("cri");
                         _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
+                        break;
+                    }
+                    else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball(hero)))
+                    {
+                        soundBank.PlayCue("cri");
+                        _gardes.Remove(_gardes[i]);
                         break;
                     }
                     for (int j = 0; j < listeShuriken.Count; j++)
@@ -90,7 +108,14 @@ namespace YelloKiller
                         _Boss[i].Vie = _Boss[i].Vie - 2;
                         // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
                         // appel sinon le boss perd sa vie d un coup.
-                        particule.Rectang_Est_Present = false;       
+                        particule.Rectangle_Hadoken_Est_Present = false;       
+                    }
+                    else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Ball(hero)))
+                    {
+                        _Boss[i].Vie = _Boss[i].Vie - 2;
+                        // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
+                        // appel sinon le boss perd sa vie d un coup.
+                        particule.Rectangle_Ball_Est_Present = false;
                     } 
 
                     for (int j = 0; j < listeShuriken.Count; j++)

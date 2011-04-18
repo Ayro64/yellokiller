@@ -10,21 +10,29 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
-        
+
         private static Random random = new Random();
         public static Random Random
         {
             get { return random; }
         }
-       
-        int direction_hero_appele;        
+
+        int direction_hero_appele;
         Rectangle rectangle_hadoken; // rectangle qui approxime la hauteur et la largeur de mon hadoken 
-       
-        bool rectangle_est_present = true; // utiliser pour effacer le rectangle apres collision contre boss
-        public bool Rectang_Est_Present
+        Rectangle rectangle_ball;
+
+        bool rectangle_hadoken_est_present = true; // utiliser pour effacer le rectangle apres collision contre boss
+        public bool Rectangle_Hadoken_Est_Present
         {
-            get { return rectangle_est_present; }
-            set { rectangle_est_present = value; }
+            get { return rectangle_hadoken_est_present; }
+            set { rectangle_hadoken_est_present = value; }
+        }
+
+        bool rectangle_ball_est_present = true; // utiliser pour effacer le rectangle apres collision contre boss
+        public bool Rectangle_Ball_Est_Present
+        {
+            get { return rectangle_ball_est_present; }
+            set { rectangle_ball_est_present = value; }
         }
 
         ExplosionParticleSystem hadoken_hero;  // explosion 
@@ -39,6 +47,7 @@ namespace YelloKiller.Moteur_Particule
 
         #endregion
 
+        #region Rectangle tout moche
         public Rectangle Rectangle_Hadoken(Hero hero) // pour gerer les collisions
         {
             //   Console.WriteLine(GameplayScreen.Enable_Timer + " , " + GameplayScreen.Timer);
@@ -49,30 +58,65 @@ namespace YelloKiller.Moteur_Particule
                 GameplayScreen.Timer = 0;
             }
 
-            if (hadoken_hero.FreeParticleCount == 100 && ball.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
+            if (hadoken_hero.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
-                rectangle_est_present = true;// je reinitialise donc mon rectangle
+                Rectangle_Hadoken_Est_Present = true;// je reinitialise donc mon rectangle
                 direction_hero_appele = hero.SourceRectangle.Value.Y;
             }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
 
 
-            if ((hadoken_hero.FreeParticleCount < 100 || ball.FreeParticleCount < 100) && rectangle_est_present && GameplayScreen.Timer > 0.5)
+            if (hadoken_hero.FreeParticleCount < 100 && Rectangle_Hadoken_Est_Present && GameplayScreen.Timer > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
                 if (direction_hero_appele == 133) // haut
-                    return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y - (hadoken_hero.LongueurHadoken * 28), 28, (hadoken_hero.LongueurHadoken * 28));
+                    return new Rectangle((int)hero.position.X, (int)hero.position.Y - (hadoken_hero.LongueurHadoken * 28), 28, (hadoken_hero.LongueurHadoken * 28));
 
                 else if (direction_hero_appele == 198) // bas
-                    return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (hadoken_hero.LongueurHadoken * 28));
+                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (hadoken_hero.LongueurHadoken * 28));
 
                 else if (direction_hero_appele == 230) // gauche
-                    return rectangle_hadoken = new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
+                    return new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
 
                 else // droite
-                    return rectangle_hadoken = new Rectangle((int)hero.position.X, (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
+                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
             }
             else // pas de rectangle
-                return rectangle_hadoken = new Rectangle(0, 0, 0, 0);
-        }    
+                return new Rectangle(0, 0, 0, 0);
+        }
+
+        public Rectangle Rectangle_Ball(Hero hero) // pour gerer les collisions
+        {
+            if (GameplayScreen.Timer > 1) // apres une seconde mon timer se remet a zero
+            {
+                GameplayScreen.Enable_Timer = false;
+                GameplayScreen.Timer = 0;
+            }
+
+            if (ball.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
+            {
+                Rectangle_Ball_Est_Present = true;// je reinitialise donc mon rectangle
+                direction_hero_appele = hero.SourceRectangle.Value.Y;
+            }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
+
+
+            if (ball.FreeParticleCount < 100 && Rectangle_Ball_Est_Present && GameplayScreen.Timer > 0.5)
+            { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
+                if (direction_hero_appele == 133) // haut
+                    return new Rectangle((int)hero.position.X, (int)hero.position.Y - (ball.LongueurBall * 28), 28, (ball.LongueurBall * 28));
+
+                else if (direction_hero_appele == 198) // bas
+                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (ball.LongueurBall * 28));
+
+                else if (direction_hero_appele == 230) // gauche
+                    return new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, (ball.LongueurBall * 28), 28);
+
+                else // droite
+                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, (ball.LongueurBall * 28), 28);
+            }
+            else // pas de rectangle
+                return new Rectangle(0, 0, 0, 0);
+        }
+
+        #endregion
 
         #region Initialization
 
