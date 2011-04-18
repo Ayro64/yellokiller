@@ -16,8 +16,11 @@ namespace YelloKiller.Moteur_Particule
         { get; set; }
         public Carte Carte
         { get; set; }
-        public Statue statue// solution trouvé pour pas passé hero et Carte en parametre dans update override
+        public float maxspeed
         { get; set; }
+        public float minspeed
+        { get; set; }
+
 
         int distance = 3;
 
@@ -29,7 +32,7 @@ namespace YelloKiller.Moteur_Particule
 
         protected override void InitializeConstants()
         {
-
+            
             textureFilename = "explosion";
 
             minInitialSpeed = 40;
@@ -74,7 +77,8 @@ namespace YelloKiller.Moteur_Particule
             if (Hero != null)
             {
                 distance = Hero.Distance_Hero_Mur(Carte);
-                maxInitialSpeed = 50 * distance;
+                maxInitialSpeed = maxspeed * distance;
+                minInitialSpeed = minspeed;
             }
 
         }
