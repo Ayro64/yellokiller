@@ -18,7 +18,7 @@ namespace YelloKiller.Moteur_Particule
         { get; set; }
 
 
-        int distance = 3;
+        int distance = 6;
 
         public Statue_Explosion(YellokillerGame game, int howManyEffects)
             : base(game, howManyEffects)
@@ -43,7 +43,7 @@ namespace YelloKiller.Moteur_Particule
             minScale = 1f;
             maxScale = 10f;
 
-            minNumParticles = 500;
+            minNumParticles = 0;
             maxNumParticles = 500;
 
             minRotationSpeed = -MathHelper.PiOver4;

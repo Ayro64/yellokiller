@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace YelloKiller.Moteur_Particule
 {
@@ -18,8 +19,6 @@ namespace YelloKiller.Moteur_Particule
         }
 
         int direction_hero_appele;
-        Rectangle rectangle_hadoken; // rectangle qui approxime la hauteur et la largeur de mon hadoken 
-        Rectangle rectangle_ball;
 
         bool rectangle_hadoken_est_present = true; // utiliser pour effacer le rectangle apres collision contre boss
         public bool Rectangle_Hadoken_Est_Present
@@ -153,10 +152,9 @@ namespace YelloKiller.Moteur_Particule
             return where;
         }
 
-
         public Vector2 position_statue(Statue statue, Rectangle camera) // position d origine de mon hadoken
         {
-            Vector2 where = new Vector2(statue.position.X - camera.X, statue.position.Y - camera.Y);
+            Vector2 where = new Vector2(statue.position.X - camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - camera.Y + (statue.SourceRectangle.Value.Height / 2));
             return where;
         }
 
@@ -189,6 +187,7 @@ namespace YelloKiller.Moteur_Particule
 
             explosion_statue.AddParticles(position_statue(statue, camera), statue);
             fume_hadoken.AddParticles(position_statue(statue, camera), statue);
+
         }
 
         public void UpdateBall(float dt, Hero hero, Carte carte, Rectangle camera)
