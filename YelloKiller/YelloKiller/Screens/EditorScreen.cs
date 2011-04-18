@@ -192,7 +192,7 @@ namespace YelloKiller
                     _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
                 else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
                     _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                else if (curseur.Type == TypeCase.Statues)
+                else if (_originesStatues.Count > 0 && curseur.Type == TypeCase.Statues)
                     rotationsDesStatues[rotationsDesStatues.Count - 1] = (byte)((rotationsDesStatues[rotationsDesStatues.Count - 1] + 1) % 4);
             }
 
@@ -247,16 +247,16 @@ namespace YelloKiller
                 switch (rotationsDesStatues[tamere])
                 {
                     case 0:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, 14 * Vector2.One, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 1:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, 14 * Vector2.One, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 2:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI, 14 * Vector2.One, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, (float)Math.PI, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 3:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, 3f * (float)Math.PI / 2f, 14 * Vector2.One, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, 3f * (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                 }
                 //spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)rotationsDesStatues[tamere], 14 * Vector2.One, 1, SpriteEffects.None, 1);
@@ -476,7 +476,10 @@ namespace YelloKiller
 
             for (int t = 0; t < _originesStatues.Count; t++)
                 if (_originesStatues[t].X == curseur.Position.X + camera.X && _originesStatues[t].Y == curseur.Position.Y + camera.Y)
+                {
                     _originesStatues.RemoveAt(t);
+                    rotationsDesStatues.RemoveAt(t);
+                }
         }
 
         private void PlacerUneCaseInfranchissable()
