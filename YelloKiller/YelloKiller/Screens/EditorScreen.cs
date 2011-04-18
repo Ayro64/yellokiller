@@ -20,7 +20,7 @@ namespace YelloKiller
         Carte carte;
         Curseur curseur;
         Menu menu;
-        Ascenseur ascenseur;
+        Ascenseur ascenseur1, ascenseur2;
         YellokillerGame game;
         StreamWriter sauvegarde;
         string ligne, nomSauvegarde, nomCarte;
@@ -55,7 +55,7 @@ namespace YelloKiller
             ligne = "";
             enableSave = true;
             afficheMessageErreur = false;
-            camera = new Rectangle(0, 0, 34, 27);
+            camera = new Rectangle(0, 0, 32, 27);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
 
             if (nomCarte == "")
@@ -81,9 +81,11 @@ namespace YelloKiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu ci-dessous.
-            menu = new Menu(content, 27 /*<-- ici*/);
+            menu = new Menu(content, 21, 7/*<-- ici*/);
             curseur = new Curseur(content);
-            ascenseur = new Ascenseur(content);
+            ascenseur1 = new Ascenseur(content, Taille_Ecran.LARGEUR_ECRAN - 28);
+            ascenseur2 = new Ascenseur(content, 0);
+            fond = content.Load<Texture2D>(@"Textures\Invisible");
             pointDePassagePatrouilleur = content.Load<Texture2D>("pied");
             pointDePassagePatrouilleurACheval = content.Load<Texture2D>("pied");
 
@@ -100,8 +102,9 @@ namespace YelloKiller
             if (afficheMessageErreur)
                 chronometre += gameTime.ElapsedGameTime.TotalSeconds;
 
-            ascenseur.Update();
-            menu.Update(ascenseur);
+            ascenseur1.Update();
+            ascenseur2.Update();
+            menu.Update(ascenseur1, ascenseur2);
             curseur.Update(content, menu);
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
@@ -214,64 +217,62 @@ namespace YelloKiller
             carte.DrawInMapEditor(spriteBatch, content, camera);
 
             if (!enableOrigine1)
-                spriteBatch.Draw(menu.ListeTextures[0], 28 * new Vector2(origine1.X - camera.X, origine1.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[0], 28 * new Vector2(origine1.X - camera.X + 2, origine1.Y - camera.Y), Color.White);
             if (!enableOrigine2)
-                spriteBatch.Draw(menu.ListeTextures[1], 28 * new Vector2(origine2.X - camera.X, origine2.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[1], 28 * new Vector2(origine2.X - camera.X + 2, origine2.Y - camera.Y), Color.White);
 
             foreach (Vector2 position in _originesGardes)
-                spriteBatch.Draw(menu.ListeTextures[2], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[2], 28 * new Vector2(position.X - camera.X + 2, position.Y - camera.Y), Color.White);
 
             foreach (List<Vector2> parcours in _originesPatrouilleurs)
                 for (int z = 0; z < parcours.Count; z++)
                 {
                     if (z == 0)
-                        spriteBatch.Draw(menu.ListeTextures[3], 28 * new Vector2(parcours[z].X - camera.X, parcours[z].Y - camera.Y), Color.White);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[3], 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassagePatrouilleur, 28 * new Vector2(parcours[z].X - camera.X, parcours[z].Y - camera.Y), Color.White);
+                        spriteBatch.Draw(pointDePassagePatrouilleur, 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.White);
                 }
 
             foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
                 for (int v = 0; v < parcours.Count; v++)
                 {
                     if (v == 0)
-                        spriteBatch.Draw(menu.ListeTextures[4], 28 * new Vector2(parcours[v].X - camera.X, parcours[v].Y - camera.Y), Color.White);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[4], 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassagePatrouilleurACheval, 28 * new Vector2(parcours[v].X - camera.X, parcours[v].Y - camera.Y), Color.White);
+                        spriteBatch.Draw(pointDePassagePatrouilleurACheval, 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.White);
                 }
 
             foreach (Vector2 position in _originesBoss)
-                spriteBatch.Draw(menu.ListeTextures[5], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[5], 28 * new Vector2(position.X - camera.X + 2, position.Y - camera.Y), Color.White);
 
             for (int tamere = 0; tamere < rotationsDesStatues.Count; tamere++)
             {
                 switch (rotationsDesStatues[tamere])
                 {
                     case 0:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, (float)Math.PI, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 3, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, (float)Math.PI, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 1:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, - (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, -(float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 2:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 3:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
-                        break;                 
-                   
-             
-                  
+                        spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 3, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        break;
                 }
-                //spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)rotationsDesStatues[tamere], 14 * Vector2.One, 1, SpriteEffects.None, 1);
             }
-            /*foreach (Vector2 position in _originesStatues)
-                spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);*/
 
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
 
-            menu.Draw(spriteBatch, ascenseur);
-            ascenseur.Draw(spriteBatch);
+            spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(2, 27), SpriteEffects.None, 1);
+            spriteBatch.Draw(fond, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, 0), null, Color.White, 0, Vector2.Zero, new Vector2(2, 27), SpriteEffects.None, 1);
+
+            menu.Draw(spriteBatch, ascenseur1, ascenseur2);
+            ascenseur1.Draw(spriteBatch);
+            ascenseur2.Draw(spriteBatch);
 
             if (chronometre > 3)
             {
