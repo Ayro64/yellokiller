@@ -43,7 +43,6 @@ namespace YelloKiller
             {
                 if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(menu.ListeRectanglesDroite[i]))
                 {
-                    System.Console.WriteLine("Clic liste droite");
                     texture = menu.ListeTexturesDroite[i];
                     switch (i)
                     {
@@ -120,7 +119,6 @@ namespace YelloKiller
             {
                 if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(menu.ListeRectanglesGauche[b]))
                 {
-                    System.Console.WriteLine("Clic liste gauche");
                     texture = menu.ListeTexturesGauche[b];
                     switch (b)
                     {
