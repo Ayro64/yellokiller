@@ -247,17 +247,21 @@ namespace YelloKiller
                 switch (rotationsDesStatues[tamere])
                 {
                     case 0:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
-                        break;
-                    case 1:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
-                        break;
-                    case 2:
                         spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, (float)Math.PI, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
-                    case 3:
-                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, 3f * (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
+                    case 1:
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, - (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
+                    case 2:
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        break;
+                    case 3:
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        break;
+                   
+                   
+             
+                  
                 }
                 //spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)rotationsDesStatues[tamere], 14 * Vector2.One, 1, SpriteEffects.None, 1);
             }
