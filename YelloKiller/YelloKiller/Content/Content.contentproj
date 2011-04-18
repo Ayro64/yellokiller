@@ -399,7 +399,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="pied.jpg">
+    <Compile Include="pied.png">
       <Name>pied</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
