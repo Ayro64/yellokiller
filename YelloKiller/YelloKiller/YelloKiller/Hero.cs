@@ -208,7 +208,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer == 0)
                         {
                             nombreHadoken--;
-                            particule.UpdateExplosions(dt, this, carte, camera);
+                            particule.UpdateExplosions_hero(dt, this, carte, camera);
                             moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
