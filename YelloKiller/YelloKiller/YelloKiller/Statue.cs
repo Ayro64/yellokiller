@@ -12,10 +12,8 @@ namespace YelloKiller
 {
     class Statue : Ennemi
     {
-
-        Rectangle rectangle;
         byte direction;
-
+        int distance;
         float timer = 0;
 
         public Statue(Vector2 position, Carte carte, byte direction)
@@ -25,32 +23,36 @@ namespace YelloKiller
             this.direction = direction;
 
             if (direction == 0) // bas
-                SourceRectangle = new Rectangle(0, 0, 95, 90);
+            {
+                SourceRectangle = new Rectangle(0, 0, 100, 90);
+                Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 100, 90);
+            }
             else if (direction == 1) // gauche
+            {
                 SourceRectangle = new Rectangle(0, 123, 95, 90);
+                Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 95, 90);
+            }
             else if (direction == 2) // haut
+            {
                 SourceRectangle = new Rectangle(0, 357, 95, 90);
+                Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 95, 90);
+            }
             else if (direction == 3) // droite
-                SourceRectangle = new Rectangle(0, 243, 95, 90);
-
-
-
-
-
-
-            rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 95, 90);
-            // distance = this.Distance_Statue_Mur(Carte);
+            {
+                SourceRectangle = new Rectangle(0, 243, 110, 90);
+                Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 110, 90);
+            }
+            distance = this.Distance_Statue_Mur(carte);
         }
 
         public int Distance_Statue_Mur(Carte carte)
         {
             int distance = 0;
 
-            if (direction == 3)
+            if (direction == 2)
                 for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
                     distance++;
-
-            else if (direction == 2)
+            else if (direction == 3)
                 for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
                     distance++;
 
@@ -69,16 +71,12 @@ namespace YelloKiller
         }
 
         public void LoadContent(ContentManager content)
-        { base.LoadContent(content, "statue_dragon"); }
-
-
-
-        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, MoteurAudio moteurAudio, ContentManager content)
         {
-            rectangle.X = (int)position.X + 1;
-            rectangle.Y = (int)position.Y + 1;
+            base.LoadContent(content, "statue_dragon");
+        }
 
-
+        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule)
+        {
             timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > 5)

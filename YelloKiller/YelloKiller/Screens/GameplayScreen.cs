@@ -223,8 +223,6 @@ namespace YelloKiller
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
                 moteurAudio.Update();
 
-
-
                 hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero2);
                 if (jeuEnCoop)
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero1);
@@ -242,7 +240,7 @@ namespace YelloKiller
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
 
                 foreach (Statue statue in _statues)
-                    statue.Update(gameTime, carte, ref camera, moteurparticule, moteurAudio, content);
+                    statue.Update(gameTime, carte, ref camera, moteurparticule);
 
 
                 Moteur_physique.Collision_Armes_Ennemis(hero1, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);

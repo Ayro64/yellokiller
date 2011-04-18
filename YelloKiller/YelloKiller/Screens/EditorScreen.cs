@@ -257,8 +257,7 @@ namespace YelloKiller
                         break;
                     case 3:
                         spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
-                        break;
-                   
+                        break;                 
                    
              
                   
