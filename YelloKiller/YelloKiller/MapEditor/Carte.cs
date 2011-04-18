@@ -7,10 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-   public class Carte
+    public class Carte
     {
         Case[,] _case;
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
+        List<byte> rotationsDesStatues;
         List<Vector2> _originesGarde, _originesBoss, _originesStatues;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
 
@@ -25,6 +26,7 @@ namespace YelloKiller
             _originesPatrouilleur_a_cheval = new List<List<Vector2>>();
             _originesBoss = new List<Vector2>();
             _originesStatues = new List<Vector2>();
+            rotationsDesStatues = new List<byte>();
         }
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
@@ -61,9 +63,9 @@ namespace YelloKiller
 
         public void DrawInMenu(SpriteBatch spriteBatch, ContentManager content, Vector2 origine)
         {
-            for (int y = Taille_Map.HAUTEUR_MAP - 1; y >= 0; y-=2)
+            for (int y = Taille_Map.HAUTEUR_MAP - 1; y >= 0; y -= 2)
             {
-                for (int x = Taille_Map.LARGEUR_MAP - 1; x >= 0; x-=2)
+                for (int x = Taille_Map.LARGEUR_MAP - 1; x >= 0; x -= 2)
                 {
                     _case[y, x].Position = new Vector2(x, y);
 
@@ -196,7 +198,9 @@ namespace YelloKiller
                 positionTemporaire.Y = Convert.ToInt32(line);
                 _originesStatues.Add(positionTemporaire);
                 line = file.ReadLine();
-           }
+                rotationsDesStatues.Add(Convert.ToByte(line));
+                line = file.ReadLine();
+            }
 
             file.Close();
         }
@@ -311,6 +315,11 @@ namespace YelloKiller
         {
             get { return _case; }
             set { _case = value; }
+        }
+
+        public List<byte> RotationsDesStatues
+        {
+            get { return rotationsDesStatues; }
         }
     }
 }
