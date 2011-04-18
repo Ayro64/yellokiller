@@ -54,7 +54,7 @@ namespace YelloKiller
             {
                 for (int x = camera.X + camera.Width - 1; x >= 0; x--)
                 {
-                    _case[y, x].Position = new Vector2(x - camera.X, y - camera.Y);
+                    _case[y, x].Position = new Vector2(x - camera.X + 2, y - camera.Y);
 
                     _case[y, x].DrawInMapEditor(spriteBatch, content);
                 }

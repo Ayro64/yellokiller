@@ -10,14 +10,16 @@ namespace YelloKiller
         Texture2D texture;
         Vector2 position;
         Rectangle rectangle;
+        float limite;
 
         float difference;
         bool enableMove = false;
 
-        public Ascenseur(ContentManager content)
+        public Ascenseur(ContentManager content, float limite)
         {
             texture = content.Load<Texture2D>("ascenseur");
-            position = new Vector2(Taille_Ecran.LARGEUR_ECRAN - texture.Width, 0);
+            position = new Vector2(limite, 0);
+            this.limite = limite;
             rectangle.Width = texture.Width;
             rectangle.Height = texture.Height;
         }
@@ -55,10 +57,8 @@ namespace YelloKiller
                     position = new Vector2(position.X, ServiceHelper.Get<IMouseService>().Coordonnees().Y - difference);
             }
 
-            if (ServiceHelper.Get<IMouseService>().MoletteATournee())
-            {
+            if (ServiceHelper.Get<IMouseService>().Coordonnees().X > limite && ServiceHelper.Get<IMouseService>().Coordonnees().X < limite + 28 && ServiceHelper.Get<IMouseService>().MoletteATournee())
                 position.Y -= ServiceHelper.Get<IMouseService>().Molette();
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
