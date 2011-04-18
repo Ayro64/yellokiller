@@ -26,12 +26,16 @@ namespace YelloKiller
 
             if (direction == 0) // bas
                 SourceRectangle = new Rectangle(0, 0, 95, 90);
-            if (direction == 1) // gauche
+            else if (direction == 1) // gauche
                 SourceRectangle = new Rectangle(0, 123, 95, 90);
-            if (direction == 2) // droite
-                SourceRectangle = new Rectangle(0, 243, 95, 90);
-            if (direction == 3) // haut
+            else if (direction == 2) // haut
                 SourceRectangle = new Rectangle(0, 357, 95, 90);
+            else if (direction == 3) // droite
+                SourceRectangle = new Rectangle(0, 243, 95, 90);
+
+
+
+
 
 
             rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 95, 90);
