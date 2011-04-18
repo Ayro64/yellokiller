@@ -270,7 +270,7 @@ namespace YelloKiller.Moteur_Particule
                 return new Vector2(-1, 0);
 
             else
-                return new Vector2(1, 0);
+                return new Vector2(0, 1);
         }
 
         public override void Update(GameTime gameTime)
