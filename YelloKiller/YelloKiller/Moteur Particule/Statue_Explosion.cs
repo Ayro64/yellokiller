@@ -7,7 +7,7 @@ namespace YelloKiller.Moteur_Particule
 {
     class Statue_Explosion : ParticleSystem
     {
-   
+
         public Carte Carte
         { get; set; }
         public Statue Statue
@@ -23,12 +23,11 @@ namespace YelloKiller.Moteur_Particule
         public Statue_Explosion(YellokillerGame game, int howManyEffects)
             : base(game, howManyEffects)
         {
-
         }
 
         protected override void InitializeConstants()
         {
-            
+
             textureFilename = "explosion";
 
             minInitialSpeed = 50 * distance;
@@ -43,8 +42,8 @@ namespace YelloKiller.Moteur_Particule
             minScale = 1f;
             maxScale = 10f;
 
-            minNumParticles = 0;
-            maxNumParticles = 500;
+            minNumParticles = 100;
+            maxNumParticles = 800;
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;
@@ -57,13 +56,11 @@ namespace YelloKiller.Moteur_Particule
 
         protected override void InitializeParticle(Particle p, Vector2 where, Statue statue)
         {
-
             base.InitializeParticle(p, where, statue);
-
             p.Acceleration = -p.Velocity / p.Lifetime;
         }
 
-        public int LongueurHadoken
+        public int LongueurExplosion
         {
             get { return distance; }
         }

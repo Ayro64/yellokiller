@@ -177,7 +177,7 @@ namespace YelloKiller
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
             moteurparticule = new MoteurParticule(game, spriteBatch);
-       
+
 
             audio.LoadContent(content);
 
@@ -198,7 +198,10 @@ namespace YelloKiller
                 boss.LoadContent(content, 2);
 
             foreach (Statue statue in _statues)
+            {
                 statue.LoadContent(content);
+                Console.WriteLine(statue.position.X);
+            }
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -324,7 +327,7 @@ namespace YelloKiller
 
         #region Handle Input
 
-  
+
         public override void HandleInput(InputState input)
         {
             if (input == null)

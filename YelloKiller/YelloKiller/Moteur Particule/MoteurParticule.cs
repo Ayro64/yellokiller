@@ -188,7 +188,6 @@ namespace YelloKiller.Moteur_Particule
             explosion_statue.Carte = carte;
 
             explosion_statue.AddParticles(position_statue(statue, camera), statue);
-            fume_hadoken.AddParticles(position_statue(statue, camera), statue);
 
         }
 
