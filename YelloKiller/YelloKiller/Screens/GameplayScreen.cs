@@ -165,7 +165,7 @@ namespace YelloKiller
 
             _statues = new List<Statue>();
             foreach (Vector2 position in carte.OriginesStatues)
-                _statues.Add(new Statue(new Vector2(28 * position.X + 5, 28 * position.Y), carte));
+                _statues.Add(new Statue(new Vector2(28 * position.X + 5, 28 * position.Y), carte, 0));
 
             temps = 0;
         }
@@ -177,7 +177,8 @@ namespace YelloKiller
 
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
-            moteurparticule = new MoteurParticule(game, hero1, carte, spriteBatch);
+            moteurparticule = new MoteurParticule(game, spriteBatch);
+       
 
             audio.LoadContent(content);
 
