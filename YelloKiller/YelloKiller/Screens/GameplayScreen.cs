@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using YelloKiller.Moteur_Particule;
+using YelloKiller.YelloKiller;
 
 namespace YelloKiller
 {
