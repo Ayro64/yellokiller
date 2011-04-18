@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using YelloKiller.YelloKiller;
 
 namespace YelloKiller.Moteur_Particule
 {
@@ -11,9 +10,16 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
-
-        int direction_hero_appele;
-
+        
+        private static Random random = new Random();
+        public static Random Random
+        {
+            get { return random; }
+        }
+       
+        int direction_hero_appele;        
+        Rectangle rectangle_hadoken; // rectangle qui approxime la hauteur et la largeur de mon hadoken 
+       
         bool rectangle_est_present = true; // utiliser pour effacer le rectangle apres collision contre boss
         public bool Rectang_Est_Present
         {
@@ -21,13 +27,18 @@ namespace YelloKiller.Moteur_Particule
             set { rectangle_est_present = value; }
         }
 
-        private static Random random = new Random();
-        public static Random Random
-        {
-            get { return random; }
-        }
+        ExplosionParticleSystem hadoken_hero;  // explosion 
+        ExplosionSmokeParticleSystem fume_hadoken; // fume apres explosion
+        Statue_Explosion explosion_statue;
+        SmokePlumeParticleSystem fume; // fumigene
+        BallParticleSystem ball;
+        Fumigene fumigene;
 
-        Rectangle rectangle_hadoken; // rectangle qui approxime la hauteur et la largeur de mon hadoken 
+        const float TimeBetweenExplosions = 2.0f;
+        const float TimeBetweenSmokePlumePuffs = .5f;
+
+        #endregion
+
         public Rectangle Rectangle_Hadoken(Hero hero) // pour gerer les collisions
         {
             //   Console.WriteLine(GameplayScreen.Enable_Timer + " , " + GameplayScreen.Timer);
@@ -61,25 +72,7 @@ namespace YelloKiller.Moteur_Particule
             }
             else // pas de rectangle
                 return rectangle_hadoken = new Rectangle(0, 0, 0, 0);
-        }
-
-
-        ExplosionParticleSystem hadoken_hero;  // explosion 
-        ExplosionSmokeParticleSystem fume_hadoken; // fume apres explosion
-        Statue_Explosion explosion_statue;
-        SmokePlumeParticleSystem fume; // fumigene
-        BallParticleSystem ball;
-        Fumigene fumigene;
-
-
-
-        const float TimeBetweenExplosions = 2.0f;
-
-        const float TimeBetweenSmokePlumePuffs = .5f;
-
-
-
-        #endregion
+        }    
 
         #region Initialization
 

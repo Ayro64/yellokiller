@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using YelloKiller.Moteur_Particule;
 using Microsoft.Xna.Framework.Graphics;
-using YelloKiller.YelloKiller;
 #endregion
 
 namespace YelloKiller.Moteur_Particule

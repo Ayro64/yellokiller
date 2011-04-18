@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Microsoft.Xna.Framework.Content;
 using YelloKiller.Moteur_Particule;
 
-namespace YelloKiller.YelloKiller
+namespace YelloKiller
 {
     class Statue : Ennemi
     {
