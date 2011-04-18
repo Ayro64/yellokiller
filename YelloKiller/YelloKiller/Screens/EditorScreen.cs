@@ -27,6 +27,7 @@ namespace YelloKiller
         Rectangle camera;
         Vector2 origine1, origine2;
         List<Vector2> _originesGardes, _originesBoss, _originesStatues;
+        List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
         Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval;
         bool fileExist;
@@ -67,6 +68,7 @@ namespace YelloKiller
             _originesPatrouilleursAChevaux = carte.OriginesPatrouilleursAChevaux;
             _originesBoss = carte.OriginesBoss;
             _originesStatues = carte.OriginesStatues;
+            rotationsDesStatues = carte.RotationsDesStatues; ;
             origine1 = carte.OrigineJoueur1;
             origine2 = carte.OrigineJoueur2;
 
@@ -165,7 +167,7 @@ namespace YelloKiller
                     _originesPatrouilleurs.Add(new List<Vector2>());
                     _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
                 }
-                
+
                 else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
                 {
                     _originesPatrouilleursAChevaux.Add(new List<Vector2>());
@@ -175,8 +177,11 @@ namespace YelloKiller
                     _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
                 else if (curseur.Type == TypeCase.Statues)
+                {
                     _originesStatues.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                
+                    rotationsDesStatues.Add(0);
+                }
+
                 else
                     carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
             }
@@ -187,6 +192,8 @@ namespace YelloKiller
                     _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
                 else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
                     _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+                else if (curseur.Type == TypeCase.Statues)
+                    rotationsDesStatues[rotationsDesStatues.Count - 1] = (byte)((rotationsDesStatues[rotationsDesStatues.Count - 1] + 1) % 4);
             }
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
@@ -235,8 +242,27 @@ namespace YelloKiller
             foreach (Vector2 position in _originesBoss)
                 spriteBatch.Draw(menu.ListeTextures[5], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
 
-            foreach (Vector2 position in _originesStatues)
-                spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
+            for (int tamere = 0; tamere < rotationsDesStatues.Count; tamere++)
+            {
+                switch (rotationsDesStatues[tamere])
+                {
+                    case 0:
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, 14 * Vector2.One, 1, SpriteEffects.None, 1);
+                        break;
+                    case 1:
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, 14 * Vector2.One, 1, SpriteEffects.None, 1);
+                        break;
+                    case 2:
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI, 14 * Vector2.One, 1, SpriteEffects.None, 1);
+                        break;
+                    case 3:
+                        spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, 3f * (float)Math.PI / 2f, 14 * Vector2.One, 1, SpriteEffects.None, 1);
+                        break;
+                }
+                //spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)rotationsDesStatues[tamere], 14 * Vector2.One, 1, SpriteEffects.None, 1);
+            }
+            /*foreach (Vector2 position in _originesStatues)
+                spriteBatch.Draw(menu.ListeTextures[6], 28 * new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);*/
 
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
@@ -418,17 +444,18 @@ namespace YelloKiller
                 }
 
                 sauvegarde.WriteLine("Statue dragon");
-                foreach (Vector2 position in _originesStatues)
+                for (int k = 0; k < _originesStatues.Count; k++)
                 {
-                    sauvegarde.WriteLine(position.X);
-                    sauvegarde.WriteLine(position.Y);
+                    sauvegarde.WriteLine(_originesStatues[k].X);
+                    sauvegarde.WriteLine(_originesStatues[k].Y);
+                    sauvegarde.WriteLine(rotationsDesStatues[k]);
                 }
 
                 sauvegarde.Close();
                 enableSave = false;
             }
         }
-        
+
         private void SupprimerEnnemi()
         {
             for (int t = 0; t < _originesGardes.Count; t++)
@@ -451,7 +478,7 @@ namespace YelloKiller
                 if (_originesStatues[t].X == curseur.Position.X + camera.X && _originesStatues[t].Y == curseur.Position.Y + camera.Y)
                     _originesStatues.RemoveAt(t);
         }
-        
+
         private void PlacerUneCaseInfranchissable()
         {
             if ((int)curseur.Type <= -50 && (int)curseur.Type > -75)
@@ -480,7 +507,7 @@ namespace YelloKiller
                                     carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = TypeCase.fond;
                 }
             }
-            else if((int)curseur.Type < 100)
+            else if ((int)curseur.Type < 100)
                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
         }
 

@@ -163,8 +163,8 @@ namespace YelloKiller
                 _boss.Add(new Boss(new Vector2(28 * position.X + 5, 28 * position.Y), carte));
 
             _statues = new List<Statue>();
-            foreach (Vector2 position in carte.OriginesStatues)
-                _statues.Add(new Statue(new Vector2(28 * position.X + 5, 28 * position.Y), carte, 0));
+            for (int l = 0; l < carte.OriginesStatues.Count; l++)
+                _statues.Add(new Statue(28 * new Vector2(carte.OriginesStatues[l].X, carte.OriginesStatues[l].Y), carte, carte.RotationsDesStatues[l]));
 
             temps = 0;
         }
