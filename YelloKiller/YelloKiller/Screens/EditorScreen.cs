@@ -29,7 +29,7 @@ namespace YelloKiller
         List<Vector2> _originesGardes, _originesBoss, _originesStatues;
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
-        Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval;
+        Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval, fond;
         bool fileExist;
         int compteur;
 

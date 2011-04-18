@@ -66,6 +66,7 @@ namespace YelloKiller
         List<Patrouilleur_a_cheval> _patrouilleurs_a_chevaux;
         List<Boss> _boss;
         List<Statue> _statues;
+        List<Vector2> invisible;
 
         //timer
         private static double timer = 0;
