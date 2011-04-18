@@ -8,7 +8,6 @@ namespace YelloKiller
 {
     static class Moteur_physique
     {
-
         static public void Collision_Armes_Ennemis(Hero hero, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank)
         {
             if (_gardes.Count != 0)
@@ -33,6 +32,7 @@ namespace YelloKiller
                         }
                 }
             }
+
             if (_Patrouilleurs.Count != 0)
             {
                 for (int i = 0; i < _Patrouilleurs.Count; i++)
@@ -53,6 +53,7 @@ namespace YelloKiller
                         }
                 }
             }
+
             if (_PatrouilleursAChevaux.Count != 0)
             {
                 for (int i = 0; i < _PatrouilleursAChevaux.Count; i++)
@@ -82,8 +83,7 @@ namespace YelloKiller
                     {
                         _Boss[i].Vie = 5;
                         _Boss.Remove(_Boss[i]);
-                        soundBank.PlayCue("cri");                        
-
+                        soundBank.PlayCue("cri");
                     }
                     else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken(hero)))
                     {
