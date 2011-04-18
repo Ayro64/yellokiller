@@ -56,7 +56,7 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
-            if (parcours != null && parcours.Count > 2)
+            if (parcours != null && parcours.Count > 1)
             {
                 if (trajet != null && trajet.Count != 0)
                 {
