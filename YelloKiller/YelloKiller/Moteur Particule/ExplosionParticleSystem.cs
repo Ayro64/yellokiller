@@ -13,16 +13,15 @@ namespace YelloKiller.Moteur_Particule
 
         Hero hero; 
         Carte carte;
-        public float maxspeed
-        { get; set; }
-        public float minspeed
-        { get; set; }
+        float maxspeed;
+       
+        int distance;
 
-        int distance = 3;
-
-        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, Hero hero, Carte carte)
+        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, Hero hero, Carte carte,  int maxspeed)
             : base(game, howManyEffects)
         {
+            this.maxspeed = maxspeed;
+            distance = hero.Distance_Hero_Mur(carte);
             this.hero = hero;
             this.carte = carte;
         }
@@ -75,7 +74,6 @@ namespace YelloKiller.Moteur_Particule
             {
                 distance = hero.Distance_Hero_Mur(carte);
                 maxInitialSpeed = maxspeed * distance;
-                minInitialSpeed = minspeed;
             }
 
         }

@@ -130,10 +130,10 @@ namespace YelloKiller.Moteur_Particule
             this.game = game;
             this.spriteBatch = spriteBatch;
 
-            hadoken_hero = new ExplosionParticleSystem(game, 1, hero, carte);
+            hadoken_hero = new ExplosionParticleSystem(game, 1, hero, carte, 50);
             game.Components.Add(hadoken_hero);
 
-            explosion_statue = new Statue_Explosion(game, 10, carte, statue);
+            explosion_statue = new Statue_Explosion(game, 20, carte, statue);
             game.Components.Add(explosion_statue);
 
             ball = new BallParticleSystem(game, 1, hero, carte);
@@ -151,30 +151,24 @@ namespace YelloKiller.Moteur_Particule
 
         #endregion
 
-        public void UpdateFumigene(float dt, Rectangle camera)
+        public void UpdateFumigene(Rectangle camera)
         {
             fumigene.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }
 
-        public void UpdateExplosions_hero(float dt, Rectangle camera)
+        public void UpdateExplosions_hero(Rectangle camera)
         {
-            hadoken_hero.maxspeed = 50;
-            hadoken_hero.minspeed = 50;           
-
             hadoken_hero.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
             fume_hadoken.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }
 
-        public void UpdateExplosions_statue(float dt, Statue statue, ref Rectangle camera)
+        public void UpdateExplosions_statue(Statue statue, ref Rectangle camera)
         {
             this.statue = statue;
-            explosion_statue.maxspeed = 50;
-            explosion_statue.minspeed = 50;
-
             explosion_statue.AddParticles(new Vector2(statue.position.X - camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
-  }
+        }
 
-        public void UpdateBall(float dt, Rectangle camera)
+        public void UpdateBall(Rectangle camera)
         {
             ball.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }

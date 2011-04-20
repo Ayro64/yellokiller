@@ -160,7 +160,6 @@ namespace YelloKiller
 
             if (regarde_haut && animation_sabre)
             {
-                Console.WriteLine(SourceRectangle);
                 SourceRectangle = new Rectangle((int)index * 48, 0, 16, 26);
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
 
@@ -197,7 +196,6 @@ namespace YelloKiller
 
 
             // animation moteur particule
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             switch (currentState)
             {
@@ -208,7 +206,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer == 0)
                         {
                             nombreHadoken--;
-                            particule.UpdateExplosions_hero(dt, camera);
+                            particule.UpdateExplosions_hero(camera);
                             moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
@@ -221,7 +219,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer == 0)
                         {
                             nombre_ball--;
-                            particule.UpdateBall(dt, camera);
+                            particule.UpdateBall(camera);
                             moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
@@ -231,7 +229,7 @@ namespace YelloKiller
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreFumigene > 0)
                     {
                         nombreFumigene--;
-                        particule.UpdateFumigene(dt, camera);
+                        particule.UpdateFumigene(camera);
                     }
                     break;
 

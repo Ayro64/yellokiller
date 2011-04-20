@@ -12,13 +12,14 @@ namespace YelloKiller.Moteur_Particule
     {
         Hero hero;
         Carte carte;
-        int distance = 3 ;
+        int distance;
 
         public BallParticleSystem(YellokillerGame game, int howManyEffects, Hero hero, Carte carte)
             : base(game, howManyEffects)
         {
             this.hero = hero;
             this.carte = carte;
+            distance = hero.Distance_Hero_Mur(carte);
         }
 
         protected override void InitializeConstants()
@@ -55,10 +56,6 @@ namespace YelloKiller.Moteur_Particule
 
             p.Acceleration = -p.Velocity / p.Lifetime;
         }
-
-      
-        public Carte Carte
-        { get; set; }
 
         public int LongueurBall
         {

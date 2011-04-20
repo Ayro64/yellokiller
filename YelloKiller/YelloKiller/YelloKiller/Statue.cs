@@ -14,7 +14,7 @@ namespace YelloKiller
     {
         byte direction;
         int distance;
-        float timer = 0;
+        double timer = 0;
 
         public Statue(Vector2 position, Carte carte, byte direction)
             : base(position, carte)
@@ -31,7 +31,7 @@ namespace YelloKiller
             else if (direction == 3) // droite
                 SourceRectangle = new Rectangle(0, 243, 112, 94);
 
-            distance = this.Distance_Statue_Mur(carte);
+            distance = Distance_Statue_Mur(carte);
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 112, 94);
         }
 
@@ -65,19 +65,16 @@ namespace YelloKiller
             base.LoadContent(content, "statue_dragon");
         }
 
-      /*  public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule)
+        public void Update(GameTime gameTime, MoteurParticule particule, ref Rectangle camera)
         {
-             timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-   float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-              if (time float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;r > 5)
-              {
-                  particule.UpdateExplosions_statue(dt, this, carte, camera);
-                  timer = 0;
-              }
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            particule.UpdateExplosions_statue(dt, this, carte, camera);
-  
-        } */
+            timer += gameTime.ElapsedGameTime.TotalSeconds;
+            Console.WriteLine(timer);
+            if (timer > 2)
+            {
+                particule.UpdateExplosions_statue(this, ref camera);
+                timer = 0;
+            }
+        }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
         {

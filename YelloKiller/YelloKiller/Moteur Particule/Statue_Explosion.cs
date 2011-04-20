@@ -11,20 +11,15 @@ namespace YelloKiller.Moteur_Particule
 
         Carte Carte;
         Statue Statue;
- 
-        public float maxspeed
-        { get; set; }
-        public float minspeed
-        { get; set; }
-
-
-        int distance = 6;
+        int distance;
 
         public Statue_Explosion(YellokillerGame game, int howManyEffects, Carte carte, Statue statue)
             : base(game, howManyEffects)
         {
             this.Statue = statue;
             this.Carte = carte;
+            if (statue != null)
+                distance = statue.Distance_Statue_Mur(carte);
         }
 
         protected override void InitializeConstants()
@@ -32,8 +27,8 @@ namespace YelloKiller.Moteur_Particule
 
             textureFilename = "explosion";
 
-            minInitialSpeed = 50 * distance;
-            maxInitialSpeed = 50 * distance;
+            minInitialSpeed = 300;// *distance;
+            maxInitialSpeed = 300;// *distance;
 
             minAcceleration = -20;
             maxAcceleration = -10;
@@ -44,7 +39,7 @@ namespace YelloKiller.Moteur_Particule
             minScale = 1f;
             maxScale = 10f;
 
-            minNumParticles = 50;
+            minNumParticles = 15;
             maxNumParticles = 100;
 
             minRotationSpeed = -MathHelper.PiOver4;
@@ -73,12 +68,10 @@ namespace YelloKiller.Moteur_Particule
             if (Statue != null)
             {
                 distance = Statue.Distance_Statue_Mur(Carte);
-                maxInitialSpeed = maxspeed * distance;
-                minInitialSpeed = minspeed * distance;
+                maxInitialSpeed *= distance;
+                minInitialSpeed *= distance;
             }
-
         }
-
     }
 }
 
