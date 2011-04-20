@@ -85,15 +85,12 @@ namespace YelloKiller
             if (Regarder_Haut)
                 for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
                     distance++;
-
             else if (Regarder_Droite)
                 for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
                     distance++;
-
             else if (Regarder_Gauche)
                 for (int i = 0; this.X - i > 0 && carte.Cases[this.Y, this.X - i].Type > 0; i++)
                     distance++;
-
             else if (Regarder_Bas)
                 for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
                     distance++;

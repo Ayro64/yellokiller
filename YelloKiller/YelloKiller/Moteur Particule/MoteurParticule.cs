@@ -11,9 +11,7 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
-        public Statue statue
-        { get; set; }
-        Hero hero;
+         Hero hero;
 
         private static Random random = new Random();
         public static Random Random
@@ -124,7 +122,7 @@ namespace YelloKiller.Moteur_Particule
 
         #region Initialization
 
-        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Hero hero, Carte carte)
+        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Carte carte, Hero hero, List<Statue> _statue)
         {
             this.hero = hero;
             this.game = game;
@@ -133,11 +131,14 @@ namespace YelloKiller.Moteur_Particule
             hadoken_hero = new ExplosionParticleSystem(game, 1, hero, carte, 50);
             game.Components.Add(hadoken_hero);
 
-            explosion_statue = new Statue_Explosion(game, 20, carte, statue);
-            game.Components.Add(explosion_statue);
-
             ball = new BallParticleSystem(game, 1, hero, carte);
             game.Components.Add(ball);
+
+            foreach (Statue statue in _statue)
+            {
+                explosion_statue = new Statue_Explosion(game, 20, carte, statue, statue.Distance_Statue_Mur(carte));
+                game.Components.Add(explosion_statue);
+            }
 
             fume_hadoken = new ExplosionSmokeParticleSystem(game, 2);
             game.Components.Add(fume_hadoken);
@@ -162,9 +163,8 @@ namespace YelloKiller.Moteur_Particule
             fume_hadoken.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }
 
-        public void UpdateExplosions_statue(Statue statue, ref Rectangle camera)
+        public void UpdateExplosions_statue(Rectangle camera, Statue statue)
         {
-            this.statue = statue;
             explosion_statue.AddParticles(new Vector2(statue.position.X - camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
         }
 
