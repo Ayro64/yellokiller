@@ -11,6 +11,9 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
+        public Statue statue
+        { get; set; }
+        Hero hero;
 
         private static Random random = new Random();
         public static Random Random
@@ -121,24 +124,25 @@ namespace YelloKiller.Moteur_Particule
 
         #region Initialization
 
-        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch)
+        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Hero hero, Carte carte)
         {
+            this.hero = hero;
             this.game = game;
             this.spriteBatch = spriteBatch;
 
-            hadoken_hero = new ExplosionParticleSystem(game, 1);
+            hadoken_hero = new ExplosionParticleSystem(game, 1, hero, carte);
             game.Components.Add(hadoken_hero);
 
-            explosion_statue = new Statue_Explosion(game, 1);
+            explosion_statue = new Statue_Explosion(game, 10, carte, statue);
             game.Components.Add(explosion_statue);
 
-            ball = new BallParticleSystem(game, 1);
+            ball = new BallParticleSystem(game, 1, hero, carte);
             game.Components.Add(ball);
 
             fume_hadoken = new ExplosionSmokeParticleSystem(game, 2);
             game.Components.Add(fume_hadoken);
 
-            fumigene = new Fumigene(game, 9);
+            fumigene = new Fumigene(game, 9, hero, carte);
             game.Components.Add(fumigene);
 
             fume = new SmokePlumeParticleSystem(game, 9);
@@ -147,55 +151,32 @@ namespace YelloKiller.Moteur_Particule
 
         #endregion
 
-
-        public Vector2 position_hero(Hero hero, Rectangle camera) // position d origine de mon hadoken
+        public void UpdateFumigene(float dt, Rectangle camera)
         {
-            Vector2 where = new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y);
-            return where;
+            fumigene.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }
 
-        public Vector2 position_statue(Statue statue, Rectangle camera) // position d origine de mon hadoken
-        {
-            Vector2 where = new Vector2(statue.position.X - camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - camera.Y + (statue.SourceRectangle.Value.Height / 2));
-            return where;
-        }
-
-        public void UpdateFumigene(float dt, Hero hero, Carte carte, Rectangle camera)
-        {
-            fumigene.Hero = hero;
-            fumigene.Carte = carte;
-            fumigene.AddParticles(position_hero(hero, camera), hero);
-        }
-
-        public void UpdateExplosions_hero(float dt, Hero hero, Carte carte, Rectangle camera)
+        public void UpdateExplosions_hero(float dt, Rectangle camera)
         {
             hadoken_hero.maxspeed = 50;
-            hadoken_hero.minspeed = 50;
+            hadoken_hero.minspeed = 50;           
 
-            hadoken_hero.Hero = hero; // initialisation des propriétés de explosion particule system
-            hadoken_hero.Carte = carte;
-
-            hadoken_hero.AddParticles(position_hero(hero, camera), hero);
-            fume_hadoken.AddParticles(position_hero(hero, camera), hero);
+            hadoken_hero.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
+            fume_hadoken.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }
 
-        public void UpdateExplosions_statue(float dt, Statue statue, Carte carte, Rectangle camera)
+        public void UpdateExplosions_statue(float dt, Statue statue, ref Rectangle camera)
         {
+            this.statue = statue;
             explosion_statue.maxspeed = 50;
             explosion_statue.minspeed = 50;
 
-            explosion_statue.Statue = statue; // initialisation des propriétés de explosion particule system
-            explosion_statue.Carte = carte;
+            explosion_statue.AddParticles(new Vector2(statue.position.X - camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
+  }
 
-            explosion_statue.AddParticles(position_statue(statue, camera), statue);
-
-        }
-
-        public void UpdateBall(float dt, Hero hero, Carte carte, Rectangle camera)
+        public void UpdateBall(float dt, Rectangle camera)
         {
-            ball.Hero = hero; // initialisation des propriétés de explosion particule system
-            ball.Carte = carte;
-            ball.AddParticles(position_hero(hero, camera), hero);
+            ball.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }
 
         public static float RandomBetween(float min, float max) // random utiliser pour toutes les proprietes 

@@ -65,19 +65,19 @@ namespace YelloKiller
             base.LoadContent(content, "statue_dragon");
         }
 
-        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule)
+      /*  public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule)
         {
-            /*  timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
+             timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
    float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
               if (time float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;r > 5)
               {
                   particule.UpdateExplosions_statue(dt, this, carte, camera);
                   timer = 0;
-              }*/
+              }
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             particule.UpdateExplosions_statue(dt, this, carte, camera);
   
-        }
+        } */
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
         {

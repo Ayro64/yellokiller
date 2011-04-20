@@ -11,14 +11,14 @@ namespace YelloKiller.Moteur_Particule
     class Fumigene : ParticleSystem
     {
 
-        public Hero Hero // solution trouvé pour pas passé hero et Carte en parametre dans update override
-        { get; set; }
-        public Carte Carte
-        { get; set; }
+        Hero hero;
+        Carte carte;
 
-        public Fumigene(YellokillerGame game, int howManyEffects)
-            : base(game,howManyEffects)
+        public Fumigene(YellokillerGame game, int howManyEffects, Hero hero, Carte carte)
+            : base(game, howManyEffects)
         {
+            this.hero = hero;
+            this.carte = carte;
         }
 
       
@@ -74,7 +74,7 @@ namespace YelloKiller.Moteur_Particule
         }
 
 
-        protected override void InitializeParticle(Particle p, Vector2 where, Hero hero)
+        protected override void InitializeParticle(Particle p, Vector2 where)
         {
             base.InitializeParticle(p, where, hero);
 
