@@ -176,8 +176,7 @@ namespace YelloKiller
             gameFont = content.Load<SpriteFont>("courier");
 
 
-            moteurparticule = new MoteurParticule(game, spriteBatch, hero1, carte);
-
+            moteurparticule = new MoteurParticule(game, spriteBatch, carte, hero1, _statues);
 
             audio.LoadContent(content);
 
@@ -198,10 +197,7 @@ namespace YelloKiller
                 boss.LoadContent(content, 2);
 
             foreach (Statue statue in _statues)
-            {
                 statue.LoadContent(content);
-                Console.WriteLine(statue.position.X);
-            }
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -223,7 +219,7 @@ namespace YelloKiller
                 if (Enable_Timer)
                     timer += gameTime.ElapsedGameTime.TotalSeconds;
 
-                temps += gameTime.ElapsedGameTime.TotalSeconds;                
+                temps += gameTime.ElapsedGameTime.TotalSeconds;
                 moteurAudio.Update();
 
                 hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero2);

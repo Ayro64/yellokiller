@@ -13,7 +13,6 @@ namespace YelloKiller
     class Statue : Ennemi
     {
         byte direction;
-        int distance;
         double timer = 0;
 
         public Statue(Vector2 position, Carte carte, byte direction)
@@ -31,7 +30,6 @@ namespace YelloKiller
             else if (direction == 3) // droite
                 SourceRectangle = new Rectangle(0, 243, 112, 94);
 
-            distance = Distance_Statue_Mur(carte);
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 112, 94);
         }
 
@@ -68,10 +66,9 @@ namespace YelloKiller
         public void Update(GameTime gameTime, MoteurParticule particule, ref Rectangle camera)
         {
             timer += gameTime.ElapsedGameTime.TotalSeconds;
-            Console.WriteLine(timer);
             if (timer > 2)
             {
-                particule.UpdateExplosions_statue(this, ref camera);
+                particule.UpdateExplosions_statue(camera, this);
                 timer = 0;
             }
         }
