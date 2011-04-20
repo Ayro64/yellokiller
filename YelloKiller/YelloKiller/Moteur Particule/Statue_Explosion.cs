@@ -2,16 +2,16 @@
 using YelloKiller;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace YelloKiller.Moteur_Particule
 {
     class Statue_Explosion : ParticleSystem
     {
 
-        public Carte Carte
-        { get; set; }
-        public Statue Statue
-        { get; set; }
+        Carte Carte;
+        Statue Statue;
+ 
         public float maxspeed
         { get; set; }
         public float minspeed
@@ -20,9 +20,11 @@ namespace YelloKiller.Moteur_Particule
 
         int distance = 6;
 
-        public Statue_Explosion(YellokillerGame game, int howManyEffects)
+        public Statue_Explosion(YellokillerGame game, int howManyEffects, Carte carte, Statue statue)
             : base(game, howManyEffects)
         {
+            this.Statue = statue;
+            this.Carte = carte;
         }
 
         protected override void InitializeConstants()
@@ -42,8 +44,8 @@ namespace YelloKiller.Moteur_Particule
             minScale = 1f;
             maxScale = 10f;
 
-            minNumParticles = 100;
-            maxNumParticles = 800;
+            minNumParticles = 50;
+            maxNumParticles = 100;
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;

@@ -5,13 +5,13 @@ using Microsoft.Xna.Framework.Graphics;
 #endregion
 
 namespace YelloKiller.Moteur_Particule
-{
-   
+{   
      class ExplosionSmokeParticleSystem : ParticleSystem
     {
+
         public ExplosionSmokeParticleSystem(YellokillerGame game, int howManyEffects)
             : base(game, howManyEffects)
-        {            
+        {
         }
 
        

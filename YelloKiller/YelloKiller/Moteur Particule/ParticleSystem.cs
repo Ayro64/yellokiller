@@ -188,7 +188,16 @@ namespace YelloKiller.Moteur_Particule
         {
             // first, call PickRandomDirection to figure out which way the particle
             // will be moving. velocity and acceleration's values will come from this.
-            Vector2 direction = PickRandomDirection(statue);
+            Vector2 direction;
+            if (statue.SourceRectangle.Value.Y == 357)
+                direction = new Vector2(0, -1);
+            else if (statue.SourceRectangle.Value.Y == 0)
+                direction = new Vector2(0, 1);
+            else if (statue.SourceRectangle.Value.Y == 123)
+                direction = new Vector2(-1, 0);
+            else
+                direction = new Vector2(1, 0);
+
 
             // pick some random values for our particle
             float velocity =
@@ -213,7 +222,10 @@ namespace YelloKiller.Moteur_Particule
         {
             // first, call PickRandomDirection to figure out which way the particle
             // will be moving. velocity and acceleration's values will come from this.
-            Vector2 direction = PickRandomDirection();
+
+            Vector2 direction;
+            float angle = MoteurParticule.RandomBetween(0, MathHelper.TwoPi);
+            direction = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
 
             // pick some random values for our particle
             float velocity =
@@ -234,34 +246,13 @@ namespace YelloKiller.Moteur_Particule
                 lifetime, scale, rotationSpeed);
         }
 
-        protected virtual Vector2 PickRandomDirection()
-        {
-            float angle = MoteurParticule.RandomBetween(0, MathHelper.TwoPi);
-            return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
-        }
-
         protected virtual Vector2 PickRandomDirection(Hero hero)
         {
             if (hero.SourceRectangle.Value.Y == 133)
                 return new Vector2(0, -1);
-
             else if (hero.SourceRectangle.Value.Y == 198)
                 return new Vector2(0, 1);
-
             else if (hero.SourceRectangle.Value.Y == 230)
-                return new Vector2(-1, 0);
-
-            else
-                return new Vector2(1, 0);
-        }
-
-        protected virtual Vector2 PickRandomDirection(Statue statue)
-        {
-            if (statue.SourceRectangle.Value.Y == 357)
-                return new Vector2(0, -1);
-            else if (statue.SourceRectangle.Value.Y == 0)
-                return new Vector2(0, 1);
-            else if (statue.SourceRectangle.Value.Y == 123)
                 return new Vector2(-1, 0);
             else
                 return new Vector2(1, 0);

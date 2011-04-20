@@ -11,22 +11,20 @@ namespace YelloKiller.Moteur_Particule
     class ExplosionParticleSystem : ParticleSystem
     {
 
-        public Hero Hero // solution trouvé pour pas passé hero et Carte en parametre dans update override
-        { get; set; }
-        public Carte Carte
-        { get; set; }
+        Hero hero; 
+        Carte carte;
         public float maxspeed
         { get; set; }
         public float minspeed
         { get; set; }
 
-
         int distance = 3;
 
-        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects)
+        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, Hero hero, Carte carte)
             : base(game, howManyEffects)
         {
-
+            this.hero = hero;
+            this.carte = carte;
         }
 
         protected override void InitializeConstants()
@@ -73,9 +71,9 @@ namespace YelloKiller.Moteur_Particule
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (Hero != null)
+            if (hero != null)
             {
-                distance = Hero.Distance_Hero_Mur(Carte);
+                distance = hero.Distance_Hero_Mur(carte);
                 maxInitialSpeed = maxspeed * distance;
                 minInitialSpeed = minspeed;
             }
