@@ -84,10 +84,9 @@ namespace YelloKiller
             set { enable_timer = value; }
         }
 
-
         Player audio;
         MoteurAudio moteurAudio;
-        double temps;
+        double temps = 0;
         string nomDeCarte;
         bool jeuEnCoop;
 
@@ -166,8 +165,6 @@ namespace YelloKiller
             _statues = new List<Statue>();
             for (int l = 0; l < carte.OriginesStatues.Count; l++)
                 _statues.Add(new Statue(28 * new Vector2(carte.OriginesStatues[l].X, carte.OriginesStatues[l].Y), carte, carte.RotationsDesStatues[l]));
-
-            temps = 0;
         }
 
         public override void LoadContent()
@@ -178,8 +175,8 @@ namespace YelloKiller
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
 
-            
-                moteurparticule = new MoteurParticule(game, spriteBatch, hero1, carte);
+
+            moteurparticule = new MoteurParticule(game, spriteBatch, hero1, carte);
 
 
             audio.LoadContent(content);
@@ -226,7 +223,7 @@ namespace YelloKiller
                 if (Enable_Timer)
                     timer += gameTime.ElapsedGameTime.TotalSeconds;
 
-                temps += gameTime.ElapsedGameTime.TotalSeconds;
+                temps += gameTime.ElapsedGameTime.TotalSeconds;                
                 moteurAudio.Update();
 
                 hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero2);
@@ -246,9 +243,7 @@ namespace YelloKiller
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
 
                 foreach (Statue statue in _statues)
-                    moteurparticule.UpdateExplosions_statue((float)temps, statue, ref camera);
-
-
+                    statue.Update(gameTime, moteurparticule, ref camera);
 
                 Moteur_physique.Collision_Armes_Ennemis(hero1, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
 
@@ -275,6 +270,7 @@ namespace YelloKiller
             }
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
+
 
         public override void Draw(GameTime gameTime)
         {
