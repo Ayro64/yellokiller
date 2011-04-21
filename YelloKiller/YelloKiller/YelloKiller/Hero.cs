@@ -23,7 +23,10 @@ namespace YelloKiller
         Rectangle rectangle;
         Texture2D flamme;
         float vitesseAnimation, index, tempsCourir;
-        int maxIndex, nombreShuriken = 25, nombreHadoken = 5, nombreFumigene = 10, nombre_ball = 5, vitesseSprite, numeroHero;
+        int maxIndex, nombreShuriken = 25, nombreHadoken = 5, nombreFumigene = 10, nombre_ball = 5, vitesseSprite;
+        private byte numeroHero;
+        public byte NumeroHero
+        { get { return numeroHero; } }
         public bool ishero;
         bool animation_sabre;
         bool monter, descendre, droite, gauche;
@@ -33,7 +36,7 @@ namespace YelloKiller
         State currentState = State.state_shuriken;
         int state_sabre = 0;
 
-        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, int numeroHero)
+        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, byte numeroHero)
             : base(position)
         {
             this.position = position;
@@ -100,8 +103,6 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
-            this.Distance_Hero_Mur(carte);
-
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
@@ -126,7 +127,7 @@ namespace YelloKiller
                 regarde_droite = false;
 
             //armes
-            if(ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(changer_arme) || ServiceHelper.Get<IGamePadService>().ChangerArme())
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(changer_arme) || ServiceHelper.Get<IGamePadService>().ChangerArme())
                 currentState = (State)((int)(currentState + 1) % NumStates);
 
             // animation attaque au sabre
@@ -182,10 +183,22 @@ namespace YelloKiller
             switch (currentState)
             {
                 case State.state_hadoken:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 1)
                     {
-                        GameplayScreen.Enable_Timer = true; // je lance le timer                       
-                        if (GameplayScreen.Timer == 0)
+                        Distance_Hero_Mur(carte);
+                        GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
+                        if (GameplayScreen.Timer_Hero1 == 0)
+                        {
+                            nombreHadoken--;
+                            particule.UpdateExplosions_hero(this, camera);
+                            moteurAudio.SoundBank.PlayCue("hadoken");
+                        }
+                    }
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 2)
+                    {
+                        Distance_Hero_Mur(carte);
+                        GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
+                        if (GameplayScreen.Timer_Hero2 == 0)
                         {
                             nombreHadoken--;
                             particule.UpdateExplosions_hero(this, camera);
@@ -195,10 +208,22 @@ namespace YelloKiller
                     break;
 
                 case State.state_ball:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 1)
                     {
-                        GameplayScreen.Enable_Timer = true; // je lance le timer                       
-                        if (GameplayScreen.Timer == 0)
+                        Distance_Hero_Mur(carte);
+                        GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
+                        if (GameplayScreen.Timer_Hero1 == 0)
+                        {
+                            nombre_ball--;
+                            particule.UpdateBall(this, camera);
+                            moteurAudio.SoundBank.PlayCue("hadoken");
+                        }
+                    }
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 2)
+                    {
+                        Distance_Hero_Mur(carte);
+                        GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
+                        if (GameplayScreen.Timer_Hero2 == 0)
                         {
                             nombre_ball--;
                             particule.UpdateBall(this, camera);
