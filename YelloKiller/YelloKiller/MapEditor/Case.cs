@@ -29,8 +29,9 @@ namespace YelloKiller
             set { etienne = value; }
         }
 
-        public int Z
+        public float Etienne_Z
         {
+            get { return etienne.Z; }
             set { etienne.Z = value; }
         }
 
