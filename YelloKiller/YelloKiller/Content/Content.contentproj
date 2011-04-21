@@ -900,8 +900,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\petites\piedDeMurBois.png">
-      <Name>piedDeMurBois</Name>
+    <Compile Include="Textures\petites\piedMurBois.png">
+      <Name>piedMurBois</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
