@@ -284,7 +284,7 @@ namespace YelloKiller
                         switch (bonus[u].TypeBonus)
                         {
                             case TypeBonus.shuriken:
-                                hero1.NombreShuriken += 3;
+                                hero2.NombreShuriken += 3;
                                 bonus.RemoveAt(u);
                                 break;
                         }
