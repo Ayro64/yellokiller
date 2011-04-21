@@ -70,21 +70,41 @@ namespace YelloKiller
         List<Statue> _statues;
         List<Bonus> _bonus;
 
-        //timer
-        private static double timer = 0;
+        #region Timer hero 1
+        private static double timer_hero1 = 0;
 
-        public static double Timer
+        public static double Timer_Hero1
         {
-            get { return timer; }
-            set { timer = value; }
+            get { return timer_hero1; }
+            set { timer_hero1 = value; }
         }
 
-        private static bool enable_timer = false;
-        public static bool Enable_Timer
+        private static bool enable_timer_hero1 = false;
+        public static bool Enable_Timer_Hero1
         {
-            get { return enable_timer; }
-            set { enable_timer = value; }
+            get { return enable_timer_hero1; }
+            set { enable_timer_hero1 = value; }
         }
+        #endregion
+
+        #region Timer hero 2
+        private static double timer_hero2 = 0;
+
+        public static double Timer_Hero2
+        {
+            get { return timer_hero2; }
+            set { timer_hero2 = value; }
+        }
+
+        private static bool enable_timer_hero2 = false;
+        public static bool Enable_Timer_Hero2
+        {
+            get { return enable_timer_hero2; }
+            set { enable_timer_hero2 = value; }
+        }
+        #endregion
+
+  
 
         Player audio;
         MoteurAudio moteurAudio;
@@ -225,8 +245,10 @@ namespace YelloKiller
         {
             if (IsActive)
             {
-                if (Enable_Timer)
-                    timer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (Enable_Timer_Hero1)
+                    timer_hero1 += gameTime.ElapsedGameTime.TotalSeconds;
+                if (Enable_Timer_Hero2)
+                    timer_hero2 += gameTime.ElapsedGameTime.TotalSeconds;
 
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
                 moteurAudio.Update();
