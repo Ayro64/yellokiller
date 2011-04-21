@@ -104,10 +104,10 @@ namespace YelloKiller
         public void Update(Ascenseur ascenseurDroit, Ascenseur ascenseurGauche)
         {
             for (int i = 0; i < nbTexturesDroite; i++)
-                listeRectanglesDroite[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, (int)-ascenseurDroit.Position.Y + i * 40, 28, 28);
+                listeRectanglesDroite[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, (int)-ascenseurDroit.Position.Y + i * 30, 28, 28);
 
             for (int i = 0; i < nbTexturesGauche; i++)
-                listeRectanglesGauche[i] = new Rectangle(28, (int)-ascenseurGauche.Position.Y + i * 40, 28, 28);
+                listeRectanglesGauche[i] = new Rectangle(28, (int)-ascenseurGauche.Position.Y + i * 30, 28, 28);
         }
 
         public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseurDroit, Ascenseur ascenseurGauche)
@@ -121,7 +121,7 @@ namespace YelloKiller
                     spriteBatch.Draw(listeTexturesDroite[u], new Vector2(listeRectanglesDroite[u].X + 28 * (1 - listeTexturesDroite[u].Width / 28), listeRectanglesDroite[u].Y + 28 * (1 - listeTexturesDroite[u].Height / 28)), Color.White);
                 }
                 else
-                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseurDroit.Position.Y + u * 40), null, Color.White, 0, Vector2.Zero, (float)28 / listeTexturesDroite[u].Height, SpriteEffects.None, 0);
+                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseurDroit.Position.Y + u * 30), null, Color.White, 0, Vector2.Zero, (float)28 / listeTexturesDroite[u].Height, SpriteEffects.None, 0);
             }
 
             for (int c = 0; c < nbTexturesGauche; c++)
@@ -133,7 +133,7 @@ namespace YelloKiller
                     spriteBatch.Draw(listeTexturesGauche[c], new Vector2(listeRectanglesGauche[c].X + 28 * (1 - listeTexturesGauche[c].Width / 28), listeRectanglesGauche[c].Y + 28 * (1 - listeTexturesGauche[c].Height / 28)), Color.White);
                 }
                 else
-                    spriteBatch.Draw(listeTexturesGauche[c], new Vector2(28, -ascenseurGauche.Position.Y + c * 40), null, Color.White, 0, Vector2.Zero, (float)28 / listeTexturesGauche[c].Height, SpriteEffects.None, 0);
+                    spriteBatch.Draw(listeTexturesGauche[c], new Vector2(28, -ascenseurGauche.Position.Y + c * 30), null, Color.White, 0, Vector2.Zero, (float)28 / listeTexturesGauche[c].Height, SpriteEffects.None, 0);
             }
         }
     }
