@@ -29,7 +29,7 @@ namespace YelloKiller
                         case ("MainQuitMsg"):
                             return "Êtes-vous sûr de vouloir quitter le jeu?\n";
                         case ("EditorExCharacters"):
-                            return "Le ou les personnages n'a / n'ont pas été placé.\n\nVeuillez placer un ou deux personnages avant de sauvegarder.";
+                            return "Aucun boss ou héro n'a été placé.\n\nVeuillez placer au moins un héro et un boss avant de sauvegarder.";
                         case ("EditorSave1"):
                             return "Fichier sauvegardé sous ";
                         case ("EditorSave2"):
