@@ -94,3 +94,5 @@ Boss
 41
 4
 Statue dragon
+Salaire
+1000000

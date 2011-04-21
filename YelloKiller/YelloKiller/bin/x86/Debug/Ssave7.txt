@@ -70,3 +70,5 @@ Boss
 24
 57
 Statue dragon
+Salaire
+1000000

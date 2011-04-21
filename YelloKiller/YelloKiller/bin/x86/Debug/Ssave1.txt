@@ -100,3 +100,5 @@ Boss
 66
 29
 Statue dragon
+Salaire
+1000000

@@ -90,3 +90,5 @@ Boss
 73
 2
 Statue dragon
+Salaire
+1000000
