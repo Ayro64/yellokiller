@@ -38,7 +38,7 @@ namespace YelloKiller.Moteur_Particule
         }
 
         bool rectangle_ball_est_present_hero1 = true; // utiliser pour effacer le rectangle apres collision contre boss
-        public bool Rectangle_Ball_Est_Present_hero1
+        public bool Rectangle_Ball_Est_Present_Hero1
         {
             get { return rectangle_ball_est_present_hero1; }
             set { rectangle_ball_est_present_hero1 = value; }
@@ -108,12 +108,12 @@ namespace YelloKiller.Moteur_Particule
 
             if (ball.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
-                Rectangle_Ball_Est_Present_hero1 = true;// je reinitialise donc mon rectangle
+                Rectangle_Ball_Est_Present_Hero1 = true;// je reinitialise donc mon rectangle
                 direction_hero1_appele = hero.SourceRectangle.Value.Y;
             }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
 
 
-            if (ball.FreeParticleCount < 100 && Rectangle_Ball_Est_Present_hero1 && GameplayScreen.Timer_Hero1 > 0.5)
+            if (ball.FreeParticleCount < 100 && Rectangle_Ball_Est_Present_Hero1 && GameplayScreen.Timer_Hero1 > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
                 if (direction_hero1_appele == 133) // haut
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y - (ball.LongueurBall * 28), 28, (ball.LongueurBall * 28));

@@ -71,6 +71,25 @@ namespace YelloKiller
         List<Statue> _statues;
         List<Bonus> _bonus;
 
+        static double timer_update_collision = 0;
+        public static double Timer_Update_Collision
+        {
+            get { return timer_update_collision; }
+            set { timer_update_collision = value; }
+        }
+
+     
+
+
+
+        Player audio;
+        MoteurAudio moteurAudio;
+        double temps = 0;
+        string nomDeCarte;
+        bool jeuEnCoop;
+
+        #endregion
+
         #region Timer hero 1
         private static double timer_hero1 = 0;
 
@@ -105,23 +124,13 @@ namespace YelloKiller
         }
         #endregion
 
-
-
-        Player audio;
-        MoteurAudio moteurAudio;
-        double temps = 0;
-        string nomDeCarte;
-        bool jeuEnCoop;
-
-        #endregion
-
         #region Initialization
 
         YellokillerGame game = null;
 
         public GameplayScreen(string nomDeCarte, YellokillerGame game, uint retries)
         {
-            this.retries = retries; 
+            this.retries = retries;
             this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[0] == 'C';
@@ -276,7 +285,12 @@ namespace YelloKiller
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule, ref camera);
 
-                Moteur_physique.Collision_Armes_Ennemis(hero1, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
+                if (timer_update_collision > 0)
+                {
+                    Moteur_physique.Collision_Armes_Ennemis(hero1, hero2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
+                    if (timer_update_collision > 5)
+                        timer_update_collision = 0;
+                }
 
                 if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));

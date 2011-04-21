@@ -8,39 +8,41 @@ namespace YelloKiller
 {
     static class Moteur_physique
     {
-        static public void Collision_Armes_Ennemis(Hero hero, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank)
+        static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank)
         {
             if (_gardes.Count != 0)
             {
                 for (int i = 0; i < _gardes.Count; i++)
                 {
-                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero)))
+                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
                     {
                         soundBank.PlayCue("cri");
                         _gardes.Remove(_gardes[i]);
                         break;
                     }
-                    else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero)))
+                    else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("cri");
                         _gardes.Remove(_gardes[i]);
                         break;
                     }
-                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero)))
+                    if (hero2 != null)
                     {
-                        soundBank.PlayCue("cri");
-                        _gardes.Remove(_gardes[i]);
-                        break;
-                    }
-                    else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero)))
-                    {
-                        soundBank.PlayCue("cri");
-                        _gardes.Remove(_gardes[i]);
-                        break;
+                        if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
+                        {
+                            soundBank.PlayCue("cri");
+                            _gardes.Remove(_gardes[i]);
+                            break;
+                        }
+                        else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
+                        {
+                            soundBank.PlayCue("cri");
+                            _gardes.Remove(_gardes[i]);
+                            break;
+                        }
                     }
                     for (int j = 0; j < listeShuriken.Count; j++)
-                        if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle) 
-                            || _gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero)))
+                        if (_gardes[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
                             soundBank.PlayCue("cri");
                             ServiceHelper.Get<IGamePadService>().Vibration(20);
@@ -55,29 +57,32 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _Patrouilleurs.Count; i++)
                 {
-                    if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero)))
+                    if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
                     {
                         soundBank.PlayCue("cri");
                         _Patrouilleurs.Remove(_Patrouilleurs[i]);
                         break;
                     }
-                    else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero)))
-                    {
-                        soundBank.PlayCue("cri");
-                        _gardes.Remove(_gardes[i]);
-                        break;
-                    }
-                    if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero)))
+                    else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("cri");
                         _Patrouilleurs.Remove(_Patrouilleurs[i]);
                         break;
                     }
-                    else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero)))
+                    if (hero2 != null)
                     {
-                        soundBank.PlayCue("cri");
-                        _gardes.Remove(_gardes[i]);
-                        break;
+                        if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
+                        {
+                            soundBank.PlayCue("cri");
+                            _Patrouilleurs.Remove(_Patrouilleurs[i]);
+                            break;
+                        }
+                        else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
+                        {
+                            soundBank.PlayCue("cri");
+                            _Patrouilleurs.Remove(_Patrouilleurs[i]);
+                            break;
+                        }
                     }
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_Patrouilleurs[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
@@ -94,29 +99,32 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _PatrouilleursAChevaux.Count; i++)
                 {
-                    if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero)))
+                    if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
                     {
                         soundBank.PlayCue("cri");
                         _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
                         break;
                     }
-                    else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero)))
-                    {
-                        soundBank.PlayCue("cri");
-                        _gardes.Remove(_gardes[i]);
-                        break;
-                    }
-                    if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero)))
+                    else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("cri");
                         _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
                         break;
                     }
-                    else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero)))
+                    if (hero2 != null)
                     {
-                        soundBank.PlayCue("cri");
-                        _gardes.Remove(_gardes[i]);
-                        break;
+                        if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
+                        {
+                            soundBank.PlayCue("cri");
+                            _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
+                            break;
+                        }
+                        else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
+                        {
+                            soundBank.PlayCue("cri");
+                            _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
+                            break;
+                        }
                     }
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_PatrouilleursAChevaux[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
@@ -139,35 +147,37 @@ namespace YelloKiller
                         _Boss.Remove(_Boss[i]);
                         soundBank.PlayCue("cri");
                     }
-                    if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero)))
+                    else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
                     {
                         _Boss[i].Vie = _Boss[i].Vie - 2;
                         // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
                         // appel sinon le boss perd sa vie d un coup.
                         particule.Rectangle_Hadoken_Est_Present_Hero1 = false;       
                     }
-                    else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero)))
+                    else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         _Boss[i].Vie = _Boss[i].Vie - 2;
                         // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
                         // appel sinon le boss perd sa vie d un coup.
-                        particule.Rectangle_Ball_Est_Present_hero1 = false;
+                        particule.Rectangle_Ball_Est_Present_Hero1 = false;
                     }
-                    if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero)))
+                    else if (hero2 != null)
                     {
-                        _Boss[i].Vie = _Boss[i].Vie - 2;
-                        // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
-                        // appel sinon le boss perd sa vie d un coup.
-                        particule.Rectangle_Hadoken_Est_Present_Hero1 = false;
+                        if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
+                        {
+                            _Boss[i].Vie = _Boss[i].Vie - 2;
+                            // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
+                            // appel sinon le boss perd sa vie d un coup.
+                            particule.Rectangle_Hadoken_Est_Present_Hero2 = false;
+                        }
+                        else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
+                        {
+                            _Boss[i].Vie = _Boss[i].Vie - 2;
+                            // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
+                            // appel sinon le boss perd sa vie d un coup.
+                            particule.Rectangle_Ball_Est_Present_Hero2 = false;
+                        }
                     }
-                    else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero)))
-                    {
-                        _Boss[i].Vie = _Boss[i].Vie - 2;
-                        // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
-                        // appel sinon le boss perd sa vie d un coup.
-                        particule.Rectangle_Ball_Est_Present_hero1 = false;
-                    } 
-
                     for (int j = 0; j < listeShuriken.Count; j++)
                         if (_Boss[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
