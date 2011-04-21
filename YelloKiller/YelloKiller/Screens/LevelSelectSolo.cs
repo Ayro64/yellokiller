@@ -213,7 +213,7 @@ namespace YelloKiller
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
 
-            Vector2 position = new Vector2(130, 300);
+            Vector2 position = new Vector2(100, 300);
 
             byte fade = TransitionAlpha;
 
@@ -244,18 +244,18 @@ namespace YelloKiller
                 // Miniatures
                 miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 45, position.Y - 150));
 
-                if ((i % 3 == 0) || (i % 3 == 1))
+                if ((i % 4 == 0) || (i % 4 == 1) || (i % 4 == 2))
                     position.X += 250;
                 else
                 {
                     position.Y += (menuEntry.GetHeight(this) + 150);
-                    position.X -= 500;
+                    position.X -= 750;
                 }
             }
 
             // Bouton Retour
-            if ((levels.Count % 3 == 1) || (levels.Count % 3 == 2))
-                position.X -= ((levels.Count - 1) % 3) * 250;
+            if ((levels.Count % 4 == 1) || (levels.Count % 4 == 2) || (levels.Count % 4 == 3))
+                position.X -= ((levels.Count - 1) % 4) * 250;
             position.X -= 30;
             position.Y = 580;
             abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black);
