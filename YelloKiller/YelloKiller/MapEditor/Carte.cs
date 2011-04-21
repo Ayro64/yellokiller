@@ -14,6 +14,7 @@ namespace YelloKiller
         List<byte> rotationsDesStatues;
         List<Vector2> _originesGarde, _originesBoss, _originesStatues, bonusShurikens;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
+        int salaire;
 
         public Carte(Vector2 size)
         {
@@ -202,10 +203,10 @@ namespace YelloKiller
                 rotationsDesStatues.Add(Convert.ToByte(line));
                 line = file.ReadLine();
             }
-
+            
             line = file.ReadLine();
 
-            while (line != null)
+            while (line != "Salaire")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
@@ -214,6 +215,9 @@ namespace YelloKiller
                 line = file.ReadLine();
             }
 
+            line = file.ReadLine();
+
+            salaire = Convert.ToInt32(line);
             file.Close();
         }
 
@@ -288,6 +292,11 @@ namespace YelloKiller
             }
         }
 
+        public int Salaire
+        {
+            get { return salaire; }
+        }
+
         public List<Vector2> OriginesGardes
         {
             get { return _originesGarde; }
@@ -322,7 +331,7 @@ namespace YelloKiller
         {
             get { return origineJoueur2; }
         }
-        
+
         public List<Vector2> BonusShuriken
         {
             get { return bonusShurikens; }
