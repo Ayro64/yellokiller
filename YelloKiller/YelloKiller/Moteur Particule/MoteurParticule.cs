@@ -14,50 +14,21 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
-        public Hero Hero
-        { get; set; }
-
+      
         private static Random random = new Random();
         public static Random Random
         {
             get { return random; }
         }
 
-        int direction_hero1_appele;
         int direction_hero2_appele;
+        int direction_hero1_appele;
+        int direction_statue_appele;
 
-        bool rectangle_hadoken_est_present_hero1 = true; // utiliser pour effacer le rectangle apres collision contre boss
-        public bool Rectangle_Hadoken_Est_Present_Hero1
-        {
-            get { return rectangle_hadoken_est_present_hero1; }
-            set { rectangle_hadoken_est_present_hero1 = value; }
-        }
-
-        bool rectangle_hadoken_est_present_hero2 = true; // utiliser pour effacer le rectangle apres collision contre boss
-        public bool Rectangle_Hadoken_Est_Present_Hero2
-        {        
-            get { return rectangle_hadoken_est_present_hero2; }
-            set { rectangle_hadoken_est_present_hero2 = value; }
-        }
-
-        bool rectangle_ball_est_present_hero1 = true; // utiliser pour effacer le rectangle apres collision contre boss
-        public bool Rectangle_Ball_Est_Present_Hero1
-        {
-            get { return rectangle_ball_est_present_hero1; }
-            set { rectangle_ball_est_present_hero1 = value; }
-        }
-
-        bool rectangle_ball_est_present_hero2 = true; // utiliser pour effacer le rectangle apres collision contre boss
-        public bool Rectangle_Ball_Est_Present_Hero2
-        {
-            get { return rectangle_ball_est_present_hero2; }
-            set { rectangle_ball_est_present_hero2 = value; }
-        }
-
-        ExplosionParticleSystem hadoken_hero;  // explosion 
-        ExplosionSmokeParticleSystem fume_hadoken; // fume apres explosion
+        ExplosionParticleSystem hadoken_hero;
+        ExplosionSmokeParticleSystem fume_hadoken;
         Statue_Explosion explosion_statue;
-        SmokePlumeParticleSystem fume; // fumigene
+        SmokePlumeParticleSystem fume;
         BallParticleSystem ball;
         Fumigene fumigene;
 
@@ -67,6 +38,13 @@ namespace YelloKiller.Moteur_Particule
         #endregion
 
         #region Rectangle tout moche Hero 1
+
+        bool rectangle_hadoken_est_present_hero1 = true; // utiliser pour effacer le rectangle apres collision 
+        public bool Rectangle_Hadoken_Est_Present_Hero1
+        {
+            get { return rectangle_hadoken_est_present_hero1; }
+            set { rectangle_hadoken_est_present_hero1 = value; }
+        }
 
         public Rectangle Rectangle_Hadoken_hero1(Hero hero) // pour gerer les collisions
         {
@@ -99,6 +77,13 @@ namespace YelloKiller.Moteur_Particule
             }
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
+        }
+
+        bool rectangle_ball_est_present_hero1 = true;
+        public bool Rectangle_Ball_Est_Present_Hero1
+        {
+            get { return rectangle_ball_est_present_hero1; }
+            set { rectangle_ball_est_present_hero1 = value; }
         }
 
         public Rectangle Rectangle_Ball_hero1(Hero hero) // pour gerer les collisions
@@ -138,6 +123,13 @@ namespace YelloKiller.Moteur_Particule
 
         #region Rectangle tout moche Hero 2
 
+        bool rectangle_hadoken_est_present_hero2 = true;
+        public bool Rectangle_Hadoken_Est_Present_Hero2
+        {
+            get { return rectangle_hadoken_est_present_hero2; }
+            set { rectangle_hadoken_est_present_hero2 = value; }
+        }
+
         public Rectangle Rectangle_Hadoken_hero2(Hero hero) // pour gerer les collisions
         {
             if (GameplayScreen.Timer_Hero2 > 1) // apres une seconde mon timer se remet a zero
@@ -169,6 +161,13 @@ namespace YelloKiller.Moteur_Particule
             }
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
+        }
+
+        bool rectangle_ball_est_present_hero2 = true;
+        public bool Rectangle_Ball_Est_Present_Hero2
+        {
+            get { return rectangle_ball_est_present_hero2; }
+            set { rectangle_ball_est_present_hero2 = value; }
         }
 
         public Rectangle Rectangle_Ball_hero2(Hero hero) // pour gerer les collisions
@@ -206,13 +205,50 @@ namespace YelloKiller.Moteur_Particule
 
         #endregion
 
+        #region Rectangle tout moche Statue
+
+        bool rectangle_hadoken_est_present_statue = true; // utiliser pour effacer le rectangle apres collision 
+        public bool Rectangle_Hadoken_Est_Present_Statue
+        {
+            get { return rectangle_hadoken_est_present_statue; }
+            set { rectangle_hadoken_est_present_statue = value; }
+        }
+
+        public Rectangle Rectangle_Hadoken_Statue(Statue statue) // pour gerer les collisions
+        {
+
+            if (hadoken_hero.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
+            {
+                Rectangle_Hadoken_Est_Present_Statue = true;// je reinitialise donc mon rectangle
+                direction_statue_appele = statue.SourceRectangle.Value.Y;
+            }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
+
+            if (explosion_statue.FreeParticleCount < 100 && Rectangle_Hadoken_Est_Present_Statue)
+            { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
+                if (direction_statue_appele == 357) // haut
+                    return new Rectangle((int)statue.position.X, (int)statue.position.Y - (explosion_statue.LongueurExplosion * 28), 28, (hadoken_hero.LongueurHadoken * 28));
+
+                else if (direction_statue_appele == 0) // bas
+                    return new Rectangle((int)statue.position.X, (int)statue.position.Y, 28, (explosion_statue.LongueurExplosion * 28));
+
+                else if (direction_statue_appele == 123) // gauche
+                    return new Rectangle((int)statue.position.X - 224, (int)statue.position.Y, (explosion_statue.LongueurExplosion * 28), 28);
+
+                else // droite
+                    return new Rectangle((int)statue.position.X, (int)statue.position.Y, (explosion_statue.LongueurExplosion * 28), 28);
+            }
+            else // pas de rectangle
+                return new Rectangle(0, 0, 0, 0);
+        }
+
+        #endregion
+
 
         #region Initialization
 
         public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Carte carte, Hero hero, List<Statue> _statue)
         {
-            Hero = hero;
-            this.game = game;
+           this.game = game;
             this.spriteBatch = spriteBatch;
 
             hadoken_hero = new ExplosionParticleSystem(game, 1, hero, carte, 50);

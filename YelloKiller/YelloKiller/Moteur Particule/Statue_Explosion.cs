@@ -24,7 +24,7 @@ namespace YelloKiller.Moteur_Particule
 
             textureFilename = "explosion";
 
-            minInitialSpeed = 50 * distance_statue_mur;
+            minInitialSpeed = 50;
             maxInitialSpeed = 50 * distance_statue_mur;
 
             minAcceleration = -20;
@@ -36,8 +36,8 @@ namespace YelloKiller.Moteur_Particule
             minScale = 1f;
             maxScale = 10f;
 
-            minNumParticles = 15;
-            maxNumParticles = 100;
+            minNumParticles = 100;
+            maxNumParticles = 200;
 
             minRotationSpeed = -MathHelper.PiOver4;
             maxRotationSpeed = MathHelper.PiOver4;
