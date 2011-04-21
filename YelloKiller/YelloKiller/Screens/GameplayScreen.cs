@@ -58,7 +58,7 @@ namespace YelloKiller
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
         Hero hero1, hero2;
-        uint kills;
+        uint kills, retries;
 
         Carte carte;
         Rectangle camera;
@@ -119,9 +119,10 @@ namespace YelloKiller
 
         YellokillerGame game = null;
 
-        public GameplayScreen(string nomDeCarte, YellokillerGame game)
+        public GameplayScreen(string nomDeCarte, YellokillerGame game, uint retries)
         {
-                        this.game = game;
+            this.retries = retries; 
+            this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[0] == 'C';
 
@@ -278,16 +279,16 @@ namespace YelloKiller
                 Moteur_physique.Collision_Armes_Ennemis(hero1, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank);
 
                 if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
                 if (Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
                 if (Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
                 if (Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, moteurAudio.SoundBank))
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
                 Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus);
                 if (_boss.Count == 0)
@@ -385,7 +386,7 @@ namespace YelloKiller
             {
                 moteurAudio.SoundBank.PlayCue("metalgear");
                 audio.Close();
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game));
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
