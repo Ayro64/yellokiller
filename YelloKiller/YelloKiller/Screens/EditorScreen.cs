@@ -74,7 +74,7 @@ namespace YelloKiller
 
             origine1 = carte.OrigineJoueur1;
             origine2 = carte.OrigineJoueur2;
-            salaire = 1000000;
+            salaire = 100000;
 
             enableOrigine1 = (carte.OrigineJoueur1 == -Vector2.One);
             enableOrigine2 = (carte.OrigineJoueur2 == -Vector2.One);
