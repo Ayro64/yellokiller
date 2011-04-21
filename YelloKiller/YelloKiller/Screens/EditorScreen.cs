@@ -599,7 +599,7 @@ namespace YelloKiller
                         for (int y = 0; y < 2; y++)
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 2 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 2 * y + 1;
                         }
                 }
             }
@@ -611,7 +611,7 @@ namespace YelloKiller
                         for (int y = 0; y < 3; y++)
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 3 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 3 * y + 1;
                         }
                 }
             }
@@ -622,7 +622,7 @@ namespace YelloKiller
                     for (int x = 0; x < 2; x++)
                     {
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Z = x + 1;
+                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 1;
                     }
                 }
             }
@@ -634,14 +634,14 @@ namespace YelloKiller
                         for (int y = 0; y < 3; y++)
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 2 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 2 * y + 1;
                         }
                 }
             }
             else if ((int)curseur.Type < 100)
             {
                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Z = 1;
+                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Etienne_Z = 1;
             }
         }
 
