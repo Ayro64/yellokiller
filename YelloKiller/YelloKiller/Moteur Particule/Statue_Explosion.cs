@@ -8,7 +8,6 @@ namespace YelloKiller.Moteur_Particule
 {
     class Statue_Explosion : ParticleSystem
     {
-
         Carte Carte;
         int distance_statue_mur;
 
