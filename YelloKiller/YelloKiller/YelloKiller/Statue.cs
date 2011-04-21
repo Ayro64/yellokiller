@@ -68,7 +68,7 @@ namespace YelloKiller
             timer += gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > 2)
             {
-                particule.UpdateExplosions_statue(camera, this);
+                particule.UpdateExplosions_statue(this);
                 timer = 0;
             }
         }

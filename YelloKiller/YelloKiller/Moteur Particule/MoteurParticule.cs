@@ -9,6 +9,9 @@ namespace YelloKiller.Moteur_Particule
     {
         #region Fields
 
+        public static Rectangle Camera
+        { get; set; }
+
         YellokillerGame game;
         SpriteBatch spriteBatch;
         public Hero Hero
@@ -236,25 +239,25 @@ namespace YelloKiller.Moteur_Particule
 
         #endregion
 
-        public void UpdateFumigene(Hero hero, Rectangle camera)
+        public void UpdateFumigene(Hero hero)
         {
-            fumigene.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
+            fumigene.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
         }
 
-        public void UpdateExplosions_hero(Hero hero, Rectangle camera)
+        public void UpdateExplosions_hero(Hero hero)
         {
-            hadoken_hero.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
-            fume_hadoken.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
+            hadoken_hero.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+            fume_hadoken.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
         }
 
-        public void UpdateExplosions_statue(Rectangle camera, Statue statue)
+        public void UpdateExplosions_statue(Statue statue)
         {
-            explosion_statue.AddParticles(new Vector2(statue.position.X - camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
+            explosion_statue.AddParticles(new Vector2(statue.position.X - Camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - Camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
         }
 
-        public void UpdateBall(Hero hero, Rectangle camera)
+        public void UpdateBall(Hero hero)
         {
-            ball.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
+            ball.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
         }
 
         public static float RandomBetween(float min, float max) // random utiliser pour toutes les proprietes 

@@ -54,7 +54,7 @@ namespace YelloKiller.Moteur_Particule
         }
 
       
-        protected override Vector2 PickRandomDirection(Hero hero)
+        protected override Vector2 PickRandomDirection()
         {
             // Point the particles somewhere between 80 and 100 degrees.
             // tweak this to make the smoke have more or less spread.
