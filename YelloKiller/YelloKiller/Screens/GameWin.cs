@@ -153,9 +153,9 @@ namespace YelloKiller
         void NextMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             if (comingfrom[0] == 'S')
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
             else
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
         }
 
         /// <summary>
@@ -164,9 +164,9 @@ namespace YelloKiller
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             if (comingfrom[0] == 'S')
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
             else
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game));
+                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
         }
 
         /// <summary>
