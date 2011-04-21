@@ -263,7 +263,6 @@ namespace YelloKiller
             {
                 if (hero1.X == bonus[u].X && hero1.Y == bonus[u].Y)
                 {
-                    Console.WriteLine("HAHAHA");
                     switch (bonus[u].TypeBonus)
                     {
                         case TypeBonus.shuriken:
@@ -280,7 +279,6 @@ namespace YelloKiller
                 {
                     if (hero2.X == bonus[u].X && hero2.Y == bonus[u].Y)
                     {
-                        Console.WriteLine("HAHAHA");
                         switch (bonus[u].TypeBonus)
                         {
                             case TypeBonus.shuriken:
