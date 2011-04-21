@@ -70,3 +70,5 @@ Boss
 42
 42
 Statue dragon
+Salaire
+1000000
