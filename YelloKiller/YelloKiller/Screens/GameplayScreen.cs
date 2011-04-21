@@ -45,6 +45,8 @@ namespace YelloKiller
         Patrouilleur_a_cheval = 104,
         Boss = 105,
         Statues = 106,
+
+        BonusShuriken = 200,
     }
 
     public class GameplayScreen : GameScreen
@@ -66,6 +68,7 @@ namespace YelloKiller
         List<Patrouilleur_a_cheval> _patrouilleurs_a_chevaux;
         List<Boss> _boss;
         List<Statue> _statues;
+        List<Bonus> _bonus;
         List<Vector2> invisible;
 
         //timer
@@ -165,6 +168,10 @@ namespace YelloKiller
             _statues = new List<Statue>();
             for (int l = 0; l < carte.OriginesStatues.Count; l++)
                 _statues.Add(new Statue(28 * new Vector2(carte.OriginesStatues[l].X, carte.OriginesStatues[l].Y), carte, carte.RotationsDesStatues[l]));
+
+            _bonus = new List<Bonus>();
+            foreach (Vector2 bonus in carte.BonusShuriken)
+                _bonus.Add(new Bonus(28 * bonus, Pouvoir.shuriken));
         }
 
         public override void LoadContent()
@@ -198,6 +205,9 @@ namespace YelloKiller
 
             foreach (Statue statue in _statues)
                 statue.LoadContent(content);
+
+            foreach (Bonus bonus in _bonus)
+                bonus.LoadContent(content);
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -301,6 +311,9 @@ namespace YelloKiller
             foreach (Statue statue in _statues)
                 statue.Draw(spriteBatch, camera);
 
+            foreach (Bonus bonus in _bonus)
+                bonus.Draw(spriteBatch, camera);
+
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 _shuriken[i].Update(gameTime, carte);
@@ -322,7 +335,6 @@ namespace YelloKiller
         #endregion
 
         #region Handle Input
-
 
         public override void HandleInput(InputState input)
         {

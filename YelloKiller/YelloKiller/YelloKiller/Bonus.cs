@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
 namespace YelloKiller
 {
@@ -16,9 +13,20 @@ namespace YelloKiller
         Pouvoir pouvoir;
 
         public Bonus(Vector2 position, Pouvoir pouvoir)
-            :base(position)
+            : base(position)
         {
             this.pouvoir = pouvoir;
+
+        }
+
+        public void LoadContent(ContentManager content)
+        {
+            switch (pouvoir)
+            {
+                case Pouvoir.shuriken:
+                    LoadContent(content, "bonusShuriken");
+                    break;
+            }
         }
     }
 }

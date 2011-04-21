@@ -298,5 +298,7 @@ namespace YelloKiller
             }
             return false;
         }
+
+        //static public bool Collision_Heros_Bonus(
     }
 }

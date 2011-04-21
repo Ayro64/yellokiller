@@ -154,6 +154,7 @@
     <Compile Include="Services\ServiceHelper.cs" />
     <Compile Include="Services\Temps.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="YelloKiller\Bonus.cs" />
     <Compile Include="YelloKiller\Dimensions.cs" />
     <Compile Include="YelloKiller\Hero.cs" />
     <Compile Include="YelloKiller\Moteur physique.cs" />
