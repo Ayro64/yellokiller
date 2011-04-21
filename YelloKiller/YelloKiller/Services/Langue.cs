@@ -29,7 +29,7 @@ namespace YelloKiller
                         case ("MainQuitMsg"):
                             return "Êtes-vous sûr de vouloir quitter le jeu?\n";
                         case ("EditorExCharacters"):
-                            return "Aucun boss ou héro n'a été placé.\n\nVeuillez placer au moins un héro et un boss avant de sauvegarder.";
+                            return "Aucun boss ou héros n'a été placé.\n\nVeuillez placer au moins un héros et un boss avant de sauvegarder.";
                         case ("EditorSave1"):
                             return "Fichier sauvegardé sous ";
                         case ("EditorSave2"):
@@ -124,7 +124,7 @@ namespace YelloKiller
                         case ("MainQuitMsg"):
                             return "Sind Sie sicher, dass Sie das Spiel verlassen möchten?\n";
                         case ("EditorExCharacters"):
-                            return "Der Charakter/Die Charaktere wurde/wurden noch nicht plaziert.\n\nBitte platziere vor dem Speichern einen Startpunkt.";
+                            return "Der Charakter/Die Charaktere oder der/die Endgegner wurde/wurden noch nicht plaziert.\n\nBitte platziere vor dem Speichern einen Startpunkt und mindestens ein Endgegner.";
                         case ("EditorSave1"):
                             return "Datei wurde gespeichert als ";
                         case ("EditorSave2"):
@@ -189,7 +189,7 @@ namespace YelloKiller
                         case ("Time"):
                             return "Zeit : ";
                         case ("Killed"):
-                            return "Wächeter umgebracht : ";
+                            return "Wächter umgebracht : ";
                         case ("Retries"):
                             return "Versuche : ";
                         case ("Score"):
@@ -219,7 +219,7 @@ namespace YelloKiller
                         case ("MainQuitMsg"):
                             return "Are you sure you want to exit the game?\n";
                         case ("EditorExCharacters"):
-                            return "The character(s) has not been placed yet.\n\nPlease set a starting point before saving.";
+                            return "The character(s) or the target(s) has not been placed yet.\n\nPlease set a starting point and at least one target before saving.";
                         case ("EditorSave1"):
                             return "File saved as ";
                         case ("EditorSave2"):
