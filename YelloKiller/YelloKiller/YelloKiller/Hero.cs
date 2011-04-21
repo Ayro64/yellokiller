@@ -64,21 +64,6 @@ namespace YelloKiller
             this.courir = courir;
         }
 
-        public Rectangle Rectangle
-        {
-            get { return rectangle; }
-        }
-
-        public int X
-        {
-            get { return (int)position.X / 28; }
-        }
-
-        public int Y
-        {
-            get { return (int)position.Y / 28; }
-        }
-
         public int Distance_Hero_Mur(Carte carte)
         {
             int distance = 0;
@@ -460,36 +445,6 @@ namespace YelloKiller
             }
         }
 
-
-        public Vector2 PositionDesiree
-        {
-            get { return positionDesiree; }
-        }
-
-        public bool Regarder_Haut
-        {
-            get { return regarde_haut; }
-            set { regarde_haut = value; }
-        }
-
-        public bool Regarder_Bas
-        {
-            get { return regarde_bas; }
-            set { regarde_bas = value; }
-        }
-
-        public bool Regarder_Droite
-        {
-            get { return regarde_droite; }
-            set { regarde_droite = value; }
-        }
-
-        public bool Regarder_Gauche
-        {
-            get { return regarde_gauche; }
-            set { regarde_gauche = value; }
-        }
-
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
         {
             if (numeroHero == 1)
@@ -527,6 +482,46 @@ namespace YelloKiller
                 spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 100, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
             }
             base.Draw(spriteBatch, camera);
+        }
+
+        public Rectangle Rectangle
+        {
+            get { return rectangle; }
+        }
+
+        public Vector2 PositionDesiree
+        {
+            get { return positionDesiree; }
+        }
+
+        public bool Regarder_Haut
+        {
+            get { return regarde_haut; }
+            set { regarde_haut = value; }
+        }
+
+        public bool Regarder_Bas
+        {
+            get { return regarde_bas; }
+            set { regarde_bas = value; }
+        }
+
+        public bool Regarder_Droite
+        {
+            get { return regarde_droite; }
+            set { regarde_droite = value; }
+        }
+
+        public bool Regarder_Gauche
+        {
+            get { return regarde_gauche; }
+            set { regarde_gauche = value; }
+        }
+
+        public int NombreShuriken
+        {
+            get { return nombreShuriken; }
+            set { nombreShuriken = value; }
         }
     }
 }
