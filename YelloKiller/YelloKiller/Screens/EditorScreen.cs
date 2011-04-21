@@ -255,7 +255,7 @@ namespace YelloKiller
 
         public void SauvegardeMap()
         {
-            if (enableOrigine1 && enableOrigine2)
+            if (enableOrigine1 && enableOrigine2 || _originesBoss.Count == 0)
                 afficheMessageErreur = true;
             else
             {
