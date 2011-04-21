@@ -32,7 +32,7 @@ namespace YelloKiller
         List<Vector2> bonusShurikens;
         Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval, fond;
         bool fileExist;
-        int compteur;
+        int compteur, salaire;
 
         bool enableOrigine1, enableOrigine2, enableSave, afficheMessageErreur;
         double chronometre = 0;
@@ -74,6 +74,7 @@ namespace YelloKiller
 
             origine1 = carte.OrigineJoueur1;
             origine2 = carte.OrigineJoueur2;
+            salaire = 1000000;
 
             enableOrigine1 = (carte.OrigineJoueur1 == -Vector2.One);
             enableOrigine2 = (carte.OrigineJoueur2 == -Vector2.One);
@@ -471,6 +472,8 @@ namespace YelloKiller
                     sauvegarde.WriteLine(bonus.Y);
                 }
 
+                sauvegarde.WriteLine("Salaire");
+                sauvegarde.WriteLine(salaire);
                 sauvegarde.Close();
                 enableSave = false;
             }
