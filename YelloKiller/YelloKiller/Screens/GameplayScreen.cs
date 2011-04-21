@@ -8,47 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using YelloKiller.Moteur_Particule;
 
 namespace YelloKiller
-{
-    public enum TypeCase // Valeur strictement positive pour les cases franchissables, negative sinon.
-    {
-        arbre = -1,
-        buissonSurHerbe = -2,
-        finMurDroite = -3,
-        finMurFN = -4,
-        finMurGauche = -5,
-        fondNoir = -7,
-        /*Entre -50 et -74 pour des carres de 2*2 */
-        arbre2 = -50,
-        commode = -51,
-        tableauMurBlanc = -52,
-        TableMoyenne = -53,
-        murBlanc = -54,
-        /*Entre -75 et -99 pour des carres de 3*3 */
-        GrandeTable = -75,
-        Lit = -76,
-
-        bois = 1,
-        boisCarre = 2,
-        tapisRougeBC = 3,
-        herbe = 4,
-        herbeFoncee = 5,
-        piedDeMurBois = 6,
-        terre = 7,
-        carlageNoir = 8,
-
-        fond = -6,
-
-        Joueur1 = 100,
-        Joueur2 = 101,
-        Garde = 102,
-        Patrouilleur = 103,
-        Patrouilleur_a_cheval = 104,
-        Boss = 105,
-        Statues = 106,
-
-        BonusShuriken = 200,
-    }
-
+{    
     public class GameplayScreen : GameScreen
     {
         #region Fields

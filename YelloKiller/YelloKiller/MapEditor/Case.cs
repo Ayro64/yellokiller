@@ -568,4 +568,66 @@ namespace YelloKiller
             spriteBatch.Draw(texture, 0.1f * 28 *  new Vector2(position.X, position.Y) + new Vector2(origine.X, origine.Y), null, Color.White, 0, Vector2.Zero, 0.19f, SpriteEffects.None, 0);
         }
     }
+
+   public enum TypeCase // Valeur strictement positive pour les cases franchissables, negative sinon.
+   {
+       arbre = -1,
+
+       buissonSurHerbe = -14,
+       coinbotdroit = -15,
+       coinbotgauche = -16,
+       cointopdroit = -17,
+       cointopgauche = -18,
+       finMurDroit = -19,
+       finMurGauche = -20,
+       fondNoir = -21,
+       piedMurBois = -22,
+
+       commode = -50,
+       lit = -51,
+       mur = -52,
+       murBlanc = -53,
+       murBlancDrap = -54,
+       murBlancEpee = -55,
+       murBlancTableau = -56,
+       murEpee = -57,
+       murTableau = -58,
+       tableauMurBlanc = -59,
+       tableMoyenne = -60,
+
+       grandeTable = -75,
+       grandeTableDeco = -76,
+
+       nvlHerbe = 50,
+       parquet = 51,
+       parquetArbre = 52,
+       parquetBuisson = 53,
+
+       bois = 5,
+       boisCarre = 6,
+       boisDeco = 7,
+       carlageNoir = 8,
+       carlageNoirDeco = 9,
+       herbe = 10,
+       herbeDeco = 11,
+       herbeFoncee = 12,
+       herbeH = 13,
+       tapisRougeBC = 14,
+       terre = 15,
+       finMurBas = 16,
+       finMurHaut = 17,
+
+       pont1 = 18,
+       pont2 = 19,
+
+       Joueur1 = 100,
+       Joueur2 = 101,
+       Garde = 102,
+       Patrouilleur = 103,
+       Patrouilleur_a_cheval = 104,
+       Boss = 105,
+       Statues = 106,
+
+       BonusShuriken = 200,
+   }
 }
