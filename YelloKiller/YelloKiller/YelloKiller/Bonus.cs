@@ -3,30 +3,35 @@ using Microsoft.Xna.Framework.Content;
 
 namespace YelloKiller
 {
-    public enum Pouvoir
+    public enum TypeBonus
     {
         shuriken = 0,
     }
 
     class Bonus : Sprite
     {
-        Pouvoir pouvoir;
+        TypeBonus typeBonus;
 
-        public Bonus(Vector2 position, Pouvoir pouvoir)
+        public Bonus(Vector2 position, TypeBonus pouvoir)
             : base(position)
         {
-            this.pouvoir = pouvoir;
+            this.typeBonus = pouvoir;
 
         }
 
         public void LoadContent(ContentManager content)
         {
-            switch (pouvoir)
+            switch (typeBonus)
             {
-                case Pouvoir.shuriken:
+                case TypeBonus.shuriken:
                     LoadContent(content, "bonusShuriken");
                     break;
             }
+        }
+
+        public TypeBonus TypeBonus
+        {
+            get { return typeBonus; }
         }
     }
 }

@@ -243,48 +243,6 @@ namespace YelloKiller
             return false;
         }
 
-        static public bool Collision_Garde_Hero(List<Garde> _gardes, Hero hero, SoundBank soundBank)
-        {
-            for (int b = 0; b < _gardes.Count; b++)
-            {
-                if (_gardes[b].Rectangle.Intersects(hero.Rectangle))
-                {
-                    ServiceHelper.Get<IGamePadService>().Vibration(50);
-                    soundBank.PlayCue("CriMortHero");
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        static public bool Collision_Patrouilleur_Hero(List<Patrouilleur> _patrouilleurs, Hero hero, SoundBank soundBank)
-        {
-            for (int b = 0; b < _patrouilleurs.Count; b++)
-            {
-                if (_patrouilleurs[b].Rectangle.Intersects(hero.Rectangle))
-                {
-                    ServiceHelper.Get<IGamePadService>().Vibration(50);
-                    soundBank.PlayCue("CriMortHero");
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        static public bool Collision_PatrouilleurACheval_Hero(List<Patrouilleur_a_cheval> _patrouilleursAChevaux, Hero hero, SoundBank soundBank)
-        {
-            for (int b = 0; b < _patrouilleursAChevaux.Count; b++)
-            {
-                if (_patrouilleursAChevaux[b].Rectangle.Intersects(hero.Rectangle))
-                {
-                    ServiceHelper.Get<IGamePadService>().Vibration(50);
-                    soundBank.PlayCue("CriMortHero");
-                    return true;
-                }
-            }
-            return false;
-        }
-
         static public bool Collision_Boss_Hero(List<Boss> _Boss, Hero hero, SoundBank soundBank)
         {
             for (int b = 0; b < _Boss.Count; b++)
@@ -299,6 +257,40 @@ namespace YelloKiller
             return false;
         }
 
-        //static public bool Collision_Heros_Bonus(
+        static public void Collision_Heros_Bonus(ref Hero hero1, ref Hero hero2, ref List<Bonus> bonus)
+        {
+            for (int u = 0; u < bonus.Count; u++)
+            {
+                if (hero1.X == bonus[u].X && hero1.Y == bonus[u].Y)
+                {
+                    Console.WriteLine("HAHAHA");
+                    switch (bonus[u].TypeBonus)
+                    {
+                        case TypeBonus.shuriken:
+                            hero1.NombreShuriken += 3;
+                            bonus.RemoveAt(u);
+                            break;
+                    }
+                }
+            }
+
+            if (hero2 != null)
+            {
+                for (int u = 0; u < bonus.Count; u++)
+                {
+                    if (hero2.X == bonus[u].X && hero2.Y == bonus[u].Y)
+                    {
+                        Console.WriteLine("HAHAHA");
+                        switch (bonus[u].TypeBonus)
+                        {
+                            case TypeBonus.shuriken:
+                                hero1.NombreShuriken += 3;
+                                bonus.RemoveAt(u);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

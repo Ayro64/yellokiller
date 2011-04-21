@@ -69,7 +69,6 @@ namespace YelloKiller
         List<Boss> _boss;
         List<Statue> _statues;
         List<Bonus> _bonus;
-        List<Vector2> invisible;
 
         //timer
         private static double timer = 0;
@@ -171,7 +170,7 @@ namespace YelloKiller
 
             _bonus = new List<Bonus>();
             foreach (Vector2 bonus in carte.BonusShuriken)
-                _bonus.Add(new Bonus(28 * bonus, Pouvoir.shuriken));
+                _bonus.Add(new Bonus(28 * bonus, TypeBonus.shuriken));
         }
 
         public override void LoadContent()
@@ -265,6 +264,7 @@ namespace YelloKiller
                 if (Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game));
 
+                Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus);
                 if (_boss.Count == 0)
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, Temps.Conversion(temps), game));

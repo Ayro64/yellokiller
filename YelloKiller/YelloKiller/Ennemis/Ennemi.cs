@@ -228,16 +228,6 @@ namespace YelloKiller
             set { rectangle = value; }
         }
 
-        public int X
-        {
-            get { return (int)position.X / 28; }
-        }
-
-        public int Y
-        {
-            get { return (int)position.Y / 28; }
-        }
-
         public int VitesseSprite
         {
             get { return vitesseSprite; }
