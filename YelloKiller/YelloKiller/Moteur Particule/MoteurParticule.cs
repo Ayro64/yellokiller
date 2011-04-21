@@ -11,7 +11,8 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
-         Hero hero;
+        public Hero Hero
+        { get; set; }
 
         private static Random random = new Random();
         public static Random Random
@@ -124,7 +125,7 @@ namespace YelloKiller.Moteur_Particule
 
         public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Carte carte, Hero hero, List<Statue> _statue)
         {
-            this.hero = hero;
+            Hero = hero;
             this.game = game;
             this.spriteBatch = spriteBatch;
 
@@ -152,12 +153,12 @@ namespace YelloKiller.Moteur_Particule
 
         #endregion
 
-        public void UpdateFumigene(Rectangle camera)
+        public void UpdateFumigene(Hero hero, Rectangle camera)
         {
             fumigene.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }
 
-        public void UpdateExplosions_hero(Rectangle camera)
+        public void UpdateExplosions_hero(Hero hero, Rectangle camera)
         {
             hadoken_hero.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
             fume_hadoken.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
@@ -168,7 +169,7 @@ namespace YelloKiller.Moteur_Particule
             explosion_statue.AddParticles(new Vector2(statue.position.X - camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
         }
 
-        public void UpdateBall(Rectangle camera)
+        public void UpdateBall(Hero hero, Rectangle camera)
         {
             ball.AddParticles(new Vector2(hero.position.X - camera.X, hero.position.Y - camera.Y), hero);
         }
