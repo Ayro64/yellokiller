@@ -12,7 +12,7 @@ namespace YelloKiller
         Case[,] _case;
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
         List<byte> rotationsDesStatues;
-        List<Vector2> _originesGarde, _originesBoss, _originesStatues;
+        List<Vector2> _originesGarde, _originesBoss, _originesStatues, bonusShurikens;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
 
         public Carte(Vector2 size)
@@ -27,6 +27,7 @@ namespace YelloKiller
             _originesBoss = new List<Vector2>();
             _originesStatues = new List<Vector2>();
             rotationsDesStatues = new List<byte>();
+            bonusShurikens = new List<Vector2>();
         }
 
         public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
@@ -135,7 +136,7 @@ namespace YelloKiller
             line = file.ReadLine();
             line = file.ReadLine();
 
-            while (line != "Patrouilleurs")
+            while (line != "Patrouilleurs" && line != null)
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
@@ -146,7 +147,7 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != "Patrouilleurs A Cheval")
+            while (line != "Patrouilleurs A Cheval" && line != null)
             {
                 line = file.ReadLine();
                 _originesPatrouilleur.Add(new List<Vector2>());
@@ -163,7 +164,7 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != "Boss")
+            while (line != "Boss" && line != null)
             {
                 line = file.ReadLine();
                 _originesPatrouilleur_a_cheval.Add(new List<Vector2>());
@@ -180,7 +181,7 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != "Statue dragon")
+            while (line != "Statue dragon" && line != null)
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
@@ -191,7 +192,7 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != null)
+            while (line != "Bonus Shurikens" && line != null)
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
@@ -199,6 +200,17 @@ namespace YelloKiller
                 _originesStatues.Add(positionTemporaire);
                 line = file.ReadLine();
                 rotationsDesStatues.Add(Convert.ToByte(line));
+                line = file.ReadLine();
+            }
+
+            line = file.ReadLine();
+
+            while (line != null)
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                bonusShurikens.Add(positionTemporaire);
                 line = file.ReadLine();
             }
 
@@ -309,6 +321,11 @@ namespace YelloKiller
         public Vector2 OrigineJoueur2
         {
             get { return origineJoueur2; }
+        }
+        
+        public List<Vector2> BonusShuriken
+        {
+            get { return bonusShurikens; }
         }
 
         public Case[,] Cases

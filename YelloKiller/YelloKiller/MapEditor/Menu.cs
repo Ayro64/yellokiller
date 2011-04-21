@@ -33,6 +33,7 @@ namespace YelloKiller
             listeTexturesGauche.Add(content.Load<Texture2D>("origine_patrouilleur_a_cheval"));
             listeTexturesGauche.Add(content.Load<Texture2D>("origine_boss"));
             listeTexturesGauche.Add(content.Load<Texture2D>("origine_statue"));
+            listeTexturesGauche.Add(content.Load<Texture2D>("bonusShuriken"));
 
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\arbre"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\arbre2"));

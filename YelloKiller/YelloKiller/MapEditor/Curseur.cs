@@ -46,67 +46,67 @@ namespace YelloKiller
                     texture = menu.ListeTexturesDroite[i];
                     switch (i)
                     {
-                        case (0):
+                        case 0:
                             type = TypeCase.arbre;
                             break;
-                        case (1):
+                        case 1:
                             type = TypeCase.arbre2;
                             break;
-                        case (2):
+                        case 2:
                             type = TypeCase.buissonSurHerbe;
                             break;
-                        case (3):
+                        case 3:
                             type = TypeCase.murBlanc;
                             break;
-                        case (4):
+                        case 4:
                             type = TypeCase.tableauMurBlanc;
                             break;
-                        case (5):
+                        case 5:
                             type = TypeCase.bois;
                             break;
-                        case (6):
+                        case 6:
                             type = TypeCase.boisCarre;
                             break;
-                        case (7):
+                        case 7:
                             type = TypeCase.tapisRougeBC;
                             break;
-                        case (8):
+                        case 8:
                             type = TypeCase.herbe;
                             break;
-                        case (9):
+                        case 9:
                             type = TypeCase.herbeFoncee;
                             break;
-                        case (10):
+                        case 10:
                             type = TypeCase.piedDeMurBois;
                             break;
-                        case (11):
+                        case 11:
                             type = TypeCase.terre;
                             break;
-                        case (12):
+                        case 12:
                             type = TypeCase.carlageNoir;
                             break;
-                        case (13):
+                        case 13:
                             type = TypeCase.fondNoir;
                             break;
-                        case (14):
+                        case 14:
                             type = TypeCase.finMurFN;
                             break;
-                        case (15):
+                        case 15:
                             type = TypeCase.finMurGauche;
                             break;
-                        case (16):
+                        case 16:
                             type = TypeCase.finMurDroite;
                             break;
-                        case (17):
+                        case 17:
                             type = TypeCase.Lit;
                             break;
-                        case (18):
+                        case 18:
                             type = TypeCase.commode;
                             break;
-                        case (19):
+                        case 19:
                             type = TypeCase.TableMoyenne;
                             break;
-                        case (20):
+                        case 20:
                             type = TypeCase.GrandeTable;
                             break;
                     }
@@ -122,26 +122,29 @@ namespace YelloKiller
                     texture = menu.ListeTexturesGauche[b];
                     switch (b)
                     {
-                        case (0):
+                        case 0:
                             type = TypeCase.Joueur1;
                             break;
-                        case (1):
+                        case 1:
                             type = TypeCase.Joueur2;
                             break;
-                        case (2):
+                        case 2:
                             type = TypeCase.Garde;
                             break;
-                        case (3):
+                        case 3:
                             type = TypeCase.Patrouilleur;
                             break;
-                        case (4):
+                        case 4:
                             type = TypeCase.Patrouilleur_a_cheval;
                             break;
-                        case (5):
+                        case 5:
                             type = TypeCase.Boss;
                             break;
-                        case (6):
+                        case 6:
                             type = TypeCase.Statues;
+                            break;
+                        case 7:
+                            type = TypeCase.BonusShuriken;
                             break;
                     }
 
