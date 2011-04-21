@@ -128,7 +128,7 @@ namespace YelloKiller
             this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[0] == 'C';
-            MoteurParticule.Camera = this.camera;
+            MoteurParticule.Camera = new Vector2(camera.X, camera.Y) ;
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
