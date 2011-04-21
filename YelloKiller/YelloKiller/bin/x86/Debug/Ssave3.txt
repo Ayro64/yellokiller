@@ -94,5 +94,6 @@ Boss
 41
 4
 Statue dragon
+Bonus Shurikens
 Salaire
 1000000

@@ -95,5 +95,6 @@ Statue dragon
 25
 11
 2
+Bonus Shurikens
 Salaire
 1000000

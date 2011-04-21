@@ -76,5 +76,6 @@ Boss
 42
 42
 Statue dragon
+Bonus Shurikens
 Salaire
 1000000
