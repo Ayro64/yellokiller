@@ -135,7 +135,7 @@ namespace YelloKiller
                             break;
                         }
                 }
-            }                      
+            }
 
             if (_Boss.Count != 0)
             {
@@ -152,7 +152,7 @@ namespace YelloKiller
                         _Boss[i].Vie = _Boss[i].Vie - 2;
                         // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
                         // appel sinon le boss perd sa vie d un coup.
-                        particule.Rectangle_Hadoken_Est_Present_Hero1 = false;       
+                        particule.Rectangle_Hadoken_Est_Present_Hero1 = false;
                     }
                     else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
@@ -303,15 +303,28 @@ namespace YelloKiller
             return false;
         }
 
-        static public bool Collision_Boss_Hero(List<Boss> _Boss, Hero hero, SoundBank soundBank)
+        static public bool Collision_Heros_ExplosionStatues(List<Statue> _statues, Hero hero1, Hero hero2, MoteurParticule particule, SoundBank soundBank)
         {
-            for (int b = 0; b < _Boss.Count; b++)
+            if (_statues.Count != 0)
             {
-                if (_Boss[b].Rectangle.Intersects(hero.Rectangle))
+                for (int i = 0; i < _statues.Count; i++)
                 {
-                    ServiceHelper.Get<IGamePadService>().Vibration(50);
-                    soundBank.PlayCue("CriMortHero");
-                    return true;
+                    if (hero1.Rectangle.Intersects(particule.Rectangle_Hadoken_Statue(_statues[i])))
+                    {
+                        ServiceHelper.Get<IGamePadService>().Vibration(50);
+                        soundBank.PlayCue("CriMortHero");
+                        return true;
+                    }
+                    if (hero2 != null)
+                    {
+                        if (hero2.Rectangle.Intersects(particule.Rectangle_Hadoken_Statue(_statues[i])))
+                        {
+                            ServiceHelper.Get<IGamePadService>().Vibration(50);
+                            soundBank.PlayCue("CriMortHero");
+                            return true;
+                        }
+
+                    }
                 }
             }
             return false;
