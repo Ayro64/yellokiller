@@ -11,20 +11,13 @@ namespace YelloKiller
         TypeCase type;
         string nomTexture;
         int x, y;
-        bool estFranchissable;
         Vector3 etienne;
 
-        public Case(Vector2 position, TypeCase type, Vector3 etienne, bool estFranchissable)
+        public Case(Vector2 position, TypeCase type, Vector3 etienne)
         {
             this.position = position;
             this.type = type;
             this.etienne = etienne;
-            this.estFranchissable = estFranchissable;
-
-            if ((int)type > 0)
-                estFranchissable = true;
-            else
-                estFranchissable = false;
 
             x = (int)position.X / 28;
             y = (int)position.Y / 28;
