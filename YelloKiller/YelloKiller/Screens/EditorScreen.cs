@@ -85,7 +85,7 @@ namespace YelloKiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu ci-dessous.
-            menu = new Menu(content, 21, 8/*<-- ici*/);
+            menu = new Menu(content, 42, 8/*<-- ici*/);
             curseur = new Curseur(content);
             ascenseur1 = new Ascenseur(content, Taille_Ecran.LARGEUR_ECRAN - 28);
             ascenseur2 = new Ascenseur(content, 0);
