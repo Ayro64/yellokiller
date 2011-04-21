@@ -85,20 +85,24 @@ namespace YelloKiller
                             return "Volume de la musique : ";
                         case ("OptFX"):
                             return "Volume des sons : ";
-                        case("WinMsg"):
+                        case ("WinMsg"):
                             return "Cible éliminée!";
-                        case("WiNext"):
+                        case ("WiNext"):
                             return "Niveau suivant";
-                        case("WiRetry"):
+                        case ("WiRetry"):
                             return "Refaire le niveau";
-                        case("Time"):
+                        case ("Time"):
                             return "Temps : ";
-                        case("Killed"):
+                        case ("Killed"):
                             return "Gardes tués : ";
-                        case("Retries"):
+                        case ("Retries"):
                             return "Tentatives : ";
-                        case("Score"):
+                        case ("Score"):
                             return "Solde : ";
+                        case ("BaseSalary"):
+                            return "Salaire de base : ";
+                        case ("Penalties"):
+                            return "Pénalités : ";
                         default:
                             return "";
                     }
@@ -190,6 +194,10 @@ namespace YelloKiller
                             return "Versuche : ";
                         case ("Score"):
                             return "Lohn : ";
+                        case ("BaseSalary"):
+                            return "Grundgehalt : ";
+                        case ("Penalties"):
+                            return "Strafen : ";
                         default:
                             return "";
                     }
@@ -281,6 +289,10 @@ namespace YelloKiller
                             return "Retries : ";
                         case ("Score"):
                             return "Pay : ";
+                        case ("BaseSalary"):
+                            return "Base Salary : ";
+                        case ("Penalties"):
+                            return "Penalties : ";
                         default:
                             return "";
                     }
