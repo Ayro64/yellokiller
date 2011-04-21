@@ -293,7 +293,7 @@ namespace YelloKiller
                 Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus);
                 if (_boss.Count == 0)
                 {
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), game));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
                     audio.Close();
                     moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 }
@@ -393,7 +393,7 @@ namespace YelloKiller
             {
                 moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 audio.Close();
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, temps, game));
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.M))
