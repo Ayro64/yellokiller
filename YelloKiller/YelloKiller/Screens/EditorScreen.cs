@@ -597,8 +597,6 @@ namespace YelloKiller
                 {
                     for (int x = 0; x < 2; x++)
                         for (int y = 0; y < 2; y++)
-                        /*if ((int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)*/
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 2 * y + 1;
@@ -611,8 +609,6 @@ namespace YelloKiller
                 {
                     for (int x = 0; x < 3; x++)
                         for (int y = 0; y < 3; y++)
-                        /*if ((int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)*/
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 3 * y + 1;
@@ -624,8 +620,6 @@ namespace YelloKiller
                 if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 1))
                 {
                     for (int x = 0; x < 2; x++)
-                    /*if ((int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
-                        if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)*/
                     {
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Z = x + 1;
@@ -638,8 +632,6 @@ namespace YelloKiller
                 {
                     for (int x = 0; x < 2; x++)
                         for (int y = 0; y < 3; y++)
-                        /*if ((int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
-                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)*/
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 2 * y + 1;
@@ -659,9 +651,6 @@ namespace YelloKiller
                 for (int y = 0; y < hauteur; y++)
                     if (carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type == curseur.Type)
                         return false;
-
-            /*if ((int)carte.Cases[(int)curseur.Position.Y + camera.Y + hauteur - 1, (int)curseur.Position.X + camera.X + largeur - 1].Type < 0)
-                return false;*/
 
             return true;
         }
