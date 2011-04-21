@@ -11,13 +11,34 @@ namespace YelloKiller
         TypeCase type;
         string nomTexture;
         int x, y;
+        bool estFranchissable;
+        Vector3 etienne;
 
-        public Case(Vector2 position, TypeCase type)
+        public Case(Vector2 position, TypeCase type, Vector3 etienne, bool estFranchissable)
         {
             this.position = position;
             this.type = type;
+            this.etienne = etienne;
+            this.estFranchissable = estFranchissable;
+
+            if ((int)type > 0)
+                estFranchissable = true;
+            else
+                estFranchissable = false;
+
             x = (int)position.X / 28;
             y = (int)position.Y / 28;
+        }
+
+        public Vector3 Etienne
+        {
+            get { return etienne; }
+            set { etienne = value; }
+        }
+
+        public int Z
+        {
+            set { etienne.Z = value; }
         }
 
         public Vector2 Position
@@ -47,71 +68,462 @@ namespace YelloKiller
             switch (type)
             {
                 case TypeCase.arbre:
-                    nomTexture = @"Textures\arbre";
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\Arbre\arbre1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\Arbre\arbre2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\Arbre\arbre3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\Arbre\arbre4";
+                            break;
+                        case 5:
+                            nomTexture = @"Textures\Arbre\arbre5";
+                            break;
+                        case 6:
+                            nomTexture = @"Textures\Arbre\arbre6";
+                            break;
+                    }
                     break;
-                case TypeCase.arbre2:
-                    nomTexture = @"Textures\arbre2";
+                case TypeCase.pont1:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\ponts\pont11";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\ponts\pont12";
+                            break;
+                    }
                     break;
-                case TypeCase.buissonSurHerbe:
-                    nomTexture = @"Textures\buissonSurHerbe";
+                case TypeCase.pont2:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\ponts\pont21";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\ponts\pont22";
+                            break;
+                    }
                     break;
+
+                case TypeCase.commode:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\commode\commode1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\commode\commode2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\commode\commode3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\commode\commode4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.lit:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\lit\lit1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\lit\lit2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\lit\lit3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\lit\lit4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.mur:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\mur\mur\mur1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\mur\mur\mur2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\mur\mur\mur3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\mur\mur\mur4";
+                            break;
+                    }
+                    break;
+
                 case TypeCase.murBlanc:
-                    nomTexture = @"Textures\murBlanc";
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\mur\murBlanc\murBlanc1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\mur\murBlanc\murBlanc2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\mur\murBlanc\murBlanc3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\mur\murBlanc\murBlanc4";
+                            break;
+                    }
                     break;
+
+                case TypeCase.murBlancDrap:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\mur\MurBlancdrap\MurBlancdrap1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\mur\MurBlancdrap\MurBlancdrap2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\mur\MurBlancdrap\MurBlancdrap3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\mur\MurBlancdrap\MurBlancdrap4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.murBlancEpee:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\mur\murblancepee\MurBlancEpee1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\mur\murblancepee\MurBlancEpee2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\mur\murblancepee\MurBlancEpee3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\mur\murblancepee\MurBlancEpee4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.murBlancTableau:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\mur\murblanctableau\MurBlanctableau1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\mur\murblanctableau\MurBlanctableau2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\mur\murblanctableau\MurBlanctableau3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\mur\murblanctableau\MurBlanctableau4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.murEpee:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\mur\murepee\murepee1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\mur\murepee\murepee2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\mur\murepee\murepee3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\mur\murepee\murepee4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.murTableau:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\mur\murtableau\murtableau1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\mur\murtableau\murtableau2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\mur\murtableau\murtableau3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\mur\murtableau\murtableau4";
+                            break;
+                    }
+                    break;
+
                 case TypeCase.tableauMurBlanc:
-                    nomTexture = @"Textures\tableauMurBlanc";
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\mur\tableauMurBlanc\tableauMurBlanc1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\mur\tableauMurBlanc\tableauMurBlanc2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\mur\tableauMurBlanc\tableauMurBlanc3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\mur\tableauMurBlanc\tableauMurBlanc4";
+                            break;
+                    }
                     break;
-                case TypeCase.bois:
-                    nomTexture = @"Textures\bois";
+
+                case TypeCase.tableMoyenne:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\tableMoyenne\tableMoyenne1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\tableMoyenne\tableMoyenne2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\tableMoyenne\tableMoyenne3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\tableMoyenne\tableMoyenne4";
+                            break;
+                    }
                     break;
-                case TypeCase.boisCarre:
-                    nomTexture = @"Textures\boisCarre";
+
+                case TypeCase.nvlHerbe:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\herbe\nvlherbe1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\herbe\nvlherbe2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\herbe\nvlherbe3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\herbe\nvlherbe4";
+                            break;
+                    }
                     break;
-                case TypeCase.tapisRougeBC:
-                    nomTexture = @"Textures\tapisRougeBC";
+
+                case TypeCase.parquet:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\parquet\parquet\parquet1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\parquet\parquet\parquet2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\parquet\parquet\parquet3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\parquet\parquet\parquet4";
+                            break;
+                    }
                     break;
-                case TypeCase.herbe:
-                    nomTexture = @"Textures\herbe";
+
+                case TypeCase.parquetArbre:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\parquet\parquetarbre\parquetarbre1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\parquet\parquetarbre\parquetarbre2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\parquet\parquetarbre\parquetarbre3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\parquet\parquetarbre\parquetarbre4";
+                            break;
+                    }
                     break;
-                case TypeCase.herbeFoncee:
-                    nomTexture = @"Textures\herbeFoncee";
+
+                case TypeCase.parquetBuisson:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\parquet\parquetbuisson\parquetbuisson1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\parquet\parquetbuisson\parquetbuisson2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\parquet\parquetbuisson\parquetbuisson3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\parquet\parquetbuisson\parquetbuisson4";
+                            break;
+                    }
                     break;
-                case TypeCase.piedDeMurBois:
-                    nomTexture = @"Textures\piedDeMurBois";
+
+
+                case TypeCase.grandeTable:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\grandeTable\grandeTable1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\grandeTable\grandeTable2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\grandeTable\grandeTable3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\grandeTable\grandeTable4";
+                            break;
+                        case 5:
+                            nomTexture = @"Textures\grandeTable\grandeTable5";
+                            break;
+                        case 6:
+                            nomTexture = @"Textures\grandeTable\grandeTable6";
+                            break;
+                        case 7:
+                            nomTexture = @"Textures\grandeTable\grandeTable7";
+                            break;
+                        case 8:
+                            nomTexture = @"Textures\grandeTable\grandeTable8";
+                            break;
+                        case 9:
+                            nomTexture = @"Textures\grandeTable\grandeTable9";
+                            break;
+                    }
                     break;
-                case TypeCase.terre:
-                    nomTexture = @"Textures\terre";
+
+                case TypeCase.grandeTableDeco:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco4";
+                            break;
+                        case 5:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco5";
+                            break;
+                        case 6:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco6";
+                            break;
+                        case 7:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco7";
+                            break;
+                        case 8:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco8";
+                            break;
+                        case 9:
+                            nomTexture = @"Textures\grandeTableDeco\grandeTableDeco9";
+                            break;
+                    }
                     break;
-                case TypeCase.carlageNoir:
-                    nomTexture = @"Textures\carlageNoir";
+
+
+
+                case TypeCase.buissonSurHerbe:
+                    nomTexture = @"Textures\petites\buissonSurHerbe";
                     break;
-                case TypeCase.fondNoir:
-                    nomTexture = @"Textures\fondNoir";
+                case TypeCase.coinbotdroit:
+                    nomTexture = @"Textures\petites\coinbotdroit";
                     break;
-                case TypeCase.finMurFN:
-                    nomTexture = @"Textures\FinMurFN";
+                case TypeCase.coinbotgauche:
+                    nomTexture = @"Textures\petites\coinbotgauche";
+                    break;
+                case TypeCase.cointopdroit:
+                    nomTexture = @"Textures\petites\cointopdroit";
+                    break;
+                case TypeCase.cointopgauche:
+                    nomTexture = @"Textures\petites\cointopgauche";
+                    break;
+                case TypeCase.finMurDroit:
+                    nomTexture = @"Textures\petites\finMurDroit";
                     break;
                 case TypeCase.finMurGauche:
-                    nomTexture = @"Textures\FinMurGauche";
+                    nomTexture = @"Textures\petites\finMurGauche";
                     break;
-                case TypeCase.finMurDroite:
-                    nomTexture = @"Textures\FinMurDroite";
+                case TypeCase.fondNoir:
+                    nomTexture = @"Textures\petites\fondNoir";
                     break;
-                case TypeCase.commode:
-                    nomTexture = @"Textures\Commode";
+                case TypeCase.piedMurBois:
+                    nomTexture = @"Textures\petites\piedMurBois";
                     break;
-                case TypeCase.TableMoyenne:
-                    nomTexture = @"Textures\tableMoyenne";
+                case TypeCase.bois:
+                    nomTexture = @"Textures\petites\bois";
                     break;
-                case TypeCase.GrandeTable:
-                    nomTexture = @"Textures\grandeTable";
+                case TypeCase.boisCarre:
+                    nomTexture = @"Textures\petites\boisCarre";
                     break;
-                case TypeCase.Lit:
-                    nomTexture = @"Textures\lit";
+                case TypeCase.boisDeco:
+                    nomTexture = @"Textures\petites\boisDeco";
                     break;
-                case TypeCase.fond:
-                    nomTexture = @"Textures\fondNoir";
+                case TypeCase.carlageNoir:
+                    nomTexture = @"Textures\petites\carlageNoir";
                     break;
+                case TypeCase.carlageNoirDeco:
+                    nomTexture = @"Textures\petites\carlageNoirDeco";
+                    break;
+                case TypeCase.herbe:
+                    nomTexture = @"Textures\petites\herbe";
+                    break;
+                case TypeCase.herbeDeco:
+                    nomTexture = @"Textures\petites\herbeDeco";
+                    break;
+                case TypeCase.herbeFoncee:
+                    nomTexture = @"Textures\petites\herbeFoncee";
+                    break;
+                case TypeCase.herbeH:
+                    nomTexture = @"Textures\petites\herbeH";
+                    break;
+                case TypeCase.tapisRougeBC:
+                    nomTexture = @"Textures\petites\tapisRougeBC";
+                    break;
+                case TypeCase.terre:
+                    nomTexture = @"Textures\petites\terre";
+                    break;
+                case TypeCase.finMurBas:
+                    nomTexture = @"Textures\petites\finMurBas";
+                    break;
+                case TypeCase.finMurHaut:
+                    nomTexture = @"Textures\petites\finMurHaut";
+                    break;
+
+
+
+
+
+
 
                 case TypeCase.Joueur1:
                     nomTexture = "origine_hero1";
