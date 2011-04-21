@@ -106,6 +106,9 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
+                GameplayScreen.Timer_Update_Collision += gameTime.ElapsedGameTime.TotalSeconds;
+
             if (SourceRectangle.Value.Y == 133 - state_sabre)
                 regarde_haut = true;
             else
