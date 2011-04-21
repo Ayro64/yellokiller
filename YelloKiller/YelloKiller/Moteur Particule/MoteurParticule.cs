@@ -241,23 +241,23 @@ namespace YelloKiller.Moteur_Particule
 
         public void UpdateFumigene(Hero hero)
         {
-            fumigene.AddParticles(new Vector2(hero.position.X, hero.position.Y), hero);
+            fumigene.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
         }
 
         public void UpdateExplosions_hero(Hero hero)
         {
-            hadoken_hero.AddParticles(new Vector2(hero.position.X, hero.position.Y), hero);
-            fume_hadoken.AddParticles(new Vector2(hero.position.X, hero.position.Y), hero);
+            hadoken_hero.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+            fume_hadoken.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
         }
 
         public void UpdateExplosions_statue(Statue statue)
         {
-            explosion_statue.AddParticles(new Vector2(statue.position.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y  + (statue.SourceRectangle.Value.Height / 2)), statue);
+            explosion_statue.AddParticles(new Vector2(statue.position.X - Camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - Camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
         }
 
         public void UpdateBall(Hero hero)
         {
-            ball.AddParticles(new Vector2(hero.position.X, hero.position.Y), hero);
+            ball.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
         }
 
         public static float RandomBetween(float min, float max) // random utiliser pour toutes les proprietes 
