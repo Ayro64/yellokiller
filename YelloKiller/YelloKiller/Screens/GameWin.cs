@@ -15,7 +15,7 @@ namespace YelloKiller
         MenuEntry restartMenuEntry;
         MenuEntry abortMenuEntry;
         int selectedEntry = 0;
-        uint solde, deaths, restart;
+        uint salaire, deaths, restart;
         ContentManager content;
         Texture2D winTexture, blankTexture, scroll;
         YellokillerGame game;
@@ -32,24 +32,28 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public GameWin(string comingfrom, uint solde, double levelTime, uint deaths, uint retries,  YellokillerGame game)
+        public GameWin(string comingfrom, uint salaire, double levelTime, uint deaths, uint retries, YellokillerGame game)
         {
             this.game = game;
             this.comingfrom = comingfrom;
-            this.solde = solde;
+            this.salaire = salaire;
             this.deaths = deaths;
             this.restart = retries;
 
             temps = levelTime;
 
-            baseSalary = Langue.tr("BaseSalary") + solde;
+            baseSalary = Langue.tr("BaseSalary") + salaire;
             penalties = Langue.tr("Penalties");
             WinMessage = Langue.tr("WinMsg");
-            killed = Langue.tr("Killed") + deaths;
-            time = Langue.tr("Time") + Temps.Conversion(levelTime);
-            this.retries = Langue.tr("Retries") + retries;
-            score = Langue.tr("Score");
-            
+            time = Langue.tr("Time") + Temps.Conversion(levelTime) + " --> " + (int)(-levelTime * 10);
+            killed = Langue.tr("Killed") + deaths + " x 1 000 --> " + (-deaths * 1000);
+            this.retries = Langue.tr("Retries") + retries + " x 10 000 --> " + (-retries * 10000);
+
+            salaire -= (deaths * 1000) + (uint)(levelTime * 10) + (retries * 10000);
+            if (salaire < 0)
+                salaire = 0;
+            score = Langue.tr("Score") + salaire;
+
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
             TransitionOffTime = TimeSpan.FromSeconds(1.2);
@@ -219,7 +223,7 @@ namespace YelloKiller
             Vector2 positionM = new Vector2(positionL.X + font.MeasureString(nextMenuEntry.Text).X + 30, viewport.Height - 45);
             Vector2 positionR = new Vector2(positionM.X + font.MeasureString(restartMenuEntry.Text).X + 30, viewport.Height - 45);
             Vector2 WinPosition = new Vector2(viewport.Width / 2, 85);
-            Vector2 ScoresPosition = new Vector2((viewport.Width / 3), 150);
+            Vector2 ScoresPosition = new Vector2((viewport.Width / 3), 160);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -245,7 +249,7 @@ namespace YelloKiller
                              new Color(fade, fade, fade));
 
             spriteBatch.Draw(scroll,
-                             new Rectangle((int)(viewport.Width - (scroll.Width * 1.5f)) / 2, 40, (int)(scroll.Width * 1.5f), (int)(viewport.Height / 1.5f)),
+                             new Rectangle((int)(viewport.Width - (font.MeasureString(baseSalary).X * 2.5f)) / 2, 40, (int)(font.MeasureString(baseSalary).X * 2.7f), (int)(viewport.Height / 1.4f)),
                              new Color(fade, fade, fade));
 
             // Draw each menu entry in turn.
@@ -259,28 +263,36 @@ namespace YelloKiller
 
 
             // Draw the menu title.
-            
+
             Vector2 WinOrigin = font.MeasureString(WinMessage) / 2;
+            Vector2 SalOrigin = new Vector2(font.MeasureString(baseSalary).X / 4, font.MeasureString(baseSalary).Y) / 2;
+            Vector2 PenOrigin = new Vector2(font.MeasureString(penalties).X / 4, font.MeasureString(penalties).Y) / 2;
             Vector2 ScOrigin = new Vector2(0, 0);
 
             float WinScale = 1.25f;
+            float SalScale = 1.75f;
             float Scorale = 2f;
 
             WinPosition.Y -= transitionOffset * 100;
 
             spriteBatch.DrawString(font, WinMessage, WinPosition, Color, 0,
                                    WinOrigin, WinScale, SpriteEffects.None, 0);
-
+            spriteBatch.DrawString(font, baseSalary, ScoresPosition, Color, 0,
+                                   SalOrigin, SalScale, SpriteEffects.None, 0);
+            ScoresPosition.Y += 55;
+            spriteBatch.DrawString(font, penalties, ScoresPosition, Color, 0,
+                                   PenOrigin, WinScale, SpriteEffects.None, 0);
+            ScoresPosition.Y += 50;
             spriteBatch.DrawString(font, time, ScoresPosition, Color);
-            ScoresPosition.Y += 65;
+            ScoresPosition.Y += 50;
             spriteBatch.DrawString(font, killed, ScoresPosition, Color);
-            ScoresPosition.Y += 65;
+            ScoresPosition.Y += 50;
             spriteBatch.DrawString(font, retries, ScoresPosition, Color);
-            ScoresPosition.Y += 80;
+            ScoresPosition.Y += 60;
             ScoresPosition.X += 40;
             spriteBatch.DrawString(font, score, ScoresPosition, Color, 0,
                                    ScOrigin, Scorale, SpriteEffects.None, 0);
-                                   
+
 
             spriteBatch.End();
         }
