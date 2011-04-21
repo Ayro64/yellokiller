@@ -64,7 +64,7 @@ namespace YelloKiller
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\petites\cointopgauche"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\petites\finMurBas"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\petites\FinMurDroit"));
-            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\petites\FinMurBas"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\petites\FinMurHaut"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\petites\FinMurGauche"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\petites\fondNoir"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\petites\herbe"));
