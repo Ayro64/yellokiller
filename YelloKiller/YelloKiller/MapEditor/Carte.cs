@@ -35,7 +35,7 @@ namespace YelloKiller
         {
             for (int y = 0; y < size.Y; y++)
                 for (int x = 0; x < size.X; x++)
-                    _case[y, x] = new Case(new Vector2(x, y), TypeCase.herbe, new Vector2(1,1,1), true);
+                    _case[y, x] = new Case(new Vector2(x, y), TypeCase.herbe, new Vector3(1,1,1), true);
         }
 
         public void OuvrirCartePourMenu(string nomDeFichier)

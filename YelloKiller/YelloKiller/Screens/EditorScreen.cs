@@ -147,54 +147,7 @@ namespace YelloKiller
                 SupprimerEnnemi();
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte())
-            {
-                if (curseur.Type == TypeCase.Joueur1)
-                {
-                    if (!enableOrigine1)
-                        carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
-                    else
-                        enableOrigine1 = false;
-
-                    origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
-                }
-                else if (curseur.Type == TypeCase.Joueur2)
-                {
-                    if (!enableOrigine2)
-                        carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
-                    else
-                        enableOrigine2 = false;
-
-                    origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
-                }
-                else if (curseur.Type == TypeCase.Garde)
-                    _originesGardes.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-
-                else if (curseur.Type == TypeCase.Patrouilleur)
-                {
-                    _originesPatrouilleurs.Add(new List<Vector2>());
-                    _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                }
-
-                else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
-                {
-                    _originesPatrouilleursAChevaux.Add(new List<Vector2>());
-                    _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                }
-                else if (curseur.Type == TypeCase.Boss)
-                    _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-
-                else if (curseur.Type == TypeCase.Statues)
-                {
-                    _originesStatues.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                    rotationsDesStatues.Add(0);
-                }
-
-                else if (curseur.Type == TypeCase.BonusShuriken)
-                    bonusShurikens.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-
-                else
-                    carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-            }
+                Placer_Personnage_Ou_Bonus();
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonDroit() && ServiceHelper.Get<IMouseService>().DansLaCarte())
             {
@@ -207,7 +160,7 @@ namespace YelloKiller
             }
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
-                PlacerUneCaseInfranchissable();
+                Placer_Case();
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.S))
                 SauvegardeMap();
@@ -338,71 +291,155 @@ namespace YelloKiller
                     {
                         switch (carte.Cases[y, x].Type)
                         {
-                            case (TypeCase.arbre):
+                            case TypeCase.arbre:
                                 ligne += 'a';
+                                ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
-                            case (TypeCase.arbre2):
-                                ligne += 'A';
-                                break;
-                            case (TypeCase.buissonSurHerbe):
-                                ligne += 's';
-                                break;
-                            case (TypeCase.murBlanc):
-                                ligne += 'm';
-                                break;
-                            case (TypeCase.tableauMurBlanc):
-                                ligne += 't';
-                                break;
-                            case (TypeCase.bois):
+                            case TypeCase.commode:
                                 ligne += 'b';
+                                ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
-                            case (TypeCase.boisCarre):
-                                ligne += 'B';
-                                break;
-                            case (TypeCase.tapisRougeBC):
-                                ligne += 'T';
-                                break;
-                            case (TypeCase.herbe):
-                                ligne += 'h';
-                                break;
-                            case (TypeCase.herbeFoncee):
-                                ligne += 'H';
-                                break;
-                            case (TypeCase.piedDeMurBois):
-                                ligne += 'p';
-                                break;
-                            case (TypeCase.terre):
-                                ligne += 'r';
-                                break;
-                            case (TypeCase.carlageNoir):
+                            case TypeCase.lit:
                                 ligne += 'c';
+                                ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
-                            case (TypeCase.fondNoir):
-                                ligne += 'f';
-                                break;
-                            case (TypeCase.finMurFN):
-                                ligne += 'F';
-                                break;
-                            case (TypeCase.finMurGauche):
-                                ligne += 'g';
-                                break;
-                            case (TypeCase.finMurDroite):
+                            case TypeCase.mur:
                                 ligne += 'd';
+                                ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
-                            case (TypeCase.fond):
-                                ligne += 'a';
+                            case TypeCase.murBlanc:
+                                ligne += 'e';
+                                ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
-                            case (TypeCase.Lit):
+                            case TypeCase.murBlancDrap:
+                                ligne += 'f';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.murBlancEpee:
+                                ligne += 'g';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.murBlancTableau:
+                                ligne += 'h';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.murEpee:
+                                ligne += 'i';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.murTableau:
+                                ligne += 'j';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.tableauMurBlanc:
+                                ligne += 'k';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.tableMoyenne:
                                 ligne += 'l';
+                                ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
-                            case (TypeCase.commode):
-                                ligne += 'L';
+                            case TypeCase.grandeTable:
+                                ligne += 'm';
+                                ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
-                            case (TypeCase.TableMoyenne):
-                                ligne += 'y';
+                            case TypeCase.grandeTableDeco:
+                                ligne += 'n';
+                                ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
-                            case (TypeCase.GrandeTable):
-                                ligne += 'Y';
+                            case TypeCase.nvlHerbe:
+                                ligne += 'o';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.parquet:
+                                ligne += 'p';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.parquetArbre:
+                                ligne += 'q';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.parquetBuisson:
+                                ligne += 'r';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.pont1:
+                                ligne += 's';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.pont2:
+                                ligne += 't';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+
+
+
+
+                            case TypeCase.buissonSurHerbe:
+                                ligne += "a7";
+                                break;
+                            case TypeCase.coinbotdroit:
+                                ligne += "a8";
+                                break;
+                            case TypeCase.coinbotgauche:
+                                ligne += "a9";
+                                break;
+                            case TypeCase.cointopdroit:
+                                ligne += "a0";
+                                break;
+                            case TypeCase.cointopgauche:
+                                ligne += "b0";
+                                break;
+                            case TypeCase.finMurDroit:
+                                ligne += "b5";
+                                break;
+                            case TypeCase.finMurGauche:
+                                ligne += "b6";
+                                break;
+                            case TypeCase.fondNoir:
+                                ligne += "b7";
+                                break;
+                            case TypeCase.piedMurBois:
+                                ligne += "b8";
+                                break;
+                            case TypeCase.bois:
+                                ligne += "b9";
+                                break;
+                            case TypeCase.boisCarre:
+                                ligne += "c0";
+                                break;
+                            case TypeCase.boisDeco:
+                                ligne += "c5";
+                                break;
+                            case TypeCase.carlageNoir:
+                                ligne += "c6";
+                                break;
+                            case TypeCase.carlageNoirDeco:
+                                ligne += "c7";
+                                break;
+                            case TypeCase.herbe:
+                                ligne += "c8";
+                                break;
+                            case TypeCase.herbeDeco:
+                                ligne += "c9";
+                                break;
+                            case TypeCase.herbeFoncee:
+                                ligne += "d0";
+                                break;
+                            case TypeCase.herbeH:
+                                ligne += "d5";
+                                break;
+                            case TypeCase.tapisRougeBC:
+                                ligne += "d6";
+                                break;
+                            case TypeCase.terre:
+                                ligne += "d7";
+                                break;
+                            case TypeCase.finMurBas:
+                                ligne += "d8";
+                                break;
+                            case TypeCase.finMurHaut:
+                                ligne += "d9";
                                 break;
                         }
                     }
@@ -472,8 +509,6 @@ namespace YelloKiller
                     sauvegarde.WriteLine(bonus.Y);
                 }
 
-                sauvegarde.WriteLine("Salaire");
-                sauvegarde.WriteLine(salaire);
                 sauvegarde.Close();
                 enableSave = false;
             }
@@ -504,48 +539,126 @@ namespace YelloKiller
                     rotationsDesStatues.RemoveAt(t);
                 }
         }
-
-        private void PlacerUneCaseInfranchissable()
+        private void Placer_Personnage_Ou_Bonus()
         {
-            if ((int)curseur.Type <= -50 && (int)curseur.Type > -75)
+            if (curseur.Type == TypeCase.Joueur1)
+            {
+                if (!enableOrigine1)
+                    carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
+                else
+                    enableOrigine1 = false;
+
+                origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
+            }
+            else if (curseur.Type == TypeCase.Joueur2)
+            {
+                if (!enableOrigine2)
+                    carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
+                else
+                    enableOrigine2 = false;
+
+                origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
+            }
+            else if (curseur.Type == TypeCase.Garde)
+                _originesGardes.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+
+            else if (curseur.Type == TypeCase.Patrouilleur)
+            {
+                _originesPatrouilleurs.Add(new List<Vector2>());
+                _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+            }
+
+            else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
+            {
+                _originesPatrouilleursAChevaux.Add(new List<Vector2>());
+                _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+            }
+            else if (curseur.Type == TypeCase.Boss)
+                _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+
+            else if (curseur.Type == TypeCase.Statues)
+            {
+                _originesStatues.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+                rotationsDesStatues.Add(0);
+            }
+
+            else if (curseur.Type == TypeCase.BonusShuriken)
+                bonusShurikens.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+        }
+
+        private void Placer_Case()
+        {
+            if (Math.Abs((int)curseur.Type) >= 50 && Math.Abs((int)curseur.Type) < 75)
             {
                 if (curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 2))
                 {
-                    carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-
                     for (int x = 0; x < 2; x++)
                         for (int y = 0; y < 2; y++)
-                            if ((x != 0 || y != 0) && (int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
-                                if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                    carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = TypeCase.fond;
+                        /*if ((int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
+                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)*/
+                        {
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 2 * y + 1;
+                        }
                 }
             }
-            else if ((int)curseur.Type <= -75 && (int)curseur.Type > -100)
+            else if (Math.Abs((int)curseur.Type) >= 75 && Math.Abs((int)curseur.Type) < 100)
             {
                 if (curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP && EmplacementPossible(3, 3))
                 {
-                    carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-
                     for (int x = 0; x < 3; x++)
                         for (int y = 0; y < 3; y++)
-                            if ((x != 0 || y != 0) && (int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
-                                if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)
-                                    carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = TypeCase.fond;
+                        /*if ((int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
+                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)*/
+                        {
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 3 * y + 1;
+                        }
+                }
+            }
+            else if ((int)curseur.Type == 18 || (int)curseur.Type == 19)
+            {
+                if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 1))
+                {
+                    for (int x = 0; x < 2; x++)
+                    /*if ((int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
+                        if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)*/
+                    {
+                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
+                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Z = x + 1;
+                    }
+                }
+            }
+            else if ((int)curseur.Type == -1)
+            {
+                if (curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 3))
+                {
+                    for (int x = 0; x < 2; x++)
+                        for (int y = 0; y < 3; y++)
+                        /*if ((int)curseur.Position.Y + camera.Y + y < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X + x < Taille_Map.LARGEUR_MAP)
+                            if ((int)curseur.Position.Y + camera.Y + 1 < Taille_Map.HAUTEUR_MAP && (int)curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP)*/
+                        {
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Z = x + 2 * y + 1;
+                        }
                 }
             }
             else if ((int)curseur.Type < 100)
+            {
                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
+                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Z = 1;
+            }
         }
 
         private bool EmplacementPossible(int largeur, int hauteur)
         {
             for (int x = 0; x < largeur; x++)
                 for (int y = 0; y < hauteur; y++)
-                    if (carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type == TypeCase.fond)
+                    if (carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type == curseur.Type)
                         return false;
 
-            if ((int)carte.Cases[(int)curseur.Position.Y + camera.Y + hauteur - 1, (int)curseur.Position.X + camera.X + largeur - 1].Type < 0)
-                return false;
+            /*if ((int)carte.Cases[(int)curseur.Position.Y + camera.Y + hauteur - 1, (int)curseur.Position.X + camera.X + largeur - 1].Type < 0)
+                return false;*/
 
             return true;
         }
