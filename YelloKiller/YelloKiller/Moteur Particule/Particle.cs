@@ -11,7 +11,7 @@ namespace YelloKiller.Moteur_Particule
     {
 
         public Vector2 Position, Velocity, Acceleration;
-        public Vector2 lastCameraState, cameraState;
+        private Vector2 lastCameraState, cameraState;
 
         // how long this particle will "live"
         private float lifetime;
@@ -73,7 +73,6 @@ namespace YelloKiller.Moteur_Particule
             this.Lifetime = lifetime;
             this.Scale = scale;
             this.RotationSpeed = rotationSpeed;
-
             cameraState = MoteurParticule.Camera;
 
             // reset TimeSinceStart - we have to do this because particles will be
@@ -92,11 +91,7 @@ namespace YelloKiller.Moteur_Particule
             cameraState = MoteurParticule.Camera;
             Velocity += Acceleration * dt;
             Position += Velocity * dt - (cameraState - lastCameraState);
-            if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Microsoft.Xna.Framework.Input.Keys.Space)))
-                Console.WriteLine(Position + " , camera =" + MoteurParticule.Camera);
-
             Rotation += RotationSpeed * dt;
-
             TimeSinceStart += dt;
         }
     }
