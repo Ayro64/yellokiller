@@ -14,7 +14,8 @@ namespace YelloKiller
         MenuEntry nextMenuEntry;
         MenuEntry restartMenuEntry;
         MenuEntry abortMenuEntry;
-        int selectedEntry = 0, solde, deaths, restart;
+        int selectedEntry = 0;
+        uint solde, deaths, restart;
         ContentManager content;
         Texture2D winTexture, blankTexture, scroll;
         YellokillerGame game;
@@ -31,7 +32,7 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public GameWin(string comingfrom, int solde, double levelTime, int deaths, int retries,  YellokillerGame game)
+        public GameWin(string comingfrom, uint solde, double levelTime, uint deaths, uint retries,  YellokillerGame game)
         {
             this.game = game;
             this.comingfrom = comingfrom;
