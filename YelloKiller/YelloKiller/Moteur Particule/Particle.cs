@@ -1,6 +1,7 @@
 #region Using Statements
 using Microsoft.Xna.Framework;
 using YelloKiller.Moteur_Particule;
+using System;
 #endregion
 
 namespace YelloKiller.Moteur_Particule
@@ -85,7 +86,9 @@ namespace YelloKiller.Moteur_Particule
         public void Update(float dt)
         {
             Velocity += Acceleration * dt;
-            Position += Velocity * dt;
+            Position += Velocity * dt - MoteurParticule.Camera *dt;
+            if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Microsoft.Xna.Framework.Input.Keys.Space)))
+                Console.WriteLine(Position + " , camera =" + MoteurParticule.Camera);
 
             Rotation += RotationSpeed * dt;
 

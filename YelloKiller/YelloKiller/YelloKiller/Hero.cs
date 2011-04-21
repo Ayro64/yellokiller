@@ -106,7 +106,7 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
-            MoteurParticule.Camera = camera;
+            MoteurParticule.Camera = new Vector2(camera.X, camera.Y);
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
                 GameplayScreen.Timer_Update_Collision += gameTime.ElapsedGameTime.TotalSeconds;
