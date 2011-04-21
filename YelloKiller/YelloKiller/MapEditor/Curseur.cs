@@ -12,7 +12,7 @@ namespace YelloKiller
         Texture2D texture, fond;
         Vector2 position;
         TypeCase type;
-        float tailleFond;
+        Vector2 tailleFond;
 
         public Curseur(ContentManager content)
         {
@@ -20,7 +20,7 @@ namespace YelloKiller
             texture = content.Load<Texture2D>(@"Textures\petites\herbeFoncee");
             fond = content.Load<Texture2D>(@"Textures\fond");
             type = TypeCase.herbeFoncee;
-            tailleFond = 1;
+            tailleFond = Vector2.One;
         }
 
         public Vector2 Position
@@ -174,7 +174,8 @@ namespace YelloKiller
                             break;
                     }
 
-                    tailleFond = 1 + 0.88f * (texture.Width / 28 - 1);
+                    tailleFond.X = 1 + 0.88f * (texture.Width / 28 - 1);
+                    tailleFond.Y = 1 + 0.88f * (texture.Height / 28 - 1);
                 }
             }
 
@@ -211,7 +212,8 @@ namespace YelloKiller
                             break;
                     }
 
-                    tailleFond = 1 + 0.88f * (texture.Width / 28 - 1);
+                    tailleFond.X = 1 + 0.88f * (texture.Width / 28 - 1);
+                    tailleFond.Y = 1 + 0.88f * (texture.Height / 28 - 1);
                 }
             }
         }

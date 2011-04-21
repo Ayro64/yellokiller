@@ -128,7 +128,7 @@ namespace YelloKiller
             {
                 if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(listeRectanglesGauche[c]))
                 {
-                    spriteBatch.Draw(fond, new Vector2(listeRectanglesGauche[c].X + 28 * (1 - listeTexturesGauche[c].Width / 28) - 2, listeRectanglesGauche[c].Y + 28 * (1 - listeTexturesGauche[c].Height / 28) - 2), null, Color.White, 0, Vector2.Zero, 1 + 0.88f * (listeTexturesGauche[c].Width / 28 - 1), SpriteEffects.None, 0);
+                    spriteBatch.Draw(fond, new Vector2(listeRectanglesGauche[c].X + 28 * (1 - listeTexturesGauche[c].Width / 28) - 2, listeRectanglesGauche[c].Y + 28 * (1 - listeTexturesGauche[c].Height / 28) - 2), null, Color.White, 0, Vector2.Zero, new Vector2(1 + 0.88f * (listeTexturesGauche[c].Width / 28 - 1), 1 + 0.88f * (listeTexturesGauche[c].Height / 28 - 1)), SpriteEffects.None, 0);
 
                     spriteBatch.Draw(listeTexturesGauche[c], new Vector2(listeRectanglesGauche[c].X + 28 * (1 - listeTexturesGauche[c].Width / 28), listeRectanglesGauche[c].Y + 28 * (1 - listeTexturesGauche[c].Height / 28)), Color.White);
                 }
