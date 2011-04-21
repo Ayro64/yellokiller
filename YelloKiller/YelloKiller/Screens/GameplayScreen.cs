@@ -59,7 +59,6 @@ namespace YelloKiller
         SpriteBatch spriteBatch;
         Hero hero1, hero2;
         uint kills, retries;
-
         Carte carte;
         Rectangle camera;
         MoteurParticule moteurparticule;
@@ -77,10 +76,6 @@ namespace YelloKiller
             get { return timer_update_collision; }
             set { timer_update_collision = value; }
         }
-
-     
-
-
 
         Player audio;
         MoteurAudio moteurAudio;
@@ -127,14 +122,13 @@ namespace YelloKiller
         #region Initialization
 
         YellokillerGame game = null;
-
         public GameplayScreen(string nomDeCarte, YellokillerGame game, uint retries)
         {
             this.retries = retries;
             this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[0] == 'C';
-
+            MoteurParticule.Camera = this.camera;
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
@@ -257,7 +251,7 @@ namespace YelloKiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             if (IsActive)
-            {
+            {             
                 if (Enable_Timer_Hero1)
                     timer_hero1 += gameTime.ElapsedGameTime.TotalSeconds;
                 if (Enable_Timer_Hero2)
@@ -396,24 +390,11 @@ namespace YelloKiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1, game), ControllingPlayer, true);
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
-            {
-                moteurAudio.SoundBank.PlayCue("metalgear");
-                audio.Close();
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
-            }
-
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {
                 moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 audio.Close();
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
-            }
-
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.M))
-            {
-                moteurAudio.SoundBank.PlayCue("metalgear");
-                audio.Close();
             }
 
             // Looks up input for the Media Player.

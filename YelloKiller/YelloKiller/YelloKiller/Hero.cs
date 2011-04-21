@@ -106,6 +106,8 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
+            MoteurParticule.Camera = camera;
+
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
                 GameplayScreen.Timer_Update_Collision += gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -193,7 +195,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
                             nombreHadoken--;
-                            particule.UpdateExplosions_hero(this, camera);
+                            particule.UpdateExplosions_hero(this);
                             moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
@@ -204,7 +206,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
                             nombreHadoken--;
-                            particule.UpdateExplosions_hero(this, camera);
+                            particule.UpdateExplosions_hero(this);
                             moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
@@ -218,7 +220,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
                             nombre_ball--;
-                            particule.UpdateBall(this, camera);
+                            particule.UpdateBall(this);
                             moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
@@ -229,7 +231,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
                             nombre_ball--;
-                            particule.UpdateBall(this, camera);
+                            particule.UpdateBall(this);
                             moteurAudio.SoundBank.PlayCue("hadoken");
                         }
                     }
@@ -239,7 +241,7 @@ namespace YelloKiller
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreFumigene > 0)
                     {
                         nombreFumigene--;
-                        particule.UpdateFumigene(this, camera);
+                        particule.UpdateFumigene(this);
                     }
                     break;
 
@@ -416,16 +418,6 @@ namespace YelloKiller
                         positionDesiree.X = position.X + 28;
                         positionDesiree.Y = position.Y;
                         droite = false;
-                        /*etienne++;
-
-                        if (etienne > 4)
-                        {
-                            positionDesiree.X = position.X + 28;
-                            positionDesiree.Y = position.Y;
-                            bougerDroite = false;
-                        }
-                        else
-                            sourceRectangle = new Rectangle((int)index * 48, 166, 16, 28);*/
                     }
                 }
                 else
