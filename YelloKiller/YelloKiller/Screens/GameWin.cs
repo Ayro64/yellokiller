@@ -14,11 +14,12 @@ namespace YelloKiller
         MenuEntry nextMenuEntry;
         MenuEntry restartMenuEntry;
         MenuEntry abortMenuEntry;
-        int selectedEntry = 0;
+        int selectedEntry = 0, solde, deaths, restart;
         ContentManager content;
         Texture2D winTexture, blankTexture, scroll;
         YellokillerGame game;
-        string WinMessage, comingfrom, time, killed, retries, score;
+        string WinMessage, comingfrom, baseSalary, time, killed, retries, score, penalties;
+        double temps;
 
         Color Color;
         Color EntriesColor;
@@ -30,15 +31,22 @@ namespace YelloKiller
         /// <summary>
         /// Constructor fills in the menu contents.
         /// </summary>
-        public GameWin(string comingfrom, string levelTime, YellokillerGame game)
+        public GameWin(string comingfrom, int solde, double levelTime, int deaths, int retries,  YellokillerGame game)
         {
             this.game = game;
             this.comingfrom = comingfrom;
+            this.solde = solde;
+            this.deaths = deaths;
+            this.restart = retries;
 
+            temps = levelTime;
+
+            baseSalary = Langue.tr("BaseSalary") + solde;
+            penalties = Langue.tr("Penalties");
             WinMessage = Langue.tr("WinMsg");
-            time = Langue.tr("Time") + levelTime;
-            killed = Langue.tr("Killed");
-            retries = Langue.tr("Retries");
+            killed = Langue.tr("Killed") + deaths;
+            time = Langue.tr("Time") + Temps.Conversion(levelTime);
+            this.retries = Langue.tr("Retries") + retries;
             score = Langue.tr("Score");
             
             //Durée de la transition.

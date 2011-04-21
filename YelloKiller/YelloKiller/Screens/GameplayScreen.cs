@@ -58,6 +58,7 @@ namespace YelloKiller
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
         Hero hero1, hero2;
+        uint kills;
 
         Carte carte;
         Rectangle camera;
@@ -104,7 +105,7 @@ namespace YelloKiller
         }
         #endregion
 
-  
+
 
         Player audio;
         MoteurAudio moteurAudio;
@@ -120,7 +121,7 @@ namespace YelloKiller
 
         public GameplayScreen(string nomDeCarte, YellokillerGame game)
         {
-            this.game = game;
+                        this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[0] == 'C';
 
@@ -191,6 +192,8 @@ namespace YelloKiller
             _bonus = new List<Bonus>();
             foreach (Vector2 bonus in carte.BonusShuriken)
                 _bonus.Add(new Bonus(28 * bonus, TypeBonus.shuriken));
+
+            kills = (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count);
         }
 
         public override void LoadContent()
@@ -289,7 +292,7 @@ namespace YelloKiller
                 Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus);
                 if (_boss.Count == 0)
                 {
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, Temps.Conversion(temps), game));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), game));
                     audio.Close();
                     moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 }
@@ -389,7 +392,7 @@ namespace YelloKiller
             {
                 moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 audio.Close();
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, Temps.Conversion(temps), game));
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, temps, game));
             }
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.M))
