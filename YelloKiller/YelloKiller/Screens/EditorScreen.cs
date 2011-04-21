@@ -509,6 +509,9 @@ namespace YelloKiller
                     sauvegarde.WriteLine(bonus.Y);
                 }
 
+                sauvegarde.WriteLine("Salaire");
+                sauvegarde.WriteLine(salaire);
+
                 sauvegarde.Close();
                 enableSave = false;
             }
