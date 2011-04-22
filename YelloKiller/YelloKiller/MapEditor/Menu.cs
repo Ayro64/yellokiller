@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-/* Cette classe gere le menu de selection de droite dans l'editeur de map. */
-
 namespace YelloKiller
 {
     class Menu

@@ -546,6 +546,7 @@ namespace YelloKiller
                 if (bonusShurikens[pt].X == curseur.Position.X + camera.X && bonusShurikens[pt].Y == curseur.Position.Y + camera.Y)
                     bonusShurikens.RemoveAt(pt);
         }
+
         private void Placer_Personnage_Ou_Bonus()
         {
             if (curseur.Type == TypeCase.Joueur1)
@@ -557,6 +558,7 @@ namespace YelloKiller
 
                 origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
             }
+
             else if (curseur.Type == TypeCase.Joueur2)
             {
                 if (!enableOrigine2)
@@ -566,6 +568,7 @@ namespace YelloKiller
 
                 origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
             }
+
             else if (curseur.Type == TypeCase.Garde)
                 _originesGardes.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
@@ -607,6 +610,7 @@ namespace YelloKiller
                         }
                 }
             }
+
             else if (Math.Abs((int)curseur.Type) >= 75 && Math.Abs((int)curseur.Type) < 100)
             {
                 if (curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 2 < Taille_Map.LARGEUR_MAP && EmplacementPossible(3, 3))
@@ -619,6 +623,7 @@ namespace YelloKiller
                         }
                 }
             }
+
             else if ((int)curseur.Type == 18 || (int)curseur.Type == 19)
             {
                 if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 1))
@@ -630,6 +635,7 @@ namespace YelloKiller
                     }
                 }
             }
+
             else if ((int)curseur.Type == -1)
             {
                 if (curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 3))
@@ -642,6 +648,7 @@ namespace YelloKiller
                         }
                 }
             }
+
             else if ((int)curseur.Type < 100)
             {
                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
