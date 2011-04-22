@@ -103,6 +103,7 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
+           // Console.WriteLine(this.Rectangle);
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 

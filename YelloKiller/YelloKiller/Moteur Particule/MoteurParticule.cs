@@ -23,7 +23,6 @@ namespace YelloKiller.Moteur_Particule
 
         int direction_hero2_appele;
         int direction_hero1_appele;
-        int direction_statue_appele;
 
         ExplosionParticleSystem hadoken_hero;
         ExplosionSmokeParticleSystem fume_hadoken;
@@ -70,7 +69,7 @@ namespace YelloKiller.Moteur_Particule
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (hadoken_hero.LongueurHadoken * 28));
 
                 else if (direction_hero1_appele == 230) // gauche
-                    return new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
+                    return new Rectangle((int)hero.position.X - (hadoken_hero.LongueurHadoken * 28), (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
 
                 else // droite
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
@@ -110,7 +109,7 @@ namespace YelloKiller.Moteur_Particule
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (ball.LongueurBall * 28));
 
                 else if (direction_hero1_appele == 230) // gauche
-                    return new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, (ball.LongueurBall * 28), 28);
+                    return new Rectangle((int)hero.position.X - (ball.LongueurBall * 28), (int)hero.position.Y, (ball.LongueurBall * 28), 28);
 
                 else  // droite
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, (ball.LongueurBall * 28), 28);
@@ -154,7 +153,7 @@ namespace YelloKiller.Moteur_Particule
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (hadoken_hero.LongueurHadoken * 28));
 
                 else if (direction_hero2_appele == 230) // gauche
-                    return new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
+                    return new Rectangle((int)hero.position.X - (hadoken_hero.LongueurHadoken * 28), (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
 
                 else // droite
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, (hadoken_hero.LongueurHadoken * 28), 28);
@@ -194,7 +193,7 @@ namespace YelloKiller.Moteur_Particule
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (ball.LongueurBall * 28));
 
                 else if (direction_hero2_appele == 230) // gauche
-                    return new Rectangle((int)hero.position.X - 224, (int)hero.position.Y, (ball.LongueurBall * 28), 28);
+                    return new Rectangle((int)hero.position.X - (ball.LongueurBall * 28), (int)hero.position.Y, (ball.LongueurBall * 28), 28);
 
                 else // droite 
                     return new Rectangle((int)hero.position.X, (int)hero.position.Y, (ball.LongueurBall * 28), 28);
@@ -216,28 +215,27 @@ namespace YelloKiller.Moteur_Particule
 
         public Rectangle Rectangle_Hadoken_Statue(Statue statue) // pour gerer les collisions
         {
-            if (explosion_statue.FreeParticleCount == 4000) // lorsque freeparticulecount = 100 le hadoken est termine 
+            if (explosion_statue.FreeParticleCount == 2000) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
                 Rectangle_Hadoken_Est_Present_Statue = true;// je reinitialise donc mon rectangle
-                direction_statue_appele = statue.SourceRectangle.Value.Y;
             }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
-       //    Console.WriteLine(explosion_statue.FreeParticleCount + " , " + Rectangle_Hadoken_Est_Present_Statue);
-            if (explosion_statue.FreeParticleCount < 4000 && Rectangle_Hadoken_Est_Present_Statue)
+            if (explosion_statue.FreeParticleCount < 2000 && Rectangle_Hadoken_Est_Present_Statue)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
-                if (direction_statue_appele == 357) // haut
-                    return new Rectangle((int)statue.position.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y - (explosion_statue.LongueurExplosion * 28) + (statue.SourceRectangle.Value.Height / 2), 28, (explosion_statue.LongueurExplosion * 28));
+                if (statue.SourceRectangle.Value.Y == 357) // haut
+                    return new Rectangle((int)statue.position.X - (int)Camera.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y - (int)Camera.Y -(explosion_statue.LongueurExplosion * 28) + (statue.SourceRectangle.Value.Height / 2), 28 , (explosion_statue.LongueurExplosion * 28));
 
-                else if (direction_statue_appele == 0) // bas
-                    return new Rectangle((int)statue.position.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y + (statue.SourceRectangle.Value.Height / 2), 28, (explosion_statue.LongueurExplosion * 28));
+                else if (statue.SourceRectangle.Value.Y == 0) // bas
+                    return new Rectangle((int)statue.position.X - (int)Camera.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y - (int)Camera.Y + (statue.SourceRectangle.Value.Height / 2), 28, (explosion_statue.LongueurExplosion * 28));
 
-                else if (direction_statue_appele == 123) // gauche
-                    return new Rectangle((int)statue.position.X - 224 + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y + (statue.SourceRectangle.Value.Height / 2), (explosion_statue.LongueurExplosion * 28), 28);
+                else if (statue.SourceRectangle.Value.Y == 123) // gauche
+                    return new Rectangle((int)statue.position.X - (int)Camera.X + (statue.SourceRectangle.Value.Width / 2) - (explosion_statue.LongueurExplosion * 28), (int)statue.position.Y - (int)Camera.Y + (statue.SourceRectangle.Value.Height / 2), (explosion_statue.LongueurExplosion * 28), 28);
 
                 else // droite
-                    return new Rectangle((int)statue.position.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y + (statue.SourceRectangle.Value.Height / 2), (explosion_statue.LongueurExplosion * 28), 28);
+                    return new Rectangle((int)statue.position.X - (int)Camera.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y - (int)Camera.Y + (statue.SourceRectangle.Value.Height / 2), (explosion_statue.LongueurExplosion * 28), 28);
             }
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
+           
         }
 
         #endregion
@@ -287,7 +285,7 @@ namespace YelloKiller.Moteur_Particule
 
         public void UpdateExplosions_statue(Statue statue)
         {
-            Console.WriteLine(this.Rectangle_Hadoken_Statue(statue));
+           // Console.WriteLine(this.Rectangle_Hadoken_Statue(statue));
             explosion_statue.AddParticles(new Vector2(statue.position.X - Camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - Camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
         }
 
