@@ -253,7 +253,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
         public uint Score_10 {
             get {
                 return ((uint)(this["Score_10"]));
