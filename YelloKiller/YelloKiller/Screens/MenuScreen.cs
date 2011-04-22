@@ -19,6 +19,7 @@ namespace YelloKiller
         public int selectedEntry = 0;
         string menuTitle;
         MoteurAudio moteurAudio;
+
         #endregion
 
         #region Properties
