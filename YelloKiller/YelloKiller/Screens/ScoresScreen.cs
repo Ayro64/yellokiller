@@ -8,13 +8,13 @@ using Microsoft.Xna.Framework;
 
 namespace YelloKiller
 {
-    class ScoresScreen : GameScreen
+    class ScoresScreen : MenuScreen
     {
-         #region Fields
+        #region Fields
 
         ContentManager content;
         Texture2D scoresTexture, scroll, blankTexture;
-        string ScoreTitle;
+        YellokillerGame game;
 
         Color Color;
 
@@ -26,16 +26,12 @@ namespace YelloKiller
         /// Constructor fills in the menu contents.
         /// </summary>
         /// 
-        YellokillerGame game = null;
         public ScoresScreen(YellokillerGame game)
+            : base(Langue.tr("Scores"))
         {
             this.game = game;
-            ScoreTitle = Langue.tr("Scores");
-
-            //Durée de la transition.
-            TransitionOnTime = TimeSpan.FromSeconds(0.5);
-            TransitionOffTime = TimeSpan.FromSeconds(0.5);
         }
+
         /// <summary>
         /// Loads graphics content for this screen. The background texture is quite
         /// big, so we use our own local ContentManager to load it. This allows us
@@ -76,10 +72,10 @@ namespace YelloKiller
         public override void Draw(GameTime gameTime)
         {
             Color = new Color(255, 0, 0, TransitionAlpha);
-
-            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
-            SpriteFont font = ScreenManager.Font;
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
+            SpriteFont font = ScreenManager.Font;
+            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
+
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
             byte fade = TransitionAlpha;
 
@@ -93,8 +89,7 @@ namespace YelloKiller
 
             // Draw the menu title.
             Vector2 ScoPosition = new Vector2(viewport.Width / 2, 100);
-            Vector2 ScOrigin = font.MeasureString(ScoreTitle) / 2;
-            float ScoScale = 1.5f;
+            Vector2 ScOrigin = font.MeasureString(MenuTitle) / 2;
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -103,14 +98,13 @@ namespace YelloKiller
 
             ScoPosition.Y -= transitionOffset * 100;
 
-            spriteBatch.DrawString(font, ScoreTitle, ScoPosition, Color, 0,
-                                   ScOrigin, ScoScale, SpriteEffects.None, 0);
-
             spriteBatch.Draw(scroll,
                              new Rectangle(viewport.Width / 4, 40, (int)(font.MeasureString("1. XXXXXXXXXX ----- XXXXXXXXXX").X + 30), viewport.Height / 2),
                              new Color(fade, fade, fade));
 
             spriteBatch.End();
+
+            base.Draw(gameTime);
         }
 
         #endregion

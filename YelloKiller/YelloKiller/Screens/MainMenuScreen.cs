@@ -28,6 +28,7 @@ namespace YelloKiller
         MenuEntry coopMenuEntry;
         MenuEntry editorMenuEntry;
         MenuEntry optionsMenuEntry;
+        MenuEntry scoresMenuEntry;
         MenuEntry exitMenuEntry;
         YellokillerGame game;
         SmokePlumeParticleSystem fume; // fumigene
@@ -51,6 +52,7 @@ namespace YelloKiller
             coopMenuEntry = new MenuEntry(Langue.tr("MainMenuCoop"));
             editorMenuEntry = new MenuEntry(Langue.tr("MainMenuEditor"));
             optionsMenuEntry = new MenuEntry(Langue.tr("Options"));
+            scoresMenuEntry = new MenuEntry(Langue.tr("Scores"));
             exitMenuEntry = new MenuEntry(Langue.tr("MainMenuQuit"));
 
             // Hook up menu event handlers.
@@ -58,6 +60,7 @@ namespace YelloKiller
             coopMenuEntry.Selected += CoopMenuEntrySelected;
             editorMenuEntry.Selected += EditorMenuEntrySelected;
             optionsMenuEntry.Selected += OptionsMenuEntrySelected;
+            scoresMenuEntry.Selected += ScoresMenuEntrySelected;
             exitMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
@@ -65,6 +68,7 @@ namespace YelloKiller
             MenuEntries.Add(coopMenuEntry);
             MenuEntries.Add(editorMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
+            MenuEntries.Add(scoresMenuEntry);
             MenuEntries.Add(exitMenuEntry);
         }
 
@@ -78,6 +82,7 @@ namespace YelloKiller
             coopMenuEntry.Text = Langue.tr("MainMenuCoop");
             editorMenuEntry.Text = Langue.tr("MainMenuEditor");
             optionsMenuEntry.Text = Langue.tr("Options");
+            scoresMenuEntry.Text = Langue.tr("Scores");
             exitMenuEntry.Text = Langue.tr("MainMenuQuit");
         }
 
@@ -130,6 +135,13 @@ namespace YelloKiller
             ScreenManager.AddScreen(new OptionsMenuScreen(0, game), e.PlayerIndex);
         }
 
+        /// <summary>
+        /// Event handler for when the Scores menu entry is selected.
+        /// </summary>
+        void ScoresMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            ScreenManager.AddScreen(new ScoresScreen(game), e.PlayerIndex);
+        }
 
         /// <summary>
         /// When the user cancels the main menu, ask if they want to exit the sample.
