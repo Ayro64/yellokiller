@@ -183,11 +183,12 @@ namespace YelloKiller
             SpriteFont font = ScreenManager.Font;
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
+            Rectangle pitiRectangle = new Rectangle((viewport.Width / 2) - (int)(font.MeasureString(GOmessage).X), (int)(viewport.Height * 0.7f), (int)(font.MeasureString(GOmessage).X * 2f), 110);
             byte fade = TransitionAlpha;
 
             //Entrées Menu
-            Vector2 positionL = new Vector2((viewport.Width / 2) - (font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X / 1.6f), viewport.Height - 45);
-            Vector2 positionR = new Vector2((viewport.Width / 2 + 15), viewport.Height - 45);
+            Vector2 positionL = new Vector2(pitiRectangle.X + 25, pitiRectangle.Y + (int)(pitiRectangle.Height / 1.5f));
+            Vector2 positionR = new Vector2(pitiRectangle.X + pitiRectangle.Width - (font.MeasureString(abortMenuEntry.Text).X * 1.4f), pitiRectangle.Y + (int)(pitiRectangle.Height / 1.5f));
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -211,9 +212,7 @@ namespace YelloKiller
                              new Color(fade, fade, fade));
 
             // Rectangle noir
-            spriteBatch.Draw(blankTexture,
-                             new Rectangle((viewport.Width / 2) - (int)(font.MeasureString(GOmessage).X), 530, (int)(font.MeasureString(GOmessage).X * 2f), 110),
-                             new Color(0, 0, 0, (byte)(fade * 2 / 3)));
+            spriteBatch.Draw(blankTexture, pitiRectangle, new Color(0, 0, 0, (byte)(fade * 2 / 3)));
 
 
             // Draw each menu entry in turn.
@@ -225,7 +224,7 @@ namespace YelloKiller
 
 
             // Draw the menu title.
-            Vector2 GOPosition = new Vector2(viewport.Width / 2, viewport.Height - 90);
+            Vector2 GOPosition = new Vector2(viewport.Width / 2, pitiRectangle.Y + 30);
             Vector2 GOOrigin = font.MeasureString(GOmessage) / 2;
             float GOScale = 1.5f;
 
