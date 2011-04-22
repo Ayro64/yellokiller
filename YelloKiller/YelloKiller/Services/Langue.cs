@@ -103,6 +103,8 @@ namespace YelloKiller
                             return "Salaire de base : ";
                         case ("Penalties"):
                             return "Pénalités : ";
+                        case("Scores"):
+                            return "Top 10 des employés";
                         default:
                             return "";
                     }
@@ -198,6 +200,8 @@ namespace YelloKiller
                             return "Anfang Gehalt : ";
                         case ("Penalties"):
                             return "Strafen : ";
+                        case ("Scores"):
+                            return "Mitarbeiter Ruhmeshalle";
                         default:
                             return "";
                     }
@@ -293,6 +297,8 @@ namespace YelloKiller
                             return "Base Salary : ";
                         case ("Penalties"):
                             return "Penalties : ";
+                        case ("Scores"):
+                            return "Employees Hall of Fame";
                         default:
                             return "";
                     }
