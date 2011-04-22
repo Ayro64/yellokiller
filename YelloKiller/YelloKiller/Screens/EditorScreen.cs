@@ -541,6 +541,10 @@ namespace YelloKiller
                     _originesStatues.RemoveAt(t);
                     rotationsDesStatues.RemoveAt(t);
                 }
+
+            for (int pt = 0; pt < bonusShurikens.Count; pt++)
+                if (bonusShurikens[pt].X == curseur.Position.X + camera.X && bonusShurikens[pt].Y == curseur.Position.Y + camera.Y)
+                    bonusShurikens.RemoveAt(pt);
         }
         private void Placer_Personnage_Ou_Bonus()
         {
