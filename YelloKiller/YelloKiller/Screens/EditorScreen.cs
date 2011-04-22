@@ -144,7 +144,7 @@ namespace YelloKiller
                 camera.Y++;
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Delete))
-                SupprimerEnnemi();
+                Supprimer_Ennemi_Ou_Bonus();
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte())
                 Placer_Personnage_Ou_Bonus();
@@ -517,7 +517,7 @@ namespace YelloKiller
             }
         }
 
-        private void SupprimerEnnemi()
+        private void Supprimer_Ennemi_Ou_Bonus()
         {
             for (int t = 0; t < _originesGardes.Count; t++)
                 if (_originesGardes[t].X == curseur.Position.X + camera.X && _originesGardes[t].Y == curseur.Position.Y + camera.Y)
