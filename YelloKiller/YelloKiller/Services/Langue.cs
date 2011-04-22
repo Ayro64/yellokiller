@@ -189,13 +189,13 @@ namespace YelloKiller
                         case ("Time"):
                             return "Zeit : ";
                         case ("Killed"):
-                            return "Wächter umgebracht : ";
+                            return "Wächter getotet : ";
                         case ("Retries"):
                             return "Versuche : ";
                         case ("Score"):
                             return "Lohn : ";
                         case ("BaseSalary"):
-                            return "Grundgehalt : ";
+                            return "Anfang Gehalt : ";
                         case ("Penalties"):
                             return "Strafen : ";
                         default:

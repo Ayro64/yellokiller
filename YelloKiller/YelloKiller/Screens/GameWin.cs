@@ -17,7 +17,7 @@ namespace YelloKiller
         int selectedEntry = 0;
         uint salaire, deaths, restart;
         ContentManager content;
-        Texture2D winTexture, blankTexture, scroll;
+        Texture2D winTexture, blankTexture, scroll, kane;
         YellokillerGame game;
         string WinMessage, comingfrom, baseSalary, time, killed, retries, score, penalties;
         double temps;
@@ -45,11 +45,11 @@ namespace YelloKiller
             baseSalary = Langue.tr("BaseSalary") + salaire;
             penalties = Langue.tr("Penalties");
             WinMessage = Langue.tr("WinMsg");
-            time = Langue.tr("Time") + Temps.Conversion(levelTime) + " --> " + (int)(-levelTime * 10);
+            time = Langue.tr("Time") + Temps.Conversion(levelTime) + " --> " + (int)(-levelTime * 100);
             killed = Langue.tr("Killed") + deaths + " x 1 000 --> " + (-deaths * 1000);
             this.retries = Langue.tr("Retries") + retries + " x 10 000 --> " + (-retries * 10000);
 
-            salaire -= (deaths * 1000) + (uint)(levelTime * 10) + (retries * 10000);
+            salaire -= (deaths * 1000) + (uint)(levelTime * 100) + (retries * 10000);
             if (salaire < 0)
                 salaire = 0;
             score = Langue.tr("Score") + salaire;
@@ -89,6 +89,9 @@ namespace YelloKiller
 
             //Ecran Game Over.
             winTexture = content.Load<Texture2D>("WinTex");
+
+            // Kanji argent.
+            kane = content.Load<Texture2D>("Kane");
 
             // Parchemin
             scroll = content.Load<Texture2D>("ScoresScrollFil");
@@ -223,7 +226,7 @@ namespace YelloKiller
             Vector2 positionM = new Vector2(positionL.X + font.MeasureString(nextMenuEntry.Text).X + 30, viewport.Height - 45);
             Vector2 positionR = new Vector2(positionM.X + font.MeasureString(restartMenuEntry.Text).X + 30, viewport.Height - 45);
             Vector2 WinPosition = new Vector2(viewport.Width / 2, 85);
-            Vector2 ScoresPosition = new Vector2((viewport.Width / 3), 160);
+            Vector2 ScoresPosition = new Vector2((int)(viewport.Width - (font.MeasureString(baseSalary).X + 60)) / 2, 160);
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -249,7 +252,7 @@ namespace YelloKiller
                              new Color(fade, fade, fade));
 
             spriteBatch.Draw(scroll,
-                             new Rectangle((int)(viewport.Width - (font.MeasureString(baseSalary).X * 2.5f)) / 2, 40, (int)(font.MeasureString(baseSalary).X * 2.7f), (int)(viewport.Height / 1.4f)),
+                             new Rectangle((int)(viewport.Width - ((font.MeasureString(baseSalary).X * 2.5f) + 30)) / 2, 40, (int)(font.MeasureString(baseSalary).X * 2.7f + 30), (int)(viewport.Height / 1.4f)),
                              new Color(fade, fade, fade));
 
             // Draw each menu entry in turn.
@@ -264,8 +267,8 @@ namespace YelloKiller
 
             // Draw the menu title.
 
-            Vector2 WinOrigin = font.MeasureString(WinMessage) / 2;
-            Vector2 SalOrigin = new Vector2(font.MeasureString(baseSalary).X / 4, font.MeasureString(baseSalary).Y) / 2;
+            Vector2 WinOrigin = font.MeasureString(WinMessage) / (2 * 1.25f);
+            Vector2 SalOrigin = new Vector2((font.MeasureString(baseSalary).X + 30) / 4, font.MeasureString(baseSalary).Y) / 2;
             Vector2 PenOrigin = new Vector2(font.MeasureString(penalties).X / 4, font.MeasureString(penalties).Y) / 2;
             Vector2 ScOrigin = new Vector2(0, 0);
 
@@ -279,20 +282,26 @@ namespace YelloKiller
                                    WinOrigin, WinScale, SpriteEffects.None, 0);
             spriteBatch.DrawString(font, baseSalary, ScoresPosition, Color, 0,
                                    SalOrigin, SalScale, SpriteEffects.None, 0);
+            spriteBatch.Draw(kane, new Rectangle((int)(ScoresPosition.X + (font.MeasureString(baseSalary).X * 1.525f)), (int)ScoresPosition.Y - 15, 30, 20), Color);
             ScoresPosition.Y += 55;
+            ScoresPosition.X -= 15;
             spriteBatch.DrawString(font, penalties, ScoresPosition, Color, 0,
                                    PenOrigin, WinScale, SpriteEffects.None, 0);
-            ScoresPosition.Y += 50;
+            ScoresPosition.Y += 40;
+            ScoresPosition.X -= 10;
             spriteBatch.DrawString(font, time, ScoresPosition, Color);
+            spriteBatch.Draw(kane, new Rectangle((int)(ScoresPosition.X + font.MeasureString(time).X * 1.05f), (int)ScoresPosition.Y, 20, 17), Color);
             ScoresPosition.Y += 50;
             spriteBatch.DrawString(font, killed, ScoresPosition, Color);
+            spriteBatch.Draw(kane, new Rectangle((int)(ScoresPosition.X + (font.MeasureString(killed).X) * 1.025f), (int)ScoresPosition.Y, 20, 17), Color);
             ScoresPosition.Y += 50;
             spriteBatch.DrawString(font, retries, ScoresPosition, Color);
+            spriteBatch.Draw(kane, new Rectangle((int)(ScoresPosition.X + (font.MeasureString(retries).X) * 1.05f), (int)ScoresPosition.Y, 20, 17), Color);
             ScoresPosition.Y += 60;
             ScoresPosition.X += 40;
             spriteBatch.DrawString(font, score, ScoresPosition, Color, 0,
                                    ScOrigin, Scorale, SpriteEffects.None, 0);
-
+            spriteBatch.Draw(kane, new Rectangle((int)(ScoresPosition.X + (font.MeasureString(score).X * 2.025f)), (int)ScoresPosition.Y + 5, 37, 27), Color); 
 
             spriteBatch.End();
         }
