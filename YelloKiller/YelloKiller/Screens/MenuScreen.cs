@@ -34,6 +34,12 @@ namespace YelloKiller
             get { return menuEntries; }
         }
 
+        public string MenuTitle
+        {
+            get { return menuTitle; }
+            set { menuTitle = value; }
+        }
+
         #endregion
 
         #region Initialization
