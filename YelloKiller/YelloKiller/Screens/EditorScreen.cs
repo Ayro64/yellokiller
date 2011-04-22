@@ -26,10 +26,9 @@ namespace YelloKiller
         string ligne, nomSauvegarde, nomCarte;
         Rectangle camera;
         Vector2 origine1, origine2;
-        List<Vector2> _originesGardes, _originesBoss, _originesStatues;
+        List<Vector2> _originesGardes, _originesBoss, _originesStatues, bonusShurikens;
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
-        List<Vector2> bonusShurikens;
         Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval, fond;
         bool fileExist;
         int compteur, salaire;
