@@ -216,16 +216,7 @@ namespace YelloKiller
 
         #endregion
 
-        #region Update and Draw
-
-        /// <summary>
-        /// Updates the menu.
-        /// </summary>
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus,
-                                                       bool coveredByOtherScreen)
-        {
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-        }
+        #region Draw
 
         public override void Draw(GameTime gameTime)
         {            
