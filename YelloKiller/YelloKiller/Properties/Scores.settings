@@ -60,7 +60,7 @@
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_10" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">5000</Value>
     </Setting>
   </Settings>
 </SettingsFile>
