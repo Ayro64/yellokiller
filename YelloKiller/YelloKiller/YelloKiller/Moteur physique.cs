@@ -309,11 +309,11 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _statues.Count; i++)
                 {
+                    Console.WriteLine("statue =" + _statues[i].SourceRectangle.Value.Y);
+                    Console.WriteLine("rectangle statue =" + particule.Rectangle_Hadoken_Statue(_statues[i]));
+                    Console.WriteLine("rectangle hero  =" + hero1.Rectangle);
                     if (hero1.Rectangle.Intersects(particule.Rectangle_Hadoken_Statue(_statues[i])))
-                    {
-                        Console.WriteLine("statue =" + _statues[i].SourceRectangle.Value.Y);
-                        Console.WriteLine("rectangle statue =" + particule.Rectangle_Hadoken_Statue(_statues[i]));
-                        Console.WriteLine("rectangle hero  =" + hero1.Rectangle);
+                    {                       
                         ServiceHelper.Get<IGamePadService>().Vibration(50);
                         soundBank.PlayCue("CriMortHero");
                         return true;

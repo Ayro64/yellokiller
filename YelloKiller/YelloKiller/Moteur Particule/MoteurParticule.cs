@@ -14,7 +14,7 @@ namespace YelloKiller.Moteur_Particule
 
         YellokillerGame game;
         SpriteBatch spriteBatch;
-      
+
         private static Random random = new Random();
         public static Random Random
         {
@@ -215,27 +215,25 @@ namespace YelloKiller.Moteur_Particule
 
         public Rectangle Rectangle_Hadoken_Statue(Statue statue) // pour gerer les collisions
         {
-            if (explosion_statue.FreeParticleCount == 2000) // lorsque freeparticulecount = 100 le hadoken est termine 
-            {
+            if (explosion_statue.FreeParticleCount == 2000) // lorsque freeparticulecount = 2000 le hadoken est termine 
                 Rectangle_Hadoken_Est_Present_Statue = true;// je reinitialise donc mon rectangle
-            }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
+
             if (explosion_statue.FreeParticleCount < 2000 && Rectangle_Hadoken_Est_Present_Statue)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
                 if (statue.SourceRectangle.Value.Y == 357) // haut
-                    return new Rectangle((int)statue.position.X - (int)Camera.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y - (int)Camera.Y -(explosion_statue.LongueurExplosion * 28) + (statue.SourceRectangle.Value.Height / 2), 28 , (explosion_statue.LongueurExplosion * 28));
+                    return new Rectangle((int)statue.position.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y - (explosion_statue.LongueurExplosion * 28) + (statue.SourceRectangle.Value.Height / 2), 28, (explosion_statue.LongueurExplosion * 28));
 
                 else if (statue.SourceRectangle.Value.Y == 0) // bas
-                    return new Rectangle((int)statue.position.X - (int)Camera.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y - (int)Camera.Y + (statue.SourceRectangle.Value.Height / 2), 28, (explosion_statue.LongueurExplosion * 28));
+                    return new Rectangle((int)statue.position.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y + (statue.SourceRectangle.Value.Height / 2), 28, (explosion_statue.LongueurExplosion * 28));
 
                 else if (statue.SourceRectangle.Value.Y == 123) // gauche
-                    return new Rectangle((int)statue.position.X - (int)Camera.X + (statue.SourceRectangle.Value.Width / 2) - (explosion_statue.LongueurExplosion * 28), (int)statue.position.Y - (int)Camera.Y + (statue.SourceRectangle.Value.Height / 2), (explosion_statue.LongueurExplosion * 28), 28);
+                    return new Rectangle((int)statue.position.X + (statue.SourceRectangle.Value.Width / 2) - (explosion_statue.LongueurExplosion * 28), (int)statue.position.Y + (statue.SourceRectangle.Value.Height / 2), (explosion_statue.LongueurExplosion * 28), 28);
 
                 else // droite
-                    return new Rectangle((int)statue.position.X - (int)Camera.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y - (int)Camera.Y + (statue.SourceRectangle.Value.Height / 2), (explosion_statue.LongueurExplosion * 28), 28);
+                    return new Rectangle((int)statue.position.X + (statue.SourceRectangle.Value.Width / 2), (int)statue.position.Y + (statue.SourceRectangle.Value.Height / 2), (explosion_statue.LongueurExplosion * 28), 28);
             }
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
-           
         }
 
         #endregion
@@ -245,7 +243,7 @@ namespace YelloKiller.Moteur_Particule
 
         public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Carte carte, Hero hero, List<Statue> _statue)
         {
-           this.game = game;
+            this.game = game;
             this.spriteBatch = spriteBatch;
 
             hadoken_hero = new ExplosionParticleSystem(game, 1, hero, carte, 50);
@@ -255,7 +253,7 @@ namespace YelloKiller.Moteur_Particule
             game.Components.Add(ball);
 
             foreach (Statue statue in _statue)
-            {              
+            {
                 explosion_statue = new Statue_Explosion(game, 20, carte, statue, statue.Distance_Statue_Mur(carte));
                 game.Components.Add(explosion_statue);
             }
@@ -285,7 +283,7 @@ namespace YelloKiller.Moteur_Particule
 
         public void UpdateExplosions_statue(Statue statue)
         {
-           // Console.WriteLine(this.Rectangle_Hadoken_Statue(statue));
+            // Console.WriteLine(this.Rectangle_Hadoken_Statue(statue));
             explosion_statue.AddParticles(new Vector2(statue.position.X - Camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - Camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
         }
 

@@ -33,7 +33,7 @@ namespace YelloKiller
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, changer_arme, courir, tirer;
         const int NumStates = 5;
-        State currentState = State.state_shuriken;
+        State currentState = State.state_hadoken;
         int state_sabre = 0;
 
         public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, byte numeroHero)
