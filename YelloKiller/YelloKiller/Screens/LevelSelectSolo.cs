@@ -113,7 +113,7 @@ namespace YelloKiller
             if (input.IsMenuRight(ControllingPlayer))
             {
                 moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
-                if (selectedEntry < (levels.Count - 1))
+                if (selectedEntry < (levels.Count - 2))
                     selectedEntry++;
             }
 
@@ -121,7 +121,9 @@ namespace YelloKiller
             if (input.IsMenuUp(ControllingPlayer))
             {
                 moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
-                if (selectedEntry > 3)
+                if (selectedEntry == levels.Count - 1)
+                    selectedEntry -= 1;
+                else if (selectedEntry > 3)
                     selectedEntry -= 4;
                 else
                     selectedEntry = levels.Count - 1;
@@ -136,7 +138,7 @@ namespace YelloKiller
                 else if (selectedEntry < levels.Count - 1)
                     selectedEntry = levels.Count - 1;
                 else
-                    selectedEntry = selectedEntry % 4;
+                    selectedEntry = 0;
 
             }
 
