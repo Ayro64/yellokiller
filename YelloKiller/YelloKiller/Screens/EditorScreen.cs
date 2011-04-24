@@ -29,7 +29,7 @@ namespace YelloKiller
         List<Vector2> _originesGardes, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens;
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
-        Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval, fond;
+        Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval, fond, textureStatue;
         bool fileExist;
         int compteur, salaire;
 
@@ -93,6 +93,7 @@ namespace YelloKiller
             fond = content.Load<Texture2D>(@"Textures\Invisible");
             pointDePassagePatrouilleur = content.Load<Texture2D>("pied");
             pointDePassagePatrouilleurACheval = content.Load<Texture2D>("pied");
+            textureStatue = content.Load<Texture2D>("statue_dragon");
 
             spriteBatch = ScreenManager.SpriteBatch;
         }
@@ -211,16 +212,16 @@ namespace YelloKiller
                 switch (rotationsDesStatues[tamere])
                 {
                     case 0:
-                        spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 3, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, (float)Math.PI, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 3, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, (float)Math.PI, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 1:
-                        spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, -(float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, -(float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 2:
-                        spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                     case 3:
-                        spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(_originesStatues[tamere].X - camera.X + 3, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 3, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
                         break;
                 }
             }
