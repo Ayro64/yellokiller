@@ -62,5 +62,38 @@
     <Setting Name="Score_10" Type="System.UInt32" Scope="User">
       <Value Profile="(Default)">5000</Value>
     </Setting>
+    <Setting Name="Map_01" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_02" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_03" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_04" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_05" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_06" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_07" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_08" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_09" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Map_10" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yello Killer</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
