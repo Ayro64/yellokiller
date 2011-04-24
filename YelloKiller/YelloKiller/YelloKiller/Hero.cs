@@ -103,7 +103,6 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
         {
-           // Console.WriteLine(this.Rectangle);
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
@@ -157,7 +156,6 @@ namespace YelloKiller
             }
             else if (Regarder_Bas && animation_sabre)
             {
-                Console.WriteLine(SourceRectangle);
                 SourceRectangle = new Rectangle((int)index * 48, 65, 16, 26);
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
 
@@ -166,7 +164,6 @@ namespace YelloKiller
             }
             else if (regarde_gauche && animation_sabre)
             {
-                Console.WriteLine(SourceRectangle);
                 SourceRectangle = new Rectangle((int)index * 48, 97, 16, 26);
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
 
@@ -175,7 +172,6 @@ namespace YelloKiller
             }
             else if (regarde_droite && animation_sabre)
             {
-                Console.WriteLine(SourceRectangle);
                 SourceRectangle = new Rectangle((int)index * 48, 33, 16, 26);
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
 

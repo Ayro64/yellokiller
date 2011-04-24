@@ -283,7 +283,6 @@ namespace YelloKiller.Moteur_Particule
 
         public void UpdateExplosions_statue(Statue statue)
         {
-            // Console.WriteLine(this.Rectangle_Hadoken_Statue(statue));
             explosion_statue.AddParticles(new Vector2(statue.position.X - Camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - Camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
         }
 
