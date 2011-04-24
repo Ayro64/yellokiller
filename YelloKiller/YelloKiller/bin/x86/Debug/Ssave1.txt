@@ -160,5 +160,6 @@ Bonus Shurikens
 18
 27
 18
+Bonus Hadokens
 Salaire
 100000
