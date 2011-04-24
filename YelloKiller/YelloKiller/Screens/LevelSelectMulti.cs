@@ -36,7 +36,7 @@ namespace YelloKiller
             string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath);
             foreach (string str in fileEntries)
             {
-                if (str.Substring(str.Length - 3) == "txt" && str[str.Length - 10] == 'C')
+                if (str.Substring(str.Length - 4) == "coop")
                 {
                     MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10, 6));
                     menuEntry.Selected += LevelMenuEntrySelected;
