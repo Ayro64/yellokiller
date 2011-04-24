@@ -161,12 +161,15 @@ namespace YelloKiller
                             type = TypeCase.terre;
                             break;
                         case 39:
-                            type = TypeCase.pont1;
+                            type = TypeCase.eau;
                             break;
                         case 40:
-                            type = TypeCase.pont2;
+                            type = TypeCase.pont1;
                             break;
                         case 41:
+                            type = TypeCase.pont2;
+                            break;
+                        case 42:
                             type = TypeCase.tableMoyenne;
                             break;
                     }

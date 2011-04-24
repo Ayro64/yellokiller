@@ -293,7 +293,7 @@ namespace YelloKiller
                 ScreenManager.FadeBackBufferToBlack(255 - TransitionAlpha);
 
             spriteBatch.Begin();
-            carte.DrawInGame(spriteBatch, content, camera);
+            carte.DrawInGame(gameTime, spriteBatch, content, camera);
             hero1.Draw(spriteBatch, gameTime, camera);
             if (jeuEnCoop)
                 hero2.Draw(spriteBatch, gameTime, camera);
