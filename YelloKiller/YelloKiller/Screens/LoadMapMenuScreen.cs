@@ -15,15 +15,12 @@ namespace YelloKiller
             : base(Langue.tr("PausEditLoad"))
         {
             this.game = game;
-            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath);
+            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.txt");
             foreach (string str in fileEntries)
             {
-                if (str.Substring(str.Length - 3) == "txt")
-                {
                     MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10));
                     menuEntry.Selected += MenuEntrySelected;
                     MenuEntries.Add(menuEntry);
-                }
             }
         }
 
