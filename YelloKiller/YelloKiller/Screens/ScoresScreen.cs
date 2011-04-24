@@ -68,6 +68,11 @@ namespace YelloKiller
 
         #endregion
 
+        protected override void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
+        {
+            OnCancel(playerIndex);
+        }
+
         #region Draw
 
         /// <summary>
