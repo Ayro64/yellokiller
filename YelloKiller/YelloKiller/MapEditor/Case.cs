@@ -105,6 +105,24 @@ namespace YelloKiller
                         case 2:
                             nomTexture = @"Textures\ponts\pont22";
                             break;
+                        case 3:
+                            nomTexture = @"Textures\ponts\pont23";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\ponts\pont24";
+                            break;
+                        case 5:
+                            nomTexture = @"Textures\ponts\pont25";
+                            break;
+                        case 6:
+                            nomTexture = @"Textures\ponts\pont26";
+                            break;
+                        case 7:
+                            nomTexture = @"Textures\ponts\pont27";
+                            break;
+                        case 8:
+                            nomTexture = @"Textures\ponts\pont28";
+                            break;
                     }
                     break;
 

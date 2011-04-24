@@ -653,7 +653,7 @@ namespace YelloKiller
                 }
             }
 
-            else if ((int)curseur.Type == 18 || (int)curseur.Type == 19)
+            else if ((int)curseur.Type == 18)
             {
                 if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 1))
                 {
@@ -662,6 +662,19 @@ namespace YelloKiller
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 1;
                     }
+                }
+            }
+
+            else if ((int)curseur.Type == 19)
+            {
+                if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 1))
+                {
+                    for (int x = 0; x < 4; x++)
+                        for (int y = 0; y < 2; y++)
+                        {
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 4 * y + 1;
+                        }
                 }
             }
 
