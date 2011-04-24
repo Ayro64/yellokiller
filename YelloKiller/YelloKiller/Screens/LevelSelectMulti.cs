@@ -33,19 +33,18 @@ namespace YelloKiller
         public LevelSelectMulti(YellokillerGame game)
         {
             this.game = game;
-            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath);
+            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.coop");
             foreach (string str in fileEntries)
             {
-                if (str.Substring(str.Length - 4) == "coop")
-                {
-                    MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10, 6));
-                    menuEntry.Selected += LevelMenuEntrySelected;
-                    levels.Add(menuEntry);
+                string entryName = str.Substring(str.LastIndexOf('\\') + 1);
+                entryName = entryName.Substring(0, entryName.LastIndexOf('.'));
+                MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10, 6));
+                menuEntry.Selected += LevelMenuEntrySelected;
+                levels.Add(menuEntry);
 
-                    Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-                    map.OuvrirCartePourMenu(str.Substring(str.Length - 10));
-                    miniCartes.Add(map);
-                }
+                Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+                map.OuvrirCartePourMenu(str.Substring(str.Length - 10));
+                miniCartes.Add(map);
             }
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.5);

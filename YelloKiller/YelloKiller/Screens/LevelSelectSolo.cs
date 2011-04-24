@@ -33,10 +33,12 @@ namespace YelloKiller
         public LevelSelectSolo(YellokillerGame game)
         {
             this.game = game;
-            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*\\S*.txt");
+            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.solo");
             foreach (string str in fileEntries)
             {
-                MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10, 6));
+                string entryName = str.Substring(str.LastIndexOf('\\') + 1);
+                entryName = entryName.Substring(0, entryName.LastIndexOf('.'));
+                MenuEntry menuEntry = new MenuEntry(entryName);
                 menuEntry.Selected += LevelMenuEntrySelected;
                 levels.Add(menuEntry);
 
