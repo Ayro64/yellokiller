@@ -145,6 +145,7 @@
     <Compile Include="Screens\MenuEntry.cs" />
     <Compile Include="Screens\MenuScreen.cs" />
     <Compile Include="Screens\MessageBoxScreen.cs" />
+    <Compile Include="Screens\NewHiScore.cs" />
     <Compile Include="Screens\OptionsMenuScreen.cs" />
     <Compile Include="Screens\Pausebckground.cs" />
     <Compile Include="Screens\PauseMenuScreen.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Services\MouseService.cs" />
     <Compile Include="Services\ServiceHelper.cs" />
     <Compile Include="Services\Temps.cs" />
+    <Compile Include="Services\Text.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="YelloKiller\Bonus.cs" />
     <Compile Include="YelloKiller\Dimensions.cs" />

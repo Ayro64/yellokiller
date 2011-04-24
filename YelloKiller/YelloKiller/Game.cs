@@ -19,6 +19,8 @@ namespace YelloKiller
 
         public YellokillerGame()
         {
+            EventInput.EventInput.Initialize(this.Window);
+
             Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
 
@@ -39,6 +41,11 @@ namespace YelloKiller
             // Activate the first screens.
             screenManager.AddScreen(new BackgroundScreen(), null);
             screenManager.AddScreen(new MainMenuScreen(this), null);
+        }
+
+        void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
+        {
+            Console.WriteLine(e.Character);
         }
 
         #endregion

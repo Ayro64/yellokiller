@@ -1,61 +1,27 @@
-#region Using Statements
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+﻿#region Using Statements
 #endregion
 
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 namespace YelloKiller
 {
-    /// <summary>
-    /// A popup message box screen, used to display "are you sure?"
-    /// confirmation messages.
-    /// </summary>
-    class MessageBoxScreen : GameScreen
+    class NewHiScore : MessageBoxScreen
     {
-        #region Fields
-
-        string message;
-        Texture2D gradientTexture;
-
-        #endregion
-
-        #region Events
-
-        public event EventHandler<PlayerIndexEventArgs> Accepted;
-        public event EventHandler<PlayerIndexEventArgs> Cancelled;
-
-        #endregion
-
         #region Initialization
 
+        string playerName, message;
+        uint Score;
+        Texture2D gradientTexture;
 
-        /// <summary>
-        /// Constructor automatically includes the standard "A=ok, B=cancel"
-        /// usage text prompt.
-        /// </summary>
-        public MessageBoxScreen(string message)
-            : this(message, true)
-        { }
-
-
-        /// <summary>
-        /// Constructor lets the caller specify whether to include the standard
-        /// "A=ok, B=cancel" usage text prompt.
-        /// </summary>
-        public MessageBoxScreen(string message, bool includeUsageText)
+        public NewHiScore(uint score)
+            : base(Langue.tr("HiScore"), false)
         {
-            string usageText = Langue.tr("MsgBox");
-            
-            if (includeUsageText)
-                this.message = message + usageText;
-            else
-                this.message = message;
-
-            IsPopup = true;
-
+            this.message = Langue.tr("HiScore");
+            Score = score;
+            EventInput.EventInput.CharEntered += new EventInput.CharEnteredHandler(EventInput_CharEntered);
         }
-
 
         /// <summary>
         /// Loads graphics content for this screen. This uses the shared ContentManager
@@ -69,39 +35,29 @@ namespace YelloKiller
 
             gradientTexture = content.Load<Texture2D>("gradient");
         }
-        
+
         #endregion
 
         #region Handle Input
-        
+
         /// <summary>
         /// Responds to user input, accepting or cancelling the message box.
         /// </summary>
         public override void HandleInput(InputState input)
         {
-            PlayerIndex playerIndex;
+            base.HandleInput(input);
 
-            // We pass in our ControllingPlayer, which may either be null (to
-            // accept input from any player) or a specific index. If we pass a null
-            // controlling player, the InputState helper returns to us which player
-            // actually provided the input. We pass that through to our Accepted and
-            // Cancelled events, so they can tell which player triggered them.
-            if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Back) && (playerName.Length > 0))
             {
-                // Raise the accepted event, then exit the message box.
-                if (Accepted != null)
-                    Accepted(this, new PlayerIndexEventArgs(playerIndex));
-
-                ExitScreen();
+                playerName = playerName.Remove(playerName.Length - 1);
             }
-            else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
-            {
-                // Raise the cancelled event, then exit the message box.
-                if (Cancelled != null)
-                    Cancelled(this, new PlayerIndexEventArgs(playerIndex));
 
-                ExitScreen();
-            }
+        }
+
+        void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
+        {
+            if (e.Character != '\b')
+                playerName += e.Character;
         }
 
         #endregion
@@ -143,7 +99,7 @@ namespace YelloKiller
             spriteBatch.Draw(gradientTexture, backgroundRectangle, color);
 
             // Draw the message box text.
-            spriteBatch.DrawString(font, message, textPosition, color);
+            spriteBatch.DrawString(font, message + playerName, textPosition, color);
 
             spriteBatch.End();
         }
