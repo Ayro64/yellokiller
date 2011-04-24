@@ -667,7 +667,7 @@ namespace YelloKiller
 
             else if ((int)curseur.Type == 19)
             {
-                if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 1))
+                if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(4, 2))
                 {
                     for (int x = 0; x < 4; x++)
                         for (int y = 0; y < 2; y++)
