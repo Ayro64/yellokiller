@@ -191,7 +191,7 @@ namespace YelloKiller
                     if (z == 0)
                         spriteBatch.Draw(menu.ListeTexturesGauche[3], 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassagePatrouilleur, 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.White);
+                        spriteBatch.Draw(pointDePassagePatrouilleur, 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.Red);
                 }
 
             foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
@@ -200,7 +200,7 @@ namespace YelloKiller
                     if (v == 0)
                         spriteBatch.Draw(menu.ListeTexturesGauche[4], 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassagePatrouilleurACheval, 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.White);
+                        spriteBatch.Draw(pointDePassagePatrouilleurACheval, 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.Yellow);
                 }
 
             foreach (Vector2 position in _originesBoss)
