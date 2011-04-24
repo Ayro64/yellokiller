@@ -205,7 +205,10 @@ namespace YelloKiller
                             type = TypeCase.Statues;
                             break;
                         case 7:
-                            type = TypeCase.BonusShuriken;
+                            type = TypeCase.BonusShurikens;
+                            break;
+                        case 8:
+                            type = TypeCase.BonusHadokens;
                             break;
                     }
 

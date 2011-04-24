@@ -12,7 +12,7 @@ namespace YelloKiller
         Case[,] _case;
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
         List<byte> rotationsDesStatues;
-        List<Vector2> _originesGarde, _originesBoss, _originesStatues, bonusShurikens;
+        List<Vector2> _originesGarde, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
         int salaire;
 
@@ -29,6 +29,7 @@ namespace YelloKiller
             _originesStatues = new List<Vector2>();
             rotationsDesStatues = new List<byte>();
             bonusShurikens = new List<Vector2>();
+            bonusHadokens = new List<Vector2>();
         }
 
         public void Initialisation(Vector2 size)
@@ -161,12 +162,23 @@ namespace YelloKiller
             
             line = file.ReadLine();
 
-            while (line != "Salaire")
+            while (line != "Bonus Hadokens")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
                 positionTemporaire.Y = Convert.ToInt32(line);
                 bonusShurikens.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
+
+            line = file.ReadLine();
+
+            while (line != "Salaire")
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                bonusHadokens.Add(positionTemporaire);
                 line = file.ReadLine();
             }
 
@@ -649,9 +661,14 @@ namespace YelloKiller
             get { return origineJoueur2; }
         }
 
-        public List<Vector2> BonusShuriken
+        public List<Vector2> BonusShurikens
         {
             get { return bonusShurikens; }
+        }
+
+        public List<Vector2> BonusHadokens
+        {
+            get { return bonusHadokens; }
         }
 
         public Case[,] Cases

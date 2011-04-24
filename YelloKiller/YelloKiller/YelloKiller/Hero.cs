@@ -539,10 +539,16 @@ namespace YelloKiller
             set { regarde_gauche = value; }
         }
 
-        public int NombreShuriken
+        public int NombreShurikens
         {
             get { return nombreShuriken; }
             set { nombreShuriken = value; }
+        }
+
+        public int NombreHadokens
+        {
+            get { return nombreHadoken; }
+            set { nombreHadoken = value; }
         }
     }
 }

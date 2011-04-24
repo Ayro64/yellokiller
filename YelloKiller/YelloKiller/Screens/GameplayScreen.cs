@@ -154,8 +154,11 @@ namespace YelloKiller
                 _statues.Add(new Statue(28 * new Vector2(carte.OriginesStatues[l].X, carte.OriginesStatues[l].Y), carte, carte.RotationsDesStatues[l]));
 
             _bonus = new List<Bonus>();
-            foreach (Vector2 bonus in carte.BonusShuriken)
+            foreach (Vector2 bonus in carte.BonusShurikens)
                 _bonus.Add(new Bonus(28 * bonus, TypeBonus.shuriken));
+
+            foreach (Vector2 bonus in carte.BonusHadokens)
+                _bonus.Add(new Bonus(28 * bonus, TypeBonus.hadoken));
 
             kills = (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count);
         }
