@@ -37,14 +37,16 @@ namespace YelloKiller
             foreach (string str in fileEntries)
             {
                 string entryName = str.Substring(str.LastIndexOf('\\') + 1);
+
+                Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+                map.OuvrirCartePourMenu(entryName);
+                miniCartes.Add(map);
+
                 entryName = entryName.Substring(0, entryName.LastIndexOf('.'));
                 MenuEntry menuEntry = new MenuEntry(entryName);
                 menuEntry.Selected += LevelMenuEntrySelected;
                 levels.Add(menuEntry);
 
-                Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-                map.OuvrirCartePourMenu(str.Substring(str.Length - 10));
-                miniCartes.Add(map);
             }
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
