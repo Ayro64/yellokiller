@@ -622,6 +622,7 @@ namespace YelloKiller
        Boss = 105,
        Statues = 106,
 
-       BonusShuriken = 200,
+       BonusShurikens = 200,
+       BonusHadokens = 201,
    }
 }

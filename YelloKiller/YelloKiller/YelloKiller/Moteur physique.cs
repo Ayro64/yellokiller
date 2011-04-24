@@ -342,7 +342,11 @@ namespace YelloKiller
                     switch (bonus[u].TypeBonus)
                     {
                         case TypeBonus.shuriken:
-                            hero1.NombreShuriken += 3;
+                            hero1.NombreShurikens += 3;
+                            bonus.RemoveAt(u);
+                            break;
+                        case TypeBonus.hadoken:
+                            hero1.NombreHadokens++;
                             bonus.RemoveAt(u);
                             break;
                     }
@@ -358,7 +362,11 @@ namespace YelloKiller
                         switch (bonus[u].TypeBonus)
                         {
                             case TypeBonus.shuriken:
-                                hero2.NombreShuriken += 3;
+                                hero2.NombreShurikens += 3;
+                                bonus.RemoveAt(u);
+                                break;
+                            case TypeBonus.hadoken:
+                                hero2.NombreHadokens++;
                                 bonus.RemoveAt(u);
                                 break;
                         }

@@ -26,7 +26,7 @@ namespace YelloKiller
         string ligne, nomSauvegarde, nomCarte;
         Rectangle camera;
         Vector2 origine1, origine2;
-        List<Vector2> _originesGardes, _originesBoss, _originesStatues, bonusShurikens;
+        List<Vector2> _originesGardes, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens;
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
         Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval, fond;
@@ -69,7 +69,8 @@ namespace YelloKiller
             _originesBoss = carte.OriginesBoss;
             _originesStatues = carte.OriginesStatues;
             rotationsDesStatues = carte.RotationsDesStatues;
-            bonusShurikens = carte.BonusShuriken;
+            bonusShurikens = carte.BonusShurikens;
+            bonusHadokens = carte.BonusHadokens;
 
             origine1 = carte.OrigineJoueur1;
             origine2 = carte.OrigineJoueur2;
@@ -84,7 +85,7 @@ namespace YelloKiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu ci-dessous.
-            menu = new Menu(content, 42, 8/*<-- ici*/);
+            menu = new Menu(content, 42, 9/*<-- ici*/);
             curseur = new Curseur(content);
             ascenseur1 = new Ascenseur(content, Taille_Ecran.LARGEUR_ECRAN - 28);
             ascenseur2 = new Ascenseur(content, 0);
@@ -225,6 +226,9 @@ namespace YelloKiller
 
             foreach (Vector2 bonus in bonusShurikens)
                 spriteBatch.Draw(menu.ListeTexturesGauche[7], 28 * new Vector2(bonus.X - camera.X + 2, bonus.Y - camera.Y), Color.White);
+
+            foreach (Vector2 bonus in bonusHadokens)
+                spriteBatch.Draw(menu.ListeTexturesGauche[8], 28 * new Vector2(bonus.X - camera.X + 2, bonus.Y - camera.Y), Color.White);
 
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
@@ -508,6 +512,13 @@ namespace YelloKiller
                     sauvegarde.WriteLine(bonus.Y);
                 }
 
+                sauvegarde.WriteLine("Bonus Hadokens");
+                foreach (Vector2 bonus in bonusHadokens)
+                {
+                    sauvegarde.WriteLine(bonus.X);
+                    sauvegarde.WriteLine(bonus.Y);
+                }
+
                 sauvegarde.WriteLine("Salaire");
                 sauvegarde.WriteLine(salaire);
 
@@ -544,6 +555,10 @@ namespace YelloKiller
             for (int pt = 0; pt < bonusShurikens.Count; pt++)
                 if (bonusShurikens[pt].X == curseur.Position.X + camera.X && bonusShurikens[pt].Y == curseur.Position.Y + camera.Y)
                     bonusShurikens.RemoveAt(pt);
+
+            for (int miaou = 0; miaou < bonusHadokens.Count; miaou++)
+                if (bonusHadokens[miaou].X == curseur.Position.X + camera.X && bonusHadokens[miaou].Y == curseur.Position.Y + camera.Y)
+                    bonusHadokens.RemoveAt(miaou);
         }
 
         private void Placer_Personnage_Ou_Bonus()
@@ -591,8 +606,11 @@ namespace YelloKiller
                 rotationsDesStatues.Add(0);
             }
 
-            else if (curseur.Type == TypeCase.BonusShuriken)
+            else if (curseur.Type == TypeCase.BonusShurikens)
                 bonusShurikens.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
+
+            else if (curseur.Type == TypeCase.BonusHadokens)
+                bonusHadokens.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
         }
 
         private void Placer_Case()

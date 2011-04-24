@@ -6,6 +6,7 @@ namespace YelloKiller
     public enum TypeBonus
     {
         shuriken = 0,
+        hadoken = 1,
     }
 
     class Bonus : Sprite
@@ -24,6 +25,9 @@ namespace YelloKiller
             {
                 case TypeBonus.shuriken:
                     LoadContent(content, "bonusShuriken");
+                    break;
+                case TypeBonus.hadoken:
+                    LoadContent(content, "bonusHadoken");
                     break;
             }
         }
