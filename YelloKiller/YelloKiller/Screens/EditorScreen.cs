@@ -212,16 +212,16 @@ namespace YelloKiller
                 switch (rotationsDesStatues[tamere])
                 {
                     case 0:
-                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 3, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, (float)Math.PI, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 0, 112, 94), Color.White);
                         break;
                     case 1:
-                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y + 1), null, Color.White, -(float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 123, 112, 94), Color.White);
                         break;
                     case 2:
-                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 357, 112, 94), Color.White);
                         break;
                     case 3:
-                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 3, _originesStatues[tamere].Y - camera.Y), null, Color.White, (float)Math.PI / 2f, Vector2.Zero, 1, SpriteEffects.None, 1);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 243, 112, 94), Color.White);
                         break;
                 }
             }
