@@ -202,7 +202,7 @@ namespace YelloKiller
             foreach (Bonus bonus in _bonus)
                 bonus.LoadContent(content);
 
-            gardeMort = content.Load<Texture2D>("gardeMort");
+            gardeMort = content.Load<Texture2D>(@"Menu Editeur de Maps\gardeMort");
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();

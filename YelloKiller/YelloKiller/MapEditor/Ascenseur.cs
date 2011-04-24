@@ -16,7 +16,7 @@ namespace YelloKiller
 
         public Ascenseur(ContentManager content, float limite)
         {
-            texture = content.Load<Texture2D>("ascenseur");
+            texture = content.Load<Texture2D>(@"Menu Editeur de Maps\ascenseur");
             position = new Vector2(limite, 0);
             this.limite = limite;
             rectangle.Width = texture.Width;

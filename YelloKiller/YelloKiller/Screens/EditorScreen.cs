@@ -29,7 +29,7 @@ namespace YelloKiller
         List<Vector2> _originesGardes, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens;
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
-        Texture2D pointDePassagePatrouilleur, pointDePassagePatrouilleurACheval, fond, textureStatue;
+        Texture2D pointDePassage, fond, textureStatue;
         bool fileExist;
         int compteur, salaire;
 
@@ -91,9 +91,8 @@ namespace YelloKiller
             ascenseur1 = new Ascenseur(content, Taille_Ecran.LARGEUR_ECRAN - 28);
             ascenseur2 = new Ascenseur(content, 0);
             fond = content.Load<Texture2D>(@"Textures\Invisible");
-            pointDePassagePatrouilleur = content.Load<Texture2D>("pied");
-            pointDePassagePatrouilleurACheval = content.Load<Texture2D>("pied");
-            textureStatue = content.Load<Texture2D>("statue_dragon");
+            pointDePassage = content.Load<Texture2D>(@"Menu Editeur de Maps\pied");
+            textureStatue = content.Load<Texture2D>(@"Feuilles de sprites\statue_dragon");
 
             spriteBatch = ScreenManager.SpriteBatch;
         }
@@ -192,7 +191,7 @@ namespace YelloKiller
                     if (z == 0)
                         spriteBatch.Draw(menu.ListeTexturesGauche[3], 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassagePatrouilleur, 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.Red);
+                        spriteBatch.Draw(pointDePassage, 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.Red);
                 }
 
             foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
@@ -201,7 +200,7 @@ namespace YelloKiller
                     if (v == 0)
                         spriteBatch.Draw(menu.ListeTexturesGauche[4], 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassagePatrouilleurACheval, 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.Yellow);
+                        spriteBatch.Draw(pointDePassage, 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.Yellow);
                 }
 
             foreach (Vector2 position in _originesBoss)

@@ -17,7 +17,7 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content, int maxIndex)
         {
-            LoadContent(content, "Patrouilleur_a_cheval");
+            LoadContent(content, @"Feuilles de sprites\Patrouilleur_a_cheval");
             MaxIndex = maxIndex;
         }
 

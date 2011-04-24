@@ -24,15 +24,15 @@ namespace YelloKiller
             for (int i = 0; i < nbTexturesGauche; i++)
                 listeRectanglesGauche.Add(new Rectangle(0, 0, 28, 28));
 
-            listeTexturesGauche.Add(content.Load<Texture2D>("origine_hero1"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("origine_hero2"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("origine_garde"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("origine_patrouilleur"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("origine_patrouilleur_a_cheval"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("origine_boss"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("origine_statue"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("bonusShuriken"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("bonusHadoken"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_hero1"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_hero2"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_garde"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_patrouilleur"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_patrouilleur_a_cheval"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_boss"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_statue"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusShuriken"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusHadoken"));
 
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\arbre\arbre"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\commode\commode"));

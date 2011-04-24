@@ -24,10 +24,10 @@ namespace YelloKiller
             switch (typeBonus)
             {
                 case TypeBonus.shuriken:
-                    LoadContent(content, "bonusShuriken");
+                    LoadContent(content, @"Menu Editeur de Maps\bonusShuriken");
                     break;
                 case TypeBonus.hadoken:
-                    LoadContent(content, "bonusHadoken");
+                    LoadContent(content, @"Menu Editeur de Maps\bonusHadoken");
                     break;
             }
         }
