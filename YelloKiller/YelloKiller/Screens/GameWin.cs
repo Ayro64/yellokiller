@@ -89,13 +89,10 @@ namespace YelloKiller
 
             //Ecran Game Over.
             winTexture = content.Load<Texture2D>("WinTex");
-
             // Kanji argent.
             kane = content.Load<Texture2D>("Kane");
-
             // Parchemin
             scroll = content.Load<Texture2D>("ScoresScrollFil");
-
             //Carré noir.
             blankTexture = content.Load<Texture2D>("blank");
         }
@@ -118,6 +115,7 @@ namespace YelloKiller
         /// </summary>
         public override void HandleInput(InputState input)
         {
+
             // Move to the previous menu entry?
             if (input.IsMenuLeft(ControllingPlayer))
             {
@@ -145,6 +143,13 @@ namespace YelloKiller
 
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
                 OnSelectEntry(selectedEntry, playerIndex);
+
+
+            if (input.IsMenuDown(ControllingPlayer))
+            {
+                NewHiScore confirmExitMessageBox = new NewHiScore(salaire);
+                ScreenManager.AddScreen(confirmExitMessageBox, playerIndex);
+            }
         }
 
         /// <summary>

@@ -19,8 +19,6 @@ namespace YelloKiller
     {
         #region Properties
 
-
-
         public bool IsPopup
         {
             get { return isPopup; }
@@ -29,8 +27,6 @@ namespace YelloKiller
 
         bool isPopup = false;
 
-
-
         public TimeSpan TransitionOnTime
         {
             get { return transitionOnTime; }
@@ -38,8 +34,6 @@ namespace YelloKiller
         }
 
         TimeSpan transitionOnTime = TimeSpan.Zero;
-
-
 
         public TimeSpan TransitionOffTime
         {
@@ -98,7 +92,6 @@ namespace YelloKiller
 
         ScreenManager screenManager;
 
-
         public PlayerIndex? ControllingPlayer
         {
             get { return controllingPlayer; }
@@ -111,16 +104,13 @@ namespace YelloKiller
 
         #region Initialization
 
-
         public virtual void LoadContent() { }
 
         public virtual void UnloadContent() { }
 
-
         #endregion
 
         #region Update and Draw
-
 
         /// <summary>
         /// Allows the screen to run logic, such as updating the transition position.
@@ -241,7 +231,6 @@ namespace YelloKiller
                 isExiting = true;
             }
         }
-
 
         #endregion
     }
