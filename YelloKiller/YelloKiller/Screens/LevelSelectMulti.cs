@@ -119,8 +119,8 @@ namespace YelloKiller
             if (input.IsMenuUp(ControllingPlayer))
             {
                 moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
-                if (selectedEntry > 2)
-                    selectedEntry -= 3;
+                if (selectedEntry > 3)
+                    selectedEntry -= 4;
                 else
                     selectedEntry = levels.Count - 1;
             }
@@ -129,12 +129,12 @@ namespace YelloKiller
             if (input.IsMenuDown(ControllingPlayer))
             {
                 moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
-                if (selectedEntry < levels.Count - 3)
-                    selectedEntry += 3;
+                if (selectedEntry < levels.Count - 4)
+                    selectedEntry += 4;
                 else if (selectedEntry < levels.Count - 1)
                     selectedEntry = levels.Count - 1;
                 else
-                    selectedEntry = selectedEntry % 3;
+                    selectedEntry = selectedEntry % 4;
             }
 
             // Accept or cancel the menu? We pass in our ControllingPlayer, which may
@@ -211,7 +211,7 @@ namespace YelloKiller
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
 
-            Vector2 position = new Vector2(130, 300);
+            Vector2 position = new Vector2(100, 400);
 
             byte fade = TransitionAlpha;
 
@@ -240,22 +240,22 @@ namespace YelloKiller
                 menuEntry.Draw(this, position, isSelected, gameTime, Color.Black);
 
                 // Miniatures
-                miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 45, position.Y - 150));
+                miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 85, position.Y - 200));
 
-                if ((i % 3 == 0) || (i % 3 == 1))
+                if ((i % 4 == 0) || (i % 4 == 1) || (i % 4 == 2))
                     position.X += 250;
                 else
                 {
-                    position.Y += (menuEntry.GetHeight(this) + 150);
-                    position.X -= 500;
+                    position.Y += (menuEntry.GetHeight(this) + 200);
+                    position.X -= 750;
                 }
             }
 
             // Bouton Retour
-            if ((levels.Count % 3 == 1) || (levels.Count % 3 == 2))
-                position.X -= ((levels.Count - 1) % 3) * 250;
+            if ((levels.Count % 4 == 1) || (levels.Count % 4 == 2) || (levels.Count % 4 == 0))
+                position.X -= ((levels.Count - 1) % 4) * 250;
             position.X -= 30;
-            position.Y = 580;
+            position.Y = viewport.Height - 50;
             abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black);
 
             // Draw the menu title.
