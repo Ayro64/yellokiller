@@ -8,7 +8,7 @@ namespace YelloKiller
 {
     static class Moteur_physique
     {
-        static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank)
+        static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank, ref List<Vector2> gardesMorts)
         {
             if (_gardes.Count != 0)
             {
@@ -31,12 +31,14 @@ namespace YelloKiller
                         if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
                         {
                             soundBank.PlayCue("cri");
+                            gardesMorts.Add(new Vector2(_gardes[i].X, _gardes[i].Y));
                             _gardes.Remove(_gardes[i]);
                             break;
                         }
                         else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
                         {
                             soundBank.PlayCue("cri");
+                            gardesMorts.Add(new Vector2(_gardes[i].X, _gardes[i].Y));
                             _gardes.Remove(_gardes[i]);
                             break;
                         }
@@ -46,6 +48,7 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("cri");
                             ServiceHelper.Get<IGamePadService>().Vibration(20);
+                            gardesMorts.Add(new Vector2(_gardes[i].X, _gardes[i].Y));
                             _gardes.Remove(_gardes[i]);
                             listeShuriken.Remove(listeShuriken[j]);
                             break;
@@ -309,9 +312,6 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _statues.Count; i++)
                 {
-                    Console.WriteLine("statue =" + _statues[i].SourceRectangle.Value.Y);
-                    Console.WriteLine("rectangle statue =" + particule.Rectangle_Hadoken_Statue(_statues[i]));
-                    Console.WriteLine("rectangle hero  =" + hero1.Rectangle);
                     if (hero1.Rectangle.Intersects(particule.Rectangle_Hadoken_Statue(_statues[i])))
                     {                       
                         ServiceHelper.Get<IGamePadService>().Vibration(50);
