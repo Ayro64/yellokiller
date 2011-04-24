@@ -264,7 +264,7 @@ namespace YelloKiller
                 if (Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, moteurAudio.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
-                Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus);
+                Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, moteurAudio.SoundBank);
                 if (_boss.Count == 0)
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
