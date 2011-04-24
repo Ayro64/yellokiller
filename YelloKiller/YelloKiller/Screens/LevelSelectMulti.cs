@@ -165,7 +165,7 @@ namespace YelloKiller
         void LevelMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             MenuEntry selectedLevel = (MenuEntry)sender;
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(selectedLevel.Text + "coop", game, 0));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(selectedLevel.Text + ".coop", game, 0));
         }
 
         /// <summary>
