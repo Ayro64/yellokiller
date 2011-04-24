@@ -11,6 +11,7 @@ namespace YelloKiller
         TypeCase type;
         string nomTexture;
         int x, y;
+        double temps;
         Vector3 etienne;
 
         public Case(Vector2 position, TypeCase type, Vector3 etienne)
@@ -18,7 +19,7 @@ namespace YelloKiller
             this.position = position;
             this.type = type;
             this.etienne = etienne;
-
+            temps = 0;
             x = (int)position.X / 28;
             y = (int)position.Y / 28;
         }
@@ -512,6 +513,9 @@ namespace YelloKiller
                 case TypeCase.finMurHaut:
                     nomTexture = @"Textures\petites\finMurHaut";
                     break;
+                case TypeCase.eau:
+                    nomTexture = @"Textures\petites\eau";
+                    break;
 
 
 
@@ -544,10 +548,30 @@ namespace YelloKiller
             texture = content.Load<Texture2D>(nomTexture);
         }
 
-        public void DrawInGame(SpriteBatch spriteBatch, ContentManager content)
+        public void DrawInGame(GameTime gameTime, SpriteBatch spriteBatch, ContentManager content)
         {
             LoadContent(content);
-            spriteBatch.Draw(texture, position, Color.White);
+
+            if (type == TypeCase.eau)
+            {
+                if (temps < 1000)
+                    spriteBatch.Draw(texture, position, null, Color.White, 0, Vector2.Zero,1, SpriteEffects.None, 1);
+                else if (temps < 2000)
+                    spriteBatch.Draw(texture, position + new Vector2(28, 0), null, Color.White, MathHelper.Pi / 2, Vector2.Zero,1, SpriteEffects.None, 1);
+                else if (temps < 3000)
+                    spriteBatch.Draw(texture, position + new Vector2(28, 28), null, Color.White, MathHelper.Pi, Vector2.Zero, 1, SpriteEffects.None, 1);
+                else if (temps < 4000)
+                    spriteBatch.Draw(texture, position + new Vector2(0, 28), null, Color.White, -MathHelper.Pi / 2, Vector2.Zero, 1, SpriteEffects.None, 1);
+                else
+                {
+                    spriteBatch.Draw(texture, position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+                    temps = 0;
+                }
+
+                temps += gameTime.ElapsedGameTime.TotalMilliseconds;
+            }
+            else
+                spriteBatch.Draw(texture, position, Color.White);
         }
 
         public void DrawInMapEditor(SpriteBatch spriteBatch, ContentManager content)
@@ -576,6 +600,7 @@ namespace YelloKiller
        finMurGauche = -20,
        fondNoir = -21,
        piedMurBois = -22,
+       eau = -23,
 
        commode = -50,
        lit = -51,

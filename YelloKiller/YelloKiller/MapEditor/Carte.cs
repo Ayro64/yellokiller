@@ -573,10 +573,13 @@ namespace YelloKiller
                 case ("d9"):
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurHaut, new Vector3(1, 1, 1));
                     break;
+                case "e5":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.eau, new Vector3(1, 1, 1));
+                    break;
             }
         }
 
-        public void DrawInGame(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
+        public void DrawInGame(GameTime gameTime, SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
             for (int y = camera.Y / 28 + camera.Height; y >= camera.Y / 28 - 2; y--)
             {
@@ -588,7 +591,7 @@ namespace YelloKiller
                         {
                             _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
 
-                            _case[y, x].DrawInGame(spriteBatch, content);
+                            _case[y, x].DrawInGame(gameTime, spriteBatch, content);
                         }
                     }
                 }
