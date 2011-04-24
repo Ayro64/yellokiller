@@ -15,10 +15,10 @@ namespace YelloKiller
             : base(Langue.tr("PausEditLoad"))
         {
             this.game = game;
-            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.txt");
+            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.????");
             foreach (string str in fileEntries)
             {
-                    MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10));
+                    MenuEntry menuEntry = new MenuEntry(str.Substring(str.LastIndexOf('\\') + 1));
                     menuEntry.Selected += MenuEntrySelected;
                     MenuEntries.Add(menuEntry);
             }
@@ -26,7 +26,7 @@ namespace YelloKiller
 
         void MenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            // MenuEntry selected = (MenuEntry) sender;
+            // MenuEntry selected = (MenuEntry) sender; <-- très beau aussi!
             MenuEntry selected = sender as MenuEntry;
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(selected.Text, game));
         }

@@ -44,7 +44,6 @@ namespace YelloKiller
         public MainMenuScreen(YellokillerGame game)
             : base(Langue.tr("MainMenuTitle"))
         {
-            
             this.game = game;
 
             // Create our menu entries.

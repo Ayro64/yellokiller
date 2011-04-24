@@ -22,7 +22,7 @@ namespace YelloKiller
         ContentManager content;
         Texture2D levelSelectBkground, blankTexture;
         Color Color;
-        
+
         #endregion
 
         #region Initialization
@@ -33,19 +33,16 @@ namespace YelloKiller
         public LevelSelectSolo(YellokillerGame game)
         {
             this.game = game;
-            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath);
+            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*\\S*.txt");
             foreach (string str in fileEntries)
             {
-                if (str.Substring(str.Length - 3) == "txt" && str[str.Length - 10] == 'S')
-                {
-                    MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10, 6));
-                    menuEntry.Selected += LevelMenuEntrySelected;
-                    levels.Add(menuEntry);
+                MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10, 6));
+                menuEntry.Selected += LevelMenuEntrySelected;
+                levels.Add(menuEntry);
 
-                    Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-                    map.OuvrirCartePourMenu(str.Substring(str.Length - 10));
-                    miniCartes.Add(map);
-                }
+                Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+                map.OuvrirCartePourMenu(str.Substring(str.Length - 10));
+                miniCartes.Add(map);
             }
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
