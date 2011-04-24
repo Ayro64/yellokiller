@@ -121,7 +121,9 @@ namespace YelloKiller
             if (input.IsMenuUp(ControllingPlayer))
             {
                 moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
-                if (selectedEntry > 3)
+                if (selectedEntry == levels.Count - 1)
+                    selectedEntry -= 1;
+                else if (selectedEntry > 3)
                     selectedEntry -= 4;
                 else
                     selectedEntry = levels.Count - 1;
@@ -136,7 +138,7 @@ namespace YelloKiller
                 else if (selectedEntry < levels.Count - 1)
                     selectedEntry = levels.Count - 1;
                 else
-                    selectedEntry = selectedEntry % 4;
+                    selectedEntry = 0;
             }
 
             // Accept or cancel the menu? We pass in our ControllingPlayer, which may
@@ -254,9 +256,7 @@ namespace YelloKiller
             }
 
             // Bouton Retour
-            if ((levels.Count % 4 == 1) || (levels.Count % 4 == 2) || (levels.Count % 4 == 0))
-                position.X -= ((levels.Count - 1) % 4) * 250;
-            position.X -= 30;
+            position.X -= (((levels.Count - 1) % 4) * 250) + 30;
             position.Y = viewport.Height - 50;
             abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black);
 
