@@ -559,7 +559,7 @@ namespace YelloKiller
         public void DrawInMenu(SpriteBatch spriteBatch, ContentManager content, Vector2 origine)
         {
             LoadContent(content);
-            spriteBatch.Draw(texture, 0.1f * 28 *  new Vector2(position.X, position.Y) + new Vector2(origine.X, origine.Y), null, Color.White, 0, Vector2.Zero, 0.19f, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, 0.1f * 28 *  new Vector2(position.X, position.Y) + new Vector2(origine.X, origine.Y), null, Color.White, 0, Vector2.Zero, 0.2f, SpriteEffects.None, 0);
         }
     }
 
