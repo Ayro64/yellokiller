@@ -81,7 +81,7 @@ namespace YelloKiller
             line = file.ReadLine();
             origineJoueur1.Y = Convert.ToInt32(line);
 
-            if (nomDeFichier[0] == 'C') // Si la carte est en cooperation.
+            if (nomDeFichier[nomDeFichier.Length - 1] == 'p') // Si la carte est en cooperation.
             {
                 line = file.ReadLine();
                 origineJoueur2.X = Convert.ToInt32(line);
