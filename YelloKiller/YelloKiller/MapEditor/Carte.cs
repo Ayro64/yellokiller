@@ -224,10 +224,28 @@ namespace YelloKiller
                     break;
 
                 case "t1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 1));
                     break;
                 case "t2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 2));
+                    break;
+                case "t3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 3));
+                    break;
+                case "t4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 4));
+                    break;
+                case "t5":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 5));
+                    break;
+                case "t6":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 6));
+                    break;
+                case "t7":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 7));
+                    break;
+                case "t8":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 8));
                     break;
 
 
