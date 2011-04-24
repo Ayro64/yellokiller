@@ -12,10 +12,10 @@ namespace YelloKiller
     class PauseMenuScreen : MenuScreen
     {
         int mod;
-
-        #region Initialization
         YellokillerGame game;
 
+        #region Initialization
+        
         /// <summary>
         /// Constructor.
         /// </summary>

@@ -208,7 +208,9 @@ namespace YelloKiller
         {
             Properties.Settings.Default.Save();
 
-            if (IsPopup)
+            if (IsPopup && mod == 2)
+                ScreenManager.AddScreen(new PauseMenuScreen(3, mod, game), playerIndex, true);
+            else if (IsPopup)
                 ScreenManager.AddScreen(new PauseMenuScreen(1, mod, game), playerIndex, true);
 
             ExitScreen();
