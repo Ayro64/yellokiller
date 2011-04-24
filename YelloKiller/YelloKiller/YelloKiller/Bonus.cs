@@ -16,7 +16,6 @@ namespace YelloKiller
             : base(position)
         {
             this.typeBonus = pouvoir;
-
         }
 
         public void LoadContent(ContentManager content)
