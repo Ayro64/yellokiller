@@ -262,5 +262,137 @@ namespace YelloKiller.Properties {
                 this["Score_10"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_01 {
+            get {
+                return ((string)(this["Map_01"]));
+            }
+            set {
+                this["Map_01"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_02 {
+            get {
+                return ((string)(this["Map_02"]));
+            }
+            set {
+                this["Map_02"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_03 {
+            get {
+                return ((string)(this["Map_03"]));
+            }
+            set {
+                this["Map_03"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_04 {
+            get {
+                return ((string)(this["Map_04"]));
+            }
+            set {
+                this["Map_04"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_05 {
+            get {
+                return ((string)(this["Map_05"]));
+            }
+            set {
+                this["Map_05"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_06 {
+            get {
+                return ((string)(this["Map_06"]));
+            }
+            set {
+                this["Map_06"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_07 {
+            get {
+                return ((string)(this["Map_07"]));
+            }
+            set {
+                this["Map_07"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_08 {
+            get {
+                return ((string)(this["Map_08"]));
+            }
+            set {
+                this["Map_08"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_09 {
+            get {
+                return ((string)(this["Map_09"]));
+            }
+            set {
+                this["Map_09"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yello Killer")]
+        public string Map_10 {
+            get {
+                return ((string)(this["Map_10"]));
+            }
+            set {
+                this["Map_10"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Setting {
+            get {
+                return ((string)(this["Setting"]));
+            }
+            set {
+                this["Setting"] = value;
+            }
+        }
     }
 }
