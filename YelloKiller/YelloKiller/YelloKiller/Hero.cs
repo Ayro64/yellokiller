@@ -92,9 +92,9 @@ namespace YelloKiller
         public void LoadContent(ContentManager content, int maxIndex)
         {
             if (numeroHero == 1)
-                base.LoadContent(content, "Hero1");
+                base.LoadContent(content, @"Feuilles de sprites\Hero1");
             else
-                base.LoadContent(content, "Hero2");
+                base.LoadContent(content, @"Feuilles de sprites\Hero2");
 
             this.maxIndex = maxIndex;
             flamme = content.Load<Texture2D>("flamme");

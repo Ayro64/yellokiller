@@ -24,7 +24,7 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content, int maxIndex)
         {
-            base.LoadContent(content, "Garde");
+            base.LoadContent(content, @"Feuilles de sprites\Garde");
             MaxIndex = maxIndex;
         }
 
