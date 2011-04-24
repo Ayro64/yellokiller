@@ -33,7 +33,7 @@ namespace YelloKiller
                         case ("EditorSave1"):
                             return "Fichier sauvegardé sous ";
                         case ("EditorSave2"):
-                            return ".txt\n\nAppuyez sur ECHAP pour quitter.";
+                            return ".\n\nAppuyez sur ECHAP pour quitter.";
                         case ("GORetry"):
                             return "Réessayer";
                         case ("GOAbort"):
@@ -130,7 +130,7 @@ namespace YelloKiller
                         case ("EditorSave1"):
                             return "Datei wurde gespeichert als ";
                         case ("EditorSave2"):
-                            return ".txt.\n\nESC drucken um der Karteneditor zu verlassen.";
+                            return ".\n\nESC drucken um der Karteneditor zu verlassen.";
                         case ("GORetry"):
                             return "Wiederholen";
                         case ("GOAbort"):
@@ -227,7 +227,7 @@ namespace YelloKiller
                         case ("EditorSave1"):
                             return "File saved as ";
                         case ("EditorSave2"):
-                            return ".txt.\n\nPres ESC to exit.";
+                            return ".\n\nPres ESC to exit.";
                         case ("GORetry"):
                             return "Retry";
                         case ("GOAbort"):
