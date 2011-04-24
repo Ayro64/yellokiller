@@ -166,7 +166,7 @@
     <Compile Include="YelloKiller\Moteur physique.cs" />
     <Compile Include="YelloKiller\Shuriken.cs" />
     <Compile Include="YelloKiller\Sprite.cs" />
-    <Compile Include="YelloKiller\Statue.cs" />
+    <Compile Include="Ennemis\Statue.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

@@ -7,92 +7,63 @@ namespace YelloKiller
 {
     class Statue : Ennemi
     {
-        Rectangle rectangle;
-        bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
-        int distance;
-        State currentState = State.state_hadoken;
-        float timer = 0;
-        public Carte Carte
-        { get; set; }
+        byte direction;
+        double timer = 0;
 
-        public Statue(Vector2 position, Carte carte)
+        public Statue(Vector2 position, Carte carte, byte direction)
             : base(position, carte)
         {
             this.position = position;
-            SourceRectangle = new Rectangle(0, 0, 120, 120);
-            rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 120, 120);
-        // distance = this.Distance_Statue_Mur(Carte);
+            this.direction = direction;
+
+            if (direction == 0) // bas
+                SourceRectangle = new Rectangle(0, 0, 112, 94);
+            else if (direction == 1) // gauche
+                SourceRectangle = new Rectangle(0, 123, 112, 94);
+            else if (direction == 2) // haut
+                SourceRectangle = new Rectangle(0, 357, 112, 94);
+            else if (direction == 3) // droite
+                SourceRectangle = new Rectangle(0, 243, 112, 94);
+
+            Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 112, 94);
         }
 
         public int Distance_Statue_Mur(Carte carte)
         {
             int distance = 0;
-            if (Regarder_Haut)
+
+            if (direction == 2)
                 for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
                     distance++;
-
-            else if (Regarder_Droite)
+            else if (direction == 3)
                 for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
                     distance++;
 
-            else if (Regarder_Gauche)
+            else if (direction == 1)
                 for (int i = 0; this.X - i > 0 && carte.Cases[this.Y, this.X - i].Type > 0; i++)
                     distance++;
 
-            else if (Regarder_Bas)
+            else if (direction == 0)
                 for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
                     distance++;
 
-            if (distance < 6)
+         //   if (distance < 6)
                 return distance;
-            else
-                return 6;
+           // else
+             //   return 6;
         }
 
         public void LoadContent(ContentManager content)
-        { 
+        {
             base.LoadContent(content, "statue_dragon");
         }
 
-        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, MoteurAudio moteurAudio, ContentManager content)
+        public void Update(GameTime gameTime, MoteurParticule particule, ref Rectangle camera)
         {
-            rectangle.X = (int)position.X + 1;
-            rectangle.Y = (int)position.Y + 1;
-
-            if (SourceRectangle.Value.Y == 168)
-                regarde_haut = true;
-            else
-                regarde_haut = false;
-
-            if (SourceRectangle.Value.Y == 0)
-                regarde_bas = true;
-            else
-                regarde_bas = false;
-
-            if (SourceRectangle.Value.Y == 56)
-                regarde_gauche = true;
-            else
-                regarde_gauche = false;
-
-            if (SourceRectangle.Value.Y == 112)
-                regarde_droite = true;
-            else
-                regarde_droite = false;
-
-            timer += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timer > 5)
+            timer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (timer > 2)
             {
-                switch (currentState)
-                {
-                    case State.state_hadoken:
-                        particule.UpdateExplosions(dt, this, carte, camera);
-                        break;
-
-                    case State.state_ball:
-                        particule.UpdateBall(dt, this, carte, camera);
-                        break;
-                }
+                particule.UpdateExplosions_statue(this);
                 timer = 0;
             }
         }
