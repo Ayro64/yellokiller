@@ -92,8 +92,5 @@
     <Setting Name="Map_10" Type="System.String" Scope="User">
       <Value Profile="(Default)">Yello Killer</Value>
     </Setting>
-    <Setting Name="Setting" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
   </Settings>
 </SettingsFile>
