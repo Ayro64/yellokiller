@@ -47,10 +47,10 @@ namespace YelloKiller
                 for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
                     distance++;
 
-         //   if (distance < 6)
+            if (distance < 8)
                 return distance;
-           // else
-             //   return 6;
+            else
+                return 8;
         }
 
         public void LoadContent(ContentManager content)
