@@ -38,7 +38,7 @@ namespace YelloKiller
             {
                 string entryName = str.Substring(str.LastIndexOf('\\') + 1);
                 entryName = entryName.Substring(0, entryName.LastIndexOf('.'));
-                MenuEntry menuEntry = new MenuEntry(str.Substring(str.Length - 10, 6));
+                MenuEntry menuEntry = new MenuEntry(entryName);
                 menuEntry.Selected += LevelMenuEntrySelected;
                 levels.Add(menuEntry);
 
