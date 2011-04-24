@@ -23,7 +23,7 @@ namespace YelloKiller
         Ascenseur ascenseur1, ascenseur2;
         YellokillerGame game;
         StreamWriter sauvegarde;
-        string ligne, nomSauvegarde, nomCarte;
+        string ligne, nomSauvegarde, nomCarte, extension;
         Rectangle camera;
         Vector2 origine1, origine2;
         List<Vector2> _originesGardes, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens;
@@ -46,8 +46,9 @@ namespace YelloKiller
             }
             else
             {
-                nomSauvegarde = nomCarte.Substring(0, 6);
-                compteur = nomCarte[nomCarte.Length - 4];
+                nomSauvegarde = nomCarte.Substring(0, nomCarte.Length - 5);
+                compteur = nomCarte[nomCarte.Length - 6];
+                extension = nomCarte.Substring(nomCarte.Length - 5);
             }
 
             this.nomCarte = nomCarte;
@@ -249,7 +250,7 @@ namespace YelloKiller
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorExCharacters"), new Vector2(10), Color.White);
 
             if (!enableSave)
-                spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorSave1") + nomSauvegarde.ToString() + Langue.tr("EditorSave2"), new Vector2(10), Color.White);
+                spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorSave1") + nomSauvegarde.ToString() + extension + Langue.tr("EditorSave2"), new Vector2(10), Color.White);
 
             spriteBatch.End();
 
@@ -264,29 +265,36 @@ namespace YelloKiller
             {
                 if (enableSave && nomCarte == "")
                 {
+                    nomSauvegarde = "save1";
                     if (origine1 == -Vector2.One || origine2 == -Vector2.One)
-                        nomSauvegarde = "Ssave1";
+                        extension = ".solo";
                     else
-                        nomSauvegarde = "Csave1";
+                        extension = ".coop";
                 }
 
                 if (!enableSave || nomCarte != "")
                 {
-                    if (nomSauvegarde[0] == 'S' && (!enableOrigine1 && !enableOrigine2))
-                        nomSauvegarde = "Csave" + compteur.ToString();
-                    else if (nomSauvegarde[0] == 'C' && ((enableOrigine1 && !enableOrigine2) || (!enableOrigine1 && enableOrigine2)))
-                        nomSauvegarde = "Ssave" + compteur.ToString();
+                    if (extension == ".solo" && (!enableOrigine1 && !enableOrigine2))
+                    {
+                        nomSauvegarde = "save" + compteur.ToString();
+                        extension = ".coop";
+                    }
+                    else if (extension == ".coop" && ((enableOrigine1 && !enableOrigine2) || (!enableOrigine1 && enableOrigine2)))
+                    {
+                        nomSauvegarde = "save" + compteur.ToString();
+                        extension = ".solo";
+                    }
                 }
 
-                fileExist = File.Exists(nomSauvegarde + ".txt");
+                fileExist = File.Exists(nomSauvegarde + extension);
                 while (fileExist && enableSave && nomCarte == "")
                 {
                     compteur++;
-                    nomSauvegarde = nomSauvegarde.Substring(0, 5) + compteur.ToString();
-                    fileExist = File.Exists(nomSauvegarde + ".txt");
+                    nomSauvegarde = nomSauvegarde.Substring(0, nomSauvegarde.Length - 1) + compteur.ToString();
+                    fileExist = File.Exists(nomSauvegarde + extension);
                 }
 
-                sauvegarde = new StreamWriter(nomSauvegarde + ".txt");
+                sauvegarde = new StreamWriter(nomSauvegarde + extension);
 
                 for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
                 {
