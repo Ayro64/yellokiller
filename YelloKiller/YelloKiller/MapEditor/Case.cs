@@ -554,11 +554,11 @@ namespace YelloKiller
 
             if (type == TypeCase.eau)
             {
-                if (temps < 1000)
+                if (temps < 800)
                     spriteBatch.Draw(texture, position, null, Color.White, 0, Vector2.Zero,1, SpriteEffects.None, 1);
-                else if (temps < 2000)
+                else if (temps < 1500)
                     spriteBatch.Draw(texture, position + new Vector2(28, 0), null, Color.White, MathHelper.Pi / 2, Vector2.Zero,1, SpriteEffects.None, 1);
-                else if (temps < 3000)
+                else if (temps < 2500)
                     spriteBatch.Draw(texture, position + new Vector2(28, 28), null, Color.White, MathHelper.Pi, Vector2.Zero, 1, SpriteEffects.None, 1);
                 else if (temps < 4000)
                     spriteBatch.Draw(texture, position + new Vector2(0, 28), null, Color.White, -MathHelper.Pi / 2, Vector2.Zero, 1, SpriteEffects.None, 1);
