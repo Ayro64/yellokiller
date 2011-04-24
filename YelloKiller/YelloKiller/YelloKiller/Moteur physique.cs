@@ -349,6 +349,7 @@ namespace YelloKiller
                         case TypeBonus.hadoken:
                             hero1.NombreHadokens++;
                             bonus.RemoveAt(u);
+                            soundBank.PlayCue("hadokenobt");
                             break;
                     }
                 }
@@ -370,6 +371,7 @@ namespace YelloKiller
                             case TypeBonus.hadoken:
                                 hero2.NombreHadokens++;
                                 bonus.RemoveAt(u);
+                                soundBank.PlayCue("hadokenobt");
                                 break;
                         }
                     }
