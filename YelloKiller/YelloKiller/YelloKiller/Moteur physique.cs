@@ -333,7 +333,7 @@ namespace YelloKiller
             return false;
         }
 
-        static public void Collision_Heros_Bonus(ref Hero hero1, ref Hero hero2, ref List<Bonus> bonus)
+        static public void Collision_Heros_Bonus(ref Hero hero1, ref Hero hero2, ref List<Bonus> bonus, SoundBank soundBank)
         {
             for (int u = 0; u < bonus.Count; u++)
             {
@@ -344,6 +344,7 @@ namespace YelloKiller
                         case TypeBonus.shuriken:
                             hero1.NombreShurikens += 3;
                             bonus.RemoveAt(u);
+                            soundBank.PlayCue("shurikenobt");
                             break;
                         case TypeBonus.hadoken:
                             hero1.NombreHadokens++;
@@ -364,6 +365,7 @@ namespace YelloKiller
                             case TypeBonus.shuriken:
                                 hero2.NombreShurikens += 3;
                                 bonus.RemoveAt(u);
+                                soundBank.PlayCue("shurikenobt");
                                 break;
                             case TypeBonus.hadoken:
                                 hero2.NombreHadokens++;
