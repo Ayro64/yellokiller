@@ -20,8 +20,8 @@ namespace YelloKiller
     class Hero : Sprite
     {
         Vector2 positionDesiree;
+        Texture2D flamme;
         Rectangle rectangle;
-        Texture2D flamme, textureBasFond;
         float vitesseAnimation, index, tempsCourir;
         int maxIndex, nombreShuriken = 25, nombreHadoken = 5, nombreFumigene = 10, nombre_ball = 5, vitesseSprite;
         private byte numeroHero;
@@ -96,11 +96,9 @@ namespace YelloKiller
             else
                 base.LoadContent(content, @"Feuilles de sprites\Hero2");
 
-            textureBasFond = content.Load<Texture2D>("Bas fond");
+            flamme = content.Load<Texture2D>("flamme");
 
             this.maxIndex = maxIndex;
-            flamme = content.Load<Texture2D>("flamme");
-            tempsCourir = flamme.Height;
         }
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
@@ -464,12 +462,15 @@ namespace YelloKiller
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, Rectangle camera)
+        public void Draw_Hero(SpriteBatch spriteBatch, Rectangle camera)
         {
-            base.Draw(spriteBatch, camera);
+            base.Draw(spriteBatch, camera);            
+        }
+
+        public void Draw_Infos(SpriteBatch spriteBatch)
+        {
             if (numeroHero == 1)
             {
-            spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), Color.PapayaWhip);
                 switch (currentState)
                 {
                     case State.state_hadoken:
@@ -485,9 +486,8 @@ namespace YelloKiller
                         spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                 }
-
-
-                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 50, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
+                
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 50, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);           
             }
             else
             {
@@ -507,10 +507,13 @@ namespace YelloKiller
                         break;
                 }
 
-
-                //spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), Color.PapayaWhip);
                 spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 100, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
             }
+        }
+
+        public float TempsCourir
+        {
+            get { return tempsCourir; }
         }
 
         public Rectangle Rectangle
