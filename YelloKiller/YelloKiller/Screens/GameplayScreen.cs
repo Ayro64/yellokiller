@@ -30,7 +30,7 @@ namespace YelloKiller
         List<Statue> _statues;
         List<Bonus> _bonus;
         List<Vector2> gardesMorts, patrouilleursAChevauxMorts;
-        Texture2D textureGardeMort, texturePatrouilleurAChevalMort, textureBasFond;
+        Texture2D textureGardeMort, texturePatrouilleurAChevalMort;
 
         static double timer_update_collision = 0;
         public static double Timer_Update_Collision
@@ -204,7 +204,6 @@ namespace YelloKiller
 
             textureGardeMort = content.Load<Texture2D>(@"Menu Editeur de Maps\gardeMort");
             texturePatrouilleurAChevalMort = content.Load<Texture2D>(@"Menu Editeur de Maps\patrouilleurAChevalMort");
-            textureBasFond = content.Load<Texture2D>("Bas fond");
 
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -297,16 +296,6 @@ namespace YelloKiller
             spriteBatch.Begin();
             carte.DrawInGame(gameTime, spriteBatch, content, camera);
 
-            spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), Color.PapayaWhip);
-
-            hero1.Draw(spriteBatch, gameTime, camera);
-            if (jeuEnCoop)
-                hero2.Draw(spriteBatch, gameTime, camera);
-
-            spriteBatch.DrawString(ScreenManager.font, "Il reste " + _gardes.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkBlue);
-
-            spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
-
             foreach (Garde garde in _gardes)
                 garde.Draw(spriteBatch, camera);
 
@@ -342,6 +331,15 @@ namespace YelloKiller
                     moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
             }
+
+            hero1.Draw(spriteBatch, gameTime, camera);
+            if (jeuEnCoop)
+                hero2.Draw(spriteBatch, gameTime, camera);
+
+            spriteBatch.DrawString(ScreenManager.font, "Il reste " + _gardes.Count.ToString() + " ennemis.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkBlue);
+
+            spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
+
 
             spriteBatch.End();
             audio.Draw(gameTime);
