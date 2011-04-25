@@ -471,6 +471,9 @@ namespace YelloKiller
                     case State.state_hadoken:
                         spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreHadoken.ToString() + " hadoken au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
+                    case State.state_ball:
+                        spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombre_ball.ToString() + " boule de feu au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkRed);
+                        break;
                     case State.state_fume:
                         spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreFumigene.ToString() + " fumigènes au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
@@ -487,6 +490,9 @@ namespace YelloKiller
                 {
                     case State.state_hadoken:
                         spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreHadoken.ToString() + " hadoken au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        break;
+                    case State.state_ball:
+                        spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombre_ball.ToString() + " boule de feu au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkRed);
                         break;
                     case State.state_fume:
                         spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreFumigene.ToString() + " fumigènes au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
