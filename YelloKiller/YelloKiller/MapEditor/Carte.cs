@@ -211,6 +211,65 @@ namespace YelloKiller
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, new Vector3(2, 3, 6));
                     break;
 
+                case "u1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 1));
+                    break;
+                case "u2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 2));
+                    break;
+                case "u3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 3));
+                    break;
+                case "u4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 4));
+                    break;
+                case "u5":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 5));
+                    break;
+                case "u6":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 6));
+                    break;
+
+                case "x1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 1));
+                    break;
+                case "x2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 2));
+                    break;
+                case "x3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 3));
+                    break;
+                case "x4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 4));
+                    break;
+                case "x5":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 5));
+                    break;
+                case "x6":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 6));
+                    break;
+
+                case "y1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 1));
+                    break;
+                case "y2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 2));
+                    break;
+                case "y3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 3));
+                    break;
+                case "y4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 4));
+                    break;
+                case "y5":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 5));
+                    break;
+                case "y6":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 6));
+                    break;
+
+
+
 
 
 
@@ -222,6 +281,19 @@ namespace YelloKiller
                 case "s2":
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont1, new Vector3(2, 2, 2));
                     break;
+
+                case "C1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.bibliotheque, new Vector3(1, 2, 1));
+                    break;
+                case "C2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.bibliotheque, new Vector3(1, 2, 2));
+                    break;
+
+
+
+
+
+
 
                 case "t1":
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 1));
@@ -452,6 +524,71 @@ namespace YelloKiller
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, new Vector3(2, 2, 4));
                     break;
 
+                case "v1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, new Vector3(2, 2, 1));
+                    break;
+                case "v2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, new Vector3(2, 2, 2));
+                    break;
+                case "v3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, new Vector3(2, 2, 3));
+                    break;
+                case "v4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, new Vector3(2, 2, 4));
+                    break;
+
+                case "w1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, new Vector3(2, 2, 1));
+                    break;
+                case "w2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, new Vector3(2, 2, 2));
+                    break;
+                case "w3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, new Vector3(2, 2, 3));
+                    break;
+                case "w4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, new Vector3(2, 2, 4));
+                    break;
+
+                case "z1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, new Vector3(2, 2, 1));
+                    break;
+                case "z2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, new Vector3(2, 2, 2));
+                    break;
+                case "z3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, new Vector3(2, 2, 3));
+                    break;
+                case "z4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, new Vector3(2, 2, 4));
+                    break;
+
+                case "A1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, new Vector3(2, 2, 1));
+                    break;
+                case "A2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, new Vector3(2, 2, 2));
+                    break;
+                case "A3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, new Vector3(2, 2, 3));
+                    break;
+                case "A4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, new Vector3(2, 2, 4));
+                    break;
+
+                case "B1":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, new Vector3(2, 2, 1));
+                    break;
+                case "B2":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, new Vector3(2, 2, 2));
+                    break;
+                case "B3":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, new Vector3(2, 2, 3));
+                    break;
+                case "B4":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, new Vector3(2, 2, 4));
+                    break;
+
 
 
 
@@ -594,6 +731,7 @@ namespace YelloKiller
                 case "e5":
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.eau, new Vector3(1, 1, 1));
                     break;
+
             }
         }
 
