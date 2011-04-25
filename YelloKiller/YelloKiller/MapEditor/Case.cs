@@ -85,6 +85,75 @@ namespace YelloKiller
                             break;
                     }
                     break;
+                case TypeCase.canape:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\canape\canape1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\canape\canape2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\canape\canape3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\canape\canape4";
+                            break;
+                        case 5:
+                            nomTexture = @"Textures\canape\canape5";
+                            break;
+                        case 6:
+                            nomTexture = @"Textures\canape\canape6";
+                            break;
+                    }
+                    break;
+                case TypeCase.porteFenetre:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\fenetre\portefenetre1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\fenetre\portefenetre2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\fenetre\portefenetre3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\fenetre\portefenetre4";
+                            break;
+                        case 5:
+                            nomTexture = @"Textures\fenetre\portefenetre5";
+                            break;
+                        case 6:
+                            nomTexture = @"Textures\fenetre\portefenetre6";
+                            break;
+                    }
+                    break;
+                case TypeCase.grdSiege:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\grdsiege\grdsiege1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\grdsiege\grdsiege2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\grdsiege\grdsiege3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\grdsiege\grdsiege4";
+                            break;
+                        case 5:
+                            nomTexture = @"Textures\grdsiege\grdsiege5";
+                            break;
+                        case 6:
+                            nomTexture = @"Textures\grdsiege\grdsiege6";
+                            break;
+                    }
+                    break;
                 case TypeCase.pont1:
                     switch ((int)etienne.Z)
                     {
@@ -93,6 +162,17 @@ namespace YelloKiller
                             break;
                         case 2:
                             nomTexture = @"Textures\ponts\pont12";
+                            break;
+                    }
+                    break;
+                case TypeCase.bibliotheque:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\bibli\bibli1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\bibli\bibli2";
                             break;
                     }
                     break;
@@ -396,6 +476,96 @@ namespace YelloKiller
                     }
                     break;
 
+                case TypeCase.canapeRalonge:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\canape\canapeRalonge1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\canape\canapeRalonge2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\canape\canapeRalonge3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\canape\canapeRalonge4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.fenetre:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\fenetre\fenetre1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\fenetre\fenetre2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\fenetre\fenetre3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\fenetre\fenetre4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.pillier:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\pillier\pillier1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\pillier\pillier2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\pillier\pillier3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\pillier\pillier4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.porte:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\porte\porte1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\porte\porte2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\porte\porte3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\porte\porte4";
+                            break;
+                    }
+                    break;
+
+                case TypeCase.rocher:
+                    switch ((int)etienne.Z)
+                    {
+                        case 1:
+                            nomTexture = @"Textures\rocher\rocher1";
+                            break;
+                        case 2:
+                            nomTexture = @"Textures\rocher\rocher2";
+                            break;
+                        case 3:
+                            nomTexture = @"Textures\rocher\rocher3";
+                            break;
+                        case 4:
+                            nomTexture = @"Textures\rocher\rocher4";
+                            break;
+                    }
+                    break;
+
 
                 case TypeCase.grandeTable:
                     switch ((int)etienne.Z)
@@ -608,6 +778,9 @@ namespace YelloKiller
    public enum TypeCase // Valeur strictement positive pour les cases franchissables, negative sinon.
    {
        arbre = -1,
+       canape = -2,
+       porteFenetre = -3,
+       grdSiege = -4,
 
        buissonSurHerbe = -14,
        coinbotdroit = -15,
@@ -631,6 +804,11 @@ namespace YelloKiller
        murTableau = -58,
        tableauMurBlanc = -59,
        tableMoyenne = -60,
+       canapeRalonge = -61,
+       fenetre = -62,
+       pillier = -63,
+       porte = -64,
+       rocher = -65,
 
        grandeTable = -75,
        grandeTableDeco = -76,
@@ -656,6 +834,7 @@ namespace YelloKiller
 
        pont1 = 18,
        pont2 = 19,
+       bibliotheque = 20,
 
        Joueur1 = 100,
        Joueur2 = 101,

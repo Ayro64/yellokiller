@@ -77,6 +77,16 @@ namespace YelloKiller
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\ponts\pont1"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\ponts\pont2"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\tableMoyenne\tableMoyenne"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\bibli\bibli"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\canape\canape"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\canape\canapeRalonge"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\fenetre\fenetre"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\fenetre\portefenetre"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\grdsiege\grdsiege"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\pillier\pillier"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\porte\porte"));
+            listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\rocher\rocher"));
+
 
             fond = content.Load<Texture2D>(@"Textures\fond");
         }
@@ -104,7 +114,7 @@ namespace YelloKiller
         public void Update(Ascenseur ascenseurDroit, Ascenseur ascenseurGauche)
         {
             for (int i = 0; i < nbTexturesDroite; i++)
-                listeRectanglesDroite[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, (int)-ascenseurDroit.Position.Y + i * 30, 28, 28);
+                listeRectanglesDroite[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, 2 * (int)-ascenseurDroit.Position.Y + i * 30, 28, 28);
 
             for (int i = 0; i < nbTexturesGauche; i++)
                 listeRectanglesGauche[i] = new Rectangle(28, (int)-ascenseurGauche.Position.Y + i * 30, 28, 28);
@@ -121,7 +131,7 @@ namespace YelloKiller
                     spriteBatch.Draw(listeTexturesDroite[u], new Vector2(listeRectanglesDroite[u].X + 28 * (1 - listeTexturesDroite[u].Width / 28), listeRectanglesDroite[u].Y + 28 * (1 - listeTexturesDroite[u].Height / 28)), Color.White);
                 }
                 else
-                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -ascenseurDroit.Position.Y + u * 30), null, Color.White, 0, Vector2.Zero, new Vector2((float)28 / listeTexturesDroite[u].Width, (float)28 / listeTexturesDroite[u].Height), SpriteEffects.None, 0);
+                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -2 * ascenseurDroit.Position.Y + u * 30), null, Color.White, 0, Vector2.Zero, new Vector2((float)28 / listeTexturesDroite[u].Width, (float)28 / listeTexturesDroite[u].Height), SpriteEffects.None, 0);
             }
 
             for (int c = 0; c < nbTexturesGauche; c++)

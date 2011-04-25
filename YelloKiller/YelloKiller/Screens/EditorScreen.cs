@@ -86,7 +86,7 @@ namespace YelloKiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu ci-dessous.
-            menu = new Menu(content, 43, 9/*<-- ici*/);
+            menu = new Menu(content, 52, 9/*<-- ici*/);
             curseur = new Curseur(content);
             ascenseur1 = new Ascenseur(content, Taille_Ecran.LARGEUR_ECRAN - 28);
             ascenseur2 = new Ascenseur(content, 0);
@@ -382,6 +382,43 @@ namespace YelloKiller
                                 ligne += 't';
                                 ligne += carte.Cases[y, x].Etienne.Z;
                                 break;
+                            case TypeCase.bibliotheque:
+                                ligne += 'C';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            
+                            case TypeCase.canape:
+                                ligne += 'u';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.canapeRalonge:
+                                ligne += 'v';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.fenetre:
+                                ligne += 'w';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.porteFenetre:
+                                ligne += 'x';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.grdSiege:
+                                ligne += 'y';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.pillier:
+                                ligne += 'z';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.porte:
+                                ligne += 'A';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
+                            case TypeCase.rocher:
+                                ligne += 'B';
+                                ligne += carte.Cases[y, x].Etienne.Z;
+                                break;
 
 
 
@@ -664,6 +701,31 @@ namespace YelloKiller
                 }
             }
 
+            else if (curseur.Type == TypeCase.bibliotheque)
+            {
+                if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(1, 2))
+                {
+                    for (int y = 0; y < 2; y++)
+                    {
+                        carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
+                        carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X].Etienne_Z = y + 1;
+                    }
+                }
+            }
+
+            else if (curseur.Type == TypeCase.grdSiege || curseur.Type == TypeCase.porteFenetre)
+            {
+                if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(3, 2))
+                {
+                    for (int x = 0; x < 3; x++)
+                        for (int y = 0; y < 2; y++)
+                        {
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 3 * y + 1;
+                        }
+                }
+            }
+
             else if ((int)curseur.Type == 19)
             {
                 if (curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(4, 2))
@@ -677,7 +739,7 @@ namespace YelloKiller
                 }
             }
 
-            else if ((int)curseur.Type == -1)
+            else if ((int)curseur.Type == -1 || curseur.Type == TypeCase.canape || curseur.Type == TypeCase.porteFenetre || curseur.Type == TypeCase.grdSiege)
             {
                 if (curseur.Position.Y + camera.Y + 2 < Taille_Map.HAUTEUR_MAP && curseur.Position.X + camera.X + 1 < Taille_Map.LARGEUR_MAP && EmplacementPossible(2, 3))
                 {

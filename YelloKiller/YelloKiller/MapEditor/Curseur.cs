@@ -172,6 +172,33 @@ namespace YelloKiller
                         case 42:
                             type = TypeCase.tableMoyenne;
                             break;
+                        case 43:
+                            type = TypeCase.bibliotheque;
+                            break;
+                        case 44:
+                            type = TypeCase.canape;
+                            break;
+                        case 45:
+                            type = TypeCase.canapeRalonge;
+                            break;
+                        case 46:
+                            type = TypeCase.fenetre;
+                            break;
+                        case 47:
+                            type = TypeCase.porteFenetre;
+                            break;
+                        case 48:
+                            type = TypeCase.grdSiege;
+                            break;
+                        case 49:
+                            type = TypeCase.pillier;
+                            break;
+                        case 50:
+                            type = TypeCase.porte;
+                            break;
+                        case 51:
+                            type = TypeCase.rocher;
+                            break;
                     }
 
                     tailleFond.X = 1 + 0.88f * (texture.Width / 28 - 1);
