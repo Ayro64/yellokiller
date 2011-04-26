@@ -97,6 +97,7 @@ namespace YelloKiller
                 base.LoadContent(content, @"Feuilles de sprites\Hero2");
 
             flamme = content.Load<Texture2D>("barre de vitesse");
+            tempsCourir = flamme.Width;
 
             this.maxIndex = maxIndex;
         }
@@ -508,11 +509,6 @@ namespace YelloKiller
 
                 spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 35), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);
             }
-        }
-
-        public float TempsCourir
-        {
-            get { return tempsCourir; }
         }
 
         public Rectangle Rectangle
