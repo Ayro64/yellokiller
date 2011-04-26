@@ -12,10 +12,14 @@ namespace YelloKiller
     /// </summary>
     class PauseMenuScreen : MenuScreen
     {
+        #region Fields
+
         int mod;
         YellokillerGame game;
         public event EventHandler<PlayerIndexEventArgs> SaveMapMenuEntrySelected;
         MenuEntry saveMapMenuEntry;
+
+        #endregion
 
         #region Initialization
 
@@ -49,7 +53,6 @@ namespace YelloKiller
                 quitGameMenuEntry = new MenuEntry(Langue.tr("PausGameQuit"));
             }
 
-
             // Hook up menu event handlers.
             resumeGameMenuEntry.Selected += OnCancel;
             optionsGameMenuEntry.Selected += OptionsMenuEntrySelected;
@@ -70,11 +73,9 @@ namespace YelloKiller
             MenuEntries.Add(quitGameMenuEntry);
         }
 
-
         #endregion
 
         #region Handle Input
-
 
         /// <summary>
         /// Event handler for when the Quit Game menu entry is selected.
@@ -138,8 +139,7 @@ namespace YelloKiller
         #endregion
 
         #region Draw
-
-
+        
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             if (mod == 2 && !saveMapMenuEntry.IsEvent)

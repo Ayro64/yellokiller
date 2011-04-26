@@ -35,7 +35,6 @@ namespace YelloKiller
 
         #region Properties
 
-
         /// <summary>
         /// Gets or sets the text of this menu entry.
         /// </summary>
@@ -54,8 +53,7 @@ namespace YelloKiller
         #endregion
 
         #region Events
-
-
+        
         /// <summary>
         /// Event raised when the menu entry is selected.
         /// </summary>
@@ -70,13 +68,11 @@ namespace YelloKiller
             if (Selected != null)
                 Selected(this, new PlayerIndexEventArgs(playerIndex));
         }
-
-
+        
         #endregion
 
         #region Initialization
-
-
+        
         /// <summary>
         /// Constructs a new menu entry with the specified text.
         /// </summary>
@@ -85,8 +81,7 @@ namespace YelloKiller
             this.text = text;
             IsEvent = false;
         }
-
-
+        
         #endregion
 
         #region Update and Draw
