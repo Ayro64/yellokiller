@@ -32,7 +32,7 @@ namespace YelloKiller
         bool monter, descendre, droite, gauche;
         bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, changer_arme, courir, tirer;
-        const int NumStates = 5;
+        const int NumStates = 4;
         State currentState = State.state_shuriken;
         int state_sabre = 0;
 
