@@ -34,6 +34,7 @@ namespace YelloKiller
             Score = score;
             underscore = false;
             EventInput.EventInput.CharEntered += new EventInput.CharEnteredHandler(EventInput_CharEntered);
+            Accepted += HiScoreAccepted;
 
             audio = new Player();
             moteurAudio = new MoteurAudio();
