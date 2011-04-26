@@ -47,11 +47,6 @@ namespace YelloKiller
             blankTexture = content.Load<Texture2D>("blank");
         }
 
-        public void UnloadContent()
-        {
-        }
-
-
         #endregion
 
         #region Handle Input
