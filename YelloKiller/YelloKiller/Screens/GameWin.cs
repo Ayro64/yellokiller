@@ -22,7 +22,7 @@ namespace YelloKiller
         YellokillerGame game;
         string WinMessage, comingfrom, baseSalary, time, killed, retries, score, penalties;
         double temps;
-        bool HiScore = false;
+        bool HiScore = false, ShowHiScore = false;
 
         Color Color;
         Color EntriesColor;
@@ -202,7 +202,9 @@ namespace YelloKiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                        bool coveredByOtherScreen)
         {
-            if (ScreenState == ScreenState.Active && HiScore)
+            if (ScreenState == ScreenState.Active)
+                ShowHiScore = true;
+                if(ShowHiScore && HiScore)
                 ScreenManager.AddScreen(new NewHiScore(salaire, comingfrom), null);
 
             // Update each nested MenuEntry object.
