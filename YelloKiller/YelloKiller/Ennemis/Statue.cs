@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using YelloKiller.Moteur_Particule;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -58,11 +59,12 @@ namespace YelloKiller
             base.LoadContent(content, @"Feuilles de sprites\statue_dragon");
         }
 
-        public void Update(GameTime gameTime, MoteurParticule particule, ref Rectangle camera)
+        public void Update(GameTime gameTime, MoteurParticule particule, SoundBank soundBank)
         {
             timer += gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > 2)
             {
+                soundBank.PlayCue("Bruitage des statues");
                 particule.UpdateExplosions_statue(this);
                 timer = 0;
             }

@@ -248,7 +248,7 @@ namespace YelloKiller
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
 
                 foreach (Statue statue in _statues)
-                    statue.Update(gameTime, moteurparticule, ref camera);
+                    statue.Update(gameTime, moteurparticule, moteurAudio.SoundBank);
 
                 if (timer_update_collision > 0)
                 {
