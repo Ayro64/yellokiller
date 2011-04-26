@@ -19,7 +19,7 @@ namespace YelloKiller.Moteur_Particule
       
         protected override void InitializeConstants()
         {
-            textureFilename = "smoke";
+            textureFilename = @"Particules\smoke";
 
             minInitialSpeed = 50;
             maxInitialSpeed = 500;
