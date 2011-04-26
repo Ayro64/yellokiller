@@ -36,7 +36,7 @@ namespace YelloKiller
 
             album = 0;
             musique = rand.Next(0, sampleMediaLibrary.Albums[album].Songs.Count - 1);
-            MediaPlayer.Play(sampleMediaLibrary.Albums[album].Songs[musique]);
+            //MediaPlayer.Play(sampleMediaLibrary.Albums[album].Songs[musique]);
             songName = sampleMediaLibrary.Albums[album].Songs[musique].Artist + " - " + sampleMediaLibrary.Albums[album].Songs[musique];
             Volume = (Properties.Settings.Default.MusicVolume / 10);
             MediaPlayer.Volume = (float)Volume;
