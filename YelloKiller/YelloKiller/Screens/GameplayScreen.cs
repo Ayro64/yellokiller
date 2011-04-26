@@ -48,6 +48,7 @@ namespace YelloKiller
         #endregion
 
         #region Timer hero 1
+
         private static double timer_hero1 = 0;
 
         public static double Timer_Hero1

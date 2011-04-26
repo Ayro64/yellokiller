@@ -151,6 +151,7 @@
     <Compile Include="Screens\PauseMenuScreen.cs" />
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
     <Compile Include="Screens\ScoresScreen.cs" />
+    <Compile Include="Screens\IntroScreen.cs" />
     <Compile Include="Services\GamePadService.cs" />
     <Compile Include="Services\IGamePadService.cs" />
     <Compile Include="Services\IKeyboardService.cs" />
