@@ -792,6 +792,7 @@ namespace YelloKiller
        fondNoir = -21,
        piedMurBois = -22,
        eau = -23,
+       finMurBas = -24,
 
        commode = -50,
        lit = -51,
@@ -829,7 +830,6 @@ namespace YelloKiller
        herbeH = 13,
        tapisRougeBC = 14,
        terre = 15,
-       finMurBas = 16,
        finMurHaut = 17,
 
        pont1 = 18,
