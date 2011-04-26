@@ -8,7 +8,7 @@ namespace YelloKiller
 {
     static class Moteur_physique
     {
-        static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank, ref List<Vector2> gardesMorts, ref List<Vector2> patrouilleursAChevauxMorts)
+        static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank, ref List<Vector2> gardesMorts, ref List<Vector2> patrouilleursAChevauxMorts, ref List<Vector2> patrouilleursMorts, ref List<Vector2> bossMorts)
         {
             if (_gardes.Count != 0)
             {
@@ -18,14 +18,14 @@ namespace YelloKiller
                     {
                         soundBank.PlayCue("cri");
                         gardesMorts.Add(new Vector2(_gardes[i].X, _gardes[i].Y));
-                        _gardes.Remove(_gardes[i]);
+                        _gardes.RemoveAt(i);
                         break;
                     }
                     else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("cri");
                         gardesMorts.Add(new Vector2(_gardes[i].X, _gardes[i].Y));
-                        _gardes.Remove(_gardes[i]);
+                        _gardes.RemoveAt(i);
                         break;
                     }
                     if (hero2 != null)
@@ -34,14 +34,14 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("cri");
                             gardesMorts.Add(new Vector2(_gardes[i].X, _gardes[i].Y));
-                            _gardes.Remove(_gardes[i]);
+                            _gardes.RemoveAt(i);
                             break;
                         }
                         else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
                         {
                             soundBank.PlayCue("cri");
                             gardesMorts.Add(new Vector2(_gardes[i].X, _gardes[i].Y));
-                            _gardes.Remove(_gardes[i]);
+                            _gardes.RemoveAt(i);
                             break;
                         }
                     }
@@ -51,8 +51,8 @@ namespace YelloKiller
                             soundBank.PlayCue("cri");
                             ServiceHelper.Get<IGamePadService>().Vibration(20);
                             gardesMorts.Add(new Vector2(_gardes[i].X, _gardes[i].Y));
-                            _gardes.Remove(_gardes[i]);
-                            listeShuriken.Remove(listeShuriken[j]);
+                            _gardes.RemoveAt(i);
+                            listeShuriken.RemoveAt(j);
                             break;
                         }
                 }
@@ -65,13 +65,15 @@ namespace YelloKiller
                     if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
                     {
                         soundBank.PlayCue("Bruitage patrouilleur");
-                        _Patrouilleurs.Remove(_Patrouilleurs[i]);
+                        patrouilleursMorts.Add(new Vector2(_Patrouilleurs[i].X, _Patrouilleurs[i].Y));
+                        _Patrouilleurs.RemoveAt(i);
                         break;
                     }
                     else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("Bruitage patrouilleur");
-                        _Patrouilleurs.Remove(_Patrouilleurs[i]);
+                        patrouilleursMorts.Add(new Vector2(_Patrouilleurs[i].X, _Patrouilleurs[i].Y));
+                        _Patrouilleurs.RemoveAt(i);
                         break;
                     }
                     if (hero2 != null)
@@ -79,13 +81,15 @@ namespace YelloKiller
                         if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
                         {
                             soundBank.PlayCue("Bruitage patrouilleur");
-                            _Patrouilleurs.Remove(_Patrouilleurs[i]);
+                            patrouilleursMorts.Add(new Vector2(_Patrouilleurs[i].X, _Patrouilleurs[i].Y));
+                            _Patrouilleurs.RemoveAt(i);
                             break;
                         }
                         else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
                         {
                             soundBank.PlayCue("Bruitage patrouilleur");
-                            _Patrouilleurs.Remove(_Patrouilleurs[i]);
+                            patrouilleursMorts.Add(new Vector2(_Patrouilleurs[i].X, _Patrouilleurs[i].Y));
+                            _Patrouilleurs.RemoveAt(i);
                             break;
                         }
                     }
@@ -93,8 +97,9 @@ namespace YelloKiller
                         if (_Patrouilleurs[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
                             soundBank.PlayCue("Bruitage patrouilleur");
-                            _Patrouilleurs.Remove(_Patrouilleurs[i]);
-                            listeShuriken.Remove(listeShuriken[j]);
+                            patrouilleursMorts.Add(new Vector2(_Patrouilleurs[i].X, _Patrouilleurs[i].Y));
+                            _Patrouilleurs.RemoveAt(i);
+                            listeShuriken.RemoveAt(j);
                             break;
                         }
                 }
@@ -108,14 +113,14 @@ namespace YelloKiller
                     {
                         soundBank.PlayCue("Bruitage cheval");
                         patrouilleursAChevauxMorts.Add(new Vector2(_PatrouilleursAChevaux[i].X, _PatrouilleursAChevaux[i].Y));
-                        _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
+                        _PatrouilleursAChevaux.RemoveAt(i);
                         break;
                     }
                     else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("Bruitage cheval");
                         patrouilleursAChevauxMorts.Add(new Vector2(_PatrouilleursAChevaux[i].X, _PatrouilleursAChevaux[i].Y));
-                        _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
+                        _PatrouilleursAChevaux.RemoveAt(i);
                         break;
                     }
                     if (hero2 != null)
@@ -124,14 +129,14 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("Bruitage cheval");
                             patrouilleursAChevauxMorts.Add(new Vector2(_PatrouilleursAChevaux[i].X, _PatrouilleursAChevaux[i].Y));
-                            _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
+                            _PatrouilleursAChevaux.RemoveAt(i);
                             break;
                         }
                         else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
                         {
                             soundBank.PlayCue("Bruitage cheval");
                             patrouilleursAChevauxMorts.Add(new Vector2(_PatrouilleursAChevaux[i].X, _PatrouilleursAChevaux[i].Y));
-                            _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
+                            _PatrouilleursAChevaux.RemoveAt(i);
                             break;
                         }
                     }
@@ -140,8 +145,8 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("Bruitage cheval");
                             patrouilleursAChevauxMorts.Add(new Vector2(_PatrouilleursAChevaux[i].X, _PatrouilleursAChevaux[i].Y));
-                            _PatrouilleursAChevaux.Remove(_PatrouilleursAChevaux[i]);
-                            listeShuriken.Remove(listeShuriken[j]);
+                            _PatrouilleursAChevaux.RemoveAt(i);
+                            listeShuriken.RemoveAt(j);
                             break;
                         }
                 }
@@ -154,7 +159,8 @@ namespace YelloKiller
                     if (_Boss[i].Vie < 0)
                     {
                         _Boss[i].Vie = 5;
-                        _Boss.Remove(_Boss[i]);
+                        bossMorts.Add(new Vector2(_Boss[i].X, _Boss[i].Y));
+                        _Boss.RemoveAt(i);
                         soundBank.PlayCue("cri");
                     }
                     else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
@@ -201,7 +207,7 @@ namespace YelloKiller
 
                             soundBank.PlayCue("Bruitage boss touche");
                             _Boss[i].Vie--;
-                            listeShuriken.Remove(listeShuriken[j]);
+                            listeShuriken.RemoveAt(j);
                             break;
                         }
                 }
