@@ -601,6 +601,8 @@ namespace YelloKiller
 
                     sauvegarde.Close();
                     enableSave = false;
+
+                    nomCarte = nomSauvegarde + extension;
                 }
             }
         }
