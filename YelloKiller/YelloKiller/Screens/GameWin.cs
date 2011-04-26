@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using S = YelloKiller.Properties.Scores;
 
 namespace YelloKiller
 {
@@ -21,6 +22,7 @@ namespace YelloKiller
         YellokillerGame game;
         string WinMessage, comingfrom, baseSalary, time, killed, retries, score, penalties;
         double temps;
+        bool HiScore = false;
 
         Color Color;
         Color EntriesColor;
@@ -73,6 +75,11 @@ namespace YelloKiller
             menuEntries.Add(nextMenuEntry);
             menuEntries.Add(restartMenuEntry);
             menuEntries.Add(abortMenuEntry);
+
+            if (salaire > S.Default.Score_10)
+            {
+                HiScore = true;
+            }
         }
 
         /// <summary>
@@ -143,13 +150,6 @@ namespace YelloKiller
 
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
                 OnSelectEntry(selectedEntry, playerIndex);
-
-
-            if (input.IsMenuDown(ControllingPlayer))
-            {
-                NewHiScore confirmExitMessageBox = new NewHiScore(salaire);
-                ScreenManager.AddScreen(confirmExitMessageBox, playerIndex);
-            }
         }
 
         /// <summary>
@@ -202,6 +202,9 @@ namespace YelloKiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                        bool coveredByOtherScreen)
         {
+            if (ScreenState == ScreenState.Active && HiScore)
+                ScreenManager.AddScreen(new NewHiScore(salaire, comingfrom), null);
+
             // Update each nested MenuEntry object.
             for (int i = 0; i < menuEntries.Count; i++)
             {
