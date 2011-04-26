@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using YelloKiller.Moteur_Particule;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using YelloKiller.Moteur_Particule;
 
 namespace YelloKiller
 {    
