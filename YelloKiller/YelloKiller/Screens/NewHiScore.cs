@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using System;
 namespace YelloKiller
 {
     class NewHiScore : MessageBoxScreen
@@ -13,14 +14,26 @@ namespace YelloKiller
 
         string playerName, message;
         uint Score;
+        uint lastIntTimer;
         Texture2D gradientTexture;
+        static double timer = 0;
+        bool underscore;
+        Player audio;
+        MoteurAudio moteurAudio;
 
         public NewHiScore(uint score)
-            : base(Langue.tr("HiScore"), false)
+            : base(Langue.tr("HiScore"), true)
         {
+            this.UsageText = Langue.tr("ScoresBox");
             this.message = Langue.tr("HiScore");
+            playerName = "";
+            lastIntTimer = 0;
             Score = score;
+            underscore = false;
             EventInput.EventInput.CharEntered += new EventInput.CharEnteredHandler(EventInput_CharEntered);
+
+            audio = new Player();
+            moteurAudio = new MoteurAudio();
         }
 
         /// <summary>
@@ -38,6 +51,13 @@ namespace YelloKiller
 
         #endregion
 
+        #region Events
+
+        public new event EventHandler<PlayerIndexEventArgs> Accepted;
+        public new event EventHandler<PlayerIndexEventArgs> Cancelled;
+
+        #endregion
+
         #region Handle Input
 
         /// <summary>
@@ -45,24 +65,60 @@ namespace YelloKiller
         /// </summary>
         public override void HandleInput(InputState input)
         {
-            base.HandleInput(input);
+            PlayerIndex playerIndex;
+
+            // We pass in our ControllingPlayer, which may either be null (to
+            // accept input from any player) or a specific index. If we pass a null
+            // controlling player, the InputState helper returns to us which player
+            // actually provided the input. We pass that through to our Accepted and
+            // Cancelled events, so they can tell which player triggered them.
+            if (input.IsScoreSelect(ControllingPlayer, out playerIndex))
+            {
+                moteurAudio.SoundBank.PlayCue("menuBouge");
+                // Raise the accepted event, then exit the message box.
+                if (Accepted != null)
+                    Accepted(this, new PlayerIndexEventArgs(playerIndex));
+
+                ExitScreen();
+            }
+            else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
+            {
+                moteurAudio.SoundBank.PlayCue("menuBouge");
+                // Raise the cancelled event, then exit the message box.
+                if (Cancelled != null)
+                    Cancelled(this, new PlayerIndexEventArgs(playerIndex));
+
+                ExitScreen();
+            }
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Back) && (playerName.Length > 0))
             {
-                playerName = playerName.Remove(playerName.Length - 1);
+                    playerName = playerName.Remove(playerName.Length - 1);
             }
-
         }
 
         void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
         {
-            if (e.Character != '\b')
+            if (e.Character != '\b' && playerName.Length < 10)
                 playerName += e.Character;
         }
 
         #endregion
 
-        #region Draw
+        #region Update and Draw
+
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
+        {
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+            timer += gameTime.ElapsedGameTime.TotalSeconds;
+
+            if ((int)timer != lastIntTimer)
+            {
+                lastIntTimer++;
+                underscore = !underscore;
+            }
+        }
+
 
         /// <summary>
         /// Draws the message box.
@@ -79,7 +135,9 @@ namespace YelloKiller
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Vector2 viewportSize = new Vector2(viewport.Width, viewport.Height);
             Vector2 textSize = font.MeasureString(message);
+            textSize.Y += font.MeasureString(UsageText).Y;
             Vector2 textPosition = (viewportSize - textSize) / 2;
+            textPosition.Y -= textSize.Y;
 
             // The background includes a border somewhat larger than the text itself.
             const int hPad = 32;
@@ -92,6 +150,7 @@ namespace YelloKiller
 
             // Fade the popup alpha during transitions.
             Color color = new Color(255, 255, 255, TransitionAlpha);
+            Color nameColor = new Color(137, 124, 55, TransitionAlpha);
 
             spriteBatch.Begin();
 
@@ -99,7 +158,11 @@ namespace YelloKiller
             spriteBatch.Draw(gradientTexture, backgroundRectangle, color);
 
             // Draw the message box text.
-            spriteBatch.DrawString(font, message + playerName, textPosition, color);
+            spriteBatch.DrawString(font, message, textPosition, color);
+            textPosition.Y += font.MeasureString(message).Y - (font.MeasureString("\n").Y / 2);
+            spriteBatch.DrawString(font, playerName + (underscore ? "_\n" : "\n"), textPosition, nameColor);
+            textPosition.Y += font.MeasureString(playerName + 'A').Y;
+            spriteBatch.DrawString(font, UsageText, textPosition, color);
 
             spriteBatch.End();
         }

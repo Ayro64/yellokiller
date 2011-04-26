@@ -105,6 +105,11 @@ namespace YelloKiller
                             return "Pénalités : ";
                         case("Scores"):
                             return "Top 10 des employés";
+                        case("HiScore"):
+                            return "Vous venez de remplir un contrat juteux!\nSous quel nom désirez-vous être connu?\n";
+                        case ("ScoresBox"):
+                            return "Bouton A, Entrée : Enregistrer" +
+                                   "\nBouton B, Echap : Ne pas enregistrer";
                         default:
                             return "";
                     }
@@ -202,6 +207,11 @@ namespace YelloKiller
                             return "Strafen : ";
                         case ("Scores"):
                             return "Mitarbeiter Ruhmeshalle";
+                        case ("HiScore"):
+                            return "Vous venez de remplir un contrat juteux!\nSous quel nom désirez-vous être connu?\n";
+                        case ("ScoresBox"):
+                            return "A Taste, Enter : Score speichern" +
+                                   "\nB Taste, Esc : Nicht speichern";
                         default:
                             return "";
                     }
@@ -299,6 +309,11 @@ namespace YelloKiller
                             return "Penalties : ";
                         case ("Scores"):
                             return "Employees Hall of Fame";
+                        case ("HiScore"):
+                            return "Vous venez de remplir un contrat juteux!\nSous quel nom désirez-vous être connu?\n";
+                        case ("ScoresBox"):
+                            return "A Button, Enter : Save core" +
+                                   "\nB Button, ESC : Don't save";
                         default:
                             return "";
                     }

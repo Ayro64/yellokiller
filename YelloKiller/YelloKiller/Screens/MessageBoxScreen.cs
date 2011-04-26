@@ -15,8 +15,14 @@ namespace YelloKiller
     {
         #region Fields
 
-        string message;
+        string message, usageText;
         Texture2D gradientTexture;
+
+        public string UsageText
+        {
+            get { return usageText; }
+            set { usageText = value; }
+        }
 
         #endregion
 
@@ -45,7 +51,7 @@ namespace YelloKiller
         /// </summary>
         public MessageBoxScreen(string message, bool includeUsageText)
         {
-            string usageText = Langue.tr("MsgBox");
+            UsageText = Langue.tr("MsgBox");
             
             if (includeUsageText)
                 this.message = message + usageText;
