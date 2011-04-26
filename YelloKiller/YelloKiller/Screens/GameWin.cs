@@ -23,6 +23,7 @@ namespace YelloKiller
         string WinMessage, comingfrom, baseSalary, time, killed, retries, score, penalties;
         double temps;
         bool HiScore = false, ShowHiScore = false;
+        MoteurAudio moteurAudio;
 
         Color Color;
         Color EntriesColor;
@@ -41,6 +42,8 @@ namespace YelloKiller
             this.salaire = salaire;
             this.deaths = deaths;
             this.restart = retries;
+
+            moteurAudio = new MoteurAudio();
 
             temps = levelTime;
 
@@ -126,6 +129,7 @@ namespace YelloKiller
             // Move to the previous menu entry?
             if (input.IsMenuLeft(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 selectedEntry--;
 
                 if (selectedEntry < 0)
@@ -135,6 +139,7 @@ namespace YelloKiller
             // Move to the next menu entry?
             if (input.IsMenuRight(ControllingPlayer))
             {
+                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
                 selectedEntry++;
 
                 if (selectedEntry >= menuEntries.Count)
@@ -200,7 +205,7 @@ namespace YelloKiller
                 ShowHiScore = true;
             if (ShowHiScore && HiScore)
             {
-                ScreenManager.AddScreen(new NewHiScore(salaire, comingfrom.Substring(0, comingfrom.Length - 5)), null);
+                ScreenManager.AddScreen(new NewHiScore(salaire, comingfrom.Substring(0, comingfrom.Length - 5)), ControllingPlayer);
                 HiScore = false;
             }
 
