@@ -6,13 +6,15 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System;
+using S = YelloKiller.Properties.Scores;
+
 namespace YelloKiller
 {
     class NewHiScore : MessageBoxScreen
     {
         #region Initialization
 
-        string playerName, message;
+        string playerName, message, comingFrom;
         uint Score;
         uint lastIntTimer;
         Texture2D gradientTexture;
@@ -21,9 +23,10 @@ namespace YelloKiller
         Player audio;
         MoteurAudio moteurAudio;
 
-        public NewHiScore(uint score)
+        public NewHiScore(uint score, string comingfrom)
             : base(Langue.tr("HiScore"), true)
         {
+            comingFrom = comingfrom;
             this.UsageText = Langue.tr("ScoresBox");
             this.message = Langue.tr("HiScore");
             playerName = "";
@@ -35,6 +38,7 @@ namespace YelloKiller
             audio = new Player();
             moteurAudio = new MoteurAudio();
         }
+
 
         /// <summary>
         /// Loads graphics content for this screen. This uses the shared ContentManager
@@ -51,10 +55,282 @@ namespace YelloKiller
 
         #endregion
 
-        #region Events
+        #region Event
 
         public new event EventHandler<PlayerIndexEventArgs> Accepted;
-        public new event EventHandler<PlayerIndexEventArgs> Cancelled;
+
+        /// <summary>
+        /// Event handler for when the user selects ok on the "Hi Score" message box.
+        /// </summary>
+        void HiScoreAccepted(object sender, PlayerIndexEventArgs e)
+        {
+            if (Score > S.Default.Score_09)
+            {
+                if (Score > S.Default.Score_08)
+                {
+                    if (Score > S.Default.Score_07)
+                    {
+                        if (Score > S.Default.Score_06)
+                        {
+                            if (Score > S.Default.Score_05)
+                            {
+                                if (Score > S.Default.Score_04)
+                                {
+                                    if (Score > S.Default.Score_03)
+                                    {
+                                        if (Score > S.Default.Score_02)
+                                        {
+                                            if (Score > S.Default.Score_01)
+                                            {
+                                                S.Default.Score_10 = S.Default.Score_09;
+                                                S.Default.Name_10 = S.Default.Name_09;
+                                                S.Default.Map_10 = S.Default.Map_09;
+
+                                                S.Default.Score_09 = S.Default.Score_08;
+                                                S.Default.Name_09 = S.Default.Name_08;
+                                                S.Default.Map_09 = S.Default.Map_08;
+
+                                                S.Default.Score_08 = S.Default.Score_07;
+                                                S.Default.Name_08 = S.Default.Name_07;
+                                                S.Default.Map_08 = S.Default.Map_07;
+
+                                                S.Default.Score_07 = S.Default.Score_06;
+                                                S.Default.Name_07 = S.Default.Name_06;
+                                                S.Default.Map_07 = S.Default.Map_06;
+
+                                                S.Default.Score_06 = S.Default.Score_05;
+                                                S.Default.Name_06 = S.Default.Name_05;
+                                                S.Default.Map_06 = S.Default.Map_05;
+
+                                                S.Default.Score_05 = S.Default.Score_04;
+                                                S.Default.Name_05 = S.Default.Name_04;
+                                                S.Default.Map_05 = S.Default.Map_04;
+
+                                                S.Default.Score_04 = S.Default.Score_03;
+                                                S.Default.Name_04 = S.Default.Name_03;
+                                                S.Default.Map_04 = S.Default.Map_03;
+
+                                                S.Default.Score_03 = S.Default.Score_02;
+                                                S.Default.Name_03 = S.Default.Name_02;
+                                                S.Default.Map_03 = S.Default.Map_02;
+
+                                                S.Default.Score_02 = S.Default.Score_01;
+                                                S.Default.Name_02 = S.Default.Name_01;
+                                                S.Default.Map_02 = S.Default.Map_01;
+
+                                                S.Default.Score_01 = Score;
+                                                S.Default.Name_01 = playerName;
+                                                S.Default.Map_01 = comingFrom;
+                                            }
+                                            else
+                                            {
+                                                S.Default.Score_10 = S.Default.Score_09;
+                                                S.Default.Name_10 = S.Default.Name_09;
+                                                S.Default.Map_10 = S.Default.Map_09;
+
+                                                S.Default.Score_09 = S.Default.Score_08;
+                                                S.Default.Name_09 = S.Default.Name_08;
+                                                S.Default.Map_09 = S.Default.Map_08;
+
+                                                S.Default.Score_08 = S.Default.Score_07;
+                                                S.Default.Name_08 = S.Default.Name_07;
+                                                S.Default.Map_08 = S.Default.Map_07;
+
+                                                S.Default.Score_07 = S.Default.Score_06;
+                                                S.Default.Name_07 = S.Default.Name_06;
+                                                S.Default.Map_07 = S.Default.Map_06;
+
+                                                S.Default.Score_06 = S.Default.Score_05;
+                                                S.Default.Name_06 = S.Default.Name_05;
+                                                S.Default.Map_06 = S.Default.Map_05;
+
+                                                S.Default.Score_05 = S.Default.Score_04;
+                                                S.Default.Name_05 = S.Default.Name_04;
+                                                S.Default.Map_05 = S.Default.Map_04;
+
+                                                S.Default.Score_04 = S.Default.Score_03;
+                                                S.Default.Name_04 = S.Default.Name_03;
+                                                S.Default.Map_04 = S.Default.Map_03;
+
+                                                S.Default.Score_03 = S.Default.Score_02;
+                                                S.Default.Name_03 = S.Default.Name_02;
+                                                S.Default.Map_03 = S.Default.Map_02;
+
+                                                S.Default.Score_02 = Score;
+                                                S.Default.Name_02 = playerName;
+                                                S.Default.Map_02 = comingFrom;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            S.Default.Score_10 = S.Default.Score_09;
+                                            S.Default.Name_10 = S.Default.Name_09;
+                                            S.Default.Map_10 = S.Default.Map_09;
+
+                                            S.Default.Score_09 = S.Default.Score_08;
+                                            S.Default.Name_09 = S.Default.Name_08;
+                                            S.Default.Map_09 = S.Default.Map_08;
+
+                                            S.Default.Score_08 = S.Default.Score_07;
+                                            S.Default.Name_08 = S.Default.Name_07;
+                                            S.Default.Map_08 = S.Default.Map_07;
+
+                                            S.Default.Score_07 = S.Default.Score_06;
+                                            S.Default.Name_07 = S.Default.Name_06;
+                                            S.Default.Map_07 = S.Default.Map_06;
+
+                                            S.Default.Score_06 = S.Default.Score_05;
+                                            S.Default.Name_06 = S.Default.Name_05;
+                                            S.Default.Map_06 = S.Default.Map_05;
+
+                                            S.Default.Score_05 = S.Default.Score_04;
+                                            S.Default.Name_05 = S.Default.Name_04;
+                                            S.Default.Map_05 = S.Default.Map_04;
+
+                                            S.Default.Score_04 = S.Default.Score_03;
+                                            S.Default.Name_04 = S.Default.Name_03;
+                                            S.Default.Map_04 = S.Default.Map_03;
+
+                                            S.Default.Score_03 = Score;
+                                            S.Default.Name_03 = playerName;
+                                            S.Default.Map_03 = comingFrom;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        S.Default.Score_10 = S.Default.Score_09;
+                                        S.Default.Name_10 = S.Default.Name_09;
+                                        S.Default.Map_10 = S.Default.Map_09;
+
+                                        S.Default.Score_09 = S.Default.Score_08;
+                                        S.Default.Name_09 = S.Default.Name_08;
+                                        S.Default.Map_09 = S.Default.Map_08;
+
+                                        S.Default.Score_08 = S.Default.Score_07;
+                                        S.Default.Name_08 = S.Default.Name_07;
+                                        S.Default.Map_08 = S.Default.Map_07;
+
+                                        S.Default.Score_07 = S.Default.Score_06;
+                                        S.Default.Name_07 = S.Default.Name_06;
+                                        S.Default.Map_07 = S.Default.Map_06;
+
+                                        S.Default.Score_06 = S.Default.Score_05;
+                                        S.Default.Name_06 = S.Default.Name_05;
+                                        S.Default.Map_06 = S.Default.Map_05;
+
+                                        S.Default.Score_05 = S.Default.Score_04;
+                                        S.Default.Name_05 = S.Default.Name_04;
+                                        S.Default.Map_05 = S.Default.Map_04;
+
+                                        S.Default.Score_04 = Score;
+                                        S.Default.Name_04 = playerName;
+                                        S.Default.Map_04 = comingFrom;
+                                    }
+                                }
+                                else
+                                {
+                                    S.Default.Score_10 = S.Default.Score_09;
+                                    S.Default.Name_10 = S.Default.Name_09;
+                                    S.Default.Map_10 = S.Default.Map_09;
+
+                                    S.Default.Score_09 = S.Default.Score_08;
+                                    S.Default.Name_09 = S.Default.Name_08;
+                                    S.Default.Map_09 = S.Default.Map_08;
+
+                                    S.Default.Score_08 = S.Default.Score_07;
+                                    S.Default.Name_08 = S.Default.Name_07;
+                                    S.Default.Map_08 = S.Default.Map_07;
+
+                                    S.Default.Score_07 = S.Default.Score_06;
+                                    S.Default.Name_07 = S.Default.Name_06;
+                                    S.Default.Map_07 = S.Default.Map_06;
+
+                                    S.Default.Score_06 = S.Default.Score_05;
+                                    S.Default.Name_06 = S.Default.Name_05;
+                                    S.Default.Map_06 = S.Default.Map_05;
+
+                                    S.Default.Score_05 = Score;
+                                    S.Default.Name_05 = playerName;
+                                    S.Default.Map_05 = comingFrom;
+                                }
+                            }
+                            else
+                            {
+                                S.Default.Score_10 = S.Default.Score_09;
+                                S.Default.Name_10 = S.Default.Name_09;
+                                S.Default.Map_10 = S.Default.Map_09;
+
+                                S.Default.Score_09 = S.Default.Score_08;
+                                S.Default.Name_09 = S.Default.Name_08;
+                                S.Default.Map_09 = S.Default.Map_08;
+
+                                S.Default.Score_08 = S.Default.Score_07;
+                                S.Default.Name_08 = S.Default.Name_07;
+                                S.Default.Map_08 = S.Default.Map_07;
+
+                                S.Default.Score_07 = S.Default.Score_06;
+                                S.Default.Name_07 = S.Default.Name_06;
+                                S.Default.Map_07 = S.Default.Map_06;
+
+                                S.Default.Score_06 = Score;
+                                S.Default.Name_06 = playerName;
+                                S.Default.Map_06 = comingFrom;
+                            }
+                        }
+                        else
+                        {
+                            S.Default.Score_10 = S.Default.Score_09;
+                            S.Default.Name_10 = S.Default.Name_09;
+                            S.Default.Map_10 = S.Default.Map_09;
+
+                            S.Default.Score_09 = S.Default.Score_08;
+                            S.Default.Name_09 = S.Default.Name_08;
+                            S.Default.Map_09 = S.Default.Map_08;
+
+                            S.Default.Score_08 = S.Default.Score_07;
+                            S.Default.Name_08 = S.Default.Name_07;
+                            S.Default.Map_08 = S.Default.Map_07;
+
+                            S.Default.Score_07 = Score;
+                            S.Default.Name_07 = playerName;
+                            S.Default.Map_07 = comingFrom;
+                        }
+                    }
+                    else
+                    {
+                        S.Default.Score_10 = S.Default.Score_09;
+                        S.Default.Name_10 = S.Default.Name_09;
+                        S.Default.Map_10 = S.Default.Map_09;
+
+                        S.Default.Score_09 = S.Default.Score_08;
+                        S.Default.Name_09 = S.Default.Name_08;
+                        S.Default.Map_09 = S.Default.Map_08;
+
+                        S.Default.Score_08 = Score;
+                        S.Default.Name_08 = playerName;
+                        S.Default.Map_08 = comingFrom;
+                    }
+                }
+                else
+                {
+                    S.Default.Score_10 = S.Default.Score_09;
+                    S.Default.Name_10 = S.Default.Name_09;
+                    S.Default.Map_10 = S.Default.Map_09;
+
+                    S.Default.Score_09 = Score;
+                    S.Default.Name_09 = playerName;
+                    S.Default.Map_09 = comingFrom;
+                }
+            }
+            else
+            {
+                S.Default.Score_10 = Score;
+                S.Default.Name_10 = playerName;
+                S.Default.Map_10 = comingFrom;
+            }
+
+            S.Default.Save();
+        }
 
         #endregion
 
@@ -76,24 +352,20 @@ namespace YelloKiller
             {
                 moteurAudio.SoundBank.PlayCue("menuBouge");
                 // Raise the accepted event, then exit the message box.
-                if (Accepted != null)
-                    Accepted(this, new PlayerIndexEventArgs(playerIndex));
+                Accepted(this, new PlayerIndexEventArgs(playerIndex));
 
                 ExitScreen();
             }
             else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
             {
                 moteurAudio.SoundBank.PlayCue("menuBouge");
-                // Raise the cancelled event, then exit the message box.
-                if (Cancelled != null)
-                    Cancelled(this, new PlayerIndexEventArgs(playerIndex));
 
                 ExitScreen();
             }
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Back) && (playerName.Length > 0))
             {
-                    playerName = playerName.Remove(playerName.Length - 1);
+                playerName = playerName.Remove(playerName.Length - 1);
             }
         }
 

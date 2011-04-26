@@ -12,16 +12,6 @@ namespace YelloKiller
     /// </summary>
     class MainMenuScreen : MenuScreen
     {
-        // Sert à keud'
-        #region Properties
-
-        SpriteBatch spriteBatch;
-        ContentManager content;
-        Texture2D blankTexture;
-
-        #endregion
-        //
-
         #region Fields
 
         MenuEntry soloMenuEntry;
@@ -32,6 +22,9 @@ namespace YelloKiller
         MenuEntry exitMenuEntry;
         YellokillerGame game;
         SmokePlumeParticleSystem fume; // fumigene
+        SpriteBatch spriteBatch;
+        ContentManager content;
+        Texture2D blankTexture;
 
         #endregion
 
