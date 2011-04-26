@@ -20,7 +20,6 @@ namespace YelloKiller
         Texture2D gradientTexture;
         static double timer = 0;
         bool underscore;
-        Player audio;
         MoteurAudio moteurAudio;
 
         public NewHiScore(uint score, string comingfrom)
@@ -34,9 +33,7 @@ namespace YelloKiller
             Score = score;
             underscore = false;
             EventInput.EventInput.CharEntered += new EventInput.CharEnteredHandler(EventInput_CharEntered);
-            Accepted += HiScoreAccepted;
 
-            audio = new Player();
             moteurAudio = new MoteurAudio();
         }
 
@@ -50,7 +47,6 @@ namespace YelloKiller
         public override void LoadContent()
         {
             ContentManager content = ScreenManager.Game.Content;
-
             gradientTexture = content.Load<Texture2D>("gradient");
         }
 
@@ -58,7 +54,6 @@ namespace YelloKiller
 
         #region Event
 
-        public new event EventHandler<PlayerIndexEventArgs> Accepted;
 
         /// <summary>
         /// Event handler for when the user selects ok on the "Hi Score" message box.
@@ -353,14 +348,15 @@ namespace YelloKiller
             {
                 moteurAudio.SoundBank.PlayCue("menuBouge");
                 // Raise the accepted event, then exit the message box.
-                Accepted(this, new PlayerIndexEventArgs(playerIndex));
-
-                ExitScreen();
+                if (playerName.Length > 0)
+                {
+                    HiScoreAccepted(this, new PlayerIndexEventArgs(playerIndex));
+                    ExitScreen();
+                }
             }
             else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
             {
                 moteurAudio.SoundBank.PlayCue("menuBouge");
-
                 ExitScreen();
             }
 
@@ -372,7 +368,7 @@ namespace YelloKiller
 
         void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
         {
-            if (e.Character != '\b' && playerName.Length < 10)
+            if (e.Character != '\b' && e.Character != '\r' && playerName.Length < 10)
                 playerName += e.Character;
         }
 
