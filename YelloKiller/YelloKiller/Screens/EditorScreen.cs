@@ -32,7 +32,7 @@ namespace YelloKiller
         Texture2D pointDePassage, fond, textureStatue;
         bool fileExist = false;
         int compteur, salaire;
-        bool enableOrigine1, enableOrigine2, enableSave, afficheMessageErreur;
+        bool enableOrigine1, enableOrigine2, enableSave, afficherMessageErreur, afficherMessageSauvegarde;
         double chronometre = 0;
 
         public EditorScreen(string nomCarte, YellokillerGame game)
@@ -54,7 +54,8 @@ namespace YelloKiller
 
             ligne = "";
             enableSave = true;
-            afficheMessageErreur = false;
+            afficherMessageErreur = false;
+            afficherMessageSauvegarde = false;
             camera = new Rectangle(0, 0, 32, 27);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
 
@@ -125,7 +126,7 @@ namespace YelloKiller
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            if (afficheMessageErreur)
+            if (afficherMessageErreur || afficherMessageSauvegarde)
                 chronometre += gameTime.ElapsedGameTime.TotalSeconds;
 
             ascenseur1.Update();
@@ -189,7 +190,7 @@ namespace YelloKiller
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.S))
             {
                 if (enableOrigine1 && enableOrigine2 || _originesBoss.Count == 0)
-                    afficheMessageErreur = true;
+                    afficherMessageErreur = true;
                 else
                 {
                     EditorSavePop editorSavePop = new EditorSavePop(nomSauvegarde, 0);
@@ -203,6 +204,7 @@ namespace YelloKiller
 
         public override void Draw(GameTime gameTime)
         {
+            ServiceHelper.Game.Window.Title = chronometre.ToString();
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Gray, 0, 0); ;
 
             spriteBatch.Begin();
@@ -275,15 +277,15 @@ namespace YelloKiller
 
             if (chronometre > 3)
             {
-                afficheMessageErreur = false;
+                afficherMessageErreur = false;
+                afficherMessageSauvegarde = false;
                 chronometre = 0;
             }
-            else if (chronometre > 0)
+            else if (afficherMessageErreur)
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorExCharacters"), new Vector2(10), Color.White);
-
-            if (!enableSave)
+            else if(afficherMessageSauvegarde)
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorSave1") + nomSauvegarde + extension + Langue.tr("EditorSave2"), new Vector2(10), Color.White);
-
+                
             if (fileExist)
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("FileExists1") + nomSauvegarde + extension + Langue.tr("FileExists2"), new Vector2(10), Color.White);
 
@@ -295,7 +297,7 @@ namespace YelloKiller
         public void SauvegardeMap()
         {
             if (enableOrigine1 && enableOrigine2 || _originesBoss.Count == 0)
-                afficheMessageErreur = true;
+                afficherMessageErreur = true;
             else
             {
                 if (enableSave && nomCarte == "")
@@ -604,6 +606,8 @@ namespace YelloKiller
 
                     nomCarte = nomSauvegarde + extension;
                 }
+
+                afficherMessageSauvegarde = true;
             }
         }
 
