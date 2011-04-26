@@ -12,12 +12,12 @@ Options
 Global Settings
 {
     Xbox File = Xbox\Ambiance sonore.xgs;
-    Windows File = Win\Ambiance sonore.xgs;
+    Windows File = Ambiance sonore.xgs;
     Header File = Ambiance sonore.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
-    Last Modified Low = 4068112470;
-    Last Modified High = 30147610;
+    Last Modified Low = 1511117474;
+    Last Modified High = 30147617;
 
     Category
     {
@@ -227,10 +227,10 @@ Wave Bank
     Compression Preset Name = <none>;
     Xbox Bank Last Modified Low = 0;
     Xbox Bank Last Modified High = 0;
-    PC Bank Last Modified Low = 4073922802;
-    PC Bank Last Modified High = 30147610;
-    Bank Last Revised Low = 3906633234;
-    Bank Last Revised High = 30147610;
+    PC Bank Last Modified Low = 1511367489;
+    PC Bank Last Modified High = 30147617;
+    Bank Last Revised Low = 1111284605;
+    Bank Last Revised High = 30147617;
 
     Wave
     {
@@ -250,8 +250,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4111440023;
-            Last Modified High = 30147304;
+            Last Modified Low = 3644347215;
+            Last Modified High = 30147615;
         }
     }
 
@@ -273,8 +273,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4109509913;
-            Last Modified High = 30147304;
+            Last Modified Low = 3640291208;
+            Last Modified High = 30147615;
         }
     }
 
@@ -296,8 +296,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4109329903;
-            Last Modified High = 30147304;
+            Last Modified Low = 3639979207;
+            Last Modified High = 30147615;
         }
     }
 
@@ -319,8 +319,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4109809930;
-            Last Modified High = 30147304;
+            Last Modified Low = 3640603208;
+            Last Modified High = 30147615;
         }
     }
 
@@ -342,8 +342,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4110969997;
-            Last Modified High = 30147304;
+            Last Modified Low = 3642475212;
+            Last Modified High = 30147615;
         }
     }
 
@@ -365,8 +365,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4109409907;
-            Last Modified High = 30147304;
+            Last Modified Low = 3640135208;
+            Last Modified High = 30147615;
         }
     }
 
@@ -388,8 +388,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4111040001;
-            Last Modified High = 30147304;
+            Last Modified Low = 3643411213;
+            Last Modified High = 30147615;
         }
     }
 
@@ -411,8 +411,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4109709925;
-            Last Modified High = 30147304;
+            Last Modified Low = 3640447208;
+            Last Modified High = 30147615;
         }
     }
 
@@ -434,8 +434,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4110309959;
-            Last Modified High = 30147304;
+            Last Modified Low = 3641383210;
+            Last Modified High = 30147615;
         }
     }
 
@@ -457,8 +457,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4111290015;
-            Last Modified High = 30147304;
+            Last Modified Low = 3643879214;
+            Last Modified High = 30147615;
         }
     }
 
@@ -480,8 +480,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4111370019;
-            Last Modified High = 30147304;
+            Last Modified Low = 3644191215;
+            Last Modified High = 30147615;
         }
     }
 
@@ -503,8 +503,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4109609919;
-            Last Modified High = 30147304;
+            Last Modified Low = 3640447208;
+            Last Modified High = 30147615;
         }
     }
 
@@ -526,8 +526,8 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 4111500027;
-            Last Modified High = 30147304;
+            Last Modified Low = 3644347215;
+            Last Modified High = 30147615;
         }
     }
 
@@ -549,8 +549,77 @@ Wave Bank
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 3274197060;
-            Last Modified High = 30147610;
+            Last Modified Low = 3644035214;
+            Last Modified High = 30147615;
+        }
+    }
+
+    Wave
+    {
+        Name = Bruitage boss touche;
+        File = C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\Content\Sons\Bruitage boss touche.wav;
+        Build Settings Last Modified Low = 940444834;
+        Build Settings Last Modified High = 30147617;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 68;
+            Play Region Length = 217088;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 773160443;
+            Last Modified High = 30147613;
+        }
+    }
+
+    Wave
+    {
+        Name = Bruitage cheval;
+        File = C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\Content\Sons\Bruitage cheval.wav;
+        Build Settings Last Modified Low = 940454834;
+        Build Settings Last Modified High = 30147617;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 112640;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3816660610;
+            Last Modified High = 30147613;
+        }
+    }
+
+    Wave
+    {
+        Name = Bruitage patrouilleur;
+        File = C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\Content\Sons\Bruitage patrouilleur.wav;
+        Build Settings Last Modified Low = 940464835;
+        Build Settings Last Modified High = 30147617;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 102400;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1948810485;
+            Last Modified High = 30147613;
         }
     }
 }
@@ -562,8 +631,8 @@ Sound Bank
     Windows File = Sound Bank.xsb;
     Xbox Bank Path Edited = 0;
     Windows Bank Path Edited = 1;
-    Bank Last Modified Low = 4098914232;
-    Bank Last Modified High = 30147610;
+    Bank Last Modified Low = 1512077529;
+    Bank Last Modified High = 30147617;
     Header Last Modified High = 0;
     Header Last Modified Low = 0;
 
@@ -1259,6 +1328,147 @@ Sound Bank
         }
     }
 
+    Sound
+    {
+        Name = Bruitage patrouilleur;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaer Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = Bruitage patrouilleur;
+                    Entry Index = 16;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = Bruitage cheval;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaer Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = Bruitage cheval;
+                    Entry Index = 15;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = Bruitage boss touche;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaer Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = Bruitage boss touche;
+                    Entry Index = 14;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
     Cue
     {
         Name = cri;
@@ -1534,6 +1744,66 @@ Sound Bank
         {
             Name = Bruitage des statues;
             Index = 13;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = Bruitage patrouilleur;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = Bruitage patrouilleur;
+            Index = 14;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = Bruitage cheval;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = Bruitage cheval;
+            Index = 15;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = Bruitage boss touche;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = Bruitage boss touche;
+            Index = 16;
             Weight Min = 0;
             Weight Max = 255;
         }
