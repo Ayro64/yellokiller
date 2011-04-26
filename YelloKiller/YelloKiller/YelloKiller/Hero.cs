@@ -96,7 +96,7 @@ namespace YelloKiller
             else
                 base.LoadContent(content, @"Feuilles de sprites\Hero2");
 
-            flamme = content.Load<Texture2D>("flamme");
+            flamme = content.Load<Texture2D>("barre de vitesse");
 
             this.maxIndex = maxIndex;
         }
@@ -257,23 +257,22 @@ namespace YelloKiller
 
             if (tempsCourir > 0 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) || ServiceHelper.Get<IGamePadService>().Courir()) && !(monter && descendre && droite && gauche))
                 tempsCourir -= 0.1f * gameTime.ElapsedGameTime.Milliseconds;
-            else if (tempsCourir < flamme.Height && ((ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) || ServiceHelper.Get<IGamePadService>().Courir()) || (monter && descendre && droite && gauche)))
+            else if (tempsCourir < flamme.Width && ((ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) || ServiceHelper.Get<IGamePadService>().Courir()) || (monter && descendre && droite && gauche)))
                 tempsCourir += 0.1f * gameTime.ElapsedGameTime.Milliseconds;
 
             if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(up))    // arreter le sprite
             {
                 if (SourceRectangle.Value.Y == 133 - state_sabre)
-                { SourceRectangle = new Rectangle(24, 133 - state_sabre, 16, 26); }
+                    SourceRectangle = new Rectangle(24, 133 - state_sabre, 16, 26);
 
                 if (SourceRectangle.Value.Y == 198 - state_sabre)
-                { SourceRectangle = new Rectangle(24, 198 - state_sabre, 16, 26); }
+                    SourceRectangle = new Rectangle(24, 198 - state_sabre, 16, 26);
 
                 if (SourceRectangle.Value.Y == 230 - state_sabre)
-                { SourceRectangle = new Rectangle(24, 230 - state_sabre, 16, 26); }
-
+                    SourceRectangle = new Rectangle(24, 230 - state_sabre, 16, 26);
 
                 if (SourceRectangle.Value.Y == 166 - state_sabre)
-                { SourceRectangle = new Rectangle(24, 166 - state_sabre, 16, 26); }
+                    SourceRectangle = new Rectangle(24, 166 - state_sabre, 16, 26);
             }
 
             if (!monter)
@@ -486,8 +485,8 @@ namespace YelloKiller
                         spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreShuriken.ToString() + " shurikens au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                 }
-                
-                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 50, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);           
+
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 75), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);           
             }
             else
             {
@@ -507,7 +506,7 @@ namespace YelloKiller
                         break;
                 }
 
-                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 100, Taille_Ecran.HAUTEUR_ECRAN - 25 - (int)tempsCourir), new Rectangle(0, flamme.Height - (int)tempsCourir, flamme.Width, (int)tempsCourir), Color.White);
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 35), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);
             }
         }
 
