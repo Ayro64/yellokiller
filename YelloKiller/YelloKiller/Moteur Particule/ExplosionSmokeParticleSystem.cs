@@ -17,7 +17,7 @@ namespace YelloKiller.Moteur_Particule
        
         protected override void InitializeConstants()
         {
-            textureFilename = "smoke";
+            textureFilename = @"Particules\smoke";
 
             // less initial speed than the explosion itself
             minInitialSpeed = 10;
