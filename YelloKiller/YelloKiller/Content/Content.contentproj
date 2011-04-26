@@ -147,14 +147,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="flamme.png">
-      <Name>flamme</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyColor>255, 242, 0, 255</ProcessorParameters_ColorKeyColor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="explosion.png">
       <Name>explosion</Name>
       <Importer>TextureImporter</Importer>
@@ -1283,6 +1275,13 @@
   <ItemGroup>
     <Compile Include="Bas fond.png">
       <Name>Bas fond</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="barre de vitesse.png">
+      <Name>barre de vitesse</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
