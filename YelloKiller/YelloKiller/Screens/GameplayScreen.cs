@@ -110,18 +110,36 @@ namespace YelloKiller
 
             // Centre la camera sur le personnage... plus ou moins...
             if (carte.OrigineJoueur1.X - 16 < 0)
+            {
+                Console.WriteLine("X 1er choix");
                 camera.X = 0;
+            }
             else if (carte.OrigineJoueur1.X + 16 > Taille_Map.LARGEUR_MAP - 1)
-                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 37);
+            {
+                Console.WriteLine("X 2eme choix");
+                camera.X = 28 * (Taille_Map.LARGEUR_MAP - 36);
+            }
             else
+            {
+                Console.WriteLine("X 3eme choix");
                 camera.X = 28 * ((int)carte.OrigineJoueur1.X - 16);
+            }
 
             if (carte.OrigineJoueur1.Y - 12 < 0)
+            {
+                Console.WriteLine("Y 1er choix");
                 camera.Y = 0;
+            }
             else if (carte.OrigineJoueur1.Y + 12 > Taille_Map.HAUTEUR_MAP - 1)
-                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 28);
+            {
+                Console.WriteLine("Y 2eme choix");
+                camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 24);
+            }
             else
+            {
+                Console.WriteLine("Y 3eme choix");
                 camera.Y = 28 * ((int)carte.OrigineJoueur1.Y - 12);
+            }
 
             _gardes = new List<Garde>();
             foreach (Vector2 position in carte.OriginesGardes)
