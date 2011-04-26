@@ -29,8 +29,8 @@ namespace YelloKiller
         List<Boss> _boss;
         List<Statue> _statues;
         List<Bonus> _bonus;
-        List<Vector2> gardesMorts, patrouilleursAChevauxMorts;
-        Texture2D textureGardeMort, texturePatrouilleurAChevalMort, textureBasFond;
+        List<Vector2> gardesMorts, patrouilleursAChevauxMorts, patrouilleursMorts, bossMorts;
+        Texture2D textureGardeMort, texturePatrouilleurAChevalMort, texturePatrouilleurMort, textureBossMort, textureBasFond;
 
         static double timer_update_collision = 0;
         public static double Timer_Update_Collision
@@ -164,6 +164,8 @@ namespace YelloKiller
 
             gardesMorts = new List<Vector2>();
             patrouilleursAChevauxMorts = new List<Vector2>();
+            patrouilleursMorts = new List<Vector2>();
+            bossMorts = new List<Vector2>();
 
             kills = (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count);
         }
@@ -204,6 +206,8 @@ namespace YelloKiller
 
             textureGardeMort = content.Load<Texture2D>(@"Menu Editeur de Maps\gardeMort");
             texturePatrouilleurAChevalMort = content.Load<Texture2D>(@"Menu Editeur de Maps\patrouilleurAChevalMort");
+            texturePatrouilleurMort = content.Load<Texture2D>(@"Menu Editeur de Maps\Patrouilleur mort");
+            textureBossMort = content.Load<Texture2D>(@"Menu Editeur de Maps\Boss mort");
 
             textureBasFond = content.Load<Texture2D>("Bas fond");
             Thread.Sleep(1000);
@@ -252,7 +256,7 @@ namespace YelloKiller
 
                 if (timer_update_collision > 0)
                 {
-                    Moteur_physique.Collision_Armes_Ennemis(hero1, hero2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank, ref gardesMorts, ref patrouilleursAChevauxMorts);
+                    Moteur_physique.Collision_Armes_Ennemis(hero1, hero2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank, ref gardesMorts, ref patrouilleursAChevauxMorts, ref patrouilleursMorts, ref bossMorts);
                     if (timer_update_collision > 5)
                         timer_update_collision = 0;
                 }
@@ -321,6 +325,12 @@ namespace YelloKiller
             foreach (Vector2 position in patrouilleursAChevauxMorts)
                 spriteBatch.Draw(texturePatrouilleurAChevalMort, 28 * position - new Vector2(camera.X, camera.Y), Color.White);
 
+            foreach (Vector2 position in patrouilleursMorts)
+                spriteBatch.Draw(texturePatrouilleurMort, 28 * position - new Vector2(camera.X, camera.Y), Color.White);
+
+            foreach (Vector2 position in bossMorts)
+                spriteBatch.Draw(textureBossMort, 28 * position - new Vector2(camera.X, camera.Y), Color.White);
+
             for (int i = 0; i < _shuriken.Count; i++)
             {
                 _shuriken[i].Update(gameTime, carte);
@@ -328,7 +338,7 @@ namespace YelloKiller
 
                 if (_shuriken[i].ShurikenExists == false)
                 {
-                    _shuriken.Remove(_shuriken[i]);
+                    _shuriken.RemoveAt(i);
                     moteurAudio.SoundBank.PlayCue("shurikenCollision");
                 }
             }
