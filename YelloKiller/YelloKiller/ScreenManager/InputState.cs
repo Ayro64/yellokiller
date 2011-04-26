@@ -148,6 +148,19 @@ namespace YelloKiller
                    IsNewButtonPress(Buttons.Start, controllingPlayer, out playerIndex);
         }
 
+        /// <summary>
+        /// Checks for a "score select" input action.
+        /// The controllingPlayer parameter specifies which player to read input for.
+        /// If this is null, it will accept input from any player. When the action
+        /// is detected, the output playerIndex reports which player pressed it.
+        /// </summary>
+        public bool IsScoreSelect(PlayerIndex? controllingPlayer,
+                                 out PlayerIndex playerIndex)
+        {
+            return IsNewKeyPress(Keys.Enter, controllingPlayer, out playerIndex) ||
+                   IsNewButtonPress(Buttons.A, controllingPlayer, out playerIndex) ||
+                   IsNewButtonPress(Buttons.Start, controllingPlayer, out playerIndex);
+        }
 
         /// <summary>
         /// Checks for a "menu cancel" input action.
@@ -162,7 +175,6 @@ namespace YelloKiller
                    IsNewButtonPress(Buttons.B, controllingPlayer, out playerIndex) ||
                    IsNewButtonPress(Buttons.Back, controllingPlayer, out playerIndex);
         }
-
 
         /// <summary>
         /// Checks for a "menu up" input action.
