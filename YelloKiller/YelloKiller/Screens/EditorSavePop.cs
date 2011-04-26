@@ -1,71 +1,37 @@
-#region Using Statements
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Microsoft.Xna.Framework.Graphics;
-#endregion
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace YelloKiller
 {
-    /// <summary>
-    /// A popup message box screen, used to display "are you sure?"
-    /// confirmation messages.
-    /// </summary>
-    class MessageBoxScreen : GameScreen
+    class EditorSavePop : MessageBoxScreen
     {
-        #region Fields
-
-        string message, usageText;
-        Texture2D gradientTexture;
-
-        public string UsageText
-        {
-            get { return usageText; }
-            set { usageText = value; }
-        }
-
-        public string Message
-        {
-            get { return message; }
-            set { message = value; }
-        }
-
-        #endregion
-
-        #region Events
-
-        public event EventHandler<PlayerIndexEventArgs> Accepted;
-        public event EventHandler<PlayerIndexEventArgs> Cancelled;
-
-        #endregion
-
         #region Initialization
 
+        public string nomSauvegarde;
+        uint lastIntTimer, mod;
+        Texture2D gradientTexture;
+        static double timer = 0;
+        bool underscore;
+        MoteurAudio moteurAudio;
+        public new event EventHandler<PlayerIndexEventArgs> Accepted;
 
-        /// <summary>
-        /// Constructor automatically includes the standard "A=ok, B=cancel"
-        /// usage text prompt.
-        /// </summary>
-        public MessageBoxScreen(string message)
-            : this(message, true)
-        { }
-
-
-        /// <summary>
-        /// Constructor lets the caller specify whether to include the standard
-        /// "A=ok, B=cancel" usage text prompt.
-        /// </summary>
-        public MessageBoxScreen(string message, bool includeUsageText)
+        public EditorSavePop(string nomSauvegarde, uint mod)
+            : base(Langue.tr("SavePop-Up"), false)
         {
-            UsageText = Langue.tr("MsgBox");
-            
-            if (includeUsageText)
-                this.Message = message + usageText;
-            else
-                this.Message = message;
+            this.mod = mod;
+            this.nomSauvegarde = nomSauvegarde;
+            this.UsageText = Langue.tr("ScoresBox");
+            lastIntTimer = 0;
+            underscore = false;
+            EventInput.EventInput.CharEntered += new EventInput.CharEnteredHandler(EventInput_CharEntered);
 
-            IsPopup = true;
-
+            moteurAudio = new MoteurAudio();
         }
 
 
@@ -78,14 +44,13 @@ namespace YelloKiller
         public override void LoadContent()
         {
             ContentManager content = ScreenManager.Game.Content;
-
             gradientTexture = content.Load<Texture2D>("gradient");
         }
-        
+
         #endregion
 
         #region Handle Input
-        
+
         /// <summary>
         /// Responds to user input, accepting or cancelling the message box.
         /// </summary>
@@ -98,27 +63,50 @@ namespace YelloKiller
             // controlling player, the InputState helper returns to us which player
             // actually provided the input. We pass that through to our Accepted and
             // Cancelled events, so they can tell which player triggered them.
-            if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
+            if (input.IsScoreSelect(ControllingPlayer, out playerIndex))
             {
+                moteurAudio.SoundBank.PlayCue("menuBouge");
                 // Raise the accepted event, then exit the message box.
-                if (Accepted != null)
+                if (nomSauvegarde.Length > 0)
+                {
                     Accepted(this, new PlayerIndexEventArgs(playerIndex));
-
-                ExitScreen();
+                    ExitScreen();
+                }
             }
             else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
             {
-                // Raise the cancelled event, then exit the message box.
-                if (Cancelled != null)
-                    Cancelled(this, new PlayerIndexEventArgs(playerIndex));
-
+                moteurAudio.SoundBank.PlayCue("menuBouge");
                 ExitScreen();
             }
+
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Back) && (nomSauvegarde.Length > 0))
+            {
+                nomSauvegarde = nomSauvegarde.Remove(nomSauvegarde.Length - 1);
+            }
+        }
+
+        void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
+        {
+            if (e.Character != '\b' && e.Character != '\r' && nomSauvegarde.Length < 10 && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl)) && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.RightControl)))
+                nomSauvegarde += e.Character;
         }
 
         #endregion
 
-        #region Draw
+        #region Update and Draw
+
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
+        {
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+            timer += gameTime.ElapsedGameTime.TotalSeconds;
+
+            if ((int)timer != lastIntTimer)
+            {
+                lastIntTimer++;
+                underscore = !underscore;
+            }
+        }
+
 
         /// <summary>
         /// Draws the message box.
@@ -128,13 +116,17 @@ namespace YelloKiller
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             SpriteFont font = ScreenManager.Font;
 
-            // Darken down any other screens that were drawn beneath the popup.
-            ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 2 / 3);
+            if (mod == 0)
+            {
+                // Darken down any other screens that were drawn beneath the popup.
+                ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 2 / 3);
+            }
 
             // Center the message text in the viewport.
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Vector2 viewportSize = new Vector2(viewport.Width, viewport.Height);
-            Vector2 textSize = font.MeasureString(message);
+            Vector2 textSize = font.MeasureString(Message);
+            textSize.Y += font.MeasureString(UsageText).Y;
             Vector2 textPosition = (viewportSize - textSize) / 2;
 
             // The background includes a border somewhat larger than the text itself.
@@ -148,6 +140,7 @@ namespace YelloKiller
 
             // Fade the popup alpha during transitions.
             Color color = new Color(255, 255, 255, TransitionAlpha);
+            Color nameColor = new Color(137, 124, 55, TransitionAlpha);
 
             spriteBatch.Begin();
 
@@ -155,7 +148,11 @@ namespace YelloKiller
             spriteBatch.Draw(gradientTexture, backgroundRectangle, color);
 
             // Draw the message box text.
-            spriteBatch.DrawString(font, message, textPosition, color);
+            spriteBatch.DrawString(font, Message, textPosition, color);
+            textPosition.Y += font.MeasureString(Message).Y - (font.MeasureString("\n").Y / 2);
+            spriteBatch.DrawString(font, nomSauvegarde + (underscore ? "_\n" : "\n"), textPosition, nameColor);
+            textPosition.Y += font.MeasureString(nomSauvegarde + 'A').Y;
+            spriteBatch.DrawString(font, UsageText, textPosition, color);
 
             spriteBatch.End();
         }

@@ -14,7 +14,7 @@ namespace YelloKiller
     {
         #region Initialization
 
-        string playerName, message, comingFrom;
+        string playerName, comingFrom;
         uint Score;
         uint lastIntTimer;
         Texture2D gradientTexture;
@@ -23,11 +23,10 @@ namespace YelloKiller
         MoteurAudio moteurAudio;
 
         public NewHiScore(uint score, string comingfrom)
-            : base(Langue.tr("HiScore"), true)
+            : base(Langue.tr("HiScore"), false)
         {
             comingFrom = comingfrom;
             this.UsageText = Langue.tr("ScoresBox");
-            this.message = Langue.tr("HiScore");
             playerName = "";
             lastIntTimer = 0;
             Score = score;
@@ -368,7 +367,7 @@ namespace YelloKiller
 
         void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
         {
-            if (e.Character != '\b' && e.Character != '\r' && playerName.Length < 10)
+            if (e.Character != '\b' && e.Character != '\r' && playerName.Length < 10 && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl)) && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.RightControl)))
                 playerName += e.Character;
         }
 
@@ -403,7 +402,7 @@ namespace YelloKiller
             // Center the message text in the viewport.
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Vector2 viewportSize = new Vector2(viewport.Width, viewport.Height);
-            Vector2 textSize = font.MeasureString(message);
+            Vector2 textSize = font.MeasureString(Message);
             textSize.Y += font.MeasureString(UsageText).Y;
             Vector2 textPosition = (viewportSize - textSize) / 2;
             textPosition.Y -= textSize.Y;
@@ -427,8 +426,8 @@ namespace YelloKiller
             spriteBatch.Draw(gradientTexture, backgroundRectangle, color);
 
             // Draw the message box text.
-            spriteBatch.DrawString(font, message, textPosition, color);
-            textPosition.Y += font.MeasureString(message).Y - (font.MeasureString("\n").Y / 2);
+            spriteBatch.DrawString(font, Message, textPosition, color);
+            textPosition.Y += font.MeasureString(Message).Y - (font.MeasureString("\n").Y / 2);
             spriteBatch.DrawString(font, playerName + (underscore ? "_\n" : "\n"), textPosition, nameColor);
             textPosition.Y += font.MeasureString(playerName + 'A').Y;
             spriteBatch.DrawString(font, UsageText, textPosition, color);

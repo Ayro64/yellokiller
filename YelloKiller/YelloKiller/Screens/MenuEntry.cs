@@ -29,6 +29,8 @@ namespace YelloKiller
         /// </remarks>
         float selectionFade;
 
+        bool isEvent;
+
         #endregion
 
         #region Properties
@@ -43,6 +45,11 @@ namespace YelloKiller
             set { text = value; }
         }
 
+        public bool IsEvent
+        {
+            get { return isEvent; }
+            set { isEvent = value; }
+        }
 
         #endregion
 
@@ -76,6 +83,7 @@ namespace YelloKiller
         public MenuEntry(string text)
         {
             this.text = text;
+            IsEvent = false;
         }
 
 
@@ -98,6 +106,9 @@ namespace YelloKiller
                 selectionFade = Math.Min(selectionFade + fadeSpeed, 1);
             else
                 selectionFade = Math.Max(selectionFade - fadeSpeed, 0);
+            if (this.Selected != null)
+                IsEvent = true;
+
         }
 
         /// <summary>
