@@ -33,7 +33,7 @@ namespace YelloKiller
                         case ("EditorSave1"):
                             return "Fichier sauvegardé sous ";
                         case ("EditorSave2"):
-                            return ".\n\nAppuyez sur ECHAP pour quitter.";
+                            return ".\nAppuyez sur ECHAP pour quitter.";
                         case ("GORetry"):
                             return "Réessayer";
                         case ("GOAbort"):
@@ -110,6 +110,12 @@ namespace YelloKiller
                         case ("ScoresBox"):
                             return "Bouton A, Entrée : Enregistrer" +
                                    "\nBouton B, Echap : Ne pas enregistrer";
+                        case("SavePop-Up"):
+                            return "Sous quel nom enregistrer la carte?\n";
+                        case("FileExists1"):
+                            return "La carte ";
+                        case("FileExists2"):
+                            return " existe déjà.\nVeuillez retenter la sauvegarde avec un nouveau nom.";
                         default:
                             return "";
                     }
@@ -135,7 +141,7 @@ namespace YelloKiller
                         case ("EditorSave1"):
                             return "Datei wurde gespeichert als ";
                         case ("EditorSave2"):
-                            return ".\n\nESC drucken um der Karteneditor zu verlassen.";
+                            return ".\nESC drucken um der Karteneditor zu verlassen.";
                         case ("GORetry"):
                             return "Wiederholen";
                         case ("GOAbort"):
@@ -210,8 +216,14 @@ namespace YelloKiller
                         case ("HiScore"):
                             return "Sie haben gerade viel Geld gewonnen!\nWie wollen sie gennant werden?\n";
                         case ("ScoresBox"):
-                            return "A Taste, Enter : Score speichern" +
+                            return "A Taste, Enter : Speichern" +
                                    "\nB Taste, Esc : Nicht speichern";
+                        case ("SavePop-Up"):
+                            return "Unter welche Name wollen Sie die Karte speichern?\n";
+                        case ("FileExists1"):
+                            return "Die Karte ";
+                        case ("FileExists2"):
+                            return " existiert schon.\nBitte versuchen Sie noch mal zu speichern.";
                         default:
                             return "";
                     }
@@ -237,7 +249,7 @@ namespace YelloKiller
                         case ("EditorSave1"):
                             return "File saved as ";
                         case ("EditorSave2"):
-                            return ".\n\nPres ESC to exit.";
+                            return ".\nPres ESC to exit.";
                         case ("GORetry"):
                             return "Retry";
                         case ("GOAbort"):
@@ -312,8 +324,14 @@ namespace YelloKiller
                         case ("HiScore"):
                             return "You just fulfilled a juicy request!\nUnder which name would you like to be know?\n";
                         case ("ScoresBox"):
-                            return "A Button, Enter : Save score" +
+                            return "A Button, Enter : Save" +
                                    "\nB Button, ESC : Don't save";
+                        case ("SavePop-Up"):
+                            return "Under which name should the map be saved?\n";
+                        case ("FileExists1"):
+                            return "The map ";
+                        case ("FileExists2"):
+                            return " already exists.\nPlease try again with a different name.";
                         default:
                             return "";
                     }

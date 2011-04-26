@@ -1,6 +1,7 @@
 #region Using Statements
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
+using System;
 #endregion
 
 namespace YelloKiller
@@ -13,9 +14,11 @@ namespace YelloKiller
     {
         int mod;
         YellokillerGame game;
+        public event EventHandler<PlayerIndexEventArgs> SaveMapMenuEntrySelected;
+        MenuEntry saveMapMenuEntry;
 
         #region Initialization
-        
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -57,11 +60,9 @@ namespace YelloKiller
 
             if (mode == 2)
             {
-                MenuEntry saveMapMenuEntry = new MenuEntry(Langue.tr("PausEditSave"));
+                saveMapMenuEntry = new MenuEntry(Langue.tr("PausEditSave"));
                 MenuEntry loadMapMenuEntry = new MenuEntry(Langue.tr("PausEditLoad"));
-                saveMapMenuEntry.Selected += SaveMapMenuEntrySelected;
                 loadMapMenuEntry.Selected += LoadMapMenuEntrySelected;
-                MenuEntries.Add(saveMapMenuEntry);
                 MenuEntries.Add(loadMapMenuEntry);
             }
 
@@ -93,14 +94,6 @@ namespace YelloKiller
             confirmQuitMessageBox.Accepted += ConfirmQuitMessageBoxAccepted;
 
             ScreenManager.AddScreen(confirmQuitMessageBox, ControllingPlayer);
-        }
-
-        /// <summary>
-        /// Event handler for when the Save Map menu entry is selected.
-        /// </summary>
-
-        public void SaveMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
         }
 
         /// <summary>
@@ -147,12 +140,15 @@ namespace YelloKiller
         #region Draw
 
 
-        /// <summary>
-        /// Draws the pause menu screen. This chains to the base MenuScreen.Draw.
-        /// </summary>
-        public override void Draw(GameTime gameTime)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            base.Draw(gameTime);
+            if (mod == 2 && !saveMapMenuEntry.IsEvent)
+            {
+                saveMapMenuEntry.Selected += SaveMapMenuEntrySelected;
+                MenuEntries.Add(saveMapMenuEntry);
+            }
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
         }
 
 

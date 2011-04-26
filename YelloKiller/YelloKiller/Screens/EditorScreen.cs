@@ -30,9 +30,8 @@ namespace YelloKiller
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
         Texture2D pointDePassage, fond, textureStatue;
-        bool fileExist;
+        bool fileExist = false;
         int compteur, salaire;
-
         bool enableOrigine1, enableOrigine2, enableSave, afficheMessageErreur;
         double chronometre = 0;
 
@@ -102,6 +101,28 @@ namespace YelloKiller
             content.Unload();
         }
 
+
+        #region Event
+
+        /// <summary>
+        /// Event handler for when the user selects ok on the "Save Map" message box.
+        /// </summary>
+        void SaveMapAccepted(object sender, PlayerIndexEventArgs e)
+        {
+            EditorSavePop savePop = (EditorSavePop)sender;
+            nomSauvegarde = savePop.nomSauvegarde;
+            SauvegardeMap();
+        }
+
+        void SaveMapMenuAccepted(object sender, PlayerIndexEventArgs e)
+        {
+            EditorSavePop editorSavePop = new EditorSavePop(nomSauvegarde, 1);
+            editorSavePop.Accepted += SaveMapAccepted;
+            ScreenManager.AddScreen(editorSavePop, ControllingPlayer);
+        }
+
+        #endregion
+
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             if (afficheMessageErreur)
@@ -129,7 +150,9 @@ namespace YelloKiller
             if (input.IsPauseGame(ControllingPlayer) || gamePadDisconnected)
             {
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
-                ScreenManager.AddScreen(new PauseMenuScreen(0, 2, game), ControllingPlayer, true);
+                PauseMenuScreen pauseMenuScreen = new PauseMenuScreen(0, 2, game);
+                pauseMenuScreen.SaveMapMenuEntrySelected += SaveMapMenuAccepted;
+                ScreenManager.AddScreen(pauseMenuScreen, ControllingPlayer, true);
             }
 
             if (camera.X > 0 && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Left))
@@ -164,7 +187,16 @@ namespace YelloKiller
                 Placer_Case();
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl) && ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.S))
-                SauvegardeMap();
+            {
+                if (enableOrigine1 && enableOrigine2 || _originesBoss.Count == 0)
+                    afficheMessageErreur = true;
+                else
+                {
+                    EditorSavePop editorSavePop = new EditorSavePop(nomSauvegarde, 0);
+                    editorSavePop.Accepted += SaveMapAccepted;
+                    ScreenManager.AddScreen(editorSavePop, ControllingPlayer);
+                }
+            }
 
             ScreenManager.Game.IsMouseVisible = !ServiceHelper.Get<IMouseService>().DansLaCarte();
         }
@@ -250,7 +282,10 @@ namespace YelloKiller
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorExCharacters"), new Vector2(10), Color.White);
 
             if (!enableSave)
-                spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorSave1") + nomSauvegarde.ToString() + extension + Langue.tr("EditorSave2"), new Vector2(10), Color.White);
+                spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorSave1") + nomSauvegarde + extension + Langue.tr("EditorSave2"), new Vector2(10), Color.White);
+
+            if (fileExist)
+                spriteBatch.DrawString(ScreenManager.font, Langue.tr("FileExists1") + nomSauvegarde + extension + Langue.tr("FileExists2"), new Vector2(10), Color.White);
 
             spriteBatch.End();
 
@@ -265,7 +300,6 @@ namespace YelloKiller
             {
                 if (enableSave && nomCarte == "")
                 {
-                    nomSauvegarde = "save1";
                     if (origine1 == -Vector2.One || origine2 == -Vector2.One)
                         extension = ".solo";
                     else
@@ -276,302 +310,298 @@ namespace YelloKiller
                 {
                     if (extension == ".solo" && (!enableOrigine1 && !enableOrigine2))
                     {
-                        nomSauvegarde = "save" + compteur.ToString();
                         extension = ".coop";
                     }
                     else if (extension == ".coop" && ((enableOrigine1 && !enableOrigine2) || (!enableOrigine1 && enableOrigine2)))
                     {
-                        nomSauvegarde = "save" + compteur.ToString();
                         extension = ".solo";
                     }
                 }
 
-                fileExist = File.Exists(nomSauvegarde + extension);
-                while (fileExist && enableSave && nomCarte == "")
-                {
-                    compteur++;
-                    nomSauvegarde = nomSauvegarde.Substring(0, nomSauvegarde.Length - 1) + compteur.ToString();
+                if (nomCarte == "" || nomCarte.Remove(nomCarte.Length - 5) != nomSauvegarde)
                     fileExist = File.Exists(nomSauvegarde + extension);
-                }
 
-                sauvegarde = new StreamWriter(nomSauvegarde + extension);
-
-                for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
+                if (!fileExist)
                 {
-                    for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
+                    sauvegarde = new StreamWriter(nomSauvegarde + extension);
+
+                    for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
                     {
-                        switch (carte.Cases[y, x].Type)
+                        for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
                         {
-                            case TypeCase.arbre:
-                                ligne += 'a';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.commode:
-                                ligne += 'b';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.lit:
-                                ligne += 'c';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.mur:
-                                ligne += 'd';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.murBlanc:
-                                ligne += 'e';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.murBlancDrap:
-                                ligne += 'f';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.murBlancEpee:
-                                ligne += 'g';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.murBlancTableau:
-                                ligne += 'h';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.murEpee:
-                                ligne += 'i';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.murTableau:
-                                ligne += 'j';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.tableauMurBlanc:
-                                ligne += 'k';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.tableMoyenne:
-                                ligne += 'l';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.grandeTable:
-                                ligne += 'm';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.grandeTableDeco:
-                                ligne += 'n';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.nvlHerbe:
-                                ligne += 'o';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.parquet:
-                                ligne += 'p';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.parquetArbre:
-                                ligne += 'q';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.parquetBuisson:
-                                ligne += 'r';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.pont1:
-                                ligne += 's';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.pont2:
-                                ligne += 't';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.bibliotheque:
-                                ligne += 'C';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            
-                            case TypeCase.canape:
-                                ligne += 'u';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.canapeRalonge:
-                                ligne += 'v';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.fenetre:
-                                ligne += 'w';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.porteFenetre:
-                                ligne += 'x';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.grdSiege:
-                                ligne += 'y';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.pillier:
-                                ligne += 'z';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.porte:
-                                ligne += 'A';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
-                            case TypeCase.rocher:
-                                ligne += 'B';
-                                ligne += carte.Cases[y, x].Etienne.Z;
-                                break;
+                            switch (carte.Cases[y, x].Type)
+                            {
+                                case TypeCase.arbre:
+                                    ligne += 'a';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.commode:
+                                    ligne += 'b';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.lit:
+                                    ligne += 'c';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.mur:
+                                    ligne += 'd';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.murBlanc:
+                                    ligne += 'e';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.murBlancDrap:
+                                    ligne += 'f';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.murBlancEpee:
+                                    ligne += 'g';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.murBlancTableau:
+                                    ligne += 'h';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.murEpee:
+                                    ligne += 'i';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.murTableau:
+                                    ligne += 'j';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.tableauMurBlanc:
+                                    ligne += 'k';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.tableMoyenne:
+                                    ligne += 'l';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.grandeTable:
+                                    ligne += 'm';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.grandeTableDeco:
+                                    ligne += 'n';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.nvlHerbe:
+                                    ligne += 'o';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.parquet:
+                                    ligne += 'p';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.parquetArbre:
+                                    ligne += 'q';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.parquetBuisson:
+                                    ligne += 'r';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.pont1:
+                                    ligne += 's';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.pont2:
+                                    ligne += 't';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.bibliotheque:
+                                    ligne += 'C';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+
+                                case TypeCase.canape:
+                                    ligne += 'u';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.canapeRalonge:
+                                    ligne += 'v';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.fenetre:
+                                    ligne += 'w';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.porteFenetre:
+                                    ligne += 'x';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.grdSiege:
+                                    ligne += 'y';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.pillier:
+                                    ligne += 'z';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.porte:
+                                    ligne += 'A';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
+                                case TypeCase.rocher:
+                                    ligne += 'B';
+                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    break;
 
 
 
 
-                            case TypeCase.buissonSurHerbe:
-                                ligne += "a7";
-                                break;
-                            case TypeCase.coinbotdroit:
-                                ligne += "a8";
-                                break;
-                            case TypeCase.coinbotgauche:
-                                ligne += "a9";
-                                break;
-                            case TypeCase.cointopdroit:
-                                ligne += "a0";
-                                break;
-                            case TypeCase.cointopgauche:
-                                ligne += "b0";
-                                break;
-                            case TypeCase.finMurDroit:
-                                ligne += "b5";
-                                break;
-                            case TypeCase.finMurGauche:
-                                ligne += "b6";
-                                break;
-                            case TypeCase.fondNoir:
-                                ligne += "b7";
-                                break;
-                            case TypeCase.piedMurBois:
-                                ligne += "b8";
-                                break;
-                            case TypeCase.bois:
-                                ligne += "b9";
-                                break;
-                            case TypeCase.boisCarre:
-                                ligne += "c0";
-                                break;
-                            case TypeCase.boisDeco:
-                                ligne += "c5";
-                                break;
-                            case TypeCase.carlageNoir:
-                                ligne += "c6";
-                                break;
-                            case TypeCase.carlageNoirDeco:
-                                ligne += "c7";
-                                break;
-                            case TypeCase.herbe:
-                                ligne += "c8";
-                                break;
-                            case TypeCase.herbeDeco:
-                                ligne += "c9";
-                                break;
-                            case TypeCase.herbeFoncee:
-                                ligne += "d0";
-                                break;
-                            case TypeCase.herbeH:
-                                ligne += "d5";
-                                break;
-                            case TypeCase.tapisRougeBC:
-                                ligne += "d6";
-                                break;
-                            case TypeCase.terre:
-                                ligne += "d7";
-                                break;
-                            case TypeCase.finMurBas:
-                                ligne += "d8";
-                                break;
-                            case TypeCase.finMurHaut:
-                                ligne += "d9";
-                                break;
-                            case TypeCase.eau:
-                                ligne += "e5";
-                                break;
+                                case TypeCase.buissonSurHerbe:
+                                    ligne += "a7";
+                                    break;
+                                case TypeCase.coinbotdroit:
+                                    ligne += "a8";
+                                    break;
+                                case TypeCase.coinbotgauche:
+                                    ligne += "a9";
+                                    break;
+                                case TypeCase.cointopdroit:
+                                    ligne += "a0";
+                                    break;
+                                case TypeCase.cointopgauche:
+                                    ligne += "b0";
+                                    break;
+                                case TypeCase.finMurDroit:
+                                    ligne += "b5";
+                                    break;
+                                case TypeCase.finMurGauche:
+                                    ligne += "b6";
+                                    break;
+                                case TypeCase.fondNoir:
+                                    ligne += "b7";
+                                    break;
+                                case TypeCase.piedMurBois:
+                                    ligne += "b8";
+                                    break;
+                                case TypeCase.bois:
+                                    ligne += "b9";
+                                    break;
+                                case TypeCase.boisCarre:
+                                    ligne += "c0";
+                                    break;
+                                case TypeCase.boisDeco:
+                                    ligne += "c5";
+                                    break;
+                                case TypeCase.carlageNoir:
+                                    ligne += "c6";
+                                    break;
+                                case TypeCase.carlageNoirDeco:
+                                    ligne += "c7";
+                                    break;
+                                case TypeCase.herbe:
+                                    ligne += "c8";
+                                    break;
+                                case TypeCase.herbeDeco:
+                                    ligne += "c9";
+                                    break;
+                                case TypeCase.herbeFoncee:
+                                    ligne += "d0";
+                                    break;
+                                case TypeCase.herbeH:
+                                    ligne += "d5";
+                                    break;
+                                case TypeCase.tapisRougeBC:
+                                    ligne += "d6";
+                                    break;
+                                case TypeCase.terre:
+                                    ligne += "d7";
+                                    break;
+                                case TypeCase.finMurBas:
+                                    ligne += "d8";
+                                    break;
+                                case TypeCase.finMurHaut:
+                                    ligne += "d9";
+                                    break;
+                                case TypeCase.eau:
+                                    ligne += "e5";
+                                    break;
+                            }
+                        }
+                        sauvegarde.WriteLine(ligne);
+                        ligne = "";
+                    }
+
+                    sauvegarde.WriteLine("Joueurs");
+                    if (origine1 != -Vector2.One)
+                    {
+                        sauvegarde.WriteLine(origine1.X);
+                        sauvegarde.WriteLine(origine1.Y);
+                    }
+                    if (origine2 != -Vector2.One)
+                    {
+                        sauvegarde.WriteLine(origine2.X);
+                        sauvegarde.WriteLine(origine2.Y);
+                    }
+                    sauvegarde.WriteLine("Gardes");
+                    foreach (Vector2 position in _originesGardes)
+                    {
+                        sauvegarde.WriteLine(position.X);
+                        sauvegarde.WriteLine(position.Y);
+                    }
+
+                    sauvegarde.WriteLine("Patrouilleurs");
+                    foreach (List<Vector2> parcours in _originesPatrouilleurs)
+                    {
+                        sauvegarde.WriteLine("New");
+                        foreach (Vector2 position in parcours)
+                        {
+                            sauvegarde.WriteLine(position.X);
+                            sauvegarde.WriteLine(position.Y);
                         }
                     }
-                    sauvegarde.WriteLine(ligne);
-                    ligne = "";
-                }
 
-                sauvegarde.WriteLine("Joueurs");
-                if (origine1 != -Vector2.One)
-                {
-                    sauvegarde.WriteLine(origine1.X);
-                    sauvegarde.WriteLine(origine1.Y);
-                }
-                if (origine2 != -Vector2.One)
-                {
-                    sauvegarde.WriteLine(origine2.X);
-                    sauvegarde.WriteLine(origine2.Y);
-                }
-                sauvegarde.WriteLine("Gardes");
-                foreach (Vector2 position in _originesGardes)
-                {
-                    sauvegarde.WriteLine(position.X);
-                    sauvegarde.WriteLine(position.Y);
-                }
+                    sauvegarde.WriteLine("Patrouilleurs A Cheval");
+                    foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
+                    {
+                        sauvegarde.WriteLine("New");
+                        foreach (Vector2 position in parcours)
+                        {
+                            sauvegarde.WriteLine(position.X);
+                            sauvegarde.WriteLine(position.Y);
+                        }
+                    }
 
-                sauvegarde.WriteLine("Patrouilleurs");
-                foreach (List<Vector2> parcours in _originesPatrouilleurs)
-                {
-                    sauvegarde.WriteLine("New");
-                    foreach (Vector2 position in parcours)
+                    sauvegarde.WriteLine("Boss");
+                    foreach (Vector2 position in _originesBoss)
                     {
                         sauvegarde.WriteLine(position.X);
                         sauvegarde.WriteLine(position.Y);
                     }
-                }
 
-                sauvegarde.WriteLine("Patrouilleurs A Cheval");
-                foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
-                {
-                    sauvegarde.WriteLine("New");
-                    foreach (Vector2 position in parcours)
+                    sauvegarde.WriteLine("Statue dragon");
+                    for (int k = 0; k < _originesStatues.Count; k++)
                     {
-                        sauvegarde.WriteLine(position.X);
-                        sauvegarde.WriteLine(position.Y);
+                        sauvegarde.WriteLine(_originesStatues[k].X);
+                        sauvegarde.WriteLine(_originesStatues[k].Y);
+                        sauvegarde.WriteLine(rotationsDesStatues[k]);
                     }
+
+                    sauvegarde.WriteLine("Bonus Shurikens");
+                    foreach (Vector2 bonus in bonusShurikens)
+                    {
+                        sauvegarde.WriteLine(bonus.X);
+                        sauvegarde.WriteLine(bonus.Y);
+                    }
+
+                    sauvegarde.WriteLine("Bonus Hadokens");
+                    foreach (Vector2 bonus in bonusHadokens)
+                    {
+                        sauvegarde.WriteLine(bonus.X);
+                        sauvegarde.WriteLine(bonus.Y);
+                    }
+
+                    sauvegarde.WriteLine("Salaire");
+                    sauvegarde.WriteLine(salaire);
+
+                    sauvegarde.Close();
+                    enableSave = false;
                 }
-
-                sauvegarde.WriteLine("Boss");
-                foreach (Vector2 position in _originesBoss)
-                {
-                    sauvegarde.WriteLine(position.X);
-                    sauvegarde.WriteLine(position.Y);
-                }
-
-                sauvegarde.WriteLine("Statue dragon");
-                for (int k = 0; k < _originesStatues.Count; k++)
-                {
-                    sauvegarde.WriteLine(_originesStatues[k].X);
-                    sauvegarde.WriteLine(_originesStatues[k].Y);
-                    sauvegarde.WriteLine(rotationsDesStatues[k]);
-                }
-
-                sauvegarde.WriteLine("Bonus Shurikens");
-                foreach (Vector2 bonus in bonusShurikens)
-                {
-                    sauvegarde.WriteLine(bonus.X);
-                    sauvegarde.WriteLine(bonus.Y);
-                }
-
-                sauvegarde.WriteLine("Bonus Hadokens");
-                foreach (Vector2 bonus in bonusHadokens)
-                {
-                    sauvegarde.WriteLine(bonus.X);
-                    sauvegarde.WriteLine(bonus.Y);
-                }
-
-                sauvegarde.WriteLine("Salaire");
-                sauvegarde.WriteLine(salaire);
-
-                sauvegarde.Close();
-                enableSave = false;
             }
         }
 
