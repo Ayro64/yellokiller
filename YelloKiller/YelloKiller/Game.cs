@@ -36,18 +36,12 @@ namespace YelloKiller
             // Create the screen manager component.
             screenManager = new ScreenManager(this);
 
+
             Components.Add(screenManager);
 
             // Activate the first screens.
-            screenManager.AddScreen(new BackgroundScreen(), null);
-            screenManager.AddScreen(new MainMenuScreen(this), null);
+            screenManager.AddScreen(new IntroScreen(this), null);
         }
-
-        void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
-        {
-            Console.WriteLine(e.Character);
-        }
-
         #endregion
 
     }
