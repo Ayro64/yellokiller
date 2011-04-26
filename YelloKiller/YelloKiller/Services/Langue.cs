@@ -208,7 +208,7 @@ namespace YelloKiller
                         case ("Scores"):
                             return "Mitarbeiter Ruhmeshalle";
                         case ("HiScore"):
-                            return "Vous venez de remplir un contrat juteux!\nSous quel nom désirez-vous être connu?\n";
+                            return "Sie haben gerade viel Geld gewonnen!\nWie wollen sie gennant werden?\n";
                         case ("ScoresBox"):
                             return "A Taste, Enter : Score speichern" +
                                    "\nB Taste, Esc : Nicht speichern";
@@ -310,9 +310,9 @@ namespace YelloKiller
                         case ("Scores"):
                             return "Employees Hall of Fame";
                         case ("HiScore"):
-                            return "Vous venez de remplir un contrat juteux!\nSous quel nom désirez-vous être connu?\n";
+                            return "You just fulfilled a juicy request!\nUnder which name would you like to be know?\n";
                         case ("ScoresBox"):
-                            return "A Button, Enter : Save core" +
+                            return "A Button, Enter : Save score" +
                                    "\nB Button, ESC : Don't save";
                         default:
                             return "";

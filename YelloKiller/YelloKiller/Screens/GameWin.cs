@@ -51,10 +51,10 @@ namespace YelloKiller
             killed = Langue.tr("Killed") + deaths + " x 1 000 --> " + (-deaths * 1000);
             this.retries = Langue.tr("Retries") + retries + " x 10 000 --> " + (-retries * 10000);
 
-            salaire -= (deaths * 1000) + (uint)(levelTime * 100) + (retries * 10000);
-            if (salaire < 0)
-                salaire = 0;
-            score = Langue.tr("Score") + salaire;
+            this.salaire -= (deaths * 1000) + (uint)(levelTime * 100) + (retries * 10000);
+            if (this.salaire < 0)
+                this.salaire = 0;
+            score = Langue.tr("Score") + this.salaire;
 
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
@@ -76,7 +76,7 @@ namespace YelloKiller
             menuEntries.Add(restartMenuEntry);
             menuEntries.Add(abortMenuEntry);
 
-            if (salaire > S.Default.Score_10)
+            if (this.salaire > S.Default.Score_10)
             {
                 HiScore = true;
             }
@@ -165,9 +165,6 @@ namespace YelloKiller
         /// </summary>
         void NextMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            if (comingfrom[0] == 'S')
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
-            else
                 LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
         }
 
@@ -176,9 +173,6 @@ namespace YelloKiller
         /// </summary>
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            if (comingfrom[0] == 'S')
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
-            else
                 LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
         }
 
@@ -204,8 +198,11 @@ namespace YelloKiller
         {
             if (ScreenState == ScreenState.Active)
                 ShowHiScore = true;
-                if(ShowHiScore && HiScore)
-                ScreenManager.AddScreen(new NewHiScore(salaire, comingfrom), null);
+            if (ShowHiScore && HiScore)
+            {
+                ScreenManager.AddScreen(new NewHiScore(salaire, comingfrom.Substring(0, comingfrom.Length - 5)), null);
+                HiScore = false;
+            }
 
             // Update each nested MenuEntry object.
             for (int i = 0; i < menuEntries.Count; i++)
