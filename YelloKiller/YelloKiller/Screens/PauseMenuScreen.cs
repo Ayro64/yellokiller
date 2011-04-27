@@ -30,7 +30,6 @@ namespace YelloKiller
             : base(Langue.tr("PauseTitle"))
         {
             this.game = game;
-
             //Conserve la sélection
             selectedEntry = comingfrom;
 
@@ -113,8 +112,8 @@ namespace YelloKiller
 
         public void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
+            PauseMenuScreen pause = this;
             ScreenManager.AddScreen(new OptionsMenuScreen(mod, game), e.PlayerIndex, true);
-            ScreenManager.RemoveScreen(this);
         }
 
         /// <summary>
@@ -138,8 +137,8 @@ namespace YelloKiller
 
         #endregion
 
-        #region Draw
-        
+        #region Update
+
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             if (mod == 2 && !saveMapMenuEntry.IsEvent)
@@ -148,7 +147,12 @@ namespace YelloKiller
                 MenuEntries.Add(saveMapMenuEntry);
             }
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+        }
 
+        public override void Draw(GameTime gameTime)
+        {
+            if(this == ScreenManager.GetScreens()[ScreenManager.GetScreens().GetLength(0) - 1])
+            base.Draw(gameTime);
         }
 
 
