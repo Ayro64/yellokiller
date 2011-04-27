@@ -282,7 +282,6 @@ namespace YelloKiller
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
                     audio.Close();
-                    moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 }
 
                 audio.Update(gameTime);
@@ -389,7 +388,6 @@ namespace YelloKiller
 
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {
-                moteurAudio.SoundBank.PlayCue("11 Fanfare");
                 audio.Close();
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
             }
