@@ -47,11 +47,5 @@ namespace YelloKiller
             MenuEntry selected = sender as MenuEntry;
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new EditorScreen(selected.Text, game));
         }
-
-        protected override void OnCancel(PlayerIndex playerIndex)
-        {
-            ScreenManager.AddScreen(new PauseMenuScreen(2, 2, game), playerIndex, true);
-            ExitScreen();
-        }
     }
 }
