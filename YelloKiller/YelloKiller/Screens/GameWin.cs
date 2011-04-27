@@ -83,6 +83,8 @@ namespace YelloKiller
             {
                 HiScore = true;
             }
+
+            moteurAudio.SoundBank.PlayCue("11 Fanfare");
         }
 
         /// <summary>
