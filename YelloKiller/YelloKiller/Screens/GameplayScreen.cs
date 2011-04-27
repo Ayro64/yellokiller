@@ -348,7 +348,8 @@ namespace YelloKiller
             if (jeuEnCoop)
                 hero2.Draw_Hero(spriteBatch, camera);
 
-            spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), Color.PapayaWhip);
+            spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), null, Color.PapayaWhip, 0, Vector2.Zero, new Vector2((float)Taille_Ecran.LARGEUR_ECRAN / (float)textureBasFond.Width, 1), SpriteEffects.None, 1);
+            //spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), Color.PapayaWhip);
 
             hero1.Draw_Infos(spriteBatch);
             if (jeuEnCoop)
