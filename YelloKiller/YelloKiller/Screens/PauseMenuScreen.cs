@@ -103,7 +103,6 @@ namespace YelloKiller
         public void LoadMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             ScreenManager.AddScreen(new LoadMapMenuScreen(game), e.PlayerIndex, true);
-            ScreenManager.RemoveScreen(this);
         }
 
         /// <summary>
@@ -151,8 +150,8 @@ namespace YelloKiller
 
         public override void Draw(GameTime gameTime)
         {
-            if(this == ScreenManager.GetScreens()[ScreenManager.GetScreens().GetLength(0) - 1])
-            base.Draw(gameTime);
+            if (this == ScreenManager.GetScreens()[ScreenManager.GetScreens().GetLength(0) - 1])
+                base.Draw(gameTime);
         }
 
 
