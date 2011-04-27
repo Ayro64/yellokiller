@@ -204,7 +204,6 @@ namespace YelloKiller
 
         public override void Draw(GameTime gameTime)
         {
-            ServiceHelper.Game.Window.Title = chronometre.ToString();
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Gray, 0, 0); ;
 
             spriteBatch.Begin();
