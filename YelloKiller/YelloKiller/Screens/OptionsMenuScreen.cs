@@ -47,7 +47,6 @@ namespace YelloKiller
 
         #region Initialization
 
-
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -73,8 +72,6 @@ namespace YelloKiller
             backMenuEntry = new MenuEntry(string.Empty);
 
             SetMenuEntryText();
-
-            
 
             // Hook up menu event handlers.
             languageMenuEntry.Selected += LanguageMenuEntrySelected;
@@ -207,12 +204,6 @@ namespace YelloKiller
         protected override void OnCancel(PlayerIndex playerIndex)
         {
             Properties.Settings.Default.Save();
-
-            if (IsPopup && mod == 2)
-                ScreenManager.AddScreen(new PauseMenuScreen(3, mod, game), playerIndex, true);
-            else if (IsPopup)
-                ScreenManager.AddScreen(new PauseMenuScreen(1, mod, game), playerIndex, true);
-
             ExitScreen();
         }
 
