@@ -496,7 +496,7 @@ namespace YelloKiller
                     case State.state_shuriken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreShuriken.ToString(), new Vector2(140, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                 }
 
@@ -525,7 +525,7 @@ namespace YelloKiller
                     case State.state_shuriken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreShuriken.ToString(), new Vector2(140, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                 }
 
