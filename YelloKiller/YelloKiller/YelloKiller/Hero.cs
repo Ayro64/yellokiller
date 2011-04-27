@@ -478,22 +478,20 @@ namespace YelloKiller
             {
                 switch (currentState)
                 {
-                    case State.state_hadoken: 
+                    case State.state_hadoken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureHadoken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "*" + nombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
-                         break;
+                        break;
                     case State.state_ball:
-                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
-                         spriteBatch.Draw(textureBouleDeFeu, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.White);
-                         spriteBatch.DrawString(ScreenManager.font, "*" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
-                         break;
+                        spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.Draw(textureBouleDeFeu, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
+                        spriteBatch.DrawString(ScreenManager.font, "*" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        break;
                     case State.state_fume:
-                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
-                         spriteBatch.Draw(textureFumigene, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.White);
-                         spriteBatch.DrawString(ScreenManager.font, "*" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
-                        
-                        //spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreFumigene.ToString() + " fumigènes au joueur 1.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.Draw(textureFumigene, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
+                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                     case State.state_shuriken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
@@ -502,7 +500,7 @@ namespace YelloKiller
                         break;
                 }
 
-                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 75), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);           
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 75), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);
             }
             else
             {
@@ -514,17 +512,15 @@ namespace YelloKiller
                         spriteBatch.Draw(textureHadoken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "*" + nombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
-                    case State.state_ball: 
+                    case State.state_ball:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
-                        spriteBatch.Draw(textureBouleDeFeu, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.White);
+                        spriteBatch.Draw(textureBouleDeFeu, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 80), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "*" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                     case State.state_fume:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
-                        spriteBatch.Draw(textureFumigene, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.White);
+                        spriteBatch.Draw(textureFumigene, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 80), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "*" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
-                       
-                        //spriteBatch.DrawString(ScreenManager.font, "Il reste " + nombreFumigene.ToString() + " fumigènes au joueur 2.", new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                     case State.state_shuriken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
