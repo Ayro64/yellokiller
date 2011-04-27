@@ -225,7 +225,7 @@ namespace YelloKiller
                     if (z == 0)
                         spriteBatch.Draw(menu.ListeTexturesGauche[3], 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassage, 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.Red);
+                        spriteBatch.Draw(pointDePassage, 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.CadetBlue);
                 }
 
             foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
@@ -311,13 +311,9 @@ namespace YelloKiller
                 if (!enableSave || nomCarte != "")
                 {
                     if (extension == ".solo" && (!enableOrigine1 && !enableOrigine2))
-                    {
                         extension = ".coop";
-                    }
                     else if (extension == ".coop" && ((enableOrigine1 && !enableOrigine2) || (!enableOrigine1 && enableOrigine2)))
-                    {
                         extension = ".solo";
-                    }
                 }
 
                 if (nomCarte == "" || nomCarte.Remove(nomCarte.Length - 5) != nomSauvegarde)
