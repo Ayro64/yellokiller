@@ -32,7 +32,7 @@ namespace YelloKiller.Moteur_Particule
             textureFilename = @"Particules\explosion";
 
             minInitialSpeed = 40;
-            maxInitialSpeed = 50 * distance;
+            maxInitialSpeed =  28 * distance - 16;
 
             minAcceleration = -20;
             maxAcceleration = -10;

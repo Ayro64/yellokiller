@@ -13,7 +13,7 @@ namespace YelloKiller.IA
                 if (boss.Monter && boss.Descendre && boss.Droite && boss.Gauche)
                 {
                     if (_shuriken.Direction == Vector2.UnitX && boss.Regarder_Gauche && Math.Abs(boss.X - _shuriken.X) < 4 && boss.Y == _shuriken.Y)
-                    // si le shuriken va a droite , le shuriken est a moins de 7 cases du boss et que le shuriken
+                    // si le shuriken va a droite , le shuriken est a moins de 4 cases du boss et que le shuriken
                     // et le boss sont sur la meme position en Y alors :
                     {
                         if (boss.position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) &&
