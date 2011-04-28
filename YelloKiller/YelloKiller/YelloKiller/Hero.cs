@@ -107,7 +107,7 @@ namespace YelloKiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, MoteurAudio moteurAudio, ContentManager content, Hero hero2)
+        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, ContentManager content, Hero hero2)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
@@ -199,7 +199,7 @@ namespace YelloKiller
                         {
                             nombreHadoken--;
                             particule.UpdateExplosions_hero(this);
-                            moteurAudio.SoundBank.PlayCue("hadoken");
+                            AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 2)
@@ -210,7 +210,7 @@ namespace YelloKiller
                         {
                             nombreHadoken--;
                             particule.UpdateExplosions_hero(this);
-                            moteurAudio.SoundBank.PlayCue("hadoken");
+                            AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
                     break;
@@ -224,7 +224,7 @@ namespace YelloKiller
                         {
                             nombre_ball--;
                             particule.UpdateBall(this);
-                            moteurAudio.SoundBank.PlayCue("hadoken");
+                            AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 2)
@@ -235,7 +235,7 @@ namespace YelloKiller
                         {
                             nombre_ball--;
                             particule.UpdateBall(this);
-                            moteurAudio.SoundBank.PlayCue("hadoken");
+                            AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
                     break;
@@ -254,7 +254,7 @@ namespace YelloKiller
                         nombreShuriken--;
                         ishero = true;
                         _shuriken.Add(new Shuriken(position, this, content));
-                        moteurAudio.SoundBank.PlayCue("shuriken");
+                        AudioEngine.SoundBank.PlayCue("shuriken");
                     }
                     else
                         ishero = false;
@@ -389,7 +389,7 @@ namespace YelloKiller
                     if ((position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePressee(up) || ServiceHelper.Get<IGamePadService>().AllerEnHaut()) &&
                         (int)carte.Cases[Y - 1, X].Type > 0)
                     {
-                        moteurAudio.SoundBank.PlayCue("pasBois");
+                        AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X;
                         positionDesiree.Y = position.Y - 28;
                         monter = false;
@@ -398,7 +398,7 @@ namespace YelloKiller
                     else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && (ServiceHelper.Get<IKeyboardService>().TouchePressee(down) || ServiceHelper.Get<IGamePadService>().AllerEnBas()) &&
                              (int)carte.Cases[Y + 1, X].Type > 0)
                     {
-                        moteurAudio.SoundBank.PlayCue("pasBois");
+                        AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X;
                         positionDesiree.Y = position.Y + 28;
                         descendre = false;
@@ -407,7 +407,7 @@ namespace YelloKiller
                     else if (position.X > 8 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(left) || ServiceHelper.Get<IGamePadService>().AllerAGauche()) &&
                              (int)carte.Cases[Y, X - 1].Type > 0)
                     {
-                        moteurAudio.SoundBank.PlayCue("pasBois");
+                        AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X - 28;
                         positionDesiree.Y = position.Y;
                         gauche = false;
@@ -416,7 +416,7 @@ namespace YelloKiller
                     else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(right) || ServiceHelper.Get<IGamePadService>().AllerADroite()) &&
                              (int)carte.Cases[Y, X + 1].Type > 0)
                     {
-                        moteurAudio.SoundBank.PlayCue("pasBois");
+                        AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X + 28;
                         positionDesiree.Y = position.Y;
                         droite = false;
@@ -428,7 +428,7 @@ namespace YelloKiller
                         (int)carte.Cases[Y - 1, X].Type > 0 &&
                         (position.X != hero2.PositionDesiree.X || position.Y - 28 != hero2.PositionDesiree.Y))
                     {
-                        moteurAudio.SoundBank.PlayCue("pasBois");
+                        AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X;
                         positionDesiree.Y = position.Y - 28;
                         monter = false;
@@ -438,7 +438,7 @@ namespace YelloKiller
                               (int)carte.Cases[Y + 1, X].Type > 0 &&
                               (position.X != hero2.PositionDesiree.X || position.Y + 28 != hero2.PositionDesiree.Y))
                     {
-                        moteurAudio.SoundBank.PlayCue("pasBois");
+                        AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X;
                         positionDesiree.Y = position.Y + 28;
                         descendre = false;
@@ -448,7 +448,7 @@ namespace YelloKiller
                              (int)carte.Cases[Y, X - 1].Type > 0 &&
                              (position.X - 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y))
                     {
-                        moteurAudio.SoundBank.PlayCue("pasBois");
+                        AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X - 28;
                         positionDesiree.Y = position.Y;
                         gauche = false;
@@ -458,7 +458,7 @@ namespace YelloKiller
                              (int)carte.Cases[Y, X + 1].Type > 0 &&
                              (position.X + 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y))
                     {
-                        moteurAudio.SoundBank.PlayCue("pasBois");
+                        AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X + 28;
                         positionDesiree.Y = position.Y;
                         droite = false;
@@ -469,7 +469,7 @@ namespace YelloKiller
 
         public void Draw_Hero(SpriteBatch spriteBatch, Rectangle camera)
         {
-            base.Draw(spriteBatch, camera);            
+            base.Draw(spriteBatch, camera);
         }
 
         public void Draw_Infos(SpriteBatch spriteBatch)

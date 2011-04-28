@@ -22,8 +22,7 @@ namespace YelloKiller
         YellokillerGame game;
         string WinMessage, comingfrom, baseSalary, time, killed, retries, score, penalties;
         double temps;
-        bool HiScore = false, ShowHiScore = false;
-        MoteurAudio moteurAudio;
+        bool HiScore = false, ShowHiScore = false, soundPlayed = false;
 
         Color Color;
         Color EntriesColor;
@@ -42,8 +41,6 @@ namespace YelloKiller
             this.salaire = salaire;
             this.deaths = deaths;
             this.restart = retries;
-
-            moteurAudio = new MoteurAudio();
 
             temps = levelTime;
 
@@ -83,8 +80,6 @@ namespace YelloKiller
             {
                 HiScore = true;
             }
-
-            moteurAudio.SoundBank.PlayCue("11 Fanfare");
         }
 
         /// <summary>
@@ -131,7 +126,7 @@ namespace YelloKiller
             // Move to the previous menu entry?
             if (input.IsMenuLeft(ControllingPlayer))
             {
-                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
+                AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
                 selectedEntry--;
 
                 if (selectedEntry < 0)
@@ -141,7 +136,7 @@ namespace YelloKiller
             // Move to the next menu entry?
             if (input.IsMenuRight(ControllingPlayer))
             {
-                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
+                AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
                 selectedEntry++;
 
                 if (selectedEntry >= menuEntries.Count)
@@ -203,6 +198,14 @@ namespace YelloKiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                        bool coveredByOtherScreen)
         {
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
+            if (!soundPlayed)
+            {
+                AudioEngine.SoundBank.PlayCue("11 Fanfare");
+                soundPlayed = true;
+            }
+
             if (ScreenState == ScreenState.Active)
                 ShowHiScore = true;
             if (ShowHiScore && HiScore)
@@ -217,8 +220,6 @@ namespace YelloKiller
                 bool isSelected = IsActive && (i == selectedEntry);
                 menuEntries[i].Update(this, isSelected, gameTime);
             }
-
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
         /// <summary>

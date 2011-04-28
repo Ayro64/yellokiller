@@ -19,6 +19,14 @@ namespace YelloKiller
     {
         #region Properties
 
+        public string Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
+
+        string type;
+
         public bool IsPopup
         {
             get { return isPopup; }
@@ -26,6 +34,13 @@ namespace YelloKiller
         }
 
         bool isPopup = false;
+
+        public MoteurAudio AudioEngine
+        {
+            get { return audioEngine; }
+        }
+
+        MoteurAudio audioEngine;
 
         public TimeSpan TransitionOnTime
         {
@@ -120,6 +135,11 @@ namespace YelloKiller
         public virtual void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                       bool coveredByOtherScreen)
         {
+            if (audioEngine == null)
+                audioEngine = ScreenManager.AudioEngine;
+
+            audioEngine.Update();
+
             this.otherScreenHasFocus = otherScreenHasFocus;
 
             if (isExiting)

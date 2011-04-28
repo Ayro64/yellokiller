@@ -18,7 +18,6 @@ namespace YelloKiller
         List<MenuEntry> menuEntries = new List<MenuEntry>();
         public int selectedEntry = 0;
         string menuTitle;
-        MoteurAudio moteurAudio;
 
         #endregion
 
@@ -51,7 +50,6 @@ namespace YelloKiller
         public MenuScreen(string menuTitle)
         {
             this.menuTitle = menuTitle;
-            moteurAudio = new MoteurAudio();
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
         }
@@ -71,7 +69,7 @@ namespace YelloKiller
             if (input.IsMenuUp(ControllingPlayer))
             {
                 selectedEntry--;
-                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
+                AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
 
                 if (selectedEntry < 0)
                     selectedEntry = menuEntries.Count - 1;
@@ -81,7 +79,7 @@ namespace YelloKiller
             if (input.IsMenuDown(ControllingPlayer))
             {
                 selectedEntry++;
-                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
+                AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry >= menuEntries.Count)
                     selectedEntry = 0;
             }
@@ -95,12 +93,12 @@ namespace YelloKiller
 
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
             {
-                moteurAudio.SoundBank.PlayCue("menuBouge");
+                AudioEngine.SoundBank.PlayCue("menuBouge");
                 OnSelectEntry(selectedEntry, playerIndex);
             }
             else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
             {
-                moteurAudio.SoundBank.PlayCue("menuBouge");
+                AudioEngine.SoundBank.PlayCue("menuBouge");
                 OnCancel(playerIndex);
             }
         }
@@ -145,7 +143,8 @@ namespace YelloKiller
                                                        bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-            moteurAudio.Update();
+
+            AudioEngine.Update();
             // Update each nested MenuEntry object.
             for (int i = 0; i < menuEntries.Count; i++)
             {

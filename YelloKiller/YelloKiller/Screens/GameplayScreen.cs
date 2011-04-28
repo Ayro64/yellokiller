@@ -40,7 +40,6 @@ namespace YelloKiller
         }
 
         Player audio;
-        MoteurAudio moteurAudio;
         double temps = 0;
         string nomDeCarte;
         bool jeuEnCoop;
@@ -96,7 +95,6 @@ namespace YelloKiller
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
             audio = new Player();
-            moteurAudio = new MoteurAudio();
 
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             carte.OuvrirCarte(nomDeCarte);
@@ -226,6 +224,7 @@ namespace YelloKiller
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             if (IsActive)
             {             
                 if (Enable_Timer_Hero1)
@@ -234,11 +233,11 @@ namespace YelloKiller
                     timer_hero2 += gameTime.ElapsedGameTime.TotalSeconds;
 
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
-                moteurAudio.Update();
+                AudioEngine.Update();
 
-                hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero2);
+                hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero2);
                 if (jeuEnCoop)
-                    hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, moteurAudio, content, hero1);
+                    hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1);
 
                 foreach (Garde garde in _gardes)
                     garde.Update(gameTime, carte, hero1, hero2, camera);
@@ -253,31 +252,31 @@ namespace YelloKiller
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
 
                 foreach (Statue statue in _statues)
-                    statue.Update(gameTime, moteurparticule, moteurAudio.SoundBank);
+                    statue.Update(gameTime, moteurparticule, AudioEngine.SoundBank);
 
                 if (timer_update_collision > 0)
                 {
-                    Moteur_physique.Collision_Armes_Ennemis(hero1, hero2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, moteurAudio.SoundBank, ref gardesMorts, ref patrouilleursAChevauxMorts, ref patrouilleursMorts, ref bossMorts);
+                    Moteur_physique.Collision_Armes_Ennemis(hero1, hero2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, AudioEngine.SoundBank, ref gardesMorts, ref patrouilleursAChevauxMorts, ref patrouilleursMorts, ref bossMorts);
                     if (timer_update_collision > 5)
                         timer_update_collision = 0;
                 }
 
-                if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, moteurAudio.SoundBank))
+                if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, AudioEngine.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
-                if (Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, moteurAudio.SoundBank))
+                if (Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, AudioEngine.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
-                if (Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, moteurAudio.SoundBank))
+                if (Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, AudioEngine.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
-                if (Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, moteurAudio.SoundBank))
+                if (Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, AudioEngine.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
-                if (Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, moteurAudio.SoundBank))
+                if (Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, AudioEngine.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
-                Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, moteurAudio.SoundBank);
+                Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank);
                 if (_boss.Count == 0)
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
@@ -286,7 +285,6 @@ namespace YelloKiller
 
                 audio.Update(gameTime);
             }
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
 
@@ -339,7 +337,7 @@ namespace YelloKiller
                 if (_shuriken[i].ShurikenExists == false)
                 {
                     _shuriken.RemoveAt(i);
-                    moteurAudio.SoundBank.PlayCue("shurikenCollision");
+                    AudioEngine.SoundBank.PlayCue("shurikenCollision");
                 }
             }
 
@@ -381,7 +379,7 @@ namespace YelloKiller
 
             if (input.IsPauseGame(ControllingPlayer) || gamePadDisconnected)
             {
-                moteurAudio.SoundBank.PlayCue("menuBouge");
+                AudioEngine.SoundBank.PlayCue("menuBouge");
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1, game), ControllingPlayer, true);
             }
