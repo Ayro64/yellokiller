@@ -15,7 +15,6 @@ namespace YelloKiller
         List<Carte> miniCartes = new List<Carte>();
         MenuEntry abortMenuEntry;
         YellokillerGame game;
-        MoteurAudio moteurAudio;
 
         string menuTitle = Langue.tr("Multi"), level = Langue.tr("Level");
         int selectedEntry = 0;
@@ -60,8 +59,6 @@ namespace YelloKiller
 
             // Add entries to the menu.
             levels.Add(abortMenuEntry);
-
-            moteurAudio = new MoteurAudio();
         }
 
         /// <summary>
@@ -104,7 +101,7 @@ namespace YelloKiller
             // Move to the left menu entry?
             if (input.IsMenuLeft(ControllingPlayer))
             {
-                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
+                AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry > 0)
                     selectedEntry--;
             }
@@ -112,7 +109,7 @@ namespace YelloKiller
             // Move to the right menu entry?
             if (input.IsMenuRight(ControllingPlayer))
             {
-                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
+                AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry < (levels.Count - 1))
                     selectedEntry++;
             }
@@ -120,7 +117,7 @@ namespace YelloKiller
             // Move to the up menu entry?
             if (input.IsMenuUp(ControllingPlayer))
             {
-                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
+                AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry == levels.Count - 1)
                     selectedEntry -= 1;
                 else if (selectedEntry > 3)
@@ -132,7 +129,7 @@ namespace YelloKiller
             // Move to the down menu entry?
             if (input.IsMenuDown(ControllingPlayer))
             {
-                moteurAudio.SoundBank.PlayCue("sonMenuBoutton");
+                AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry < levels.Count - 4)
                     selectedEntry += 4;
                 else if (selectedEntry < levels.Count - 1)
@@ -151,7 +148,7 @@ namespace YelloKiller
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
             {
                 OnSelectEntry(selectedEntry, playerIndex);
-                moteurAudio.SoundBank.PlayCue("menuBouge");
+                AudioEngine.SoundBank.PlayCue("menuBouge");
             }
         }
 
@@ -192,14 +189,14 @@ namespace YelloKiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                        bool coveredByOtherScreen)
         {
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
             // Update each nested MenuEntry object.
             for (int i = 0; i < levels.Count; i++)
             {
                 bool isSelected = IsActive && (i == selectedEntry);
                 levels[i].Update(this, isSelected, gameTime);
             }
-
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
         /// <summary>

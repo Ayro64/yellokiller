@@ -16,6 +16,13 @@ namespace YelloKiller
         SpriteEffects effect = SpriteEffects.None;
         float layerDepth = 0;
 
+        MoteurAudio audioEngine;
+
+        public MoteurAudio AudioEngine
+        {
+            get { return audioEngine; }
+        }
+
         public Vector2 Position
         {
             get { return position; }
@@ -82,12 +89,14 @@ namespace YelloKiller
         public Sprite(Vector2 position)
         {
             this.position = position;
+            this.audioEngine = ScreenManager.AudioEngine;
         }
 
         public Sprite(Vector2 position, Rectangle? sourceRectangle)
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
+            this.audioEngine = ScreenManager.AudioEngine;
         }
 
         public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color)
@@ -95,6 +104,7 @@ namespace YelloKiller
             this.position = position;
             this.sourceRectangle = sourceRectangle;
             this.color = color;
+            this.audioEngine = ScreenManager.AudioEngine;
         }
 
         public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color, float rotation)
@@ -103,6 +113,7 @@ namespace YelloKiller
             this.sourceRectangle = sourceRectangle;
             this.color = color;
             this.rotation = rotation;
+            this.audioEngine = ScreenManager.AudioEngine;
         }
 
         public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin)
@@ -112,6 +123,7 @@ namespace YelloKiller
             this.color = color;
             this.rotation = rotation;
             this.origin = origin;
+            this.audioEngine = ScreenManager.AudioEngine;
         }
 
         public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale)
@@ -122,6 +134,7 @@ namespace YelloKiller
             this.rotation = rotation;
             this.origin = origin;
             this.scale = scale;
+            this.audioEngine = ScreenManager.AudioEngine;
         }
 
         public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effect)
@@ -133,6 +146,7 @@ namespace YelloKiller
             this.origin = origin;
             this.scale = scale;
             this.effect = effect;
+            this.audioEngine = ScreenManager.AudioEngine;
         }
 
         public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effect, float layerDepth)
@@ -145,6 +159,7 @@ namespace YelloKiller
             this.scale = scale;
             this.effect = effect;
             this.layerDepth = layerDepth;
+            this.audioEngine = ScreenManager.AudioEngine;
         }
 
         public void LoadContent(ContentManager content, string nom)

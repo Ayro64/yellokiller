@@ -36,6 +36,8 @@ namespace YelloKiller
 
         public ResourceManager resourceManager;
 
+        static MoteurAudio audioEngine;
+
         #endregion
 
         #region Properties
@@ -60,7 +62,15 @@ namespace YelloKiller
             get { return font; }
         }
 
-
+        ///<summary>
+        /// A default audio engine shared by all the screens. This saves
+        /// each screen having to bother loading their own local copy.
+        ///</summary>
+        public static MoteurAudio AudioEngine
+        {
+            get { return audioEngine; }
+        }
+        
         /// <summary>
         /// If true, the manager prints out a list of all the screens
         /// each time it is updated. This can be useful for making sure
@@ -71,8 +81,7 @@ namespace YelloKiller
             get { return traceEnabled; }
             set { traceEnabled = value; }
         }
-
-
+        
         #endregion
 
         #region Initialization
@@ -94,6 +103,7 @@ namespace YelloKiller
         {
             base.Initialize();
             isInitialized = true;
+            audioEngine = new MoteurAudio();
         }
 
 

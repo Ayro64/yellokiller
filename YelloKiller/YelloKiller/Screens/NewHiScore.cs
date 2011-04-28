@@ -20,7 +20,6 @@ namespace YelloKiller
         Texture2D gradientTexture;
         static double timer = 0;
         bool underscore;
-        MoteurAudio moteurAudio;
 
         public NewHiScore(uint score, string comingfrom)
             : base(Langue.tr("HiScore"), false)
@@ -32,8 +31,6 @@ namespace YelloKiller
             Score = score;
             underscore = false;
             EventInput.EventInput.CharEntered += new EventInput.CharEnteredHandler(EventInput_CharEntered);
-
-            moteurAudio = new MoteurAudio();
         }
 
 
@@ -345,7 +342,7 @@ namespace YelloKiller
             // Cancelled events, so they can tell which player triggered them.
             if (input.IsScoreSelect(ControllingPlayer, out playerIndex))
             {
-                moteurAudio.SoundBank.PlayCue("menuBouge");
+                AudioEngine.SoundBank.PlayCue("menuBouge");
                 // Raise the accepted event, then exit the message box.
                 if (playerName.Length > 0)
                 {
@@ -355,7 +352,7 @@ namespace YelloKiller
             }
             else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
             {
-                moteurAudio.SoundBank.PlayCue("menuBouge");
+                AudioEngine.SoundBank.PlayCue("menuBouge");
                 ExitScreen();
             }
 
