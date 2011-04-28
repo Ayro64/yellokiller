@@ -19,15 +19,18 @@ namespace YelloKiller.Moteur_Particule
         {
             this.hero = hero;
             this.carte = carte;
-            distance = hero.Distance_Hero_Mur(carte);
+            if (hero.NumeroHero == 1)
+                distance = hero.Distance_Hero1_Mur(carte);
+            else if (hero.NumeroHero == 2)
+                distance = hero.Distance_Hero2_Mur(carte);
         }
 
         protected override void InitializeConstants()
         {
             textureFilename = @"Particules\explosion";
 
-            maxInitialSpeed =  28 * distance - 16;
-            minInitialSpeed =  28 * distance - 16;
+            maxInitialSpeed = 28 * distance - 16;
+            minInitialSpeed = 28 * distance - 16;
 
             minAcceleration = -20;
             maxAcceleration = -10;
@@ -67,7 +70,10 @@ namespace YelloKiller.Moteur_Particule
             base.Update(gameTime);
             if (hero != null)
             {
-                distance = hero.Distance_Hero_Mur(carte);
+                if (hero.NumeroHero == 1)
+                    distance = hero.Distance_Hero1_Mur(carte);
+                else if (hero.NumeroHero == 2)
+                    distance = hero.Distance_Hero2_Mur(carte);
                 maxInitialSpeed = 50 * distance;
                 minInitialSpeed = 50 * distance;
             }
