@@ -59,12 +59,12 @@ namespace YelloKiller
             base.LoadContent(content, @"Feuilles de sprites\statue_dragon");
         }
 
-        public void Update(GameTime gameTime, MoteurParticule particule, SoundBank soundBank)
+        public void Update(GameTime gameTime, MoteurParticule particule)
         {
             timer += gameTime.ElapsedGameTime.TotalSeconds;
             if (timer > 2)
             {
-                soundBank.PlayCue("Bruitage des statues");
+                AudioEngine.SoundBank.PlayCue("Bruitage des statues");
                 particule.UpdateExplosions_statue(this);
                 timer = 0;
             }
