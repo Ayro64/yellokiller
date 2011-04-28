@@ -185,10 +185,10 @@ namespace YelloKiller
             ScoresPos.X += 150;
             spriteBatch.DrawString(font, S.Default.Score_09.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_09.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-316, 25);
 
             spriteBatch.DrawString(font, "10. " + S.Default.Name_10, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 166;
             spriteBatch.DrawString(font, S.Default.Map_10, ScoresPos, Color);
             ScoresPos.X += 150;
             spriteBatch.DrawString(font, S.Default.Score_10.ToString(), ScoresPos, Color);
