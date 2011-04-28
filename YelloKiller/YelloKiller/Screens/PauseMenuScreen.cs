@@ -150,7 +150,7 @@ namespace YelloKiller
 
         public override void Draw(GameTime gameTime)
         {
-            if (this == ScreenManager.GetScreens()[ScreenManager.GetScreens().GetLength(0) - 1])
+            if (this == ScreenManager.GetScreens()[ScreenManager.GetScreens().GetLength(0) - 1] || ScreenManager.GetScreens()[ScreenManager.GetScreens().GetLength(0) - 1].Type == "Pop")
                 base.Draw(gameTime);
         }
 

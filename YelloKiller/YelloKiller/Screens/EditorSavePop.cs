@@ -25,6 +25,7 @@ namespace YelloKiller
             : base(Langue.tr("SavePop-Up"), false)
         {
             this.mod = mod;
+            this.Type = "Pop";
             this.nomSauvegarde = nomSauvegarde;
             this.UsageText = Langue.tr("ScoresBox");
             lastIntTimer = 0;
