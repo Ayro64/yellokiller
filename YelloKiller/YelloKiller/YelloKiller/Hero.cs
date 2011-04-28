@@ -67,41 +67,20 @@ namespace YelloKiller
             this.courir = courir;
         }
 
-        public int Distance_Hero1_Mur(Carte carte)
+        public int Distance_Hero_Mur(Carte carte)
         {
             int distance = 0;
-            if (Regarder_Haut)
+
+            if (Regarde_Haut)
                 for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
                     distance++;
-            else if (Regarder_Droite)
+            else if (Regarde_Droite)
                 for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
                     distance++;
-            else if (Regarder_Gauche)
+            else if (Regarde_Gauche)
                 for (int i = 0; this.X - i > 0 && carte.Cases[this.Y, this.X - i].Type > 0; i++)
                     distance++;
-            else if (Regarder_Bas)
-                for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
-                    distance++;
-
-            if (distance < 6)
-                return distance;
-            else
-                return 6;
-        }
-
-        public int Distance_Hero2_Mur(Carte carte)
-        {
-            int distance = 0;
-            if (Regarder_Haut)
-                for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
-                    distance++;
-            else if (Regarder_Droite)
-                for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
-                    distance++;
-            else if (Regarder_Gauche)
-                for (int i = 0; this.X - i > 0 && carte.Cases[this.Y, this.X - i].Type > 0; i++)
-                    distance++;
-            else if (Regarder_Bas)
+            else if (Regarde_Bas)
                 for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
                     distance++;
 
@@ -140,24 +119,24 @@ namespace YelloKiller
                 GameplayScreen.Timer_Update_Collision += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (SourceRectangle.Value.Y == 133 - state_sabre)
-                regarde_haut = true;
+                Regarde_Haut = true;
             else
-                regarde_haut = false;
+                Regarde_Haut = false;
 
             if (SourceRectangle.Value.Y == 198 - state_sabre)
-                regarde_bas = true;
+                Regarde_Bas = true;
             else
-                regarde_bas = false;
+                Regarde_Bas = false;
 
             if (SourceRectangle.Value.Y == 230 - state_sabre)
-                regarde_gauche = true;
+                Regarde_Gauche = true;
             else
-                regarde_gauche = false;
+                Regarde_Gauche = false;
 
             if (SourceRectangle.Value.Y == 166 - state_sabre)
-                regarde_droite = true;
+                Regarde_Droite = true;
             else
-                regarde_droite = false;
+                Regarde_Droite = false;
 
             //armes
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(changer_arme) || ServiceHelper.Get<IGamePadService>().ChangerArme())
@@ -174,7 +153,7 @@ namespace YelloKiller
             else
                 animation_sabre = false;
 
-            if (regarde_haut && animation_sabre)
+            if (Regarde_Haut && animation_sabre)
             {
                 SourceRectangle = new Rectangle((int)index * 48, 0, 16, 26);
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
@@ -182,7 +161,7 @@ namespace YelloKiller
                 if (index >= maxIndex)
                     index = 0f;
             }
-            else if (Regarder_Bas && animation_sabre)
+            else if (Regarde_Bas && animation_sabre)
             {
                 SourceRectangle = new Rectangle((int)index * 48, 65, 16, 26);
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
@@ -190,7 +169,7 @@ namespace YelloKiller
                 if (index >= maxIndex)
                     index = 0f;
             }
-            else if (regarde_gauche && animation_sabre)
+            else if (Regarde_Gauche && animation_sabre)
             {
                 SourceRectangle = new Rectangle((int)index * 48, 97, 16, 26);
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
@@ -198,7 +177,7 @@ namespace YelloKiller
                 if (index >= maxIndex)
                     index = 0f;
             }
-            else if (regarde_droite && animation_sabre)
+            else if (Regarde_Droite && animation_sabre)
             {
                 SourceRectangle = new Rectangle((int)index * 48, 33, 16, 26);
                 index += gameTime.ElapsedGameTime.Milliseconds * vitesseAnimation;
@@ -215,7 +194,6 @@ namespace YelloKiller
                 case State.state_hadoken:
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 1)
                     {
-                        Distance_Hero1_Mur(carte);
                         GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
@@ -226,7 +204,6 @@ namespace YelloKiller
                     }
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 2)
                     {
-                        Distance_Hero2_Mur(carte);
                         GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
@@ -240,7 +217,6 @@ namespace YelloKiller
                 case State.state_ball:
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 1)
                     {
-                        Distance_Hero1_Mur(carte);
                         GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
@@ -251,7 +227,6 @@ namespace YelloKiller
                     }
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 2)
                     {
-                        Distance_Hero2_Mur(carte);
                         GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
@@ -503,22 +478,22 @@ namespace YelloKiller
                     case State.state_hadoken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureHadoken, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                     case State.state_ball:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureBouleDeFeu, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                     case State.state_fume:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureFumigene, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                     case State.state_shuriken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                 }
 
@@ -532,22 +507,22 @@ namespace YelloKiller
 
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureHadoken, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 80), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                     case State.state_ball:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureBouleDeFeu, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 80), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                     case State.state_fume:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureFumigene, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 80), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                     case State.state_shuriken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "*" + nombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                 }
 
@@ -565,25 +540,25 @@ namespace YelloKiller
             get { return positionDesiree; }
         }
 
-        public bool Regarder_Haut
+        public bool Regarde_Haut
         {
             get { return regarde_haut; }
             set { regarde_haut = value; }
         }
 
-        public bool Regarder_Bas
+        public bool Regarde_Bas
         {
             get { return regarde_bas; }
             set { regarde_bas = value; }
         }
 
-        public bool Regarder_Droite
+        public bool Regarde_Droite
         {
             get { return regarde_droite; }
             set { regarde_droite = value; }
         }
 
-        public bool Regarder_Gauche
+        public bool Regarde_Gauche
         {
             get { return regarde_gauche; }
             set { regarde_gauche = value; }
