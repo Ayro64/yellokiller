@@ -88,13 +88,13 @@ namespace YelloKiller
 
             if (vie < 5 && chemin.Count == 0)
             {
-                if (hero1.Regarder_Bas && position.Y > hero1.position.Y)
+                if (hero1.Regarde_Bas && position.Y > hero1.position.Y)
                     SourceRectangle = new Rectangle(26, 0, 16, 24);
-                else if (hero1.Regarder_Gauche && position.X < hero1.position.X)
+                else if (hero1.Regarde_Gauche && position.X < hero1.position.X)
                     SourceRectangle = new Rectangle(26, 33, 16, 24);
-               else if (hero1.Regarder_Haut && position.Y < hero1.position.Y)
+               else if (hero1.Regarde_Haut && position.Y < hero1.position.Y)
                     SourceRectangle = new Rectangle(26, 64, 16, 24);
-                else if (hero1.Regarder_Droite && position.X > hero1.position.X)
+                else if (hero1.Regarde_Droite && position.X > hero1.position.X)
                     SourceRectangle = new Rectangle(26, 97, 16, 24);
             }
         }
