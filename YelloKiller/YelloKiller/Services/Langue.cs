@@ -104,7 +104,7 @@ namespace YelloKiller
                         case ("Penalties"):
                             return "Pénalités : ";
                         case("Scores"):
-                            return "Top 10 des employés";
+                            return "Classement des assassins";
                         case("HiScore"):
                             return "Vous venez de remplir un contrat juteux!\nSous quel nom désirez-vous être connu?\n";
                         case ("ScoresBox"):
@@ -212,7 +212,7 @@ namespace YelloKiller
                         case ("Penalties"):
                             return "Strafen : ";
                         case ("Scores"):
-                            return "Mitarbeiter Ruhmeshalle";
+                            return "Attentäter Ruhmeshalle";
                         case ("HiScore"):
                             return "Sie haben gerade viel Geld gewonnen!\nWie wollen sie gennant werden?\n";
                         case ("ScoresBox"):
@@ -320,7 +320,7 @@ namespace YelloKiller
                         case ("Penalties"):
                             return "Penalties : ";
                         case ("Scores"):
-                            return "Employees Hall of Fame";
+                            return "Assassins Hall of Fame";
                         case ("HiScore"):
                             return "You just fulfilled a juicy request!\nUnder which name would you like to be know?\n";
                         case ("ScoresBox"):
