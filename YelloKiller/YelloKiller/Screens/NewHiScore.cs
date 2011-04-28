@@ -364,7 +364,7 @@ namespace YelloKiller
 
         void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
         {
-            if (e.Character != '\b' && e.Character != '\r' && playerName.Length < 10 && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl)) && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.RightControl)))
+            if (e.Character != '\b' && e.Character != '\r' && e.Character != '\t' && playerName.Length < 10 && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl)) && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.RightControl)))
                 playerName += e.Character;
         }
 
