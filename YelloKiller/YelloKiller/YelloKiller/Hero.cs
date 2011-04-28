@@ -67,7 +67,29 @@ namespace YelloKiller
             this.courir = courir;
         }
 
-        public int Distance_Hero_Mur(Carte carte)
+        public int Distance_Hero1_Mur(Carte carte)
+        {
+            int distance = 0;
+            if (Regarder_Haut)
+                for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
+                    distance++;
+            else if (Regarder_Droite)
+                for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
+                    distance++;
+            else if (Regarder_Gauche)
+                for (int i = 0; this.X - i > 0 && carte.Cases[this.Y, this.X - i].Type > 0; i++)
+                    distance++;
+            else if (Regarder_Bas)
+                for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
+                    distance++;
+
+            if (distance < 6)
+                return distance;
+            else
+                return 6;
+        }
+
+        public int Distance_Hero2_Mur(Carte carte)
         {
             int distance = 0;
             if (Regarder_Haut)
@@ -193,7 +215,7 @@ namespace YelloKiller
                 case State.state_hadoken:
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 1)
                     {
-                        Distance_Hero_Mur(carte);
+                        Distance_Hero1_Mur(carte);
                         GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
@@ -204,7 +226,7 @@ namespace YelloKiller
                     }
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 2)
                     {
-                        Distance_Hero_Mur(carte);
+                        Distance_Hero2_Mur(carte);
                         GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
@@ -218,7 +240,7 @@ namespace YelloKiller
                 case State.state_ball:
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 1)
                     {
-                        Distance_Hero_Mur(carte);
+                        Distance_Hero1_Mur(carte);
                         GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
@@ -229,7 +251,7 @@ namespace YelloKiller
                     }
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 2)
                     {
-                        Distance_Hero_Mur(carte);
+                        Distance_Hero2_Mur(carte);
                         GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
