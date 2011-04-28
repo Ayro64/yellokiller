@@ -10,33 +10,28 @@ namespace YelloKiller.Moteur_Particule
 
     class ExplosionParticleSystem : ParticleSystem
     {
-
-        Hero hero; 
+        Hero hero;
         Carte carte;
         float maxspeed;
-       
+
         int distance;
 
-        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, Hero hero, Carte carte,  int maxspeed)
+        public ExplosionParticleSystem(YellokillerGame game, int howManyEffects, Hero hero, Carte carte, int maxspeed)
             : base(game, howManyEffects)
         {
             this.maxspeed = maxspeed;
-           
+
             this.hero = hero;
             this.carte = carte;
-            if (hero.NumeroHero == 1)
-                distance = hero.Distance_Hero1_Mur(carte);
-            else if (hero.NumeroHero == 2)
-                distance = hero.Distance_Hero2_Mur(carte);
+            distance = hero.Distance_Hero_Mur(carte);
         }
 
         protected override void InitializeConstants()
         {
-            
             textureFilename = @"Particules\explosion";
 
             minInitialSpeed = 40;
-            maxInitialSpeed =  28 * distance - 16;
+            maxInitialSpeed = 28 * distance - 16;
 
             minAcceleration = -20;
             maxAcceleration = -10;
@@ -76,10 +71,7 @@ namespace YelloKiller.Moteur_Particule
             base.Update(gameTime);
             if (hero != null)
             {
-                if (hero.NumeroHero == 1)
-                    distance = hero.Distance_Hero1_Mur(carte);
-                else if (hero.NumeroHero == 2)
-                    distance = hero.Distance_Hero2_Mur(carte);
+                distance = hero.Distance_Hero_Mur(carte);
                 maxInitialSpeed = maxspeed * distance;
             }
 
