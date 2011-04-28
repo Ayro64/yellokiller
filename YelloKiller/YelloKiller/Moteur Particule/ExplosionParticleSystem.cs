@@ -74,8 +74,6 @@ namespace YelloKiller.Moteur_Particule
                 distance = hero.Distance_Hero_Mur(carte);
                 maxInitialSpeed = maxspeed * distance;
             }
-
         }
-
     }
 }

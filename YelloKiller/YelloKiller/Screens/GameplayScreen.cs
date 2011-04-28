@@ -177,7 +177,7 @@ namespace YelloKiller
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
 
-            moteurparticule = new MoteurParticule(game, spriteBatch, carte, hero1, _statues);
+            moteurparticule = new MoteurParticule(game, spriteBatch, carte, hero1, hero2, _statues);
 
             audio.LoadContent(content);
 
