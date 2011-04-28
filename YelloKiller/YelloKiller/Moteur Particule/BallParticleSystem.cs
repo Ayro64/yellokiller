@@ -19,10 +19,7 @@ namespace YelloKiller.Moteur_Particule
         {
             this.hero = hero;
             this.carte = carte;
-            if (hero.NumeroHero == 1)
-                distance = hero.Distance_Hero1_Mur(carte);
-            else if (hero.NumeroHero == 2)
-                distance = hero.Distance_Hero2_Mur(carte);
+            distance = hero.Distance_Hero_Mur(carte);
         }
 
         protected override void InitializeConstants()
@@ -70,10 +67,7 @@ namespace YelloKiller.Moteur_Particule
             base.Update(gameTime);
             if (hero != null)
             {
-                if (hero.NumeroHero == 1)
-                    distance = hero.Distance_Hero1_Mur(carte);
-                else if (hero.NumeroHero == 2)
-                    distance = hero.Distance_Hero2_Mur(carte);
+                distance = hero.Distance_Hero_Mur(carte);
                 maxInitialSpeed = 50 * distance;
                 minInitialSpeed = 50 * distance;
             }

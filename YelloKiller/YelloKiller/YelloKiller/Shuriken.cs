@@ -29,13 +29,13 @@ namespace YelloKiller
 
             if (hero.ishero == true)
             { 
-                if (hero.Regarder_Gauche)
+                if (hero.Regarde_Gauche)
                     direction = -Vector2.UnitX;
-                else if (hero.Regarder_Bas)
+                else if (hero.Regarde_Bas)
                     direction = Vector2.UnitY;
-                else if (hero.Regarder_Droite)
+                else if (hero.Regarde_Droite)
                     direction = Vector2.UnitX;
-                else if (hero.Regarder_Haut)
+                else if (hero.Regarde_Haut)
                     direction = -Vector2.UnitY;
             }
         }
