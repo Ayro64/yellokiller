@@ -351,7 +351,7 @@ namespace YelloKiller
             if (jeuEnCoop)
                 hero2.Draw_Infos(spriteBatch);            
 
-            spriteBatch.DrawString(ScreenManager.font, "Ennemis restants : " + _gardes.Count.ToString(), new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkBlue);
+            spriteBatch.DrawString(ScreenManager.font, "Ennemis restants : " + (_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count).ToString(), new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkBlue);
 
             spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
             
