@@ -497,7 +497,7 @@ namespace YelloKiller
                         break;
                 }
 
-                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 75), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 35), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);
             }
             else
             {
@@ -526,7 +526,7 @@ namespace YelloKiller
                         break;
                 }
 
-                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 35), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);
+                spriteBatch.Draw(flamme, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 250 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 75), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);
             }
         }
 
