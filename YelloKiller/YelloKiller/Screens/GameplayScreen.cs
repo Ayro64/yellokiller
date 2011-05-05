@@ -29,7 +29,7 @@ namespace YelloKiller
         List<Boss> _boss;
         List<Statue> _statues;
         List<Bonus> _bonus;
-        List<Vector2> gardesMorts, patrouilleursAChevauxMorts, patrouilleursMorts, bossMorts;
+        List<Rectangle> gardesMorts, patrouilleursAChevauxMorts, patrouilleursMorts, bossMorts;
         Texture2D textureGardeMort, texturePatrouilleurAChevalMort, texturePatrouilleurMort, textureBossMort, textureBasFond;
 
         static double timer_update_collision = 0;
@@ -161,10 +161,10 @@ namespace YelloKiller
             foreach (Vector2 bonus in carte.BonusHadokens)
                 _bonus.Add(new Bonus(28 * bonus, TypeBonus.hadoken));
 
-            gardesMorts = new List<Vector2>();
-            patrouilleursAChevauxMorts = new List<Vector2>();
-            patrouilleursMorts = new List<Vector2>();
-            bossMorts = new List<Vector2>();
+            gardesMorts = new List<Rectangle>();
+            patrouilleursAChevauxMorts = new List<Rectangle>();
+            patrouilleursMorts = new List<Rectangle>();
+            bossMorts = new List<Rectangle>();
 
             kills = (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count);
         }
@@ -317,17 +317,17 @@ namespace YelloKiller
             foreach (Bonus bonus in _bonus)
                 bonus.Draw(spriteBatch, camera);
 
-            foreach (Vector2 position in gardesMorts)
-                spriteBatch.Draw(textureGardeMort, 28 * position - new Vector2(camera.X, camera.Y), Color.White);
+            foreach (Rectangle position in gardesMorts)
+                spriteBatch.Draw(textureGardeMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
 
-            foreach (Vector2 position in patrouilleursAChevauxMorts)
-                spriteBatch.Draw(texturePatrouilleurAChevalMort, 28 * position - new Vector2(camera.X, camera.Y), Color.White);
+            foreach (Rectangle position in patrouilleursAChevauxMorts)
+                spriteBatch.Draw(texturePatrouilleurAChevalMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
 
-            foreach (Vector2 position in patrouilleursMorts)
-                spriteBatch.Draw(texturePatrouilleurMort, 28 * position - new Vector2(camera.X, camera.Y), Color.White);
+            foreach (Rectangle position in patrouilleursMorts)
+                spriteBatch.Draw(texturePatrouilleurMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
 
-            foreach (Vector2 position in bossMorts)
-                spriteBatch.Draw(textureBossMort, 28 * position - new Vector2(camera.X, camera.Y), Color.White);
+            foreach (Rectangle position in bossMorts)
+                spriteBatch.Draw(textureBossMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
