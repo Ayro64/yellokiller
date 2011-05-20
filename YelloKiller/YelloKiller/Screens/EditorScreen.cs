@@ -199,10 +199,22 @@ namespace YelloKiller
                 }
             }
 
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F1))
+                ChangerStyle(TypeCase.herbe);
+
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F2))
+                ChangerStyle(TypeCase.herbeFoncee);
+
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F3))
+                ChangerStyle(TypeCase.terre);
+
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F4))
-                Labyrinthe.CreerLabyrintheSimple(carte);
+                ChangerStyle(TypeCase.parquet);
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F5))
+                Labyrinthe.CreerLabyrintheSimple(carte);
+
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F6))
                 Labyrinthe.CreerLabyrintheDouble(carte);
 
             ScreenManager.Game.IsMouseVisible = !ServiceHelper.Get<IMouseService>().DansLaCarte();
@@ -804,6 +816,13 @@ namespace YelloKiller
                         return false;
 
             return true;
+        }
+
+        private void ChangerStyle(TypeCase type)
+        {
+            for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
+                for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
+                    carte.Cases[y, x].Type = type;
         }
     }
 }
