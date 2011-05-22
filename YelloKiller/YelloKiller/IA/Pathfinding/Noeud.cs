@@ -1,53 +1,36 @@
 ﻿using System;
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace YelloKiller
 {
     class Noeud
     {
-        Case _case;
-        Noeud parent;
-        int manhattan;
+        public Case Case { get; private set; }
+        public Noeud Parent { get; set; }
+        public int Manhattan { get; private set; }
 
         public Noeud(Case _case, Noeud parent, Case destination)
         {
-            this._case = _case;
-            this.parent = parent;
-            this.manhattan = Math.Abs(_case.X - destination.X) + Math.Abs(_case.Y - destination.Y);
-        }
-
-        public Case Case
-        {
-            get { return _case; }
-        }
-
-        public Noeud Parent
-        {
-            get { return parent; }
-            set { parent = value; }
-        }
-
-        public int Manhattan
-        {
-            get { return manhattan; }
+            this.Case = _case;
+            this.Parent = parent;
+            this.Manhattan = Math.Abs(_case.X - destination.X) + Math.Abs(_case.Y - destination.Y);
         }
 
         public List<Noeud> NoeudsPossibles(Carte carte, Case destination)
         {
             List<Noeud> result = new List<Noeud>();
             // Bas
-            if (CaseValide(_case.X, _case.Y + 1) && carte.Cases[_case.Y + 1, _case.X].Type > 0)
-                result.Add(new Noeud(carte.Cases[_case.Y + 1, _case.X], this, destination));
+            if (CaseValide(Case.X, Case.Y + 1) && carte.Cases[Case.Y + 1, Case.X].Type > 0)
+                result.Add(new Noeud(carte.Cases[Case.Y + 1, Case.X], this, destination));
             // Droite
-            if (CaseValide(_case.X + 1, _case.Y) && carte.Cases[_case.Y, _case.X + 1].Type > 0)
-                result.Add(new Noeud(carte.Cases[_case.Y, _case.X + 1], this, destination));
+            if (CaseValide(Case.X + 1, Case.Y) && carte.Cases[Case.Y, Case.X + 1].Type > 0)
+                result.Add(new Noeud(carte.Cases[Case.Y, Case.X + 1], this, destination));
             // Haut
-            if (CaseValide(_case.X, _case.Y - 1) && carte.Cases[_case.Y - 1, _case.X].Type > 0)
-                result.Add(new Noeud(carte.Cases[_case.Y - 1, _case.X], this, destination));
+            if (CaseValide(Case.X, Case.Y - 1) && carte.Cases[Case.Y - 1, Case.X].Type > 0)
+                result.Add(new Noeud(carte.Cases[Case.Y - 1, Case.X], this, destination));
             // Gauche
-            if (CaseValide(_case.X - 1, _case.Y) && carte.Cases[_case.Y, _case.X - 1].Type > 0)
-                result.Add(new Noeud(carte.Cases[_case.Y, _case.X - 1], this, destination));
+            if (CaseValide(Case.X - 1, Case.Y) && carte.Cases[Case.Y, Case.X - 1].Type > 0)
+                result.Add(new Noeud(carte.Cases[Case.Y, Case.X - 1], this, destination));
 
             return result;
         }
