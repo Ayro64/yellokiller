@@ -8,19 +8,19 @@ namespace YelloKiller
         {
             return this[node] != null;
         }
+
         public T this[T noeud]
         {
             get
             {
-                int count = this.Count;
-                for (int i = 0; i < count; i++)
-                {
-                    if (this[i].Case == noeud.Case)
-                        return this[i];
-                }
+                foreach (T node in this)
+                    if (node.Case == noeud.Case)
+                        return node;
+
                 return default(T);
             }
         }
+
         public void DichotomicInsertion(T noeud)
         {
             int left = 0;
