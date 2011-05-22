@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace YelloKiller
 {
@@ -13,9 +12,7 @@ namespace YelloKiller
             List<Noeud> noeudsPossibles;
             int nombreNoeudsPossibles;
 
-            Noeud premier = new Noeud(depart, null, arrivee);
-            
-            listeOuverte.Add(premier);
+            listeOuverte.Add(new Noeud(depart, null, arrivee));
 
             while (listeOuverte.Count > 0)
             {
@@ -37,20 +34,19 @@ namespace YelloKiller
                 noeudsPossibles = current.NoeudsPossibles(carte, arrivee);
                 nombreNoeudsPossibles = noeudsPossibles.Count;
 
-                for (int i = 0; i < nombreNoeudsPossibles; i++)
-                {
-                    if (!listeFermee.Contains(noeudsPossibles[i]))
+                foreach (Noeud voisin in current.NoeudsPossibles(carte, arrivee))
+                    if (!listeFermee.Contains(voisin))
                     {
-                        if (listeOuverte.Contains(noeudsPossibles[i]))
+                        if (listeOuverte.Contains(voisin))
                         {
-                            if (noeudsPossibles[i].Manhattan < listeOuverte[noeudsPossibles[i]].Manhattan)
-                                listeOuverte[noeudsPossibles[i]].Parent = current;
+                            if (voisin.Manhattan < listeOuverte[voisin].Manhattan)
+                                listeOuverte[voisin].Parent = current;
                         }
                         else
-                            listeOuverte.DichotomicInsertion(noeudsPossibles[i]);
+                            listeOuverte.DichotomicInsertion(voisin);
                     }
-                }
             }
+
             return null;
         }
     }
