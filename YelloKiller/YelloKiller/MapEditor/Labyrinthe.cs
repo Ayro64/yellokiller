@@ -61,6 +61,34 @@ namespace YelloKiller
             }
         }
 
+        public static void CreerLabyrintheTriple(Carte carte)
+        {
+            hauteur = 10;
+            largeur = 13;
+            cellules = new Cellule[largeur, hauteur];
+            InitialiserLabyrinthe(carte);
+
+            for (int y = 0; y < Taille_Map.HAUTEUR_MAP / 6; y++)
+            {
+                for (int x = 0; x < Taille_Map.LARGEUR_MAP / 6; x++)
+                {
+                    for (int j = 3; j < 6; j++)
+                        for (int i = 3; i < 6; i++)
+                            carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.mur;
+
+                    if (y + 1 >= hauteur || !cellules[x, y].isLinked(cellules[x, y + 1]))
+                        for (int j = 3; j < 6; j++)
+                            for (int i = 0; i < 3; i++)
+                                carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.mur;
+
+                    if (x + 1 >= largeur || !cellules[x, y].isLinked(cellules[x + 1, y]))
+                        for (int j = 0; j < 3; j++)
+                            for (int i = 3; i < 6; i++)
+                                carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.mur;
+                }
+            }
+        }
+
         public static void CreerLabyrintheQuadruple(Carte carte)
         {
             hauteur = 7;
