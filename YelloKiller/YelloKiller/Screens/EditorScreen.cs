@@ -217,6 +217,9 @@ namespace YelloKiller
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F6))
                 Labyrinthe.CreerLabyrintheDouble(carte);
 
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F7))
+                Labyrinthe.CreerLabyrintheQuadruple(carte);
+
             ScreenManager.Game.IsMouseVisible = !ServiceHelper.Get<IMouseService>().DansLaCarte();
         }
 

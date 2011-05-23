@@ -44,26 +44,47 @@ namespace YelloKiller
             {
                 for (int x = 0; x < Taille_Map.LARGEUR_MAP / 4; x++)
                 {
-                    carte.Cases[4 * y + 2, 4 * x + 2].Type = TypeCase.mur;
-                    carte.Cases[4 * y + 2, 4 * x + 3].Type = TypeCase.mur;
-                    carte.Cases[4 * y + 3, 4 * x + 2].Type = TypeCase.mur;
-                    carte.Cases[4 * y + 3, 4 * x + 3].Type = TypeCase.mur;
+                    for (int j = 2; j < 4; j++)
+                        for (int i = 2; i < 4; i++)
+                            carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.mur;
 
                     if (y + 1 >= hauteur || !cellules[x, y].isLinked(cellules[x, y + 1]))
-                    {
-                        carte.Cases[4 * y + 2, 4 * x].Type = TypeCase.mur;
-                        carte.Cases[4 * y + 3, 4 * x].Type = TypeCase.mur;
-                        carte.Cases[4 * y + 2, 4 * x + 1].Type = TypeCase.mur;
-                        carte.Cases[4 * y + 3, 4 * x + 1].Type = TypeCase.mur;
-                    }
+                        for (int j = 2; j < 4; j++)
+                            for (int i = 0; i < 2; i++)
+                                carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.mur;
 
                     if (x + 1 >= largeur || !cellules[x, y].isLinked(cellules[x + 1, y]))
-                    {
-                        carte.Cases[4 * y, 4 * x + 2].Type = TypeCase.mur;
-                        carte.Cases[4 * y, 4 * x + 3].Type = TypeCase.mur;
-                        carte.Cases[4 * y + 1, 4 * x + 2].Type = TypeCase.mur;
-                        carte.Cases[4 * y + 1, 4 * x + 3].Type = TypeCase.mur;
-                    }
+                        for (int j = 0; j < 2; j++)
+                            for (int i = 2; i < 4; i++)
+                                carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.mur;
+                }
+            }
+        }
+
+        public static void CreerLabyrintheQuadruple(Carte carte)
+        {
+            hauteur = 7;
+            largeur = 10;
+            cellules = new Cellule[largeur, hauteur];
+            InitialiserLabyrinthe(carte);
+
+            for (int y = 0; y < Taille_Map.HAUTEUR_MAP / 8; y++)
+            {
+                for (int x = 0; x < Taille_Map.LARGEUR_MAP / 8; x++)
+                {
+                    for (int j = 4; j < 8; j++)
+                        for (int i = 4; i < 8; i++)
+                            carte.Cases[8 * y + j, 8 * x + i].Type = TypeCase.buissonSurHerbe;
+
+                    if (y + 1 >= hauteur || !cellules[x, y].isLinked(cellules[x, y + 1]))
+                        for (int j = 4; j < 8; j++)
+                            for (int i = 0; i < 4; i++)
+                                carte.Cases[8 * y + j, 8 * x + i].Type = TypeCase.buissonSurHerbe;
+
+                    if (x + 1 >= largeur || !cellules[x, y].isLinked(cellules[x + 1, y]))
+                        for (int j = 0; j < 4; j++)
+                            for (int i = 4; i < 8; i++)
+                                carte.Cases[8 * y + j, 8 * x + i].Type = TypeCase.buissonSurHerbe;
                 }
             }
         }
@@ -125,7 +146,7 @@ namespace YelloKiller
                 }
         }
 
-        /*private static void logLaby() Creer un fichier dans lequel est enregistré le labyrinthe, m'a servi a mettre en place les fonctions, peut toujours servir
+        /*private static void logLaby() //Creer un fichier dans lequel est enregistré le labyrinthe, m'a servi a mettre en place les fonctions, peut toujours servir
         {
             System.IO.StreamWriter file = new System.IO.StreamWriter("laby.txt");
 
