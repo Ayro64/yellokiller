@@ -160,7 +160,6 @@ namespace YelloKiller
         {
             c.IsVisited = true;
             List<Cellule> CList = new List<Cellule>();
-            //Random random = new Random();
 
             c.randomizeNeighbors(random);
 
