@@ -46,17 +46,17 @@ namespace YelloKiller
                 {
                     for (int j = 2; j < 4; j++)
                         for (int i = 2; i < 4; i++)
-                            carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.mur;
+                            carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.murBlanc;
 
                     if (y + 1 >= hauteur || !cellules[x, y].isLinked(cellules[x, y + 1]))
                         for (int j = 2; j < 4; j++)
                             for (int i = 0; i < 2; i++)
-                                carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.mur;
+                                carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.murBlanc;
 
                     if (x + 1 >= largeur || !cellules[x, y].isLinked(cellules[x + 1, y]))
                         for (int j = 0; j < 2; j++)
                             for (int i = 2; i < 4; i++)
-                                carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.mur;
+                                carte.Cases[4 * y + j, 4 * x + i].Type = TypeCase.murBlanc;
                 }
             }
         }
@@ -74,17 +74,17 @@ namespace YelloKiller
                 {
                     for (int j = 3; j < 6; j++)
                         for (int i = 3; i < 6; i++)
-                            carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.mur;
+                            carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.fondNoir;
 
                     if (y + 1 >= hauteur || !cellules[x, y].isLinked(cellules[x, y + 1]))
                         for (int j = 3; j < 6; j++)
                             for (int i = 0; i < 3; i++)
-                                carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.mur;
+                                carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.fondNoir;
 
                     if (x + 1 >= largeur || !cellules[x, y].isLinked(cellules[x + 1, y]))
                         for (int j = 0; j < 3; j++)
                             for (int i = 3; i < 6; i++)
-                                carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.mur;
+                                carte.Cases[6 * y + j, 6 * x + i].Type = TypeCase.fondNoir;
                 }
             }
         }
