@@ -153,14 +153,14 @@ namespace YelloKiller
             int x = rand.Next(0, largeur), y = rand.Next(0, hauteur);
 
             cellules[x, y].IsVisited = true;
-            generate(cellules[x, y]);
+            generate(cellules[x, y], rand);
         }
 
-        private static void generate(Cellule c)
+        private static void generate(Cellule c, Random random)
         {
             c.IsVisited = true;
             List<Cellule> CList = new List<Cellule>();
-            Random random = new Random();
+            //Random random = new Random();
 
             c.randomizeNeighbors(random);
 
@@ -170,7 +170,7 @@ namespace YelloKiller
                     c.addLink(cellule);
                     cellule.addLink(c);
 
-                    generate(cellule);
+                    generate(cellule, random);
                 }
         }
 
