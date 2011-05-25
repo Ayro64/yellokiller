@@ -30,14 +30,17 @@ namespace YelloKiller
 
         public void randomizeNeighbors(Random rng)
         {
-            Cellule oldneighbor = new Cellule();
-            for (int i = 0; i < neighbors.Count; i++)
+            List<Cellule> resultat = new List<Cellule>();
+            int random;
+
+            while (neighbors.Count > 0)
             {
-                int r = rng.Next(neighbors.Count);
-                oldneighbor = neighbors[r];
-                neighbors[r] = neighbors[i];
-                neighbors[i] = oldneighbor;
+                random = rng.Next(neighbors.Count);
+                resultat.Add(neighbors[random]);
+                neighbors.RemoveAt(random);
             }
+
+            neighbors = resultat;
         }
     }
 }
