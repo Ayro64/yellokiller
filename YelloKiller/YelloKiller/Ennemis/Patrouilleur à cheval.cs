@@ -31,7 +31,7 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 23, 30), new Rectangle((int)Index * 24, 65, 23, 30), new Rectangle((int)Index * 24, 98, 23, 30), new Rectangle((int)Index * 24, 34, 23, 30), hero1, hero2);
 
-            if (!Alerte && parcours.Count > 1)
+            if (!Alerte && !Collision(hero1.Rectangle) && parcours.Count > 1)
             {
                 if (Chemin == null || Chemin.Count == 0)
                 {
