@@ -18,6 +18,12 @@ namespace YelloKiller
 
         MoteurAudio audioEngine;
 
+        public Sprite(Vector2 position)
+        {
+            this.position = position;
+            this.audioEngine = ScreenManager.AudioEngine;
+        }
+
         public MoteurAudio AudioEngine
         {
             get { return audioEngine; }
@@ -86,13 +92,7 @@ namespace YelloKiller
             set { layerDepth = value; }
         }
 
-        public Sprite(Vector2 position)
-        {
-            this.position = position;
-            this.audioEngine = ScreenManager.AudioEngine;
-        }
-
-        public Sprite(Vector2 position, Rectangle? sourceRectangle)
+        /*public Sprite(Vector2 position, Rectangle? sourceRectangle)
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
@@ -116,7 +116,7 @@ namespace YelloKiller
             this.audioEngine = ScreenManager.AudioEngine;
         }
 
-        public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin)
+       *public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin)
         {
             this.position = position;
             this.sourceRectangle = sourceRectangle;
@@ -148,7 +148,7 @@ namespace YelloKiller
             this.effect = effect;
             this.audioEngine = ScreenManager.AudioEngine;
         }
-
+        
         public Sprite(Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effect, float layerDepth)
         {
             this.position = position;
@@ -161,7 +161,7 @@ namespace YelloKiller
             this.layerDepth = layerDepth;
             this.audioEngine = ScreenManager.AudioEngine;
         }
-
+        */
         public void LoadContent(ContentManager content, string nom)
         {
             texture = content.Load<Texture2D>(nom);

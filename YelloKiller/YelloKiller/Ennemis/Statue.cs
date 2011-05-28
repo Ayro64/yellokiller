@@ -56,7 +56,7 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content)
         {
-            base.LoadContent(content, @"Feuilles de sprites\statue_dragon");
+            base.LoadContent(content, 0, @"Feuilles de sprites\statue_dragon");
         }
 
         public void Update(GameTime gameTime, MoteurParticule particule)
