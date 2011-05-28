@@ -31,6 +31,7 @@ namespace YelloKiller
         List<Bonus> _bonus;
         List<Rectangle> gardesMorts, patrouilleursAChevauxMorts, patrouilleursMorts, bossMorts;
         Texture2D textureGardeMort, texturePatrouilleurAChevalMort, texturePatrouilleurMort, textureBossMort, textureBasFond;
+        public static bool Alerte { get; set; }
 
         static double timer_update_collision = 0;
         public static double Timer_Update_Collision
@@ -133,7 +134,7 @@ namespace YelloKiller
                 foreach (Vector2 passage in parcours)
                     _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
 
-                _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet();
+                _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet(carte);
             }
 
             _patrouilleurs_a_chevaux = new List<Patrouilleur_a_cheval>();
@@ -143,7 +144,7 @@ namespace YelloKiller
                 foreach (Vector2 passage in parcours)
                     _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
 
-                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet();
+                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
             }
 
             _boss = new List<Boss>();
@@ -226,7 +227,7 @@ namespace YelloKiller
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             if (IsActive)
-            {             
+            {
                 if (Enable_Timer_Hero1)
                     timer_hero1 += gameTime.ElapsedGameTime.TotalSeconds;
                 if (Enable_Timer_Hero2)
@@ -240,13 +241,16 @@ namespace YelloKiller
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1);
 
                 foreach (Garde garde in _gardes)
+                {
                     garde.Update(gameTime, carte, hero1, hero2, camera);
+                    //ServiceHelper.Game.Window.Title = garde.Trajet.Count.ToString();
+                }
 
                 foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                    patrouilleur.Update(gameTime, carte, hero1, camera);
+                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera);
 
                 foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                    patrouilleurACheval.Update(gameTime, carte, hero1, camera);
+                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera);
 
                 foreach (Boss boss in _boss)
                     boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
@@ -277,11 +281,11 @@ namespace YelloKiller
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
                 Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank);
-                if (_boss.Count == 0)
+                /*if (_boss.Count == 0)
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
                     audio.Close();
-                }
+                }*/
 
                 audio.Update(gameTime);
             }
@@ -300,19 +304,24 @@ namespace YelloKiller
             carte.DrawInGame(gameTime, spriteBatch, content, camera);
 
             foreach (Garde garde in _gardes)
-                garde.Draw(spriteBatch, camera);
+                //garde.Draw(spriteBatch, camera);
+                garde.Draw(camera, spriteBatch);
 
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                patrouilleur.Draw(spriteBatch, camera);
+                //patrouilleur.Draw(spriteBatch, camera);
+                patrouilleur.Draw(camera, spriteBatch);
 
             foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                patrouilleurACheval.Draw(spriteBatch, camera);
+                // patrouilleurACheval.Draw(spriteBatch, camera);
+                patrouilleurACheval.Draw(camera, spriteBatch);
 
             foreach (Boss boss in _boss)
-                boss.Draw(spriteBatch, camera);
+                //boss.Draw(spriteBatch, camera);
+                boss.Draw(camera, spriteBatch);
 
             foreach (Statue statue in _statues)
-                statue.Draw(spriteBatch, camera);
+                //statue.Draw(spriteBatch, camera);
+                statue.Draw(camera, spriteBatch);
 
             foreach (Bonus bonus in _bonus)
                 bonus.Draw(spriteBatch, camera);

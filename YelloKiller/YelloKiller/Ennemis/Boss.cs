@@ -26,7 +26,7 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content, int maxIndex)
         {
-            base.LoadContent(content, @"Feuilles de sprites\Boss");
+            base.LoadContent(content, 0, @"Feuilles de sprites\Boss");
             MaxIndex = maxIndex;
         }
 
@@ -38,7 +38,7 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, List<Shuriken> shuriken, Carte carte, Hero hero1, Hero hero2, Rectangle camera)
         {
-            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24));
+            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), hero1, hero2);
 
             if (Math.Abs(hero1.X - X) < 4 && Math.Abs(hero1.Y - Y) < 4)
             {
@@ -55,30 +55,30 @@ namespace YelloKiller
 
             if (chemin != null && chemin.Count != 0)
             {
-                if (Monter && Descendre && Droite && Gauche)
+                if (VaEnHaut && VaEnBas && VaADroite && VaAGauche)
                 {
                     if ((int)chemin[chemin.Count - 1].X < X)
                     {
                         positionDesiree.X -= 28;
-                        Gauche = false;
+                        VaAGauche = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                     else if ((int)chemin[chemin.Count - 1].X > X)
                     {
                         positionDesiree.X += 28;
-                        Droite = false;
+                        VaADroite = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                     else if ((int)chemin[chemin.Count - 1].Y < Y)
                     {
                         positionDesiree.Y -= 28;
-                        Monter = false;
+                        VaEnHaut = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                     else if ((int)chemin[chemin.Count - 1].Y > Y)
                     {
                         positionDesiree.Y += 28;
-                        Descendre = false;
+                        VaEnBas = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
                 }

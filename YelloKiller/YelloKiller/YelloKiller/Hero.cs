@@ -30,7 +30,6 @@ namespace YelloKiller
         public bool ishero;
         bool animation_sabre;
         bool monter, descendre, droite, gauche;
-        bool regarde_droite, regarde_gauche, regarde_haut, regarde_bas;
         Keys up, down, right, left, changer_arme, courir, tirer;
         const int NumStates = 4;
         State currentState = State.state_shuriken;
@@ -48,10 +47,10 @@ namespace YelloKiller
             droite = true;
             gauche = true;
             animation_sabre = false;
-            regarde_droite = true;
-            regarde_gauche = true;
-            regarde_haut = true;
-            regarde_bas = true;
+            Regarde_Droite = true;
+            Regarde_Gauche = true;
+            Regarde_Haut = true;
+            Regarde_Bas = true;
             vitesseSprite = 4;
             vitesseAnimation = 0.008f;
             index = 0;
@@ -84,10 +83,7 @@ namespace YelloKiller
                 for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
                     distance++;
 
-            if (distance < 6)
-                return distance;
-            else
-                return 6;
+            return (distance < 6 ? distance : 6);
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -464,6 +460,31 @@ namespace YelloKiller
             }
         }
 
+        private bool ObstacleDansLeChampDeVision(Carte carte)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if (Regarde_Bas)
+                {
+                    if (this.Y + i < Taille_Map.HAUTEUR_MAP && this.X - 1 >= 0 && carte.Cases[this.Y + 1, this.X - 1].Type > 0)
+                        return true;
+
+                    if (this.Y + i < Taille_Map.HAUTEUR_MAP && this.X + 1 < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y + 1, this.X + 1].Type > 0)
+                        return true;
+                }
+                if (Regarde_Haut)
+                {
+                    if (this.Y + i < Taille_Map.HAUTEUR_MAP && this.X - 1 >= 0 && carte.Cases[this.Y + 1, this.X - 1].Type > 0)
+                        return true;
+
+                    if (this.Y + i < Taille_Map.HAUTEUR_MAP && this.X + 1 < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y + 1, this.X + 1].Type > 0)
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        
         public void Draw_Hero(SpriteBatch spriteBatch, Rectangle camera)
         {
             base.Draw(spriteBatch, camera);
@@ -540,29 +561,13 @@ namespace YelloKiller
             get { return positionDesiree; }
         }
 
-        public bool Regarde_Haut
-        {
-            get { return regarde_haut; }
-            set { regarde_haut = value; }
-        }
+        public bool Regarde_Haut { get; set; }
 
-        public bool Regarde_Bas
-        {
-            get { return regarde_bas; }
-            set { regarde_bas = value; }
-        }
+        public bool Regarde_Bas { get; set; }
 
-        public bool Regarde_Droite
-        {
-            get { return regarde_droite; }
-            set { regarde_droite = value; }
-        }
+        public bool Regarde_Droite { get; set; }
 
-        public bool Regarde_Gauche
-        {
-            get { return regarde_gauche; }
-            set { regarde_gauche = value; }
-        }
+        public bool Regarde_Gauche { get; set; }
 
         public int NombreShurikens
         {
