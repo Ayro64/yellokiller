@@ -320,8 +320,7 @@ namespace YelloKiller
                 boss.Draw(camera, spriteBatch);
 
             foreach (Statue statue in _statues)
-                //statue.Draw(spriteBatch, camera);
-                statue.Draw(camera, spriteBatch);
+                statue.Draw(spriteBatch, camera);
 
             foreach (Bonus bonus in _bonus)
                 bonus.Draw(spriteBatch, camera);
