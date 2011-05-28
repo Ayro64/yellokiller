@@ -36,7 +36,7 @@ namespace YelloKiller
                 if (Chemin == null || Chemin.Count == 0)
                 {
                     etape++;
-                    Chemin = Pathfinding.CalculChemin(carte, parcours[etape % parcours.Count], parcours[(etape + 1) % parcours.Count]);
+                    Chemin = Pathfinding.CalculChemin(carte, carte.Cases[Y, X], parcours[(etape + 1) % parcours.Count]);
                 }
             }
         }
