@@ -6,13 +6,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
 {
-    class Statue : Ennemi
+    class Statue : Sprite
     {
         byte direction;
         double timer = 0;
 
         public Statue(Vector2 position, Carte carte, byte direction)
-            : base(position, carte)
+            :base(position)
+            //: base(position, carte)
         {
             this.position = position;
             this.direction = direction;
@@ -56,7 +57,7 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content)
         {
-            base.LoadContent(content, 0, @"Feuilles de sprites\statue_dragon");
+            base.LoadContent(content, @"Feuilles de sprites\statue_dragon");
         }
 
         public void Update(GameTime gameTime, MoteurParticule particule)
@@ -74,5 +75,7 @@ namespace YelloKiller
         {
             base.Draw(spriteBatch, camera);
         }
+
+        public Rectangle Rectangle { get; set; }
     }
 }
