@@ -7,7 +7,7 @@ namespace YelloKiller
     class Patrouilleur_a_cheval : Ennemi
     {
         List<Case> parcours;
-        private int Etape { get; set; }
+        public int Etape { get; set; }
 
         public Patrouilleur_a_cheval(Vector2 position, Carte carte)
             : base(position, carte)

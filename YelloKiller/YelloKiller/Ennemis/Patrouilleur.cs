@@ -7,14 +7,14 @@ namespace YelloKiller
     class Patrouilleur : Ennemi
     {
         List<Case> parcours;
-        int etape;
+        public int Etape { get; set; }
 
         public Patrouilleur(Vector2 position, Carte carte)
             : base(position, carte)
         {
             this.position = position;
             SourceRectangle = new Rectangle(24, 0, 19, 26);
-            etape = 0;
+            Etape = 0;
             parcours = new List<Case>();
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 19, 26);
         }
@@ -33,8 +33,8 @@ namespace YelloKiller
             {
                 if (Chemin == null || Chemin.Count == 0)
                 {
-                    etape++;
-                    Chemin = Pathfinding.CalculChemin(carte, carte.Cases[Y, X], parcours[(etape + 1) % parcours.Count]);
+                    Etape++;
+                    Chemin = Pathfinding.CalculChemin(carte, carte.Cases[Y, X], parcours[(Etape + 1) % parcours.Count]);
                 }
             }
         }
@@ -48,11 +48,6 @@ namespace YelloKiller
         {
             get { return parcours; }
             set { parcours = value; }
-        }
-
-        public int Etape
-        {
-            get { return etape; }
         }
     }
 }
