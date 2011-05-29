@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using YelloKiller.Moteur_Particule;
@@ -579,6 +580,20 @@ namespace YelloKiller
         {
             get { return nombreHadoken; }
             set { nombreHadoken = value; }
+        }
+
+        public void SauvegarderCheckPoint(ref StreamWriter file)
+        {
+            file.WriteLine(X);
+            file.WriteLine(Y);
+            file.WriteLine("Shurikens");
+            file.WriteLine(nombreShuriken);
+            file.WriteLine("Hadokens");
+            file.WriteLine(nombreHadoken);
+            file.WriteLine("Balls");
+            file.WriteLine(nombre_ball);
+            file.WriteLine("Fumigenes");
+            file.WriteLine(nombreFumigene);
         }
     }
 }

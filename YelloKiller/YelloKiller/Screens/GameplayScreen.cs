@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -278,11 +279,14 @@ namespace YelloKiller
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
                 Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank);
-                /*if (_boss.Count == 0)
+                if (_boss.Count == 0)
                 {
-                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
+                    LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, ennemisTues - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
                     audio.Close();
-                }*/
+                }
+
+                if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.C))
+                    SauvegarderCheckPoint();
 
                 audio.Update(gameTime);
             }
@@ -402,5 +406,32 @@ namespace YelloKiller
             audio.HandleInput();
         }
         #endregion
+
+        private void SauvegarderCheckPoint()
+        {
+            StreamWriter file = new StreamWriter("checkTemp.txt");
+            hero1.SauvegarderCheckPoint(ref file);
+
+            if (hero2 != null)
+                hero2.SauvegarderCheckPoint(ref file);
+
+            file.WriteLine("Gardes");
+            foreach (Garde garde in _gardes)
+                garde.SauvegarderCheckPoint(ref file);
+
+            file.WriteLine("Patrouilleurs");
+            foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                patrouilleur.SauvegarderCheckPoint(ref file);
+
+            file.WriteLine("Patrouilleurs A Chevaux");
+            foreach (Patrouilleur_a_cheval cheval in _patrouilleurs_a_chevaux)
+                cheval.SauvegarderCheckPoint(ref file);
+
+            file.WriteLine("Boss");
+            foreach (Boss boss in _boss)
+                boss.SauvegarderCheckPoint(ref file);
+
+            file.Close();
+        }
     }
 }
