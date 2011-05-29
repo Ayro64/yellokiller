@@ -584,8 +584,7 @@ namespace YelloKiller
 
         public void SauvegarderCheckPoint(ref StreamWriter file)
         {
-            file.WriteLine(X);
-            file.WriteLine(Y);
+            file.WriteLine(X.ToString() + "," + Y.ToString());
             file.WriteLine("Shurikens");
             file.WriteLine(nombreShuriken);
             file.WriteLine("Hadokens");

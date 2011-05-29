@@ -419,17 +419,33 @@ namespace YelloKiller
             foreach (Garde garde in _gardes)
                 garde.SauvegarderCheckPoint(ref file);
 
+            file.WriteLine("Gardes morts");
+            foreach (Rectangle mort in gardesMorts)
+                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString());   
+
             file.WriteLine("Patrouilleurs");
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
                 patrouilleur.SauvegarderCheckPoint(ref file);
+
+            file.WriteLine("Patrouilleurs morts");
+            foreach (Rectangle mort in patrouilleursMorts)
+                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString());   
 
             file.WriteLine("Patrouilleurs A Chevaux");
             foreach (Patrouilleur_a_cheval cheval in _patrouilleurs_a_chevaux)
                 cheval.SauvegarderCheckPoint(ref file);
 
+            file.WriteLine("Patrouilleurs a chevaux morts");
+            foreach (Rectangle mort in patrouilleursAChevauxMorts)
+                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString());   
+
             file.WriteLine("Boss");
             foreach (Boss boss in _boss)
                 boss.SauvegarderCheckPoint(ref file);
+
+            file.WriteLine("Boss morts");
+            foreach (Rectangle mort in bossMorts)
+                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString());   
 
             file.Close();
         }
