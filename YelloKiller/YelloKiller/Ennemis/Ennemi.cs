@@ -88,12 +88,14 @@ namespace YelloKiller
                         VaEnHaut = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
-                    else //if ((int)chemin[chemin.Count - 1].Y > Y)
+                    else if ((int)chemin[chemin.Count - 1].Y > Y)
                     {
                         positionDesiree.Y += 28;
                         VaEnBas = false;
                         chemin.RemoveAt(chemin.Count - 1);
                     }
+                    else
+                        chemin.RemoveAt(chemin.Count - 1);
                 }
             }
             else
