@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
@@ -332,6 +333,18 @@ namespace YelloKiller
         public void SauvegarderCheckPoint(ref StreamWriter file)
         {
             file.WriteLine(X.ToString() + "," + Y.ToString());
+        }
+
+        public void ChargerCheckPoint(ref StreamReader file)
+        {
+            string banana = "";
+            string[] dessert = null;
+
+            banana = file.ReadLine();
+            dessert = banana.Split(',');
+
+            X = Convert.ToInt32(dessert[0]);
+            Y = Convert.ToInt32(dessert[1]);
         }
 
         public List<Case> Chemin

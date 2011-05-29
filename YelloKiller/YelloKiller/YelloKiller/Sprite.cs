@@ -43,11 +43,13 @@ namespace YelloKiller
         public int X
         {
             get { return (int)position.X / 28; }
+            set { position.X = 28 * value; }
         }
 
         public int Y
         {
             get { return (int)position.Y / 28; }
+            set { position.Y = 28 * value; }
         }
 
         public Rectangle? SourceRectangle

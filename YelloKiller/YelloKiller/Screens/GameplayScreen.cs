@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace YelloKiller
-{    
+{
     public class GameplayScreen : GameScreen
     {
         #region Fields
@@ -92,7 +92,7 @@ namespace YelloKiller
             this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[nomDeCarte.Length - 1] == 'p';
-            MoteurParticule.Camera = new Vector2(camera.X, camera.Y) ;
+            MoteurParticule.Camera = new Vector2(camera.X, camera.Y);
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
@@ -355,18 +355,18 @@ namespace YelloKiller
                 hero2.Draw_Hero(spriteBatch, camera);
 
             spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), null, Color.PapayaWhip, 0, Vector2.Zero, new Vector2((float)Taille_Ecran.LARGEUR_ECRAN / (float)textureBasFond.Width, 1), SpriteEffects.None, 1);
-            
+
             hero1.Draw_Infos(spriteBatch);
             if (jeuEnCoop)
-                hero2.Draw_Infos(spriteBatch);            
+                hero2.Draw_Infos(spriteBatch);
 
             spriteBatch.DrawString(ScreenManager.font, "Ennemis restants : " + (_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count).ToString(), new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkBlue);
 
             spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
 
-            if(Alerte)
+            if (Alerte)
                 spriteBatch.DrawString(ScreenManager.font, "ALERTE ! VOUS AVEZ ETE REPERE !", new Vector2(200, 100), Color.Red);
-            
+
             spriteBatch.End();
             audio.Draw(gameTime);
             base.Draw(gameTime);
@@ -410,44 +410,67 @@ namespace YelloKiller
         private void SauvegarderCheckPoint()
         {
             StreamWriter file = new StreamWriter("checkTemp.txt");
-            hero1.SauvegarderCheckPoint(ref file);
 
+            file.WriteLine("Hero 1");
+            hero1.SauvegarderCheckPoint(ref file);
             if (hero2 != null)
+            {
+                file.WriteLine("Hero 2");
                 hero2.SauvegarderCheckPoint(ref file);
+            }
 
             file.WriteLine("Gardes");
             foreach (Garde garde in _gardes)
                 garde.SauvegarderCheckPoint(ref file);
-
             file.WriteLine("Gardes morts");
             foreach (Rectangle mort in gardesMorts)
-                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString());   
+                file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.WriteLine("Patrouilleurs");
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
                 patrouilleur.SauvegarderCheckPoint(ref file);
-
             file.WriteLine("Patrouilleurs morts");
             foreach (Rectangle mort in patrouilleursMorts)
-                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString());   
+                file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.WriteLine("Patrouilleurs A Chevaux");
             foreach (Patrouilleur_a_cheval cheval in _patrouilleurs_a_chevaux)
                 cheval.SauvegarderCheckPoint(ref file);
-
             file.WriteLine("Patrouilleurs a chevaux morts");
             foreach (Rectangle mort in patrouilleursAChevauxMorts)
-                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString());   
+                file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.WriteLine("Boss");
             foreach (Boss boss in _boss)
                 boss.SauvegarderCheckPoint(ref file);
-
             file.WriteLine("Boss morts");
             foreach (Rectangle mort in bossMorts)
-                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString());   
+                file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.Close();
+        }
+
+        private void ChargerCheckPoint()
+        {
+            StreamReader file = new StreamReader("checkTemp.txt");
+
+            hero1.ChargerCheckPoint(ref file);
+            if (file.ReadLine() == "Hero 2")
+                hero2.ChargerCheckPoint(ref file);
+
+            file.ReadLine();
+
+            for (int i = 0; i < _gardes.Count; i++)
+                _gardes[i].ChargerCheckPoint(ref file);
+
+            for (int i = 0; i < _patrouilleurs.Count; i++)
+                _patrouilleurs[i].ChargerCheckPoint(ref file);
+
+            for (int i = 0; i < _patrouilleurs_a_chevaux.Count; i++)
+                _patrouilleurs_a_chevaux[i].ChargerCheckPoint(ref file);
+
+            for (int i = 0; i < _boss.Count; i++)
+                _boss[i].ChargerCheckPoint(ref file);
         }
     }
 }
