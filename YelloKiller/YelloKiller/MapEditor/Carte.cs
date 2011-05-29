@@ -731,7 +731,6 @@ namespace YelloKiller
                 case "e5":
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.eau, new Vector3(1, 1, 1));
                     break;
-
             }
         }
 
