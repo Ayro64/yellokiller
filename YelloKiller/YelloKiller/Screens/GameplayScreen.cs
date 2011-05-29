@@ -288,6 +288,9 @@ namespace YelloKiller
                 if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.C))
                     SauvegarderCheckPoint();
 
+                if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.O))
+                    ChargerCheckPoint();
+
                 audio.Update(gameTime);
             }
         }
@@ -453,24 +456,108 @@ namespace YelloKiller
         private void ChargerCheckPoint()
         {
             StreamReader file = new StreamReader("checkTemp.txt");
+            string banana = "";
+            string[] dessert = null;
+
+            file.ReadLine();
 
             hero1.ChargerCheckPoint(ref file);
             if (file.ReadLine() == "Hero 2")
                 hero2.ChargerCheckPoint(ref file);
 
-            file.ReadLine();
+            banana = file.ReadLine();
+            banana = file.ReadLine();
 
-            for (int i = 0; i < _gardes.Count; i++)
-                _gardes[i].ChargerCheckPoint(ref file);
+            _gardes = new List<Garde>();
+            while (banana != "Gardes morts")
+            {
+                dessert = banana.Split(',');
+                _gardes.Add(new Garde(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                banana = file.ReadLine();
+            }
 
-            for (int i = 0; i < _patrouilleurs.Count; i++)
-                _patrouilleurs[i].ChargerCheckPoint(ref file);
+            banana = file.ReadLine();
+            gardesMorts = new List<Rectangle>();
+            while (banana != "Patrouilleurs")
+            {
+                dessert = banana.Split(',');
+                gardesMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
+                banana = file.ReadLine();
+            }
 
-            for (int i = 0; i < _patrouilleurs_a_chevaux.Count; i++)
-                _patrouilleurs_a_chevaux[i].ChargerCheckPoint(ref file);
 
-            for (int i = 0; i < _boss.Count; i++)
-                _boss[i].ChargerCheckPoint(ref file);
+            banana = file.ReadLine();
+
+            _patrouilleurs = new List<Patrouilleur>();
+            while (banana != "Patrouilleurs morts")
+            {
+                dessert = banana.Split(',');
+                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+            patrouilleursMorts = new List<Rectangle>();
+            while (banana != "Patrouilleurs A Chevaux")
+            {
+                dessert = banana.Split(',');
+                patrouilleursMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
+                banana = file.ReadLine();
+            }
+
+
+            banana = file.ReadLine();
+
+            _patrouilleurs_a_chevaux = new List<Patrouilleur_a_cheval>();
+            while (banana != "Patrouilleurs a chevaux morts")
+            {
+                dessert = banana.Split(',');
+                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+            patrouilleursAChevauxMorts = new List<Rectangle>();
+            while (banana != "Boss")
+            {
+                dessert = banana.Split(',');
+                patrouilleursAChevauxMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
+                banana = file.ReadLine();
+            }
+
+
+            banana = file.ReadLine();
+
+            _boss = new List<Boss>();
+            while (banana != "Boss morts")
+            {
+                dessert = banana.Split(',');
+                _boss.Add(new Boss(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+            bossMorts = new List<Rectangle>();
+            while (banana != null)
+            {
+                dessert = banana.Split(',');
+                bossMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
+                banana = file.ReadLine();
+            }
+
+            foreach (Garde garde in _gardes)
+                garde.LoadContent(content, 2);
+
+            foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                patrouilleur.LoadContent(content, 2);
+
+            foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
+                patrouilleurACheval.LoadContent(content, 2);
+
+            foreach (Boss boss in _boss)
+                boss.LoadContent(content, 2);
+
+            file.Close();
         }
     }
 }

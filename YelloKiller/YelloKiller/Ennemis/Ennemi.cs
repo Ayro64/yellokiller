@@ -335,18 +335,6 @@ namespace YelloKiller
             file.WriteLine(X.ToString() + "," + Y.ToString());
         }
 
-        public void ChargerCheckPoint(ref StreamReader file)
-        {
-            string banana = "";
-            string[] dessert = null;
-
-            banana = file.ReadLine();
-            dessert = banana.Split(',');
-
-            X = Convert.ToInt32(dessert[0]);
-            Y = Convert.ToInt32(dessert[1]);
-        }
-
         public List<Case> Chemin
         {
             get { return chemin; }
