@@ -18,7 +18,7 @@ namespace YelloKiller
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
         Hero hero1, hero2;
-        uint kills, retries;
+        uint ennemisTues, retries;
         Carte carte;
         Rectangle camera;
         MoteurParticule moteurparticule;
@@ -167,7 +167,7 @@ namespace YelloKiller
             patrouilleursMorts = new List<Rectangle>();
             bossMorts = new List<Rectangle>();
 
-            kills = (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count);
+            ennemisTues = (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count);
         }
 
         public override void LoadContent()
@@ -398,7 +398,7 @@ namespace YelloKiller
             if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
             {
                 audio.Close();
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, kills - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, ennemisTues - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
             }
 
             // Looks up input for the Media Player.
