@@ -603,6 +603,8 @@ namespace YelloKiller
             nombreHadoken = Convert.ToInt32(file.ReadLine());
             nombre_ball = Convert.ToInt32(file.ReadLine());
             nombreFumigene = Convert.ToInt32(file.ReadLine());
+
+            positionDesiree = new Vector2(28 * X, 28 * Y);
         }
     }
 }
