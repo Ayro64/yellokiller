@@ -25,9 +25,7 @@ namespace YelloKiller
         Rectangle rectangle;
         float vitesseAnimation, index, tempsCourir;
         int maxIndex, nombreShuriken = 25, nombreHadoken = 5, nombreFumigene = 10, nombre_ball = 5, vitesseSprite;
-        private byte numeroHero;
-        public byte NumeroHero
-        { get { return numeroHero; } }
+        public byte NumeroHero { get; private set; }
         public bool ishero;
         bool animation_sabre;
         bool monter, descendre, droite, gauche;
@@ -41,7 +39,7 @@ namespace YelloKiller
         {
             this.position = position;
             positionDesiree = position;
-            this.numeroHero = numeroHero;
+            this.NumeroHero = numeroHero;
             SourceRectangle = new Rectangle(25, 133 - state_sabre, 16, 26);
             monter = true;
             descendre = true;
@@ -89,7 +87,7 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content, int maxIndex)
         {
-            if (numeroHero == 1)
+            if (NumeroHero == 1)
                 base.LoadContent(content, @"Feuilles de sprites\Hero1");
             else
                 base.LoadContent(content, @"Feuilles de sprites\Hero2");
@@ -189,7 +187,7 @@ namespace YelloKiller
             switch (currentState)
             {
                 case State.state_hadoken:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 1)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && NumeroHero == 1)
                     {
                         GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero1 == 0)
@@ -199,7 +197,7 @@ namespace YelloKiller
                             AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && numeroHero == 2)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && NumeroHero == 2)
                     {
                         GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero2 == 0)
@@ -212,7 +210,7 @@ namespace YelloKiller
                     break;
 
                 case State.state_ball:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 1)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && NumeroHero == 1)
                     {
                         GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero1 == 0)
@@ -222,7 +220,7 @@ namespace YelloKiller
                             AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && numeroHero == 2)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && NumeroHero == 2)
                     {
                         GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero2 == 0)
@@ -286,7 +284,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.Y - vitesseSprite >= 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 308)
+                    if (NumeroHero == 1 && camera.Y - vitesseSprite >= 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP - 308)
                         camera.Y -= vitesseSprite;
                 }
                 else
@@ -308,7 +306,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.Y + vitesseSprite <= 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 310)
+                    if (NumeroHero == 1 && camera.Y + vitesseSprite <= 28 * (Taille_Map.HAUTEUR_MAP - camera.Height) && position.Y > 310)
                         camera.Y += vitesseSprite;
                 }
                 else
@@ -330,7 +328,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.X - vitesseSprite >= 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 304)
+                    if (NumeroHero == 1 && camera.X - vitesseSprite >= 0 && position.X < 28 * Taille_Map.LARGEUR_MAP - 304)
                         camera.X -= vitesseSprite;
                 }
 
@@ -353,7 +351,7 @@ namespace YelloKiller
                     if (index >= maxIndex)
                         index = 0f;
 
-                    if (numeroHero == 1 && camera.X + vitesseSprite <= 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 314)
+                    if (NumeroHero == 1 && camera.X + vitesseSprite <= 28 * (Taille_Map.LARGEUR_MAP - camera.Width) && position.X > 314)
                         camera.X += vitesseSprite;
                 }
 
@@ -493,7 +491,7 @@ namespace YelloKiller
 
         public void Draw_Infos(SpriteBatch spriteBatch)
         {
-            if (numeroHero == 1)
+            if (NumeroHero == 1)
             {
                 switch (currentState)
                 {
@@ -585,14 +583,27 @@ namespace YelloKiller
         public void SauvegarderCheckPoint(ref StreamWriter file)
         {
             file.WriteLine(X.ToString() + "," + Y.ToString());
-            file.WriteLine("Shurikens");
             file.WriteLine(nombreShuriken);
-            file.WriteLine("Hadokens");
             file.WriteLine(nombreHadoken);
-            file.WriteLine("Balls");
             file.WriteLine(nombre_ball);
-            file.WriteLine("Fumigenes");
             file.WriteLine(nombreFumigene);
+        }
+
+        public void ChargerCheckPoint(ref StreamReader file)
+        {            
+            string banana = "";
+            string[] dessert = null;
+
+            file.ReadLine();
+            banana = file.ReadLine();
+            dessert = banana.Split(',');
+
+            X = Convert.ToInt32(dessert[0]);
+            Y = Convert.ToInt32(dessert[1]);
+            nombreShuriken = Convert.ToInt32(file.ReadLine());
+            nombreHadoken = Convert.ToInt32(file.ReadLine());
+            nombre_ball = Convert.ToInt32(file.ReadLine());
+            nombreFumigene = Convert.ToInt32(file.ReadLine());
         }
     }
 }
