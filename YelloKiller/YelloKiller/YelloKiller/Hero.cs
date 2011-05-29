@@ -594,7 +594,6 @@ namespace YelloKiller
             string banana = "";
             string[] dessert = null;
 
-            file.ReadLine();
             banana = file.ReadLine();
             dessert = banana.Split(',');
 
