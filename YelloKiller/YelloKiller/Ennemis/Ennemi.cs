@@ -331,8 +331,7 @@ namespace YelloKiller
 
         public void SauvegarderCheckPoint(ref StreamWriter file)
         {
-            file.WriteLine(X);
-            file.WriteLine(Y);
+            file.WriteLine(X.ToString() + "," + Y.ToString());
         }
 
         public List<Case> Chemin
