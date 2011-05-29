@@ -362,6 +362,9 @@ namespace YelloKiller
             spriteBatch.DrawString(ScreenManager.font, "Ennemis restants : " + (_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count).ToString(), new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkBlue);
 
             spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 60, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
+
+            if(Alerte)
+                spriteBatch.DrawString(ScreenManager.font, "ALERTE ! VOUS AVEZ ETE REPERE !", new Vector2(200, 100), Color.Red);
             
             spriteBatch.End();
             audio.Draw(gameTime);
