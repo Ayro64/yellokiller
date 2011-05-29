@@ -241,19 +241,16 @@ namespace YelloKiller
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1);
 
                 foreach (Garde garde in _gardes)
-                {
-                    garde.Update(gameTime, carte, hero1, hero2, camera);
-                    //ServiceHelper.Game.Window.Title = garde.Trajet.Count.ToString();
-                }
+                    garde.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
                 foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera);
+                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
                 foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera);
+                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
                 foreach (Boss boss in _boss)
-                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera);
+                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule);

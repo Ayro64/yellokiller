@@ -47,11 +47,12 @@ namespace YelloKiller
             this.MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2)
+        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2, List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
             UpdateChampDeVision(carte);
+            MortDansLeChampDeVision(gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
             if (Collision(hero1.Rectangle) || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
             {
@@ -296,6 +297,35 @@ namespace YelloKiller
                 return true;
             }
             return false;
+        }
+
+        private bool MortDansLeChampDeVision(List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
+        {
+            bool res = false;
+
+            foreach (Rectangle mort in gardesMorts)
+                if (Collision(mort))
+                    res = true;
+
+            foreach (Rectangle mort in patrouilleursMorts)
+                if (Collision(mort))
+                    res = true;
+
+            foreach (Rectangle mort in patrouilleursAChevauxMorts)
+                if (Collision(mort))
+                    res = true;
+
+            foreach (Rectangle mort in bossMorts)
+                if (Collision(mort))
+                    res = true;
+
+            if (res)
+            {
+                GameplayScreen.Alerte = true;
+                return true;
+            }
+
+            return false; ;
         }
 
         public List<Case> Chemin

@@ -36,9 +36,9 @@ namespace YelloKiller
             set { vie = value; }
         }
 
-        public void Update(GameTime gameTime, List<Shuriken> shuriken, Carte carte, Hero hero1, Hero hero2, Rectangle camera)
+        public void Update(GameTime gameTime, List<Shuriken> shuriken, Carte carte, Hero hero1, Hero hero2, Rectangle camera, List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
         {
-            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), hero1, hero2);
+            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), hero1, hero2, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
             if (Math.Abs(hero1.X - X) < 4 && Math.Abs(hero1.Y - Y) < 4)
             {
