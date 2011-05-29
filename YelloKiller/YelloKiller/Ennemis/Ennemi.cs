@@ -53,7 +53,7 @@ namespace YelloKiller
             rectangle.Y = (int)position.Y + 1;
             UpdateChampDeVision(carte);
 
-            if (chemin.Count <= 2 && (Collision(hero1.Rectangle) || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)))
+            if (Collision(hero1.Rectangle) || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero1.Y, hero1.X];
@@ -99,7 +99,10 @@ namespace YelloKiller
                 }
             }
             else
+            {
                 Alerte = false;
+                GameplayScreen.Alerte = false;
+            }
 
             if (SourceRectangle.Value.Y == sourceRectangle1.Y)
             {

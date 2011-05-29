@@ -7,14 +7,14 @@ namespace YelloKiller
     class Patrouilleur_a_cheval : Ennemi
     {
         List<Case> parcours;
-        int etape;
+        private int Etape { get; set; }
 
         public Patrouilleur_a_cheval(Vector2 position, Carte carte)
             : base(position, carte)
         {
             this.position = position;
             SourceRectangle = new Rectangle(24, 0, 23, 30);
-            etape = 0;
+            Etape = 0;
             parcours = new List<Case>();
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 22, 30);
             VitesseSprite = 2;
@@ -31,14 +31,12 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 23, 30), new Rectangle((int)Index * 24, 65, 23, 30), new Rectangle((int)Index * 24, 98, 23, 30), new Rectangle((int)Index * 24, 34, 23, 30), hero1, hero2);
 
-            if (!Alerte && (!Collision(hero1.Rectangle) || hero2 != null && !Collision(hero2.Rectangle)) && parcours.Count > 1)
-            {
+            if (!this.Alerte && (!Collision(hero1.Rectangle) || hero2 != null && !Collision(hero2.Rectangle)) && parcours.Count > 1)
                 if (Chemin == null || Chemin.Count == 0)
                 {
-                    etape++;
-                    Chemin = Pathfinding.CalculChemin(carte, carte.Cases[Y, X], parcours[(etape + 1) % parcours.Count]);
+                    Etape++;
+                    Chemin = Pathfinding.CalculChemin(carte, carte.Cases[Y, X], parcours[(Etape + 1) % parcours.Count]);
                 }
-            }
         }
 
         public void CreerTrajet(Carte carte)
@@ -50,11 +48,6 @@ namespace YelloKiller
         {
             get { return parcours; }
             set { parcours = value; }
-        }
-
-        public int Etape
-        {
-            get { return etape; }
         }
     }
 }
