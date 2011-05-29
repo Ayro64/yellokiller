@@ -14,7 +14,7 @@ namespace YelloKiller
         List<byte> rotationsDesStatues;
         List<Vector2> _originesGarde, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
-        int salaire;
+        public int Salaire { get; private set; }
 
         public Carte(Vector2 size)
         {
@@ -184,7 +184,7 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            salaire = Convert.ToInt32(line);
+            Salaire = Convert.ToInt32(line);
             file.Close();
         }
 
@@ -738,51 +738,36 @@ namespace YelloKiller
         public void DrawInGame(GameTime gameTime, SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
             for (int y = camera.Y / 28 + camera.Height; y >= camera.Y / 28 - 2; y--)
-            {
                 if (y < 60 && y >= 0)
-                {
                     for (int x = camera.X / 28 + camera.Width; x >= camera.X / 28 - 2; x--)
-                    {
                         if (x < 80 && x >= 0)
                         {
                             _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
 
                             _case[y, x].DrawInGame(gameTime, spriteBatch, content);
                         }
-                    }
-                }
-            }
         }
 
         public void DrawInMapEditor(SpriteBatch spriteBatch, ContentManager content, Rectangle camera)
         {
             for (int y = camera.Y + camera.Height - 1; y >= 0; y--)
-            {
                 for (int x = camera.X + camera.Width - 1; x >= 0; x--)
                 {
                     _case[y, x].Position = new Vector2(x - camera.X + 2, y - camera.Y);
 
                     _case[y, x].DrawInMapEditor(spriteBatch, content);
                 }
-            }
         }
 
         public void DrawInMenu(SpriteBatch spriteBatch, ContentManager content, Vector2 origine)
         {
             for (int y = Taille_Map.HAUTEUR_MAP - 1; y >= 0; y -= 2)
-            {
                 for (int x = Taille_Map.LARGEUR_MAP - 1; x >= 0; x -= 2)
                 {
                     _case[y, x].Position = new Vector2(x, y);
 
                     _case[y, x].DrawInMenu(spriteBatch, content, origine);
                 }
-            }
-        }
-
-        public int Salaire
-        {
-            get { return salaire; }
         }
 
         public List<Vector2> OriginesGardes
