@@ -431,14 +431,20 @@ namespace YelloKiller
 
             file.WriteLine("Patrouilleurs");
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
+            {
                 patrouilleur.SauvegarderCheckPoint(ref file);
+                file.WriteLine(patrouilleur.Etape);
+            }
             file.WriteLine("Patrouilleurs morts");
             foreach (Rectangle mort in patrouilleursMorts)
                 file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.WriteLine("Patrouilleurs A Chevaux");
             foreach (Patrouilleur_a_cheval cheval in _patrouilleurs_a_chevaux)
+            {
                 cheval.SauvegarderCheckPoint(ref file);
+                file.WriteLine(cheval.Etape);
+            }
             file.WriteLine("Patrouilleurs a chevaux morts");
             foreach (Rectangle mort in patrouilleursAChevauxMorts)
                 file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
@@ -471,6 +477,7 @@ namespace YelloKiller
             banana = file.ReadLine();
             banana = file.ReadLine();
 
+            // Gardes
             _gardes = new List<Garde>();
             while (banana != "Gardes morts")
             {
@@ -488,7 +495,7 @@ namespace YelloKiller
                 banana = file.ReadLine();
             }
 
-
+            // Patrouilleurs
             banana = file.ReadLine();
 
             _patrouilleurs = new List<Patrouilleur>();
@@ -496,6 +503,7 @@ namespace YelloKiller
             {
                 dessert = banana.Split(',');
                 _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                _patrouilleurs[_patrouilleurs.Count - 1].Etape = Convert.ToInt32(file.ReadLine());
                 banana = file.ReadLine();
             }
 
@@ -508,7 +516,7 @@ namespace YelloKiller
                 banana = file.ReadLine();
             }
 
-
+            // Patrouilleurs a chevaux
             banana = file.ReadLine();
 
             _patrouilleurs_a_chevaux = new List<Patrouilleur_a_cheval>();
@@ -516,6 +524,7 @@ namespace YelloKiller
             {
                 dessert = banana.Split(',');
                 _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Etape = Convert.ToInt32(file.ReadLine());
                 banana = file.ReadLine();
             }
 
@@ -528,7 +537,7 @@ namespace YelloKiller
                 banana = file.ReadLine();
             }
 
-
+            // Boss
             banana = file.ReadLine();
 
             _boss = new List<Boss>();
