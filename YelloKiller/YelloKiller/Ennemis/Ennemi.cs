@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.IO;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
@@ -326,6 +327,12 @@ namespace YelloKiller
             }
 
             return false; ;
+        }
+
+        public void SauvegarderCheckPoint(ref StreamWriter file)
+        {
+            file.WriteLine(X);
+            file.WriteLine(Y);
         }
 
         public List<Case> Chemin
