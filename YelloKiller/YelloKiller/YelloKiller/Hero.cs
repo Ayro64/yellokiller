@@ -582,11 +582,7 @@ namespace YelloKiller
 
         public void SauvegarderCheckPoint(ref StreamWriter file)
         {
-            file.WriteLine(X.ToString() + "," + Y.ToString());
-            file.WriteLine(nombreShuriken);
-            file.WriteLine(nombreHadoken);
-            file.WriteLine(nombre_ball);
-            file.WriteLine(nombreFumigene);
+            file.WriteLine(X.ToString() + "," + Y.ToString() + "," + nombreShuriken.ToString() + "," + nombreHadoken.ToString() + "," + nombre_ball.ToString() + "," + nombreFumigene.ToString());
         }
 
         public void ChargerCheckPoint(ref StreamReader file)
@@ -599,10 +595,10 @@ namespace YelloKiller
 
             X = Convert.ToInt32(dessert[0]);
             Y = Convert.ToInt32(dessert[1]);
-            nombreShuriken = Convert.ToInt32(file.ReadLine());
-            nombreHadoken = Convert.ToInt32(file.ReadLine());
-            nombre_ball = Convert.ToInt32(file.ReadLine());
-            nombreFumigene = Convert.ToInt32(file.ReadLine());
+            nombreShuriken = Convert.ToInt32(dessert[2]);
+            nombreHadoken = Convert.ToInt32(dessert[3]);
+            nombre_ball = Convert.ToInt32(dessert[4]);
+            nombreFumigene = Convert.ToInt32(dessert[5]);
 
             positionDesiree = new Vector2(28 * X, 28 * Y);
         }

@@ -129,24 +129,44 @@ namespace YelloKiller
                 _gardes.Add(new Garde(new Vector2(28 * position.X + 5, 28 * position.Y), carte));
 
             _patrouilleurs = new List<Patrouilleur>();
-            foreach (List<Vector2> parcours in carte.OriginesPatrouilleurs)
+            for (int i = 0; i < carte.OriginesPatrouilleurs.Count; i++)
+            {
+                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * carte.OriginesPatrouilleurs[i][0].X + 5, 28 * carte.OriginesPatrouilleurs[i][0].Y), carte, i));
+
+                foreach (Vector2 passage in carte.OriginesPatrouilleurs[i])
+                    _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
+
+                _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet(carte);
+            }
+
+            /*foreach (List<Vector2> parcours in carte.OriginesPatrouilleurs)
             {
                 _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * parcours[0].X + 5, 28 * parcours[0].Y), carte));
                 foreach (Vector2 passage in parcours)
                     _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
 
                 _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet(carte);
-            }
+            }*/
 
             _patrouilleurs_a_chevaux = new List<Patrouilleur_a_cheval>();
-            foreach (List<Vector2> parcours in carte.OriginesPatrouilleursAChevaux)
+            for (int i = 0; i < carte.OriginesPatrouilleursAChevaux.Count; i++)
+            {
+                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * carte.OriginesPatrouilleursAChevaux[i][0].X + 5, 28 * carte.OriginesPatrouilleursAChevaux[i][0].Y), carte, i));
+
+                foreach (Vector2 passage in carte.OriginesPatrouilleursAChevaux[i])
+                    _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
+
+                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
+            }
+
+            /*foreach (List<Vector2> parcours in carte.OriginesPatrouilleursAChevaux)
             {
                 _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * parcours[0].X + 5, 28 * parcours[0].Y), carte));
                 foreach (Vector2 passage in parcours)
                     _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
 
                 _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
-            }
+            }*/
 
             _boss = new List<Boss>();
             foreach (Vector2 position in carte.OriginesBoss)
@@ -431,20 +451,14 @@ namespace YelloKiller
 
             file.WriteLine("Patrouilleurs");
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
-            {
-                patrouilleur.SauvegarderCheckPoint(ref file);
-                file.WriteLine(patrouilleur.Etape);
-            }
+                patrouilleur.SauvegarderCheckPointPat(ref file);
             file.WriteLine("Patrouilleurs morts");
             foreach (Rectangle mort in patrouilleursMorts)
                 file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.WriteLine("Patrouilleurs A Chevaux");
             foreach (Patrouilleur_a_cheval cheval in _patrouilleurs_a_chevaux)
-            {
-                cheval.SauvegarderCheckPoint(ref file);
-                file.WriteLine(cheval.Etape);
-            }
+                cheval.SauvegarderCheckPointPat(ref file);
             file.WriteLine("Patrouilleurs a chevaux morts");
             foreach (Rectangle mort in patrouilleursAChevauxMorts)
                 file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
@@ -471,12 +485,14 @@ namespace YelloKiller
             file.ReadLine();
 
             hero1.ChargerCheckPoint(ref file);
-            if (file.ReadLine() == "Hero 2")
+            banana = file.ReadLine();
+            if (banana == "Hero 2")
+            {
                 hero2.ChargerCheckPoint(ref file);
+                banana = file.ReadLine();
+            }
 
             banana = file.ReadLine();
-            banana = file.ReadLine();
-
             // Gardes
             _gardes = new List<Garde>();
             while (banana != "Gardes morts")
@@ -502,8 +518,14 @@ namespace YelloKiller
             while (banana != "Patrouilleurs morts")
             {
                 dessert = banana.Split(',');
-                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
-                _patrouilleurs[_patrouilleurs.Count - 1].Etape = Convert.ToInt32(file.ReadLine());
+                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
+
+                foreach (Vector2 passage in carte.OriginesPatrouilleurs[_patrouilleurs[_patrouilleurs.Count - 1].Identifiant])
+                    _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
+
+                _patrouilleurs[_patrouilleurs.Count - 1].Etape = Convert.ToInt32(dessert[3]);
+                _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet(carte);
+
                 banana = file.ReadLine();
             }
 
@@ -523,14 +545,20 @@ namespace YelloKiller
             while (banana != "Patrouilleurs a chevaux morts")
             {
                 dessert = banana.Split(',');
-                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
-                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Etape = Convert.ToInt32(file.ReadLine());
+                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
+
+                foreach (Vector2 passage in carte.OriginesPatrouilleursAChevaux[_patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Identifiant])
+                    _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
+
+                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Etape = Convert.ToInt32(dessert[3]);
+                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
+
                 banana = file.ReadLine();
             }
 
             banana = file.ReadLine();
             patrouilleursAChevauxMorts = new List<Rectangle>();
-            while (banana != "Boss")
+            while (banana != "Boss" && banana != "Boss morts")
             {
                 dessert = banana.Split(',');
                 patrouilleursAChevauxMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
@@ -573,8 +601,6 @@ namespace YelloKiller
 
             foreach (Boss boss in _boss)
                 boss.LoadContent(content, 2);
-
-
 
             file.Close();
         }
