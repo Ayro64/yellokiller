@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.IO;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 
@@ -8,8 +9,9 @@ namespace YelloKiller
     {
         List<Case> parcours;
         public int Etape { get; set; }
+        public int Identifiant { get; private set; }
 
-        public Patrouilleur_a_cheval(Vector2 position, Carte carte)
+        public Patrouilleur_a_cheval(Vector2 position, Carte carte, int id)
             : base(position, carte)
         {
             this.position = position;
@@ -19,6 +21,7 @@ namespace YelloKiller
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 22, 30);
             VitesseSprite = 2;
             VitesseAnimation = 0.016f;
+            Identifiant = id;
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -42,6 +45,11 @@ namespace YelloKiller
         public void CreerTrajet(Carte carte)
         {
             Chemin = Pathfinding.CalculChemin(carte, Parcours[Etape % Parcours.Count], Parcours[(Etape + 1) % Parcours.Count]);
+        }
+
+        public void SauvegarderCheckPointPat(ref StreamWriter file)
+        {
+            file.WriteLine(X.ToString() + "," + Y.ToString() + "," + Identifiant.ToString() + "," + Etape.ToString());
         }
 
         public List<Case> Parcours
