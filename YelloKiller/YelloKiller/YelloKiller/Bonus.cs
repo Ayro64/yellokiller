@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.IO;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
 namespace YelloKiller
@@ -11,17 +12,17 @@ namespace YelloKiller
 
     class Bonus : Sprite
     {
-        TypeBonus typeBonus;
+        public TypeBonus TypeBonus { get; private set; }
 
         public Bonus(Vector2 position, TypeBonus pouvoir)
             : base(position)
         {
-            this.typeBonus = pouvoir;
+            this.TypeBonus = pouvoir;
         }
 
         public void LoadContent(ContentManager content)
         {
-            switch (typeBonus)
+            switch (TypeBonus)
             {
                 case TypeBonus.shuriken:
                     LoadContent(content, @"Menu Editeur de Maps\bonusShuriken");
@@ -32,9 +33,9 @@ namespace YelloKiller
             }
         }
 
-        public TypeBonus TypeBonus
+        public void SauvegarderCheckPoint(ref StreamWriter file)
         {
-            get { return typeBonus; }
+            file.WriteLine(position.X + "," + position.Y + "," + (int)TypeBonus);
         }
     }
 }
