@@ -470,6 +470,10 @@ namespace YelloKiller
             foreach (Rectangle mort in bossMorts)
                 file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
+            file.WriteLine("Bonus");
+            foreach (Bonus bonus in _bonus)
+                bonus.SauvegarderCheckPoint(ref file);
+
             file.WriteLine("Camera");
             file.WriteLine(camera.X + "," + camera.Y);
 
@@ -578,10 +582,19 @@ namespace YelloKiller
 
             banana = file.ReadLine();
             bossMorts = new List<Rectangle>();
-            while (banana != "Camera")
+            while (banana != "Bonus")
             {
                 dessert = banana.Split(',');
                 bossMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+            _bonus = new List<Bonus>();
+            while (banana != "Camera")
+            {
+                dessert = banana.Split(',');
+                _bonus.Add(new Bonus(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1])), (TypeBonus)Convert.ToInt32(dessert[2])));
                 banana = file.ReadLine();
             }
 
@@ -601,6 +614,9 @@ namespace YelloKiller
 
             foreach (Boss boss in _boss)
                 boss.LoadContent(content, 2);
+
+            foreach (Bonus bonus in _bonus)
+                bonus.LoadContent(content);
 
             file.Close();
         }
