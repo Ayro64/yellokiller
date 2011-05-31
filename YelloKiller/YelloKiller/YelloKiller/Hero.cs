@@ -595,6 +595,8 @@ namespace YelloKiller
 
             X = Convert.ToInt32(dessert[0]);
             Y = Convert.ToInt32(dessert[1]);
+
+            position = new Vector2(28 * X + 5, 28 * Y + 1);
             nombreShuriken = Convert.ToInt32(dessert[2]);
             nombreHadoken = Convert.ToInt32(dessert[3]);
             nombre_ball = Convert.ToInt32(dessert[4]);
