@@ -139,15 +139,6 @@ namespace YelloKiller
                 _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet(carte);
             }
 
-            /*foreach (List<Vector2> parcours in carte.OriginesPatrouilleurs)
-            {
-                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * parcours[0].X + 5, 28 * parcours[0].Y), carte));
-                foreach (Vector2 passage in parcours)
-                    _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
-
-                _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet(carte);
-            }*/
-
             _patrouilleurs_a_chevaux = new List<Patrouilleur_a_cheval>();
             for (int i = 0; i < carte.OriginesPatrouilleursAChevaux.Count; i++)
             {
@@ -158,15 +149,6 @@ namespace YelloKiller
 
                 _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
             }
-
-            /*foreach (List<Vector2> parcours in carte.OriginesPatrouilleursAChevaux)
-            {
-                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * parcours[0].X + 5, 28 * parcours[0].Y), carte));
-                foreach (Vector2 passage in parcours)
-                    _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
-
-                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
-            }*/
 
             _boss = new List<Boss>();
             foreach (Vector2 position in carte.OriginesBoss)
@@ -182,6 +164,9 @@ namespace YelloKiller
 
             foreach (Vector2 bonus in carte.BonusHadokens)
                 _bonus.Add(new Bonus(28 * bonus, TypeBonus.hadoken));
+
+            foreach (Vector2 bonus in carte.BonusCheckPoints)
+                _bonus.Add(new Bonus(28 * bonus, TypeBonus.checkPoint));
 
             gardesMorts = new List<Rectangle>();
             patrouilleursAChevauxMorts = new List<Rectangle>();
@@ -298,7 +283,9 @@ namespace YelloKiller
                 if (Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, AudioEngine.SoundBank))
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameOverScreen(nomDeCarte, game, retries));
 
-                Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank);
+                if (Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank))
+                    SauvegarderCheckPoint();
+
                 if (_boss.Count == 0)
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, ennemisTues - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));

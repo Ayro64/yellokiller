@@ -33,6 +33,7 @@ namespace YelloKiller
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_statue"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusShuriken"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusHadoken"));
+            listeTexturesGauche.Add(content.Load<Texture2D>("CheckPoint"));
 
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\arbre\arbre"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\commode\commode"));

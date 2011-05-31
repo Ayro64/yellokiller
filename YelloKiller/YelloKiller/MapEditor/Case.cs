@@ -846,5 +846,6 @@ namespace YelloKiller
 
        BonusShurikens = 200,
        BonusHadokens = 201,
+       BonusCheckPoint = 202,
    }
 }
