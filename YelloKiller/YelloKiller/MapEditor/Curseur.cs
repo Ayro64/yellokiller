@@ -240,6 +240,9 @@ namespace YelloKiller
                         case 8:
                             type = TypeCase.BonusHadokens;
                             break;
+                        case 9:
+                            type = TypeCase.BonusCheckPoint;
+                            break;
                     }
 
                     tailleFond.X = 1 + 0.88f * (texture.Width / 28 - 1);

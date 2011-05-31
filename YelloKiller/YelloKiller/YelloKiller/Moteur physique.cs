@@ -345,7 +345,7 @@ namespace YelloKiller
             return false;
         }
         
-        static public void Collision_Heros_Bonus(ref Hero hero1, ref Hero hero2, ref List<Bonus> bonus, SoundBank soundBank)
+        static public bool Collision_Heros_Bonus(ref Hero hero1, ref Hero hero2, ref List<Bonus> bonus, SoundBank soundBank)
         {
             for (int u = 0; u < bonus.Count; u++)
             {
@@ -363,6 +363,10 @@ namespace YelloKiller
                             bonus.RemoveAt(u);
                             soundBank.PlayCue("hadokenobt");
                             break;
+                        case TypeBonus.checkPoint:
+                            bonus.RemoveAt(u);
+                            soundBank.PlayCue("hadokenobt");
+                            return true;
                     }
                 }
             }
@@ -385,10 +389,15 @@ namespace YelloKiller
                                 bonus.RemoveAt(u);
                                 soundBank.PlayCue("hadokenobt");
                                 break;
+                            case TypeBonus.checkPoint:
+                                bonus.RemoveAt(u);
+                                soundBank.PlayCue("hadokenobt");
+                                return true;
                         }
                     }
                 }
             }
+            return false;
         }
     }
 }

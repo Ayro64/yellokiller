@@ -8,6 +8,7 @@ namespace YelloKiller
     {
         shuriken = 0,
         hadoken = 1,
+        checkPoint = 2
     }
 
     class Bonus : Sprite
@@ -29,6 +30,9 @@ namespace YelloKiller
                     break;
                 case TypeBonus.hadoken:
                     LoadContent(content, @"Menu Editeur de Maps\bonusHadoken");
+                    break;
+                case TypeBonus.checkPoint:
+                    LoadContent(content, "CheckPoint");
                     break;
             }
         }

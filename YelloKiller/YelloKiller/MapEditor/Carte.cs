@@ -12,7 +12,7 @@ namespace YelloKiller
         Case[,] _case;
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
         List<byte> rotationsDesStatues;
-        List<Vector2> _originesGarde, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens;
+        List<Vector2> _originesGarde, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens, bonusCheckPoints;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
         public int Salaire { get; private set; }
 
@@ -30,6 +30,7 @@ namespace YelloKiller
             rotationsDesStatues = new List<byte>();
             bonusShurikens = new List<Vector2>();
             bonusHadokens = new List<Vector2>();
+            bonusCheckPoints = new List<Vector2>();
         }
 
         public void Initialisation(Vector2 size)
@@ -173,12 +174,23 @@ namespace YelloKiller
 
             line = file.ReadLine();
 
-            while (line != "Salaire")
+            while (line != "Bonus CheckPoints")
             {
                 positionTemporaire.X = Convert.ToInt32(line);
                 line = file.ReadLine();
                 positionTemporaire.Y = Convert.ToInt32(line);
                 bonusHadokens.Add(positionTemporaire);
+                line = file.ReadLine();
+            }
+
+            line = file.ReadLine();
+
+            while (line != "Salaire")
+            {
+                positionTemporaire.X = Convert.ToInt32(line);
+                line = file.ReadLine();
+                positionTemporaire.Y = Convert.ToInt32(line);
+                bonusCheckPoints.Add(positionTemporaire);
                 line = file.ReadLine();
             }
 
@@ -742,7 +754,6 @@ namespace YelloKiller
                         if (x < 80 && x >= 0)
                         {
                             _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
-
                             _case[y, x].DrawInGame(gameTime, spriteBatch, content);
                         }
         }
@@ -753,7 +764,6 @@ namespace YelloKiller
                 for (int x = camera.X + camera.Width - 1; x >= 0; x--)
                 {
                     _case[y, x].Position = new Vector2(x - camera.X + 2, y - camera.Y);
-
                     _case[y, x].DrawInMapEditor(spriteBatch, content);
                 }
         }
@@ -764,7 +774,6 @@ namespace YelloKiller
                 for (int x = Taille_Map.LARGEUR_MAP - 1; x >= 0; x -= 2)
                 {
                     _case[y, x].Position = new Vector2(x, y);
-
                     _case[y, x].DrawInMenu(spriteBatch, content, origine);
                 }
         }
@@ -812,6 +821,11 @@ namespace YelloKiller
         public List<Vector2> BonusHadokens
         {
             get { return bonusHadokens; }
+        }
+
+        public List<Vector2> BonusCheckPoints
+        {
+            get { return bonusCheckPoints; }
         }
 
         public Case[,] Cases
