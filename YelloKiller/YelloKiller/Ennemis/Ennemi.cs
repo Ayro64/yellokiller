@@ -16,6 +16,7 @@ namespace YelloKiller
         Carte carte;
         Case depart, arrivee;
         public bool Alerte { get; set; }
+        public bool RetourneCheminNormal { get; set; }
 
         public Vector2 positionDesiree;
 
@@ -40,6 +41,7 @@ namespace YelloKiller
             champDeVision2 = new Rectangle(28 * X, 28 * Y + 28, 28, 140);
             champDeVision3 = new Rectangle(28 * X + 28, 28 * Y + 28, 28, 140);
             chemin = new List<Case>();
+            RetourneCheminNormal = false;
         }
 
         public void LoadContent(ContentManager content, int maxIndex, string Assetname)
@@ -56,13 +58,13 @@ namespace YelloKiller
             UpdateChampDeVision(carte);
             MortDansLeChampDeVision(gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
-            if (Collision(hero1.Rectangle) || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
+            if (!RetourneCheminNormal && Collision(hero1.Rectangle) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/)
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero1.Y, hero1.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
-            else if (hero2 != null && (Collision(hero2.Rectangle) || ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)))
+            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/))
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero2.Y, hero2.X];
