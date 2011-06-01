@@ -7,10 +7,9 @@ namespace YelloKiller
 {
     class Boss : Ennemi
     {
-        int vie;
-        List<Case> chemin;
         Case depart;
         Case arrivee;
+        Vector2 Origine;
 
         public Boss(Vector2 position, Carte carte)
             : base(position, carte)
@@ -20,8 +19,8 @@ namespace YelloKiller
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 18, 26);
             MaxIndex = 0;
             positionDesiree = position;
-            vie = 5;
-            chemin = new List<Case>();
+            Vie = 5;
+            Origine = new Vector2(X, Y);
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -30,63 +29,25 @@ namespace YelloKiller
             MaxIndex = maxIndex;
         }
 
-        public int Vie
-        {
-            get { return vie; }
-            set { vie = value; }
-        }
+        public int Vie { get; set; }
 
         public void Update(GameTime gameTime, List<Shuriken> shuriken, Carte carte, Hero hero1, Hero hero2, Rectangle camera, List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), hero1, hero2, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
-
-            if (Math.Abs(hero1.X - X) < 4 && Math.Abs(hero1.Y - Y) < 4)
+            
+            if (Math.Abs(Origine.X - X) > 4 || Math.Abs(Origine.Y - Y) > 4)
             {
+                RetourneCheminNormal = true;
                 depart = carte.Cases[Y, X];
-                arrivee = carte.Cases[hero1.Y, hero1.X];
-                chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
+                arrivee = carte.Cases[(int)Origine.Y, (int)Origine.X];
+                Chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
-            else if (hero2 != null && Math.Abs(hero2.X - X) < 4 && Math.Abs(hero2.Y - Y) < 4)
-            {
-                depart = carte.Cases[Y, X];
-                arrivee = carte.Cases[hero2.Y, hero2.X];
-                chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
-            }
-
-            if (chemin != null && chemin.Count != 0)
-            {
-                if (VaEnHaut && VaEnBas && VaADroite && VaAGauche)
-                {
-                    if ((int)chemin[chemin.Count - 1].X < X)
-                    {
-                        positionDesiree.X -= 28;
-                        VaAGauche = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                    }
-                    else if ((int)chemin[chemin.Count - 1].X > X)
-                    {
-                        positionDesiree.X += 28;
-                        VaADroite = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                    }
-                    else if ((int)chemin[chemin.Count - 1].Y < Y)
-                    {
-                        positionDesiree.Y -= 28;
-                        VaEnHaut = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                    }
-                    else if ((int)chemin[chemin.Count - 1].Y > Y)
-                    {
-                        positionDesiree.Y += 28;
-                        VaEnBas = false;
-                        chemin.RemoveAt(chemin.Count - 1);
-                    }
-                }
-            }
+            else
+                RetourneCheminNormal = false;
 
             IA.Esquive_Shuriken.Boss_Esquive_Shuriken(hero1, this, shuriken, carte, camera);
 
-            if (vie < 5 && chemin.Count == 0)
+            if (Vie < 5 && Chemin.Count == 0)
             {
                 if (hero1.Regarde_Bas && position.Y > hero1.position.Y)
                     SourceRectangle = new Rectangle(26, 0, 16, 24);
