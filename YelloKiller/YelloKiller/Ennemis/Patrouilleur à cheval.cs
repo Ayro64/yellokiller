@@ -35,7 +35,7 @@ namespace YelloKiller
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 23, 30), new Rectangle((int)Index * 24, 65, 23, 30), new Rectangle((int)Index * 24, 98, 23, 30), new Rectangle((int)Index * 24, 34, 23, 30), hero1, hero2, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
             if (!this.Alerte && (!Collision(hero1.Rectangle) || hero2 != null && !Collision(hero2.Rectangle)) && parcours.Count > 1)
-                if (Chemin == null || Chemin.Count == 0)
+                //if (Chemin == null || Chemin.Count == 0)
                 {
                     Etape++;
                     Chemin = Pathfinding.CalculChemin(carte, carte.Cases[Y, X], parcours[(Etape + 1) % parcours.Count]);
