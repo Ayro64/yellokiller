@@ -684,22 +684,13 @@ namespace YelloKiller
             }
 
             else if (curseur.Type == TypeCase.BonusShurikens)
-            {
-                System.Console.WriteLine((curseur.Position.X + camera.X).ToString() + (curseur.Position.Y + camera.Y).ToString());
                 bonus.Add(new Bonus(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), TypeBonus.shuriken));
-            }
 
             else if (curseur.Type == TypeCase.BonusHadokens)
-            {
-                System.Console.WriteLine((curseur.Position.X + camera.X).ToString() + (curseur.Position.Y + camera.Y).ToString());
                 bonus.Add(new Bonus(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), TypeBonus.hadoken));
-            }
 
             else if (curseur.Type == TypeCase.BonusCheckPoint)
-            {
-                System.Console.WriteLine((curseur.Position.X + camera.X).ToString() + (curseur.Position.Y + camera.Y).ToString());
                 bonus.Add(new Bonus(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), TypeBonus.checkPoint));
-            }
         }
 
         private void Placer_Case()
