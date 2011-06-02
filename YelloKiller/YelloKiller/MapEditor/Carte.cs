@@ -62,141 +62,141 @@ namespace YelloKiller
         public void OuvrirCarte(string nomDeFichier)
         {
             StreamReader file = new StreamReader(nomDeFichier);
-            string line;
+            string banana = null;
+            string[] dessert = null;
 
             for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
             {
-                line = file.ReadLine();
-                if (line == "")
-                    line = file.ReadLine();
-                else if (line == null)
+                banana = file.ReadLine();
+                if (banana == "")
+                    banana = file.ReadLine();
+                else if (banana == null)
                     break;
                 for (int x = 0; x < Taille_Map.LARGEUR_MAP; x++)
-                    Switch(string.Concat(line[2 * x].ToString(), line[2 * x + 1].ToString()), x, y);
+                    Switch(string.Concat(banana[2 * x].ToString(), banana[2 * x + 1].ToString()), x, y);
             }
 
-            line = file.ReadLine();
-            line = file.ReadLine();
-            origineJoueur1.X = Convert.ToInt32(line);
-
-            line = file.ReadLine();
-            origineJoueur1.Y = Convert.ToInt32(line);
+            banana = file.ReadLine();
+            banana = file.ReadLine();
+            dessert = banana.Split(',');
+            origineJoueur1.X = Convert.ToInt32(dessert[0]);
+            origineJoueur1.Y = Convert.ToInt32(dessert[1]);
 
             if (nomDeFichier[nomDeFichier.Length - 1] == 'p') // Si la carte est en cooperation.
             {
-                line = file.ReadLine();
-                origineJoueur2.X = Convert.ToInt32(line);
-
-                line = file.ReadLine();
-                origineJoueur2.Y = Convert.ToInt32(line);
+                banana = file.ReadLine();
+                dessert = banana.Split(',');
+                origineJoueur2.X = Convert.ToInt32(dessert[0]);
+                origineJoueur2.Y = Convert.ToInt32(dessert[1]);
             }
 
-            line = file.ReadLine();
-            line = file.ReadLine();
+            banana = file.ReadLine();
+            banana = file.ReadLine();
 
-            while (line != "Patrouilleurs" && line != null)
+            while (banana != "Patrouilleurs" && banana != null)
             {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
+                dessert = banana.Split(',');
+                positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                 _originesGarde.Add(positionTemporaire);
-                line = file.ReadLine();
+                banana = file.ReadLine();
             }
 
-            line = file.ReadLine();
+            banana = file.ReadLine();
 
-            while (line != "Patrouilleurs A Cheval" && line != null)
+            while (banana != "Patrouilleurs A Cheval" && banana != null)
             {
-                line = file.ReadLine();
+                banana = file.ReadLine();
+                dessert = banana.Split(',');
                 _originesPatrouilleur.Add(new List<Vector2>());
 
-                while (line != "New" && line != "Patrouilleurs A Cheval")
+                while (banana != "New" && banana != "Patrouilleurs A Cheval")
                 {
-                    positionTemporaire.X = Convert.ToInt32(line);
-                    line = file.ReadLine();
-                    positionTemporaire.Y = Convert.ToInt32(line);
+                    dessert = banana.Split(',');
+                    positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                    positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                     _originesPatrouilleur[_originesPatrouilleur.Count - 1].Add(positionTemporaire);
-                    line = file.ReadLine();
+                    banana = file.ReadLine();
                 }
             }
 
-            line = file.ReadLine();
+            banana = file.ReadLine();
 
-            while (line != "Boss" && line != null)
+            while (banana != "Boss" && banana != null)
             {
-                line = file.ReadLine();
+                banana = file.ReadLine();
+                dessert = banana.Split(',');
                 _originesPatrouilleur_a_cheval.Add(new List<Vector2>());
 
-                while (line != "New" && line != "Boss")
+                while (banana != "New" && banana != "Boss")
                 {
-                    positionTemporaire.X = Convert.ToInt32(line);
-                    line = file.ReadLine();
-                    positionTemporaire.Y = Convert.ToInt32(line);
+                    dessert = banana.Split(',');
+                    positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                    positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                     _originesPatrouilleur_a_cheval[_originesPatrouilleur_a_cheval.Count - 1].Add(positionTemporaire);
-                    line = file.ReadLine();
+                    banana = file.ReadLine();
                 }
             }
 
-            line = file.ReadLine();
+            banana = file.ReadLine();
 
-            while (line != "Statue dragon" && line != null)
+            while (banana != "Statue dragon" && banana != null)
             {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
+                dessert = banana.Split(',');
+                positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                 _originesBoss.Add(positionTemporaire);
-                line = file.ReadLine();
+                banana = file.ReadLine();
             }
 
-            line = file.ReadLine();
+            banana = file.ReadLine();
 
-            while (line != "Bonus Shurikens" && line != null)
+            while (banana != "Bonus Shurikens" && banana != null)
             {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
+                dessert = banana.Split(',');
+                positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                 _originesStatues.Add(positionTemporaire);
-                line = file.ReadLine();
-                rotationsDesStatues.Add(Convert.ToByte(line));
-                line = file.ReadLine();
+                rotationsDesStatues.Add(Convert.ToByte(dessert[2]));
+                banana = file.ReadLine();
             }
             
-            line = file.ReadLine();
+            banana = file.ReadLine();
 
-            while (line != "Bonus Hadokens")
+            while (banana != "Bonus Hadokens")
             {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
+                dessert = banana.Split(',');
+                positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                 bonusShurikens.Add(positionTemporaire);
-                line = file.ReadLine();
+                banana = file.ReadLine();
             }
 
-            line = file.ReadLine();
+            banana = file.ReadLine();
 
-            while (line != "Bonus CheckPoints")
+            while (banana != "Bonus CheckPoints")
             {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
+                dessert = banana.Split(',');
+                positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                 bonusHadokens.Add(positionTemporaire);
-                line = file.ReadLine();
+                banana = file.ReadLine();
             }
 
-            line = file.ReadLine();
+            banana = file.ReadLine();
 
-            while (line != "Salaire")
+            while (banana != "Salaire")
             {
-                positionTemporaire.X = Convert.ToInt32(line);
-                line = file.ReadLine();
-                positionTemporaire.Y = Convert.ToInt32(line);
+                dessert = banana.Split(',');
+                positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                 bonusCheckPoints.Add(positionTemporaire);
-                line = file.ReadLine();
+                banana = file.ReadLine();
             }
 
-            line = file.ReadLine();
+            banana = file.ReadLine();
 
-            Salaire = Convert.ToInt32(line);
+            Salaire = Convert.ToInt32(banana);
             file.Close();
         }
 
