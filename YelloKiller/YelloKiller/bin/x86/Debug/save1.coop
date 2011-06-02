@@ -94,12 +94,10 @@ New
 Boss
 75,1
 Statue dragon
-Bonus Shurikens
-4,3
-0,0
-3,37
-70,8
-Bonus Hadokens
-Bonus CheckPoints
+Bonus
+4,3,0
+0,0,0
+3,37,0
+70,8,0
 Salaire
 100000
