@@ -354,12 +354,12 @@ namespace YelloKiller
                     switch (bonus[u].TypeBonus)
                     {
                         case TypeBonus.shuriken:
-                            hero1.NombreShurikens += 3;
+                            hero1.NombreShuriken += 3;
                             bonus.RemoveAt(u);
                             soundBank.PlayCue("shurikenobt");
                             break;
                         case TypeBonus.hadoken:
-                            hero1.NombreHadokens++;
+                            hero1.NombreHadoken++;
                             bonus.RemoveAt(u);
                             soundBank.PlayCue("hadokenobt");
                             break;
@@ -380,12 +380,12 @@ namespace YelloKiller
                         switch (bonus[u].TypeBonus)
                         {
                             case TypeBonus.shuriken:
-                                hero2.NombreShurikens += 3;
+                                hero2.NombreShuriken += 3;
                                 bonus.RemoveAt(u);
                                 soundBank.PlayCue("shurikenobt");
                                 break;
                             case TypeBonus.hadoken:
-                                hero2.NombreHadokens++;
+                                hero2.NombreHadoken++;
                                 bonus.RemoveAt(u);
                                 soundBank.PlayCue("hadokenobt");
                                 break;
