@@ -554,31 +554,19 @@ namespace YelloKiller
 
                     sauvegarde.WriteLine("Joueurs");
                     if (origine1 != -Vector2.One)
-                    {
-                        sauvegarde.WriteLine(origine1.X);
-                        sauvegarde.WriteLine(origine1.Y);
-                    }
+                        sauvegarde.WriteLine(origine1.X + "," + origine1.Y);
                     if (origine2 != -Vector2.One)
-                    {
-                        sauvegarde.WriteLine(origine2.X);
-                        sauvegarde.WriteLine(origine2.Y);
-                    }
+                        sauvegarde.WriteLine(origine2.X + "," + origine2.Y);
                     sauvegarde.WriteLine("Gardes");
                     foreach (Vector2 position in _originesGardes)
-                    {
-                        sauvegarde.WriteLine(position.X);
-                        sauvegarde.WriteLine(position.Y);
-                    }
+                        sauvegarde.WriteLine(position.X + "," + position.Y);
 
                     sauvegarde.WriteLine("Patrouilleurs");
                     foreach (List<Vector2> parcours in _originesPatrouilleurs)
                     {
                         sauvegarde.WriteLine("New");
                         foreach (Vector2 position in parcours)
-                        {
-                            sauvegarde.WriteLine(position.X);
-                            sauvegarde.WriteLine(position.Y);
-                        }
+                            sauvegarde.WriteLine(position.X + "," + position.Y);
                     }
 
                     sauvegarde.WriteLine("Patrouilleurs A Cheval");
@@ -586,47 +574,28 @@ namespace YelloKiller
                     {
                         sauvegarde.WriteLine("New");
                         foreach (Vector2 position in parcours)
-                        {
-                            sauvegarde.WriteLine(position.X);
-                            sauvegarde.WriteLine(position.Y);
-                        }
+                            sauvegarde.WriteLine(position.X + "," + position.Y);
                     }
 
                     sauvegarde.WriteLine("Boss");
                     foreach (Vector2 position in _originesBoss)
-                    {
-                        sauvegarde.WriteLine(position.X);
-                        sauvegarde.WriteLine(position.Y);
-                    }
+                        sauvegarde.WriteLine(position.X + "," + position.Y);
 
                     sauvegarde.WriteLine("Statue dragon");
                     for (int k = 0; k < _originesStatues.Count; k++)
-                    {
-                        sauvegarde.WriteLine(_originesStatues[k].X);
-                        sauvegarde.WriteLine(_originesStatues[k].Y);
-                        sauvegarde.WriteLine(rotationsDesStatues[k]);
-                    }
+                        sauvegarde.WriteLine(_originesStatues[k].X + "," + _originesStatues[k].Y + "," + rotationsDesStatues[k]);
 
                     sauvegarde.WriteLine("Bonus Shurikens");
                     foreach (Vector2 bonus in bonusShurikens)
-                    {
-                        sauvegarde.WriteLine(bonus.X);
-                        sauvegarde.WriteLine(bonus.Y);
-                    }
+                        sauvegarde.WriteLine(bonus.X + "," + bonus.Y);
 
                     sauvegarde.WriteLine("Bonus Hadokens");
                     foreach (Vector2 bonus in bonusHadokens)
-                    {
-                        sauvegarde.WriteLine(bonus.X);
-                        sauvegarde.WriteLine(bonus.Y);
-                    }
+                        sauvegarde.WriteLine(bonus.X + "," + bonus.Y);
 
                     sauvegarde.WriteLine("Bonus CheckPoints");
                     foreach (Vector2 bonus in bonusCheckPoints)
-                    {
-                        sauvegarde.WriteLine(bonus.X);
-                        sauvegarde.WriteLine(bonus.Y);
-                    }
+                        sauvegarde.WriteLine(bonus.X + "," + bonus.Y);
 
                     sauvegarde.WriteLine("Salaire");
                     sauvegarde.WriteLine(salaire);
