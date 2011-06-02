@@ -100,16 +100,14 @@ Patrouilleurs A Cheval
 Boss
 45,15
 Statue dragon
-Bonus Shurikens
-62,52
-22,47
-16,18
-22,27
-64,14
-Bonus Hadokens
-47,53
-78,9
-56,7
-Bonus CheckPoints
+Bonus
+62,52,0
+22,47,0
+16,18,0
+22,27,0
+64,14,0
+47,53,1
+78,9,1
+56,7,1
 Salaire
 100000
