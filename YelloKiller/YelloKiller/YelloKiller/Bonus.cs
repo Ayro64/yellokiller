@@ -11,7 +11,7 @@ namespace YelloKiller
         checkPoint = 2
     }
 
-    class Bonus : Sprite
+    public class Bonus : Sprite
     {
         public TypeBonus TypeBonus { get; private set; }
 

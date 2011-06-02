@@ -12,7 +12,8 @@ namespace YelloKiller
         Case[,] _case;
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
         List<byte> rotationsDesStatues;
-        List<Vector2> _originesGarde, _originesBoss, _originesStatues, bonusShurikens, bonusHadokens, bonusCheckPoints;
+        List<Vector2> _originesGarde, _originesBoss, _originesStatues;
+        List<Bonus> bonus;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
         public int Salaire { get; private set; }
 
@@ -28,9 +29,7 @@ namespace YelloKiller
             _originesBoss = new List<Vector2>();
             _originesStatues = new List<Vector2>();
             rotationsDesStatues = new List<byte>();
-            bonusShurikens = new List<Vector2>();
-            bonusHadokens = new List<Vector2>();
-            bonusCheckPoints = new List<Vector2>();
+            bonus = new List<Bonus>();
         }
 
         public void Initialisation(Vector2 size)
@@ -151,7 +150,7 @@ namespace YelloKiller
 
             banana = file.ReadLine();
 
-            while (banana != "Bonus Shurikens" && banana != null)
+            while (banana != "Bonus" && banana != null)
             {
                 dessert = banana.Split(',');
                 positionTemporaire.X = Convert.ToInt32(dessert[0]);
@@ -163,34 +162,12 @@ namespace YelloKiller
             
             banana = file.ReadLine();
 
-            while (banana != "Bonus Hadokens")
-            {
-                dessert = banana.Split(',');
-                positionTemporaire.X = Convert.ToInt32(dessert[0]);
-                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
-                bonusShurikens.Add(positionTemporaire);
-                banana = file.ReadLine();
-            }
-
-            banana = file.ReadLine();
-
-            while (banana != "Bonus CheckPoints")
-            {
-                dessert = banana.Split(',');
-                positionTemporaire.X = Convert.ToInt32(dessert[0]);
-                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
-                bonusHadokens.Add(positionTemporaire);
-                banana = file.ReadLine();
-            }
-
-            banana = file.ReadLine();
-
             while (banana != "Salaire")
             {
                 dessert = banana.Split(',');
                 positionTemporaire.X = Convert.ToInt32(dessert[0]);
                 positionTemporaire.Y = Convert.ToInt32(dessert[1]);
-                bonusCheckPoints.Add(positionTemporaire);
+                bonus.Add(new Bonus(28 * positionTemporaire, (TypeBonus)(Convert.ToInt32(dessert[2]))));
                 banana = file.ReadLine();
             }
 
@@ -813,19 +790,9 @@ namespace YelloKiller
             get { return origineJoueur2; }
         }
 
-        public List<Vector2> BonusShurikens
+        public List<Bonus> Bonus
         {
-            get { return bonusShurikens; }
-        }
-
-        public List<Vector2> BonusHadokens
-        {
-            get { return bonusHadokens; }
-        }
-
-        public List<Vector2> BonusCheckPoints
-        {
-            get { return bonusCheckPoints; }
+            get { return bonus; }
         }
 
         public Case[,] Cases
