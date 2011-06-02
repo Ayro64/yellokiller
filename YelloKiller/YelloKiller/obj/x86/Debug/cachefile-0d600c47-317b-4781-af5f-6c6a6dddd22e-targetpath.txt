@@ -1,52 +1,14 @@
-Content\ascenseur.xnb
 Content\background.xnb
 Content\blank.xnb
 Content\Game Over.xnb
 Content\gradient.xnb
 Content\LevelSelection.xnb
 Content\shuriken.xnb
-Content\Textures\arbre.xnb
-Content\Textures\arbre2.xnb
-Content\Textures\bois.xnb
-Content\Textures\boisCarre.xnb
-Content\Textures\buissonSurHerbe.xnb
 Content\Textures\fond.xnb
-Content\Textures\fondNoir.xnb
-Content\Textures\herbe.xnb
-Content\Textures\herbeFoncee.xnb
-Content\Textures\murBlanc.xnb
-Content\Textures\piedDeMurBois.xnb
-Content\Textures\tableauMurBlanc.xnb
-Content\Textures\tapisRougeBC.xnb
-Content\Textures\terre.xnb
-Content\Textures\carlageNoir.xnb
-Content\Textures\FinMurDroite.xnb
-Content\Textures\FinMurFN.xnb
-Content\Textures\FinMurGauche.xnb
-Content\Garde.xnb
-Content\Hero1.xnb
-Content\Hero2.xnb
-Content\origine_garde.xnb
-Content\origine_hero1.xnb
-Content\origine_hero2.xnb
-Content\origine_patrouilleur.xnb
-Content\origine_patrouilleur_a_cheval.xnb
-Content\Patrouilleur.xnb
-Content\Patrouilleur_a_cheval.xnb
-Content\Textures\Commode.xnb
-Content\Textures\finMurBas.xnb
-Content\Textures\grandeTable.xnb
-Content\Textures\lit.xnb
-Content\Textures\tableMoyenne.xnb
 Content\Textures\Garde.xnb
 Content\Textures\Patrouilleur.xnb
 Content\Textures\Patrouilleur_a_cheval.xnb
-Content\Boss.xnb
-Content\origine_boss.xnb
 Content\WinTex.xnb
-Content\flamme.xnb
-Content\explosion.xnb
-Content\smoke.xnb
 Content\Sons\cri.xnb
 Content\Sons\CriMortHero.xnb
 Content\Sons\menuBouge.xnb
@@ -60,9 +22,234 @@ Content\Sons\metalgear.xnb
 Content\Sons\hadoken.xnb
 Content\courier.xnb
 Content\ScoresScrollFil.xnb
-Content\statue_dragon.xnb
-Content\origine_statue.xnb
-Content\pied.xnb
+Content\Kane.xnb
+Content\Textures\arbre\arbre.xnb
+Content\Textures\arbre\arbre1.xnb
+Content\Textures\arbre\arbre2.xnb
+Content\Textures\arbre\arbre3.xnb
+Content\Textures\arbre\arbre4.xnb
+Content\Textures\arbre\arbre5.xnb
+Content\Textures\arbre\arbre6.xnb
+Content\Textures\commode\commode.xnb
+Content\Textures\commode\commode1.xnb
+Content\Textures\commode\commode2.xnb
+Content\Textures\commode\commode3.xnb
+Content\Textures\commode\commode4.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco1.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco2.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco3.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco4.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco5.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco6.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco7.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco8.xnb
+Content\Textures\grandeTableDeco\grandeTableDeco9.xnb
+Content\Textures\grandeTable\grandeTable.xnb
+Content\Textures\grandeTable\grandeTable1.xnb
+Content\Textures\grandeTable\grandeTable2.xnb
+Content\Textures\grandeTable\grandeTable3.xnb
+Content\Textures\grandeTable\grandeTable4.xnb
+Content\Textures\grandeTable\grandeTable5.xnb
+Content\Textures\grandeTable\grandeTable6.xnb
+Content\Textures\grandeTable\grandeTable7.xnb
+Content\Textures\grandeTable\grandeTable8.xnb
+Content\Textures\grandeTable\grandeTable9.xnb
+Content\Textures\herbe\nvlherbe.xnb
+Content\Textures\herbe\nvlherbe1.xnb
+Content\Textures\herbe\nvlherbe2.xnb
+Content\Textures\herbe\nvlherbe3.xnb
+Content\Textures\herbe\nvlherbe4.xnb
+Content\Textures\Invisible.xnb
+Content\Textures\lit\lit.xnb
+Content\Textures\lit\lit1.xnb
+Content\Textures\lit\lit2.xnb
+Content\Textures\lit\lit3.xnb
+Content\Textures\lit\lit4.xnb
+Content\Textures\mur\MurBlancdrap\MurBlancdrap.xnb
+Content\Textures\mur\MurBlancdrap\MurBlancdrap1.xnb
+Content\Textures\mur\MurBlancdrap\MurBlancdrap2.xnb
+Content\Textures\mur\MurBlancdrap\MurBlancdrap3.xnb
+Content\Textures\mur\MurBlancdrap\MurBlancdrap4.xnb
+Content\Textures\mur\murblancepee\MurBlancEpee.xnb
+Content\Textures\mur\murblancepee\MurBlancEpee1.xnb
+Content\Textures\mur\murblancepee\MurBlancEpee2.xnb
+Content\Textures\mur\murblancepee\MurBlancEpee3.xnb
+Content\Textures\mur\murblancepee\MurBlancEpee4.xnb
+Content\Textures\mur\murblanctableau\MurBlanctableau.xnb
+Content\Textures\mur\murblanctableau\MurBlanctableau1.xnb
+Content\Textures\mur\murblanctableau\MurBlanctableau2.xnb
+Content\Textures\mur\murblanctableau\MurBlanctableau3.xnb
+Content\Textures\mur\murblanctableau\MurBlanctableau4.xnb
+Content\Textures\mur\murBlanc\murBlanc.xnb
+Content\Textures\mur\murBlanc\murBlanc1.xnb
+Content\Textures\mur\murBlanc\murBlanc2.xnb
+Content\Textures\mur\murBlanc\murBlanc3.xnb
+Content\Textures\mur\murBlanc\murBlanc4.xnb
+Content\Textures\mur\murepee\murepee.xnb
+Content\Textures\mur\murepee\murepee1.xnb
+Content\Textures\mur\murepee\murepee2.xnb
+Content\Textures\mur\murepee\murepee3.xnb
+Content\Textures\mur\murepee\murepee4.xnb
+Content\Textures\mur\murtableau\murtableau.xnb
+Content\Textures\mur\murtableau\murtableau1.xnb
+Content\Textures\mur\murtableau\murtableau2.xnb
+Content\Textures\mur\murtableau\murtableau3.xnb
+Content\Textures\mur\murtableau\murtableau4.xnb
+Content\Textures\mur\mur\mur.xnb
+Content\Textures\mur\mur\mur1.xnb
+Content\Textures\mur\mur\mur2.xnb
+Content\Textures\mur\mur\mur3.xnb
+Content\Textures\mur\mur\mur4.xnb
+Content\Textures\mur\tableauMurBlanc\tableauMurBlanc.xnb
+Content\Textures\mur\tableauMurBlanc\tableauMurBlanc1.xnb
+Content\Textures\mur\tableauMurBlanc\tableauMurBlanc2.xnb
+Content\Textures\mur\tableauMurBlanc\tableauMurBlanc3.xnb
+Content\Textures\mur\tableauMurBlanc\tableauMurBlanc4.xnb
+Content\Textures\parquet\parquetarbre\parquetarbre.xnb
+Content\Textures\parquet\parquetarbre\parquetarbre1.xnb
+Content\Textures\parquet\parquetarbre\parquetarbre2.xnb
+Content\Textures\parquet\parquetarbre\parquetarbre3.xnb
+Content\Textures\parquet\parquetarbre\parquetarbre4.xnb
+Content\Textures\parquet\parquetbuisson\parquetbuisson.xnb
+Content\Textures\parquet\parquetbuisson\parquetbuisson1.xnb
+Content\Textures\parquet\parquetbuisson\parquetbuisson2.xnb
+Content\Textures\parquet\parquetbuisson\parquetbuisson3.xnb
+Content\Textures\parquet\parquetbuisson\parquetbuisson4.xnb
+Content\Textures\parquet\parquet\parquet.xnb
+Content\Textures\parquet\parquet\parquet1.xnb
+Content\Textures\parquet\parquet\parquet2.xnb
+Content\Textures\parquet\parquet\parquet3.xnb
+Content\Textures\parquet\parquet\parquet4.xnb
+Content\Textures\petites\bois.xnb
+Content\Textures\petites\boisCarre.xnb
+Content\Textures\petites\boisdeco.xnb
+Content\Textures\petites\buissonSurHerbe.xnb
+Content\Textures\petites\carlageNoir.xnb
+Content\Textures\petites\carlageNoirdeco.xnb
+Content\Textures\petites\coinbotdroit.xnb
+Content\Textures\petites\coinbotgauche.xnb
+Content\Textures\petites\cointopdroit.xnb
+Content\Textures\petites\cointopgauche.xnb
+Content\Textures\petites\finMurBas.xnb
+Content\Textures\petites\FinMurDroit.xnb
+Content\Textures\petites\FinMurGauche.xnb
+Content\Textures\petites\FinMurHaut.xnb
+Content\Textures\petites\fondNoir.xnb
+Content\Textures\petites\herbe.xnb
+Content\Textures\petites\herbedeco.xnb
+Content\Textures\petites\herbeFoncee.xnb
+Content\Textures\petites\herbeH.xnb
+Content\Textures\petites\piedMurBois.xnb
+Content\Textures\petites\tapisRougeBC.xnb
+Content\Textures\petites\terre.xnb
+Content\Textures\ponts\pont1.xnb
+Content\Textures\ponts\pont11.xnb
+Content\Textures\ponts\pont12.xnb
+Content\Textures\ponts\pont2.xnb
+Content\Textures\ponts\pont21.xnb
+Content\Textures\ponts\pont22.xnb
+Content\Textures\tableMoyenne\tableMoyenne.xnb
+Content\Textures\tableMoyenne\tableMoyenne1.xnb
+Content\Textures\tableMoyenne\tableMoyenne2.xnb
+Content\Textures\tableMoyenne\tableMoyenne3.xnb
+Content\Textures\tableMoyenne\tableMoyenne4.xnb
+Content\ScoresTex.xnb
+Content\Textures\petites\eau.xnb
+Content\Textures\ponts\pont23.xnb
+Content\Textures\ponts\pont24.xnb
+Content\Textures\ponts\pont25.xnb
+Content\Textures\ponts\pont26.xnb
+Content\Textures\ponts\pont27.xnb
+Content\Textures\ponts\pont28.xnb
+Content\Feuilles de sprites\Boss.xnb
+Content\Feuilles de sprites\Garde.xnb
+Content\Feuilles de sprites\Hero1.xnb
+Content\Feuilles de sprites\Hero2.xnb
+Content\Feuilles de sprites\Patrouilleur.xnb
+Content\Feuilles de sprites\Patrouilleur_a_cheval.xnb
+Content\Feuilles de sprites\statue_dragon.xnb
+Content\Menu Editeur de Maps\ascenseur.xnb
+Content\Menu Editeur de Maps\bonusHadoken.xnb
+Content\Menu Editeur de Maps\bonusShuriken.xnb
+Content\Menu Editeur de Maps\gardeMort.xnb
+Content\Menu Editeur de Maps\origine_boss.xnb
+Content\Menu Editeur de Maps\origine_garde.xnb
+Content\Menu Editeur de Maps\origine_hero1.xnb
+Content\Menu Editeur de Maps\origine_hero2.xnb
+Content\Menu Editeur de Maps\origine_patrouilleur.xnb
+Content\Menu Editeur de Maps\origine_patrouilleur_a_cheval.xnb
+Content\Menu Editeur de Maps\origine_statue.xnb
+Content\Menu Editeur de Maps\pied.xnb
+Content\Menu Editeur de Maps\patrouilleurAChevalMort.xnb
+Content\Textures\bibli\bibli.xnb
+Content\Textures\bibli\bibli1.xnb
+Content\Textures\bibli\bibli2.xnb
+Content\Textures\canape\canape.xnb
+Content\Textures\canape\canape1.xnb
+Content\Textures\canape\canape2.xnb
+Content\Textures\canape\canape3.xnb
+Content\Textures\canape\canape4.xnb
+Content\Textures\canape\canape5.xnb
+Content\Textures\canape\canape6.xnb
+Content\Textures\canape\canapeRalonge.xnb
+Content\Textures\canape\canapeRalonge1.xnb
+Content\Textures\canape\canapeRalonge2.xnb
+Content\Textures\canape\canapeRalonge3.xnb
+Content\Textures\canape\canapeRalonge4.xnb
+Content\Textures\fenetre\fenetre.xnb
+Content\Textures\fenetre\fenetre1.xnb
+Content\Textures\fenetre\fenetre2.xnb
+Content\Textures\fenetre\fenetre3.xnb
+Content\Textures\fenetre\fenetre4.xnb
+Content\Textures\fenetre\portefenetre.xnb
+Content\Textures\fenetre\portefenetre1.xnb
+Content\Textures\fenetre\portefenetre2.xnb
+Content\Textures\fenetre\portefenetre3.xnb
+Content\Textures\fenetre\portefenetre4.xnb
+Content\Textures\fenetre\portefenetre5.xnb
+Content\Textures\fenetre\portefenetre6.xnb
+Content\Textures\grdsiege\grdsiege.xnb
+Content\Textures\grdsiege\grdsiege1.xnb
+Content\Textures\grdsiege\grdsiege2.xnb
+Content\Textures\grdsiege\grdsiege3.xnb
+Content\Textures\grdsiege\grdsiege4.xnb
+Content\Textures\grdsiege\grdsiege5.xnb
+Content\Textures\grdsiege\grdsiege6.xnb
+Content\Textures\pillier\pillier.xnb
+Content\Textures\pillier\pillier1.xnb
+Content\Textures\pillier\pillier2.xnb
+Content\Textures\pillier\pillier3.xnb
+Content\Textures\pillier\pillier4.xnb
+Content\Textures\porte\porte.xnb
+Content\Textures\porte\porte1.xnb
+Content\Textures\porte\porte2.xnb
+Content\Textures\porte\porte3.xnb
+Content\Textures\porte\porte4.xnb
+Content\Textures\rocher\rocher.xnb
+Content\Textures\rocher\rocher1.xnb
+Content\Textures\rocher\rocher2.xnb
+Content\Textures\rocher\rocher3.xnb
+Content\Textures\rocher\rocher4.xnb
+Content\Bas fond.xnb
+Content\barre de vitesse.xnb
+Content\Menu Editeur de Maps\Boss mort.xnb
+Content\Menu Editeur de Maps\Patrouilleur mort.xnb
+Content\Particules\explosion.xnb
+Content\Particules\smoke.xnb
+Content\Barre infos\shuriken barre.xnb
+Content\Barre infos\hadoken barre.xnb
+Content\Barre infos\boule de feu barre.xnb
+Content\Barre infos\fumigene barre.xnb
+Content\CheckPoint.xnb
+Content\Sons\hadokenobt.xnb
+Content\Sons\Bruitage des statues.xnb
+Content\Sons\Bruitage boss touche.xnb
+Content\Sons\Bruitage cheval.xnb
+Content\Sons\Bruitage patrouilleur.xnb
+Content\Sons\CheckPoint.xnb
+Content\Cinématique\Cinematique.xnb
+Content\Cinématique\Cinematique.wmv
 Content\Sons\Ambiance sonore.xgs
 Content\Sons\Wave Bank.xwb
 Content\Sons\Sound Bank.xsb
