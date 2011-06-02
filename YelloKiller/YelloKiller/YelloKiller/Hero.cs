@@ -24,7 +24,11 @@ namespace YelloKiller
         Texture2D flamme, textureShuriken, textureHadoken, textureBouleDeFeu, textureFumigene;
         Rectangle rectangle;
         float vitesseAnimation, index, tempsCourir;
-        int maxIndex, nombreShuriken = 25, nombreHadoken = 5, nombreFumigene = 10, nombre_ball = 5, vitesseSprite;
+        public int NombreShuriken { get; set; }
+        public int NombreHadoken { get; set; }
+        public int NombreFumigene { get; set; }
+        public int NombreBall { get; set; }
+        int maxIndex, vitesseSprite;
         public byte NumeroHero { get; private set; }
         public bool ishero;
         bool animation_sabre;
@@ -63,6 +67,10 @@ namespace YelloKiller
             this.changer_arme = changer_arme;
             this.tirer = tirer;
             this.courir = courir;
+            NombreShuriken = 25;
+            NombreHadoken = 5;
+            NombreFumigene = 10;
+            NombreBall = 5;
         }
 
         public int Distance_Hero_Mur(Carte carte)
@@ -187,22 +195,22 @@ namespace YelloKiller
             switch (currentState)
             {
                 case State.state_hadoken:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && NumeroHero == 1)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && NombreHadoken > 0 && NumeroHero == 1)
                     {
                         GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
-                            nombreHadoken--;
+                            NombreHadoken--;
                             particule.UpdateExplosions_hero(this);
                             AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreHadoken > 0 && NumeroHero == 2)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && NombreHadoken > 0 && NumeroHero == 2)
                     {
                         GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
-                            nombreHadoken--;
+                            NombreHadoken--;
                             particule.UpdateExplosions_hero(this);
                             AudioEngine.SoundBank.PlayCue("hadoken");
                         }
@@ -210,22 +218,22 @@ namespace YelloKiller
                     break;
 
                 case State.state_ball:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && NumeroHero == 1)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && NombreBall > 0 && NumeroHero == 1)
                     {
                         GameplayScreen.Enable_Timer_Hero1 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
-                            nombre_ball--;
+                            NombreBall--;
                             particule.UpdateBall(this);
                             AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombre_ball > 0 && NumeroHero == 2)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && NombreBall > 0 && NumeroHero == 2)
                     {
                         GameplayScreen.Enable_Timer_Hero2 = true; // je lance le timer                       
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
-                            nombre_ball--;
+                            NombreBall--;
                             particule.UpdateBall(this);
                             AudioEngine.SoundBank.PlayCue("hadoken");
                         }
@@ -233,17 +241,17 @@ namespace YelloKiller
                     break;
 
                 case State.state_fume:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreFumigene > 0)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && NombreFumigene > 0)
                     {
-                        nombreFumigene--;
+                        NombreFumigene--;
                         particule.UpdateFumigene(this);
                     }
                     break;
 
                 case State.state_shuriken:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && nombreShuriken > 0)
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer()) && NombreShuriken > 0)
                     {
-                        nombreShuriken--;
+                        NombreShuriken--;
                         ishero = true;
                         _shuriken.Add(new Shuriken(position, this, content));
                         AudioEngine.SoundBank.PlayCue("shuriken");
@@ -498,22 +506,22 @@ namespace YelloKiller
                     case State.state_hadoken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureHadoken, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + NombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                     case State.state_ball:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureBouleDeFeu, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "x" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + NombreBall.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                     case State.state_fume:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureFumigene, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + NombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                     case State.state_shuriken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + NombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 50), Color.DarkBlue);
                         break;
                 }
 
@@ -527,22 +535,22 @@ namespace YelloKiller
 
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureHadoken, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 80), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + NombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                     case State.state_ball:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureBouleDeFeu, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 80), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "x" + nombre_ball.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + NombreBall.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                     case State.state_fume:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureFumigene, new Vector2(110, Taille_Ecran.HAUTEUR_ECRAN - 80), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + NombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                     case State.state_shuriken:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(10, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.White);
-                        spriteBatch.DrawString(ScreenManager.font, "x" + nombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, "x" + NombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 75), Color.DarkBlue);
                         break;
                 }
 
@@ -568,21 +576,9 @@ namespace YelloKiller
 
         public bool Regarde_Gauche { get; set; }
 
-        public int NombreShurikens
-        {
-            get { return nombreShuriken; }
-            set { nombreShuriken = value; }
-        }
-
-        public int NombreHadokens
-        {
-            get { return nombreHadoken; }
-            set { nombreHadoken = value; }
-        }
-
         public void SauvegarderCheckPoint(ref StreamWriter file)
         {
-            file.WriteLine(X.ToString() + "," + Y.ToString() + "," + nombreShuriken.ToString() + "," + nombreHadoken.ToString() + "," + nombre_ball.ToString() + "," + nombreFumigene.ToString());
+            file.WriteLine(X.ToString() + "," + Y.ToString() + "," + NombreShuriken.ToString() + "," + NombreHadoken.ToString() + "," + NombreBall.ToString() + "," + NombreFumigene.ToString());
         }
 
         public void ChargerCheckPoint(ref StreamReader file)
@@ -597,10 +593,10 @@ namespace YelloKiller
             Y = Convert.ToInt32(dessert[1]);
 
             position = new Vector2(28 * X + 5, 28 * Y + 1);
-            nombreShuriken = Convert.ToInt32(dessert[2]);
-            nombreHadoken = Convert.ToInt32(dessert[3]);
-            nombre_ball = Convert.ToInt32(dessert[4]);
-            nombreFumigene = Convert.ToInt32(dessert[5]);
+            NombreShuriken = Convert.ToInt32(dessert[2]);
+            NombreHadoken = Convert.ToInt32(dessert[3]);
+            NombreBall = Convert.ToInt32(dessert[4]);
+            NombreFumigene = Convert.ToInt32(dessert[5]);
 
             positionDesiree = new Vector2(28 * X + 5, 28 * Y + 1);
         }
