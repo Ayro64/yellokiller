@@ -2,22 +2,13 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>ascenseur.png</Source>
-      <Name>ascenseur</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ascenseur.xnb</Output>
-      <Time>2011-04-14T02:06:07.8063448+02:00</Time>
-    </Item>
-    <Item>
       <Source>background.jpg</Source>
       <Name>background</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2011-04-14T02:06:07.6673369+02:00</Time>
+      <Time>2011-06-02T17:15:28.7976428+02:00</Time>
     </Item>
     <Item>
       <Source>blank.png</Source>
@@ -26,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\blank.xnb</Output>
-      <Time>2011-04-14T02:06:07.791344+02:00</Time>
+      <Time>2011-06-02T17:15:28.836645+02:00</Time>
     </Item>
     <Item>
       <Source>Game Over.png</Source>
@@ -35,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Game Over.xnb</Output>
-      <Time>2011-04-14T02:06:07.5973329+02:00</Time>
+      <Time>2011-06-02T17:15:28.74864+02:00</Time>
     </Item>
     <Item>
       <Source>gradient.png</Source>
@@ -44,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\gradient.xnb</Output>
-      <Time>2011-04-14T02:06:07.5553305+02:00</Time>
+      <Time>2011-06-02T17:15:28.7396395+02:00</Time>
     </Item>
     <Item>
       <Source>LevelSelection.jpg</Source>
@@ -53,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\LevelSelection.xnb</Output>
-      <Time>2011-04-14T02:06:07.6543361+02:00</Time>
+      <Time>2011-06-02T17:15:28.7726414+02:00</Time>
     </Item>
     <Item>
       <Source>shuriken.png</Source>
@@ -62,52 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\shuriken.xnb</Output>
-      <Time>2011-04-14T02:06:07.5093278+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\arbre.png</Source>
-      <Name>Textures\arbre</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre.xnb</Output>
-      <Time>2011-04-14T02:06:05.4252086+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\arbre2.png</Source>
-      <Name>Textures\arbre2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre2.xnb</Output>
-      <Time>2011-04-14T02:06:04.7191683+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\bois.png</Source>
-      <Name>Textures\bois</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\bois.xnb</Output>
-      <Time>2011-04-14T02:06:04.6121621+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\BoisCarre.png</Source>
-      <Name>Textures\boisCarre</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\boisCarre.xnb</Output>
-      <Time>2011-04-14T02:06:04.6891665+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\buissonSurHerbe.png</Source>
-      <Name>Textures\buissonSurHerbe</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\buissonSurHerbe.xnb</Output>
-      <Time>2011-04-14T02:06:04.854176+02:00</Time>
+      <Time>2011-06-02T17:15:28.8446455+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\fond.png</Source>
@@ -116,250 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fond.xnb</Output>
-      <Time>2011-04-14T02:06:05.1931954+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\fondNoir.png</Source>
-      <Name>Textures\fondNoir</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fondNoir.xnb</Output>
-      <Time>2011-04-14T02:06:04.7461698+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\herbe.png</Source>
-      <Name>Textures\herbe</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe.xnb</Output>
-      <Time>2011-04-14T02:06:05.116191+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\herbeFoncee.png</Source>
-      <Name>Textures\herbeFoncee</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbeFoncee.xnb</Output>
-      <Time>2011-04-14T02:06:04.6511644+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\murBlanc.png</Source>
-      <Name>Textures\murBlanc</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\murBlanc.xnb</Output>
-      <Time>2011-04-14T02:06:04.6381636+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\piedDeMurBois.png</Source>
-      <Name>Textures\piedDeMurBois</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\piedDeMurBois.xnb</Output>
-      <Time>2011-04-14T02:06:05.4382094+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\tableauMurBlanc.png</Source>
-      <Name>Textures\tableauMurBlanc</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableauMurBlanc.xnb</Output>
-      <Time>2011-04-14T02:06:04.6241628+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\tapisRougeBC.png</Source>
-      <Name>Textures\tapisRougeBC</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tapisRougeBC.xnb</Output>
-      <Time>2011-04-14T02:06:05.2241971+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\terre.png</Source>
-      <Name>Textures\terre</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\terre.xnb</Output>
-      <Time>2011-04-14T02:06:04.8121736+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\carlageNoir.png</Source>
-      <Name>Textures\carlageNoir</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\carlageNoir.xnb</Output>
-      <Time>2011-04-14T02:06:05.1291917+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\FinMurDroite.png</Source>
-      <Name>Textures\FinMurDroite</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurDroite.xnb</Output>
-      <Time>2011-04-14T02:06:04.6631651+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\FinMurFN.png</Source>
-      <Name>Textures\FinMurFN</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurFN.xnb</Output>
-      <Time>2011-04-14T02:06:05.1031902+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\FinMurGauche.png</Source>
-      <Name>Textures\FinMurGauche</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\FinMurGauche.xnb</Output>
-      <Time>2011-04-14T02:06:04.732169+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Garde.png</Source>
-      <Name>Garde</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Garde.xnb</Output>
-      <Time>2011-04-14T02:06:07.7623423+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Hero1.png</Source>
-      <Name>Hero1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero1.xnb</Output>
-      <Time>2011-04-14T02:06:07.7073392+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Hero2.png</Source>
-      <Name>Hero2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Hero2.xnb</Output>
-      <Time>2011-04-14T02:06:07.72134+02:00</Time>
-    </Item>
-    <Item>
-      <Source>origine_garde.png</Source>
-      <Name>origine_garde</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_garde.xnb</Output>
-      <Time>2011-04-14T02:06:07.5703313+02:00</Time>
-    </Item>
-    <Item>
-      <Source>origine_hero1.png</Source>
-      <Name>origine_hero1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero1.xnb</Output>
-      <Time>2011-04-14T02:06:07.5223286+02:00</Time>
-    </Item>
-    <Item>
-      <Source>origine_hero2.png</Source>
-      <Name>origine_hero2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_hero2.xnb</Output>
-      <Time>2011-04-14T02:06:07.5353293+02:00</Time>
-    </Item>
-    <Item>
-      <Source>origine_patrouilleur.png</Source>
-      <Name>origine_patrouilleur</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur.xnb</Output>
-      <Time>2011-04-14T02:06:07.390321+02:00</Time>
-    </Item>
-    <Item>
-      <Source>origine_patrouilleur_a_cheval.png</Source>
-      <Name>origine_patrouilleur_a_cheval</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_patrouilleur_a_cheval.xnb</Output>
-      <Time>2011-04-14T02:06:07.4803262+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Patrouilleur.png</Source>
-      <Name>Patrouilleur</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur.xnb</Output>
-      <Time>2011-04-14T02:06:07.494327+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Patrouilleur_a_cheval.png</Source>
-      <Name>Patrouilleur_a_cheval</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Patrouilleur_a_cheval.xnb</Output>
-      <Time>2011-04-14T02:06:07.6413354+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Commode.png</Source>
-      <Name>Textures\Commode</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Commode.xnb</Output>
-      <Time>2011-04-14T02:06:05.0901895+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\finMurBas.png</Source>
-      <Name>Textures\finMurBas</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\finMurBas.xnb</Output>
-      <Time>2011-04-14T02:06:05.2091963+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\grandeTable.png</Source>
-      <Name>Textures\grandeTable</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable.xnb</Output>
-      <Time>2011-04-14T02:06:04.6751657+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\lit.png</Source>
-      <Name>Textures\lit</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit.xnb</Output>
-      <Time>2011-04-14T02:06:05.4122079+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\tableMoyenne.png</Source>
-      <Name>Textures\tableMoyenne</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne.xnb</Output>
-      <Time>2011-04-14T02:06:04.8261744+02:00</Time>
+      <Time>2011-06-02T17:03:49.2108164+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\Garde.png</Source>
@@ -368,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Garde.xnb</Output>
-      <Time>2011-04-14T02:06:04.8401752+02:00</Time>
+      <Time>2011-06-02T17:03:49.1908164+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\Patrouilleur.png</Source>
@@ -377,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur.xnb</Output>
-      <Time>2011-04-14T02:06:05.239198+02:00</Time>
+      <Time>2011-06-02T17:03:49.2208164+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\Patrouilleur_a_cheval.png</Source>
@@ -386,25 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Patrouilleur_a_cheval.xnb</Output>
-      <Time>2011-04-14T02:06:04.7051675+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Boss.png</Source>
-      <Name>Boss</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Boss.xnb</Output>
-      <Time>2011-04-14T02:06:07.6103336+02:00</Time>
-    </Item>
-    <Item>
-      <Source>origine_boss.png</Source>
-      <Name>origine_boss</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_boss.xnb</Output>
-      <Time>2011-04-14T02:06:07.4653253+02:00</Time>
+      <Time>2011-06-02T17:03:49.1908164+02:00</Time>
     </Item>
     <Item>
       <Source>WinTex.jpg</Source>
@@ -413,34 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\WinTex.xnb</Output>
-      <Time>2011-04-14T02:06:07.4193227+02:00</Time>
-    </Item>
-    <Item>
-      <Source>flamme.png</Source>
-      <Name>flamme</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\flamme.xnb</Output>
-      <Time>2011-04-14T02:06:07.5843321+02:00</Time>
-    </Item>
-    <Item>
-      <Source>explosion.png</Source>
-      <Name>explosion</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\explosion.xnb</Output>
-      <Time>2011-04-14T02:06:07.4323234+02:00</Time>
-    </Item>
-    <Item>
-      <Source>smoke.bmp</Source>
-      <Name>smoke</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\smoke.xnb</Output>
-      <Time>2011-04-14T02:06:07.6273346+02:00</Time>
+      <Time>2011-06-02T17:15:28.7806418+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\cri.wav</Source>
@@ -449,7 +107,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\cri.xnb</Output>
-      <Time>2011-04-14T02:06:01.6859948+02:00</Time>
+      <Time>2011-06-02T17:03:42.0764063+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\CriMortHero.wav</Source>
@@ -458,7 +116,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\CriMortHero.xnb</Output>
-      <Time>2011-04-14T02:06:01.6989955+02:00</Time>
+      <Time>2011-06-02T17:03:41.889206+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\menuBouge.wav</Source>
@@ -467,7 +125,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\menuBouge.xnb</Output>
-      <Time>2011-04-14T02:06:01.4909836+02:00</Time>
+      <Time>2011-06-02T17:03:41.8268059+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\pasBois.wav</Source>
@@ -476,7 +134,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\pasBois.xnb</Output>
-      <Time>2011-04-14T02:06:01.8100019+02:00</Time>
+      <Time>2011-06-02T17:03:41.904806+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\pasGravier.wav</Source>
@@ -485,7 +143,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\pasGravier.xnb</Output>
-      <Time>2011-04-14T02:06:01.4139792+02:00</Time>
+      <Time>2011-06-02T17:03:42.0140062+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\shuriken.wav</Source>
@@ -494,7 +152,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\shuriken.xnb</Output>
-      <Time>2011-04-14T02:06:01.6589932+02:00</Time>
+      <Time>2011-06-02T17:03:41.8424059+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\shurikenCollision.wav</Source>
@@ -503,7 +161,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\shurikenCollision.xnb</Output>
-      <Time>2011-04-14T02:06:01.4759828+02:00</Time>
+      <Time>2011-06-02T17:03:42.0296062+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\sonMenuBoutton.wav</Source>
@@ -512,7 +170,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\sonMenuBoutton.xnb</Output>
-      <Time>2011-04-14T02:06:01.7880006+02:00</Time>
+      <Time>2011-06-02T17:03:41.904806+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\11 Fanfare.wav</Source>
@@ -521,7 +179,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\11 Fanfare.xnb</Output>
-      <Time>2011-04-14T02:06:01.4609819+02:00</Time>
+      <Time>2011-06-02T17:03:42.0452062+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\metalgear.wav</Source>
@@ -530,7 +188,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\metalgear.xnb</Output>
-      <Time>2011-04-14T02:06:01.8770057+02:00</Time>
+      <Time>2011-06-02T17:03:41.936006+02:00</Time>
     </Item>
     <Item>
       <Source>Sons\hadoken.wav</Source>
@@ -539,7 +197,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\hadoken.xnb</Output>
-      <Time>2011-04-14T02:06:01.672994+02:00</Time>
+      <Time>2011-06-02T17:03:42.0608063+02:00</Time>
     </Item>
     <Item>
       <Source>courier.spritefont</Source>
@@ -548,7 +206,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\courier.xnb</Output>
-      <Time>2011-04-14T02:06:07.7303405+02:00</Time>
+      <Time>2011-06-02T17:15:28.8206441+02:00</Time>
     </Item>
     <Item>
       <Source>ScoresScrollFil.png</Source>
@@ -557,34 +215,2093 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ScoresScrollFil.xnb</Output>
-      <Time>2011-04-14T02:06:07.4043218+02:00</Time>
+      <Time>2011-06-02T17:15:28.7646409+02:00</Time>
     </Item>
     <Item>
-      <Source>statue_dragon.png</Source>
-      <Name>statue_dragon</Name>
+      <Source>Kane.png</Source>
+      <Name>Kane</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\statue_dragon.xnb</Output>
-      <Time>2011-04-14T02:06:07.3733201+02:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Kane.xnb</Output>
+      <Time>2011-06-02T17:15:28.8146438+02:00</Time>
     </Item>
     <Item>
-      <Source>origine_statue.png</Source>
-      <Name>origine_statue</Name>
+      <Source>Textures\arbre\arbre.png</Source>
+      <Name>Textures\arbre\arbre</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\origine_statue.xnb</Output>
-      <Time>2011-04-14T02:06:07.7433412+02:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre\arbre.xnb</Output>
+      <Time>2011-06-02T17:03:46.3108124+02:00</Time>
     </Item>
     <Item>
-      <Source>pied.jpg</Source>
-      <Name>pied</Name>
+      <Source>Textures\arbre\arbre1.png</Source>
+      <Name>Textures\arbre\arbre1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\pied.xnb</Output>
-      <Time>2011-04-14T02:06:07.6933384+02:00</Time>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre\arbre1.xnb</Output>
+      <Time>2011-06-02T17:03:46.070812+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\arbre\arbre2.png</Source>
+      <Name>Textures\arbre\arbre2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre\arbre2.xnb</Output>
+      <Time>2011-06-02T17:03:46.080812+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\arbre\arbre3.png</Source>
+      <Name>Textures\arbre\arbre3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre\arbre3.xnb</Output>
+      <Time>2011-06-02T17:03:46.080812+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\arbre\arbre4.png</Source>
+      <Name>Textures\arbre\arbre4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre\arbre4.xnb</Output>
+      <Time>2011-06-02T17:03:46.090812+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\arbre\arbre5.png</Source>
+      <Name>Textures\arbre\arbre5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre\arbre5.xnb</Output>
+      <Time>2011-06-02T17:03:46.1008121+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\arbre\arbre6.png</Source>
+      <Name>Textures\arbre\arbre6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\arbre\arbre6.xnb</Output>
+      <Time>2011-06-02T17:03:46.1108121+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\commode\commode.png</Source>
+      <Name>Textures\commode\commode</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\commode\commode.xnb</Output>
+      <Time>2011-06-02T17:03:43.1408079+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\commode\commode1.png</Source>
+      <Name>Textures\commode\commode1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\commode\commode1.xnb</Output>
+      <Time>2011-06-02T17:03:43.1408079+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\commode\commode2.png</Source>
+      <Name>Textures\commode\commode2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\commode\commode2.xnb</Output>
+      <Time>2011-06-02T17:03:43.1508079+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\commode\commode3.png</Source>
+      <Name>Textures\commode\commode3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\commode\commode3.xnb</Output>
+      <Time>2011-06-02T17:03:43.1608079+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\commode\commode4.png</Source>
+      <Name>Textures\commode\commode4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\commode\commode4.xnb</Output>
+      <Time>2011-06-02T17:03:43.1608079+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco.xnb</Output>
+      <Time>2011-06-02T17:03:47.8608145+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco1.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco1.xnb</Output>
+      <Time>2011-06-02T17:03:47.8708145+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco2.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco2.xnb</Output>
+      <Time>2011-06-02T17:03:47.8808146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco3.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco3.xnb</Output>
+      <Time>2011-06-02T17:03:47.8908146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco4.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco4.xnb</Output>
+      <Time>2011-06-02T17:03:47.9008146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco5.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco5.xnb</Output>
+      <Time>2011-06-02T17:03:47.9108146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco6.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco6.xnb</Output>
+      <Time>2011-06-02T17:03:47.9108146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco7.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco7.xnb</Output>
+      <Time>2011-06-02T17:03:47.9208146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco8.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco8.xnb</Output>
+      <Time>2011-06-02T17:03:47.9208146+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTableDeco\grandeTableDeco9.png</Source>
+      <Name>Textures\grandeTableDeco\grandeTableDeco9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTableDeco\grandeTableDeco9.xnb</Output>
+      <Time>2011-06-02T17:03:47.8608145+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable.png</Source>
+      <Name>Textures\grandeTable\grandeTable</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable.xnb</Output>
+      <Time>2011-06-02T17:03:48.7008157+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable1.png</Source>
+      <Name>Textures\grandeTable\grandeTable1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable1.xnb</Output>
+      <Time>2011-06-02T17:03:48.7108157+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable2.png</Source>
+      <Name>Textures\grandeTable\grandeTable2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable2.xnb</Output>
+      <Time>2011-06-02T17:03:48.7208157+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable3.png</Source>
+      <Name>Textures\grandeTable\grandeTable3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable3.xnb</Output>
+      <Time>2011-06-02T17:03:48.7208157+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable4.png</Source>
+      <Name>Textures\grandeTable\grandeTable4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable4.xnb</Output>
+      <Time>2011-06-02T17:03:48.6508156+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable5.png</Source>
+      <Name>Textures\grandeTable\grandeTable5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable5.xnb</Output>
+      <Time>2011-06-02T17:03:48.6608156+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable6.png</Source>
+      <Name>Textures\grandeTable\grandeTable6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable6.xnb</Output>
+      <Time>2011-06-02T17:03:48.6608156+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable7.png</Source>
+      <Name>Textures\grandeTable\grandeTable7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable7.xnb</Output>
+      <Time>2011-06-02T17:03:48.6708157+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable8.png</Source>
+      <Name>Textures\grandeTable\grandeTable8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable8.xnb</Output>
+      <Time>2011-06-02T17:03:48.6808157+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grandeTable\grandeTable9.png</Source>
+      <Name>Textures\grandeTable\grandeTable9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grandeTable\grandeTable9.xnb</Output>
+      <Time>2011-06-02T17:03:48.7008157+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\herbe\nvlherbe.png</Source>
+      <Name>Textures\herbe\nvlherbe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe\nvlherbe.xnb</Output>
+      <Time>2011-06-02T17:03:43.2908081+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\herbe\nvlherbe1.png</Source>
+      <Name>Textures\herbe\nvlherbe1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe\nvlherbe1.xnb</Output>
+      <Time>2011-06-02T17:03:43.2908081+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\herbe\nvlherbe2.png</Source>
+      <Name>Textures\herbe\nvlherbe2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe\nvlherbe2.xnb</Output>
+      <Time>2011-06-02T17:03:43.3008081+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\herbe\nvlherbe3.png</Source>
+      <Name>Textures\herbe\nvlherbe3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe\nvlherbe3.xnb</Output>
+      <Time>2011-06-02T17:03:43.3108082+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\herbe\nvlherbe4.png</Source>
+      <Name>Textures\herbe\nvlherbe4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\herbe\nvlherbe4.xnb</Output>
+      <Time>2011-06-02T17:03:43.3108082+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Invisible.png</Source>
+      <Name>Textures\Invisible</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\Invisible.xnb</Output>
+      <Time>2011-06-02T17:03:49.2008164+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lit\lit.png</Source>
+      <Name>Textures\lit\lit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit\lit.xnb</Output>
+      <Time>2011-06-02T17:03:43.6608086+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lit\lit1.png</Source>
+      <Name>Textures\lit\lit1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit\lit1.xnb</Output>
+      <Time>2011-06-02T17:03:43.6608086+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lit\lit2.png</Source>
+      <Name>Textures\lit\lit2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit\lit2.xnb</Output>
+      <Time>2011-06-02T17:03:43.6708087+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lit\lit3.png</Source>
+      <Name>Textures\lit\lit3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit\lit3.xnb</Output>
+      <Time>2011-06-02T17:03:43.6808087+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\lit\lit4.png</Source>
+      <Name>Textures\lit\lit4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\lit\lit4.xnb</Output>
+      <Time>2011-06-02T17:03:43.6508086+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\MurBlancdrap\MurBlancdrap.png</Source>
+      <Name>Textures\mur\MurBlancdrap\MurBlancdrap</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\MurBlancdrap\MurBlancdrap.xnb</Output>
+      <Time>2011-06-02T17:03:47.5808141+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\MurBlancdrap\MurBlancdrap1.png</Source>
+      <Name>Textures\mur\MurBlancdrap\MurBlancdrap1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\MurBlancdrap\MurBlancdrap1.xnb</Output>
+      <Time>2011-06-02T17:03:47.6108142+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\MurBlancdrap\MurBlancdrap2.png</Source>
+      <Name>Textures\mur\MurBlancdrap\MurBlancdrap2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\MurBlancdrap\MurBlancdrap2.xnb</Output>
+      <Time>2011-06-02T17:03:47.5608141+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\MurBlancdrap\MurBlancdrap3.png</Source>
+      <Name>Textures\mur\MurBlancdrap\MurBlancdrap3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\MurBlancdrap\MurBlancdrap3.xnb</Output>
+      <Time>2011-06-02T17:03:47.5708141+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\MurBlancdrap\MurBlancdrap4.png</Source>
+      <Name>Textures\mur\MurBlancdrap\MurBlancdrap4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\MurBlancdrap\MurBlancdrap4.xnb</Output>
+      <Time>2011-06-02T17:03:47.5808141+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblancepee\MurBlancEpee.png</Source>
+      <Name>Textures\mur\murblancepee\MurBlancEpee</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblancepee\MurBlancEpee.xnb</Output>
+      <Time>2011-06-02T17:03:47.1108135+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblancepee\MurBlancEpee1.png</Source>
+      <Name>Textures\mur\murblancepee\MurBlancEpee1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblancepee\MurBlancEpee1.xnb</Output>
+      <Time>2011-06-02T17:03:47.1108135+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblancepee\MurBlancEpee2.png</Source>
+      <Name>Textures\mur\murblancepee\MurBlancEpee2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblancepee\MurBlancEpee2.xnb</Output>
+      <Time>2011-06-02T17:03:47.1208135+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblancepee\MurBlancEpee3.png</Source>
+      <Name>Textures\mur\murblancepee\MurBlancEpee3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblancepee\MurBlancEpee3.xnb</Output>
+      <Time>2011-06-02T17:03:47.1308135+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblancepee\MurBlancEpee4.png</Source>
+      <Name>Textures\mur\murblancepee\MurBlancEpee4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblancepee\MurBlancEpee4.xnb</Output>
+      <Time>2011-06-02T17:03:47.1308135+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblanctableau\MurBlanctableau.png</Source>
+      <Name>Textures\mur\murblanctableau\MurBlanctableau</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblanctableau\MurBlanctableau.xnb</Output>
+      <Time>2011-06-02T17:03:46.6308128+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblanctableau\MurBlanctableau1.png</Source>
+      <Name>Textures\mur\murblanctableau\MurBlanctableau1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblanctableau\MurBlanctableau1.xnb</Output>
+      <Time>2011-06-02T17:03:46.6308128+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblanctableau\MurBlanctableau2.png</Source>
+      <Name>Textures\mur\murblanctableau\MurBlanctableau2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblanctableau\MurBlanctableau2.xnb</Output>
+      <Time>2011-06-02T17:03:46.6408128+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblanctableau\MurBlanctableau3.png</Source>
+      <Name>Textures\mur\murblanctableau\MurBlanctableau3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblanctableau\MurBlanctableau3.xnb</Output>
+      <Time>2011-06-02T17:03:46.6608128+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murblanctableau\MurBlanctableau4.png</Source>
+      <Name>Textures\mur\murblanctableau\MurBlanctableau4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murblanctableau\MurBlanctableau4.xnb</Output>
+      <Time>2011-06-02T17:03:46.6808129+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murBlanc\murBlanc.png</Source>
+      <Name>Textures\mur\murBlanc\murBlanc</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murBlanc\murBlanc.xnb</Output>
+      <Time>2011-06-02T17:03:47.4408139+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murBlanc\murBlanc1.png</Source>
+      <Name>Textures\mur\murBlanc\murBlanc1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murBlanc\murBlanc1.xnb</Output>
+      <Time>2011-06-02T17:03:47.4508139+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murBlanc\murBlanc2.png</Source>
+      <Name>Textures\mur\murBlanc\murBlanc2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murBlanc\murBlanc2.xnb</Output>
+      <Time>2011-06-02T17:03:47.460814+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murBlanc\murBlanc3.png</Source>
+      <Name>Textures\mur\murBlanc\murBlanc3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murBlanc\murBlanc3.xnb</Output>
+      <Time>2011-06-02T17:03:47.460814+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murBlanc\murBlanc4.png</Source>
+      <Name>Textures\mur\murBlanc\murBlanc4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murBlanc\murBlanc4.xnb</Output>
+      <Time>2011-06-02T17:03:47.470814+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murepee\murepee.png</Source>
+      <Name>Textures\mur\murepee\murepee</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murepee\murepee.xnb</Output>
+      <Time>2011-06-02T17:03:47.2208136+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murepee\murepee1.png</Source>
+      <Name>Textures\mur\murepee\murepee1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murepee\murepee1.xnb</Output>
+      <Time>2011-06-02T17:03:47.2308136+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murepee\murepee2.png</Source>
+      <Name>Textures\mur\murepee\murepee2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murepee\murepee2.xnb</Output>
+      <Time>2011-06-02T17:03:47.2308136+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murepee\murepee3.png</Source>
+      <Name>Textures\mur\murepee\murepee3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murepee\murepee3.xnb</Output>
+      <Time>2011-06-02T17:03:47.2408137+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murepee\murepee4.png</Source>
+      <Name>Textures\mur\murepee\murepee4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murepee\murepee4.xnb</Output>
+      <Time>2011-06-02T17:03:47.2508137+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murtableau\murtableau.png</Source>
+      <Name>Textures\mur\murtableau\murtableau</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murtableau\murtableau.xnb</Output>
+      <Time>2011-06-02T17:03:46.780813+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murtableau\murtableau1.png</Source>
+      <Name>Textures\mur\murtableau\murtableau1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murtableau\murtableau1.xnb</Output>
+      <Time>2011-06-02T17:03:46.790813+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murtableau\murtableau2.png</Source>
+      <Name>Textures\mur\murtableau\murtableau2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murtableau\murtableau2.xnb</Output>
+      <Time>2011-06-02T17:03:46.790813+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murtableau\murtableau3.png</Source>
+      <Name>Textures\mur\murtableau\murtableau3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murtableau\murtableau3.xnb</Output>
+      <Time>2011-06-02T17:03:46.800813+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\murtableau\murtableau4.png</Source>
+      <Name>Textures\mur\murtableau\murtableau4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\murtableau\murtableau4.xnb</Output>
+      <Time>2011-06-02T17:03:46.8108131+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\mur\mur.png</Source>
+      <Name>Textures\mur\mur\mur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\mur\mur.xnb</Output>
+      <Time>2011-06-02T17:03:47.3308138+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\mur\mur1.png</Source>
+      <Name>Textures\mur\mur\mur1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\mur\mur1.xnb</Output>
+      <Time>2011-06-02T17:03:47.3408138+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\mur\mur2.png</Source>
+      <Name>Textures\mur\mur\mur2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\mur\mur2.xnb</Output>
+      <Time>2011-06-02T17:03:47.3408138+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\mur\mur3.png</Source>
+      <Name>Textures\mur\mur\mur3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\mur\mur3.xnb</Output>
+      <Time>2011-06-02T17:03:47.3508138+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\mur\mur4.png</Source>
+      <Name>Textures\mur\mur\mur4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\mur\mur4.xnb</Output>
+      <Time>2011-06-02T17:03:47.3608138+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\tableauMurBlanc\tableauMurBlanc.png</Source>
+      <Name>Textures\mur\tableauMurBlanc\tableauMurBlanc</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\tableauMurBlanc\tableauMurBlanc.xnb</Output>
+      <Time>2011-06-02T17:03:46.9208132+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\tableauMurBlanc\tableauMurBlanc1.png</Source>
+      <Name>Textures\mur\tableauMurBlanc\tableauMurBlanc1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\tableauMurBlanc\tableauMurBlanc1.xnb</Output>
+      <Time>2011-06-02T17:03:46.9208132+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\tableauMurBlanc\tableauMurBlanc2.png</Source>
+      <Name>Textures\mur\tableauMurBlanc\tableauMurBlanc2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\tableauMurBlanc\tableauMurBlanc2.xnb</Output>
+      <Time>2011-06-02T17:03:46.9308132+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\tableauMurBlanc\tableauMurBlanc3.png</Source>
+      <Name>Textures\mur\tableauMurBlanc\tableauMurBlanc3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\tableauMurBlanc\tableauMurBlanc3.xnb</Output>
+      <Time>2011-06-02T17:03:46.9808133+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mur\tableauMurBlanc\tableauMurBlanc4.png</Source>
+      <Name>Textures\mur\tableauMurBlanc\tableauMurBlanc4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\mur\tableauMurBlanc\tableauMurBlanc4.xnb</Output>
+      <Time>2011-06-02T17:03:47.0208133+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetarbre\parquetarbre.png</Source>
+      <Name>Textures\parquet\parquetarbre\parquetarbre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetarbre\parquetarbre.xnb</Output>
+      <Time>2011-06-02T17:03:42.7208073+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetarbre\parquetarbre1.png</Source>
+      <Name>Textures\parquet\parquetarbre\parquetarbre1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetarbre\parquetarbre1.xnb</Output>
+      <Time>2011-06-02T17:03:42.7208073+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetarbre\parquetarbre2.png</Source>
+      <Name>Textures\parquet\parquetarbre\parquetarbre2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetarbre\parquetarbre2.xnb</Output>
+      <Time>2011-06-02T17:03:42.7308073+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetarbre\parquetarbre3.png</Source>
+      <Name>Textures\parquet\parquetarbre\parquetarbre3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetarbre\parquetarbre3.xnb</Output>
+      <Time>2011-06-02T17:03:42.7308073+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetarbre\parquetarbre4.png</Source>
+      <Name>Textures\parquet\parquetarbre\parquetarbre4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetarbre\parquetarbre4.xnb</Output>
+      <Time>2011-06-02T17:03:42.7708074+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetbuisson\parquetbuisson.png</Source>
+      <Name>Textures\parquet\parquetbuisson\parquetbuisson</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetbuisson\parquetbuisson.xnb</Output>
+      <Time>2011-06-02T17:03:42.500807+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetbuisson\parquetbuisson1.png</Source>
+      <Name>Textures\parquet\parquetbuisson\parquetbuisson1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetbuisson\parquetbuisson1.xnb</Output>
+      <Time>2011-06-02T17:03:42.500807+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetbuisson\parquetbuisson2.png</Source>
+      <Name>Textures\parquet\parquetbuisson\parquetbuisson2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetbuisson\parquetbuisson2.xnb</Output>
+      <Time>2011-06-02T17:03:42.510807+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetbuisson\parquetbuisson3.png</Source>
+      <Name>Textures\parquet\parquetbuisson\parquetbuisson3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetbuisson\parquetbuisson3.xnb</Output>
+      <Time>2011-06-02T17:03:42.5408071+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquetbuisson\parquetbuisson4.png</Source>
+      <Name>Textures\parquet\parquetbuisson\parquetbuisson4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquetbuisson\parquetbuisson4.xnb</Output>
+      <Time>2011-06-02T17:03:42.5808071+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquet\parquet.png</Source>
+      <Name>Textures\parquet\parquet\parquet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquet\parquet.xnb</Output>
+      <Time>2011-06-02T17:03:42.3728068+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquet\parquet1.png</Source>
+      <Name>Textures\parquet\parquet\parquet1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquet\parquet1.xnb</Output>
+      <Time>2011-06-02T17:03:42.3728068+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquet\parquet2.png</Source>
+      <Name>Textures\parquet\parquet\parquet2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquet\parquet2.xnb</Output>
+      <Time>2011-06-02T17:03:42.3728068+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquet\parquet3.png</Source>
+      <Name>Textures\parquet\parquet\parquet3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquet\parquet3.xnb</Output>
+      <Time>2011-06-02T17:03:42.3884068+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\parquet\parquet\parquet4.png</Source>
+      <Name>Textures\parquet\parquet\parquet4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\parquet\parquet\parquet4.xnb</Output>
+      <Time>2011-06-02T17:03:42.3884068+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\bois.png</Source>
+      <Name>Textures\petites\bois</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\bois.xnb</Output>
+      <Time>2011-06-02T17:03:49.0008161+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\boisCarre.png</Source>
+      <Name>Textures\petites\boisCarre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\boisCarre.xnb</Output>
+      <Time>2011-06-02T17:03:49.0408162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\boisdeco.png</Source>
+      <Name>Textures\petites\boisdeco</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\boisdeco.xnb</Output>
+      <Time>2011-06-02T17:03:49.1508163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\buissonSurHerbe.png</Source>
+      <Name>Textures\petites\buissonSurHerbe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\buissonSurHerbe.xnb</Output>
+      <Time>2011-06-02T17:03:49.1208163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\carlageNoir.png</Source>
+      <Name>Textures\petites\carlageNoir</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\carlageNoir.xnb</Output>
+      <Time>2011-06-02T17:03:49.1308163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\carlageNoirdeco.png</Source>
+      <Name>Textures\petites\carlageNoirdeco</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\carlageNoirdeco.xnb</Output>
+      <Time>2011-06-02T17:03:49.1008163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\coinbotdroit.png</Source>
+      <Name>Textures\petites\coinbotdroit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\coinbotdroit.xnb</Output>
+      <Time>2011-06-02T17:03:49.0108161+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\coinbotgauche.png</Source>
+      <Name>Textures\petites\coinbotgauche</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\coinbotgauche.xnb</Output>
+      <Time>2011-06-02T17:03:49.0608162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\cointopdroit.png</Source>
+      <Name>Textures\petites\cointopdroit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\cointopdroit.xnb</Output>
+      <Time>2011-06-02T17:03:49.0708162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\cointopgauche.png</Source>
+      <Name>Textures\petites\cointopgauche</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\cointopgauche.xnb</Output>
+      <Time>2011-06-02T17:03:49.1608163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\finMurBas.png</Source>
+      <Name>Textures\petites\finMurBas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\finMurBas.xnb</Output>
+      <Time>2011-06-02T17:03:49.1408163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\FinMurDroit.png</Source>
+      <Name>Textures\petites\FinMurDroit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\FinMurDroit.xnb</Output>
+      <Time>2011-06-02T17:03:49.0208161+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\FinMurGauche.png</Source>
+      <Name>Textures\petites\FinMurGauche</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\FinMurGauche.xnb</Output>
+      <Time>2011-06-02T17:03:49.0608162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\FinMurHaut.png</Source>
+      <Name>Textures\petites\FinMurHaut</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\FinMurHaut.xnb</Output>
+      <Time>2011-06-02T17:03:49.1108163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\fondNoir.png</Source>
+      <Name>Textures\petites\fondNoir</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\fondNoir.xnb</Output>
+      <Time>2011-06-02T17:03:49.0808162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\herbe.png</Source>
+      <Name>Textures\petites\herbe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\herbe.xnb</Output>
+      <Time>2011-06-02T17:03:49.1208163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\herbedeco.png</Source>
+      <Name>Textures\petites\herbedeco</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\herbedeco.xnb</Output>
+      <Time>2011-06-02T17:03:49.0808162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\herbeFoncee.png</Source>
+      <Name>Textures\petites\herbeFoncee</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\herbeFoncee.xnb</Output>
+      <Time>2011-06-02T17:03:49.0208161+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\herbeH.png</Source>
+      <Name>Textures\petites\herbeH</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\herbeH.xnb</Output>
+      <Time>2011-06-02T17:03:49.0008161+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\piedMurBois.png</Source>
+      <Name>Textures\petites\piedMurBois</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\piedMurBois.xnb</Output>
+      <Time>2011-06-02T17:03:49.1008163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\tapisRougeBC.png</Source>
+      <Name>Textures\petites\tapisRougeBC</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\tapisRougeBC.xnb</Output>
+      <Time>2011-06-02T17:03:49.1408163+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\terre.png</Source>
+      <Name>Textures\petites\terre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\terre.xnb</Output>
+      <Time>2011-06-02T17:03:49.0908162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont1.png</Source>
+      <Name>Textures\ponts\pont1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont1.xnb</Output>
+      <Time>2011-06-02T17:03:48.190815+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont11.png</Source>
+      <Name>Textures\ponts\pont11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont11.xnb</Output>
+      <Time>2011-06-02T17:03:48.190815+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont12.png</Source>
+      <Name>Textures\ponts\pont12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont12.xnb</Output>
+      <Time>2011-06-02T17:03:48.210815+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont2.png</Source>
+      <Name>Textures\ponts\pont2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont2.xnb</Output>
+      <Time>2011-06-02T17:03:48.200815+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont21.png</Source>
+      <Name>Textures\ponts\pont21</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont21.xnb</Output>
+      <Time>2011-06-02T17:03:48.210815+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont22.png</Source>
+      <Name>Textures\ponts\pont22</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont22.xnb</Output>
+      <Time>2011-06-02T17:03:48.3408152+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\tableMoyenne\tableMoyenne.png</Source>
+      <Name>Textures\tableMoyenne\tableMoyenne</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne\tableMoyenne.xnb</Output>
+      <Time>2011-06-02T17:03:42.8808076+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\tableMoyenne\tableMoyenne1.png</Source>
+      <Name>Textures\tableMoyenne\tableMoyenne1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne\tableMoyenne1.xnb</Output>
+      <Time>2011-06-02T17:03:42.8808076+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\tableMoyenne\tableMoyenne2.png</Source>
+      <Name>Textures\tableMoyenne\tableMoyenne2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne\tableMoyenne2.xnb</Output>
+      <Time>2011-06-02T17:03:42.8908076+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\tableMoyenne\tableMoyenne3.png</Source>
+      <Name>Textures\tableMoyenne\tableMoyenne3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne\tableMoyenne3.xnb</Output>
+      <Time>2011-06-02T17:03:42.8908076+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\tableMoyenne\tableMoyenne4.png</Source>
+      <Name>Textures\tableMoyenne\tableMoyenne4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\tableMoyenne\tableMoyenne4.xnb</Output>
+      <Time>2011-06-02T17:03:42.9208076+02:00</Time>
+    </Item>
+    <Item>
+      <Source>ScoresTex.jpg</Source>
+      <Name>ScoresTex</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\ScoresTex.xnb</Output>
+      <Time>2011-06-02T17:15:28.7886423+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\petites\eau.png</Source>
+      <Name>Textures\petites\eau</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\petites\eau.xnb</Output>
+      <Time>2011-06-02T17:03:49.0508162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont23.png</Source>
+      <Name>Textures\ponts\pont23</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont23.xnb</Output>
+      <Time>2011-06-02T17:03:48.3408152+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont24.png</Source>
+      <Name>Textures\ponts\pont24</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont24.xnb</Output>
+      <Time>2011-06-02T17:03:48.3508152+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont25.png</Source>
+      <Name>Textures\ponts\pont25</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont25.xnb</Output>
+      <Time>2011-06-02T17:03:48.3608152+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont26.png</Source>
+      <Name>Textures\ponts\pont26</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont26.xnb</Output>
+      <Time>2011-06-02T17:03:48.3608152+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont27.png</Source>
+      <Name>Textures\ponts\pont27</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont27.xnb</Output>
+      <Time>2011-06-02T17:03:48.3708152+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ponts\pont28.png</Source>
+      <Name>Textures\ponts\pont28</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\ponts\pont28.xnb</Output>
+      <Time>2011-06-02T17:03:48.3808153+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Feuilles de sprites\Boss.png</Source>
+      <Name>Feuilles de sprites\Boss</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Feuilles de sprites\Boss.xnb</Output>
+      <Time>2011-06-02T17:03:49.5408169+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Feuilles de sprites\Garde.png</Source>
+      <Name>Feuilles de sprites\Garde</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Feuilles de sprites\Garde.xnb</Output>
+      <Time>2011-06-02T17:03:49.5308169+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Feuilles de sprites\Hero1.png</Source>
+      <Name>Feuilles de sprites\Hero1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Feuilles de sprites\Hero1.xnb</Output>
+      <Time>2011-06-02T17:03:49.5108168+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Feuilles de sprites\Hero2.png</Source>
+      <Name>Feuilles de sprites\Hero2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Feuilles de sprites\Hero2.xnb</Output>
+      <Time>2011-06-02T17:03:49.5208168+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Feuilles de sprites\Patrouilleur.png</Source>
+      <Name>Feuilles de sprites\Patrouilleur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Feuilles de sprites\Patrouilleur.xnb</Output>
+      <Time>2011-06-02T17:03:49.5508169+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Feuilles de sprites\Patrouilleur_a_cheval.png</Source>
+      <Name>Feuilles de sprites\Patrouilleur_a_cheval</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Feuilles de sprites\Patrouilleur_a_cheval.xnb</Output>
+      <Time>2011-06-02T17:03:49.5508169+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Feuilles de sprites\statue_dragon.png</Source>
+      <Name>Feuilles de sprites\statue_dragon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Feuilles de sprites\statue_dragon.xnb</Output>
+      <Time>2011-06-02T17:03:49.5308169+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\ascenseur.png</Source>
+      <Name>Menu Editeur de Maps\ascenseur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\ascenseur.xnb</Output>
+      <Time>2011-06-02T17:01:32.9074231+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\bonusHadoken.png</Source>
+      <Name>Menu Editeur de Maps\bonusHadoken</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\bonusHadoken.xnb</Output>
+      <Time>2011-06-02T17:01:32.860623+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\bonusShuriken.png</Source>
+      <Name>Menu Editeur de Maps\bonusShuriken</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\bonusShuriken.xnb</Output>
+      <Time>2011-06-02T17:01:32.860623+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\gardeMort.png</Source>
+      <Name>Menu Editeur de Maps\gardeMort</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\gardeMort.xnb</Output>
+      <Time>2011-06-02T17:01:32.8918231+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\origine_boss.png</Source>
+      <Name>Menu Editeur de Maps\origine_boss</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\origine_boss.xnb</Output>
+      <Time>2011-06-02T17:01:32.876223+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\origine_garde.png</Source>
+      <Name>Menu Editeur de Maps\origine_garde</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\origine_garde.xnb</Output>
+      <Time>2011-06-02T17:01:32.845023+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\origine_hero1.png</Source>
+      <Name>Menu Editeur de Maps\origine_hero1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\origine_hero1.xnb</Output>
+      <Time>2011-06-02T17:01:32.9230231+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\origine_hero2.png</Source>
+      <Name>Menu Editeur de Maps\origine_hero2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\origine_hero2.xnb</Output>
+      <Time>2011-06-02T17:01:32.9386232+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\origine_patrouilleur.png</Source>
+      <Name>Menu Editeur de Maps\origine_patrouilleur</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\origine_patrouilleur.xnb</Output>
+      <Time>2011-06-02T17:01:32.8918231+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\origine_patrouilleur_a_cheval.png</Source>
+      <Name>Menu Editeur de Maps\origine_patrouilleur_a_cheval</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\origine_patrouilleur_a_cheval.xnb</Output>
+      <Time>2011-06-02T17:01:32.9074231+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\origine_statue.png</Source>
+      <Name>Menu Editeur de Maps\origine_statue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\origine_statue.xnb</Output>
+      <Time>2011-06-02T17:01:32.876223+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\pied.png</Source>
+      <Name>Menu Editeur de Maps\pied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\pied.xnb</Output>
+      <Time>2011-06-02T17:01:32.876223+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\patrouilleurAChevalMort.png</Source>
+      <Name>Menu Editeur de Maps\patrouilleurAChevalMort</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\patrouilleurAChevalMort.xnb</Output>
+      <Time>2011-06-02T17:01:32.845023+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\bibli\bibli.png</Source>
+      <Name>Textures\bibli\bibli</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\bibli\bibli.xnb</Output>
+      <Time>2011-06-02T17:03:42.2324066+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\bibli\bibli1.png</Source>
+      <Name>Textures\bibli\bibli1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\bibli\bibli1.xnb</Output>
+      <Time>2011-06-02T17:03:42.2480066+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\bibli\bibli2.png</Source>
+      <Name>Textures\bibli\bibli2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\bibli\bibli2.xnb</Output>
+      <Time>2011-06-02T17:03:42.2480066+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canape.png</Source>
+      <Name>Textures\canape\canape</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canape.xnb</Output>
+      <Time>2011-06-02T17:03:43.5408085+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canape1.png</Source>
+      <Name>Textures\canape\canape1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canape1.xnb</Output>
+      <Time>2011-06-02T17:03:43.5508085+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canape2.png</Source>
+      <Name>Textures\canape\canape2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canape2.xnb</Output>
+      <Time>2011-06-02T17:03:43.5508085+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canape3.png</Source>
+      <Name>Textures\canape\canape3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canape3.xnb</Output>
+      <Time>2011-06-02T17:03:43.5608085+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canape4.png</Source>
+      <Name>Textures\canape\canape4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canape4.xnb</Output>
+      <Time>2011-06-02T17:03:43.5608085+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canape5.png</Source>
+      <Name>Textures\canape\canape5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canape5.xnb</Output>
+      <Time>2011-06-02T17:03:43.4908084+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canape6.png</Source>
+      <Name>Textures\canape\canape6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canape6.xnb</Output>
+      <Time>2011-06-02T17:03:43.5008084+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canapeRalonge.png</Source>
+      <Name>Textures\canape\canapeRalonge</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canapeRalonge.xnb</Output>
+      <Time>2011-06-02T17:03:43.5108084+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canapeRalonge1.png</Source>
+      <Name>Textures\canape\canapeRalonge1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canapeRalonge1.xnb</Output>
+      <Time>2011-06-02T17:03:43.5108084+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canapeRalonge2.png</Source>
+      <Name>Textures\canape\canapeRalonge2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canapeRalonge2.xnb</Output>
+      <Time>2011-06-02T17:03:43.5208084+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canapeRalonge3.png</Source>
+      <Name>Textures\canape\canapeRalonge3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canapeRalonge3.xnb</Output>
+      <Time>2011-06-02T17:03:43.5308085+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\canape\canapeRalonge4.png</Source>
+      <Name>Textures\canape\canapeRalonge4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\canape\canapeRalonge4.xnb</Output>
+      <Time>2011-06-02T17:03:43.5308085+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\fenetre.png</Source>
+      <Name>Textures\fenetre\fenetre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\fenetre.xnb</Output>
+      <Time>2011-06-02T17:03:44.5308099+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\fenetre1.png</Source>
+      <Name>Textures\fenetre\fenetre1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\fenetre1.xnb</Output>
+      <Time>2011-06-02T17:03:44.5308099+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\fenetre2.png</Source>
+      <Name>Textures\fenetre\fenetre2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\fenetre2.xnb</Output>
+      <Time>2011-06-02T17:03:44.5408099+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\fenetre3.png</Source>
+      <Name>Textures\fenetre\fenetre3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\fenetre3.xnb</Output>
+      <Time>2011-06-02T17:03:44.5508099+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\fenetre4.png</Source>
+      <Name>Textures\fenetre\fenetre4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\fenetre4.xnb</Output>
+      <Time>2011-06-02T17:03:44.0908092+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\portefenetre.png</Source>
+      <Name>Textures\fenetre\portefenetre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\portefenetre.xnb</Output>
+      <Time>2011-06-02T17:03:44.1008093+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\portefenetre1.png</Source>
+      <Name>Textures\fenetre\portefenetre1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\portefenetre1.xnb</Output>
+      <Time>2011-06-02T17:03:44.1008093+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\portefenetre2.png</Source>
+      <Name>Textures\fenetre\portefenetre2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\portefenetre2.xnb</Output>
+      <Time>2011-06-02T17:03:44.1108093+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\portefenetre3.png</Source>
+      <Name>Textures\fenetre\portefenetre3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\portefenetre3.xnb</Output>
+      <Time>2011-06-02T17:03:44.1208093+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\portefenetre4.png</Source>
+      <Name>Textures\fenetre\portefenetre4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\portefenetre4.xnb</Output>
+      <Time>2011-06-02T17:03:44.4808098+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\portefenetre5.png</Source>
+      <Name>Textures\fenetre\portefenetre5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\portefenetre5.xnb</Output>
+      <Time>2011-06-02T17:03:44.5108098+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\fenetre\portefenetre6.png</Source>
+      <Name>Textures\fenetre\portefenetre6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\fenetre\portefenetre6.xnb</Output>
+      <Time>2011-06-02T17:03:44.5208098+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grdsiege\grdsiege.png</Source>
+      <Name>Textures\grdsiege\grdsiege</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grdsiege\grdsiege.xnb</Output>
+      <Time>2011-06-02T17:03:45.330811+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grdsiege\grdsiege1.png</Source>
+      <Name>Textures\grdsiege\grdsiege1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grdsiege\grdsiege1.xnb</Output>
+      <Time>2011-06-02T17:03:45.5308113+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grdsiege\grdsiege2.png</Source>
+      <Name>Textures\grdsiege\grdsiege2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grdsiege\grdsiege2.xnb</Output>
+      <Time>2011-06-02T17:03:45.5508113+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grdsiege\grdsiege3.png</Source>
+      <Name>Textures\grdsiege\grdsiege3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grdsiege\grdsiege3.xnb</Output>
+      <Time>2011-06-02T17:03:45.3008109+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grdsiege\grdsiege4.png</Source>
+      <Name>Textures\grdsiege\grdsiege4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grdsiege\grdsiege4.xnb</Output>
+      <Time>2011-06-02T17:03:45.310811+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grdsiege\grdsiege5.png</Source>
+      <Name>Textures\grdsiege\grdsiege5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grdsiege\grdsiege5.xnb</Output>
+      <Time>2011-06-02T17:03:45.320811+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\grdsiege\grdsiege6.png</Source>
+      <Name>Textures\grdsiege\grdsiege6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\grdsiege\grdsiege6.xnb</Output>
+      <Time>2011-06-02T17:03:45.320811+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\pillier\pillier.png</Source>
+      <Name>Textures\pillier\pillier</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\pillier\pillier.xnb</Output>
+      <Time>2011-06-02T17:03:46.4308125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\pillier\pillier1.png</Source>
+      <Name>Textures\pillier\pillier1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\pillier\pillier1.xnb</Output>
+      <Time>2011-06-02T17:03:46.4308125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\pillier\pillier2.png</Source>
+      <Name>Textures\pillier\pillier2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\pillier\pillier2.xnb</Output>
+      <Time>2011-06-02T17:03:46.4408125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\pillier\pillier3.png</Source>
+      <Name>Textures\pillier\pillier3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\pillier\pillier3.xnb</Output>
+      <Time>2011-06-02T17:03:46.4508125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\pillier\pillier4.png</Source>
+      <Name>Textures\pillier\pillier4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\pillier\pillier4.xnb</Output>
+      <Time>2011-06-02T17:03:46.4508125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\porte\porte.png</Source>
+      <Name>Textures\porte\porte</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\porte\porte.xnb</Output>
+      <Time>2011-06-02T17:03:45.6608114+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\porte\porte1.png</Source>
+      <Name>Textures\porte\porte1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\porte\porte1.xnb</Output>
+      <Time>2011-06-02T17:03:45.6708115+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\porte\porte2.png</Source>
+      <Name>Textures\porte\porte2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\porte\porte2.xnb</Output>
+      <Time>2011-06-02T17:03:45.6708115+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\porte\porte3.png</Source>
+      <Name>Textures\porte\porte3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\porte\porte3.xnb</Output>
+      <Time>2011-06-02T17:03:45.6508114+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\porte\porte4.png</Source>
+      <Name>Textures\porte\porte4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\porte\porte4.xnb</Output>
+      <Time>2011-06-02T17:03:45.6508114+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\rocher\rocher.png</Source>
+      <Name>Textures\rocher\rocher</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\rocher\rocher.xnb</Output>
+      <Time>2011-06-02T17:03:43.0008077+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\rocher\rocher1.png</Source>
+      <Name>Textures\rocher\rocher1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\rocher\rocher1.xnb</Output>
+      <Time>2011-06-02T17:03:43.0108077+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\rocher\rocher2.png</Source>
+      <Name>Textures\rocher\rocher2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\rocher\rocher2.xnb</Output>
+      <Time>2011-06-02T17:03:43.0208077+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\rocher\rocher3.png</Source>
+      <Name>Textures\rocher\rocher3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\rocher\rocher3.xnb</Output>
+      <Time>2011-06-02T17:03:43.0208077+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\rocher\rocher4.png</Source>
+      <Name>Textures\rocher\rocher4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Textures\rocher\rocher4.xnb</Output>
+      <Time>2011-06-02T17:03:43.0308078+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Bas fond.png</Source>
+      <Name>Bas fond</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Bas fond.xnb</Output>
+      <Time>2011-06-02T17:15:28.8056432+02:00</Time>
+    </Item>
+    <Item>
+      <Source>barre de vitesse.png</Source>
+      <Name>barre de vitesse</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\barre de vitesse.xnb</Output>
+      <Time>2011-06-02T17:15:28.7556404+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\Boss mort.png</Source>
+      <Name>Menu Editeur de Maps\Boss mort</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\Boss mort.xnb</Output>
+      <Time>2011-06-02T17:01:32.9230231+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Menu Editeur de Maps\Patrouilleur mort.png</Source>
+      <Name>Menu Editeur de Maps\Patrouilleur mort</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 0, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Menu Editeur de Maps\Patrouilleur mort.xnb</Output>
+      <Time>2011-06-02T17:01:32.9230231+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Particules\explosion.png</Source>
+      <Name>Particules\explosion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Particules\explosion.xnb</Output>
+      <Time>2011-06-02T17:03:50.8708187+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Particules\smoke.bmp</Source>
+      <Name>Particules\smoke</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Particules\smoke.xnb</Output>
+      <Time>2011-06-02T17:03:50.8708187+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Barre infos\shuriken barre.png</Source>
+      <Name>Barre infos\shuriken barre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Barre infos\shuriken barre.xnb</Output>
+      <Time>2011-06-02T17:03:49.3308166+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Barre infos\hadoken barre.png</Source>
+      <Name>Barre infos\hadoken barre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Barre infos\hadoken barre.xnb</Output>
+      <Time>2011-06-02T17:03:49.3308166+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Barre infos\boule de feu barre.png</Source>
+      <Name>Barre infos\boule de feu barre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Barre infos\boule de feu barre.xnb</Output>
+      <Time>2011-06-02T17:03:49.3508166+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Barre infos\fumigene barre.png</Source>
+      <Name>Barre infos\fumigene barre</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Barre infos\fumigene barre.xnb</Output>
+      <Time>2011-06-02T17:03:49.3408166+02:00</Time>
+    </Item>
+    <Item>
+      <Source>CheckPoint.png</Source>
+      <Name>CheckPoint</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\CheckPoint.xnb</Output>
+      <Time>2011-06-02T17:15:28.8286446+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sons\hadokenobt.wav</Source>
+      <Name>Sons\hadokenobt</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\hadokenobt.xnb</Output>
+      <Time>2011-06-02T17:03:42.0920063+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sons\Bruitage des statues.wav</Source>
+      <Name>Sons\Bruitage des statues</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Bruitage des statues.xnb</Output>
+      <Time>2011-06-02T17:03:42.0608063+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sons\Bruitage boss touche.wav</Source>
+      <Name>Sons\Bruitage boss touche</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Bruitage boss touche.xnb</Output>
+      <Time>2011-06-02T17:03:42.0140062+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sons\Bruitage cheval.wav</Source>
+      <Name>Sons\Bruitage cheval</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Bruitage cheval.xnb</Output>
+      <Time>2011-06-02T17:03:41.8112058+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sons\Bruitage patrouilleur.wav</Source>
+      <Name>Sons\Bruitage patrouilleur</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\Bruitage patrouilleur.xnb</Output>
+      <Time>2011-06-02T17:03:42.0764063+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sons\CheckPoint.wav</Source>
+      <Name>Sons\CheckPoint</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Sons\CheckPoint.xnb</Output>
+      <Time>2011-06-02T17:03:41.8268059+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Cinématique\Cinematique.wmv</Source>
+      <Name>Cinématique\Cinematique</Name>
+      <Importer>WmvImporter</Importer>
+      <Processor>VideoProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Cinématique\Cinematique.xnb</Output>
+      <Extra>C:\Users\Adrien\Desktop\yellokiller\YelloKiller\YelloKiller\bin\x86\Debug\Content\Cinématique\Cinematique.wmv</Extra>
+      <Time>2011-06-02T17:15:28.6676353+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
