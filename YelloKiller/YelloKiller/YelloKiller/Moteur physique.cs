@@ -391,7 +391,7 @@ namespace YelloKiller
                                 break;
                             case TypeBonus.checkPoint:
                                 bonus.RemoveAt(u);
-                                soundBank.PlayCue("hadokenobt");
+                                soundBank.PlayCue("CheckPoint");
                                 return true;
                         }
                     }
