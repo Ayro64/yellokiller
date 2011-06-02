@@ -105,8 +105,6 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, ContentManager content, Hero hero2)
         {
-            ServiceHelper.Game.Window.Title = "Ici X = " + position.X + " Y = " + position.Y + " Désiré X = " + positionDesiree.X + " Y = " + positionDesiree.Y;
-
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
