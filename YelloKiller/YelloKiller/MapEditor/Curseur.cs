@@ -164,39 +164,48 @@ namespace YelloKiller
                             type = TypeCase.eau;
                             break;
                         case 40:
-                            type = TypeCase.pont1;
+                            type = TypeCase.caisse;
                             break;
                         case 41:
-                            type = TypeCase.pont2;
+                            type = TypeCase.chaiseGauche;
                             break;
                         case 42:
-                            type = TypeCase.tableMoyenne;
+                            type = TypeCase.chaiseDroite;
                             break;
                         case 43:
-                            type = TypeCase.bibliotheque;
+                            type = TypeCase.pont1;
                             break;
                         case 44:
-                            type = TypeCase.canape;
+                            type = TypeCase.pont2;
                             break;
                         case 45:
-                            type = TypeCase.canapeRalonge;
+                            type = TypeCase.tableMoyenne;
                             break;
                         case 46:
-                            type = TypeCase.fenetre;
+                            type = TypeCase.bibliotheque;
                             break;
                         case 47:
-                            type = TypeCase.porteFenetre;
+                            type = TypeCase.canape;
                             break;
                         case 48:
-                            type = TypeCase.grdSiege;
+                            type = TypeCase.canapeRalonge;
                             break;
                         case 49:
-                            type = TypeCase.pillier;
+                            type = TypeCase.fenetre;
                             break;
                         case 50:
-                            type = TypeCase.porte;
+                            type = TypeCase.porteFenetre;
                             break;
                         case 51:
+                            type = TypeCase.grdSiege;
+                            break;
+                        case 52:
+                            type = TypeCase.pillier;
+                            break;
+                        case 53:
+                            type = TypeCase.porte;
+                            break;
+                        case 54:
                             type = TypeCase.rocher;
                             break;
                     }
