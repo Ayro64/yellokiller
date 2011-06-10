@@ -94,9 +94,9 @@ namespace YelloKiller
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(blankTexture, new Rectangle(0, 0, (songName.Length * 12), 45), new Color(0, 0, 0, (byte)(170)));
+            //spriteBatch.Draw(blankTexture, new Rectangle(0, 0, (songName.Length * 12), 45), new Color(0, 0, 0, (byte)(170)));
+            //spriteBatch.DrawString(font, songName, new Vector2(10, 10), Color.Red);
 
-            spriteBatch.DrawString(font, songName, new Vector2(10, 10), Color.Red);
             spriteBatch.End();
         }
 
