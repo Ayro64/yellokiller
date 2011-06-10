@@ -704,6 +704,15 @@ namespace YelloKiller
                 case TypeCase.eau:
                     nomTexture = @"Textures\petites\eau";
                     break;
+                case TypeCase.caisse:
+                    nomTexture = @"Textures\petites\caisse";
+                    break;
+                case TypeCase.chaiseGauche:
+                    nomTexture = @"Textures\petites\chaiseGauche";
+                    break;
+                case TypeCase.chaiseDroite:
+                    nomTexture = @"Textures\petites\chaiseDroite";
+                    break;
 
 
 
@@ -793,6 +802,9 @@ namespace YelloKiller
        piedMurBois = -22,
        eau = -23,
        finMurBas = -24,
+       caisse = -25,
+       chaiseGauche = -26,
+       chaiseDroite = -27,
 
        commode = -50,
        lit = -51,

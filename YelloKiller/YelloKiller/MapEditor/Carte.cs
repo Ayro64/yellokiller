@@ -720,6 +720,15 @@ namespace YelloKiller
                 case "e5":
                     _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.eau, new Vector3(1, 1, 1));
                     break;
+                case ("e6"):
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.caisse, new Vector3(1, 1, 1));
+                    break;
+                case ("e7"):
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.chaiseGauche, new Vector3(1, 1, 1));
+                    break;
+                case "e8":
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.chaiseDroite, new Vector3(1, 1, 1));
+                    break;
             }
         }
 
