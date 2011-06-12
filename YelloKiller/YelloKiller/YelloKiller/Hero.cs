@@ -387,7 +387,7 @@ namespace YelloKiller
                 if (hero2 == null)
                 {
                     if ((position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePressee(up) || ServiceHelper.Get<IGamePadService>().AllerEnHaut()) &&
-                        (int)carte.Cases[Y - 1, X].Type > 0 && !PorteSurLeChemin(interrupteurs, X, Y - 1))
+                        (int)carte.Cases[Y - 1, X].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X, Y - 1))
                     {
                         AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X;
@@ -396,7 +396,7 @@ namespace YelloKiller
                     }
 
                     else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && (ServiceHelper.Get<IKeyboardService>().TouchePressee(down) || ServiceHelper.Get<IGamePadService>().AllerEnBas()) &&
-                             (int)carte.Cases[Y + 1, X].Type > 0 && !PorteSurLeChemin(interrupteurs, X, Y + 1))
+                             (int)carte.Cases[Y + 1, X].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X, Y + 1))
                     {
                         AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X;
@@ -405,7 +405,7 @@ namespace YelloKiller
                     }
 
                     else if (position.X > 8 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(left) || ServiceHelper.Get<IGamePadService>().AllerAGauche()) &&
-                             (int)carte.Cases[Y, X - 1].Type > 0 && !PorteSurLeChemin(interrupteurs, X - 1, Y))
+                             (int)carte.Cases[Y, X - 1].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X - 1, Y))
                     {
                         AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X - 28;
@@ -414,7 +414,7 @@ namespace YelloKiller
                     }
 
                     else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(right) || ServiceHelper.Get<IGamePadService>().AllerADroite()) &&
-                             (int)carte.Cases[Y, X + 1].Type > 0 && !PorteSurLeChemin(interrupteurs, X + 1, Y))
+                             (int)carte.Cases[Y, X + 1].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X + 1, Y))
                     {
                         AudioEngine.SoundBank.PlayCue("pasBois");
                         positionDesiree.X = position.X + 28;
@@ -425,7 +425,7 @@ namespace YelloKiller
                 else
                 {
                     if (position.Y > 5 && ServiceHelper.Get<IKeyboardService>().TouchePressee(up) &&
-                        (int)carte.Cases[Y - 1, X].Type > 0 &&
+                        (int)carte.Cases[Y - 1, X].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X, Y - 1) &&
                         (position.X != hero2.PositionDesiree.X || position.Y - 28 != hero2.PositionDesiree.Y))
                     {
                         AudioEngine.SoundBank.PlayCue("pasBois");
@@ -435,7 +435,7 @@ namespace YelloKiller
                     }
 
                     else if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && ServiceHelper.Get<IKeyboardService>().TouchePressee(down) &&
-                              (int)carte.Cases[Y + 1, X].Type > 0 &&
+                              (int)carte.Cases[Y + 1, X].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X, Y + 1) &&
                               (position.X != hero2.PositionDesiree.X || position.Y + 28 != hero2.PositionDesiree.Y))
                     {
                         AudioEngine.SoundBank.PlayCue("pasBois");
@@ -445,7 +445,7 @@ namespace YelloKiller
                     }
 
                     else if (position.X > 8 && ServiceHelper.Get<IKeyboardService>().TouchePressee(left) &&
-                             (int)carte.Cases[Y, X - 1].Type > 0 &&
+                             (int)carte.Cases[Y, X - 1].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X - 1, Y) &&
                              (position.X - 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y))
                     {
                         AudioEngine.SoundBank.PlayCue("pasBois");
@@ -455,7 +455,7 @@ namespace YelloKiller
                     }
 
                     else if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && ServiceHelper.Get<IKeyboardService>().TouchePressee(right) &&
-                             (int)carte.Cases[Y, X + 1].Type > 0 &&
+                             (int)carte.Cases[Y, X + 1].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X + 1, Y) &&
                              (position.X + 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y))
                     {
                         AudioEngine.SoundBank.PlayCue("pasBois");
@@ -467,7 +467,7 @@ namespace YelloKiller
             }
         }
 
-        private bool ObstacleDansLeChampDeVision(Carte carte)
+        /*private bool ObstacleDansLeChampDeVision(Carte carte)
         {
             for (int i = 0; i < 6; i++)
             {
@@ -490,7 +490,7 @@ namespace YelloKiller
             }
             return false;
         }
-
+        */
         
         public void Draw_Hero(SpriteBatch spriteBatch, Rectangle camera)
         {
@@ -601,7 +601,7 @@ namespace YelloKiller
             positionDesiree = new Vector2(28 * X + 5, 28 * Y + 1);
         }
 
-        private bool PorteSurLeChemin(List<Interrupteur> interrupteurs, int x, int y)
+        private bool PorteFermeeSurLeChemin(List<Interrupteur> interrupteurs, int x, int y)
         {
             foreach (Interrupteur bouton in interrupteurs)
                 if (x == bouton.PortePosition.X && y == bouton.PortePosition.Y && !bouton.PorteOuverte)
