@@ -1313,11 +1313,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Particules\explosion.png">
-      <Name>explosion</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Particules\smoke.bmp">
       <Name>smoke</Name>
       <Importer>TextureImporter</Importer>
@@ -1410,6 +1405,18 @@
     </Compile>
     <Compile Include="Menu Editeur de Maps\interrupteurTouche.png">
       <Name>interrupteurTouche</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Particules\explosionB.png">
+      <Name>explosionB</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Particules\explosionR.png">
+      <Name>explosionR</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
