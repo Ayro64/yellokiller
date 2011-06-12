@@ -8,7 +8,7 @@ namespace YelloKiller
     public class Interrupteur : Sprite
     {
         public Vector2 PortePosition { get; set; }
-        Texture2D texturePorte;
+        Texture2D texturePorteFermee, texturePorteOuverte, textureInterrupteurTouche;
         public bool PorteOuverte { get; private set; }
 
         public Interrupteur(Vector2 position)
@@ -20,31 +20,36 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content)
         {
-            texturePorte = content.Load<Texture2D>(@"Menu Editeur de Maps\porte");
-            base.LoadContent(content, @"Menu Editeur de Maps\interrupteur");
+            texturePorteFermee = content.Load<Texture2D>(@"Menu Editeur de Maps\barriereFermee");
+            texturePorteOuverte = content.Load<Texture2D>(@"Menu Editeur de Maps\barriereOuverte");
+            textureInterrupteurTouche = content.Load<Texture2D>(@"Menu Editeur de Maps\interrupteurTouche");
+            base.LoadContent(content, @"Menu Editeur de Maps\interrupteurPasTouche");
         }
 
         public void DrawInGame(SpriteBatch spriteBatch, Rectangle camera)
         {
-            base.Draw(spriteBatch, camera);
-            if(!PorteOuverte)
-                spriteBatch.Draw(texturePorte, 28 * new Vector2(PortePosition.X, PortePosition.Y) - new Vector2(camera.X, camera.Y), Color.White);
+            if (!PorteOuverte)
+            {
+                base.Draw(spriteBatch, camera);
+                spriteBatch.Draw(texturePorteFermee, 28 * new Vector2(PortePosition.X, PortePosition.Y) - new Vector2(camera.X, camera.Y), Color.White);
+            }
+            else
+            {
+                spriteBatch.Draw(textureInterrupteurTouche, new Vector2(position.X - camera.X, position.Y - camera.Y), Color.White);
+                spriteBatch.Draw(texturePorteOuverte, 28 * new Vector2(PortePosition.X, PortePosition.Y) - new Vector2(camera.X, camera.Y), Color.White);
+            }
         }
 
         public void DrawInMapEditor(SpriteBatch spriteBatch, Rectangle camera)
         {
             spriteBatch.Draw(Texture, 28 * new Vector2(X - camera.X + 2, Y - camera.Y), Color.White);
-            spriteBatch.Draw(texturePorte, 28 * new Vector2(PortePosition.X - camera.X + 2, PortePosition.Y - camera.Y), Color.White);
+            spriteBatch.Draw(texturePorteFermee, 28 * new Vector2(PortePosition.X - camera.X + 2, PortePosition.Y - camera.Y), Color.White);
         }
 
         public void OuvrirPorte()
         {
             if (!PorteOuverte)
-            {
                 PorteOuverte = true;
-                Rotation = (float)Math.PI;
-                position += 28 * Vector2.One;
-            }
         }
     }
 }
