@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework.Input;
-
-namespace YelloKiller
+﻿namespace YelloKiller
 {
     interface IGamePadService
     {
