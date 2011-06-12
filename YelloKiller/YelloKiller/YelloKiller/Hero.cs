@@ -579,7 +579,7 @@ namespace YelloKiller
         private bool PorteFermeeSurLeChemin(List<Interrupteur> interrupteurs, int x, int y)
         {
             foreach (Interrupteur bouton in interrupteurs)
-                if (x == bouton.PortePosition.X && y == bouton.PortePosition.Y && !bouton.PorteOuverte)
+                if ((x == bouton.PortePosition.X || x == bouton.PortePosition.X + 1) && y == bouton.PortePosition.Y && !bouton.PorteOuverte)
                     return true;
 
             return false;
