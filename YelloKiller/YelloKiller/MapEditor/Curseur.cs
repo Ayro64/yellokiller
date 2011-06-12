@@ -36,7 +36,7 @@ namespace YelloKiller
             if (ServiceHelper.Get<IMouseService>().DansLEcran())
                 position = new Vector2((int)ServiceHelper.Get<IMouseService>().Coordonnees().X / 28, (int)ServiceHelper.Get<IMouseService>().Coordonnees().Y / 28);
 
-            for (int i = 0; i < menu.nbTexturesDroite; i++)
+            for (int i = 0; i < menu.NombreTexturesDroite; i++)
             {
                 if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(menu.ListeRectanglesDroite[i]))
                 {
@@ -215,7 +215,7 @@ namespace YelloKiller
                 }
             }
 
-            for (int b = 0; b < menu.nbTexturesGauche; b++)
+            for (int b = 0; b < menu.NombreTexturesGauche; b++)
             {
                 if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(menu.ListeRectanglesGauche[b]))
                 {
@@ -251,6 +251,9 @@ namespace YelloKiller
                             break;
                         case 9:
                             type = TypeCase.BonusCheckPoint;
+                            break;
+                        case 10:
+                            type = TypeCase.Interrupteur;
                             break;
                     }
 
