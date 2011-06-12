@@ -24,6 +24,11 @@ namespace YelloKiller
             return MState.RightButton == ButtonState.Released && LastMState.RightButton == ButtonState.Pressed;
         }
 
+        public bool ClicBoutonMilieu()
+        {
+            return MState.MiddleButton == ButtonState.Released && LastMState.MiddleButton == ButtonState.Pressed;
+        }
+
         public bool BoutonGauchePresse()
         {
             return MState.LeftButton == ButtonState.Pressed;

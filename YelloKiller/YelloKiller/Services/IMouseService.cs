@@ -8,6 +8,8 @@ namespace YelloKiller
 
         bool ClicBoutonDroit();
 
+        bool ClicBoutonMilieu();
+
         bool BoutonGauchePresse();
 
         bool BoutonGaucheEnfonce();
