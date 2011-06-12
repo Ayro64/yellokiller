@@ -24,7 +24,7 @@ namespace YelloKiller.Moteur_Particule
 
         protected override void InitializeConstants()
         {
-            textureFilename = @"Particules\explosion";
+            textureFilename = @"Particules\explosionB";
 
             maxInitialSpeed = 28 * distance - 16;
             minInitialSpeed = 28 * distance - 16;
