@@ -241,6 +241,30 @@ namespace YelloKiller.Moteur_Particule
 
         #endregion
 
+        #region Rectangle tout moche Fumigene
+
+        bool rectangle_fumigene_est_present = true; // utiliser pour effacer le rectangle apres collision 
+        public bool Rectangle_Fumigene_Est_Present
+        {
+            get { return rectangle_fumigene_est_present; }
+            set { rectangle_fumigene_est_present = value; }
+        }
+
+        public Rectangle Rectangle_Fumigene(Hero hero) // pour gerer les collisions
+        {
+            if (fumigene1.FreeParticleCount == 135) // lorsque freeparticulecount = 135 le fumigene est termine 
+                Rectangle_Fumigene_Est_Present = true;// je reinitialise donc mon rectangle
+
+            if (explosion_statue.FreeParticleCount < 135 && Rectangle_Fumigene_Est_Present)
+                return new Rectangle((int)hero.position.X - 28 * 3, (int)hero.position.Y - 28 * 3, 28 * 6, 28 * 6);
+            else // pas de rectangle
+                return new Rectangle(0, 0, 0, 0);
+        }
+
+        #endregion
+
+
+
         #region Initialization
 
         public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Carte carte, Hero hero1, Hero hero2, List<Statue> _statue)
@@ -265,6 +289,7 @@ namespace YelloKiller.Moteur_Particule
 
             fumigene1 = new Fumigene(game, 9, hero1, carte);
             game.Components.Add(fumigene1);
+            Console.WriteLine(fumigene1.FreeParticleCount);
 
             fume = new SmokePlumeParticleSystem(game, 9);
             game.Components.Add(fume);
@@ -285,7 +310,7 @@ namespace YelloKiller.Moteur_Particule
         #endregion
 
         public void UpdateFumigene(Hero hero)
-        {
+        {           
             if (hero.NumeroHero == 1)
                 fumigene1.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
             else
@@ -295,13 +320,10 @@ namespace YelloKiller.Moteur_Particule
         public void UpdateExplosions_hero(Hero hero)
         {
             if (hero.NumeroHero == 1)
-            {
                 hadoken_hero1.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
-            }
             else
-            {
                 hadoken_hero2.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
-            }
+
             fume_hadoken.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
         }
 
