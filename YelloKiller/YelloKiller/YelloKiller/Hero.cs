@@ -118,7 +118,7 @@ namespace YelloKiller
 
             MoteurParticule.Camera = new Vector2(camera.X, camera.Y);
 
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) ||  ServiceHelper.Get<IGamePadService>().Tirer())
                 GameplayScreen.Timer_Update_Collision += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (SourceRectangle.Value.Y == 133 - state_sabre)
