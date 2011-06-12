@@ -27,6 +27,7 @@ namespace YelloKiller
         Rectangle camera;
         Vector2 origine1, origine2;
         List<Vector2> _originesGardes, _originesBoss, _originesStatues;
+        List<Interrupteur> interrupteurs;
         List<Bonus> bonus;
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
@@ -63,7 +64,7 @@ namespace YelloKiller
             if (nomCarte == "")
                 carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
             else
-                carte.OuvrirCarte(nomCarte);
+                carte.OuvrirCarte(nomCarte, content);
 
             _originesGardes = carte.OriginesGardes;
             _originesPatrouilleurs = carte.OriginesPatrouilleurs;
@@ -72,6 +73,7 @@ namespace YelloKiller
             _originesStatues = carte.OriginesStatues;
             rotationsDesStatues = carte.RotationsDesStatues;
             bonus = carte.Bonus;
+            interrupteurs = carte.Interrupteurs;
 
             origine1 = carte.OrigineJoueur1;
             origine2 = carte.OrigineJoueur2;
@@ -85,8 +87,8 @@ namespace YelloKiller
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
-            // Si vous ajoutez une texture, oubliez pas de changer le nombre de textures en parametres dans le constructeur du menu ci-dessous.
-            menu = new Menu(content, 55, 10/*<-- ici*/);
+
+            menu = new Menu(content);
             curseur = new Curseur(content);
             ascenseur1 = new Ascenseur(content, Taille_Ecran.LARGEUR_ECRAN - 28);
             ascenseur2 = new Ascenseur(content, 0);
@@ -182,6 +184,8 @@ namespace YelloKiller
                     _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
                 else if (_originesStatues.Count > 0 && curseur.Type == TypeCase.Statues)
                     rotationsDesStatues[rotationsDesStatues.Count - 1] = (byte)((rotationsDesStatues[rotationsDesStatues.Count - 1] + 1) % 4);
+                else if (curseur.Type == TypeCase.Interrupteur)
+                    interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y);
             }
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
@@ -297,6 +301,9 @@ namespace YelloKiller
                         break;
                 }
             }
+
+            foreach (Interrupteur bouton in interrupteurs)
+                bouton.DrawInMapEditor(spriteBatch, camera);
 
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
@@ -604,6 +611,10 @@ namespace YelloKiller
                     foreach (Bonus extra in bonus)
                         sauvegarde.WriteLine(extra.X + "," + extra.Y + "," + (int)extra.TypeBonus);
 
+                    sauvegarde.WriteLine("Interrupteurs");
+                    foreach (Interrupteur bouton in interrupteurs)
+                        sauvegarde.WriteLine(bouton.X + "," + bouton.Y + "," + bouton.PortePosition.X + "," + bouton.PortePosition.Y);
+
                     sauvegarde.WriteLine("Salaire");
                     sauvegarde.WriteLine(salaire);
 
@@ -645,6 +656,10 @@ namespace YelloKiller
             for (int prout = 0; prout < bonus.Count; prout++)
                 if (bonus[prout].X == curseur.Position.X + camera.X && bonus[prout].Y == curseur.Position.Y + camera.Y)
                     bonus.RemoveAt(prout);
+
+            for (int caca = 0; caca < interrupteurs.Count; caca++)
+                if (interrupteurs[caca].X == curseur.Position.X + camera.X && interrupteurs[caca].Y == curseur.Position.Y + camera.Y)
+                    interrupteurs.RemoveAt(caca);
         }
 
         private void Placer_Personnage_Ou_Bonus()
@@ -694,12 +709,15 @@ namespace YelloKiller
 
             else if (curseur.Type == TypeCase.BonusShurikens)
                 bonus.Add(new Bonus(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), TypeBonus.shuriken));
-
             else if (curseur.Type == TypeCase.BonusHadokens)
                 bonus.Add(new Bonus(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), TypeBonus.hadoken));
-
             else if (curseur.Type == TypeCase.BonusCheckPoint)
                 bonus.Add(new Bonus(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), TypeBonus.checkPoint));
+            else if (curseur.Type == TypeCase.Interrupteur)
+            {
+                interrupteurs.Add(new Interrupteur(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y)));
+                interrupteurs[interrupteurs.Count - 1].LoadContent(content);
+            }
         }
 
         private void Placer_Case()

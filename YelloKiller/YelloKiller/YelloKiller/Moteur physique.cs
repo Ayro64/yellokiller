@@ -399,5 +399,12 @@ namespace YelloKiller
             }
             return false;
         }
+
+        static public void Collisions_Heros_Interrupteurs(Hero hero1, Hero hero2, ref List<Interrupteur> interrupteurs)
+        {
+            foreach (Interrupteur bouton in interrupteurs)
+                if (hero1.X == bouton.X && hero1.Y == bouton.Y || hero2 != null && hero2.X == bouton.X && hero2.Y == bouton.Y)
+                    bouton.OuvrirPorte();
+        }
     }
 }

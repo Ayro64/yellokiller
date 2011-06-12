@@ -11,17 +11,18 @@ namespace YelloKiller
         List<Texture2D> listeTexturesDroite = new List<Texture2D>(), listeTexturesGauche = new List<Texture2D>();
         Texture2D fond;
 
-        public int nbTexturesDroite, nbTexturesGauche;
+        public int NombreTexturesDroite { get; private set; }
+        public int NombreTexturesGauche { get; private set; }
 
-        public Menu(ContentManager content, int nbTexturesDroite, int nbTexturesGauche)
+        public Menu(ContentManager content)
         {
-            this.nbTexturesDroite = nbTexturesDroite;
-            this.nbTexturesGauche = nbTexturesGauche;
+            NombreTexturesDroite = 55;
+            NombreTexturesGauche = 11;
 
-            for (int i = 0; i < nbTexturesDroite; i++)
+            for (int i = 0; i < NombreTexturesDroite; i++)
                 listeRectanglesDroite.Add(new Rectangle(0, 0, 28, 28));
 
-            for (int i = 0; i < nbTexturesGauche; i++)
+            for (int i = 0; i < NombreTexturesGauche; i++)
                 listeRectanglesGauche.Add(new Rectangle(0, 0, 28, 28));
 
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_hero1"));
@@ -33,7 +34,8 @@ namespace YelloKiller
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_statue"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusShuriken"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusHadoken"));
-            listeTexturesGauche.Add(content.Load<Texture2D>("CheckPoint"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\CheckPoint"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\interrupteur"));
 
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\arbre\arbre"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\commode\commode"));
@@ -117,16 +119,16 @@ namespace YelloKiller
 
         public void Update(Ascenseur ascenseurDroit, Ascenseur ascenseurGauche)
         {
-            for (int i = 0; i < nbTexturesDroite; i++)
+            for (int i = 0; i < NombreTexturesDroite; i++)
                 listeRectanglesDroite[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, 2 * (int)-ascenseurDroit.Position.Y + i * 30, 28, 28);
 
-            for (int i = 0; i < nbTexturesGauche; i++)
+            for (int i = 0; i < NombreTexturesGauche; i++)
                 listeRectanglesGauche[i] = new Rectangle(28, (int)-ascenseurGauche.Position.Y + i * 30, 28, 28);
         }
 
         public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseurDroit, Ascenseur ascenseurGauche)
         {
-            for (int u = 0; u < nbTexturesDroite; u++)
+            for (int u = 0; u < NombreTexturesDroite; u++)
             {
                 if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(listeRectanglesDroite[u]))
                 {
@@ -138,7 +140,7 @@ namespace YelloKiller
                     spriteBatch.Draw(listeTexturesDroite[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -2 * ascenseurDroit.Position.Y + u * 30), null, Color.White, 0, Vector2.Zero, new Vector2((float)28 / listeTexturesDroite[u].Width, (float)28 / listeTexturesDroite[u].Height), SpriteEffects.None, 0);
             }
 
-            for (int c = 0; c < nbTexturesGauche; c++)
+            for (int c = 0; c < NombreTexturesGauche; c++)
             {
                 if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(listeRectanglesGauche[c]))
                 {

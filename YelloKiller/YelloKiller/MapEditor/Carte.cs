@@ -15,6 +15,7 @@ namespace YelloKiller
         List<Vector2> _originesGarde, _originesBoss, _originesStatues;
         List<Bonus> bonus;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
+        List<Interrupteur> interrupteurs;
         public int Salaire { get; private set; }
 
         public Carte(Vector2 size)
@@ -30,6 +31,7 @@ namespace YelloKiller
             _originesStatues = new List<Vector2>();
             rotationsDesStatues = new List<byte>();
             bonus = new List<Bonus>();
+            interrupteurs = new List<Interrupteur>();
         }
 
         public void Initialisation(Vector2 size)
@@ -58,7 +60,7 @@ namespace YelloKiller
             file.Close();
         }
 
-        public void OuvrirCarte(string nomDeFichier)
+        public void OuvrirCarte(string nomDeFichier, ContentManager content)
         {
             StreamReader file = new StreamReader(nomDeFichier);
             string banana = null;
@@ -162,7 +164,7 @@ namespace YelloKiller
             
             banana = file.ReadLine();
 
-            while (banana != "Salaire")
+            while (banana != "Interrupteurs")
             {
                 dessert = banana.Split(',');
                 positionTemporaire.X = Convert.ToInt32(dessert[0]);
@@ -173,6 +175,19 @@ namespace YelloKiller
 
             banana = file.ReadLine();
 
+            while (banana != "Salaire")
+            {
+                dessert = banana.Split(',');
+                positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
+                interrupteurs.Add(new Interrupteur(positionTemporaire));
+                positionTemporaire.X = Convert.ToInt32(dessert[2]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[3]);
+                interrupteurs[interrupteurs.Count - 1].PortePosition = positionTemporaire;
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
             Salaire = Convert.ToInt32(banana);
             file.Close();
         }
@@ -802,6 +817,11 @@ namespace YelloKiller
         public List<Bonus> Bonus
         {
             get { return bonus; }
+        }
+
+        public List<Interrupteur> Interrupteurs
+        {
+            get { return interrupteurs; }
         }
 
         public Case[,] Cases

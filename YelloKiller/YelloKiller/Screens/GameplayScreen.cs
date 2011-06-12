@@ -30,6 +30,7 @@ namespace YelloKiller
         List<Boss> _boss;
         List<Statue> _statues;
         List<Bonus> _bonus;
+        List<Interrupteur> interrupteurs;
         List<Rectangle> gardesMorts, patrouilleursAChevauxMorts, patrouilleursMorts, bossMorts;
         Texture2D textureGardeMort, texturePatrouilleurAChevalMort, texturePatrouilleurMort, textureBossMort, textureBasFond;
         public static bool Alerte { get; set; }
@@ -99,7 +100,7 @@ namespace YelloKiller
             audio = new Player();
 
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
-            carte.OuvrirCarte(nomDeCarte);
+            carte.OuvrirCarte(nomDeCarte, content);
 
             _shuriken = new List<Shuriken>();
 
@@ -162,6 +163,13 @@ namespace YelloKiller
             foreach (Bonus extra in carte.Bonus)
                 _bonus.Add(new Bonus(28 * new Vector2(extra.X, extra.Y), extra.TypeBonus));
 
+            interrupteurs = new List<Interrupteur>();
+            foreach (Interrupteur bouton in carte.Interrupteurs)
+            {
+                interrupteurs.Add(new Interrupteur(28 * bouton.Position));
+                interrupteurs[interrupteurs.Count - 1].PortePosition = bouton.PortePosition;
+            }
+
             gardesMorts = new List<Rectangle>();
             patrouilleursAChevauxMorts = new List<Rectangle>();
             patrouilleursMorts = new List<Rectangle>();
@@ -204,6 +212,9 @@ namespace YelloKiller
             foreach (Bonus bonus in _bonus)
                 bonus.LoadContent(content);
 
+            foreach (Interrupteur bouton in interrupteurs)
+                bouton.LoadContent(content);
+
             textureGardeMort = content.Load<Texture2D>(@"Menu Editeur de Maps\gardeMort");
             texturePatrouilleurAChevalMort = content.Load<Texture2D>(@"Menu Editeur de Maps\patrouilleurAChevalMort");
             texturePatrouilleurMort = content.Load<Texture2D>(@"Menu Editeur de Maps\Patrouilleur mort");
@@ -236,9 +247,9 @@ namespace YelloKiller
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
                 AudioEngine.Update();
 
-                hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero2);
+                hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero2, interrupteurs);
                 if (jeuEnCoop)
-                    hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1);
+                    hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1, interrupteurs);
 
                 foreach (Garde garde in _gardes)
                     garde.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
@@ -279,6 +290,8 @@ namespace YelloKiller
 
                 if (Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank))
                     SauvegarderCheckPoint();
+
+                Moteur_physique.Collisions_Heros_Interrupteurs(hero1, hero2, ref interrupteurs);
 
                 if (_boss.Count == 0)
                 {
@@ -329,6 +342,9 @@ namespace YelloKiller
 
             foreach (Bonus bonus in _bonus)
                 bonus.Draw(spriteBatch, camera);
+
+            foreach (Interrupteur bouton in interrupteurs)
+                bouton.DrawInGame(spriteBatch, camera);
 
             foreach (Rectangle position in gardesMorts)
                 spriteBatch.Draw(textureGardeMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
