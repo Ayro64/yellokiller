@@ -263,7 +263,7 @@ namespace YelloKiller
 
             if (tempsCourir > 0 && (ServiceHelper.Get<IKeyboardService>().TouchePressee(courir) || ServiceHelper.Get<IGamePadService>().Courir()) && !(monter && descendre && droite && gauche))
                 tempsCourir -= 0.1f * gameTime.ElapsedGameTime.Milliseconds;
-            else if (tempsCourir < flamme.Width && ((ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) || ServiceHelper.Get<IGamePadService>().Courir()) || (monter && descendre && droite && gauche)))
+            else if (tempsCourir < flamme.Width && ((ServiceHelper.Get<IKeyboardService>().ToucheRelevee(courir) && !ServiceHelper.Get<IGamePadService>().Courir())) && !(monter && descendre && droite && gauche))
                 tempsCourir += 0.1f * gameTime.ElapsedGameTime.Milliseconds;
 
             if (!ServiceHelper.Get<IKeyboardService>().TouchePressee(up))    // arreter le sprite
