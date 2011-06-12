@@ -75,11 +75,11 @@ namespace YelloKiller
 
         #endregion
 
-        #region HandleInput
+        #region Handle Input
 
         public override void HandleInput(InputState input)
         {
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter))
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer())
             {
                 VLC.Stop();
                 LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
