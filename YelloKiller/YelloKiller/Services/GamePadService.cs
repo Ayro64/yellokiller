@@ -54,7 +54,7 @@ namespace YelloKiller
 
         public bool Courir()
         {
-            return GPState.Triggers.Right > 0.7 || GPState.Triggers.Left > 0.7; ;
+            return GPState.Triggers.Right > 0.7 || GPState.Triggers.Left > 0.7;
         }
 
         public void Vibration(int tempsDurantLequelLaManetteVibre)
