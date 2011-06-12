@@ -1391,18 +1391,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu Editeur de Maps\interrupteur.png">
-      <Name>interrupteur</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Menu Editeur de Maps\porte.png">
-      <Name>porte</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Menu Editeur de Maps\barriereFermee.png">
       <Name>barriereFermee</Name>
       <Importer>TextureImporter</Importer>
