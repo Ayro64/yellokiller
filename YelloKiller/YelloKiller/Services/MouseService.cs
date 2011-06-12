@@ -5,12 +5,13 @@ namespace YelloKiller
 {
     public class MouseService : GameComponent, IMouseService
     {
-        MouseState MState = Mouse.GetState(), LastMState;
+        MouseState MState, LastMState;
         Rectangle rectangle;
 
         public MouseService(Game game)
             : base(game)
         {
+            MState = Mouse.GetState();
             ServiceHelper.Add<IMouseService>(this);
         }
 
@@ -63,7 +64,6 @@ namespace YelloKiller
         {
             return MState.X >= 0 && MState.X <= Taille_Ecran.LARGEUR_ECRAN && MState.Y >= 0 && MState.Y <= Taille_Ecran.HAUTEUR_ECRAN;
         }
-
 
         public bool DansLaCarte()
         {
