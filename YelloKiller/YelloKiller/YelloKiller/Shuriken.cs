@@ -9,7 +9,7 @@ namespace YelloKiller
     {
         Vector2 direction;
         Rectangle rectangle;
-        bool shurikenExists;
+        public bool ShurikenExists { get; private set; }
         float elapsed, circle;
         float tmpshuriken = 0;
 
@@ -23,7 +23,7 @@ namespace YelloKiller
             this.position.Y = position.Y + 4;
             elapsed = 0;
             circle = MathHelper.Pi * 2;
-            shurikenExists = false;
+            ShurikenExists = false;
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 12, 12);
 
@@ -50,7 +50,7 @@ namespace YelloKiller
             if (position.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP && position.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP &&
                 carte.Cases[Y, X].Type > 0)
             {
-                shurikenExists = true;
+                ShurikenExists = true;
                 position += 7 * direction;
 
                 elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -58,11 +58,11 @@ namespace YelloKiller
                 Rotation = Rotation % circle;
             }
             else
-                shurikenExists = false;
+                ShurikenExists = false;
 
             if (tmpshuriken > 1)
             {
-                shurikenExists = false;
+                ShurikenExists = false;
                 tmpshuriken = 0;
             }
         }
@@ -75,11 +75,6 @@ namespace YelloKiller
         public Vector2 Direction
         {
             get { return direction; }
-        }
-
-        public bool ShurikenExists
-        {
-            get { return shurikenExists; }
         }
 
         public void LoadContent(ContentManager content)
