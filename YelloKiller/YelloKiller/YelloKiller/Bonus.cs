@@ -32,7 +32,7 @@ namespace YelloKiller
                     LoadContent(content, @"Menu Editeur de Maps\bonusHadoken");
                     break;
                 case TypeBonus.checkPoint:
-                    LoadContent(content, "CheckPoint");
+                    LoadContent(content, @"Menu Editeur de Maps\CheckPoint");
                     break;
             }
         }
