@@ -579,8 +579,13 @@ namespace YelloKiller
         private bool PorteFermeeSurLeChemin(List<Interrupteur> interrupteurs, int x, int y)
         {
             foreach (Interrupteur bouton in interrupteurs)
-                if ((x == bouton.PortePosition.X || x == bouton.PortePosition.X + 1) && y == bouton.PortePosition.Y && !bouton.PorteOuverte)
+            {
+                if (!bouton.PorteOuverte && (bouton.rotation == 0 && y == bouton.PortePosition.Y && (x == bouton.PortePosition.X + 1 || x == bouton.PortePosition.X) ||
+                                             bouton.rotation == 2 && y == bouton.PortePosition.Y - 1 && (x == bouton.PortePosition.X - 1 || x == bouton.PortePosition.X - 2) ||
+                                             bouton.rotation == 1 && x == bouton.PortePosition.X - 1 && (y == bouton.PortePosition.Y + 1 || y == bouton.PortePosition.Y) ||
+                                             bouton.rotation == 3 && x == bouton.PortePosition.X && (y == bouton.PortePosition.Y - 1 || y == bouton.PortePosition.Y - 2)))
                     return true;
+            }
 
             return false;
         }

@@ -166,8 +166,9 @@ namespace YelloKiller
             interrupteurs = new List<Interrupteur>();
             foreach (Interrupteur bouton in carte.Interrupteurs)
             {
-                interrupteurs.Add(new Interrupteur(28 * bouton.Position));
+                interrupteurs.Add(new Interrupteur(bouton.Position));
                 interrupteurs[interrupteurs.Count - 1].PortePosition = bouton.PortePosition;
+                interrupteurs[interrupteurs.Count - 1].rotation = bouton.rotation;
             }
 
             gardesMorts = new List<Rectangle>();

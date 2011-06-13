@@ -184,6 +184,7 @@ namespace YelloKiller
                 positionTemporaire.X = Convert.ToInt32(dessert[2]);
                 positionTemporaire.Y = Convert.ToInt32(dessert[3]);
                 interrupteurs[interrupteurs.Count - 1].PortePosition = positionTemporaire;
+                interrupteurs[interrupteurs.Count - 1].rotation = Convert.ToByte(dessert[4]);
                 banana = file.ReadLine();
             }
 
