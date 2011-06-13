@@ -292,7 +292,7 @@ namespace YelloKiller
                 if (Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank))
                     SauvegarderCheckPoint();
 
-                Moteur_physique.Collisions_Heros_Interrupteurs(hero1, hero2, ref interrupteurs);
+                Moteur_physique.Collisions_Heros_Interrupteurs(hero1, hero2, ref interrupteurs, AudioEngine.SoundBank);
 
                 if (_boss.Count == 0)
                 {
