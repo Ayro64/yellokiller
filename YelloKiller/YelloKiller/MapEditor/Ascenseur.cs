@@ -28,7 +28,7 @@ namespace YelloKiller
             get { return position; }
         }
 
-        public void Update()
+        public void Update(int limite)
         {
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
@@ -50,8 +50,8 @@ namespace YelloKiller
             {
                 if (ServiceHelper.Get<IMouseService>().Coordonnees().Y - difference <= 0)
                     position.Y = 0;
-                else if (ServiceHelper.Get<IMouseService>().Coordonnees().Y + texture.Height - difference >= Taille_Ecran.HAUTEUR_ECRAN)
-                    position.Y = Taille_Ecran.HAUTEUR_ECRAN - texture.Height;
+                else if (ServiceHelper.Get<IMouseService>().Coordonnees().Y + texture.Height - difference >= limite/* Taille_Ecran.HAUTEUR_ECRAN*/)
+                    position.Y = limite /*Taille_Ecran.HAUTEUR_ECRAN */- texture.Height;
                 else
                     position = new Vector2(position.X, ServiceHelper.Get<IMouseService>().Coordonnees().Y - difference);
             }

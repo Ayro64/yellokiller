@@ -90,7 +90,7 @@ namespace YelloKiller
 
             menu = new Menu(content);
             curseur = new Curseur(content);
-            ascenseur1 = new Ascenseur(content, Taille_Ecran.LARGEUR_ECRAN - 28);
+            ascenseur1 = new Ascenseur(content, ScreenManager.GraphicsDevice.Viewport.Width - 28/* Taille_Ecran.LARGEUR_ECRAN - 28*/);
             ascenseur2 = new Ascenseur(content, 0);
             fond = content.Load<Texture2D>(@"Textures\Invisible");
             pointDePassage = content.Load<Texture2D>(@"Menu Editeur de Maps\pied");
@@ -134,9 +134,9 @@ namespace YelloKiller
             if (afficherMessageErreur || afficherMessageSauvegarde)
                 chronometre += gameTime.ElapsedGameTime.TotalSeconds;
 
-            ascenseur1.Update();
-            ascenseur2.Update();
-            menu.Update(ascenseur1, ascenseur2);
+            ascenseur1.Update(ScreenManager.GraphicsDevice.Viewport.Height);
+            ascenseur2.Update(ScreenManager.GraphicsDevice.Viewport.Height);
+            menu.Update(ascenseur1, ascenseur2, ScreenManager.GraphicsDevice.Viewport.Width);
             curseur.Update(content, menu);
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
@@ -314,10 +314,10 @@ namespace YelloKiller
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
 
-            spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(2, 27), SpriteEffects.None, 1);
-            spriteBatch.Draw(fond, new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, 0), null, Color.White, 0, Vector2.Zero, new Vector2(2, 27), SpriteEffects.None, 1);
+            spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
+            spriteBatch.Draw(fond, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 56, 0), null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
 
-            menu.Draw(spriteBatch, ascenseur1, ascenseur2);
+            menu.Draw(spriteBatch, ascenseur1, ascenseur2, ScreenManager.GraphicsDevice.Viewport.Width);
             ascenseur1.Draw(spriteBatch);
             ascenseur2.Draw(spriteBatch);
 
