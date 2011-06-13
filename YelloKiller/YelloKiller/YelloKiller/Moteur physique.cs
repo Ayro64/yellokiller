@@ -401,11 +401,11 @@ namespace YelloKiller
             return false;
         }
 
-        static public void Collisions_Heros_Interrupteurs(Hero hero1, Hero hero2, ref List<Interrupteur> interrupteurs)
+        static public void Collisions_Heros_Interrupteurs(Hero hero1, Hero hero2, ref List<Interrupteur> interrupteurs, SoundBank soundBank)
         {
             foreach (Interrupteur bouton in interrupteurs)
                 if (hero1.X == bouton.position.X && hero1.Y == bouton.position.Y || hero2 != null && hero2.X == bouton.position.X && hero2.Y == bouton.position.Y)
-                    bouton.OuvrirPorte();
+                    bouton.OuvrirPorte(soundBank);
         }
     }
 }

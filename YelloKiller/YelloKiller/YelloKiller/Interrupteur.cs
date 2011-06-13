@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -48,51 +49,25 @@ namespace YelloKiller
             spriteBatch.Draw(texturePorteFermee, 28 * new Vector2(PortePosition.X - camera.X + 2, PortePosition.Y - camera.Y), null, Color.White, rotation * (float)Math.PI / 2, Origin, 1, SpriteEffects.None, 1);
         }
 
-        public void OuvrirPorte()
+        public void OuvrirPorte(SoundBank soundBank)
         {
             if (!PorteOuverte)
+            {
+                soundBank.PlayCue("porte");
                 PorteOuverte = true;
+            }
         }
 
         public void Rotationner()
         {
             rotation++;
             rotation %= 4;
-            /*if (rotation == 1)
-            {
-                portePosition.X++;
-            }
-            else if (rotation == 2)
-            {
-                portePosition.Y++;
-                portePosition.X++;
-            }
-            else if (rotation == 3)
-            {
-                portePosition.X -= 2;
-                portePosition.Y++;
-            }
-            else
-                portePosition.Y -= 2;*/
         }
 
         public Vector2 PortePosition
         {
             get { return portePosition; }
             set { portePosition = value; }
-        }
-
-        public void ChangerPosition(Vector2 nouvellePosition)
-        {
-            portePosition = new Vector2(nouvellePosition.X, nouvellePosition.Y);
-            /*if (rotation == 0)
-                portePosition = new Vector2(nouvellePosition.X, nouvellePosition.Y);
-            else if (rotation == 1)
-                portePosition = new Vector2(nouvellePosition.X + 1, nouvellePosition.Y);
-            else if (rotation == 2)
-                portePosition = new Vector2(nouvellePosition.X + 2, nouvellePosition.Y + 1);
-            else if (rotation == 3)
-                portePosition = new Vector2(nouvellePosition.X, nouvellePosition.Y + 2);*/
         }
     }
 }
