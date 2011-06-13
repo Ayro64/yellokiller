@@ -472,6 +472,10 @@ namespace YelloKiller
             foreach (Bonus bonus in _bonus)
                 bonus.SauvegarderCheckPoint(ref file);
 
+            file.WriteLine("Interrupteurs");
+            foreach (Interrupteur bouton in interrupteurs)
+                bouton.SauvegarderCheckPoint(ref file);
+
             file.WriteLine("Camera");
             file.WriteLine(camera.X + "," + camera.Y);
 
@@ -589,10 +593,22 @@ namespace YelloKiller
 
             banana = file.ReadLine();
             _bonus = new List<Bonus>();
-            while (banana != "Camera")
+            while (banana != "Interrupteurs")
             {
                 dessert = banana.Split(',');
                 _bonus.Add(new Bonus(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1])), (TypeBonus)Convert.ToInt32(dessert[2])));
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+            interrupteurs = new List<Interrupteur>();
+            while (banana != "Camera")
+            {
+                dessert = banana.Split(',');
+                interrupteurs.Add(new Interrupteur(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1]))));
+                interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(Convert.ToInt32(dessert[2]), Convert.ToInt32(dessert[3]));
+                interrupteurs[interrupteurs.Count - 1].rotation = Convert.ToByte(dessert[4]);
+                interrupteurs[interrupteurs.Count - 1].PorteOuverte = Convert.ToBoolean(dessert[5]);
                 banana = file.ReadLine();
             }
 
@@ -615,6 +631,9 @@ namespace YelloKiller
 
             foreach (Bonus bonus in _bonus)
                 bonus.LoadContent(content);
+
+            foreach (Interrupteur bouton in interrupteurs)
+                bouton.LoadContent(content);
 
             file.Close();
         }
