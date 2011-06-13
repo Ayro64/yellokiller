@@ -96,6 +96,9 @@ namespace YelloKiller
             pointDePassage = content.Load<Texture2D>(@"Menu Editeur de Maps\pied");
             textureStatue = content.Load<Texture2D>(@"Feuilles de sprites\statue_dragon");
 
+            foreach (Interrupteur bouton in interrupteurs)
+                bouton.LoadContent(content);
+
             spriteBatch = ScreenManager.SpriteBatch;
         }
 
@@ -187,6 +190,9 @@ namespace YelloKiller
                 else if (curseur.Type == TypeCase.Interrupteur)
                     interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y);
             }
+
+            if (ServiceHelper.Get<IMouseService>().ClicBoutonMilieu() && ServiceHelper.Get<IMouseService>().DansLaCarte() && curseur.Type == TypeCase.Interrupteur)
+                interrupteurs[interrupteurs.Count - 1].Rotationner();
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
                 Placer_Case();
@@ -613,7 +619,7 @@ namespace YelloKiller
 
                     sauvegarde.WriteLine("Interrupteurs");
                     foreach (Interrupteur bouton in interrupteurs)
-                        sauvegarde.WriteLine(bouton.X + "," + bouton.Y + "," + bouton.PortePosition.X + "," + bouton.PortePosition.Y);
+                        sauvegarde.WriteLine(bouton.position.X + "," + bouton.position.Y + "," + bouton.PortePosition.X + "," + bouton.PortePosition.Y + "," + bouton.rotation);
 
                     sauvegarde.WriteLine("Salaire");
                     sauvegarde.WriteLine(salaire);
@@ -658,7 +664,7 @@ namespace YelloKiller
                     bonus.RemoveAt(prout);
 
             for (int caca = 0; caca < interrupteurs.Count; caca++)
-                if (interrupteurs[caca].X == curseur.Position.X + camera.X && interrupteurs[caca].Y == curseur.Position.Y + camera.Y)
+                if (interrupteurs[caca].position.X == curseur.Position.X + camera.X && interrupteurs[caca].position.Y == curseur.Position.Y + camera.Y)
                     interrupteurs.RemoveAt(caca);
         }
 
@@ -715,7 +721,7 @@ namespace YelloKiller
                 bonus.Add(new Bonus(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), TypeBonus.checkPoint));
             else if (curseur.Type == TypeCase.Interrupteur)
             {
-                interrupteurs.Add(new Interrupteur(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y)));
+                interrupteurs.Add(new Interrupteur(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y)));
                 interrupteurs[interrupteurs.Count - 1].LoadContent(content);
             }
         }
