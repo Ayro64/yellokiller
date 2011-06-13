@@ -177,6 +177,7 @@ namespace YelloKiller
             bossMorts = new List<Rectangle>();
 
             ennemisTues = (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count);
+            Alerte = false;
         }
 
         public override void LoadContent()
@@ -253,16 +254,16 @@ namespace YelloKiller
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1, interrupteurs);
 
                 foreach (Garde garde in _gardes)
-                    garde.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
+                    garde.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
+                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
+                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Boss boss in _boss)
-                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
+                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule);

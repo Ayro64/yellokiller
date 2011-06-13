@@ -11,6 +11,7 @@ namespace YelloKiller
     {
         static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank, ref List<Rectangle> gardesMorts, ref List<Rectangle> patrouilleursAChevauxMorts, ref List<Rectangle> patrouilleursMorts, ref List<Rectangle> bossMorts)
         {
+            int nbEnnemis = _gardes.Count + _Patrouilleurs.Count + _PatrouilleursAChevaux.Count + _Boss.Count;
             if (_gardes.Count != 0)
             {
                 for (int i = 0; i < _gardes.Count; i++)
@@ -213,6 +214,9 @@ namespace YelloKiller
                         }
                 }
             }
+
+            if (_gardes.Count + _Patrouilleurs.Count + _PatrouilleursAChevaux.Count + _Boss.Count < nbEnnemis)
+                GameplayScreen.Alerte = false;
         }
         
         static public bool Collision_Garde_Heros(List<Garde> _gardes, Hero hero1, Hero hero2, SoundBank soundBank)

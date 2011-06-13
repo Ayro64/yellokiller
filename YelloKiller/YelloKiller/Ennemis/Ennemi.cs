@@ -51,21 +51,21 @@ namespace YelloKiller
             this.MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2, List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
+        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2, List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts, Rectangle fumee)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
             UpdateChampDeVision(carte);
             ServiceHelper.Game.Window.Title = GameplayScreen.Alerte.ToString();
-            MortDansLeChampDeVision(gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
+            MortDansLeChampDeVision(gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, fumee);
 
-            if (!RetourneCheminNormal && Collision(hero1.Rectangle) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/)
+            if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumee) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/)
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero1.Y, hero1.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
-            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/))
+            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle, fumee) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/))
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero2.Y, hero2.X];
@@ -293,8 +293,11 @@ namespace YelloKiller
             return (distance < 6 ? distance - 1 : 5);
         }
 
-        public bool Collision(Rectangle contour)
+        public bool Collision(Rectangle contour, Rectangle fumee)
         {
+            if (fumee != null && fumee.Intersects(contour))
+                return false;
+
             if (contour.Intersects(champDeVision1) || contour.Intersects(champDeVision2) || contour.Intersects(champDeVision3))
             {
                 GameplayScreen.Alerte = true;
@@ -333,31 +336,31 @@ namespace YelloKiller
             return false;
         }*/
 
-        private void MortDansLeChampDeVision(List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
+        private void MortDansLeChampDeVision(List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts, Rectangle fumee)
         {
             foreach (Rectangle mort in gardesMorts)
-                if (Collision(mort))
+                if (Collision(mort, fumee))
                 {
                     GameplayScreen.Alerte = true;
                     break;
                 }
 
             foreach (Rectangle mort in patrouilleursMorts)
-                if (Collision(mort))
+                if (Collision(mort, fumee))
                 {
                     GameplayScreen.Alerte = true;
                     break;
                 }
 
             foreach (Rectangle mort in patrouilleursAChevauxMorts)
-                if (Collision(mort))
+                if (Collision(mort, fumee))
                 {
                     GameplayScreen.Alerte = true;
                     break;
                 }
 
             foreach (Rectangle mort in bossMorts)
-                if (Collision(mort))
+                if (Collision(mort, fumee))
                 {
                     GameplayScreen.Alerte = true;
                     break;

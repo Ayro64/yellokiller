@@ -255,7 +255,7 @@ namespace YelloKiller.Moteur_Particule
             if (fumigene1.FreeParticleCount == 135) // lorsque freeparticulecount = 135 le fumigene est termine 
                 Rectangle_Fumigene_Est_Present = true;// je reinitialise donc mon rectangle
 
-            if (explosion_statue.FreeParticleCount < 135 && Rectangle_Fumigene_Est_Present)
+            if (fumigene1.FreeParticleCount < 135 && Rectangle_Fumigene_Est_Present)
                 return new Rectangle((int)hero.position.X - 28 * 3, (int)hero.position.Y - 28 * 3, 28 * 6, 28 * 6);
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
