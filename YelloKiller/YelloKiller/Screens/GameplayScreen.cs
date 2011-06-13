@@ -295,7 +295,7 @@ namespace YelloKiller
 
                 Moteur_physique.Collisions_Heros_Interrupteurs(hero1, hero2, ref interrupteurs, AudioEngine.SoundBank);
 
-                if (_boss.Count == 0)
+                if ( _boss.Count == 0 && (hero1.EstAuPointDeDepart || hero2 != null && hero2.EstAuPointDeDepart))
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, ennemisTues - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
                     audio.Close();

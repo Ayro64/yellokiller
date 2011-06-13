@@ -20,7 +20,7 @@ namespace YelloKiller
 
     class Hero : Sprite
     {
-        Vector2 positionDesiree;
+        Vector2 positionDesiree, caseDeDepart;
         Texture2D flamme, textureShuriken, textureHadoken, textureBouleDeFeu, textureFumigene;
         Rectangle rectangle;
         float vitesseAnimation, index, tempsCourir;
@@ -28,6 +28,7 @@ namespace YelloKiller
         public int NombreHadoken { get; set; }
         public int NombreFumigene { get; set; }
         public int NombreBall { get; set; }
+        public bool EstAuPointDeDepart { get; private set; }
         int maxIndex, vitesseSprite;
         public byte NumeroHero { get; private set; }
         public bool ishero;
@@ -71,6 +72,8 @@ namespace YelloKiller
             NombreHadoken = 5;
             NombreFumigene = 10;
             NombreBall = 5;
+            caseDeDepart = new Vector2(X, Y);
+            Console.WriteLine("X = " + caseDeDepart.X + " Y = " + caseDeDepart.Y);
         }
 
         public int Distance_Hero_Mur(Carte carte)
@@ -115,6 +118,7 @@ namespace YelloKiller
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
+            EstAuPointDeDepart = X == caseDeDepart.X && Y == caseDeDepart.Y;
 
             MoteurParticule.Camera = new Vector2(camera.X, camera.Y);
 

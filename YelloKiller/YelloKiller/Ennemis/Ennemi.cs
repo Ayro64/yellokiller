@@ -56,7 +56,6 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
             UpdateChampDeVision(carte);
-            ServiceHelper.Game.Window.Title = GameplayScreen.Alerte.ToString();
             MortDansLeChampDeVision(gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, fumee);
 
             if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumee) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/)
