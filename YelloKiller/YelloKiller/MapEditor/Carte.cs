@@ -752,7 +752,7 @@ namespace YelloKiller
         {
             for (int y = camera.Y / 28 + camera.Height; y >= camera.Y / 28 - 2; y--)
                 if (y < 60 && y >= 0)
-                    for (int x = camera.X / 28 + camera.Width; x >= camera.X / 28 - 2; x--)
+                    for (int x = camera.X / 28 + camera.Width + 1; x >= camera.X / 28 - 2; x--)
                         if (x < 80 && x >= 0)
                         {
                             _case[y, x].Position = 28 * new Vector2(x, y) - new Vector2(camera.X, camera.Y);
