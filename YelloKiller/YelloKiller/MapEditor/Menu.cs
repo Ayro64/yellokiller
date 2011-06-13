@@ -117,16 +117,16 @@ namespace YelloKiller
             get { return listeTexturesGauche; }
         }
 
-        public void Update(Ascenseur ascenseurDroit, Ascenseur ascenseurGauche)
+        public void Update(Ascenseur ascenseurDroit, Ascenseur ascenseurGauche, int limite)
         {
             for (int i = 0; i < NombreTexturesDroite; i++)
-                listeRectanglesDroite[i] = new Rectangle(Taille_Ecran.LARGEUR_ECRAN - 56, 2 * (int)-ascenseurDroit.Position.Y + i * 30, 28, 28);
+                listeRectanglesDroite[i] = new Rectangle(limite/* Taille_Ecran.LARGEUR_ECRAN*/ - 56, 2 * (int)-ascenseurDroit.Position.Y + i * 30, 28, 28);
 
             for (int i = 0; i < NombreTexturesGauche; i++)
                 listeRectanglesGauche[i] = new Rectangle(28, (int)-ascenseurGauche.Position.Y + i * 30, 28, 28);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseurDroit, Ascenseur ascenseurGauche)
+        public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseurDroit, Ascenseur ascenseurGauche, int limite)
         {
             for (int u = 0; u < NombreTexturesDroite; u++)
             {
@@ -137,7 +137,7 @@ namespace YelloKiller
                     spriteBatch.Draw(listeTexturesDroite[u], new Vector2(listeRectanglesDroite[u].X + 28 * (1 - listeTexturesDroite[u].Width / 28), listeRectanglesDroite[u].Y + 28 * (1 - listeTexturesDroite[u].Height / 28)), Color.White);
                 }
                 else
-                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(Taille_Ecran.LARGEUR_ECRAN - 56, -2 * ascenseurDroit.Position.Y + u * 30), null, Color.White, 0, Vector2.Zero, new Vector2((float)28 / listeTexturesDroite[u].Width, (float)28 / listeTexturesDroite[u].Height), SpriteEffects.None, 0);
+                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(limite - 56, -2 * ascenseurDroit.Position.Y + u * 30), null, Color.White, 0, Vector2.Zero, new Vector2((float)28 / listeTexturesDroite[u].Width, (float)28 / listeTexturesDroite[u].Height), SpriteEffects.None, 0);
             }
 
             for (int c = 0; c < NombreTexturesGauche; c++)
