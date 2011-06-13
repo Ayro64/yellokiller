@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -10,7 +11,7 @@ namespace YelloKiller
     {
         Vector2 portePosition;
         Texture2D texturePorteFermee, texturePorteOuverte, textureInterrupteurTouche;
-        public bool PorteOuverte { get; private set; }
+        public bool PorteOuverte { get; set; }
         public byte rotation;
 
         public Interrupteur(Vector2 position)
@@ -68,6 +69,11 @@ namespace YelloKiller
         {
             get { return portePosition; }
             set { portePosition = value; }
+        }
+
+        public void SauvegarderCheckPoint(ref StreamWriter file)
+        {
+            file.WriteLine(position.X + "," + position.Y + "," + portePosition.X + "," + portePosition.Y + "," + rotation + "," + PorteOuverte);
         }
     }
 }
