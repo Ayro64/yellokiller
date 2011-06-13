@@ -56,6 +56,7 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
             UpdateChampDeVision(carte);
+            ServiceHelper.Game.Window.Title = GameplayScreen.Alerte.ToString();
             MortDansLeChampDeVision(gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts);
 
             if (!RetourneCheminNormal && Collision(hero1.Rectangle) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/)
@@ -106,7 +107,7 @@ namespace YelloKiller
             else
             {
                 Alerte = false;
-                GameplayScreen.Alerte = false;
+                //GameplayScreen.Alerte = false;
             }
 
             if (SourceRectangle.Value.Y == sourceRectangle1.Y)
@@ -303,7 +304,7 @@ namespace YelloKiller
             return false;
         }
 
-        private bool MortDansLeChampDeVision(List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
+        /*private bool MortDansLeChampDeVision(List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
         {
             bool res = false;
 
@@ -329,7 +330,38 @@ namespace YelloKiller
                 return true;
             }
 
-            return false; ;
+            return false;
+        }*/
+
+        private void MortDansLeChampDeVision(List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
+        {
+            foreach (Rectangle mort in gardesMorts)
+                if (Collision(mort))
+                {
+                    GameplayScreen.Alerte = true;
+                    break;
+                }
+
+            foreach (Rectangle mort in patrouilleursMorts)
+                if (Collision(mort))
+                {
+                    GameplayScreen.Alerte = true;
+                    break;
+                }
+
+            foreach (Rectangle mort in patrouilleursAChevauxMorts)
+                if (Collision(mort))
+                {
+                    GameplayScreen.Alerte = true;
+                    break;
+                }
+
+            foreach (Rectangle mort in bossMorts)
+                if (Collision(mort))
+                {
+                    GameplayScreen.Alerte = true;
+                    break;
+                }
         }
 
         public void SauvegarderCheckPoint(ref StreamWriter file)
