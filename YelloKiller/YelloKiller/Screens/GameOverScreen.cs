@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace YelloKiller
 {
@@ -12,18 +13,19 @@ namespace YelloKiller
         #region Fields
 
         List<MenuEntry> menuEntries = new List<MenuEntry>();
-        MenuEntry restartMenuEntry, abortMenuEntry;
+        MenuEntry restartMenuEntry, chkpointMenuEntry, abortMenuEntry;
 
-        int selectedEntry = 0;
+        int selectedEntry = 1;
         uint retries;
         ContentManager content;
         Texture2D gameoverTexture, blankTexture;
         string GOmessage, comingfrom;
 
         Color Color;
+        public event EventHandler<PlayerIndexEventArgs> Chkpoint;
 
         #endregion
-        
+
         #region Initialization
 
         /// <summary>
@@ -45,6 +47,7 @@ namespace YelloKiller
 
             // Create our menu entries.
             restartMenuEntry = new MenuEntry(Langue.tr("GORetry"));
+            chkpointMenuEntry = new MenuEntry(Langue.tr("GOchk"));
             abortMenuEntry = new MenuEntry(Langue.tr("GOAbort"));
 
             // Hook up menu event handlers.
@@ -53,7 +56,6 @@ namespace YelloKiller
 
             // Add entries to the menu.
             menuEntries.Add(restartMenuEntry);
-            menuEntries.Add(abortMenuEntry);
         }
 
         /// <summary>
@@ -135,10 +137,7 @@ namespace YelloKiller
         /// </summary>
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            if (comingfrom[0] == 'S')
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, retries));
-            else 
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, retries));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, retries));
         }
 
         /// <summary>
@@ -162,6 +161,16 @@ namespace YelloKiller
         public override void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                        bool coveredByOtherScreen)
         {
+            if (!chkpointMenuEntry.IsEvent)
+            {
+                if (File.Exists("checkTemp.txt"))
+                    chkpointMenuEntry.Selected += Chkpoint;
+                else
+                    chkpointMenuEntry.Selected += RestartMenuEntrySelected;
+                menuEntries.Add(chkpointMenuEntry);
+                menuEntries.Add(abortMenuEntry);
+            }
+
             // Update each nested MenuEntry object.
             for (int i = 0; i < menuEntries.Count; i++)
             {
@@ -183,12 +192,13 @@ namespace YelloKiller
             SpriteFont font = ScreenManager.Font;
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
-            Rectangle pitiRectangle = new Rectangle((viewport.Width / 2) - (int)(font.MeasureString(GOmessage).X), (int)(viewport.Height * 0.7f), (int)(font.MeasureString(GOmessage).X * 2f), 110);
+            Rectangle pitiRectangle = new Rectangle((viewport.Width / 2) - (int)(font.MeasureString(GOmessage).X * 1.05f), (int)(viewport.Height * 0.7f), (int)(font.MeasureString(GOmessage).X * 2.1f), 110);
             byte fade = TransitionAlpha;
 
             //Entrées Menu
-            Vector2 positionL = new Vector2(pitiRectangle.X + 25, pitiRectangle.Y + (int)(pitiRectangle.Height / 1.5f));
-            Vector2 positionR = new Vector2(pitiRectangle.X + pitiRectangle.Width - (font.MeasureString(abortMenuEntry.Text).X * 1.4f), pitiRectangle.Y + (int)(pitiRectangle.Height / 1.5f));
+            Vector2 positionL = new Vector2(viewport.Width / 2 - ((font.MeasureString(restartMenuEntry.Text).X + font.MeasureString(chkpointMenuEntry.Text).X + font.MeasureString(abortMenuEntry.Text).X + 60) / 2), pitiRectangle.Y + (int)(pitiRectangle.Height / 1.5f));
+            Vector2 positionM = new Vector2(positionL.X + font.MeasureString(restartMenuEntry.Text).X + 30, pitiRectangle.Y + (int)(pitiRectangle.Height / 1.5f));
+            Vector2 positionR = new Vector2(positionM.X + font.MeasureString(chkpointMenuEntry.Text).X + 30, pitiRectangle.Y + (int)(pitiRectangle.Height / 1.5f));
 
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
@@ -198,11 +208,13 @@ namespace YelloKiller
             if (ScreenState == ScreenState.TransitionOn)
             {
                 positionL.X -= transitionOffset * 256;
+                positionM.Y += transitionOffset * 100;
                 positionR.X += transitionOffset * 256;
             }
             else
             {
                 positionL.X -= transitionOffset * 512;
+                positionM.Y += transitionOffset * 100;
                 positionR.X += transitionOffset * 512;
             }
 
@@ -220,6 +232,8 @@ namespace YelloKiller
             bool isSelected = IsActive && (0 == selectedEntry);
             restartMenuEntry.Draw(this, positionL, isSelected, gameTime, Color);
             isSelected = IsActive && (1 == selectedEntry);
+            chkpointMenuEntry.Draw(this, positionM, isSelected, gameTime, Color);
+            isSelected = IsActive && (2 == selectedEntry);
             abortMenuEntry.Draw(this, positionR, isSelected, gameTime, Color);
 
 
