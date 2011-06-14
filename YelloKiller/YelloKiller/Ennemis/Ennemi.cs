@@ -51,12 +51,12 @@ namespace YelloKiller
             this.MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2, List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts, Rectangle fumee)
+        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2, List<EnnemiMort> ennemisMorts, Rectangle fumee)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
             UpdateChampDeVision(carte);
-            MortDansLeChampDeVision(gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, fumee);
+            MortDansLeChampDeVision(ennemisMorts, fumee);
 
             if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumee) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/)
             {
@@ -335,31 +335,10 @@ namespace YelloKiller
             return false;
         }*/
 
-        private void MortDansLeChampDeVision(List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts, Rectangle fumee)
+        private void MortDansLeChampDeVision(List<EnnemiMort> ennemisMorts, Rectangle fumee)
         {
-            foreach (Rectangle mort in gardesMorts)
-                if (Collision(mort, fumee))
-                {
-                    GameplayScreen.Alerte = true;
-                    break;
-                }
-
-            foreach (Rectangle mort in patrouilleursMorts)
-                if (Collision(mort, fumee))
-                {
-                    GameplayScreen.Alerte = true;
-                    break;
-                }
-
-            foreach (Rectangle mort in patrouilleursAChevauxMorts)
-                if (Collision(mort, fumee))
-                {
-                    GameplayScreen.Alerte = true;
-                    break;
-                }
-
-            foreach (Rectangle mort in bossMorts)
-                if (Collision(mort, fumee))
+            foreach (EnnemiMort mort in ennemisMorts)
+                if (Collision(mort.Rectangle, fumee))
                 {
                     GameplayScreen.Alerte = true;
                     break;

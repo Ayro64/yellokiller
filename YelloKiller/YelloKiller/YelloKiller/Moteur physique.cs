@@ -9,40 +9,26 @@ namespace YelloKiller
 {
     static class Moteur_physique
     {
-        static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank, ref List<Rectangle> gardesMorts, ref List<Rectangle> patrouilleursAChevauxMorts, ref List<Rectangle> patrouilleursMorts, ref List<Rectangle> bossMorts)
+        static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank, ref List<EnnemiMort> morts, ContentManager content)
         {
             int nbEnnemis = _gardes.Count + _Patrouilleurs.Count + _PatrouilleursAChevaux.Count + _Boss.Count;
             if (_gardes.Count != 0)
             {
                 for (int i = 0; i < _gardes.Count; i++)
                 {
-                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
+                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) || _gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("cri");
-                        gardesMorts.Add(new Rectangle(28 * _gardes[i].X, 28 * _gardes[i].Y, 28, 28));
-                        _gardes.RemoveAt(i);
-                        break;
-                    }
-                    else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
-                    {
-                        soundBank.PlayCue("cri");
-                        gardesMorts.Add(new Rectangle(28 * _gardes[i].X, 28 * _gardes[i].Y, 28, 28));
+                        morts.Add(new EnnemiMort(new Vector2(28 * _gardes[i].X, 28 * _gardes[i].Y), content, EnnemiMort.TypeEnnemiMort.garde));
                         _gardes.RemoveAt(i);
                         break;
                     }
                     if (hero2 != null)
                     {
-                        if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
+                        if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) || _gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
                         {
                             soundBank.PlayCue("cri");
-                            gardesMorts.Add(new Rectangle(28 * _gardes[i].X, 28 * _gardes[i].Y, 28, 28));
-                            _gardes.RemoveAt(i);
-                            break;
-                        }
-                        else if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
-                        {
-                            soundBank.PlayCue("cri");
-                            gardesMorts.Add(new Rectangle(28 * _gardes[i].X, 28 * _gardes[i].Y, 28, 28));
+                            morts.Add(new EnnemiMort(new Vector2(28 * _gardes[i].X, 28 * _gardes[i].Y), content, EnnemiMort.TypeEnnemiMort.garde));
                             _gardes.RemoveAt(i);
                             break;
                         }
@@ -52,7 +38,7 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("cri");
                             ServiceHelper.Get<IGamePadService>().Vibration(20);
-                            gardesMorts.Add(new Rectangle(28 * _gardes[i].X, 28 * _gardes[i].Y, 28, 28));
+                            morts.Add(new EnnemiMort(new Vector2(28 * _gardes[i].X, 28 * _gardes[i].Y), content, EnnemiMort.TypeEnnemiMort.garde));
                             _gardes.RemoveAt(i);
                             listeShuriken.RemoveAt(j);
                             break;
@@ -64,33 +50,19 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _Patrouilleurs.Count; i++)
                 {
-                    if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
+                    if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) || _Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("Bruitage patrouilleur");
-                        patrouilleursMorts.Add(new Rectangle(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y, 28, 28));
-                        _Patrouilleurs.RemoveAt(i);
-                        break;
-                    }
-                    else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
-                    {
-                        soundBank.PlayCue("Bruitage patrouilleur");
-                        patrouilleursMorts.Add(new Rectangle(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y, 28, 28));
+                        morts.Add(new EnnemiMort(new Vector2(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleur));
                         _Patrouilleurs.RemoveAt(i);
                         break;
                     }
                     if (hero2 != null)
                     {
-                        if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
+                        if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) || _Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
                         {
                             soundBank.PlayCue("Bruitage patrouilleur");
-                            patrouilleursMorts.Add(new Rectangle(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y, 28, 28));
-                            _Patrouilleurs.RemoveAt(i);
-                            break;
-                        }
-                        else if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
-                        {
-                            soundBank.PlayCue("Bruitage patrouilleur");
-                            patrouilleursMorts.Add(new Rectangle(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y, 28, 28));
+                            morts.Add(new EnnemiMort(new Vector2(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleur));
                             _Patrouilleurs.RemoveAt(i);
                             break;
                         }
@@ -99,7 +71,7 @@ namespace YelloKiller
                         if (_Patrouilleurs[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
                             soundBank.PlayCue("Bruitage patrouilleur");
-                            patrouilleursMorts.Add(new Rectangle(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y, 28, 28));
+                            morts.Add(new EnnemiMort(new Vector2(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleur));
                             _Patrouilleurs.RemoveAt(i);
                             listeShuriken.RemoveAt(j);
                             break;
@@ -111,33 +83,19 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _PatrouilleursAChevaux.Count; i++)
                 {
-                    if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)))
+                    if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) || _PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
                     {
                         soundBank.PlayCue("Bruitage cheval");
-                        patrouilleursAChevauxMorts.Add(new Rectangle(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y, 28, 28));
-                        _PatrouilleursAChevaux.RemoveAt(i);
-                        break;
-                    }
-                    else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
-                    {
-                        soundBank.PlayCue("Bruitage cheval");
-                        patrouilleursAChevauxMorts.Add(new Rectangle(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y, 28, 28));
+                        morts.Add(new EnnemiMort(new Vector2(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleurACheval));
                         _PatrouilleursAChevaux.RemoveAt(i);
                         break;
                     }
                     if (hero2 != null)
                     {
-                        if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
+                        if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) || _PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
                         {
                             soundBank.PlayCue("Bruitage cheval");
-                            patrouilleursAChevauxMorts.Add(new Rectangle(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y, 28, 28));
-                            _PatrouilleursAChevaux.RemoveAt(i);
-                            break;
-                        }
-                        else if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
-                        {
-                            soundBank.PlayCue("Bruitage cheval");
-                            patrouilleursAChevauxMorts.Add(new Rectangle(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y, 28, 28));
+                            morts.Add(new EnnemiMort(new Vector2(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleurACheval));
                             _PatrouilleursAChevaux.RemoveAt(i);
                             break;
                         }
@@ -146,7 +104,7 @@ namespace YelloKiller
                         if (_PatrouilleursAChevaux[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
                             soundBank.PlayCue("Bruitage cheval");
-                            patrouilleursAChevauxMorts.Add(new Rectangle(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y, 28, 28));
+                            morts.Add(new EnnemiMort(new Vector2(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleurACheval));
                             _PatrouilleursAChevaux.RemoveAt(i);
                             listeShuriken.RemoveAt(j);
                             break;
@@ -161,7 +119,7 @@ namespace YelloKiller
                     if (_Boss[i].Vie < 0)
                     {
                         _Boss[i].Vie = 5;
-                        bossMorts.Add(new Rectangle(28 * _Boss[i].X, 28 * _Boss[i].Y, 28, 28));
+                        morts.Add(new EnnemiMort(new Vector2(28 * _Boss[i].X, 28 * _Boss[i].Y), content, EnnemiMort.TypeEnnemiMort.boss));
                         _Boss.RemoveAt(i);
                         soundBank.PlayCue("cri");
                     }

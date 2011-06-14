@@ -33,8 +33,8 @@ namespace YelloKiller
         List<Statue> _statues;
         List<Bonus> _bonus;
         List<Interrupteur> interrupteurs;
-        List<Rectangle> gardesMorts, patrouilleursAChevauxMorts, patrouilleursMorts, bossMorts;
-        Texture2D textureGardeMort, texturePatrouilleurAChevalMort, texturePatrouilleurMort, textureBossMort, textureBasFond;
+        List<EnnemiMort> ennemisMorts;
+        Texture2D textureBasFond;
         public static bool Alerte { get; set; }
 
         static double timer_update_collision = 0;
@@ -173,11 +173,7 @@ namespace YelloKiller
                 interrupteurs[interrupteurs.Count - 1].rotation = bouton.rotation;
             }
 
-            gardesMorts = new List<Rectangle>();
-            patrouilleursAChevauxMorts = new List<Rectangle>();
-            patrouilleursMorts = new List<Rectangle>();
-            bossMorts = new List<Rectangle>();
-
+            ennemisMorts = new List<EnnemiMort>();
             ennemisTues = (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count);
             Alerte = false;
         }
@@ -219,11 +215,6 @@ namespace YelloKiller
             foreach (Interrupteur bouton in interrupteurs)
                 bouton.LoadContent(content);
 
-            textureGardeMort = content.Load<Texture2D>(@"Menu Editeur de Maps\gardeMort");
-            texturePatrouilleurAChevalMort = content.Load<Texture2D>(@"Menu Editeur de Maps\patrouilleurAChevalMort");
-            texturePatrouilleurMort = content.Load<Texture2D>(@"Menu Editeur de Maps\Patrouilleur mort");
-            textureBossMort = content.Load<Texture2D>(@"Menu Editeur de Maps\Boss mort");
-
             textureBasFond = content.Load<Texture2D>("Bas fond");
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
@@ -256,23 +247,23 @@ namespace YelloKiller
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1, interrupteurs);
 
                 foreach (Garde garde in _gardes)
-                    garde.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    garde.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Boss boss in _boss)
-                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule);
 
                 if (timer_update_collision > 0)
                 {
-                    Moteur_physique.Collision_Armes_Ennemis(hero1, hero2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, AudioEngine.SoundBank, ref gardesMorts, ref patrouilleursAChevauxMorts, ref patrouilleursMorts, ref bossMorts);
+                    Moteur_physique.Collision_Armes_Ennemis(hero1, hero2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, AudioEngine.SoundBank, ref ennemisMorts, content);
                     if (timer_update_collision > 5)
                         timer_update_collision = 0;
                 }
@@ -350,17 +341,8 @@ namespace YelloKiller
             foreach (Interrupteur bouton in interrupteurs)
                 bouton.DrawInGame(spriteBatch, camera);
 
-            foreach (Rectangle position in gardesMorts)
-                spriteBatch.Draw(textureGardeMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
-
-            foreach (Rectangle position in patrouilleursAChevauxMorts)
-                spriteBatch.Draw(texturePatrouilleurAChevalMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
-
-            foreach (Rectangle position in patrouilleursMorts)
-                spriteBatch.Draw(texturePatrouilleurMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
-
-            foreach (Rectangle position in bossMorts)
-                spriteBatch.Draw(textureBossMort, new Vector2(position.X, position.Y) - new Vector2(camera.X, camera.Y), Color.White);
+            foreach (EnnemiMort mort in ennemisMorts)
+                mort.Draw(spriteBatch, camera);
 
             for (int i = 0; i < _shuriken.Count; i++)
             {
@@ -452,30 +434,22 @@ namespace YelloKiller
             file.WriteLine("Gardes");
             foreach (Garde garde in _gardes)
                 garde.SauvegarderCheckPoint(ref file);
-            file.WriteLine("Gardes morts");
-            foreach (Rectangle mort in gardesMorts)
-                file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.WriteLine("Patrouilleurs");
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
                 patrouilleur.SauvegarderCheckPointPat(ref file);
-            file.WriteLine("Patrouilleurs morts");
-            foreach (Rectangle mort in patrouilleursMorts)
-                file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.WriteLine("Patrouilleurs A Chevaux");
             foreach (Patrouilleur_a_cheval cheval in _patrouilleurs_a_chevaux)
                 cheval.SauvegarderCheckPointPat(ref file);
-            file.WriteLine("Patrouilleurs a chevaux morts");
-            foreach (Rectangle mort in patrouilleursAChevauxMorts)
-                file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
 
             file.WriteLine("Boss");
             foreach (Boss boss in _boss)
                 boss.SauvegarderCheckPoint(ref file);
-            file.WriteLine("Boss morts");
-            foreach (Rectangle mort in bossMorts)
-                file.WriteLine((mort.X / 28).ToString() + "," + (mort.Y / 28).ToString());
+
+            file.WriteLine("Morts");
+            foreach (EnnemiMort mort in ennemisMorts)
+                file.WriteLine(mort.X.ToString() + "," + mort.Y.ToString() + "," + ((int)mort.Type).ToString());
 
             file.WriteLine("Bonus");
             foreach (Bonus bonus in _bonus)
@@ -493,158 +467,132 @@ namespace YelloKiller
 
         private void ChargerCheckPoint()
         {
-                StreamReader file = new StreamReader("checkTemp.txt");
-                string banana = "";
-                string[] dessert = null;
+            StreamReader file = new StreamReader("checkTemp.txt");
+            string banana = "";
+            string[] dessert = null;
 
-                file.ReadLine();
+            file.ReadLine();
 
-                hero1.ChargerCheckPoint(ref file);
+            hero1.ChargerCheckPoint(ref file);
+            banana = file.ReadLine();
+            if (banana == "Hero 2")
+            {
+                hero2.ChargerCheckPoint(ref file);
                 banana = file.ReadLine();
-                if (banana == "Hero 2")
-                {
-                    hero2.ChargerCheckPoint(ref file);
-                    banana = file.ReadLine();
-                }
+            }
 
-                banana = file.ReadLine();
-                // Gardes
-                _gardes = new List<Garde>();
-                while (banana != "Gardes morts")
-                {
-                    dessert = banana.Split(',');
-                    _gardes.Add(new Garde(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
-                    banana = file.ReadLine();
-                }
-
-                banana = file.ReadLine();
-                gardesMorts = new List<Rectangle>();
-                while (banana != "Patrouilleurs")
-                {
-                    dessert = banana.Split(',');
-                    gardesMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
-                    banana = file.ReadLine();
-                }
-
-                // Patrouilleurs
-                banana = file.ReadLine();
-
-                _patrouilleurs = new List<Patrouilleur>();
-                while (banana != "Patrouilleurs morts")
-                {
-                    dessert = banana.Split(',');
-                    _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
-
-                    foreach (Vector2 passage in carte.OriginesPatrouilleurs[_patrouilleurs[_patrouilleurs.Count - 1].Identifiant])
-                        _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
-
-                    _patrouilleurs[_patrouilleurs.Count - 1].Etape = Convert.ToInt32(dessert[3]);
-                    _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet(carte);
-
-                    banana = file.ReadLine();
-                }
-
-                banana = file.ReadLine();
-                patrouilleursMorts = new List<Rectangle>();
-                while (banana != "Patrouilleurs A Chevaux")
-                {
-                    dessert = banana.Split(',');
-                    patrouilleursMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
-                    banana = file.ReadLine();
-                }
-
-                // Patrouilleurs a chevaux
-                banana = file.ReadLine();
-
-                _patrouilleurs_a_chevaux = new List<Patrouilleur_a_cheval>();
-                while (banana != "Patrouilleurs a chevaux morts")
-                {
-                    dessert = banana.Split(',');
-                    _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
-
-                    foreach (Vector2 passage in carte.OriginesPatrouilleursAChevaux[_patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Identifiant])
-                        _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
-
-                    _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Etape = Convert.ToInt32(dessert[3]);
-                    _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
-
-                    banana = file.ReadLine();
-                }
-
-                banana = file.ReadLine();
-                patrouilleursAChevauxMorts = new List<Rectangle>();
-                while (banana != "Boss" && banana != "Boss morts")
-                {
-                    dessert = banana.Split(',');
-                    patrouilleursAChevauxMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
-                    banana = file.ReadLine();
-                }
-
-                // Boss
-                banana = file.ReadLine();
-
-                _boss = new List<Boss>();
-                while (banana != "Boss morts")
-                {
-                    dessert = banana.Split(',');
-                    _boss.Add(new Boss(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
-                    banana = file.ReadLine();
-                }
-
-                banana = file.ReadLine();
-                bossMorts = new List<Rectangle>();
-                while (banana != "Bonus")
-                {
-                    dessert = banana.Split(',');
-                    bossMorts.Add(new Rectangle(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1]), 28, 28));
-                    banana = file.ReadLine();
-                }
-
-                banana = file.ReadLine();
-                _bonus = new List<Bonus>();
-                while (banana != "Interrupteurs")
-                {
-                    dessert = banana.Split(',');
-                    _bonus.Add(new Bonus(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1])), (TypeBonus)Convert.ToInt32(dessert[2])));
-                    banana = file.ReadLine();
-                }
-
-                banana = file.ReadLine();
-                interrupteurs = new List<Interrupteur>();
-                while (banana != "Camera")
-                {
-                    dessert = banana.Split(',');
-                    interrupteurs.Add(new Interrupteur(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1]))));
-                    interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(Convert.ToInt32(dessert[2]), Convert.ToInt32(dessert[3]));
-                    interrupteurs[interrupteurs.Count - 1].rotation = Convert.ToByte(dessert[4]);
-                    interrupteurs[interrupteurs.Count - 1].PorteOuverte = Convert.ToBoolean(dessert[5]);
-                    banana = file.ReadLine();
-                }
-
-                banana = file.ReadLine();
+            banana = file.ReadLine();
+            // Gardes
+            _gardes = new List<Garde>();
+            while (banana != "Patrouilleurs")
+            {
                 dessert = banana.Split(',');
-                camera.X = Convert.ToInt32(dessert[0]);
-                camera.Y = Convert.ToInt32(dessert[1]);
+                _gardes.Add(new Garde(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                banana = file.ReadLine();
+            }
 
-                foreach (Garde garde in _gardes)
-                    garde.LoadContent(content, 2);
+            // Patrouilleurs
+            banana = file.ReadLine();
 
-                foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                    patrouilleur.LoadContent(content, 2);
+            _patrouilleurs = new List<Patrouilleur>();
+            while (banana != "Patrouilleurs A Chevaux")
+            {
+                dessert = banana.Split(',');
+                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
 
-                foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                    patrouilleurACheval.LoadContent(content, 2);
+                foreach (Vector2 passage in carte.OriginesPatrouilleurs[_patrouilleurs[_patrouilleurs.Count - 1].Identifiant])
+                    _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
 
-                foreach (Boss boss in _boss)
-                    boss.LoadContent(content, 2);
+                _patrouilleurs[_patrouilleurs.Count - 1].Etape = Convert.ToInt32(dessert[3]);
+                _patrouilleurs[_patrouilleurs.Count - 1].CreerTrajet(carte);
 
-                foreach (Bonus bonus in _bonus)
-                    bonus.LoadContent(content);
+                banana = file.ReadLine();
+            }
 
-                foreach (Interrupteur bouton in interrupteurs)
-                    bouton.LoadContent(content);
+            // Patrouilleurs a chevaux
+            banana = file.ReadLine();
 
-                file.Close();
+            _patrouilleurs_a_chevaux = new List<Patrouilleur_a_cheval>();
+            while (banana != "Boss")
+            {
+                dessert = banana.Split(',');
+                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
+
+                foreach (Vector2 passage in carte.OriginesPatrouilleursAChevaux[_patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Identifiant])
+                    _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
+
+                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Etape = Convert.ToInt32(dessert[3]);
+                _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
+
+                banana = file.ReadLine();
+            }
+
+            // Boss
+            banana = file.ReadLine();
+
+            _boss = new List<Boss>();
+            while (banana != "Morts")
+            {
+                dessert = banana.Split(',');
+                _boss.Add(new Boss(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+
+            ennemisMorts = new List<EnnemiMort>();
+            while (banana != "Bonus")
+            {
+                dessert = banana.Split(',');
+                ennemisMorts.Add(new EnnemiMort(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), content, (EnnemiMort.TypeEnnemiMort)Convert.ToInt32(dessert[2])));
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+            _bonus = new List<Bonus>();
+            while (banana != "Interrupteurs")
+            {
+                dessert = banana.Split(',');
+                _bonus.Add(new Bonus(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1])), (TypeBonus)Convert.ToInt32(dessert[2])));
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+            interrupteurs = new List<Interrupteur>();
+            while (banana != "Camera")
+            {
+                dessert = banana.Split(',');
+                interrupteurs.Add(new Interrupteur(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1]))));
+                interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(Convert.ToInt32(dessert[2]), Convert.ToInt32(dessert[3]));
+                interrupteurs[interrupteurs.Count - 1].rotation = Convert.ToByte(dessert[4]);
+                interrupteurs[interrupteurs.Count - 1].PorteOuverte = Convert.ToBoolean(dessert[5]);
+                banana = file.ReadLine();
+            }
+
+            banana = file.ReadLine();
+            dessert = banana.Split(',');
+            camera.X = Convert.ToInt32(dessert[0]);
+            camera.Y = Convert.ToInt32(dessert[1]);
+
+            foreach (Garde garde in _gardes)
+                garde.LoadContent(content, 2);
+
+            foreach (Patrouilleur patrouilleur in _patrouilleurs)
+                patrouilleur.LoadContent(content, 2);
+
+            foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
+                patrouilleurACheval.LoadContent(content, 2);
+
+            foreach (Boss boss in _boss)
+                boss.LoadContent(content, 2);
+
+            foreach (Bonus bonus in _bonus)
+                bonus.LoadContent(content);
+
+            foreach (Interrupteur bouton in interrupteurs)
+                bouton.LoadContent(content);
+
+            file.Close();
         }
 
         void ChargerChkPoint(object sender, PlayerIndexEventArgs e)
