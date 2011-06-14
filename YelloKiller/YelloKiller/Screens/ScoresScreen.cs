@@ -68,10 +68,14 @@ namespace YelloKiller
 
         #endregion
 
+        #region Handle Input
+
         protected override void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
         {
             OnCancel(playerIndex);
         }
+
+        #endregion
 
         #region Draw
 
@@ -86,9 +90,9 @@ namespace YelloKiller
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
-            Rectangle scrolltangle = new Rectangle(viewport.Width / 5, 150, viewport.Width / 5 * 3, viewport.Height / 5 * 3);
+            Rectangle scrolltangle = new Rectangle((int)(viewport.Width - (font.MeasureString("10. PQRSTUVWXYZABCD  ABCDEFGHIJKLMNO  99950 ER").X * 1.5f)) / 2, viewport.Height / 5, (int)(font.MeasureString("10. PQRSTUVWXYZABCD  ABCDEFGHIJKLMNO  99950 ER").X * 1.5f), viewport.Height / 5 * 3);
             byte fade = TransitionAlpha;
-            Vector2 ScoresPos = new Vector2(scrolltangle.X + 100, scrolltangle.Y + 100);
+            Vector2 ScoresPos = new Vector2((int)(viewport.Width - font.MeasureString("10. PQRSTUVWXYZABCD  ABCDEFGHIJKLMNO  99950 ER").X) / 2, scrolltangle.Y + 100);
 
             spriteBatch.Begin();
 
@@ -116,84 +120,83 @@ namespace YelloKiller
                                    titleOrigin, titleScale, SpriteEffects.None, 0);
 
             spriteBatch.DrawString(font, "1. " + S.Default.Name_01, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_01, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_01.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_01.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-390, 25);
 
             spriteBatch.DrawString(font, "2. " + S.Default.Name_02, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_02, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_02.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_02.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-390, 25);
 
             spriteBatch.DrawString(font, "3. " + S.Default.Name_03, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_03, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_03.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_03.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-390, 25);
 
             spriteBatch.DrawString(font, "4. " + S.Default.Name_04, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_04, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_04.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_04.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-390, 25);
 
             spriteBatch.DrawString(font, "5. " + S.Default.Name_05, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_05, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_05.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_05.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-390, 25);
 
             spriteBatch.DrawString(font, "6. " + S.Default.Name_06, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_06, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_06.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_06.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-390, 25);
 
             spriteBatch.DrawString(font, "7. " + S.Default.Name_07, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_07, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_07.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_07.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-390, 25);
 
             spriteBatch.DrawString(font, "8. " + S.Default.Name_08, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_08, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_08.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_08.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
+            ScoresPos += new Vector2(-390, 25);
 
             spriteBatch.DrawString(font, "9. " + S.Default.Name_09, ScoresPos, Color);
-            ScoresPos.X += 155;
+            ScoresPos.X += 210;
             spriteBatch.DrawString(font, S.Default.Map_09, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_09.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_09.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-316, 25);
+            ScoresPos += new Vector2(-401, 25);
 
             spriteBatch.DrawString(font, "10. " + S.Default.Name_10, ScoresPos, Color);
-            ScoresPos.X += 166;
+            ScoresPos.X += 221;
             spriteBatch.DrawString(font, S.Default.Map_10, ScoresPos, Color);
-            ScoresPos.X += 150;
+            ScoresPos.X += 180;
             spriteBatch.DrawString(font, S.Default.Score_10.ToString(), ScoresPos, Color);
             spriteBatch.Draw(kane, new Rectangle((int)(ScoresPos.X + font.MeasureString(S.Default.Score_10.ToString()).X + 5), (int)ScoresPos.Y + 5, 20, 10), Color);
-            ScoresPos += new Vector2(-305, 25);
 
             spriteBatch.End();
         }

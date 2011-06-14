@@ -35,9 +35,11 @@ namespace YelloKiller
                         case ("EditorSave2"):
                             return ".\nAppuyez sur ECHAP pour quitter.";
                         case ("GORetry"):
-                            return "Réessayer";
+                            return "Recommencer";
                         case ("GOAbort"):
                             return "Quitter";
+                        case ("GOchk"):
+                            return "Réessayer";
                         case ("GOMsg"):
                             return "Vous avez été capturé!";
                         case ("Multi"):
@@ -143,9 +145,11 @@ namespace YelloKiller
                         case ("EditorSave2"):
                             return ".\nESC drucken um der Karteneditor zu verlassen.";
                         case ("GORetry"):
-                            return "Wiederholen";
+                            return "Wieder Starten";
                         case ("GOAbort"):
                             return "Abbrechen";
+                        case ("GOchk"):
+                            return "Wiederholen";
                         case ("GOMsg"):
                             return "Sie wurden erwischt!";
                         case ("Multi"):
@@ -251,9 +255,11 @@ namespace YelloKiller
                         case ("EditorSave2"):
                             return ".\nPres ESC to exit.";
                         case ("GORetry"):
-                            return "Retry";
+                            return "Restart";
                         case ("GOAbort"):
                             return "Abort";
+                        case ("GOchk"):
+                            return "Retry";
                         case ("GOMsg"):
                             return "You've been captured!";
                         case ("Multi"):
