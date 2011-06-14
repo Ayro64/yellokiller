@@ -78,14 +78,12 @@ namespace YelloKiller
             }
 
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Back) && (nomSauvegarde.Length > 0))
-            {
-                nomSauvegarde = nomSauvegarde.Remove(nomSauvegarde.Length - 1);
-            }
+            { nomSauvegarde = nomSauvegarde.Remove(nomSauvegarde.Length - 1); }
         }
 
         void EventInput_CharEntered(object sender, EventInput.CharacterEventArgs e)
         {
-            if (e.Character != '\b' && e.Character != '\r' && e.Character != '\t' && nomSauvegarde.Length < 10 && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl)) && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.RightControl)))
+            if (e.Character != '\b' && e.Character != '\r' && e.Character != '\t' && nomSauvegarde.Length < 15 && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl)) && !(ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.RightControl)))
                 nomSauvegarde += e.Character;
         }
 
