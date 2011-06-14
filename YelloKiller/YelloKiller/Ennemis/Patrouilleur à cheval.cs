@@ -30,9 +30,9 @@ namespace YelloKiller
             MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, Hero hero1, Hero hero2, Rectangle camera, List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts, Rectangle fumee)
+        public void Update(GameTime gameTime, Carte carte, Hero hero1, Hero hero2, Rectangle camera, List<EnnemiMort> morts, Rectangle fumee)
         {
-            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 23, 30), new Rectangle((int)Index * 24, 65, 23, 30), new Rectangle((int)Index * 24, 98, 23, 30), new Rectangle((int)Index * 24, 34, 23, 30), hero1, hero2, gardesMorts, patrouilleursMorts, patrouilleursAChevauxMorts, bossMorts, fumee);
+            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 23, 30), new Rectangle((int)Index * 24, 65, 23, 30), new Rectangle((int)Index * 24, 98, 23, 30), new Rectangle((int)Index * 24, 34, 23, 30), hero1, hero2, morts, fumee);
 
             if (!this.Alerte && (!Collision(hero1.Rectangle, fumee) || hero2 != null && !Collision(hero2.Rectangle, fumee)) && parcours.Count > 1)
                 if (Chemin == null || Chemin.Count == 0)
