@@ -28,7 +28,6 @@ namespace YelloKiller
         public int NombreHadoken { get; set; }
         public int NombreFumigene { get; set; }
         public int NombreBall { get; set; }
-        public bool EstAuPointDeDepart { get; private set; }
         int maxIndex, vitesseSprite;
         public byte NumeroHero { get; private set; }
         public bool ishero;
@@ -117,7 +116,6 @@ namespace YelloKiller
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
-            EstAuPointDeDepart = X == caseDeDepart.X && Y == caseDeDepart.Y;
 
             MoteurParticule.Camera = new Vector2(camera.X, camera.Y);
 
@@ -519,6 +517,15 @@ namespace YelloKiller
             }
 
             return false;
+        }
+
+
+        public bool EstAuPointDeDepart
+        {
+            get
+            {
+                return X == caseDeDepart.X && Y == caseDeDepart.Y;
+            }
         }
 
         private void AllerAGauche(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
