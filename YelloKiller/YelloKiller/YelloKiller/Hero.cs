@@ -35,7 +35,7 @@ namespace YelloKiller
         bool animation_sabre;
         bool monter, descendre, droite, gauche;
         Keys up, down, right, left, changer_arme, courir, tirer;
-        const int NumStates = 4;
+        const int NumStates = 5;
         State currentState = State.state_shuriken;
         int state_sabre = 0;
 
@@ -155,7 +155,7 @@ namespace YelloKiller
             else
                 state_sabre = 0;
 
-            if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().Tirer() : false)) && (currentState == State.state_sabre))
+            if ((ServiceHelper.Get<IKeyboardService>().TouchePressee(tirer) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().Tirer() : false)) && (currentState == State.state_sabre))
                 animation_sabre = true;
             else
                 animation_sabre = false;
@@ -259,6 +259,15 @@ namespace YelloKiller
                         ishero = true;
                         _shuriken.Add(new Shuriken(position, this, content));
                         AudioEngine.SoundBank.PlayCue("shuriken");
+                    }
+                    else
+                        ishero = false;
+                    break;
+                case State.state_sabre:
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().Tirer() : false)))
+                    {
+                        animation_sabre = true;
+                        ishero = true;
                     }
                     else
                         ishero = false;
