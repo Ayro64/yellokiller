@@ -128,7 +128,7 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _Boss.Count; i++)
                 {
-                    if (_Boss[i].Vie < 0)
+                    if (_Boss[i].Vie < 0 || hero1.AttaqueAuSabre(_Boss[i].X, _Boss[i].Y))
                     {
                         _Boss[i].Vie = 5;
                         morts.Add(new EnnemiMort(new Vector2(28 * _Boss[i].X, 28 * _Boss[i].Y), content, EnnemiMort.TypeEnnemiMort.boss));
@@ -139,8 +139,6 @@ namespace YelloKiller
                     {
                         _Boss[i].Vie = _Boss[i].Vie - 2;
                         soundBank.PlayCue("Bruitage boss touche");
-                        // des que le boss est touche par le hadoken je supprime le rectangle jusqu au prochain
-                        // appel sinon le boss perd sa vie d un coup.
                         particule.Rectangle_Hadoken_Est_Present_Hero1 = false;
                     }
                     else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
@@ -151,7 +149,14 @@ namespace YelloKiller
                     }
                     else if (hero2 != null)
                     {
-                        if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
+                        if (_Boss[i].Vie < 0 || hero2.AttaqueAuSabre(_Boss[i].X, _Boss[i].Y))
+                        {
+                            _Boss[i].Vie = 5;
+                            morts.Add(new EnnemiMort(new Vector2(28 * _Boss[i].X, 28 * _Boss[i].Y), content, EnnemiMort.TypeEnnemiMort.boss));
+                            _Boss.RemoveAt(i);
+                            soundBank.PlayCue("cri");
+                        }
+                        else if (_Boss[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)))
                         {
                             _Boss[i].Vie = _Boss[i].Vie - 2;
                             soundBank.PlayCue("Bruitage boss touche");
