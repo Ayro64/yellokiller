@@ -22,6 +22,11 @@ namespace YelloKiller
         string text;
 
         /// <summary>
+        /// The actual text drawn for this entry.
+        /// </summary>
+        string transtxt;
+
+        /// <summary>
         /// Tracks a fading selection effect on the entry.
         /// </summary>
         /// <remarks>
@@ -42,6 +47,12 @@ namespace YelloKiller
         {
             get { return text; }
             set { text = value; }
+        }
+
+        public string Transtxt
+        {
+            get { return transtxt; }
+            set { transtxt = value; }
         }
 
         public bool IsEvent
@@ -103,15 +114,16 @@ namespace YelloKiller
                 selectionFade = Math.Max(selectionFade - fadeSpeed, 0);
             if (this.Selected != null)
                 IsEvent = true;
-
         }
 
         /// <summary>
         /// Draws the menu entry. This can be overridden to customize the appearance.
         /// </summary>
         public virtual void Draw(GameScreen screen, Vector2 position,
-                                 bool isSelected, GameTime gameTime, Color couleur)
+                                 bool isSelected, GameTime gameTime, Color couleur, float TransitionPosition)
         {
+            Transtxt = Text.Substring(0, (int)((1 - TransitionPosition) * text.Length));
+
             // Draw the selected entry in yellow, otherwise white.
             Color color = isSelected ? Color.Yellow : couleur;
 
@@ -132,7 +144,7 @@ namespace YelloKiller
 
             Vector2 origin = new Vector2(0, font.LineSpacing / 2);
 
-            spriteBatch.DrawString(font, text, position, color, 0,
+            spriteBatch.DrawString(font, Transtxt, position, color, 0,
                                    origin, scale, SpriteEffects.None, 0);
         }
 
