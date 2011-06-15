@@ -318,20 +318,16 @@ namespace YelloKiller
             carte.DrawInGame(gameTime, spriteBatch, content, camera);
 
             foreach (Garde garde in _gardes)
-                //garde.Draw(spriteBatch, camera);
-                garde.Draw(camera, spriteBatch);
+                garde.Draw(spriteBatch, camera);
 
             foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                //patrouilleur.Draw(spriteBatch, camera);
-                patrouilleur.Draw(camera, spriteBatch);
+                patrouilleur.Draw(spriteBatch, camera);
 
             foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                // patrouilleurACheval.Draw(spriteBatch, camera);
-                patrouilleurACheval.Draw(camera, spriteBatch);
+                patrouilleurACheval.Draw(spriteBatch, camera);
 
             foreach (Boss boss in _boss)
-                //boss.Draw(spriteBatch, camera);
-                boss.Draw(camera, spriteBatch);
+                boss.Draw(spriteBatch, camera);
 
             foreach (Statue statue in _statues)
                 statue.Draw(spriteBatch, camera);
