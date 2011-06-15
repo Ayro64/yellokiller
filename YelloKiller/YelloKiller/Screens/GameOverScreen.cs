@@ -138,6 +138,9 @@ namespace YelloKiller
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, retries));
+
+            if (File.Exists("checkTemp.tmp"))
+                File.Delete("checkTemp.tmp");
         }
 
         /// <summary>
@@ -149,6 +152,9 @@ namespace YelloKiller
             MediaPlayer.Stop();
             LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
                                                            new MainMenuScreen(game));
+
+            if (File.Exists("checkTemp.tmp"))
+                File.Delete("checkTemp.tmp");
         }
 
         #endregion
@@ -163,7 +169,7 @@ namespace YelloKiller
         {
             if (!chkpointMenuEntry.IsEvent)
             {
-                if (File.Exists("checkTemp.txt"))
+                if (File.Exists("checkTemp.tmp"))
                     chkpointMenuEntry.Selected += Chkpoint;
                 else
                     chkpointMenuEntry.Selected += RestartMenuEntrySelected;
