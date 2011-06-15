@@ -409,7 +409,7 @@ namespace YelloKiller
 
         private void SauvegarderCheckPoint()
         {
-            StreamWriter file = new StreamWriter("checkTemp.txt");
+            StreamWriter file = new StreamWriter("checkTemp.tmp");
 
             file.WriteLine("Hero 1");
             hero1.SauvegarderCheckPoint(ref file);
@@ -455,7 +455,7 @@ namespace YelloKiller
 
         private void ChargerCheckPoint()
         {
-            StreamReader file = new StreamReader("checkTemp.txt");
+            StreamReader file = new StreamReader("checkTemp.tmp");
             string banana = "";
             string[] dessert = null;
 
