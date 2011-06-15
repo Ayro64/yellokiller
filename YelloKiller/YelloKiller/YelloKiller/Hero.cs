@@ -30,7 +30,8 @@ namespace YelloKiller
         public int NombreBall { get; set; }
         int maxIndex, vitesseSprite;
         public byte NumeroHero { get; private set; }
-        public bool ishero;
+        public bool ishero { get; private set; }
+        public bool attaque { get; private set; }
         bool animation_sabre;
         bool monter, descendre, droite, gauche;
         Keys up, down, right, left, changer_arme, courir, tirer;
@@ -72,6 +73,7 @@ namespace YelloKiller
             NombreFumigene = 10;
             NombreBall = 5;
             caseDeDepart = new Vector2(X, Y);
+            attaque = false;
         }
 
         public int Distance_Hero_Mur(Carte carte)
@@ -253,9 +255,13 @@ namespace YelloKiller
 
                         animation_sabre = true;
                         ishero = true;
+                        attaque = true;
                     }
                     else
+                    {
                         ishero = false;
+                        attaque = false;
+                    }
                     break;
             }
 
@@ -574,6 +580,11 @@ namespace YelloKiller
                 positionDesiree.Y = position.Y;
                 droite = false;
             }
+        }
+
+        public bool AttaqueAuSabre(int x, int y)
+        {
+            return attaque && (int)positionDesiree.X / 28 == x && (int)positionDesiree.Y / 28 == y;
         }
     }
 }
