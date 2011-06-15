@@ -316,6 +316,7 @@ namespace YelloKiller
 
             spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
             spriteBatch.Draw(fond, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 56, 0), null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
+            spriteBatch.Draw(fond, new Vector2(0, ScreenManager.GraphicsDevice.Viewport.Height - 84), null, Color.White, 0, Vector2.Zero, new Vector2(40, 4), SpriteEffects.None, 1);
 
             menu.Draw(spriteBatch, ascenseur1, ascenseur2, ScreenManager.GraphicsDevice.Viewport.Width);
             ascenseur1.Draw(spriteBatch);
