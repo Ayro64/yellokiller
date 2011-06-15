@@ -21,7 +21,7 @@ namespace YelloKiller
     class Hero : Sprite
     {
         Vector2 positionDesiree, caseDeDepart;
-        Texture2D flamme, textureShuriken, textureHadoken, textureBouleDeFeu, textureFumigene;
+        Texture2D flamme, textureShuriken, textureHadoken, textureBouleDeFeu, textureFumigene, textureSabre;
         Rectangle rectangle;
         float vitesseAnimation, index, tempsCourir;
         public int NombreShuriken { get; set; }
@@ -108,6 +108,7 @@ namespace YelloKiller
             textureHadoken = content.Load<Texture2D>(@"Barre infos\hadoken barre");
             textureBouleDeFeu = content.Load<Texture2D>(@"Barre infos\boule de feu barre");
             textureFumigene = content.Load<Texture2D>(@"Barre infos\fumigene barre");
+            textureSabre = content.Load<Texture2D>(@"Barre infos\sabre");
 
             tempsCourir = flamme.Width;
 
@@ -430,7 +431,7 @@ namespace YelloKiller
                         break;
                     case State.state_sabre:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
-                        spriteBatch.Draw(textureShuriken, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.White);
+                        spriteBatch.Draw(textureSabre, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.White);
                         break;
                 }
 
@@ -463,7 +464,7 @@ namespace YelloKiller
                         break;
                     case State.state_sabre:
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
-                        spriteBatch.Draw(textureShuriken, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
+                        spriteBatch.Draw(textureSabre, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
                         break;
                 }
 
