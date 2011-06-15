@@ -16,7 +16,9 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _gardes.Count; i++)
                 {
-                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) || _gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
+                    if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) ||
+                        _gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)) ||
+                        hero1.AttaqueAuSabre(_gardes[i].X, _gardes[i].Y))
                     {
                         soundBank.PlayCue("cri");
                         morts.Add(new EnnemiMort(new Vector2(28 * _gardes[i].X, 28 * _gardes[i].Y), content, EnnemiMort.TypeEnnemiMort.garde));
@@ -25,7 +27,9 @@ namespace YelloKiller
                     }
                     if (hero2 != null)
                     {
-                        if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) || _gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
+                        if (_gardes[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) ||
+                            _gardes[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)) ||
+                            hero2.AttaqueAuSabre(_gardes[i].X, _gardes[i].Y))
                         {
                             soundBank.PlayCue("cri");
                             morts.Add(new EnnemiMort(new Vector2(28 * _gardes[i].X, 28 * _gardes[i].Y), content, EnnemiMort.TypeEnnemiMort.garde));
@@ -50,7 +54,9 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _Patrouilleurs.Count; i++)
                 {
-                    if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) || _Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
+                    if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) ||
+                        _Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)) ||
+                        hero1.AttaqueAuSabre(_Patrouilleurs[i].X, _Patrouilleurs[i].Y))
                     {
                         soundBank.PlayCue("Bruitage patrouilleur");
                         morts.Add(new EnnemiMort(new Vector2(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleur));
@@ -59,7 +65,9 @@ namespace YelloKiller
                     }
                     if (hero2 != null)
                     {
-                        if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) || _Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
+                        if (_Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) ||
+                            _Patrouilleurs[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)) ||
+                            hero2.AttaqueAuSabre(_Patrouilleurs[i].X, _Patrouilleurs[i].Y))
                         {
                             soundBank.PlayCue("Bruitage patrouilleur");
                             morts.Add(new EnnemiMort(new Vector2(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleur));
@@ -83,7 +91,9 @@ namespace YelloKiller
             {
                 for (int i = 0; i < _PatrouilleursAChevaux.Count; i++)
                 {
-                    if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) || _PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1)))
+                    if ((_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero1(hero1)) || 
+                        _PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero1(hero1))) ||
+                        hero1.AttaqueAuSabre(_PatrouilleursAChevaux[i].X, _PatrouilleursAChevaux[i].Y))
                     {
                         soundBank.PlayCue("Bruitage cheval");
                         morts.Add(new EnnemiMort(new Vector2(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleurACheval));
@@ -92,7 +102,9 @@ namespace YelloKiller
                     }
                     if (hero2 != null)
                     {
-                        if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) || _PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)))
+                        if (_PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Hadoken_hero2(hero2)) ||
+                            _PatrouilleursAChevaux[i].Rectangle.Intersects(particule.Rectangle_Ball_hero2(hero2)) ||
+                            hero2.AttaqueAuSabre(_PatrouilleursAChevaux[i].X, _PatrouilleursAChevaux[i].Y))
                         {
                             soundBank.PlayCue("Bruitage cheval");
                             morts.Add(new EnnemiMort(new Vector2(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleurACheval));
