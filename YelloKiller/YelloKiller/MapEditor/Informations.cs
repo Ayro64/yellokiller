@@ -47,18 +47,18 @@ namespace YelloKiller
 
         public void Update()
         {
-            if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rectangles[0]) && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
+            if (Salaire > 0 && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rectangles[0]) && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
                 Salaire -= 1000;
 
-            if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rectangles[1]) && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
+            if (Salaire < 1000000 && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rectangles[1]) && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
                 Salaire += 1000;
 
             for (int i = 2; i <= 9; i++)
-                if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rectangles[2 * (i - 1)]) && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
+                if (munitions[i - 2] > 0 && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rectangles[2 * (i - 1)]) && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
                     munitions[i - 2]--;
 
             for (int i = 2; i <= 9; i++)
-                if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rectangles[2 * i - 1]) && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
+                if (munitions[i - 2] < 100 && ServiceHelper.Get<IMouseService>().Rectangle().Intersects(rectangles[2 * i - 1]) && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
                     munitions[i - 2]++;
         }
 
