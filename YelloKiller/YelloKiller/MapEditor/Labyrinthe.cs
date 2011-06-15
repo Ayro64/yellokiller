@@ -118,7 +118,7 @@ namespace YelloKiller
 
         private static void InitialiserLabyrinthe(Carte carte)
         {
-            carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
+            //carte.Initialisation(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
 
             for (int y = 0; y < hauteur; y++)
                 for (int x = 0; x < largeur; x++)
