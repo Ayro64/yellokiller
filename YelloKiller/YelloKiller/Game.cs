@@ -43,7 +43,6 @@ namespace YelloKiller
             screenManager.AddScreen(new IntroScreen(this), null);
         }
         #endregion
-
     }
 
     #region Entry Point
