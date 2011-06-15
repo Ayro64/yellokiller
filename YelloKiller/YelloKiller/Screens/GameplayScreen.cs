@@ -109,9 +109,19 @@ namespace YelloKiller
             camera = new Rectangle(0, 0, 36, 24);
 
             hero1 = new Hero(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightAlt, Keys.RightControl, Keys.RightShift, 1);
-            if (jeuEnCoop)
-                hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.A, Keys.Space, Keys.LeftShift, 2);
+            hero1.NombreShuriken = carte.Munitions[0];
+            hero1.NombreHadoken = carte.Munitions[1];
+            hero1.NombreFumigene = carte.Munitions[2];
+            hero1.NombreBall = carte.Munitions[3];
 
+            if (jeuEnCoop)
+            {
+                hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.A, Keys.Space, Keys.LeftShift, 2);
+                hero2.NombreShuriken = carte.Munitions[4];
+                hero2.NombreHadoken = carte.Munitions[5];
+                hero2.NombreFumigene = carte.Munitions[6];
+                hero2.NombreBall = carte.Munitions[7];
+            }
             // Centre la camera sur le personnage... plus ou moins...
             if (carte.OrigineJoueur1.X - 16 < 0)
                 camera.X = 0;

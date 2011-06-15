@@ -68,10 +68,6 @@ namespace YelloKiller
             this.changer_arme = changer_arme;
             this.tirer = tirer;
             this.courir = courir;
-            NombreShuriken = 25;
-            NombreHadoken = 5;
-            NombreFumigene = 10;
-            NombreBall = 5;
             caseDeDepart = new Vector2(X, Y);
             attaque = false;
         }
