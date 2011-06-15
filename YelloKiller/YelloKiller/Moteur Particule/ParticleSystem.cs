@@ -165,11 +165,11 @@ namespace YelloKiller.Moteur_Particule
             // will be moving. velocity and acceleration's values will come from this.
             Vector2 direction;
 
-            if (hero.SourceRectangle.Value.Y == 133)
+            if (hero.Regarde_Haut)
                 direction = new Vector2(0, -1);
-            else if (hero.SourceRectangle.Value.Y == 198)
+            else if (hero.Regarde_Bas)
                 direction = new Vector2(0, 1);
-            else if (hero.SourceRectangle.Value.Y == 230)
+            else if (hero.Regarde_Gauche)
                 direction = new Vector2(-1, 0);
             else
                 direction = new Vector2(1, 0);

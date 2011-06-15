@@ -124,11 +124,6 @@ namespace YelloKiller
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || ServiceHelper.Get<IGamePadService>().Tirer())
                 GameplayScreen.Timer_Update_Collision += gameTime.ElapsedGameTime.TotalSeconds;
 
-            Regarde_Haut = SourceRectangle.Value.Y == 133 - state_sabre;
-            Regarde_Bas = SourceRectangle.Value.Y == 198 - state_sabre;
-            Regarde_Gauche = SourceRectangle.Value.Y == 230 - state_sabre;
-            Regarde_Droite = SourceRectangle.Value.Y == 166 - state_sabre;
-
             //armes
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(changer_arme) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().ChangerArme() : false))
                 currentState = (State)((int)(currentState + 1) % NumStates);
@@ -433,6 +428,10 @@ namespace YelloKiller
                         spriteBatch.Draw(textureShuriken, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         break;
+                    case State.state_sabre:
+                        spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
+                        spriteBatch.Draw(textureShuriken, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.White);
+                        break;
                 }
 
                 spriteBatch.Draw(flamme, new Vector2(350 - (int)tempsCourir, Taille_Ecran.HAUTEUR_ECRAN - 25), new Rectangle(flamme.Width - (int)tempsCourir, 0, (int)tempsCourir, flamme.Height), Color.White);
@@ -461,6 +460,10 @@ namespace YelloKiller
                         spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
+                        break;
+                    case State.state_sabre:
+                        spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
+                        spriteBatch.Draw(textureShuriken, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
                         break;
                 }
 
@@ -534,18 +537,6 @@ namespace YelloKiller
             }
         }
 
-        private void AllerAGauche(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
-        {
-            if (position.X > 8 && (int)carte.Cases[Y, X - 1].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X - 1, Y) &&
-                (hero2 == null ? true : (position.X - 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y)))
-            {
-                AudioEngine.SoundBank.PlayCue("pasBois");
-                positionDesiree.X = position.X - 28;
-                positionDesiree.Y = position.Y;
-                gauche = false;
-            }
-        }
-
         private void AllerEnBas(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
             if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && (int)carte.Cases[Y + 1, X].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X, Y + 1) &&
@@ -556,6 +547,10 @@ namespace YelloKiller
                 positionDesiree.Y = position.Y + 28;
                 descendre = false;
             }
+            Regarde_Bas = true;
+            Regarde_Droite = false;
+            Regarde_Haut = false;
+            Regarde_Gauche = false;
         }
 
         private void AllerEnHaut(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
@@ -568,6 +563,26 @@ namespace YelloKiller
                 positionDesiree.Y = position.Y - 28;
                 monter = false;
             }
+            Regarde_Bas = false;
+            Regarde_Droite = false;
+            Regarde_Haut = true;
+            Regarde_Gauche = false;
+        }
+
+        private void AllerAGauche(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
+        {
+            if (position.X > 8 && (int)carte.Cases[Y, X - 1].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X - 1, Y) &&
+                (hero2 == null ? true : (position.X - 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y)))
+            {
+                AudioEngine.SoundBank.PlayCue("pasBois");
+                positionDesiree.X = position.X - 28;
+                positionDesiree.Y = position.Y;
+                gauche = false;
+            }
+            Regarde_Bas = false;
+            Regarde_Droite = false;
+            Regarde_Haut = false;
+            Regarde_Gauche = true;
         }
 
         private void AllerADroite(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
@@ -580,6 +595,10 @@ namespace YelloKiller
                 positionDesiree.Y = position.Y;
                 droite = false;
             }
+            Regarde_Bas = false;
+            Regarde_Droite = true;
+            Regarde_Haut = false;
+            Regarde_Gauche = false;
         }
 
         public bool AttaqueAuSabre(int x, int y)
