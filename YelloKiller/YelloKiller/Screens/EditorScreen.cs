@@ -58,7 +58,7 @@ namespace YelloKiller
             enableSave = true;
             afficherMessageErreur = false;
             afficherMessageSauvegarde = false;
-            camera = new Rectangle(0, 0, 32, 27);
+            camera = new Rectangle(0, 0, 32, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
 
             if (nomCarte == "")
@@ -670,7 +670,7 @@ namespace YelloKiller
 
         private void Placer_Personnage_Ou_Bonus()
         {
-            if (curseur.Type == TypeCase.Joueur1)
+            if (curseur.Type == TypeCase.Joueur1 && DepartPossible(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y))
             {
                 if (!enableOrigine1)
                     carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
@@ -680,7 +680,7 @@ namespace YelloKiller
                 origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
             }
 
-            else if (curseur.Type == TypeCase.Joueur2)
+            else if (curseur.Type == TypeCase.Joueur2 && DepartPossible(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y))
             {
                 if (!enableOrigine2)
                     carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
@@ -830,6 +830,20 @@ namespace YelloKiller
                 for (int y = 0; y < hauteur; y++)
                     if (carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type == curseur.Type)
                         return false;
+
+            return true;
+        }
+
+        private bool DepartPossible(float x, float y)
+        {
+            foreach (Interrupteur bouton in interrupteurs)
+            {
+                if (bouton.rotation == 0 && y == bouton.PortePosition.Y && (x == bouton.PortePosition.X + 1 || x == bouton.PortePosition.X) ||
+                    bouton.rotation == 2 && y == bouton.PortePosition.Y - 1 && (x == bouton.PortePosition.X - 1 || x == bouton.PortePosition.X - 2) ||
+                    bouton.rotation == 1 && x == bouton.PortePosition.X - 1 && (y == bouton.PortePosition.Y + 1 || y == bouton.PortePosition.Y) ||
+                    bouton.rotation == 3 && x == bouton.PortePosition.X && (y == bouton.PortePosition.Y - 1 || y == bouton.PortePosition.Y - 2))
+                    return false;
+            }
 
             return true;
         }
