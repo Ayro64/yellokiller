@@ -34,7 +34,7 @@ namespace YelloKiller
         List<Bonus> _bonus;
         List<Interrupteur> interrupteurs;
         List<EnnemiMort> ennemisMorts;
-        Texture2D textureBasFond;
+        Texture2D textureBasFond, modeAlerte;
         public static bool Alerte { get; set; }
 
         static double timer_update_collision = 0;
@@ -226,6 +226,7 @@ namespace YelloKiller
                 bouton.LoadContent(content);
 
             textureBasFond = content.Load<Texture2D>("Bas fond");
+            modeAlerte = content.Load<Texture2D>("modealerte");
             Thread.Sleep(1000);
             ScreenManager.Game.ResetElapsedTime();
         }
@@ -369,7 +370,7 @@ namespace YelloKiller
             spriteBatch.DrawString(ScreenManager.font, Temps.Conversion(temps), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 80, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkRed);
 
             if (Alerte)
-                spriteBatch.DrawString(ScreenManager.font, "ALERTE ! VOUS AVEZ ETE REPERE !", new Vector2(200, 100), Color.Red);
+                spriteBatch.Draw(modeAlerte, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(((float)ScreenManager.GraphicsDevice.Viewport.Width / (float)modeAlerte.Width), (((float)ScreenManager.GraphicsDevice.Viewport.Height - 84) / (float)modeAlerte.Height)), SpriteEffects.None, 1);
 
             spriteBatch.End();
             audio.Draw(gameTime);
