@@ -11,7 +11,6 @@ namespace YelloKiller
     {
         static public void Collision_Armes_Ennemis(Hero hero1, Hero hero2, List<Garde> _gardes, List<Patrouilleur> _Patrouilleurs, List<Patrouilleur_a_cheval> _PatrouilleursAChevaux, List<Boss> _Boss, List<Shuriken> listeShuriken, MoteurParticule particule, SoundBank soundBank, ref List<EnnemiMort> morts, ContentManager content)
         {
-            int nbEnnemis = _gardes.Count + _Patrouilleurs.Count + _PatrouilleursAChevaux.Count + _Boss.Count;
             if (_gardes.Count != 0)
             {
                 for (int i = 0; i < _gardes.Count; i++)
@@ -22,6 +21,8 @@ namespace YelloKiller
                     {
                         soundBank.PlayCue("cri");
                         morts.Add(new EnnemiMort(new Vector2(28 * _gardes[i].X, 28 * _gardes[i].Y), content, EnnemiMort.TypeEnnemiMort.garde));
+                        if (_gardes[i].Alerte)
+                            GameplayScreen.Alerte = false;
                         _gardes.RemoveAt(i);
                         break;
                     }
@@ -33,6 +34,8 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("cri");
                             morts.Add(new EnnemiMort(new Vector2(28 * _gardes[i].X, 28 * _gardes[i].Y), content, EnnemiMort.TypeEnnemiMort.garde));
+                            if (_gardes[i].Alerte)
+                                GameplayScreen.Alerte = false;
                             _gardes.RemoveAt(i);
                             break;
                         }
@@ -43,6 +46,8 @@ namespace YelloKiller
                             soundBank.PlayCue("cri");
                             ServiceHelper.Get<IGamePadService>().Vibration(20);
                             morts.Add(new EnnemiMort(new Vector2(28 * _gardes[i].X, 28 * _gardes[i].Y), content, EnnemiMort.TypeEnnemiMort.garde));
+                            if (_gardes[i].Alerte)
+                                GameplayScreen.Alerte = false;
                             _gardes.RemoveAt(i);
                             listeShuriken.RemoveAt(j);
                             break;
@@ -60,6 +65,8 @@ namespace YelloKiller
                     {
                         soundBank.PlayCue("Bruitage patrouilleur");
                         morts.Add(new EnnemiMort(new Vector2(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleur));
+                        if (_Patrouilleurs[i].Alerte)
+                            GameplayScreen.Alerte = false;
                         _Patrouilleurs.RemoveAt(i);
                         break;
                     }
@@ -71,6 +78,8 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("Bruitage patrouilleur");
                             morts.Add(new EnnemiMort(new Vector2(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleur));
+                            if (_Patrouilleurs[i].Alerte)
+                                GameplayScreen.Alerte = false;
                             _Patrouilleurs.RemoveAt(i);
                             break;
                         }
@@ -80,6 +89,8 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("Bruitage patrouilleur");
                             morts.Add(new EnnemiMort(new Vector2(28 * _Patrouilleurs[i].X, 28 * _Patrouilleurs[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleur));
+                            if (_Patrouilleurs[i].Alerte)
+                                GameplayScreen.Alerte = false;
                             _Patrouilleurs.RemoveAt(i);
                             listeShuriken.RemoveAt(j);
                             break;
@@ -97,6 +108,8 @@ namespace YelloKiller
                     {
                         soundBank.PlayCue("Bruitage cheval");
                         morts.Add(new EnnemiMort(new Vector2(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleurACheval));
+                        if (_PatrouilleursAChevaux[i].Alerte)
+                            GameplayScreen.Alerte = false;
                         _PatrouilleursAChevaux.RemoveAt(i);
                         break;
                     }
@@ -108,6 +121,8 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("Bruitage cheval");
                             morts.Add(new EnnemiMort(new Vector2(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleurACheval));
+                            if (_PatrouilleursAChevaux[i].Alerte)
+                                GameplayScreen.Alerte = false;
                             _PatrouilleursAChevaux.RemoveAt(i);
                             break;
                         }
@@ -117,6 +132,8 @@ namespace YelloKiller
                         {
                             soundBank.PlayCue("Bruitage cheval");
                             morts.Add(new EnnemiMort(new Vector2(28 * _PatrouilleursAChevaux[i].X, 28 * _PatrouilleursAChevaux[i].Y), content, EnnemiMort.TypeEnnemiMort.patrouilleurACheval));
+                            if (_PatrouilleursAChevaux[i].Alerte)
+                                GameplayScreen.Alerte = false;
                             _PatrouilleursAChevaux.RemoveAt(i);
                             listeShuriken.RemoveAt(j);
                             break;
@@ -189,9 +206,6 @@ namespace YelloKiller
                         }
                 }
             }
-
-            if (_gardes.Count + _Patrouilleurs.Count + _PatrouilleursAChevaux.Count + _Boss.Count < nbEnnemis)
-                GameplayScreen.Alerte = false;
         }
         
         static public bool Collision_Garde_Heros(List<Garde> _gardes, Hero hero1, Hero hero2, SoundBank soundBank)
