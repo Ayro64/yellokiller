@@ -238,7 +238,8 @@ namespace YelloKiller
                         ishero = false;
                     break;
                 case State.state_sabre:
-                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().Tirer() : false)))
+                    if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().Tirer() : false))
+                        && monter && descendre && droite && gauche)
                     {
                         if (Regarde_Bas)
                             AllerEnBas(carte, hero2, interrupteurs);
@@ -513,6 +514,11 @@ namespace YelloKiller
             NombreFumigene = Convert.ToInt32(dessert[5]);
 
             positionDesiree = new Vector2(28 * X + 5, 28 * Y + 1);
+
+            Regarde_Bas = false;
+            Regarde_Droite = false;
+            Regarde_Haut = true;
+            Regarde_Gauche = false;
         }
 
         private bool PorteFermeeSurLeChemin(List<Interrupteur> interrupteurs, int x, int y)
