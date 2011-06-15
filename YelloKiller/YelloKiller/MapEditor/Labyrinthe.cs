@@ -15,7 +15,6 @@ namespace YelloKiller
             hauteur = 30;
             largeur = 40;
             cellules = new Cellule[largeur, hauteur];
-
             InitialiserLabyrinthe(carte);
 
             for (int y = 0; y < Taille_Map.HAUTEUR_MAP / 2; y++)
@@ -141,7 +140,6 @@ namespace YelloKiller
             }
 
             generate();
-            //logLaby();
         }
 
         private static void generate()
@@ -172,42 +170,5 @@ namespace YelloKiller
                     generate(cellule, random);
                 }
         }
-
-        /*private static void logLaby() //Creer un fichier dans lequel est enregistré le labyrinthe, m'a servi a mettre en place les fonctions, peut toujours servir
-        {
-            System.IO.StreamWriter file = new System.IO.StreamWriter("laby.txt");
-
-            for (int x = 0; x < largeur; x++)
-                file.Write("._");
-
-            file.Write(".");
-            file.WriteLine();
-
-            for (int y = 0; y < hauteur; y++)
-            {
-                file.Write("|");
-
-                for (int x = 0; x < largeur; x++)
-                {
-                    if (y + 1 < hauteur && cellules[x, y].isLinked(cellules[x, y + 1]))
-                        file.Write(" ");
-                    else
-                        file.Write("_");
-
-                    if (x + 1 < largeur)
-                    {
-                        if (cellules[x, y].isLinked(cellules[x + 1, y]))
-                            file.Write("_");
-                        else
-                            file.Write("|");
-                    }
-                }
-
-                file.Write("|");
-                file.WriteLine();
-            }
-
-            file.Close();
-        }*/
     }
 }
