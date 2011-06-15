@@ -33,9 +33,11 @@ namespace YelloKiller
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
         Texture2D pointDePassage, fond, textureStatue;
         bool fileExist = false;
-        int compteur, salaire;
+        int compteur;
+        int[] munitions;
         bool enableOrigine1, enableOrigine2, enableSave, afficherMessageErreur, afficherMessageSauvegarde;
         double chronometre = 0;
+        Informations infos;
 
         public EditorScreen(string nomCarte, YellokillerGame game)
         {
@@ -74,10 +76,10 @@ namespace YelloKiller
             rotationsDesStatues = carte.RotationsDesStatues;
             bonus = carte.Bonus;
             interrupteurs = carte.Interrupteurs;
+            munitions = carte.Munitions;
 
             origine1 = carte.OrigineJoueur1;
             origine2 = carte.OrigineJoueur2;
-            salaire = 100000;
 
             enableOrigine1 = (carte.OrigineJoueur1 == -Vector2.One);
             enableOrigine2 = (carte.OrigineJoueur2 == -Vector2.One);
@@ -95,6 +97,8 @@ namespace YelloKiller
             fond = content.Load<Texture2D>(@"Textures\Invisible");
             pointDePassage = content.Load<Texture2D>(@"Menu Editeur de Maps\pied");
             textureStatue = content.Load<Texture2D>(@"Feuilles de sprites\statue_dragon");
+            infos = new Informations(ScreenManager.GraphicsDevice.Viewport.Height);
+            infos.LoadContent(content);
 
             foreach (Interrupteur bouton in interrupteurs)
                 bouton.LoadContent(content);
@@ -233,6 +237,8 @@ namespace YelloKiller
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.F8))
                 Labyrinthe.CreerLabyrintheQuadruple(carte);
 
+            infos.Update();
+
             ScreenManager.Game.IsMouseVisible = !ServiceHelper.Get<IMouseService>().DansLaCarte();
         }
 
@@ -317,6 +323,7 @@ namespace YelloKiller
             spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
             spriteBatch.Draw(fond, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 56, 0), null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
             spriteBatch.Draw(fond, new Vector2(0, ScreenManager.GraphicsDevice.Viewport.Height - 84), null, Color.White, 0, Vector2.Zero, new Vector2(40, 4), SpriteEffects.None, 1);
+            infos.Draw(spriteBatch, ScreenManager.Font, !enableOrigine1, !enableOrigine2);
 
             menu.Draw(spriteBatch, ascenseur1, ascenseur2, ScreenManager.GraphicsDevice.Viewport.Width);
             ascenseur1.Draw(spriteBatch);
@@ -583,9 +590,9 @@ namespace YelloKiller
 
                     sauvegarde.WriteLine("Joueurs");
                     if (origine1 != -Vector2.One)
-                        sauvegarde.WriteLine(origine1.X + "," + origine1.Y);
+                        sauvegarde.WriteLine(origine1.X + "," + origine1.Y + "," + infos.Munitions[0] + "," + infos.Munitions[1] + "," + infos.Munitions[2] + "," + infos.Munitions[3]);
                     if (origine2 != -Vector2.One)
-                        sauvegarde.WriteLine(origine2.X + "," + origine2.Y);
+                        sauvegarde.WriteLine(origine2.X + "," + origine2.Y + "," + infos.Munitions[4] + "," + infos.Munitions[5] + "," + infos.Munitions[6] + "," + infos.Munitions[7]);
                     sauvegarde.WriteLine("Gardes");
                     foreach (Vector2 position in _originesGardes)
                         sauvegarde.WriteLine(position.X + "," + position.Y);
@@ -623,7 +630,7 @@ namespace YelloKiller
                         sauvegarde.WriteLine(bouton.position.X + "," + bouton.position.Y + "," + bouton.PortePosition.X + "," + bouton.PortePosition.Y + "," + bouton.rotation);
 
                     sauvegarde.WriteLine("Salaire");
-                    sauvegarde.WriteLine(salaire);
+                    sauvegarde.WriteLine(infos.Salaire);
 
                     sauvegarde.Close();
                     enableSave = false;

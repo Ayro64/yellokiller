@@ -17,6 +17,7 @@ namespace YelloKiller
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
         List<Interrupteur> interrupteurs;
         public int Salaire { get; private set; }
+        int[] munitions;
 
         public Carte(Vector2 size)
         {
@@ -32,6 +33,7 @@ namespace YelloKiller
             rotationsDesStatues = new List<byte>();
             bonus = new List<Bonus>();
             interrupteurs = new List<Interrupteur>();
+            munitions = new int[8];
         }
 
         public void Initialisation(Vector2 size)
@@ -82,6 +84,11 @@ namespace YelloKiller
             dessert = banana.Split(',');
             origineJoueur1.X = Convert.ToInt32(dessert[0]);
             origineJoueur1.Y = Convert.ToInt32(dessert[1]);
+            munitions[0] = Convert.ToInt32(dessert[2]);
+            munitions[1] = Convert.ToInt32(dessert[3]);
+            munitions[2] = Convert.ToInt32(dessert[4]);
+            munitions[3] = Convert.ToInt32(dessert[5]);
+
 
             if (nomDeFichier[nomDeFichier.Length - 1] == 'p') // Si la carte est en cooperation.
             {
@@ -89,6 +96,10 @@ namespace YelloKiller
                 dessert = banana.Split(',');
                 origineJoueur2.X = Convert.ToInt32(dessert[0]);
                 origineJoueur2.Y = Convert.ToInt32(dessert[1]);
+                munitions[4] = Convert.ToInt32(dessert[2]);
+                munitions[5] = Convert.ToInt32(dessert[3]);
+                munitions[6] = Convert.ToInt32(dessert[4]);
+                munitions[7] = Convert.ToInt32(dessert[5]);
             }
 
             banana = file.ReadLine();
@@ -834,6 +845,11 @@ namespace YelloKiller
         public List<byte> RotationsDesStatues
         {
             get { return rotationsDesStatues; }
+        }
+
+        public int[] Munitions
+        {
+            get { return munitions; }
         }
     }
 }
