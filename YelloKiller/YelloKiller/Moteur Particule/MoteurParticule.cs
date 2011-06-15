@@ -289,7 +289,6 @@ namespace YelloKiller.Moteur_Particule
 
             fumigene1 = new Fumigene(game, 9, hero1, carte);
             game.Components.Add(fumigene1);
-            //Console.WriteLine(fumigene1.FreeParticleCount);
 
             fume = new SmokePlumeParticleSystem(game, 9);
             game.Components.Add(fume);
