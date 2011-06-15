@@ -11,7 +11,6 @@ namespace YelloKiller
     class Ennemi : Sprite
     {
         Rectangle rectangle, champDeVision1, champDeVision2, champDeVision3;
-        Texture2D fondRectangleTest;
         List<Case> chemin;
         Carte carte;
         Case depart, arrivee;
@@ -46,7 +45,6 @@ namespace YelloKiller
 
         public void LoadContent(ContentManager content, int maxIndex, string Assetname)
         {
-            fondRectangleTest = content.Load<Texture2D>(@"Textures\Invisible");
             LoadContent(content, Assetname);
             this.MaxIndex = maxIndex;
         }
@@ -218,14 +216,6 @@ namespace YelloKiller
             }
         }
 
-        public void Draw(Rectangle camera, SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch, camera);
-            spriteBatch.Draw(fondRectangleTest, new Vector2(champDeVision1.X - camera.X, champDeVision1.Y - camera.Y), null, Color.AliceBlue, 0, Vector2.Zero, new Vector2((float)champDeVision1.Width / (float)fondRectangleTest.Width, (float)champDeVision1.Height / (float)fondRectangleTest.Height), SpriteEffects.None, 0);
-            spriteBatch.Draw(fondRectangleTest, new Vector2(champDeVision2.X - camera.X, champDeVision2.Y - camera.Y), null, Color.AliceBlue, 0, Vector2.Zero, new Vector2((float)champDeVision2.Width / (float)fondRectangleTest.Width, (float)champDeVision2.Height / (float)fondRectangleTest.Height), SpriteEffects.None, 0);
-            spriteBatch.Draw(fondRectangleTest, new Vector2(champDeVision3.X - camera.X, champDeVision3.Y - camera.Y), null, Color.AliceBlue, 0, Vector2.Zero, new Vector2((float)champDeVision3.Width / (float)fondRectangleTest.Width, (float)champDeVision3.Height / (float)fondRectangleTest.Height), SpriteEffects.None, 0);
-        }
-
         private void UpdateChampDeVision(Carte carte)
         {
             if (Regarde_Bas || Regarde_Haut)
@@ -305,35 +295,6 @@ namespace YelloKiller
             }
             return false;
         }
-
-        /*private bool MortDansLeChampDeVision(List<Rectangle> gardesMorts, List<Rectangle> patrouilleursMorts, List<Rectangle> patrouilleursAChevauxMorts, List<Rectangle> bossMorts)
-        {
-            bool res = false;
-
-            foreach (Rectangle mort in gardesMorts)
-                if (Collision(mort))
-                    res = true;
-
-            foreach (Rectangle mort in patrouilleursMorts)
-                if (Collision(mort))
-                    res = true;
-
-            foreach (Rectangle mort in patrouilleursAChevauxMorts)
-                if (Collision(mort))
-                    res = true;
-
-            foreach (Rectangle mort in bossMorts)
-                if (Collision(mort))
-                    res = true;
-
-            if (res)
-            {
-                GameplayScreen.Alerte = true;
-                return true;
-            }
-
-            return false;
-        }*/
 
         private void MortDansLeChampDeVision(List<EnnemiMort> ennemisMorts, Rectangle fumee)
         {
