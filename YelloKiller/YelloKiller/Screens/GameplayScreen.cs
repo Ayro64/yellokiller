@@ -268,19 +268,11 @@ namespace YelloKiller
                         timer_update_collision = 0;
                 }
 
-                if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, AudioEngine.SoundBank))
-                    Mourir();
-
-                if (Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, AudioEngine.SoundBank))
-                    Mourir();
-
-                if (Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, AudioEngine.SoundBank))
-                    Mourir();
-
-                if (Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, AudioEngine.SoundBank))
-                    Mourir();
-
-                if (Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, AudioEngine.SoundBank))
+                if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, AudioEngine.SoundBank))
                     Mourir();
 
                 if (Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank))
