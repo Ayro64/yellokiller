@@ -168,12 +168,15 @@ namespace YelloKiller
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
             // the movement slow down as it nears the end).
+            
             float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
 
+            /*
             if (ScreenState == ScreenState.TransitionOn)
                 position.X -= transitionOffset * 256;
             else
                 position.X += transitionOffset * 512;
+            */
 
             spriteBatch.Begin();
 
@@ -184,7 +187,7 @@ namespace YelloKiller
 
                 bool isSelected = IsActive && (i == selectedEntry);
 
-                menuEntry.Draw(this, position, isSelected, gameTime, Color.White);
+                menuEntry.Draw(this, position, isSelected, gameTime, Color.White, TransitionPosition);
 
                 position.Y += (menuEntry.GetHeight(this) + 10);
             }

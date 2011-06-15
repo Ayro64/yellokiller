@@ -211,6 +211,8 @@ namespace YelloKiller
             // the movement slow down as it nears the end).
             float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
 
+
+            /*
             if (ScreenState == ScreenState.TransitionOn)
             {
                 positionL.X -= transitionOffset * 256;
@@ -223,6 +225,7 @@ namespace YelloKiller
                 positionM.Y += transitionOffset * 100;
                 positionR.X += transitionOffset * 512;
             }
+            */
 
             spriteBatch.Begin();
 
@@ -236,11 +239,11 @@ namespace YelloKiller
             // Draw each menu entry in turn.
 
             bool isSelected = IsActive && (0 == selectedEntry);
-            restartMenuEntry.Draw(this, positionL, isSelected, gameTime, Color);
+            restartMenuEntry.Draw(this, positionL, isSelected, gameTime, Color, TransitionPosition);
             isSelected = IsActive && (1 == selectedEntry);
-            chkpointMenuEntry.Draw(this, positionM, isSelected, gameTime, Color);
+            chkpointMenuEntry.Draw(this, positionM, isSelected, gameTime, Color, TransitionPosition);
             isSelected = IsActive && (2 == selectedEntry);
-            abortMenuEntry.Draw(this, positionR, isSelected, gameTime, Color);
+            abortMenuEntry.Draw(this, positionR, isSelected, gameTime, Color, TransitionPosition);
 
 
             // Draw the menu title.

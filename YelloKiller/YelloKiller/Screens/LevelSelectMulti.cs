@@ -221,10 +221,12 @@ namespace YelloKiller
             // the movement slow down as it nears the end).
             float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
 
+            /*
             if (ScreenState == ScreenState.TransitionOn)
                 position.X -= transitionOffset * 256;
             else
                 position.X += transitionOffset * 512;
+            */
 
             spriteBatch.Begin();
 
@@ -238,7 +240,7 @@ namespace YelloKiller
 
                 bool isSelected = IsActive && (i == selectedEntry);
 
-                menuEntry.Draw(this, position, isSelected, gameTime, Color.Black);
+                menuEntry.Draw(this, position, isSelected, gameTime, Color.Black, TransitionPosition);
 
                 // Miniatures
                 miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 85, position.Y - 200));
@@ -255,7 +257,7 @@ namespace YelloKiller
             // Bouton Retour
             position.X -= (((levels.Count - 1) % 4) * 250) + 30;
             position.Y = viewport.Height - 50;
-            abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black);
+            abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black, TransitionPosition);
 
             // Draw the menu title.
             Vector2 titlePosition = new Vector2(viewport.Width / 2, 100);
