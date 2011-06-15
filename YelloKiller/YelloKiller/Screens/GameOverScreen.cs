@@ -21,6 +21,7 @@ namespace YelloKiller
         Texture2D gameoverTexture, blankTexture;
         string GOmessage, comingfrom;
 
+        SpriteFont font;
         Color Color;
         public event EventHandler<PlayerIndexEventArgs> Chkpoint;
 
@@ -195,7 +196,8 @@ namespace YelloKiller
             Color = new Color(255, 0, 0, TransitionAlpha);
 
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
-            SpriteFont font = ScreenManager.Font;
+            if (font == null)
+                font = ScreenManager.Font;
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
             Rectangle pitiRectangle = new Rectangle((viewport.Width / 2) - (int)(font.MeasureString(GOmessage).X * 1.05f), (int)(viewport.Height * 0.7f), (int)(font.MeasureString(GOmessage).X * 2.1f), 110);
