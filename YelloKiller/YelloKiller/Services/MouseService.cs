@@ -67,7 +67,7 @@ namespace YelloKiller
 
         public bool DansLaCarte()
         {
-            return MState.X > 56 && MState.X < Taille_Ecran.LARGEUR_ECRAN - 56 && MState.Y > 0 && MState.Y < Taille_Ecran.HAUTEUR_ECRAN - 84;
+            return MState.X > 28 && MState.X < Taille_Ecran.LARGEUR_ECRAN - 56 && MState.Y > 0 && MState.Y < Taille_Ecran.HAUTEUR_ECRAN - 84;
         }
 
         public override void Update(GameTime gameTime)

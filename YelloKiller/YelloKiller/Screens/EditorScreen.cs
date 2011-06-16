@@ -60,7 +60,7 @@ namespace YelloKiller
             enableSave = true;
             afficherMessageErreur = false;
             afficherMessageSauvegarde = false;
-            camera = new Rectangle(0, 0, 32, 24);
+            camera = new Rectangle(0, 0, 32, 23);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
 
             if (nomCarte == "")
@@ -319,7 +319,7 @@ namespace YelloKiller
             if (ServiceHelper.Get<IMouseService>().DansLaCarte())
                 curseur.Draw(spriteBatch);
 
-            spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
+            spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(1, 30), SpriteEffects.None, 1);
             spriteBatch.Draw(fond, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 56, 0), null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
             //spriteBatch.Draw(fond, new Vector2(0, ScreenManager.GraphicsDevice.Viewport.Height - 84), null, Color.Blue, 0, Vector2.Zero, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / textureBasFond.Width, 1), SpriteEffects.None, 1);
             infos.Draw(spriteBatch, ScreenManager.Font, !enableOrigine1, !enableOrigine2);

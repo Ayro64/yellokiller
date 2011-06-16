@@ -98,12 +98,12 @@ namespace YelloKiller
             fond = content.Load<Texture2D>(@"Textures\fond");
 
             for (int i = 0; i < 7; i++)
-                listeRectanglesGauche[i] = new Rectangle(28, i * 30, 28, 28);
+                listeRectanglesGauche[i] = new Rectangle(0, i * 30, 28, 28);
 
             for (int i = 7; i < 11; i++)
-                listeRectanglesGauche[i] = new Rectangle(28, 100 + i * 30, 28, 28);
+                listeRectanglesGauche[i] = new Rectangle(0, 100 + i * 30, 28, 28);
 
-            listeRectanglesGauche[11] = new Rectangle(28, 616, 28, 28);
+            listeRectanglesGauche[11] = new Rectangle(0, 616, 28, 28);
         }
 
         public void Update(Ascenseur ascenseurDroit, int limite)

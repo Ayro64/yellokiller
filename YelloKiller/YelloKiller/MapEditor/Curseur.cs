@@ -22,7 +22,7 @@ namespace YelloKiller
 
         public Vector2 Position
         {
-            get { return new Vector2(position.X - 2, position.Y); }
+            get { return new Vector2(position.X - 1, position.Y); }
             set { position = value; }
         }
 
