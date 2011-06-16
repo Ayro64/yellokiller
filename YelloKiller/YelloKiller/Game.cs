@@ -26,7 +26,7 @@ namespace YelloKiller
 
             graphics.PreferredBackBufferHeight = Taille_Ecran.HAUTEUR_ECRAN;
             graphics.PreferredBackBufferWidth = Taille_Ecran.LARGEUR_ECRAN;
-            this.graphics.IsFullScreen = true;
+            this.graphics.IsFullScreen = Properties.Settings.Default.FullScreen;
 
             ServiceHelper.Game = this;
             Components.Add(new KeyboardService(this));
@@ -42,6 +42,16 @@ namespace YelloKiller
             // Activate the first screens.
             screenManager.AddScreen(new IntroScreen(this), null);
         }
+
+        #endregion
+
+        #region Methods
+
+        public void Toggle()
+        {
+            this.graphics.ToggleFullScreen();
+        }
+
         #endregion
     }
 

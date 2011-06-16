@@ -148,6 +148,40 @@ namespace YelloKiller
                                    origin, scale, SpriteEffects.None, 0);
         }
 
+
+        /// <summary>
+        /// Draws the menu entry. This can be overridden to customize the appearance.
+        /// </summary>
+        public virtual void CDraw(GameScreen screen, Vector2 position,
+                                 bool isSelected, GameTime gameTime, Color couleur, float TransitionPosition)
+        {
+            Transtxt = Text.Substring(0, (int)((1 - TransitionPosition) * text.Length));
+
+            // Draw the selected entry in yellow, otherwise white.
+            Color color = isSelected ? Color.Yellow : couleur;
+
+            // Pulsate the size of the selected menu entry.
+            double time = gameTime.TotalGameTime.TotalSeconds;
+
+            float pulsate = (float)Math.Sin(time * 6) + 1;
+
+            float scale = 1 + pulsate * 0.05f * selectionFade;
+
+            // Modify the alpha to fade text out during transitions.
+            color = new Color(color.R, color.G, color.B, screen.TransitionAlpha);
+
+            // Draw text, centered on the middle of each line.
+            ScreenManager screenManager = screen.ScreenManager;
+            SpriteBatch spriteBatch = screenManager.SpriteBatch;
+            SpriteFont font = screenManager.Font;
+
+            Vector2 origin = (font.MeasureString(Text) / 2) * scale;
+
+            spriteBatch.DrawString(font, Transtxt, position, color, 0,
+                                   origin, scale, SpriteEffects.None, 0);
+        }
+
+
         /// <summary>
         /// Queries how much space this menu entry requires.
         /// </summary>
