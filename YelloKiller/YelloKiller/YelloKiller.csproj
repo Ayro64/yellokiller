@@ -94,6 +94,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Ennemis\Boss.cs" />
+    <Compile Include="Ennemis\Dark_Hero.cs" />
     <Compile Include="Ennemis\Ennemi.cs" />
     <Compile Include="Ennemis\EnnemiMort.cs" />
     <Compile Include="Ennemis\Garde.cs" />
