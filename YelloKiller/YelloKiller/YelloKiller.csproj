@@ -168,6 +168,11 @@
     <Compile Include="Services\Temps.cs" />
     <Compile Include="Services\Text.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Properties\Unlocked.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Unlocked.settings</DependentUpon>
+    </Compile>
     <Compile Include="YelloKiller\Bonus.cs" />
     <Compile Include="YelloKiller\Dimensions.cs" />
     <Compile Include="YelloKiller\Hero.cs" />
@@ -223,6 +228,10 @@
     <None Include="Properties\Scores.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Scores.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Unlocked.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Unlocked.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
