@@ -92,7 +92,7 @@ namespace YelloKiller
 
             menu = new Menu(content);
             curseur = new Curseur(content);
-            ascenseur = new Ascenseur(content, ScreenManager.GraphicsDevice.Viewport.Width/* Taille_Ecran.LARGEUR_ECRAN*/ - 28);
+            ascenseur = new Ascenseur(content, ScreenManager.GraphicsDevice.Viewport.Width - 28);
             fond = content.Load<Texture2D>(@"Textures\Invisible");
             pointDePassage = content.Load<Texture2D>(@"Menu Editeur de Maps\pied");
             textureStatue = content.Load<Texture2D>(@"Feuilles de sprites\statue_dragon");
@@ -138,7 +138,7 @@ namespace YelloKiller
             if (afficherMessageErreur || afficherMessageSauvegarde)
                 chronometre += gameTime.ElapsedGameTime.TotalSeconds;
 
-            ascenseur.Update(ScreenManager.GraphicsDevice.Viewport.Height);
+            ascenseur.Update(ScreenManager.GraphicsDevice.Viewport.Width - 28);
             menu.Update(ascenseur, ScreenManager.GraphicsDevice.Viewport.Width);
             curseur.Update(content, menu);
 

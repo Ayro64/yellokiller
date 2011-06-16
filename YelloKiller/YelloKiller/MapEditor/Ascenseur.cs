@@ -9,16 +9,15 @@ namespace YelloKiller
         Texture2D texture;
         Vector2 position;
         Rectangle rectangle;
-        float limite;
-
+        int limite;
         float difference;
         bool enableMove = false;
 
-        public Ascenseur(ContentManager content, float limite)
+        public Ascenseur(ContentManager content, int limite)
         {
             texture = content.Load<Texture2D>(@"Menu Editeur de Maps\ascenseur");
-            position = new Vector2(limite, 0);
             this.limite = limite;
+            position = new Vector2(limite, 0);
             rectangle.Width = texture.Width;
             rectangle.Height = texture.Height;
         }
@@ -28,15 +27,16 @@ namespace YelloKiller
             get { return position; }
         }
 
-        public void Update(int limite)
+        public void Update(int limite2)
         {
             rectangle.X = (int)position.X;
             rectangle.Y = (int)position.Y;
+            position.X = limite2;
 
             if (position.Y < 0)
                 position.Y = 0;
-            else if (position.Y + texture.Height > Taille_Ecran.HAUTEUR_ECRAN)
-                position.Y = Taille_Ecran.HAUTEUR_ECRAN - texture.Height;
+            else if (position.Y + texture.Height > Taille_Ecran.HAUTEUR_ECRAN - 84)
+                position.Y = Taille_Ecran.HAUTEUR_ECRAN - texture.Height - 84;
 
             if (rectangle.Intersects(ServiceHelper.Get<IMouseService>().Rectangle()) && ServiceHelper.Get<IMouseService>().BoutonGaucheEnfonce())
             {
@@ -50,13 +50,13 @@ namespace YelloKiller
             {
                 if (ServiceHelper.Get<IMouseService>().Coordonnees().Y - difference <= 0)
                     position.Y = 0;
-                else if (ServiceHelper.Get<IMouseService>().Coordonnees().Y + texture.Height - difference >= limite/* Taille_Ecran.HAUTEUR_ECRAN*/)
-                    position.Y = limite /*Taille_Ecran.HAUTEUR_ECRAN */- texture.Height;
+                else if (ServiceHelper.Get<IMouseService>().Coordonnees().Y + texture.Height - difference >=  Taille_Ecran.HAUTEUR_ECRAN - 84)
+                    position.Y = Taille_Ecran.HAUTEUR_ECRAN - texture.Height - 84;
                 else
                     position = new Vector2(position.X, ServiceHelper.Get<IMouseService>().Coordonnees().Y - difference);
             }
 
-            if (ServiceHelper.Get<IMouseService>().Coordonnees().X > limite && ServiceHelper.Get<IMouseService>().Coordonnees().X < limite + 28 && ServiceHelper.Get<IMouseService>().MoletteATournee())
+            if (ServiceHelper.Get<IMouseService>().Coordonnees().X > limite2 && ServiceHelper.Get<IMouseService>().Coordonnees().X < limite2 + 28 && ServiceHelper.Get<IMouseService>().MoletteATournee())
                 position.Y -= ServiceHelper.Get<IMouseService>().Molette();
         }
 
