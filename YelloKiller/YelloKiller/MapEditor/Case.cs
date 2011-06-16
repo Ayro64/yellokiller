@@ -819,9 +819,8 @@ namespace YelloKiller
        tableMoyenne = -60,
        canapeRalonge = -61,
        fenetre = -62,
-       pillier = -63,
-       porte = -64,
-       rocher = -65,
+       porte = -63,
+       rocher = -64,
 
        grandeTable = -75,
        grandeTableDeco = -76,
@@ -830,6 +829,7 @@ namespace YelloKiller
        parquet = 51,
        parquetArbre = 52,
        parquetBuisson = 53,
+       pillier = 54,
 
        bois = 5,
        boisCarre = 6,
