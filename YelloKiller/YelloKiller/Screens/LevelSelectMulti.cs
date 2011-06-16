@@ -74,7 +74,7 @@ namespace YelloKiller
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
             //Ecran Game Over.
-            levelSelectBkground = content.Load<Texture2D>("LevelSelection");
+            levelSelectBkground = content.Load<Texture2D>("Level Select Multi");
 
             //Carré noir.
             blankTexture = content.Load<Texture2D>("blank");

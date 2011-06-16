@@ -63,11 +63,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="LevelSelection.jpg">
-      <Name>LevelSelection</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="shuriken.png">
       <Name>shuriken</Name>
       <Importer>TextureImporter</Importer>
@@ -1469,6 +1464,20 @@
   <ItemGroup>
     <Compile Include="Menu Editeur de Maps\gomme.PNG">
       <Name>gomme</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Level Select Solo.png">
+      <Name>Level Select Solo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Level Select Multi.png">
+      <Name>Level Select Multi</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
