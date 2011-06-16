@@ -83,7 +83,6 @@ namespace YelloKiller
                 VLC.Stop();
                 LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
                                                                new MainMenuScreen(game));
-                this.ExitScreen();
             }
         }
 

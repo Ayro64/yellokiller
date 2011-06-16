@@ -19,6 +19,7 @@ namespace YelloKiller
         MenuEntry editorMenuEntry;
         MenuEntry optionsMenuEntry;
         MenuEntry scoresMenuEntry;
+        MenuEntry helpMenuEntry;
         MenuEntry exitMenuEntry;
         YellokillerGame game;
         SmokePlumeParticleSystem fume; // fumigene
@@ -45,6 +46,7 @@ namespace YelloKiller
             editorMenuEntry = new MenuEntry(Langue.tr("MainMenuEditor"));
             optionsMenuEntry = new MenuEntry(Langue.tr("Options"));
             scoresMenuEntry = new MenuEntry(Langue.tr("Scores"));
+            helpMenuEntry = new MenuEntry(Langue.tr("Help"));
             exitMenuEntry = new MenuEntry(Langue.tr("MainMenuQuit"));
 
             // Hook up menu event handlers.
@@ -53,6 +55,7 @@ namespace YelloKiller
             editorMenuEntry.Selected += EditorMenuEntrySelected;
             optionsMenuEntry.Selected += OptionsMenuEntrySelected;
             scoresMenuEntry.Selected += ScoresMenuEntrySelected;
+            helpMenuEntry.Selected += HelpMenuEntrySelected;
             exitMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
@@ -61,6 +64,7 @@ namespace YelloKiller
             MenuEntries.Add(editorMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(scoresMenuEntry);
+            MenuEntries.Add(helpMenuEntry);
             MenuEntries.Add(exitMenuEntry);
         }
 
@@ -75,6 +79,7 @@ namespace YelloKiller
             editorMenuEntry.Text = Langue.tr("MainMenuEditor");
             optionsMenuEntry.Text = Langue.tr("Options");
             scoresMenuEntry.Text = Langue.tr("Scores");
+            helpMenuEntry.Text = Langue.tr("Help");
             exitMenuEntry.Text = Langue.tr("MainMenuQuit");
         }
 
@@ -133,6 +138,14 @@ namespace YelloKiller
         void ScoresMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             ScreenManager.AddScreen(new ScoresScreen(game), e.PlayerIndex);
+        }
+
+        /// <summary>
+        /// Event handler for when the Quick Help menu entry is selected.
+        /// </summary>
+        void HelpMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            ScreenManager.AddScreen(new HelpScreen(game), e.PlayerIndex);
         }
 
         /// <summary>

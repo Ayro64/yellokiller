@@ -1490,8 +1490,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="QuickHelp\CommandesHelp.png">
-      <Name>CommandesHelp</Name>
+    <Compile Include="QuickHelp\Commandes.png">
+      <Name>Commandes</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
