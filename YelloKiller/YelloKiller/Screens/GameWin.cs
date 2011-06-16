@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using S = YelloKiller.Properties.Scores;
+using Microsoft.Xna.Framework.Audio;
 
 namespace YelloKiller
 {
@@ -26,6 +27,8 @@ namespace YelloKiller
 
         Color Color;
         Color EntriesColor;
+
+        Cue Fanfare;
 
         #endregion
 
@@ -55,6 +58,8 @@ namespace YelloKiller
             if (this.salaire < 0)
                 this.salaire = 0;
             score = Langue.tr("Score") + this.salaire;
+
+            Fanfare = AudioEngine.SoundBank.GetCue("11 Fanfare");
 
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
@@ -159,6 +164,7 @@ namespace YelloKiller
         /// </summary>
         protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
         {
+            Fanfare.Stop(AudioStopOptions.Immediate);
             menuEntries[entryIndex].OnSelectEntry(playerIndex);
         }
 
@@ -202,7 +208,7 @@ namespace YelloKiller
 
             if (!soundPlayed)
             {
-                AudioEngine.SoundBank.PlayCue("11 Fanfare");
+                AudioEngine.SoundBank.PlayCue(Fanfare);
                 soundPlayed = true;
             }
 
