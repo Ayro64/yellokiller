@@ -22,6 +22,8 @@ namespace YelloKiller
                             return "Mode Co-op";
                         case ("MainMenuEditor"):
                             return "Editeur de cartes";
+                        case("Help"):
+                            return "Instructions";
                         case ("Options"):
                             return "Options";
                         case("Yes"):
@@ -138,6 +140,8 @@ namespace YelloKiller
                             return "Koop-Modus";
                         case ("MainMenuEditor"):
                             return "Karteneditor";
+                        case ("Help"):
+                            return "Hilfe";
                         case ("Options"):
                             return "Einstellungen";
                         case("Yes"):
@@ -254,6 +258,8 @@ namespace YelloKiller
                             return "Play in Co-op Mode";
                         case ("MainMenuEditor"):
                             return "Map Editor";
+                        case ("Help"):
+                            return "Quick help";
                         case ("Options"):
                             return "Settings";
                         case ("Yes"):
