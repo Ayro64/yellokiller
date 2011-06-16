@@ -15,7 +15,7 @@ namespace YelloKiller
             : base(Langue.tr("PausEditLoad"))
         {
             this.game = game;
-            string[] fileEntries = ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.solo"), Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.coop"));
+            string[] fileEntries = ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"));
             foreach (string str in fileEntries)
             {
                     MenuEntry menuEntry = new MenuEntry(str.Substring(str.LastIndexOf('\\') + 1));
@@ -24,7 +24,7 @@ namespace YelloKiller
             }
         }
 
-        private string[] ConcatenerTableaux(string[] tab1, string[] tab2)
+        public static string[] ConcatenerTableaux(string[] tab1, string[] tab2)
         {
             string[] res = new string[tab1.Length + tab2.Length];
             int index = tab1.Length;

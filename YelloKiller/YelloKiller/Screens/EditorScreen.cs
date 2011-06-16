@@ -354,6 +354,8 @@ namespace YelloKiller
 
         public void SauvegardeMap()
         {
+            string[] existinglevels = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"));
+
             if (enableOrigine1 && enableOrigine2 || _originesBoss.Count == 0)
                 afficherMessageErreur = true;
             else
@@ -375,11 +377,19 @@ namespace YelloKiller
                 }
 
                 if (nomCarte == "" || nomCarte.Remove(nomCarte.Length - 5) != nomSauvegarde)
-                    fileExist = File.Exists("\\Levels" + nomSauvegarde + extension);
+                    //fileExist = File.Exists(@"\Levels\" + nomSauvegarde + extension);
+                {
+                    foreach (string str in existinglevels)
+                    {
+                        fileExist = (str == (System.Windows.Forms.Application.StartupPath + "\\Levels\\" + nomSauvegarde + extension));
+                        if (fileExist)
+                            break;
+                    }
+                }
 
                 if (!fileExist)
                 {
-                    sauvegarde = new StreamWriter("\\Levels" + nomSauvegarde + extension);
+                    sauvegarde = new StreamWriter(System.Windows.Forms.Application.StartupPath + "\\Levels\\" + nomSauvegarde + extension);
 
                     for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
                     {
@@ -644,9 +654,10 @@ namespace YelloKiller
                     enableSave = false;
 
                     nomCarte = nomSauvegarde + extension;
-                }
 
                 afficherMessageSauvegarde = true;
+                }
+
             }
         }
 

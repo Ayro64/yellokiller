@@ -13,7 +13,7 @@ namespace YelloKiller
             : base(position, carte)
         {
             Position = position;
-            SourceRectangle = new Rectangle(25, 133, 16, 26);
+            SourceRectangle = new Rectangle(24, 64, 16, 24);
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 24);
             positionDesiree = position;
         }
