@@ -31,7 +31,7 @@ namespace YelloKiller
         List<Bonus> bonus;
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
-        Texture2D pointDePassage, fond, textureStatue;
+        Texture2D pointDePassage, fond, textureStatue, textureBasFond;
         bool fileExist = false;
         int compteur;
         int[] munitions;
@@ -97,6 +97,7 @@ namespace YelloKiller
             fond = content.Load<Texture2D>(@"Textures\Invisible");
             pointDePassage = content.Load<Texture2D>(@"Menu Editeur de Maps\pied");
             textureStatue = content.Load<Texture2D>(@"Feuilles de sprites\statue_dragon");
+            textureBasFond = content.Load<Texture2D>("Bas fond");
             infos = new Informations(ScreenManager.GraphicsDevice.Viewport.Height);
             infos.LoadContent(content);
 
@@ -322,12 +323,14 @@ namespace YelloKiller
 
             spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
             spriteBatch.Draw(fond, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 56, 0), null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
-            spriteBatch.Draw(fond, new Vector2(0, ScreenManager.GraphicsDevice.Viewport.Height - 84), null, Color.White, 0, Vector2.Zero, new Vector2(40, 4), SpriteEffects.None, 1);
+            //spriteBatch.Draw(fond, new Vector2(0, ScreenManager.GraphicsDevice.Viewport.Height - 84), null, Color.Blue, 0, Vector2.Zero, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / textureBasFond.Width, 1), SpriteEffects.None, 1);
             infos.Draw(spriteBatch, ScreenManager.Font, !enableOrigine1, !enableOrigine2);
 
             menu.Draw(spriteBatch, ascenseur1, ascenseur2, ScreenManager.GraphicsDevice.Viewport.Width);
             ascenseur1.Draw(spriteBatch);
             ascenseur2.Draw(spriteBatch);
+            spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), null, Color.White, 0, Vector2.Zero, new Vector2((float)ScreenManager.GraphicsDevice.Viewport.Width / (float)textureBasFond.Width, (float)(ScreenManager.GraphicsDevice.Viewport.Height - Taille_Ecran.HAUTEUR_ECRAN + 84) / (float)textureBasFond.Height), SpriteEffects.FlipVertically, 1);
+            infos.Draw(spriteBatch, ScreenManager.Font, !enableOrigine1, !enableOrigine2);
 
             if (chronometre > 3)
             {
