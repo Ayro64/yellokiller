@@ -96,6 +96,42 @@ namespace YelloKiller
 
 
             fond = content.Load<Texture2D>(@"Textures\fond");
+
+            for (int i = 0; i < 7; i++)
+                listeRectanglesGauche[i] = new Rectangle(28, i * 30, 28, 28);
+
+            for (int i = 7; i < 11; i++)
+                listeRectanglesGauche[i] = new Rectangle(28, 100 + i * 30, 28, 28);
+
+            listeRectanglesGauche[11] = new Rectangle(28, 616, 28, 28);
+        }
+
+        public void Update(Ascenseur ascenseurDroit, int limite)
+        {
+            for (int i = 0; i < NombreTexturesDroite; i++)
+                listeRectanglesDroite[i] = new Rectangle(limite/* Taille_Ecran.LARGEUR_ECRAN*/ - 56, 2 * (int)-ascenseurDroit.Position.Y + i * 30, 28, 28);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseurDroit, int limite)
+        {
+            for (int u = 0; u < NombreTexturesDroite; u++)
+            {
+                if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(listeRectanglesDroite[u]))
+                {
+                    spriteBatch.Draw(fond, new Vector2(listeRectanglesDroite[u].X + 28 * (1 - listeTexturesDroite[u].Width / 28) - 2, listeRectanglesDroite[u].Y + 28 * (1 - listeTexturesDroite[u].Height / 28) - 2), null, Color.White, 0, Vector2.Zero, new Vector2(1 + 0.88f * (listeTexturesDroite[u].Width / 28 - 1), 1 + 0.88f * (listeTexturesDroite[u].Height / 28 - 1)), SpriteEffects.None, 0);
+                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(listeRectanglesDroite[u].X + 28 * (1 - listeTexturesDroite[u].Width / 28), listeRectanglesDroite[u].Y + 28 * (1 - listeTexturesDroite[u].Height / 28)), Color.White);
+                }
+                else
+                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(limite - 56, -2 * ascenseurDroit.Position.Y + u * 30), null, Color.White, 0, Vector2.Zero, new Vector2((float)28 / listeTexturesDroite[u].Width, (float)28 / listeTexturesDroite[u].Height), SpriteEffects.None, 0);
+            }
+
+            for (int c = 0; c < NombreTexturesGauche; c++)
+            {
+                if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(listeRectanglesGauche[c]))
+                    spriteBatch.Draw(fond, new Vector2(listeRectanglesGauche[c].X + 28 * (1 - listeTexturesGauche[c].Width / 28) - 2, listeRectanglesGauche[c].Y + 28 * (1 - listeTexturesGauche[c].Height / 28) - 2), null, Color.White, 0, Vector2.Zero, new Vector2(1 + 0.88f * (listeTexturesGauche[c].Width / 28 - 1), 1 + 0.88f * (listeTexturesGauche[c].Height / 28 - 1)), SpriteEffects.None, 0);
+
+                spriteBatch.Draw(listeTexturesGauche[c], new Vector2(listeRectanglesGauche[c].X + 28 * (1 - listeTexturesGauche[c].Width / 28), listeRectanglesGauche[c].Y + 28 * (1 - listeTexturesGauche[c].Height / 28)), Color.White);
+            }
         }
 
         public List<Rectangle> ListeRectanglesDroite
@@ -116,42 +152,6 @@ namespace YelloKiller
         public List<Texture2D> ListeTexturesGauche
         {
             get { return listeTexturesGauche; }
-        }
-
-        public void Update(Ascenseur ascenseurDroit, Ascenseur ascenseurGauche, int limite)
-        {
-            for (int i = 0; i < NombreTexturesDroite; i++)
-                listeRectanglesDroite[i] = new Rectangle(limite/* Taille_Ecran.LARGEUR_ECRAN*/ - 56, 2 * (int)-ascenseurDroit.Position.Y + i * 30, 28, 28);
-
-            for (int i = 0; i < NombreTexturesGauche; i++)
-                listeRectanglesGauche[i] = new Rectangle(28, (int)-ascenseurGauche.Position.Y + i * 30, 28, 28);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Ascenseur ascenseurDroit, Ascenseur ascenseurGauche, int limite)
-        {
-            for (int u = 0; u < NombreTexturesDroite; u++)
-            {
-                if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(listeRectanglesDroite[u]))
-                {
-                    spriteBatch.Draw(fond, new Vector2(listeRectanglesDroite[u].X + 28 * (1 - listeTexturesDroite[u].Width / 28) - 2, listeRectanglesDroite[u].Y + 28 * (1 - listeTexturesDroite[u].Height / 28) - 2), null, Color.White, 0, Vector2.Zero, new Vector2(1 + 0.88f * (listeTexturesDroite[u].Width / 28 - 1), 1 + 0.88f * (listeTexturesDroite[u].Height / 28 - 1)), SpriteEffects.None, 0);
-
-                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(listeRectanglesDroite[u].X + 28 * (1 - listeTexturesDroite[u].Width / 28), listeRectanglesDroite[u].Y + 28 * (1 - listeTexturesDroite[u].Height / 28)), Color.White);
-                }
-                else
-                    spriteBatch.Draw(listeTexturesDroite[u], new Vector2(limite - 56, -2 * ascenseurDroit.Position.Y + u * 30), null, Color.White, 0, Vector2.Zero, new Vector2((float)28 / listeTexturesDroite[u].Width, (float)28 / listeTexturesDroite[u].Height), SpriteEffects.None, 0);
-            }
-
-            for (int c = 0; c < NombreTexturesGauche; c++)
-            {
-                if (ServiceHelper.Get<IMouseService>().Rectangle().Intersects(listeRectanglesGauche[c]))
-                {
-                    spriteBatch.Draw(fond, new Vector2(listeRectanglesGauche[c].X + 28 * (1 - listeTexturesGauche[c].Width / 28) - 2, listeRectanglesGauche[c].Y + 28 * (1 - listeTexturesGauche[c].Height / 28) - 2), null, Color.White, 0, Vector2.Zero, new Vector2(1 + 0.88f * (listeTexturesGauche[c].Width / 28 - 1), 1 + 0.88f * (listeTexturesGauche[c].Height / 28 - 1)), SpriteEffects.None, 0);
-
-                    spriteBatch.Draw(listeTexturesGauche[c], new Vector2(listeRectanglesGauche[c].X + 28 * (1 - listeTexturesGauche[c].Width / 28), listeRectanglesGauche[c].Y + 28 * (1 - listeTexturesGauche[c].Height / 28)), Color.White);
-                }
-                else
-                    spriteBatch.Draw(listeTexturesGauche[c], new Vector2(28, -ascenseurGauche.Position.Y + c * 30), null, Color.White, 0, Vector2.Zero, new Vector2((float)28 / listeTexturesGauche[c].Width, (float)28 / listeTexturesGauche[c].Height), SpriteEffects.None, 0);
-            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace YelloKiller
         Carte carte;
         Curseur curseur;
         Menu menu;
-        Ascenseur ascenseur1, ascenseur2;
+        Ascenseur ascenseur;
         YellokillerGame game;
         StreamWriter sauvegarde;
         string ligne, nomSauvegarde, nomCarte, extension;
@@ -92,8 +92,7 @@ namespace YelloKiller
 
             menu = new Menu(content);
             curseur = new Curseur(content);
-            ascenseur1 = new Ascenseur(content, ScreenManager.GraphicsDevice.Viewport.Width - 28/* Taille_Ecran.LARGEUR_ECRAN - 28*/);
-            ascenseur2 = new Ascenseur(content, 0);
+            ascenseur = new Ascenseur(content, ScreenManager.GraphicsDevice.Viewport.Width/* Taille_Ecran.LARGEUR_ECRAN*/ - 28);
             fond = content.Load<Texture2D>(@"Textures\Invisible");
             pointDePassage = content.Load<Texture2D>(@"Menu Editeur de Maps\pied");
             textureStatue = content.Load<Texture2D>(@"Feuilles de sprites\statue_dragon");
@@ -139,9 +138,8 @@ namespace YelloKiller
             if (afficherMessageErreur || afficherMessageSauvegarde)
                 chronometre += gameTime.ElapsedGameTime.TotalSeconds;
 
-            ascenseur1.Update(ScreenManager.GraphicsDevice.Viewport.Height);
-            ascenseur2.Update(ScreenManager.GraphicsDevice.Viewport.Height);
-            menu.Update(ascenseur1, ascenseur2, ScreenManager.GraphicsDevice.Viewport.Width);
+            ascenseur.Update(ScreenManager.GraphicsDevice.Viewport.Height);
+            menu.Update(ascenseur, ScreenManager.GraphicsDevice.Viewport.Width);
             curseur.Update(content, menu);
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
@@ -326,9 +324,8 @@ namespace YelloKiller
             //spriteBatch.Draw(fond, new Vector2(0, ScreenManager.GraphicsDevice.Viewport.Height - 84), null, Color.Blue, 0, Vector2.Zero, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / textureBasFond.Width, 1), SpriteEffects.None, 1);
             infos.Draw(spriteBatch, ScreenManager.Font, !enableOrigine1, !enableOrigine2);
 
-            menu.Draw(spriteBatch, ascenseur1, ascenseur2, ScreenManager.GraphicsDevice.Viewport.Width);
-            ascenseur1.Draw(spriteBatch);
-            ascenseur2.Draw(spriteBatch);
+            menu.Draw(spriteBatch, ascenseur, ScreenManager.GraphicsDevice.Viewport.Width);
+            ascenseur.Draw(spriteBatch);
             spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), null, Color.White, 0, Vector2.Zero, new Vector2((float)ScreenManager.GraphicsDevice.Viewport.Width / (float)textureBasFond.Width, (float)(ScreenManager.GraphicsDevice.Viewport.Height - Taille_Ecran.HAUTEUR_ECRAN + 84) / (float)textureBasFond.Height), SpriteEffects.FlipVertically, 1);
             infos.Draw(spriteBatch, ScreenManager.Font, !enableOrigine1, !enableOrigine2);
 
