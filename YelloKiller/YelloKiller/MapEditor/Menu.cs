@@ -17,7 +17,7 @@ namespace YelloKiller
         public Menu(ContentManager content)
         {
             NombreTexturesDroite = 55;
-            NombreTexturesGauche = 12;
+            NombreTexturesGauche = 13;
 
             for (int i = 0; i < NombreTexturesDroite; i++)
                 listeRectanglesDroite.Add(new Rectangle(0, 0, 28, 28));
@@ -33,6 +33,7 @@ namespace YelloKiller
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_Dark_Hero"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_boss"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_statue"));
+
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusShuriken"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusHadoken"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\CheckPoint"));
@@ -98,13 +99,13 @@ namespace YelloKiller
 
             fond = content.Load<Texture2D>(@"Textures\fond");
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
                 listeRectanglesGauche[i] = new Rectangle(0, i * 30, 28, 28);
 
-            for (int i = 7; i < 11; i++)
+            for (int i = 8; i < 12; i++)
                 listeRectanglesGauche[i] = new Rectangle(0, 100 + i * 30, 28, 28);
 
-            listeRectanglesGauche[11] = new Rectangle(0, 616, 28, 28);
+            listeRectanglesGauche[12] = new Rectangle(0, 616, 28, 28);
         }
 
         public void Update(Ascenseur ascenseurDroit, int limite)
