@@ -1504,8 +1504,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu Editeur de Maps\origine_dark_hero.png">
-      <Name>origine_dark_hero</Name>
+    <Compile Include="Menu Editeur de Maps\origine_Dark_Hero.png">
+      <Name>origine_Dark_Hero</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
