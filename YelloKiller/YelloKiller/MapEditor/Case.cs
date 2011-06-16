@@ -855,6 +855,7 @@ namespace YelloKiller
        Patrouilleur_a_cheval = 104,
        Boss = 105,
        Statues = 106,
+       Dark_Hero = 107,
 
        BonusShurikens = 200,
        BonusHadokens = 201,

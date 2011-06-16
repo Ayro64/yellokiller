@@ -13,6 +13,7 @@ namespace YelloKiller
         Vector2 origineJoueur1, origineJoueur2, positionTemporaire;
         List<byte> rotationsDesStatues;
         List<Vector2> _originesGarde, _originesBoss, _originesStatues;
+        Vector2 _origineDark_Hero;
         List<Bonus> bonus;
         List<List<Vector2>> _originesPatrouilleur, _originesPatrouilleur_a_cheval;
         List<Interrupteur> interrupteurs;
@@ -28,6 +29,7 @@ namespace YelloKiller
             _originesGarde = new List<Vector2>();
             _originesPatrouilleur = new List<List<Vector2>>();
             _originesPatrouilleur_a_cheval = new List<List<Vector2>>();
+            _origineDark_Hero = -Vector2.One;
             _originesBoss = new List<Vector2>();
             _originesStatues = new List<Vector2>();
             rotationsDesStatues = new List<byte>();
@@ -146,13 +148,14 @@ namespace YelloKiller
 
             banana = file.ReadLine();
 
-            while (banana != "Boss" && banana != null)
+
+            while (banana != "Dark Hero" && banana != null)
             {
                 banana = file.ReadLine();
                 dessert = banana.Split(',');
                 _originesPatrouilleur_a_cheval.Add(new List<Vector2>());
 
-                while (banana != "New" && banana != "Boss")
+                while (banana != "New" && banana != "Dark Hero")
                 {
                     dessert = banana.Split(',');
                     positionTemporaire.X = Convert.ToInt32(dessert[0]);
@@ -160,6 +163,16 @@ namespace YelloKiller
                     _originesPatrouilleur_a_cheval[_originesPatrouilleur_a_cheval.Count - 1].Add(positionTemporaire);
                     banana = file.ReadLine();
                 }
+            }
+
+            banana = file.ReadLine();
+
+            while (banana != "Boss" && banana != null)
+            {
+                dessert = banana.Split(',');
+                positionTemporaire.X = Convert.ToInt32(dessert[0]);
+                positionTemporaire.Y = Convert.ToInt32(dessert[1]);
+                _origineDark_Hero = positionTemporaire;
             }
 
             banana = file.ReadLine();
@@ -816,6 +829,11 @@ namespace YelloKiller
         public List<List<Vector2>> OriginesPatrouilleursAChevaux
         {
             get { return _originesPatrouilleur_a_cheval; }
+        }
+
+        public Vector2 OrigineDarkHero
+        {
+            get { return _origineDark_Hero; }
         }
 
         public List<Vector2> OriginesBoss

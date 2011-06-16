@@ -291,9 +291,10 @@ namespace YelloKiller
             }
 
             // Bouton Retour
-            if ((levels.Count % 4 == 1) || (levels.Count % 4 == 2) || (levels.Count % 4 == 0))
-                position.X -= ((levels.Count - 1) % 4) * 250;
-            position.X -= 30;
+            //if ((levels.Count % 4 == 1) || (levels.Count % 4 == 2) || (levels.Count % 4 == 0))
+            //    position.X -= ((levels.Count - 1) % 4) * 250;
+            //position.X -= 30;
+            position.X -= (((levels.Count - 1) % 4) * 250) + 30;
             position.Y = viewport.Height - 50;
             abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, titleColor, TransitionPosition);
 
