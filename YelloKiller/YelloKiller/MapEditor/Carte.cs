@@ -70,7 +70,13 @@ namespace YelloKiller
 
         public void OuvrirCarte(string nomDeFichier, ContentManager content)
         {
-            StreamReader file = new StreamReader(nomDeFichier);
+            StreamReader file;
+
+            if (File.Exists("Story\\" + nomDeFichier))
+                file = new StreamReader("Story\\" + nomDeFichier);
+            else
+                file = new StreamReader("Levels\\" + nomDeFichier);
+
             string banana = null;
             string[] dessert = null;
 
