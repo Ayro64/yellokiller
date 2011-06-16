@@ -40,12 +40,18 @@ namespace YelloKiller
         {
             for (int y = 0; y < size.Y; y++)
                 for (int x = 0; x < size.X; x++)
-                    _case[y, x] = new Case(new Vector2(x, y), TypeCase.herbe, new Vector3(1,1,1));
+                    _case[y, x] = new Case(new Vector2(x, y), TypeCase.herbe, new Vector3(1, 1, 1));
         }
 
         public void OuvrirCartePourMenu(string nomDeFichier)
         {
-            StreamReader file = new StreamReader(nomDeFichier);
+            StreamReader file;
+
+            if (File.Exists("Story\\" + nomDeFichier))
+                file = new StreamReader("Story\\" + nomDeFichier);
+            else
+                file = new StreamReader("Levels\\" + nomDeFichier);
+
             string line;
 
             for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
@@ -172,7 +178,7 @@ namespace YelloKiller
                 rotationsDesStatues.Add(Convert.ToByte(dessert[2]));
                 banana = file.ReadLine();
             }
-            
+
             banana = file.ReadLine();
 
             while (banana != "Interrupteurs")

@@ -27,6 +27,11 @@ namespace YelloKiller
         string transtxt;
 
         /// <summary>
+        /// Whether the level is locked or not
+        /// </summary>
+        bool isLocked;
+
+        /// <summary>
         /// Tracks a fading selection effect on the entry.
         /// </summary>
         /// <remarks>
@@ -61,6 +66,12 @@ namespace YelloKiller
             set { isEvent = value; }
         }
 
+        public bool IsLocked
+        {
+            get { return isLocked; }
+            set { isLocked = value; }
+        }
+
         #endregion
 
         #region Events
@@ -91,6 +102,7 @@ namespace YelloKiller
         {
             this.text = text;
             IsEvent = false;
+            IsLocked = false;
         }
         
         #endregion

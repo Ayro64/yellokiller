@@ -19,8 +19,13 @@ namespace YelloKiller
         string menuTitle = Langue.tr("Multi"), level = Langue.tr("Level");
         int selectedEntry = 0;
         ContentManager content;
-        Texture2D levelSelectBkground, blankTexture;
+        Texture2D levelSelectBkground, blankTexture, padlock;
         Color Color;
+        Color titleColor;
+
+        bool[] unlocked;
+        List<string> storyMissions;
+        List<string> fileEntries;
 
         #endregion
 
@@ -31,8 +36,26 @@ namespace YelloKiller
         /// </summary>
         public LevelSelectMulti(YellokillerGame game)
         {
-            this.game = game;
-            string[] fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.coop");
+            this.game = game; 
+
+            storyMissions = new List<string>();
+            fileEntries = new List<string>();
+            foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*.coop"))
+            {
+                storyMissions.Add(file);
+                fileEntries.Add(file);
+            }
+
+            foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"))
+                fileEntries.Add(file);
+
+            unlocked = new bool[5];
+            unlocked[0] = Properties.Unlocked.Default.C2;
+            unlocked[1] = Properties.Unlocked.Default.C3;
+            unlocked[2] = Properties.Unlocked.Default.C4;
+            unlocked[3] = Properties.Unlocked.Default.C5;
+            unlocked[4] = Properties.Unlocked.Default.C6;
+
             foreach (string str in fileEntries)
             {
                 string entryName = str.Substring(str.LastIndexOf('\\') + 1);
@@ -43,6 +66,10 @@ namespace YelloKiller
 
                 entryName = entryName.Substring(0, entryName.LastIndexOf('.'));
                 MenuEntry menuEntry = new MenuEntry(entryName);
+
+                if (storyMissions.Contains(str))
+                    menuEntry.IsLocked = !unlocked[(int.Parse(entryName[0].ToString())) + 2];
+
                 menuEntry.Selected += LevelMenuEntrySelected;
                 levels.Add(menuEntry);
 
@@ -78,6 +105,9 @@ namespace YelloKiller
 
             //Carré noir.
             blankTexture = content.Load<Texture2D>("blank");
+
+            // Cadenas.
+            padlock = content.Load<Texture2D>("cadenas");
         }
 
         /// <summary>
@@ -205,6 +235,7 @@ namespace YelloKiller
         public override void Draw(GameTime gameTime)
         {
             Color = new Color(255, 0, 0, TransitionAlpha);
+            titleColor = new Color(192, 192, 192, TransitionAlpha);
 
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             SpriteFont font = ScreenManager.Font;
@@ -240,10 +271,13 @@ namespace YelloKiller
 
                 bool isSelected = IsActive && (i == selectedEntry);
 
-                menuEntry.CDraw(this, position, isSelected, gameTime, Color.Black, TransitionPosition);
+                menuEntry.CDraw(this, position, isSelected, gameTime, titleColor, TransitionPosition);
 
                 // Miniatures
                 miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 120, position.Y - 200));
+
+                if (menuEntry.IsLocked)
+                    spriteBatch.Draw(padlock, new Vector2(position.X - 120, position.Y - 200), Color.White);
 
                 if ((i % 4 == 0) || (i % 4 == 1) || (i % 4 == 2))
                     position.X += 250;
@@ -257,12 +291,11 @@ namespace YelloKiller
             // Bouton Retour
             position.X -= (((levels.Count - 1) % 4) * 250) + 30;
             position.Y = viewport.Height - 50;
-            abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, Color.Black, TransitionPosition);
+            abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, titleColor, TransitionPosition);
 
             // Draw the menu title.
             Vector2 titlePosition = new Vector2(viewport.Width / 2, 100);
             Vector2 titleOrigin = font.MeasureString(menuTitle) / 2;
-            Color titleColor = new Color(192, 192, 192, TransitionAlpha);
             float titleScale = 1.25f;
             float titleSize = font.MeasureString(menuTitle).X;
 
