@@ -30,6 +30,7 @@ namespace YelloKiller
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_garde"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_patrouilleur"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_patrouilleur_a_cheval"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_Dark_Hero"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_boss"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_statue"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusShuriken"));

@@ -238,24 +238,27 @@ namespace YelloKiller
                             type = TypeCase.Patrouilleur_a_cheval;
                             break;
                         case 5:
-                            type = TypeCase.Boss;
+                            type = TypeCase.Dark_Hero;
                             break;
                         case 6:
-                            type = TypeCase.Statues;
+                            type = TypeCase.Boss;
                             break;
                         case 7:
-                            type = TypeCase.BonusShurikens;
+                            type = TypeCase.Statues;
                             break;
                         case 8:
-                            type = TypeCase.BonusHadokens;
+                            type = TypeCase.BonusShurikens;
                             break;
                         case 9:
-                            type = TypeCase.BonusCheckPoint;
+                            type = TypeCase.BonusHadokens;
                             break;
                         case 10:
-                            type = TypeCase.Interrupteur;
+                            type = TypeCase.BonusCheckPoint;
                             break;
                         case 11:
+                            type = TypeCase.Interrupteur;
+                            break;
+                        case 12:
                             type = TypeCase.Gomme;
                             break;
                     }
