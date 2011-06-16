@@ -68,11 +68,13 @@ namespace YelloKiller
 
         public override void HandleInput(InputState input)
         {
-            if (current == ennemis && (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer()))
-            {
+            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Escape))
                 LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
                                                                new MainMenuScreen(game));
-            }
+
+            if (current == ennemis && (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer()))
+                LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
+                                                               new MainMenuScreen(game));
         }
 
         #endregion
