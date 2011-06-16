@@ -42,6 +42,14 @@ namespace YelloKiller
             rectangles[17] = new Rectangle(830, limite - 30, 20, 20);
 
             munitions = new int[8];
+            munitions[0] = 10;
+            munitions[4] = 10;
+            munitions[1] = 3;
+            munitions[5] = 3;
+            munitions[2] = 5;
+            munitions[6] = 5;
+            munitions[3] = 3;
+            munitions[7] = 3;
             Salaire = 200000;
         }
 
