@@ -375,11 +375,11 @@ namespace YelloKiller
                 }
 
                 if (nomCarte == "" || nomCarte.Remove(nomCarte.Length - 5) != nomSauvegarde)
-                    fileExist = File.Exists(nomSauvegarde + extension);
+                    fileExist = File.Exists("\\Levels" + nomSauvegarde + extension);
 
                 if (!fileExist)
                 {
-                    sauvegarde = new StreamWriter(nomSauvegarde + extension);
+                    sauvegarde = new StreamWriter("\\Levels" + nomSauvegarde + extension);
 
                     for (int y = 0; y < Taille_Map.HAUTEUR_MAP; y++)
                     {
@@ -618,7 +618,7 @@ namespace YelloKiller
                     }
 
                     sauvegarde.WriteLine("Dark Hero");
-                    if (!enableDH)
+                    if (_origineDark_Hero != -Vector2.One)
                         sauvegarde.WriteLine(_origineDark_Hero.X + "," + _origineDark_Hero.Y);
 
                     sauvegarde.WriteLine("Boss");
