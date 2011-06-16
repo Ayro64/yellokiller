@@ -25,7 +25,7 @@ namespace YelloKiller
         StreamWriter sauvegarde;
         string ligne, nomSauvegarde, nomCarte, extension;
         Rectangle camera;
-        Vector2 origine1, origine2;
+        Vector2 origine1, origine2, _origineDark_Hero;
         List<Vector2> _originesGardes, _originesBoss, _originesStatues;
         List<Interrupteur> interrupteurs;
         List<Bonus> bonus;
@@ -35,7 +35,7 @@ namespace YelloKiller
         bool fileExist = false;
         int compteur;
         int[] munitions;
-        bool enableOrigine1, enableOrigine2, enableSave, afficherMessageErreur, afficherMessageSauvegarde;
+        bool enableOrigine1, enableOrigine2, enableDH, enableSave, afficherMessageErreur, afficherMessageSauvegarde;
         double chronometre = 0;
         Informations infos;
 
@@ -71,6 +71,7 @@ namespace YelloKiller
             _originesGardes = carte.OriginesGardes;
             _originesPatrouilleurs = carte.OriginesPatrouilleurs;
             _originesPatrouilleursAChevaux = carte.OriginesPatrouilleursAChevaux;
+            _origineDark_Hero = carte.OrigineDarkHero;
             _originesBoss = carte.OriginesBoss;
             _originesStatues = carte.OriginesStatues;
             rotationsDesStatues = carte.RotationsDesStatues;
@@ -83,6 +84,7 @@ namespace YelloKiller
 
             enableOrigine1 = (carte.OrigineJoueur1 == -Vector2.One);
             enableOrigine2 = (carte.OrigineJoueur2 == -Vector2.One);
+            enableDH = (carte.OrigineDarkHero == -Vector2.One);
         }
 
         public override void LoadContent()
@@ -253,6 +255,8 @@ namespace YelloKiller
                 spriteBatch.Draw(menu.ListeTexturesGauche[0], 28 * new Vector2(origine1.X - camera.X + 1, origine1.Y - camera.Y), Color.White);
             if (!enableOrigine2)
                 spriteBatch.Draw(menu.ListeTexturesGauche[1], 28 * new Vector2(origine2.X - camera.X + 1, origine2.Y - camera.Y), Color.White);
+            if (!enableDH)
+                spriteBatch.Draw(menu.ListeTexturesGauche[5], 28 * new Vector2(_origineDark_Hero.X - camera.X + 1, _origineDark_Hero.Y - camera.Y), Color.White);
 
             foreach (Vector2 position in _originesGardes)
                 spriteBatch.Draw(menu.ListeTexturesGauche[2], 28 * new Vector2(position.X - camera.X + 1, position.Y - camera.Y), Color.White);
@@ -276,7 +280,7 @@ namespace YelloKiller
                 }
 
             foreach (Vector2 position in _originesBoss)
-                spriteBatch.Draw(menu.ListeTexturesGauche[5], 28 * new Vector2(position.X - camera.X + 1, position.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[6], 28 * new Vector2(position.X - camera.X + 1, position.Y - camera.Y), Color.White);
 
             for (int tamere = 0; tamere < rotationsDesStatues.Count; tamere++)
             {
@@ -302,13 +306,13 @@ namespace YelloKiller
                 switch (extra.TypeBonus)
                 {
                     case TypeBonus.shuriken:
-                        spriteBatch.Draw(menu.ListeTexturesGauche[7], 28 * new Vector2(extra.X - camera.X + 1, extra.Y - camera.Y), Color.White);
-                        break;
-                    case TypeBonus.hadoken:
                         spriteBatch.Draw(menu.ListeTexturesGauche[8], 28 * new Vector2(extra.X - camera.X + 1, extra.Y - camera.Y), Color.White);
                         break;
-                    case TypeBonus.checkPoint:
+                    case TypeBonus.hadoken:
                         spriteBatch.Draw(menu.ListeTexturesGauche[9], 28 * new Vector2(extra.X - camera.X + 1, extra.Y - camera.Y), Color.White);
+                        break;
+                    case TypeBonus.checkPoint:
+                        spriteBatch.Draw(menu.ListeTexturesGauche[10], 28 * new Vector2(extra.X - camera.X + 1, extra.Y - camera.Y), Color.White);
                         break;
                 }
             }
@@ -337,9 +341,9 @@ namespace YelloKiller
             }
             else if (afficherMessageErreur)
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorExCharacters"), new Vector2(10), Color.White);
-            else if(afficherMessageSauvegarde)
+            else if (afficherMessageSauvegarde)
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("EditorSave1") + nomSauvegarde + extension + Langue.tr("EditorSave2"), new Vector2(10), Color.White);
-                
+
             if (fileExist)
                 spriteBatch.DrawString(ScreenManager.font, Langue.tr("FileExists1") + nomSauvegarde + extension + Langue.tr("FileExists2"), new Vector2(10), Color.White);
 
@@ -613,6 +617,10 @@ namespace YelloKiller
                             sauvegarde.WriteLine(position.X + "," + position.Y);
                     }
 
+                    sauvegarde.WriteLine("Dark Hero");
+                    if (!enableDH)
+                        sauvegarde.WriteLine(_origineDark_Hero.X + "," + _origineDark_Hero.Y);
+
                     sauvegarde.WriteLine("Boss");
                     foreach (Vector2 position in _originesBoss)
                         sauvegarde.WriteLine(position.X + "," + position.Y);
@@ -656,6 +664,9 @@ namespace YelloKiller
                 if (_originesPatrouilleursAChevaux[t][0].X == curseur.Position.X + camera.X && _originesPatrouilleursAChevaux[t][0].Y == curseur.Position.Y + camera.Y)
                     _originesPatrouilleursAChevaux.RemoveAt(t);
 
+            if (_origineDark_Hero.X == curseur.Position.X + camera.X && _origineDark_Hero.Y == curseur.Position.Y + camera.Y)
+                _origineDark_Hero = -Vector2.One;
+
             for (int t = 0; t < _originesBoss.Count; t++)
                 if (_originesBoss[t].X == curseur.Position.X + camera.X && _originesBoss[t].Y == curseur.Position.Y + camera.Y)
                     _originesBoss.RemoveAt(t);
@@ -698,6 +709,12 @@ namespace YelloKiller
                 origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
             }
 
+            else if (curseur.Type == TypeCase.Dark_Hero && DepartPossible(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y))
+            {
+                enableDH = false;
+                _origineDark_Hero = new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y);
+            }
+
             else if (curseur.Type == TypeCase.Garde)
                 _originesGardes.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
@@ -712,6 +729,8 @@ namespace YelloKiller
                 _originesPatrouilleursAChevaux.Add(new List<Vector2>());
                 _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
             }
+
+
             else if (curseur.Type == TypeCase.Boss)
                 _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
