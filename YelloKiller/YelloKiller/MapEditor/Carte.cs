@@ -788,7 +788,7 @@ namespace YelloKiller
             for (int y = camera.Y + camera.Height - (camera.Y + camera.Height + 1 < 60 ? 0 : 1); y >= camera.Y; y--)
                 for (int x = camera.X + camera.Width - (camera.X + camera.Width + 1 < 80 ? 0 : 1); x >= camera.X; x--)
                 {
-                    _case[y, x].Position = new Vector2(x - camera.X + 2, y - camera.Y);
+                    _case[y, x].Position = new Vector2(x - camera.X + 1, y - camera.Y);
                     _case[y, x].DrawInMapEditor(spriteBatch, content);
                 }
         }
