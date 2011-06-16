@@ -73,8 +73,8 @@ namespace YelloKiller
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            //Ecran Game Over.
-            levelSelectBkground = content.Load<Texture2D>("LevelSelection");
+            //Fond d'écran.
+            levelSelectBkground = content.Load<Texture2D>("Level Select Solo");
 
             //Carré noir.
             blankTexture = content.Load<Texture2D>("blank");
