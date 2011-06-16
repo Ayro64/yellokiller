@@ -49,12 +49,13 @@ namespace YelloKiller
             foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"))
                 fileEntries.Add(file);
 
-            unlocked = new bool[5];
-            unlocked[0] = Properties.Unlocked.Default.C2;
-            unlocked[1] = Properties.Unlocked.Default.C3;
-            unlocked[2] = Properties.Unlocked.Default.C4;
-            unlocked[3] = Properties.Unlocked.Default.C5;
-            unlocked[4] = Properties.Unlocked.Default.C6;
+            unlocked = new bool[6];
+            unlocked[0] = Properties.Unlocked.Default.C1;
+            unlocked[1] = Properties.Unlocked.Default.C2;
+            unlocked[2] = Properties.Unlocked.Default.C3;
+            unlocked[3] = Properties.Unlocked.Default.C4;
+            unlocked[4] = Properties.Unlocked.Default.C5;
+            unlocked[5] = Properties.Unlocked.Default.C6;
 
             foreach (string str in fileEntries)
             {
@@ -68,7 +69,7 @@ namespace YelloKiller
                 MenuEntry menuEntry = new MenuEntry(entryName);
 
                 if (storyMissions.Contains(str))
-                    menuEntry.IsLocked = !unlocked[(int.Parse(entryName[0].ToString())) + 2];
+                    menuEntry.IsLocked = !unlocked[(int.Parse(entryName[0].ToString())) - 1];
 
                 menuEntry.Selected += LevelMenuEntrySelected;
                 levels.Add(menuEntry);
