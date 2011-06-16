@@ -177,7 +177,7 @@ namespace YelloKiller
             else if (camera.Y < Taille_Map.HAUTEUR_MAP - camera.Height && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.Down))
                 camera.Y++;
 
-            if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Delete))
+            if (curseur.Type == TypeCase.Gomme && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
                 Supprimer_Ennemi_Ou_Bonus();
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte())

@@ -860,6 +860,7 @@ namespace YelloKiller
        BonusHadokens = 201,
        BonusCheckPoint = 202,
 
-       Interrupteur = 210
+       Interrupteur = 210,
+       Gomme = 211
    }
 }

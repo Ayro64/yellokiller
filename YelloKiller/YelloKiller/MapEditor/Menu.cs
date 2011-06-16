@@ -17,7 +17,7 @@ namespace YelloKiller
         public Menu(ContentManager content)
         {
             NombreTexturesDroite = 55;
-            NombreTexturesGauche = 11;
+            NombreTexturesGauche = 12;
 
             for (int i = 0; i < NombreTexturesDroite; i++)
                 listeRectanglesDroite.Add(new Rectangle(0, 0, 28, 28));
@@ -36,6 +36,7 @@ namespace YelloKiller
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\bonusHadoken"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\CheckPoint"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\interrupteurPasTouche"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\gomme"));
 
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\arbre\arbre"));
             listeTexturesDroite.Add(content.Load<Texture2D>(@"Textures\commode\commode"));

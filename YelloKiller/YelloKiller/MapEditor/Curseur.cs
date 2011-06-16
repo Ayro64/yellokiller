@@ -255,6 +255,9 @@ namespace YelloKiller
                         case 10:
                             type = TypeCase.Interrupteur;
                             break;
+                        case 11:
+                            type = TypeCase.Gomme;
+                            break;
                     }
 
                     tailleFond.X = 1 + 0.88f * (texture.Width / 28 - 1);
