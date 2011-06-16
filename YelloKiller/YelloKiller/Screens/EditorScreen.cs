@@ -60,7 +60,7 @@ namespace YelloKiller
             enableSave = true;
             afficherMessageErreur = false;
             afficherMessageSauvegarde = false;
-            camera = new Rectangle(0, 0, 32, 23);
+            camera = new Rectangle(0, 0, 33, 24);
             carte = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
 
             if (nomCarte == "")
@@ -250,49 +250,49 @@ namespace YelloKiller
             carte.DrawInMapEditor(spriteBatch, content, camera);
 
             if (!enableOrigine1)
-                spriteBatch.Draw(menu.ListeTexturesGauche[0], 28 * new Vector2(origine1.X - camera.X + 2, origine1.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[0], 28 * new Vector2(origine1.X - camera.X + 1, origine1.Y - camera.Y), Color.White);
             if (!enableOrigine2)
-                spriteBatch.Draw(menu.ListeTexturesGauche[1], 28 * new Vector2(origine2.X - camera.X + 2, origine2.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[1], 28 * new Vector2(origine2.X - camera.X + 1, origine2.Y - camera.Y), Color.White);
 
             foreach (Vector2 position in _originesGardes)
-                spriteBatch.Draw(menu.ListeTexturesGauche[2], 28 * new Vector2(position.X - camera.X + 2, position.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[2], 28 * new Vector2(position.X - camera.X + 1, position.Y - camera.Y), Color.White);
 
             foreach (List<Vector2> parcours in _originesPatrouilleurs)
                 for (int z = 0; z < parcours.Count; z++)
                 {
                     if (z == 0)
-                        spriteBatch.Draw(menu.ListeTexturesGauche[3], 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.White);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[3], 28 * new Vector2(parcours[z].X - camera.X + 1, parcours[z].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassage, 28 * new Vector2(parcours[z].X - camera.X + 2, parcours[z].Y - camera.Y), Color.CadetBlue);
+                        spriteBatch.Draw(pointDePassage, 28 * new Vector2(parcours[z].X - camera.X + 1, parcours[z].Y - camera.Y), Color.CadetBlue);
                 }
 
             foreach (List<Vector2> parcours in _originesPatrouilleursAChevaux)
                 for (int v = 0; v < parcours.Count; v++)
                 {
                     if (v == 0)
-                        spriteBatch.Draw(menu.ListeTexturesGauche[4], 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.White);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[4], 28 * new Vector2(parcours[v].X - camera.X + 1, parcours[v].Y - camera.Y), Color.White);
                     else
-                        spriteBatch.Draw(pointDePassage, 28 * new Vector2(parcours[v].X - camera.X + 2, parcours[v].Y - camera.Y), Color.Yellow);
+                        spriteBatch.Draw(pointDePassage, 28 * new Vector2(parcours[v].X - camera.X + 1, parcours[v].Y - camera.Y), Color.Yellow);
                 }
 
             foreach (Vector2 position in _originesBoss)
-                spriteBatch.Draw(menu.ListeTexturesGauche[5], 28 * new Vector2(position.X - camera.X + 2, position.Y - camera.Y), Color.White);
+                spriteBatch.Draw(menu.ListeTexturesGauche[5], 28 * new Vector2(position.X - camera.X + 1, position.Y - camera.Y), Color.White);
 
             for (int tamere = 0; tamere < rotationsDesStatues.Count; tamere++)
             {
                 switch (rotationsDesStatues[tamere])
                 {
                     case 0:
-                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 0, 112, 94), Color.White);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 0, 112, 94), Color.White);
                         break;
                     case 1:
-                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 123, 112, 94), Color.White);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 123, 112, 94), Color.White);
                         break;
                     case 2:
-                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 357, 112, 94), Color.White);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 357, 112, 94), Color.White);
                         break;
                     case 3:
-                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 2, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 243, 112, 94), Color.White);
+                        spriteBatch.Draw(textureStatue, 28 * new Vector2(_originesStatues[tamere].X - camera.X + 1, _originesStatues[tamere].Y - camera.Y), new Rectangle(0, 243, 112, 94), Color.White);
                         break;
                 }
             }
@@ -302,13 +302,13 @@ namespace YelloKiller
                 switch (extra.TypeBonus)
                 {
                     case TypeBonus.shuriken:
-                        spriteBatch.Draw(menu.ListeTexturesGauche[7], 28 * new Vector2(extra.X - camera.X + 2, extra.Y - camera.Y), Color.White);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[7], 28 * new Vector2(extra.X - camera.X + 1, extra.Y - camera.Y), Color.White);
                         break;
                     case TypeBonus.hadoken:
-                        spriteBatch.Draw(menu.ListeTexturesGauche[8], 28 * new Vector2(extra.X - camera.X + 2, extra.Y - camera.Y), Color.White);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[8], 28 * new Vector2(extra.X - camera.X + 1, extra.Y - camera.Y), Color.White);
                         break;
                     case TypeBonus.checkPoint:
-                        spriteBatch.Draw(menu.ListeTexturesGauche[9], 28 * new Vector2(extra.X - camera.X + 2, extra.Y - camera.Y), Color.White);
+                        spriteBatch.Draw(menu.ListeTexturesGauche[9], 28 * new Vector2(extra.X - camera.X + 1, extra.Y - camera.Y), Color.White);
                         break;
                 }
             }
