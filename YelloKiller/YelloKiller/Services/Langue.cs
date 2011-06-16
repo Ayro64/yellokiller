@@ -24,6 +24,10 @@ namespace YelloKiller
                             return "Editeur de cartes";
                         case ("Options"):
                             return "Options";
+                        case("Yes"):
+                            return "Oui";
+                        case("No"):
+                            return "Non";
                         case ("MainMenuQuit"):
                             return "Quitter";
                         case ("MainQuitMsg"):
@@ -87,6 +91,8 @@ namespace YelloKiller
                             return "Volume de la musique : ";
                         case ("OptFX"):
                             return "Volume des sons : ";
+                        case("FullScr"):
+                            return "Plein écran : ";
                         case ("WinMsg"):
                             return "Cible éliminée!";
                         case ("WiNext"):
@@ -134,6 +140,10 @@ namespace YelloKiller
                             return "Karteneditor";
                         case ("Options"):
                             return "Einstellungen";
+                        case("Yes"):
+                            return "Ja";
+                        case("No"):
+                            return "Nein";
                         case ("MainMenuQuit"):
                             return "Spiel verlassen";
                         case ("MainQuitMsg"):
@@ -197,6 +207,8 @@ namespace YelloKiller
                             return "Musik lautstarke : ";
                         case ("OptFX"):
                             return "Effekte lautstarke : ";
+                        case ("FullScr"):
+                            return "Vollbild : ";
                         case ("WinMsg"):
                             return "Ziel erreischt!";
                         case ("WiNext"):
@@ -244,6 +256,10 @@ namespace YelloKiller
                             return "Map Editor";
                         case ("Options"):
                             return "Settings";
+                        case ("Yes"):
+                            return "Yes";
+                        case ("No"):
+                            return "No";
                         case ("MainMenuQuit"):
                             return "Exit Game";
                         case ("MainQuitMsg"):
@@ -307,6 +323,8 @@ namespace YelloKiller
                             return "Music Volume : ";
                         case ("OptFX"):
                             return "FX Volume : ";
+                        case ("FullScr"):
+                            return "Full Screen : ";
                         case ("WinMsg"):
                             return "Target terminated!";
                         case ("WiNext"):

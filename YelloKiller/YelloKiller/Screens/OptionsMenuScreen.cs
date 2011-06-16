@@ -21,6 +21,7 @@ namespace YelloKiller
         KeyboardState keyboardState, lastKeyboardState;
 
         MenuEntry languageMenuEntry;
+        MenuEntry fullScreenMenuEntry;
         MenuEntry sonMenuEntry;
         MenuEntry soundVolumeMenuEntry;
         MenuEntry fxVolumeMenuEntry;
@@ -29,14 +30,16 @@ namespace YelloKiller
 
         int mod;
 
-        string[] language = { "Français", "Deutsch" , "English"};
+        string[] language = { "Français", "Deutsch", "English" };
         string[] son = { Langue.tr("SoundDefault"), "Player", Langue.tr("SoundNone") };
 
         uint currentLanguage;
+        bool fullScreen;
+        bool ToggleOK;
         uint currentSon;
         float soundVolume;
         uint fxVolume;
-        
+
         // Sert à keud', XNA.Content et XNA.Graphics à dégager.
         ContentManager content;
         SpriteBatch spriteBatch;
@@ -56,6 +59,8 @@ namespace YelloKiller
             this.game = game;
             // Fetches Settings.
             currentLanguage = Properties.Settings.Default.Language;
+            fullScreen = Properties.Settings.Default.FullScreen;
+            ToggleOK = true;
             currentSon = Properties.Settings.Default.AudioType;
 
             // soundVolume = (uint)(MediaPlayer.Volume * 10);
@@ -66,6 +71,7 @@ namespace YelloKiller
 
             // Create our menu entries.
             languageMenuEntry = new MenuEntry(string.Empty);
+            fullScreenMenuEntry = new MenuEntry(string.Empty);
             sonMenuEntry = new MenuEntry(string.Empty);
             soundVolumeMenuEntry = new MenuEntry(string.Empty);
             fxVolumeMenuEntry = new MenuEntry(string.Empty);
@@ -75,11 +81,15 @@ namespace YelloKiller
 
             // Hook up menu event handlers.
             languageMenuEntry.Selected += LanguageMenuEntrySelected;
+
+            fullScreenMenuEntry.Selected += FullScreenMenuEntrySelected;
+
             sonMenuEntry.Selected += SonMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
             MenuEntries.Add(languageMenuEntry);
+            MenuEntries.Add(fullScreenMenuEntry);
             MenuEntries.Add(sonMenuEntry);
             MenuEntries.Add(soundVolumeMenuEntry);
             MenuEntries.Add(fxVolumeMenuEntry);
@@ -93,12 +103,14 @@ namespace YelloKiller
         void SetMenuEntryText()
         {
             Properties.Settings.Default.Language = currentLanguage;
+            Properties.Settings.Default.FullScreen = fullScreen;
             Properties.Settings.Default.AudioType = currentSon;
             Properties.Settings.Default.MusicVolume = soundVolume;
             Properties.Settings.Default.FXVolume = fxVolume;
 
             this.TitleUpdate(Langue.tr("Options"));
             languageMenuEntry.Text = Langue.tr("OptLan") + language[currentLanguage];
+            fullScreenMenuEntry.Text = Langue.tr("FullScr") + (fullScreen ? Langue.tr("Yes") : Langue.tr("No"));
             sonMenuEntry.Text = Langue.tr("OptSound") + son[currentSon];
             soundVolumeMenuEntry.Text = Langue.tr("OptMusic") + (uint)soundVolume;
             fxVolumeMenuEntry.Text = Langue.tr("OptFX") + fxVolume;
@@ -187,10 +199,23 @@ namespace YelloKiller
         /// </summary>
         void LanguageMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-                currentLanguage = (uint)((currentLanguage + 1) % language.Length);
-                SetMenuEntryText();
+            currentLanguage = (uint)((currentLanguage + 1) % language.Length);
+            SetMenuEntryText();
         }
 
+        /// <summary>
+        /// Event handler for when the Full Screen menu entry is selected.
+        /// </summary>
+        void FullScreenMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            if (ToggleOK)
+            {
+                fullScreen = !fullScreen;
+                game.Toggle();
+            }
+            SetMenuEntryText();
+            ToggleOK = !ToggleOK;
+        }
 
         /// <summary>
         /// Event handler for when the Language menu entry is selected.
@@ -209,10 +234,10 @@ namespace YelloKiller
 
         #endregion
 
-        #region Draw
+        #region Update and Draw
 
         public override void Draw(GameTime gameTime)
-        {            
+        {
             if (mod == 0)
             {
                 Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
@@ -225,7 +250,7 @@ namespace YelloKiller
                 spriteBatch.Begin();
                 // Rectangle noir des entrées menu.
                 spriteBatch.Draw(blankTexture,
-                                 new Rectangle(115, 210, 300, 200),
+                                 new Rectangle(115, 210, 300, 230),
                                  new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
                 // Celui du titre.

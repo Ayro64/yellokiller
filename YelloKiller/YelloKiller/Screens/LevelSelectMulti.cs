@@ -212,7 +212,7 @@ namespace YelloKiller
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
 
-            Vector2 position = new Vector2(100, 400);
+            Vector2 position = new Vector2(viewport.Width / 8, viewport.Height / 2);
 
             byte fade = TransitionAlpha;
 
@@ -240,10 +240,10 @@ namespace YelloKiller
 
                 bool isSelected = IsActive && (i == selectedEntry);
 
-                menuEntry.Draw(this, position, isSelected, gameTime, Color.Black, TransitionPosition);
+                menuEntry.CDraw(this, position, isSelected, gameTime, Color.Black, TransitionPosition);
 
                 // Miniatures
-                miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 85, position.Y - 200));
+                miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 120, position.Y - 200));
 
                 if ((i % 4 == 0) || (i % 4 == 1) || (i % 4 == 2))
                     position.X += 250;
