@@ -173,6 +173,7 @@ namespace YelloKiller
                 positionTemporaire.X = Convert.ToInt32(dessert[0]);
                 positionTemporaire.Y = Convert.ToInt32(dessert[1]);
                 _origineDark_Hero = positionTemporaire;
+                banana = file.ReadLine();
             }
 
             banana = file.ReadLine();

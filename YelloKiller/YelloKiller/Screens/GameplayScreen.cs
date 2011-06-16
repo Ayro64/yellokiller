@@ -164,6 +164,9 @@ namespace YelloKiller
                 _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].CreerTrajet(carte);
             }
 
+            if (carte.OrigineDarkHero != -Vector2.One)
+                Dark_Hero = new Dark_Hero(carte.OrigineDarkHero, carte);
+
             _boss = new List<Boss>();
             foreach (Vector2 position in carte.OriginesBoss)
                 _boss.Add(new Boss(new Vector2(28 * position.X + 5, 28 * position.Y), carte));
@@ -204,6 +207,9 @@ namespace YelloKiller
             hero1.LoadContent(content, 2);
             if (jeuEnCoop)
                 hero2.LoadContent(content, 2);
+
+            if (Dark_Hero != null)
+                Dark_Hero.LoadContent(content, 2);
 
             foreach (Garde garde in _gardes)
                 garde.LoadContent(content, 2);
@@ -257,6 +263,9 @@ namespace YelloKiller
                 hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero2, interrupteurs);
                 if (jeuEnCoop)
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1, interrupteurs);
+
+                if (carte.OrigineDarkHero != -Vector2.One)
+                    Dark_Hero.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
 
                 foreach (Garde garde in _gardes)
                     garde.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
@@ -328,6 +337,9 @@ namespace YelloKiller
 
             foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
                 patrouilleurACheval.Draw(spriteBatch, camera);
+
+            if (Dark_Hero != null)
+                Dark_Hero.Draw(spriteBatch, camera);
 
             foreach (Boss boss in _boss)
                 boss.Draw(spriteBatch, camera);
