@@ -59,7 +59,7 @@ namespace YelloKiller
                 this.salaire = 0;
             score = Langue.tr("Score") + this.salaire;
 
-            Fanfare = AudioEngine.SoundBank.GetCue("11 Fanfare");
+            
 
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
@@ -208,7 +208,8 @@ namespace YelloKiller
 
             if (!soundPlayed)
             {
-                AudioEngine.SoundBank.PlayCue(Fanfare);
+                Fanfare = AudioEngine.SoundBank.GetCue("11 Fanfare");
+                Fanfare.Play();
                 soundPlayed = true;
             }
 
