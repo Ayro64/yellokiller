@@ -34,6 +34,7 @@ namespace YelloKiller
         List<Bonus> _bonus;
         List<Interrupteur> interrupteurs;
         List<EnnemiMort> ennemisMorts;
+        Dark_Hero Dark_Hero;
         Texture2D textureBasFond, modeAlerte;
         public static bool Alerte { get; set; }
 
