@@ -399,120 +399,120 @@ namespace YelloKiller
                             {
                                 case TypeCase.arbre:
                                     ligne += 'a';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.commode:
                                     ligne += 'b';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.lit:
                                     ligne += 'c';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.mur:
                                     ligne += 'd';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.murBlanc:
                                     ligne += 'e';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.murBlancDrap:
                                     ligne += 'f';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.murBlancEpee:
                                     ligne += 'g';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.murBlancTableau:
                                     ligne += 'h';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.murEpee:
                                     ligne += 'i';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.murTableau:
                                     ligne += 'j';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.tableauMurBlanc:
                                     ligne += 'k';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.tableMoyenne:
                                     ligne += 'l';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.grandeTable:
                                     ligne += 'm';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.grandeTableDeco:
                                     ligne += 'n';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.nvlHerbe:
                                     ligne += 'o';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.parquet:
                                     ligne += 'p';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.parquetArbre:
                                     ligne += 'q';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.parquetBuisson:
                                     ligne += 'r';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.pont1:
                                     ligne += 's';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.pont2:
                                     ligne += 't';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.bibliotheque:
                                     ligne += 'C';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
 
                                 case TypeCase.canape:
                                     ligne += 'u';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.canapeRalonge:
                                     ligne += 'v';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.fenetre:
                                     ligne += 'w';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.porteFenetre:
                                     ligne += 'x';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.grdSiege:
                                     ligne += 'y';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.pillier:
                                     ligne += 'z';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.porte:
                                     ligne += 'A';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
                                 case TypeCase.rocher:
                                     ligne += 'B';
-                                    ligne += carte.Cases[y, x].Etienne.Z;
+                                    ligne += carte.Cases[y, x].Index;
                                     break;
 
 
@@ -774,7 +774,7 @@ namespace YelloKiller
                         for (int y = 0; y < 2; y++)
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 2 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 2 * y + 1;
                         }
                 }
             }
@@ -787,7 +787,7 @@ namespace YelloKiller
                         for (int y = 0; y < 3; y++)
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 3 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 3 * y + 1;
                         }
                 }
             }
@@ -799,7 +799,7 @@ namespace YelloKiller
                     for (int x = 0; x < 2; x++)
                     {
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 1;
+                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Index = x + 1;
                     }
                 }
             }
@@ -811,7 +811,7 @@ namespace YelloKiller
                     for (int y = 0; y < 2; y++)
                     {
                         carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-                        carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X].Etienne_Z = y + 1;
+                        carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X].Index = y + 1;
                     }
                 }
             }
@@ -824,7 +824,7 @@ namespace YelloKiller
                         for (int y = 0; y < 2; y++)
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 3 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 3 * y + 1;
                         }
                 }
             }
@@ -837,7 +837,7 @@ namespace YelloKiller
                         for (int y = 0; y < 2; y++)
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 4 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 4 * y + 1;
                         }
                 }
             }
@@ -850,7 +850,7 @@ namespace YelloKiller
                         for (int y = 0; y < 3; y++)
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
-                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Etienne_Z = x + 2 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 2 * y + 1;
                         }
                 }
             }
@@ -858,7 +858,7 @@ namespace YelloKiller
             else if ((int)curseur.Type < 100)
             {
                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
-                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Etienne_Z = 1;
+                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Index = 1;
             }
         }
 
