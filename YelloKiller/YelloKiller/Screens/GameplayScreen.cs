@@ -270,7 +270,7 @@ namespace YelloKiller
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1, interrupteurs);
 
                 if (carte.OrigineDarkHero != -Vector2.One)
-                    Dark_Hero.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    Dark_Hero.Update(gameTime, carte, hero1, camera);
 
                 foreach (Garde garde in _gardes)
                     garde.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
@@ -286,6 +286,9 @@ namespace YelloKiller
 
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule);
+
+                if (Dark_Hero != null)
+                    Dark_Hero.Update(gameTime, carte, hero1, camera);
 
                 if (timer_update_collision > 0)
                 {
