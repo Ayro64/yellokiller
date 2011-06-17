@@ -76,6 +76,10 @@ namespace YelloKiller
                             return "Sauver la carte";
                         case ("PausEditLoad"):
                             return "Charger une carte";
+                        case ("PausEditDel"):
+                            return "Supprimer une carte";
+                        case("MapDel"):
+                            return "Êtes vous sûr de vouloir supprimer ";
                         case ("PausGameRes"):
                             return "Reprendre le jeu";
                         case ("PausGameQuit"):
@@ -200,6 +204,10 @@ namespace YelloKiller
                             return "Karte speichern";
                         case ("PausEditLoad"):
                             return "Karte laden";
+                        case ("PausEditDel"):
+                            return "Karte lösen";
+                        case ("MapDel"):
+                            return "Sind sie sicher, dass sie\ndie Karte lösen wollen ";
                         case ("PausGameRes"):
                             return "Weiter spielen";
                         case ("PausGameQuit"):
@@ -324,6 +332,10 @@ namespace YelloKiller
                             return "Save the map";
                         case ("PausEditLoad"):
                             return "Load a map";
+                        case("PausEditDel"):
+                            return "Delete a map";
+                        case ("MapDel"):
+                            return "Are you sure you want to delete ";
                         case ("PausGameRes"):
                             return "Resume play";
                         case ("PausGameQuit"):

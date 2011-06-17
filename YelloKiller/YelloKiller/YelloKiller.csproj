@@ -138,6 +138,7 @@
     <Compile Include="ScreenManager\InputState.cs" />
     <Compile Include="ScreenManager\ScreenManager.cs" />
     <Compile Include="Screens\BackgroundScreen.cs" />
+    <Compile Include="Screens\DelMapMenuScreen.cs" />
     <Compile Include="Screens\EditorSavePop.cs" />
     <Compile Include="Screens\EditorScreen.cs" />
     <Compile Include="Screens\GameOverScreen.cs" />
