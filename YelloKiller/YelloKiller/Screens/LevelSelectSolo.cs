@@ -37,7 +37,7 @@ namespace YelloKiller
         public LevelSelectSolo(YellokillerGame game)
         {
             this.game = game;
-            
+
             storyMissions = new List<string>();
             fileEntries = new List<string>();
             foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*.solo"))
@@ -49,18 +49,18 @@ namespace YelloKiller
             foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"))
                 fileEntries.Add(file);
 
-                unlocked = new bool[6];
-                unlocked[0] = Properties.Unlocked.Default.S1;
-                unlocked[1] = Properties.Unlocked.Default.S2;
-                unlocked[2] = Properties.Unlocked.Default.S3;
-                unlocked[3] = Properties.Unlocked.Default.S4;
-                unlocked[4] = Properties.Unlocked.Default.S5;
-                unlocked[5] = Properties.Unlocked.Default.S6;
+            unlocked = new bool[6];
+            unlocked[0] = Properties.Unlocked.Default.S1;
+            unlocked[1] = Properties.Unlocked.Default.S2;
+            unlocked[2] = Properties.Unlocked.Default.S3;
+            unlocked[3] = Properties.Unlocked.Default.S4;
+            unlocked[4] = Properties.Unlocked.Default.S5;
+            unlocked[5] = Properties.Unlocked.Default.S6;
 
             foreach (string str in fileEntries)
             {
                 string entryName = str.Substring(str.LastIndexOf('\\') + 1);
-                
+
                 Carte map = new Carte(new Vector2(Taille_Map.LARGEUR_MAP, Taille_Map.HAUTEUR_MAP));
                 map.OuvrirCartePourMenu(entryName);
                 miniCartes.Add(map);
@@ -189,6 +189,7 @@ namespace YelloKiller
         /// </summary>
         protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
         {
+            if (!levels[entryIndex].IsLocked)
             levels[entryIndex].OnSelectEntry(playerIndex);
         }
 
