@@ -20,9 +20,10 @@ namespace YelloKiller
         public event EventHandler<PlayerIndexEventArgs> SaveMapMenuEntrySelected;
         MenuEntry resumeGameMenuEntry;
         MenuEntry saveMapMenuEntry;
+        MenuEntry loadMapMenuEntry;
+        MenuEntry deleteMapMenuEntry;
         MenuEntry optionsGameMenuEntry;
         MenuEntry quitGameMenuEntry;
-        MenuEntry loadMapMenuEntry;
 
         #endregion
 
@@ -68,7 +69,9 @@ namespace YelloKiller
             {
                 saveMapMenuEntry = new MenuEntry(Langue.tr("PausEditSave"));
                 loadMapMenuEntry = new MenuEntry(Langue.tr("PausEditLoad"));
+                deleteMapMenuEntry = new MenuEntry(Langue.tr("PausEditDel"));
                 loadMapMenuEntry.Selected += LoadMapMenuEntrySelected;
+                deleteMapMenuEntry.Selected += DeleteMapMenuEntrySelected;
                 MenuEntries.Add(loadMapMenuEntry);
             }
 
@@ -110,6 +113,15 @@ namespace YelloKiller
         public void LoadMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             ScreenManager.AddScreen(new LoadMapMenuScreen(game), e.PlayerIndex, true);
+        }
+
+        /// <summary>
+        /// Event handler for when the Delete Map menu entry is selected.
+        /// </summary>
+
+        public void DeleteMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            ScreenManager.AddScreen(new DelMapMenuScreen(game), e.PlayerIndex, true);
         }
 
         /// <summary>
@@ -156,6 +168,7 @@ namespace YelloKiller
             {
                 saveMapMenuEntry.Selected += SaveMapMenuEntrySelected;
                 MenuEntries.Add(saveMapMenuEntry);
+                MenuEntries.Add(deleteMapMenuEntry);
                 MenuEntries.Add(optionsGameMenuEntry);
                 MenuEntries.Add(quitGameMenuEntry);
             }

@@ -24,6 +24,19 @@ namespace YelloKiller
             }
         }
 
+        public LoadMapMenuScreen(YellokillerGame game, string title)
+            : base(title)
+        {
+            this.game = game;
+            string[] fileEntries = ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"));
+            foreach (string str in fileEntries)
+            {
+                MenuEntry menuEntry = new MenuEntry(str.Substring(str.LastIndexOf('\\') + 1));
+                menuEntry.Selected += MenuEntrySelected;
+                MenuEntries.Add(menuEntry);
+            }
+        }
+
         public static string[] ConcatenerTableaux(string[] tab1, string[] tab2)
         {
             string[] res = new string[tab1.Length + tab2.Length];
