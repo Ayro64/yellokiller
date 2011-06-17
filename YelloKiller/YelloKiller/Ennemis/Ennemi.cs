@@ -49,20 +49,20 @@ namespace YelloKiller
             this.MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2, List<EnnemiMort> ennemisMorts, Rectangle fumee)
+        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2, List<EnnemiMort> ennemisMorts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
             UpdateChampDeVision(carte);
-            MortDansLeChampDeVision(ennemisMorts, fumee);
+            MortDansLeChampDeVision(ennemisMorts, fumeeHeros1, fumeeHeros2);
 
-            if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumee))
+            if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumeeHeros1, fumeeHeros2))
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero1.Y, hero1.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
-            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle, fumee)))
+            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle, fumeeHeros1, fumeeHeros2)))
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero2.Y, hero2.X];
@@ -279,9 +279,9 @@ namespace YelloKiller
             return (distance < 6 ? distance - 1 : 5);
         }
 
-        public bool Collision(Rectangle contour, Rectangle fumee)
+        public bool Collision(Rectangle contour, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
         {
-            if (fumee != null && fumee.Intersects(contour))
+            if (fumeeHeros1 != Rectangle.Empty && fumeeHeros1.Intersects(contour) || fumeeHeros2 != Rectangle.Empty && fumeeHeros2.Intersects(contour))
                 return false;
 
             if (contour.Intersects(champDeVision1) || contour.Intersects(champDeVision2) || contour.Intersects(champDeVision3))
@@ -293,10 +293,10 @@ namespace YelloKiller
             return false;
         }
 
-        private void MortDansLeChampDeVision(List<EnnemiMort> ennemisMorts, Rectangle fumee)
+        private void MortDansLeChampDeVision(List<EnnemiMort> ennemisMorts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
         {
             foreach (EnnemiMort mort in ennemisMorts)
-                if (Collision(mort.Rectangle, fumee))
+                if (Collision(mort.Rectangle, fumeeHeros1, fumeeHeros2))
                 {
                     GameplayScreen.Alerte = true;
                     this.Alerte = true;

@@ -243,22 +243,20 @@ namespace YelloKiller.Moteur_Particule
 
         #region Rectangle tout moche Fumigene
 
-        bool rectangle_fumigene_est_present = true; // utiliser pour effacer le rectangle apres collision 
-        public bool Rectangle_Fumigene_Est_Present
+        public Rectangle Rectangle_Fumigene_Heros1(Hero hero) // pour gerer les collisions
         {
-            get { return rectangle_fumigene_est_present; }
-            set { rectangle_fumigene_est_present = value; }
-        }
-
-        public Rectangle Rectangle_Fumigene(Hero hero) // pour gerer les collisions
-        {
-            if (fumigene1.FreeParticleCount == 135) // lorsque freeparticulecount = 135 le fumigene est termine 
-                Rectangle_Fumigene_Est_Present = true;// je reinitialise donc mon rectangle
-
-            if (fumigene1.FreeParticleCount < 135 && Rectangle_Fumigene_Est_Present)
+            if (fumigene1.FreeParticleCount < 135 )
                 return new Rectangle((int)hero.position.X - 28 * 3, (int)hero.position.Y - 28 * 3, 28 * 6, 28 * 6);
             else // pas de rectangle
-                return new Rectangle(0, 0, 0, 0);
+                return Rectangle.Empty;
+        }
+
+        public Rectangle Rectangle_Fumigene_Heros2(Hero hero) // pour gerer les collisions
+        {
+            if (hero != null && fumigene2.FreeParticleCount < 135)
+                return new Rectangle((int)hero.position.X - 28 * 3, (int)hero.position.Y - 28 * 3, 28 * 6, 28 * 6);
+            else
+                return Rectangle.Empty;
         }
 
         #endregion

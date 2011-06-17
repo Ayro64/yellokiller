@@ -273,16 +273,16 @@ namespace YelloKiller
                     Dark_Hero.Update(gameTime, carte, hero1, camera);
 
                 foreach (Garde garde in _gardes)
-                    garde.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    garde.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
 
                 foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
 
                 foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
 
                 foreach (Boss boss in _boss)
-                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene(hero1));
+                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
 
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule);
