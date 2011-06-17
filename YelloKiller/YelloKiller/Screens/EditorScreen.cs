@@ -32,7 +32,7 @@ namespace YelloKiller
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
         Texture2D pointDePassage, fond, textureStatue, textureBasFond;
-        bool fileExist = false, number = false;
+        bool fileExist = false;
         int compteur;
         int[] munitions;
         bool enableOrigine1, enableOrigine2, enableDH, enableSave, afficherMessageErreur, afficherMessageSauvegarde;
