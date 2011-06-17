@@ -85,10 +85,16 @@ namespace YelloKiller
                 this.ExitScreen();
 
             if (current != ennemis && current != manette && (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer()))
+            {
                 current = manette;
+                return;
+            }
 
             if (current == manette && (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer()))
+            {
                 current = ennemis;
+                return;
+            }
 
             if (current == ennemis && (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer()))
                 this.ExitScreen();

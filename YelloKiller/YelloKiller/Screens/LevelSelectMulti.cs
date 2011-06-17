@@ -36,7 +36,7 @@ namespace YelloKiller
         /// </summary>
         public LevelSelectMulti(YellokillerGame game)
         {
-            this.game = game; 
+            this.game = game;
 
             storyMissions = new List<string>();
             fileEntries = new List<string>();
@@ -188,7 +188,8 @@ namespace YelloKiller
         /// </summary>
         protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
         {
-            levels[entryIndex].OnSelectEntry(playerIndex);
+            if (!levels[entryIndex].IsLocked)
+                levels[entryIndex].OnSelectEntry(playerIndex);
         }
 
         /// <summary>
