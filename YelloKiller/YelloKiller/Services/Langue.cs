@@ -60,6 +60,12 @@ namespace YelloKiller
                             return "Retour";
                         case ("Loading"):
                             return "Chargement...";
+                        case("Remaining"):
+                            return "Cibles restantes :";
+                        case("GoHome"):
+                            return "Retournez au point de départ!";
+                        case("Joueur"):
+                            return "Joueur";
                         case ("PauseTitle"):
                             return "En Pause";
                         case ("PausEditRes"):
@@ -178,6 +184,12 @@ namespace YelloKiller
                             return "Zuruck";
                         case ("Loading"):
                             return "Ladung...";
+                        case ("Remaining"):
+                            return "Ubrigen Ziele :";
+                        case ("GoHome"):
+                            return "Zuruck zum Startpunkt!";
+                        case ("Joueur"):
+                            return "Spieler";
                         case ("PauseTitle"):
                             return "Pause";
                         case ("PausEditRes"):
@@ -296,6 +308,12 @@ namespace YelloKiller
                             return "Back";
                         case ("Loading"):
                             return "Loading...";
+                        case ("Remaining"):
+                            return "Remaining Targets :";
+                        case ("GoHome"):
+                            return "Go back to start!";
+                        case ("Joueur"):
+                            return "Player";
                         case ("PauseTitle"):
                             return "Paused";
                         case ("PausEditRes"):
