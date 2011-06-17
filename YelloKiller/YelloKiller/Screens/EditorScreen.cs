@@ -647,7 +647,7 @@ namespace YelloKiller
 
                     sauvegarde.WriteLine("Interrupteurs");
                     foreach (Interrupteur bouton in interrupteurs)
-                        sauvegarde.WriteLine(bouton.position.X + "," + bouton.position.Y + "," + bouton.PortePosition.X + "," + bouton.PortePosition.Y + "," + bouton.rotation);
+                        sauvegarde.WriteLine(bouton.position.X + "," + bouton.position.Y + "," + bouton.PortePosition.X + "," + bouton.PortePosition.Y + "," + bouton.rotation + "," + bouton.PorteOuverte);
 
                     sauvegarde.WriteLine("Salaire");
                     sauvegarde.WriteLine(infos.Salaire);
