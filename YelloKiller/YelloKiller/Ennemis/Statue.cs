@@ -35,18 +35,18 @@ namespace YelloKiller
             int distance = 0;
 
             if (direction == 2)
-                for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
+                for (int i = 0; this.Y - i > 0 && carte.Cases[this.Y - i, this.X].EstFranchissable; i++)
                     distance++;
             else if (direction == 3)
-                for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
+                for (int i = 0; this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].EstFranchissable; i++)
                     distance++;
 
             else if (direction == 1)
-                for (int i = 0; this.X - i > 0 && carte.Cases[this.Y, this.X - i].Type > 0; i++)
+                for (int i = 0; this.X - i > 0 && carte.Cases[this.Y, this.X - i].EstFranchissable; i++)
                     distance++;
 
             else if (direction == 0)
-                for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
+                for (int i = 0; this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].EstFranchissable; i++)
                     distance++;
 
             if (distance < 8)

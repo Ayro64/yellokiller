@@ -182,9 +182,9 @@ namespace YelloKiller
             interrupteurs = new List<Interrupteur>();
             foreach (Interrupteur bouton in carte.Interrupteurs)
             {
-                interrupteurs.Add(new Interrupteur(bouton.Position));
+                interrupteurs.Add(new Interrupteur(bouton.Position, carte));
                 interrupteurs[interrupteurs.Count - 1].PortePosition = bouton.PortePosition;
-                interrupteurs[interrupteurs.Count - 1].rotation = bouton.rotation;
+                interrupteurs[interrupteurs.Count - 1].MettreLaRotation(carte, bouton.rotation);
             }
 
             ennemisMorts = new List<EnnemiMort>();
@@ -299,7 +299,7 @@ namespace YelloKiller
                 if (Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank))
                     SauvegarderCheckPoint();
 
-                Moteur_physique.Collisions_Heros_Interrupteurs(hero1, hero2, ref interrupteurs, AudioEngine.SoundBank);
+                Moteur_physique.Collisions_Heros_Interrupteurs(hero1, hero2, ref interrupteurs, AudioEngine.SoundBank, carte);
 
                 if (_boss.Count == 0 && (hero1.EstAuPointDeDepart || hero2 != null && hero2.EstAuPointDeDepart))
                 {
@@ -574,9 +574,9 @@ namespace YelloKiller
             while (banana != "Camera")
             {
                 dessert = banana.Split(',');
-                interrupteurs.Add(new Interrupteur(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1]))));
+                interrupteurs.Add(new Interrupteur(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1])), carte));
                 interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(Convert.ToInt32(dessert[2]), Convert.ToInt32(dessert[3]));
-                interrupteurs[interrupteurs.Count - 1].rotation = Convert.ToByte(dessert[4]);
+                interrupteurs[interrupteurs.Count - 1].MettreLaRotation(carte, Convert.ToByte(dessert[4]));
                 interrupteurs[interrupteurs.Count - 1].PorteOuverte = Convert.ToBoolean(dessert[5]);
                 banana = file.ReadLine();
             }

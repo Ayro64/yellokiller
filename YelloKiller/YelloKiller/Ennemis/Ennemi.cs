@@ -263,19 +263,19 @@ namespace YelloKiller
             if (this.X + pos >= 0 && this.X + pos < Taille_Map.LARGEUR_MAP)
             {
                 if (Regarde_Haut)
-                    for (int i = 0; i < 6 && this.Y - i >= 0 && carte.Cases[this.Y - i, this.X + pos].Type > 0; i++)
+                    for (int i = 0; i < 6 && this.Y - i >= 0 && carte.Cases[this.Y - i, this.X + pos].EstFranchissable; i++)
                         distance++;
                 else if (Regarde_Bas)
-                    for (int i = 0; i < 6 && this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X + pos].Type > 0; i++)
+                    for (int i = 0; i < 6 && this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X + pos].EstFranchissable; i++)
                         distance++;
             }
             if (this.Y + pos >= 0 && this.Y + pos < Taille_Map.HAUTEUR_MAP)
             {
                 if (Regarde_Droite)
-                    for (int i = 0; i < 6 && this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y + pos, this.X + i].Type > 0; i++)
+                    for (int i = 0; i < 6 && this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y + pos, this.X + i].EstFranchissable; i++)
                         distance++;
                 else if (Regarde_Gauche)
-                    for (int i = 0; i < 6 && this.X - i >= 0 && carte.Cases[this.Y + pos, this.X - i].Type > 0; i++)
+                    for (int i = 0; i < 6 && this.X - i >= 0 && carte.Cases[this.Y + pos, this.X - i].EstFranchissable; i++)
                         distance++;
             }
 

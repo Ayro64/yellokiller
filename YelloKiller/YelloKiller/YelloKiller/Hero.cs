@@ -77,16 +77,16 @@ namespace YelloKiller
             int distance = 0;
 
             if (Regarde_Haut)
-                for (int i = 0; i < 6 && this.Y - i > 0 && carte.Cases[this.Y - i, this.X].Type > 0; i++)
+                for (int i = 0; i < 6 && this.Y - i > 0 && carte.Cases[this.Y - i, this.X].EstFranchissable; i++)
                     distance++;
             else if (Regarde_Droite)
-                for (int i = 0; i < 6 && this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].Type > 0; i++)
+                for (int i = 0; i < 6 && this.X + i < Taille_Map.LARGEUR_MAP && carte.Cases[this.Y, this.X + i].EstFranchissable; i++)
                     distance++;
             else if (Regarde_Gauche)
-                for (int i = 0; i < 6 && this.X - i > 0 && carte.Cases[this.Y, this.X - i].Type > 0; i++)
+                for (int i = 0; i < 6 && this.X - i > 0 && carte.Cases[this.Y, this.X - i].EstFranchissable; i++)
                     distance++;
             else if (Regarde_Bas)
-                for (int i = 0; i < 6 && this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].Type > 0; i++)
+                for (int i = 0; i < 6 && this.Y + i < Taille_Map.HAUTEUR_MAP && carte.Cases[this.Y + i, this.X].EstFranchissable; i++)
                     distance++;
 
             return (distance < 6 ? distance : 6);
@@ -517,7 +517,7 @@ namespace YelloKiller
             Regarde_Gauche = false;
         }
 
-        private bool PorteFermeeSurLeChemin(List<Interrupteur> interrupteurs, int x, int y)
+        /*private bool PorteFermeeSurLeChemin(List<Interrupteur> interrupteurs, int x, int y)
         {
             foreach (Interrupteur bouton in interrupteurs)
             {
@@ -529,7 +529,7 @@ namespace YelloKiller
             }
 
             return false;
-        }
+        }*/
 
 
         public bool EstAuPointDeDepart
@@ -542,7 +542,7 @@ namespace YelloKiller
 
         private void AllerEnBas(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
-            if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && (int)carte.Cases[Y + 1, X].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X, Y + 1) &&
+            if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && carte.Cases[Y + 1, X].EstFranchissable /*&& !PorteFermeeSurLeChemin(interrupteurs, X, Y + 1) */&&
                 (hero2 == null ? true : (position.X != hero2.PositionDesiree.X || position.Y + 28 != hero2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
@@ -558,7 +558,7 @@ namespace YelloKiller
 
         private void AllerEnHaut(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
-            if (position.Y > 5 && (int)carte.Cases[Y - 1, X].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X, Y - 1) &&
+            if (position.Y > 5 && carte.Cases[Y - 1, X].EstFranchissable /*&& !PorteFermeeSurLeChemin(interrupteurs, X, Y - 1)*/ &&
                 (hero2 == null ? true : (position.X != hero2.PositionDesiree.X || position.Y - 28 != hero2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
@@ -574,7 +574,7 @@ namespace YelloKiller
 
         private void AllerAGauche(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
-            if (position.X > 8 && (int)carte.Cases[Y, X - 1].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X - 1, Y) &&
+            if (position.X > 8 && carte.Cases[Y, X - 1].EstFranchissable /*&& !PorteFermeeSurLeChemin(interrupteurs, X - 1, Y) */&&
                 (hero2 == null ? true : (position.X - 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
@@ -590,7 +590,7 @@ namespace YelloKiller
 
         private void AllerADroite(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
-            if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && (int)carte.Cases[Y, X + 1].Type > 0 && !PorteFermeeSurLeChemin(interrupteurs, X + 1, Y) &&
+            if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && carte.Cases[Y, X + 1].EstFranchissable /*&& !PorteFermeeSurLeChemin(interrupteurs, X + 1, Y)*/ &&
                 (hero2 == null ? true : (position.X + 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");

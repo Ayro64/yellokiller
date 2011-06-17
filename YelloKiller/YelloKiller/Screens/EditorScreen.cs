@@ -245,6 +245,8 @@ namespace YelloKiller
 
         public override void Draw(GameTime gameTime)
         {
+            foreach (Interrupteur bouton in interrupteurs)
+                ServiceHelper.Game.Window.Title = "X = " + bouton.position.X + " Y = " + bouton.position.Y;
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Gray, 0, 0); ;
 
             spriteBatch.Begin();
@@ -759,7 +761,7 @@ namespace YelloKiller
                 bonus.Add(new Bonus(28 * new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), TypeBonus.checkPoint));
             else if (curseur.Type == TypeCase.Interrupteur)
             {
-                interrupteurs.Add(new Interrupteur(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y)));
+                interrupteurs.Add(new Interrupteur(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y), carte));
                 interrupteurs[interrupteurs.Count - 1].LoadContent(content);
             }
         }

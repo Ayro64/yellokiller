@@ -217,11 +217,11 @@ namespace YelloKiller
                 dessert = banana.Split(',');
                 positionTemporaire.X = Convert.ToInt32(dessert[0]);
                 positionTemporaire.Y = Convert.ToInt32(dessert[1]);
-                interrupteurs.Add(new Interrupteur(positionTemporaire));
+                interrupteurs.Add(new Interrupteur(positionTemporaire, this));
                 positionTemporaire.X = Convert.ToInt32(dessert[2]);
                 positionTemporaire.Y = Convert.ToInt32(dessert[3]);
                 interrupteurs[interrupteurs.Count - 1].PortePosition = positionTemporaire;
-                interrupteurs[interrupteurs.Count - 1].rotation = Convert.ToByte(dessert[4]);
+                interrupteurs[interrupteurs.Count - 1].MettreLaRotation(this, Convert.ToByte(dessert[4]));
                 banana = file.ReadLine();
             }
 
