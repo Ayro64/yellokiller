@@ -590,6 +590,29 @@ namespace YelloKiller
                 interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(Convert.ToInt32(dessert[2]), Convert.ToInt32(dessert[3]));
                 interrupteurs[interrupteurs.Count - 1].MettreLaRotation(carte, Convert.ToByte(dessert[4]));
                 interrupteurs[interrupteurs.Count - 1].PorteOuverte = Convert.ToBoolean(dessert[5]);
+
+                if (interrupteurs[interrupteurs.Count - 1].PorteOuverte)
+                {
+                    switch (Convert.ToByte(dessert[4]))
+                    {
+                        case 0:
+                            carte.Cases[(int)interrupteurs[interrupteurs.Count - 1].PortePosition.Y, (int)interrupteurs[interrupteurs.Count - 1].PortePosition.X].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[interrupteurs.Count - 1].PortePosition.Y, (int)interrupteurs[interrupteurs.Count - 1].PortePosition.X + 1].EstFranchissable = true;
+                            break;
+                        case 1:
+                            carte.Cases[(int)interrupteurs[interrupteurs.Count - 1].PortePosition.Y, (int)interrupteurs[interrupteurs.Count - 1].PortePosition.X - 1].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[interrupteurs.Count - 1].PortePosition.Y + 1, (int)interrupteurs[interrupteurs.Count - 1].PortePosition.X - 1].EstFranchissable = true;
+                            break;
+                        case 2:
+                            carte.Cases[(int)interrupteurs[interrupteurs.Count - 1].PortePosition.Y - 1, (int)interrupteurs[interrupteurs.Count - 1].PortePosition.X - 1].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[interrupteurs.Count - 1].PortePosition.Y - 1, (int)interrupteurs[interrupteurs.Count - 1].PortePosition.X - 2].EstFranchissable = true;
+                            break;
+                        case 3:
+                            carte.Cases[(int)interrupteurs[interrupteurs.Count - 1].PortePosition.Y - 1, (int)interrupteurs[interrupteurs.Count - 1].PortePosition.X].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[interrupteurs.Count - 1].PortePosition.Y - 2, (int)interrupteurs[interrupteurs.Count - 1].PortePosition.X].EstFranchissable = true;
+                            break;
+                    }
+                }
                 banana = file.ReadLine();
             }
 
