@@ -21,8 +21,6 @@ namespace YelloKiller
 
         KeyboardState keyboardState, lastKeyboardState;
 
-        public event EventHandler<PlayerIndexEventArgs> PauseLanguageChange;
-
         MenuEntry languageMenuEntry;
         MenuEntry fullScreenMenuEntry;
         MenuEntry sonMenuEntry;
