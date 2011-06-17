@@ -61,11 +61,17 @@ namespace YelloKiller
             score = Langue.tr("Score") + this.salaire;
 
             string[] fileEntries = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*." + comingfrom.Substring(comingfrom.Length - 4)), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*." + comingfrom.Substring(comingfrom.Length - 4)));
-            
+
             for (int i = 0; i < fileEntries.Length; i++)
             {
                 if (fileEntries[i].Substring(fileEntries[i].LastIndexOf('\\') + 1) == comingfrom)
-                    next = fileEntries[i + 1].Substring(fileEntries[i + 1].LastIndexOf('\\') + 1);
+                {
+                    if (i + 1 == fileEntries.Length)
+                        next = fileEntries[0].Substring(fileEntries[0].LastIndexOf('\\') + 1);
+                    else
+                        next = fileEntries[i + 1].Substring(fileEntries[i + 1].LastIndexOf('\\') + 1);
+                    break;
+                }
             }
 
 

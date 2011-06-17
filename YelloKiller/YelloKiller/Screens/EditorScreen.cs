@@ -32,7 +32,7 @@ namespace YelloKiller
         List<byte> rotationsDesStatues;
         List<List<Vector2>> _originesPatrouilleurs, _originesPatrouilleursAChevaux;
         Texture2D pointDePassage, fond, textureStatue, textureBasFond;
-        bool fileExist = false;
+        bool fileExist = false, number = false;
         int compteur;
         int[] munitions;
         bool enableOrigine1, enableOrigine2, enableDH, enableSave, afficherMessageErreur, afficherMessageSauvegarde;
@@ -356,7 +356,9 @@ namespace YelloKiller
 
         public void SauvegardeMap()
         {
-            string[] existinglevels = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"));
+            string[] existinglevels = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*.solo"), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*.coop"));
+            existinglevels = LoadMapMenuScreen.ConcatenerTableaux(existinglevels, Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"));
+            existinglevels = LoadMapMenuScreen.ConcatenerTableaux(existinglevels, Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"));
 
             if (enableOrigine1 && enableOrigine2 || _originesBoss.Count == 0)
                 afficherMessageErreur = true;
@@ -379,7 +381,6 @@ namespace YelloKiller
                 }
 
                 if (nomCarte == "" || nomCarte.Remove(nomCarte.Length - 5) != nomSauvegarde)
-                    //fileExist = File.Exists(@"\Levels\" + nomSauvegarde + extension);
                 {
                     foreach (string str in existinglevels)
                     {
@@ -657,7 +658,7 @@ namespace YelloKiller
 
                     nomCarte = nomSauvegarde + extension;
 
-                afficherMessageSauvegarde = true;
+                    afficherMessageSauvegarde = true;
                 }
 
             }
