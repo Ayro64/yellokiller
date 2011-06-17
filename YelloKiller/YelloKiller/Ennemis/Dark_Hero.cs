@@ -1,7 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.IO;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
-using System.IO;
 
 namespace YelloKiller
 {
@@ -9,19 +10,19 @@ namespace YelloKiller
     {
         Rectangle rectangle;
         List<Case> chemin;
-        Carte carte;
         Case depart, arrivee;
         public Vector2 positionDesiree;
 
         public Dark_Hero(Vector2 position, Carte carte)
             : base(position)
         {
-            VitesseSprite = 1;
-            VitesseAnimation = 0.008f;
+            VitesseSprite = 0.25f;
+            VitesseAnimation = 0.004f;
             Position = position;
             SourceRectangle = new Rectangle(24, 64, 16, 24);
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 24);
             positionDesiree = position;
+            chemin = new List<Case>();
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -30,8 +31,51 @@ namespace YelloKiller
             MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, Hero hero1, Hero hero2, Rectangle camera, List<EnnemiMort> ennemisMorts, Rectangle fumee)
+        public void Update(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
+            rectangle.X = (int)position.X + 1;
+            rectangle.Y = (int)position.Y + 1;
+
+            if (chemin.Count < 5 && Math.Sqrt((this.X - hero.X) * (this.X - hero.X) + (this.Y - hero.Y) * (this.Y - hero.Y)) > 2)
+            {
+                depart = carte.Cases[Y, X];
+                arrivee = carte.Cases[hero.Y, hero.X];
+                chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
+            }
+
+            if (chemin.Count != 0)
+            {
+                if (VaEnHaut && VaEnBas && VaADroite && VaAGauche)
+                {
+                    if ((int)chemin[chemin.Count - 1].X < X)
+                    {
+                        positionDesiree.X -= 28;
+                        VaAGauche = false;
+                        chemin.RemoveAt(chemin.Count - 1);
+                    }
+                    else if ((int)chemin[chemin.Count - 1].X > X)
+                    {
+                        positionDesiree.X += 28;
+                        VaADroite = false;
+                        chemin.RemoveAt(chemin.Count - 1);
+                    }
+                    else if ((int)chemin[chemin.Count - 1].Y < Y)
+                    {
+                        positionDesiree.Y -= 28;
+                        VaEnHaut = false;
+                        chemin.RemoveAt(chemin.Count - 1);
+                    }
+                    else if ((int)chemin[chemin.Count - 1].Y > Y)
+                    {
+                        positionDesiree.Y += 28;
+                        VaEnBas = false;
+                        chemin.RemoveAt(chemin.Count - 1);
+                    }
+                    else
+                        chemin.RemoveAt(chemin.Count - 1);
+                }
+            }
+
             if (SourceRectangle.Value.Y == 0)
             {
                 SourceRectangle = new Rectangle((int)Index * 24, 0, 16, 24);
@@ -141,16 +185,9 @@ namespace YelloKiller
             }
         }
 
-
         public void SauvegarderCheckPoint(ref StreamWriter file)
         {
             file.WriteLine(X.ToString() + "," + Y.ToString());
-        }
-
-        public List<Case> Chemin
-        {
-            get { return chemin; }
-            set { chemin = value; }
         }
 
         public Rectangle Rectangle
@@ -159,7 +196,7 @@ namespace YelloKiller
             set { rectangle = value; }
         }
 
-        public int VitesseSprite { get; set; }
+        public float VitesseSprite { get; set; }
 
         public float VitesseAnimation { get; set; }
 
