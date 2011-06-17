@@ -12,7 +12,7 @@ namespace YelloKiller
         Vector2 portePosition;
         Texture2D texturePorteFermee, texturePorteOuverte, textureInterrupteurTouche;
         public bool PorteOuverte { get; set; }
-        public byte rotation { get; private set; }
+        public byte rotation { get; set; }
 
         public Interrupteur(Vector2 position, Carte carte)
             : base(position)
@@ -96,7 +96,7 @@ namespace YelloKiller
             file.WriteLine(position.X + "," + position.Y + "," + portePosition.X + "," + portePosition.Y + "," + rotation + "," + PorteOuverte);
         }
 
-        public void MettreLaRotation(Carte carte, byte rotation)
+        public void MettreLaRotation(ref Carte carte, byte rotation)
         {
             this.rotation = rotation;
      

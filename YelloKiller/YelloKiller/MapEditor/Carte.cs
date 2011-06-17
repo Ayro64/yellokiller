@@ -221,7 +221,31 @@ namespace YelloKiller
                 positionTemporaire.X = Convert.ToInt32(dessert[2]);
                 positionTemporaire.Y = Convert.ToInt32(dessert[3]);
                 interrupteurs[interrupteurs.Count - 1].PortePosition = positionTemporaire;
-                interrupteurs[interrupteurs.Count - 1].MettreLaRotation(this, Convert.ToByte(dessert[4]));
+                interrupteurs[interrupteurs.Count - 1].rotation = Convert.ToByte(dessert[4]);
+                interrupteurs[interrupteurs.Count - 1].PorteOuverte = Convert.ToBoolean(dessert[5]);
+
+                if (interrupteurs[interrupteurs.Count - 1].PorteOuverte)
+                {
+                    switch (Convert.ToByte(dessert[4]))
+                    {
+                        case 0:
+                            Cases[(int)positionTemporaire.Y, (int)positionTemporaire.X].EstFranchissable = true;
+                            Cases[(int)positionTemporaire.Y, (int)positionTemporaire.X + 1].EstFranchissable = true;
+                            break;
+                        case 1:
+                            Cases[(int)positionTemporaire.Y, (int)positionTemporaire.X - 1].EstFranchissable = true;
+                            Cases[(int)positionTemporaire.Y + 1, (int)positionTemporaire.X - 1].EstFranchissable = true;
+                            break;
+                        case 2:
+                            Cases[(int)positionTemporaire.Y - 1, (int)positionTemporaire.X - 1].EstFranchissable = true;
+                            Cases[(int)positionTemporaire.Y - 1, (int)positionTemporaire.X - 2].EstFranchissable = true;
+                            break;
+                        case 3:
+                            Cases[(int)positionTemporaire.Y - 1, (int)positionTemporaire.X].EstFranchissable = true;
+                            Cases[(int)positionTemporaire.Y - 2, (int)positionTemporaire.X].EstFranchissable = true;
+                            break;
+                    }
+                }
                 banana = file.ReadLine();
             }
 
