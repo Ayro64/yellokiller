@@ -22,7 +22,7 @@ namespace YelloKiller
         ContentManager content;
         Texture2D winTexture, blankTexture, scroll, kane;
         YellokillerGame game;
-        string WinMessage, comingfrom, baseSalary, time, killed, retries, score, penalties;
+        string WinMessage, comingfrom, baseSalary, time, killed, retries, score, penalties, next;
         double temps;
         bool HiScore = false, ShowHiScore = false, soundPlayed = false;
 
@@ -60,6 +60,13 @@ namespace YelloKiller
                 this.salaire = 0;
             score = Langue.tr("Score") + this.salaire;
 
+            string[] fileEntries = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*." + comingfrom.Substring(comingfrom.Length - 4)), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*." + comingfrom.Substring(comingfrom.Length - 4)));
+            
+            for (int i = 0; i < fileEntries.Length; i++)
+            {
+                if (fileEntries[i].Substring(fileEntries[i].LastIndexOf('\\') + 1) == comingfrom)
+                    next = fileEntries[i + 1].Substring(fileEntries[i + 1].LastIndexOf('\\') + 1);
+            }
 
 
             //Durée de la transition.
@@ -176,7 +183,7 @@ namespace YelloKiller
         /// </summary>
         void NextMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(next, game, 0));
         }
 
         /// <summary>

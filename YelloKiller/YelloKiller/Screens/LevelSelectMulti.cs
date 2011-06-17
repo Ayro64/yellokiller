@@ -176,6 +176,9 @@ namespace YelloKiller
             // OnSelectEntry and OnCancel, so they can tell which player triggered them.
             PlayerIndex playerIndex;
 
+            if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
+                OnSelectEntry(levels.Count - 1, playerIndex);
+
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
             {
                 OnSelectEntry(selectedEntry, playerIndex);
