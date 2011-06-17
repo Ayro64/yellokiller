@@ -138,7 +138,7 @@ namespace YelloKiller
         /// </summary>
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, retries));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
 
             if (File.Exists("checkTemp.tmp"))
                 File.Delete("checkTemp.tmp");
