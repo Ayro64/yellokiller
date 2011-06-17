@@ -42,7 +42,7 @@ namespace YelloKiller
         {
             for (int y = 0; y < size.Y; y++)
                 for (int x = 0; x < size.X; x++)
-                    _case[y, x] = new Case(new Vector2(x, y), TypeCase.herbe, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(new Vector2(x, y), TypeCase.herbe, 1);
         }
 
         public void OuvrirCartePourMenu(string nomDeFichier)
@@ -235,79 +235,79 @@ namespace YelloKiller
             switch (s)
             {
                 case "a1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, new Vector3(2, 3, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, 1);
                     break;
                 case "a2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, new Vector3(2, 3, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, 2);
                     break;
                 case "a3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, new Vector3(2, 3, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, 3);
                     break;
                 case "a4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, new Vector3(2, 3, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, 4);
                     break;
                 case "a5":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, new Vector3(2, 3, 5));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, 5);
                     break;
                 case "a6":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, new Vector3(2, 3, 6));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.arbre, 6);
                     break;
 
                 case "u1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, 1);
                     break;
                 case "u2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, 2);
                     break;
                 case "u3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, 3);
                     break;
                 case "u4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, 4);
                     break;
                 case "u5":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 5));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, 5);
                     break;
                 case "u6":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, new Vector3(2, 3, 6));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canape, 6);
                     break;
 
                 case "x1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, 1);
                     break;
                 case "x2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, 2);
                     break;
                 case "x3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, 3);
                     break;
                 case "x4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, 4);
                     break;
                 case "x5":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 5));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, 5);
                     break;
                 case "x6":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, new Vector3(2, 3, 6));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porteFenetre, 6);
                     break;
 
                 case "y1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, 1);
                     break;
                 case "y2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, 2);
                     break;
                 case "y3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, 3);
                     break;
                 case "y4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, 4);
                     break;
                 case "y5":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 5));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, 5);
                     break;
                 case "y6":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, new Vector3(2, 3, 6));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grdSiege, 6);
                     break;
 
 
@@ -318,17 +318,17 @@ namespace YelloKiller
 
 
                 case "s1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont1, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont1, 1);
                     break;
                 case "s2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont1, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont1, 2);
                     break;
 
                 case "C1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.bibliotheque, new Vector3(1, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.bibliotheque, 1);
                     break;
                 case "C2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.bibliotheque, new Vector3(1, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.bibliotheque, 2);
                     break;
 
 
@@ -338,28 +338,28 @@ namespace YelloKiller
 
 
                 case "t1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, 1);
                     break;
                 case "t2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, 2);
                     break;
                 case "t3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, 3);
                     break;
                 case "t4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, 4);
                     break;
                 case "t5":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 5));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, 5);
                     break;
                 case "t6":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 6));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, 6);
                     break;
                 case "t7":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 7));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, 7);
                     break;
                 case "t8":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, new Vector3(4, 2, 8));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pont2, 8);
                     break;
 
 
@@ -371,264 +371,264 @@ namespace YelloKiller
 
 
                 case "b1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.commode, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.commode, 1);
                     break;
                 case "b2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.commode, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.commode, 2);
                     break;
                 case "b3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.commode, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.commode, 3);
                     break;
                 case "b4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.commode, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.commode, 4);
                     break;
 
 
                 case "c1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.lit, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.lit, 1);
                     break;
                 case "c2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.lit, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.lit, 2);
                     break;
                 case "c3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.lit, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.lit, 3);
                     break;
                 case "c4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.lit, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.lit, 4);
                     break;
 
                 case "d1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur, 1);
                     break;
                 case "d2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur, 2);
                     break;
                 case "d3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur, 3);
                     break;
                 case "d4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.mur, 4);
                     break;
 
                 case "e1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlanc, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlanc, 1);
                     break;
                 case "e2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlanc, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlanc, 2);
                     break;
                 case "e3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlanc, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlanc, 3);
                     break;
                 case "e4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlanc, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlanc, 4);
                     break;
 
                 case "f1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancDrap, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancDrap, 1);
                     break;
                 case "f2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancDrap, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancDrap, 2);
                     break;
                 case "f3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancDrap, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancDrap, 3);
                     break;
                 case "f4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancDrap, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancDrap, 4);
                     break;
 
                 case "g1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancEpee, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancEpee, 1);
                     break;
                 case "g2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancEpee, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancEpee, 2);
                     break;
                 case "g3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancEpee, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancEpee, 3);
                     break;
                 case "g4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancEpee, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancEpee, 4);
                     break;
 
                 case "h1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancTableau, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancTableau, 1);
                     break;
                 case "h2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancTableau, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancTableau, 2);
                     break;
                 case "h3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancTableau, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancTableau, 3);
                     break;
                 case "h4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancTableau, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murBlancTableau, 4);
                     break;
 
                 case "i1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murEpee, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murEpee, 1);
                     break;
                 case "i2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murEpee, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murEpee, 2);
                     break;
                 case "i3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murEpee, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murEpee, 3);
                     break;
                 case "i4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murEpee, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murEpee, 4);
                     break;
 
                 case "j1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murTableau, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murTableau, 1);
                     break;
                 case "j2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murTableau, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murTableau, 2);
                     break;
                 case "j3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murTableau, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murTableau, 3);
                     break;
                 case "j4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murTableau, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.murTableau, 4);
                     break;
 
                 case "k1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableauMurBlanc, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableauMurBlanc, 1);
                     break;
                 case "k2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableauMurBlanc, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableauMurBlanc, 2);
                     break;
                 case "k3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableauMurBlanc, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableauMurBlanc, 3);
                     break;
                 case "k4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableauMurBlanc, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableauMurBlanc, 4);
                     break;
 
                 case "l1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableMoyenne, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableMoyenne, 1);
                     break;
                 case "l2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableMoyenne, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableMoyenne, 2);
                     break;
                 case "l3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableMoyenne, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableMoyenne, 3);
                     break;
                 case "l4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableMoyenne, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tableMoyenne, 4);
                     break;
 
                 case "o1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.nvlHerbe, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.nvlHerbe, 1);
                     break;
                 case "o2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.nvlHerbe, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.nvlHerbe, 2);
                     break;
                 case "o3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.nvlHerbe, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.nvlHerbe, 3);
                     break;
                 case "o4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.nvlHerbe, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.nvlHerbe, 4);
                     break;
 
                 case "p1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquet, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquet, 1);
                     break;
                 case "p2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquet, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquet, 2);
                     break;
                 case "p3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquet, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquet, 3);
                     break;
                 case "p4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquet, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquet, 4);
                     break;
 
                 case "q1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetArbre, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetArbre, 1);
                     break;
                 case "q2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetArbre, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetArbre, 2);
                     break;
                 case "q3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetArbre, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetArbre, 3);
                     break;
                 case "q4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetArbre, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetArbre, 4);
                     break;
 
                 case "r1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, 1);
                     break;
                 case "r2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, 2);
                     break;
                 case "r3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, 3);
                     break;
                 case "r4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.parquetBuisson, 4);
                     break;
 
                 case "v1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, 1);
                     break;
                 case "v2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, 2);
                     break;
                 case "v3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, 3);
                     break;
                 case "v4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.canapeRalonge, 4);
                     break;
 
                 case "w1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, 1);
                     break;
                 case "w2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, 2);
                     break;
                 case "w3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, 3);
                     break;
                 case "w4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fenetre, 4);
                     break;
 
                 case "z1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, 1);
                     break;
                 case "z2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, 2);
                     break;
                 case "z3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, 3);
                     break;
                 case "z4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.pillier, 4);
                     break;
 
                 case "A1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, 1);
                     break;
                 case "A2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, 2);
                     break;
                 case "A3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, 3);
                     break;
                 case "A4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.porte, 4);
                     break;
 
                 case "B1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, new Vector3(2, 2, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, 1);
                     break;
                 case "B2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, new Vector3(2, 2, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, 2);
                     break;
                 case "B3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, new Vector3(2, 2, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, 3);
                     break;
                 case "B4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, new Vector3(2, 2, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.rocher, 4);
                     break;
 
 
@@ -637,59 +637,59 @@ namespace YelloKiller
 
 
                 case "m1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 1);
                     break;
                 case "m2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 2);
                     break;
                 case "m3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 3);
                     break;
                 case "m4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 4);
                     break;
                 case "m5":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 5));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 5);
                     break;
                 case "m6":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 6));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 6);
                     break;
                 case "m7":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 7));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 7);
                     break;
                 case "m8":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 8));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 8);
                     break;
                 case "m9":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, new Vector3(3, 3, 9));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTable, 9);
                     break;
 
                 case "n1":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 1);
                     break;
                 case "n2":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 2));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 2);
                     break;
                 case "n3":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 3));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 3);
                     break;
                 case "n4":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 4));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 4);
                     break;
                 case "n5":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 5));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 5);
                     break;
                 case "n6":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 6));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 6);
                     break;
                 case "n7":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 7));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 7);
                     break;
                 case "n8":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 8));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 8);
                     break;
                 case "n9":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, new Vector3(3, 3, 9));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.grandeTableDeco, 9);
                     break;
 
 
@@ -705,82 +705,82 @@ namespace YelloKiller
 
 
                 case ("a7"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.buissonSurHerbe, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.buissonSurHerbe, 1);
                     break;
                 case ("a8"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.coinbotdroit, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.coinbotdroit, 1);
                     break;
                 case ("a9"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.coinbotgauche, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.coinbotgauche, 1);
                     break;
                 case ("a0"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.cointopdroit, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.cointopdroit, 1);
                     break;
                 case ("b0"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.cointopgauche, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.cointopgauche, 1);
                     break;
                 case ("b5"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurDroit, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurDroit, 1);
                     break;
                 case ("b6"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurGauche, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurGauche, 1);
                     break;
                 case ("b7"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fondNoir, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.fondNoir, 1);
                     break;
                 case ("b8"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.piedMurBois, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.piedMurBois, 1);
                     break;
                 case ("b9"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.bois, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.bois, 1);
                     break;
                 case ("c0"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.boisCarre, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.boisCarre, 1);
                     break;
                 case ("c5"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.boisDeco, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.boisDeco, 1);
                     break;
                 case ("c6"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.carlageNoir, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.carlageNoir, 1);
                     break;
                 case ("c7"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.carlageNoirDeco, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.carlageNoirDeco, 1);
                     break;
                 case ("c8"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbe, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbe, 1);
                     break;
                 case ("c9"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbeDeco, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbeDeco, 1);
                     break;
                 case ("d0"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbeFoncee, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbeFoncee, 1);
                     break;
                 case ("d5"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbeH, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.herbeH, 1);
                     break;
                 case ("d6"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tapisRougeBC, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.tapisRougeBC, 1);
                     break;
                 case ("d7"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.terre, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.terre, 1);
                     break;
                 case ("d8"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurBas, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurBas, 1);
                     break;
                 case ("d9"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurHaut, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.finMurHaut, 1);
                     break;
                 case "e5":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.eau, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.eau, 1);
                     break;
                 case ("e6"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.caisse, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.caisse, 1);
                     break;
                 case ("e7"):
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.chaiseGauche, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.chaiseGauche, 1);
                     break;
                 case "e8":
-                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.chaiseDroite, new Vector3(1, 1, 1));
+                    _case[y, x] = new Case(28 * new Vector2(x, y), TypeCase.chaiseDroite, 1);
                     break;
             }
         }

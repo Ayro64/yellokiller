@@ -12,29 +12,18 @@ namespace YelloKiller
         string nomTexture;
         int x, y;
         double temps;
-        Vector3 etienne;
 
-        public Case(Vector2 position, TypeCase type, Vector3 etienne)
+        public Case(Vector2 position, TypeCase type, int index)
         {
             this.position = position;
             this.type = type;
-            this.etienne = etienne;
+            this.Index = index;
             temps = 0;
             x = (int)position.X / 28;
             y = (int)position.Y / 28;
         }
 
-        public Vector3 Etienne
-        {
-            get { return etienne; }
-            set { etienne = value; }
-        }
-
-        public float Etienne_Z
-        {
-            get { return etienne.Z; }
-            set { etienne.Z = value; }
-        }
+        public int Index { get; set; }
 
         public Vector2 Position
         {
@@ -63,7 +52,7 @@ namespace YelloKiller
             switch (type)
             {
                 case TypeCase.arbre:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\Arbre\arbre1";
@@ -86,7 +75,7 @@ namespace YelloKiller
                     }
                     break;
                 case TypeCase.canape:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\canape\canape1";
@@ -109,7 +98,7 @@ namespace YelloKiller
                     }
                     break;
                 case TypeCase.porteFenetre:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\fenetre\portefenetre1";
@@ -132,7 +121,7 @@ namespace YelloKiller
                     }
                     break;
                 case TypeCase.grdSiege:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\grdsiege\grdsiege1";
@@ -155,7 +144,7 @@ namespace YelloKiller
                     }
                     break;
                 case TypeCase.pont1:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\ponts\pont11";
@@ -166,7 +155,7 @@ namespace YelloKiller
                     }
                     break;
                 case TypeCase.bibliotheque:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\bibli\bibli1";
@@ -177,7 +166,7 @@ namespace YelloKiller
                     }
                     break;
                 case TypeCase.pont2:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\ponts\pont21";
@@ -207,7 +196,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.commode:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\commode\commode1";
@@ -225,7 +214,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.lit:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\lit\lit1";
@@ -243,7 +232,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.mur:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\mur\mur\mur1";
@@ -261,7 +250,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.murBlanc:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\mur\murBlanc\murBlanc1";
@@ -279,7 +268,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.murBlancDrap:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\mur\MurBlancdrap\MurBlancdrap1";
@@ -297,7 +286,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.murBlancEpee:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\mur\murblancepee\MurBlancEpee1";
@@ -315,7 +304,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.murBlancTableau:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\mur\murblanctableau\MurBlanctableau1";
@@ -333,7 +322,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.murEpee:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\mur\murepee\murepee1";
@@ -351,7 +340,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.murTableau:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\mur\murtableau\murtableau1";
@@ -369,7 +358,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.tableauMurBlanc:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\mur\tableauMurBlanc\tableauMurBlanc1";
@@ -387,7 +376,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.tableMoyenne:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\tableMoyenne\tableMoyenne1";
@@ -405,7 +394,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.nvlHerbe:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\herbe\nvlherbe1";
@@ -423,7 +412,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.parquet:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\parquet\parquet\parquet1";
@@ -441,7 +430,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.parquetArbre:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\parquet\parquetarbre\parquetarbre1";
@@ -459,7 +448,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.parquetBuisson:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\parquet\parquetbuisson\parquetbuisson1";
@@ -477,7 +466,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.canapeRalonge:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\canape\canapeRalonge1";
@@ -495,7 +484,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.fenetre:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\fenetre\fenetre1";
@@ -513,7 +502,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.pillier:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\pillier\pillier1";
@@ -531,7 +520,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.porte:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\porte\porte1";
@@ -549,7 +538,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.rocher:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\rocher\rocher1";
@@ -568,7 +557,7 @@ namespace YelloKiller
 
 
                 case TypeCase.grandeTable:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\grandeTable\grandeTable1";
@@ -601,7 +590,7 @@ namespace YelloKiller
                     break;
 
                 case TypeCase.grandeTableDeco:
-                    switch ((int)etienne.Z)
+                    switch (Index)
                     {
                         case 1:
                             nomTexture = @"Textures\grandeTableDeco\grandeTableDeco1";
