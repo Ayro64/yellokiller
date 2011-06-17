@@ -34,6 +34,19 @@ namespace YelloKiller
                 contentManager = new ContentManager(ScreenManager.Game.Services, "Content");
 
             current = contentManager.Load<Texture2D>("QuickHelp\\Commandes");
+
+            switch (Properties.Settings.Default.Language)
+            {
+                case(0):
+                    manette = contentManager.Load<Texture2D>("QuickHelp\\ManetteFR");
+                    break;
+                case (1):
+                    manette = contentManager.Load<Texture2D>("QuickHelp\\ManetteDE");
+                    break;
+                case (2):
+                    manette = contentManager.Load<Texture2D>("QuickHelp\\ManetteEN");
+                    break;
+            }
         }
 
         public override void UnloadContent()
@@ -70,6 +83,12 @@ namespace YelloKiller
         {
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Escape))
                 this.ExitScreen();
+
+            if (current != ennemis && current != manette && (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer()))
+                current = manette;
+
+            if (current == manette && (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer()))
+                current = ennemis;
 
             if (current == ennemis && (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer()))
                 this.ExitScreen();
