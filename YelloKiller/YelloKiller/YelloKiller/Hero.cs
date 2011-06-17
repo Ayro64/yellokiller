@@ -238,13 +238,25 @@ namespace YelloKiller
                         && monter && descendre && droite && gauche)
                     {
                         if (Regarde_Bas)
+                        {
                             AllerEnBas(carte, hero2, interrupteurs);
+                            AudioEngine.SoundBank.PlayCue("sabre");
+                        }
                         else if (Regarde_Haut)
+                        {
                             AllerEnHaut(carte, hero2, interrupteurs);
+                            AudioEngine.SoundBank.PlayCue("sabre");
+                        }
                         else if (Regarde_Gauche)
+                        {
                             AllerAGauche(carte, hero2, interrupteurs);
+                            AudioEngine.SoundBank.PlayCue("sabre");
+                        }
                         else if (Regarde_Droite)
+                        {
                             AllerADroite(carte, hero2, interrupteurs);
+                            AudioEngine.SoundBank.PlayCue("sabre");
+                        }
 
                         animation_sabre = true;
                         ishero = true;
@@ -527,7 +539,7 @@ namespace YelloKiller
 
         private void AllerEnBas(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
-            if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && carte.Cases[Y + 1, X].EstFranchissable /*&& !PorteFermeeSurLeChemin(interrupteurs, X, Y + 1) */&&
+            if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && carte.Cases[Y + 1, X].EstFranchissable &&
                 (hero2 == null ? true : (position.X != hero2.PositionDesiree.X || position.Y + 28 != hero2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
@@ -543,7 +555,7 @@ namespace YelloKiller
 
         private void AllerEnHaut(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
-            if (position.Y > 5 && carte.Cases[Y - 1, X].EstFranchissable /*&& !PorteFermeeSurLeChemin(interrupteurs, X, Y - 1)*/ &&
+            if (position.Y > 5 && carte.Cases[Y - 1, X].EstFranchissable &&
                 (hero2 == null ? true : (position.X != hero2.PositionDesiree.X || position.Y - 28 != hero2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
@@ -559,7 +571,7 @@ namespace YelloKiller
 
         private void AllerAGauche(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
-            if (position.X > 8 && carte.Cases[Y, X - 1].EstFranchissable /*&& !PorteFermeeSurLeChemin(interrupteurs, X - 1, Y) */&&
+            if (position.X > 8 && carte.Cases[Y, X - 1].EstFranchissable &&
                 (hero2 == null ? true : (position.X - 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
@@ -575,7 +587,7 @@ namespace YelloKiller
 
         private void AllerADroite(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
         {
-            if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && carte.Cases[Y, X + 1].EstFranchissable /*&& !PorteFermeeSurLeChemin(interrupteurs, X + 1, Y)*/ &&
+            if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && carte.Cases[Y, X + 1].EstFranchissable &&
                 (hero2 == null ? true : (position.X + 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");

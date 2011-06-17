@@ -405,7 +405,7 @@ namespace YelloKiller
         {
             if (dark != null && hero.Rectangle.Intersects(dark.Rectangle))
             {
-                SB.PlayCue("shurikenCollision");
+                SB.PlayCue("dark");
                 return true;
             }
             return false;
