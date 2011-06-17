@@ -96,7 +96,7 @@ namespace YelloKiller
             file.WriteLine(position.X + "," + position.Y + "," + portePosition.X + "," + portePosition.Y + "," + rotation + "," + PorteOuverte);
         }
 
-        public void MettreLaRotation(ref Carte carte, byte rotation)
+        public void MettreLaRotation(Carte carte, byte rotation)
         {
             this.rotation = rotation;
      
