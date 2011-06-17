@@ -15,9 +15,14 @@ namespace YelloKiller
         #region Fields
 
         int mod;
+        uint lan;
         YellokillerGame game;
         public event EventHandler<PlayerIndexEventArgs> SaveMapMenuEntrySelected;
+        MenuEntry resumeGameMenuEntry;
         MenuEntry saveMapMenuEntry;
+        MenuEntry optionsGameMenuEntry;
+        MenuEntry quitGameMenuEntry;
+        MenuEntry loadMapMenuEntry;
 
         #endregion
 
@@ -34,11 +39,10 @@ namespace YelloKiller
             selectedEntry = comingfrom;
 
             mod = mode;
+            lan = Properties.Settings.Default.Language;
 
             // Create our menu entries.
-            MenuEntry resumeGameMenuEntry;
-            MenuEntry optionsGameMenuEntry = new MenuEntry(Langue.tr("Options"));
-            MenuEntry quitGameMenuEntry;
+            optionsGameMenuEntry = new MenuEntry(Langue.tr("Options"));
 
 
             if (mode == 2)
@@ -63,13 +67,16 @@ namespace YelloKiller
             if (mode == 2)
             {
                 saveMapMenuEntry = new MenuEntry(Langue.tr("PausEditSave"));
-                MenuEntry loadMapMenuEntry = new MenuEntry(Langue.tr("PausEditLoad"));
+                loadMapMenuEntry = new MenuEntry(Langue.tr("PausEditLoad"));
                 loadMapMenuEntry.Selected += LoadMapMenuEntrySelected;
                 MenuEntries.Add(loadMapMenuEntry);
             }
 
-            MenuEntries.Add(optionsGameMenuEntry);
-            MenuEntries.Add(quitGameMenuEntry);
+            if (mode != 2)
+            {
+                MenuEntries.Add(optionsGameMenuEntry);
+                MenuEntries.Add(quitGameMenuEntry);
+            }
         }
 
         #endregion
@@ -139,10 +146,18 @@ namespace YelloKiller
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
+            if (Properties.Settings.Default.Language != lan)
+            {
+                SetMenuEntryText();
+                lan = Properties.Settings.Default.Language;
+            }
+
             if (mod == 2 && !saveMapMenuEntry.IsEvent)
             {
                 saveMapMenuEntry.Selected += SaveMapMenuEntrySelected;
                 MenuEntries.Add(saveMapMenuEntry);
+                MenuEntries.Add(optionsGameMenuEntry);
+                MenuEntries.Add(quitGameMenuEntry);
             }
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
@@ -151,6 +166,28 @@ namespace YelloKiller
         {
             if (this == ScreenManager.GetScreens()[ScreenManager.GetScreens().GetLength(0) - 1] || ScreenManager.GetScreens()[ScreenManager.GetScreens().GetLength(0) - 1].Type == "Pop")
                 base.Draw(gameTime);
+        }
+
+        /// <summary>
+        /// Fills in the latest values for the pause screen menu text.
+        /// </summary>
+        void SetMenuEntryText()
+        {
+            this.TitleUpdate(Langue.tr("PauseTitle"));
+            optionsGameMenuEntry.Text = Langue.tr("Options");
+
+            if (mod == 2)
+            {
+                resumeGameMenuEntry.Text = Langue.tr("PausEditRes");
+                quitGameMenuEntry.Text = Langue.tr("PausEditQuit");
+                saveMapMenuEntry.Text = Langue.tr("PausEditSave");
+                loadMapMenuEntry.Text = Langue.tr("PausEditLoad");
+            }
+            else
+            {
+                resumeGameMenuEntry.Text = Langue.tr("PausGameRes");
+                quitGameMenuEntry.Text = Langue.tr("PausGameQuit");
+            }
         }
 
 
