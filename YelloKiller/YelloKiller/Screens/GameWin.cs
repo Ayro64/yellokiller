@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using S = YelloKiller.Properties.Scores;
 using Microsoft.Xna.Framework.Audio;
+using System.IO;
 
 namespace YelloKiller
 {
@@ -59,7 +60,7 @@ namespace YelloKiller
                 this.salaire = 0;
             score = Langue.tr("Score") + this.salaire;
 
-            
+
 
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
@@ -165,6 +166,8 @@ namespace YelloKiller
         protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
         {
             Fanfare.Stop(AudioStopOptions.Immediate);
+            if (File.Exists("checkTemp.tmp"))
+                File.Delete("checkTemp.tmp");
             menuEntries[entryIndex].OnSelectEntry(playerIndex);
         }
 
@@ -173,7 +176,7 @@ namespace YelloKiller
         /// </summary>
         void NextMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
         }
 
         /// <summary>
@@ -181,7 +184,7 @@ namespace YelloKiller
         /// </summary>
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-                LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
         }
 
         /// <summary>
@@ -327,7 +330,7 @@ namespace YelloKiller
             ScoresPosition.X += 40;
             spriteBatch.DrawString(font, score, ScoresPosition, Color, 0,
                                    ScOrigin, Scorale, SpriteEffects.None, 0);
-            spriteBatch.Draw(kane, new Rectangle((int)(ScoresPosition.X + (font.MeasureString(score).X * 2.025f)), (int)ScoresPosition.Y + 5, 37, 27), Color); 
+            spriteBatch.Draw(kane, new Rectangle((int)(ScoresPosition.X + (font.MeasureString(score).X * 2.025f)), (int)ScoresPosition.Y + 5, 37, 27), Color);
 
             spriteBatch.End();
         }
