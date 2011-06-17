@@ -800,6 +800,8 @@ namespace YelloKiller
        chaiseGauche = -26,
        chaiseDroite = -27,
 
+       bibliotheque = -35,
+
        commode = -50,
        lit = -51,
        mur = -52,
@@ -840,7 +842,6 @@ namespace YelloKiller
 
        pont1 = 18,
        pont2 = 19,
-       bibliotheque = 20,
 
        Joueur1 = 100,
        Joueur2 = 101,
