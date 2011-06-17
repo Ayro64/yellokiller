@@ -138,10 +138,10 @@ namespace YelloKiller
         /// </summary>
         void RestartMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
-
             if (File.Exists("checkTemp.tmp"))
                 File.Delete("checkTemp.tmp");
+
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new GameplayScreen(comingfrom, game, 0));
         }
 
         /// <summary>
@@ -151,11 +151,13 @@ namespace YelloKiller
         void AbortMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             MediaPlayer.Stop();
-            LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
-                                                           new MainMenuScreen(game));
 
             if (File.Exists("checkTemp.tmp"))
                 File.Delete("checkTemp.tmp");
+
+            LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
+                                                           new MainMenuScreen(game));
+
         }
 
         #endregion
