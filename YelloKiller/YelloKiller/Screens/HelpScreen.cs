@@ -47,6 +47,8 @@ namespace YelloKiller
                     manette = contentManager.Load<Texture2D>("QuickHelp\\ManetteEN");
                     break;
             }
+
+            ennemis = contentManager.Load<Texture2D>("QuickHelp\\GardesBonus");
         }
 
         public override void UnloadContent()
