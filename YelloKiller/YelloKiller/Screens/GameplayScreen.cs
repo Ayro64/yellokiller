@@ -173,7 +173,12 @@ namespace YelloKiller
 
             _statues = new List<Statue>();
             for (int l = 0; l < carte.OriginesStatues.Count; l++)
+            {
                 _statues.Add(new Statue(28 * new Vector2(carte.OriginesStatues[l].X, carte.OriginesStatues[l].Y), carte, carte.RotationsDesStatues[l]));
+                for (int x = 1; x < 3; x++)
+                    for (int y = 0; y < 4; y++)
+                        carte.Cases[_statues[_statues.Count - 1].Y + y, _statues[_statues.Count - 1].X + x ].EstFranchissable = false;
+            }
 
             _bonus = new List<Bonus>();
             foreach (Bonus extra in carte.Bonus)
