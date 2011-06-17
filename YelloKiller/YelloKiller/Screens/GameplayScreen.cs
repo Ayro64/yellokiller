@@ -165,7 +165,7 @@ namespace YelloKiller
             }
 
             if (carte.OrigineDarkHero != -Vector2.One)
-                Dark_Hero = new Dark_Hero(carte.OrigineDarkHero, carte);
+                Dark_Hero = new Dark_Hero(new Vector2(28 * carte.OrigineDarkHero.X + 5, 28 * carte.OrigineDarkHero.Y + 1), carte);
 
             _boss = new List<Boss>();
             foreach (Vector2 position in carte.OriginesBoss)
