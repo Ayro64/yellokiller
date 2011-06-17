@@ -301,7 +301,8 @@ namespace YelloKiller
                     Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, AudioEngine.SoundBank) ||
                     Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, AudioEngine.SoundBank) ||
                     Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, AudioEngine.SoundBank) ||
-                    Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, AudioEngine.SoundBank))
+                    Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_Heros_Dark_Hero(hero1, Dark_Hero, AudioEngine.SoundBank))
                     Mourir();
 
                 if (Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank))
