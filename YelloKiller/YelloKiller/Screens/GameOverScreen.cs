@@ -174,6 +174,7 @@ namespace YelloKiller
                     chkpointMenuEntry.Selected += Chkpoint;
                 else
                     chkpointMenuEntry.Selected += RestartMenuEntrySelected;
+
                 menuEntries.Add(chkpointMenuEntry);
                 menuEntries.Add(abortMenuEntry);
             }

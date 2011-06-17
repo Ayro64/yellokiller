@@ -594,7 +594,7 @@ namespace YelloKiller
             dessert = banana.Split(',');
             camera.X = Convert.ToInt32(dessert[0]);
             camera.Y = Convert.ToInt32(dessert[1]);
-            retries = Convert.ToUInt32(dessert[2]);
+            retries = Convert.ToUInt32(dessert[2]) + 1;
 
             foreach (Garde garde in _gardes)
                 garde.LoadContent(content, 2);
