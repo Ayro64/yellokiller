@@ -507,7 +507,7 @@ namespace YelloKiller
             while (banana != "Patrouilleurs")
             {
                 dessert = banana.Split(',');
-                _gardes.Add(new Garde(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                _gardes.Add(new Garde(new Vector2(28 * Convert.ToInt32(dessert[0]) + 5, 28 * Convert.ToInt32(dessert[1])), carte));
                 banana = file.ReadLine();
             }
 
@@ -518,7 +518,7 @@ namespace YelloKiller
             while (banana != "Patrouilleurs A Chevaux")
             {
                 dessert = banana.Split(',');
-                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
+                _patrouilleurs.Add(new Patrouilleur(new Vector2(28 * Convert.ToInt32(dessert[0]) + 5, 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
 
                 foreach (Vector2 passage in carte.OriginesPatrouilleurs[_patrouilleurs[_patrouilleurs.Count - 1].Identifiant])
                     _patrouilleurs[_patrouilleurs.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
@@ -536,7 +536,7 @@ namespace YelloKiller
             while (banana != "Boss")
             {
                 dessert = banana.Split(',');
-                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
+                _patrouilleurs_a_chevaux.Add(new Patrouilleur_a_cheval(new Vector2(28 * Convert.ToInt32(dessert[0]) + 5, 28 * Convert.ToInt32(dessert[1])), carte, Convert.ToInt32(dessert[2])));
 
                 foreach (Vector2 passage in carte.OriginesPatrouilleursAChevaux[_patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Identifiant])
                     _patrouilleurs_a_chevaux[_patrouilleurs_a_chevaux.Count - 1].Parcours.Add(carte.Cases[(int)passage.Y, (int)passage.X]);
@@ -554,7 +554,7 @@ namespace YelloKiller
             while (banana != "Morts")
             {
                 dessert = banana.Split(',');
-                _boss.Add(new Boss(new Vector2(28 * Convert.ToInt32(dessert[0]), 28 * Convert.ToInt32(dessert[1])), carte));
+                _boss.Add(new Boss(new Vector2(28 * Convert.ToInt32(dessert[0]) + 5, 28 * Convert.ToInt32(dessert[1])), carte));
                 banana = file.ReadLine();
             }
 
