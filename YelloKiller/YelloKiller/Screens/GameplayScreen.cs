@@ -329,6 +329,8 @@ namespace YelloKiller
 
         public override void Draw(GameTime gameTime)
         {
+            ServiceHelper.Game.Window.Title = retries.ToString();
+
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 0, 0);
 
             // If the game is transitioning on or off, fade it out to black.
@@ -447,6 +449,7 @@ namespace YelloKiller
         {
             StreamWriter file = new StreamWriter("checkTemp.tmp");
 
+            file.WriteLine(retries);
             file.WriteLine("Hero 1");
             hero1.SauvegarderCheckPoint(ref file);
             if (hero2 != null)
@@ -484,7 +487,7 @@ namespace YelloKiller
                 bouton.SauvegarderCheckPoint(ref file);
 
             file.WriteLine("Camera");
-            file.WriteLine(camera.X + "," + camera.Y + "," + retries);
+            file.WriteLine(camera.X + "," + camera.Y);
 
 
             file.Close();
@@ -496,6 +499,7 @@ namespace YelloKiller
             string banana = "";
             string[] dessert = null;
 
+            retries = Convert.ToUInt32(file.ReadLine()) + 1;
             file.ReadLine();
 
             hero1.ChargerCheckPoint(ref file);
@@ -621,7 +625,6 @@ namespace YelloKiller
             dessert = banana.Split(',');
             camera.X = Convert.ToInt32(dessert[0]);
             camera.Y = Convert.ToInt32(dessert[1]);
-            retries = Convert.ToUInt32(dessert[2]) + 1;
 
             foreach (Garde garde in _gardes)
                 garde.LoadContent(content, 2);
@@ -642,12 +645,25 @@ namespace YelloKiller
                 bouton.LoadContent(content);
 
             file.Close();
+            Alerte = false;
         }
 
         void ChargerChkPoint(object sender, PlayerIndexEventArgs e)
         {
             GOScreen.ExitScreen();
             ChargerCheckPoint();
+
+            StreamReader fileRead = new StreamReader("checkTemp.tmp");
+            fileRead.ReadLine();
+            string save = fileRead.ReadToEnd();
+            fileRead.Close();
+
+            StreamWriter newfile = new StreamWriter("checkTemp.tmp");
+
+            newfile.WriteLine(retries);
+            newfile.WriteLine(save);
+
+            newfile.Close();
         }
 
         void Mourir()
