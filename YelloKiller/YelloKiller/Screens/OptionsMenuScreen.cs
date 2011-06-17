@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 #endregion
 
 namespace YelloKiller
@@ -19,6 +20,8 @@ namespace YelloKiller
         #region Fields
 
         KeyboardState keyboardState, lastKeyboardState;
+
+        public event EventHandler<PlayerIndexEventArgs> PauseLanguageChange;
 
         MenuEntry languageMenuEntry;
         MenuEntry fullScreenMenuEntry;

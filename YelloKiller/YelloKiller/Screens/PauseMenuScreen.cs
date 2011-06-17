@@ -108,10 +108,10 @@ namespace YelloKiller
         /// <summary>
         /// Event handler for when the Options menu entry is selected.
         /// </summary>
-
         public void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            PauseMenuScreen pause = this;
+            OptionsMenuScreen Options = new OptionsMenuScreen(mod, game);
+
             ScreenManager.AddScreen(new OptionsMenuScreen(mod, game), e.PlayerIndex, true);
         }
 
@@ -133,10 +133,9 @@ namespace YelloKiller
             Pausebckground.Quit(playerIndex, ScreenManager);
         }
 
-
         #endregion
 
-        #region Update
+        #region Update and Draw
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
