@@ -407,27 +407,27 @@ namespace YelloKiller
                 switch (currentState)
                 {
                     case State.state_hadoken:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         spriteBatch.Draw(textureHadoken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         break;
                     case State.state_ball:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         spriteBatch.Draw(textureBouleDeFeu, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 35), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreBall.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         break;
                     case State.state_fume:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         spriteBatch.Draw(textureFumigene, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         break;
                     case State.state_shuriken:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         break;
                     case State.state_sabre:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 1 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.DarkBlue);
                         spriteBatch.Draw(textureSabre, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 30), Color.White);
                         break;
                 }
@@ -440,27 +440,27 @@ namespace YelloKiller
                 {
                     case State.state_hadoken:
 
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         spriteBatch.Draw(textureHadoken, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreHadoken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         break;
                     case State.state_ball:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         spriteBatch.Draw(textureBouleDeFeu, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 60), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreBall.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         break;
                     case State.state_fume:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         spriteBatch.Draw(textureFumigene, new Vector2(115, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreFumigene.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         break;
                     case State.state_shuriken:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         spriteBatch.Draw(textureShuriken, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
                         spriteBatch.DrawString(ScreenManager.font, "x" + NombreShuriken.ToString(), new Vector2(145, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         break;
                     case State.state_sabre:
-                        spriteBatch.DrawString(ScreenManager.font, "Joueur 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
+                        spriteBatch.DrawString(ScreenManager.font, Langue.tr("Joueur") + " 2 ", new Vector2(25, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.DarkBlue);
                         spriteBatch.Draw(textureSabre, new Vector2(120, Taille_Ecran.HAUTEUR_ECRAN - 55), Color.White);
                         break;
                 }
