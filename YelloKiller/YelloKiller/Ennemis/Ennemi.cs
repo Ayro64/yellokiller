@@ -36,16 +36,16 @@ namespace YelloKiller
             VitesseSprite = 2;
             VitesseAnimation = 0.008f;
             this.carte = carte;
-            champDeVision1 = new Rectangle(28 * X - 28, 28 * Y + 28, 28, 140);
-            champDeVision2 = new Rectangle(28 * X, 28 * Y + 28, 28, 140);
-            champDeVision3 = new Rectangle(28 * X + 28, 28 * Y + 28, 28, 140);
+            champDeVision1 = new Rectangle(28 * X - 28, 28 * Y + 28, 0, 0);
+            champDeVision2 = new Rectangle(28 * X, 28 * Y + 28, 0, 0);
+            champDeVision3 = new Rectangle(28 * X + 28, 28 * Y + 28, 0, 0);
             chemin = new List<Case>();
             RetourneCheminNormal = false;
         }
 
         public void LoadContent(ContentManager content, int maxIndex, string Assetname)
         {
-            LoadContent(content, Assetname);
+            LoadContent(content, Assetname); 
             this.MaxIndex = maxIndex;
         }
 
@@ -56,13 +56,13 @@ namespace YelloKiller
             UpdateChampDeVision(carte);
             MortDansLeChampDeVision(ennemisMorts, fumee);
 
-            if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumee) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/)
+            if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumee))
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero1.Y, hero1.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
-            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle, fumee) /*|| ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter)*/))
+            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle, fumee)))
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero2.Y, hero2.X];
@@ -102,10 +102,7 @@ namespace YelloKiller
                 }
             }
             else
-            {
                 Alerte = false;
-                //GameplayScreen.Alerte = false;
-            }
 
             if (SourceRectangle.Value.Y == sourceRectangle1.Y)
             {
@@ -302,6 +299,7 @@ namespace YelloKiller
                 if (Collision(mort.Rectangle, fumee))
                 {
                     GameplayScreen.Alerte = true;
+                    this.Alerte = true;
                     break;
                 }
         }
@@ -345,6 +343,14 @@ namespace YelloKiller
 
         public bool Regarde_Droite { get; private set; }
 
-        public bool Regarde_Gauche { get; private set; }        
+        public bool Regarde_Gauche { get; private set; }
+        /*
+        public void tamere(SpriteBatch SP, Rectangle camera)
+        {
+            Draw(SP, camera);
+            SP.Draw(fond, new Vector2(champDeVision1.X - camera.X, champDeVision1.Y - camera.Y), null, Color.White, 0, Vector2.Zero, new Vector2((float)champDeVision1.Width / (float)fond.Width, (float)champDeVision1.Height / (float)fond.Height), SpriteEffects.None, 0);
+            SP.Draw(fond, new Vector2(champDeVision2.X - camera.X, champDeVision2.Y - camera.Y), null, Color.White, 0, Vector2.Zero, new Vector2((float)champDeVision2.Width / (float)fond.Width, (float)champDeVision2.Height / (float)fond.Height), SpriteEffects.None, 0);
+            SP.Draw(fond, new Vector2(champDeVision3.X - camera.X, champDeVision3.Y - camera.Y), null, Color.White, 0, Vector2.Zero, new Vector2((float)champDeVision3.Width / (float)fond.Width, (float)champDeVision3.Height / (float)fond.Height), SpriteEffects.None, 0);
+        }*/
     }
 }
