@@ -48,7 +48,7 @@ namespace YelloKiller
             tmpshuriken += gameTime.ElapsedGameTime.Milliseconds * 0.001f;
 
             if (position.X > 0 && position.X < 28 * Taille_Map.LARGEUR_MAP && position.Y > 0 && position.Y < 28 * Taille_Map.HAUTEUR_MAP &&
-                carte.Cases[Y, X].Type > 0)
+                carte.Cases[Y, X].EstFranchissable)
             {
                 ShurikenExists = true;
                 position += 7 * direction;

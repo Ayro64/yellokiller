@@ -12,6 +12,7 @@ namespace YelloKiller
         string nomTexture;
         int x, y;
         double temps;
+        public bool EstFranchissable { get; set; }
 
         public Case(Vector2 position, TypeCase type, int index)
         {
@@ -21,6 +22,10 @@ namespace YelloKiller
             temps = 0;
             x = (int)position.X / 28;
             y = (int)position.Y / 28;
+            if (type > 0)
+                EstFranchissable = true;
+            else
+                EstFranchissable = false;
         }
 
         public int Index { get; set; }

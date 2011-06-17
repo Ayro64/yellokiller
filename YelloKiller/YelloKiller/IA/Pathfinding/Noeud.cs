@@ -20,16 +20,16 @@ namespace YelloKiller
         {
             List<Noeud> result = new List<Noeud>();
             // Bas
-            if (CaseValide(Case.X, Case.Y + 1) && carte.Cases[Case.Y + 1, Case.X].Type > 0)
+            if (CaseValide(Case.X, Case.Y + 1) && carte.Cases[Case.Y + 1, Case.X].EstFranchissable)
                 result.Add(new Noeud(carte.Cases[Case.Y + 1, Case.X], this, destination));
             // Droite
-            if (CaseValide(Case.X + 1, Case.Y) && carte.Cases[Case.Y, Case.X + 1].Type > 0)
+            if (CaseValide(Case.X + 1, Case.Y) && carte.Cases[Case.Y, Case.X + 1].EstFranchissable)
                 result.Add(new Noeud(carte.Cases[Case.Y, Case.X + 1], this, destination));
             // Haut
-            if (CaseValide(Case.X, Case.Y - 1) && carte.Cases[Case.Y - 1, Case.X].Type > 0)
+            if (CaseValide(Case.X, Case.Y - 1) && carte.Cases[Case.Y - 1, Case.X].EstFranchissable)
                 result.Add(new Noeud(carte.Cases[Case.Y - 1, Case.X], this, destination));
             // Gauche
-            if (CaseValide(Case.X - 1, Case.Y) && carte.Cases[Case.Y, Case.X - 1].Type > 0)
+            if (CaseValide(Case.X - 1, Case.Y) && carte.Cases[Case.Y, Case.X - 1].EstFranchissable)
                 result.Add(new Noeud(carte.Cases[Case.Y, Case.X - 1], this, destination));
 
             return result;
