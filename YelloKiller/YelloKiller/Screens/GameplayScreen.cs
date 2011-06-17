@@ -480,7 +480,8 @@ namespace YelloKiller
                 bouton.SauvegarderCheckPoint(ref file);
 
             file.WriteLine("Camera");
-            file.WriteLine(camera.X + "," + camera.Y);
+            file.WriteLine(camera.X + "," + camera.Y + "," + retries);
+
 
             file.Close();
         }
@@ -593,6 +594,7 @@ namespace YelloKiller
             dessert = banana.Split(',');
             camera.X = Convert.ToInt32(dessert[0]);
             camera.Y = Convert.ToInt32(dessert[1]);
+            retries = Convert.ToUInt32(dessert[2]);
 
             foreach (Garde garde in _gardes)
                 garde.LoadContent(content, 2);
