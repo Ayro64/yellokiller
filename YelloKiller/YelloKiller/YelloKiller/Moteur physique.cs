@@ -400,5 +400,15 @@ namespace YelloKiller
                 if (hero1.X == bouton.position.X && hero1.Y == bouton.position.Y || hero2 != null && hero2.X == bouton.position.X && hero2.Y == bouton.position.Y)
                     bouton.OuvrirPorte(soundBank, carte);
         }
+
+        static public bool Collision_Heros_Dark_Hero(Hero hero, Dark_Hero dark, SoundBank SB)
+        {
+            if (dark != null && hero.Rectangle.Intersects(dark.Rectangle))
+            {
+                SB.PlayCue("shurikenCollision");
+                return true;
+            }
+            return false;
+        }
     }
 }
