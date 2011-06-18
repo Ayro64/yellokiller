@@ -293,8 +293,6 @@ namespace YelloKiller
 
         public override void Draw(GameTime gameTime)
         {
-            foreach (Interrupteur bouton in interrupteurs)
-                ServiceHelper.Game.Window.Title = "X = " + bouton.position.X + " Y = " + bouton.position.Y;
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Gray, 0, 0); ;
 
             spriteBatch.Begin();
