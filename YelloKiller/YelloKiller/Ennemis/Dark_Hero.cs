@@ -12,6 +12,7 @@ namespace YelloKiller
         List<Case> chemin;
         Case depart, arrivee;
         public Vector2 positionDesiree;
+        double pseudoChrono;
 
         public Dark_Hero(Vector2 position, Carte carte)
             : base(position)
@@ -23,6 +24,7 @@ namespace YelloKiller
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 24);
             positionDesiree = position;
             chemin = new List<Case>();
+            pseudoChrono = 0;
         }
 
         public void LoadContent(ContentManager content, int maxIndex)
@@ -33,14 +35,20 @@ namespace YelloKiller
 
         public void Update(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
         {
+            ServiceHelper.Game.Window.Title = "Chrono = " + pseudoChrono.ToString() + " Distance = " + Math.Sqrt((this.X - hero.X) * (this.X - hero.X) + (this.Y - hero.Y) * (this.Y - hero.Y)).ToString();
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
-            if (chemin.Count < 5 && Math.Sqrt((this.X - hero.X) * (this.X - hero.X) + (this.Y - hero.Y) * (this.Y - hero.Y)) > 2)
+            if (chemin == null && pseudoChrono < 10 || chemin != null && Math.Sqrt((this.X - hero.X) * (this.X - hero.X) + (this.Y - hero.Y) * (this.Y - hero.Y)) > 5)
+                pseudoChrono += gameTime.ElapsedGameTime.TotalSeconds;
+            else if (pseudoChrono >= 10 || Math.Sqrt((this.X - hero.X) * (this.X - hero.X) + (this.Y - hero.Y) * (this.Y - hero.Y)) < 5)
             {
+                pseudoChrono = 0;
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero.Y, hero.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
+                /*if (chemin == null)
+                    pseudoChrono = 0;*/
             }
 
             if (chemin != null && chemin.Count != 0)
