@@ -188,7 +188,7 @@ namespace YelloKiller
             foreach (Interrupteur bouton in carte.Interrupteurs)
             {
                 interrupteurs.Add(new Interrupteur(bouton.Position, carte));
-                interrupteurs[interrupteurs.Count - 1].PortePosition = bouton.PortePosition;
+                interrupteurs[interrupteurs.Count - 1].ChangerPosition(carte, bouton.PortePosition);
                 interrupteurs[interrupteurs.Count - 1].MettreLaRotation(carte, bouton.rotation);
             }
 
