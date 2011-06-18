@@ -9,7 +9,6 @@ namespace YelloKiller
 {
     public class Interrupteur : Sprite
     {
-        Vector2 portePosition;
         Texture2D texturePorteFermee, texturePorteOuverte, textureInterrupteurTouche;
         public Vector2 PortePosition { get; set; }
         public bool PorteOuverte { get; set; }
@@ -19,10 +18,10 @@ namespace YelloKiller
             : base(position)
         {
             PorteOuverte = false;
-            PortePosition = new Vector2(position.X, position.Y) + Vector2.One;
+            PortePosition = new Vector2(position.X - (position.X == 79 ? 1 : -1), position.Y);
             rotation = 0;
-            carte.Cases[(int)portePosition.Y, (int)portePosition.X].EstFranchissable = false;
-            carte.Cases[(int)portePosition.Y, (int)portePosition.X + 1].EstFranchissable = false;
+            carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = false;
+            carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = false;
         }
 
         public void LoadContent(ContentManager content)
@@ -63,20 +62,20 @@ namespace YelloKiller
                 switch (rotation)
                 {
                     case 0:
-                        carte.Cases[(int)portePosition.Y, (int)portePosition.X].EstFranchissable = true;
-                        carte.Cases[(int)portePosition.Y, (int)portePosition.X + 1].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = true;
                         break;
                     case 1:
-                        carte.Cases[(int)portePosition.Y, (int)portePosition.X - 1].EstFranchissable = true;
-                        carte.Cases[(int)portePosition.Y + 1, (int)portePosition.X - 1].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y, (int)PortePosition.X - 1].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y + 1, (int)PortePosition.X - 1].EstFranchissable = true;
                         break;
                     case 2:
-                        carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 1].EstFranchissable = true;
-                        carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 2].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 1].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 2].EstFranchissable = true;
                         break;
                     case 3:
-                        carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X].EstFranchissable = true;
-                        carte.Cases[(int)portePosition.Y - 2, (int)portePosition.X].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y - 2, (int)PortePosition.X].EstFranchissable = true;
                         break;
                 }
             }
@@ -87,20 +86,20 @@ namespace YelloKiller
             switch (this.rotation)
             {
                 case 0:
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X].EstFranchissable = true;
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X + 1].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = true;
                     break;
                 case 1:
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X - 1].EstFranchissable = true;
-                    carte.Cases[(int)portePosition.Y + 1, (int)portePosition.X - 1].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X - 1].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y + 1, (int)PortePosition.X - 1].EstFranchissable = true;
                     break;
                 case 2:
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 1].EstFranchissable = true;
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 2].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 1].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 2].EstFranchissable = true;
                     break;
                 case 3:
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X].EstFranchissable = true;
-                    carte.Cases[(int)portePosition.Y - 2, (int)portePosition.X].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y - 2, (int)PortePosition.X].EstFranchissable = true;
                     break;
             }
 
@@ -110,53 +109,53 @@ namespace YelloKiller
             switch (rotation)
             {
                 case 0:
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X].EstFranchissable = false;
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X + 1].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = false;
                     break;
                 case 1:
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X - 1].EstFranchissable = false;
-                    carte.Cases[(int)portePosition.Y + 1, (int)portePosition.X - 1].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X - 1].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y + 1, (int)PortePosition.X - 1].EstFranchissable = false;
                     break;
                 case 2:
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 1].EstFranchissable = false;
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 2].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 1].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 2].EstFranchissable = false;
                     break;
                 case 3:
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X].EstFranchissable = false;
-                    carte.Cases[(int)portePosition.Y - 2, (int)portePosition.X].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y - 2, (int)PortePosition.X].EstFranchissable = false;
                     break;
             }
         }
 
         public void SauvegarderCheckPoint(ref StreamWriter file)
         {
-            file.WriteLine(position.X + "," + position.Y + "," + portePosition.X + "," + portePosition.Y + "," + rotation + "," + PorteOuverte);
+            file.WriteLine(position.X + "," + position.Y + "," + PortePosition.X + "," + PortePosition.Y + "," + rotation + "," + PorteOuverte);
         }
 
         public void MettreLaRotation(Carte carte, byte nouvelleRotation)
         {
-            carte.Cases[(int)portePosition.Y, (int)portePosition.X].EstFranchissable = true;
-            carte.Cases[(int)portePosition.Y, (int)portePosition.X + 1].EstFranchissable = true;
+            carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = true;
+            carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = true;
                     
             this.rotation = nouvelleRotation;
 
             switch (rotation)
             {
                 case 0:
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X].EstFranchissable = false;
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X + 1].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = false;
                     break;
                 case 1:
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X - 1].EstFranchissable = false;
-                    carte.Cases[(int)portePosition.Y + 1, (int)portePosition.X - 1].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X - 1].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y + 1, (int)PortePosition.X - 1].EstFranchissable = false;
                     break;
                 case 2:
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 1].EstFranchissable = false;
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 2].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 1].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 2].EstFranchissable = false;
                     break;
                 case 3:
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X].EstFranchissable = false;
-                    carte.Cases[(int)portePosition.Y - 2, (int)portePosition.X].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X].EstFranchissable = false;
+                    carte.Cases[(int)PortePosition.Y - 2, (int)PortePosition.X].EstFranchissable = false;
                     break;
             }
         }
@@ -166,31 +165,31 @@ namespace YelloKiller
             switch (rotation)
             {
                 case 0:
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X].EstFranchissable = true;
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X + 1].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = true;
                     carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X].EstFranchissable = false;
-                    carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X + 1].EstFranchissable = false; 
+                    carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X + 1].EstFranchissable = false;
                     break;
                 case 1:
-                    carte.Cases[(int)portePosition.Y, (int)portePosition.X - 1].EstFranchissable = true;
-                    carte.Cases[(int)portePosition.Y + 1, (int)portePosition.X - 1].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X - 1].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y + 1, (int)PortePosition.X - 1].EstFranchissable = true;
                     carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X - 1].EstFranchissable = false;
                     carte.Cases[(int)nouvelleposition.Y + 1, (int)nouvelleposition.X - 1].EstFranchissable = false;
                     break;
                 case 2:
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 1].EstFranchissable = true;
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X - 2].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 1].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 2].EstFranchissable = true;
                     carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X - 1].EstFranchissable = false;
                     carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X - 2].EstFranchissable = false;
                     break;
                 case 3:
-                    carte.Cases[(int)portePosition.Y - 1, (int)portePosition.X].EstFranchissable = true;
-                    carte.Cases[(int)portePosition.Y - 2, (int)portePosition.X].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X].EstFranchissable = true;
+                    carte.Cases[(int)PortePosition.Y - 2, (int)PortePosition.X].EstFranchissable = true;
                     carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X].EstFranchissable = false;
                     carte.Cases[(int)nouvelleposition.Y - 2, (int)nouvelleposition.X].EstFranchissable = false;
                     break;
             }
-            portePosition = nouvelleposition;
+            PortePosition = nouvelleposition;
         }
     }
 }

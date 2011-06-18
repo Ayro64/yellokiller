@@ -344,13 +344,5 @@ namespace YelloKiller
         public bool Regarde_Droite { get; private set; }
 
         public bool Regarde_Gauche { get; private set; }
-        /*
-        public void tamere(SpriteBatch SP, Rectangle camera)
-        {
-            Draw(SP, camera);
-            SP.Draw(fond, new Vector2(champDeVision1.X - camera.X, champDeVision1.Y - camera.Y), null, Color.White, 0, Vector2.Zero, new Vector2((float)champDeVision1.Width / (float)fond.Width, (float)champDeVision1.Height / (float)fond.Height), SpriteEffects.None, 0);
-            SP.Draw(fond, new Vector2(champDeVision2.X - camera.X, champDeVision2.Y - camera.Y), null, Color.White, 0, Vector2.Zero, new Vector2((float)champDeVision2.Width / (float)fond.Width, (float)champDeVision2.Height / (float)fond.Height), SpriteEffects.None, 0);
-            SP.Draw(fond, new Vector2(champDeVision3.X - camera.X, champDeVision3.Y - camera.Y), null, Color.White, 0, Vector2.Zero, new Vector2((float)champDeVision3.Width / (float)fond.Width, (float)champDeVision3.Height / (float)fond.Height), SpriteEffects.None, 0);
-        }*/
     }
 }

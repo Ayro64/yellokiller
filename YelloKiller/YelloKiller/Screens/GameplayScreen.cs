@@ -96,7 +96,6 @@ namespace YelloKiller
             this.game = game;
             this.nomDeCarte = nomDeCarte;
             jeuEnCoop = nomDeCarte[nomDeCarte.Length - 1] == 'p';
-            MoteurParticule.Camera = new Vector2(camera.X, camera.Y);
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
@@ -137,6 +136,8 @@ namespace YelloKiller
                 camera.Y = 28 * (Taille_Map.HAUTEUR_MAP - 24);
             else
                 camera.Y = 28 * ((int)carte.OrigineJoueur1.Y - 12);
+
+            MoteurParticule.Camera = new Vector2(camera.X, camera.Y);
 
             _gardes = new List<Garde>();
             foreach (Vector2 position in carte.OriginesGardes)
@@ -269,8 +270,8 @@ namespace YelloKiller
                 if (jeuEnCoop)
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1, interrupteurs);
 
-                if (carte.OrigineDarkHero != -Vector2.One)
-                    Dark_Hero.Update(gameTime, carte, hero1, camera);
+                /*if (carte.OrigineDarkHero != -Vector2.One)
+                    Dark_Hero.Update(gameTime, carte, hero1, camera);*/
 
                 foreach (Garde garde in _gardes)
                     garde.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
@@ -287,8 +288,8 @@ namespace YelloKiller
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule);
 
-                if (Dark_Hero != null)
-                    Dark_Hero.Update(gameTime, carte, hero1, camera);
+                /*if (Dark_Hero != null)
+                    Dark_Hero.Update(gameTime, carte, hero1, camera);*/
 
                 if (timer_update_collision > 0)
                 {
