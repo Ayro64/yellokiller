@@ -74,11 +74,9 @@ namespace YelloKiller
                 }
             }
 
-
             //Durée de la transition.
             TransitionOnTime = TimeSpan.FromSeconds(1.2);
             TransitionOffTime = TimeSpan.FromSeconds(1.2);
-
 
             // Create our menu entries.
             nextMenuEntry = new MenuEntry(Langue.tr("WiNext"));

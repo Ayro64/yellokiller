@@ -136,6 +136,24 @@ namespace YelloKiller
                             return "La carte ";
                         case("FileExists2"):
                             return " existe déjà.\nVeuillez retenter la sauvegarde avec un nouveau nom.";
+                        case("Presets"):
+                            return "Appliquer une transformation";
+                        case("F1"):
+                            return "Recouvrir d'herbe";
+                        case("F2"):
+                            return "Recouvrir d'herbe foncée";
+                        case("F3"):
+                            return "Recouvrir de terre";
+                        case("F4"):
+                            return "Recouvrir de parquet";
+                        case("F5"):
+                            return "Créer un très grand labyrinthe";
+                        case("F6"):
+                            return "Créer un grand labyrinthe";
+                        case("F7"):
+                            return "Créer un petit labyrinthe";
+                        case("F8"):
+                            return "Créer un très petit labyrinthe";
                         default:
                             return "";
                     }
@@ -264,6 +282,24 @@ namespace YelloKiller
                             return "Die Karte ";
                         case ("FileExists2"):
                             return " existiert schon.\nBitte versuchen Sie noch mal zu speichern.";
+                        case ("Presets"):
+                            return "Karte transformieren";
+                        case ("F1"):
+                            return "Mit Gras decken";
+                        case ("F2"):
+                            return "Mit dunkel Gras decken";
+                        case ("F3"):
+                            return "Mit Erde decken";
+                        case ("F4"):
+                            return "Mit Parkett decken";
+                        case ("F5"):
+                            return "Sehr grosses Labyrinth schaffen";
+                        case ("F6"):
+                            return "Grosses Labyrinth schaffen";
+                        case ("F7"):
+                            return "Kleines Labyrinth schaffen";
+                        case ("F8"):
+                            return "Sehr kleines Labyrinth schaffen";
                         default:
                             return "";
                     }
@@ -392,6 +428,24 @@ namespace YelloKiller
                             return "The map ";
                         case ("FileExists2"):
                             return " already exists.\nPlease try again with a different name.";
+                        case ("Presets"):
+                            return "Apply transformation";
+                        case ("F1"):
+                            return "Cover with grass";
+                        case ("F2"):
+                            return "Cover with dark grass";
+                        case ("F3"):
+                            return "Cover with dirt";
+                        case ("F4"):
+                            return "Cover with parquet";
+                        case ("F5"):
+                            return "Create a huge maze";
+                        case ("F6"):
+                            return "Create a big maze";
+                        case ("F7"):
+                            return "Create a small maze";
+                        case ("F8"):
+                            return "Create a tiny maze";
                         default:
                             return "";
                     }
