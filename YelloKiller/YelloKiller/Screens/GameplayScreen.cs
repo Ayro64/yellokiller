@@ -329,8 +329,6 @@ namespace YelloKiller
 
         public override void Draw(GameTime gameTime)
         {
-            ServiceHelper.Game.Window.Title = retries.ToString();
-
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 0, 0);
 
             // If the game is transitioning on or off, fade it out to black.
