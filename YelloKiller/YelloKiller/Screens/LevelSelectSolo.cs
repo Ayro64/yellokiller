@@ -282,7 +282,7 @@ namespace YelloKiller
                 miniCartes[i].DrawInMenu(spriteBatch, content, new Vector2(position.X - 120, position.Y - 200));
 
                 if (menuEntry.IsLocked)
-                    spriteBatch.Draw(padlock, new Vector2(position.X - 120, position.Y - 200), Color.White);
+                    spriteBatch.Draw(padlock, new Rectangle((int)position.X - 117, (int)position.Y - 197, 225, 170), Color.White);
 
                 if ((i % 4 == 0) || (i % 4 == 1) || (i % 4 == 2))
                     position.X += 250;
