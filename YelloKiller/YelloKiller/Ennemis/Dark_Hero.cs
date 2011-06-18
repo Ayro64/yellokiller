@@ -36,14 +36,14 @@ namespace YelloKiller
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
-            if (chemin.Count < 5 && Math.Sqrt((this.X - hero.X) * (this.X - hero.X) + (this.Y - hero.Y) * (this.Y - hero.Y)) > 2)
+            if (chemin != null && chemin.Count < 5 && Math.Sqrt((this.X - hero.X) * (this.X - hero.X) + (this.Y - hero.Y) * (this.Y - hero.Y)) > 2)
             {
                 depart = carte.Cases[Y, X];
                 arrivee = carte.Cases[hero.Y, hero.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
 
-            if (chemin.Count != 0)
+            if (chemin != null && chemin.Count != 0)
             {
                 if (VaEnHaut && VaEnBas && VaADroite && VaAGauche)
                 {
