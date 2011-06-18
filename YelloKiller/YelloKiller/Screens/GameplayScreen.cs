@@ -270,9 +270,6 @@ namespace YelloKiller
                 if (jeuEnCoop)
                     hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1, interrupteurs);
 
-                /*if (carte.OrigineDarkHero != -Vector2.One)
-                    Dark_Hero.Update(gameTime, carte, hero1, camera);*/
-
                 foreach (Garde garde in _gardes)
                     garde.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
 
