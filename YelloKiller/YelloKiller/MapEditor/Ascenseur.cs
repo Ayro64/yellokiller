@@ -50,13 +50,13 @@ namespace YelloKiller
             {
                 if (ServiceHelper.Get<IMouseService>().Coordonnees().Y - difference <= 0)
                     position.Y = 0;
-                else if (ServiceHelper.Get<IMouseService>().Coordonnees().Y + texture.Height - difference >=  Taille_Ecran.HAUTEUR_ECRAN - 84)
+                else if (ServiceHelper.Get<IMouseService>().Coordonnees().Y + texture.Height - difference >= Taille_Ecran.HAUTEUR_ECRAN - 84)
                     position.Y = Taille_Ecran.HAUTEUR_ECRAN - texture.Height - 84;
                 else
                     position = new Vector2(position.X, ServiceHelper.Get<IMouseService>().Coordonnees().Y - difference);
             }
 
-            if (ServiceHelper.Get<IMouseService>().Coordonnees().X > limite2 && ServiceHelper.Get<IMouseService>().Coordonnees().X < limite2 + 28 && ServiceHelper.Get<IMouseService>().MoletteATournee())
+            if (ServiceHelper.Get<IMouseService>().MoletteATournee())
                 position.Y -= ServiceHelper.Get<IMouseService>().Molette();
         }
 
