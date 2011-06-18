@@ -288,8 +288,8 @@ namespace YelloKiller
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule);
 
-                /*if (Dark_Hero != null)
-                    Dark_Hero.Update(gameTime, carte, hero1, camera);*/
+                if (Dark_Hero != null)
+                    Dark_Hero.Update(gameTime, carte, hero1, camera);
 
                 if (timer_update_collision > 0)
                 {
