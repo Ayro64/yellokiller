@@ -69,7 +69,7 @@ namespace YelloKiller
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
 
-            if (chemin.Count != 0)
+            if (chemin != null && chemin.Count != 0)
             {
                 if (VaEnHaut && VaEnBas && VaADroite && VaAGauche)
                 {
