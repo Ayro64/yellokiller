@@ -6,10 +6,6 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-/* Si vous souhaitez rajouter une texture au jeu, soit vous me le demandez, soit vous tentez de le faire vous meme em completant les 4 switchs
- * dans Carte.cs (deux fois), Case.cs, Cursor.cs, la rajouter dans la liste de textures dans Menu.cs, et de rajouter sa valeur dans l'enumeration
- dans GameplayScreenSolo.cs */
-
 namespace YelloKiller
 {
     public class EditorScreen : GameScreen
@@ -234,18 +230,18 @@ namespace YelloKiller
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonDroit() && ServiceHelper.Get<IMouseService>().DansLaCarte() && CasePossible)
             {
-                if (curseur.Type == TypeCase.Patrouilleur)
+                if (curseur.Type == TypeCase.Patrouilleur && _originesPatrouilleurs.Count > 0)
                     _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                else if (curseur.Type == TypeCase.Patrouilleur_a_cheval)
+                else if (curseur.Type == TypeCase.Patrouilleur_a_cheval && _originesPatrouilleursAChevaux.Count > 0)
                     _originesPatrouilleursAChevaux[_originesPatrouilleursAChevaux.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
-                else if (_originesStatues.Count > 0 && curseur.Type == TypeCase.Statues)
+                else if (_originesStatues.Count > 0 && curseur.Type == TypeCase.Statues && _originesStatues.Count > 0)
                     rotationsDesStatues[rotationsDesStatues.Count - 1] = (byte)((rotationsDesStatues[rotationsDesStatues.Count - 1] + 1) % 4);
-                else if (curseur.Type == TypeCase.Interrupteur)
-                    interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y);
+                else if (curseur.Type == TypeCase.Interrupteur && interrupteurs.Count > 0)
+                    interrupteurs[interrupteurs.Count - 1].ChangerPosition(carte, new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
             }
 
             if (ServiceHelper.Get<IMouseService>().ClicBoutonMilieu() && ServiceHelper.Get<IMouseService>().DansLaCarte() && curseur.Type == TypeCase.Interrupteur)
-                interrupteurs[interrupteurs.Count - 1].Rotationner();
+                interrupteurs[interrupteurs.Count - 1].Rotationner(carte);
 
             if (ServiceHelper.Get<IMouseService>().BoutonGauchePresse() && ServiceHelper.Get<IMouseService>().DansLaCarte())
                 Placer_Case();
