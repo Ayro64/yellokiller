@@ -10,36 +10,35 @@ namespace YelloKiller
         Texture2D shuriken, hadoken, fumigene, traineeDeFlamme, plus, moins, heros1, heros2;
         Rectangle[] rectangles;
         int[] munitions;
-        int limite;
+        int limite = Taille_Ecran.HAUTEUR_ECRAN;
 
         public int[] Munitions { get { return munitions; } }
         public int Salaire { get; private set; }
 
-        public Informations(int limite)
+        public Informations()
         {
-            this.limite = limite;
             rectangles = new Rectangle[18];
 
             rectangles[0] = new Rectangle(50, limite - 40, 20, 20);
             rectangles[1] = new Rectangle(160, limite - 40, 20, 20);
 
-            rectangles[2] = new Rectangle(250, limite - 60, 20, 20);
-            rectangles[3] = new Rectangle(320, limite - 60, 20, 20);
-            rectangles[4] = new Rectangle(420, limite - 60, 20, 20);
-            rectangles[5] = new Rectangle(490, limite - 60, 20, 20);
-            rectangles[6] = new Rectangle(590, limite - 60, 20, 20);
-            rectangles[7] = new Rectangle(660, limite - 60, 20, 20);
-            rectangles[8] = new Rectangle(760, limite - 60, 20, 20);
-            rectangles[9] = new Rectangle(830, limite - 60, 20, 20);
+            rectangles[2] = new Rectangle(250, limite - 62, 20, 20);
+            rectangles[3] = new Rectangle(320, limite - 62, 20, 20);
+            rectangles[4] = new Rectangle(420, limite - 62, 20, 20);
+            rectangles[5] = new Rectangle(490, limite - 62, 20, 20);
+            rectangles[6] = new Rectangle(590, limite - 62, 20, 20);
+            rectangles[7] = new Rectangle(660, limite - 62, 20, 20);
+            rectangles[8] = new Rectangle(760, limite - 62, 20, 20);
+            rectangles[9] = new Rectangle(830, limite - 62, 20, 20);
 
-            rectangles[10] = new Rectangle(250, limite - 30, 20, 20);
-            rectangles[11] = new Rectangle(320, limite - 30, 20, 20);
-            rectangles[12] = new Rectangle(420, limite - 30, 20, 20);
-            rectangles[13] = new Rectangle(490, limite - 30, 20, 20);
-            rectangles[14] = new Rectangle(590, limite - 30, 20, 20);
-            rectangles[15] = new Rectangle(660, limite - 30, 20, 20);
-            rectangles[16] = new Rectangle(760, limite - 30, 20, 20);
-            rectangles[17] = new Rectangle(830, limite - 30, 20, 20);
+            rectangles[10] = new Rectangle(250, limite - 37, 20, 20);
+            rectangles[11] = new Rectangle(320, limite - 37, 20, 20);
+            rectangles[12] = new Rectangle(420, limite - 37, 20, 20);
+            rectangles[13] = new Rectangle(490, limite - 37, 20, 20);
+            rectangles[14] = new Rectangle(590, limite - 37, 20, 20);
+            rectangles[15] = new Rectangle(660, limite - 37, 20, 20);
+            rectangles[16] = new Rectangle(760, limite - 37, 20, 20);
+            rectangles[17] = new Rectangle(830, limite - 37, 20, 20);
 
             munitions = new int[8];
             munitions[0] = 10;
@@ -84,43 +83,43 @@ namespace YelloKiller
 
             if (hero1Existe)
             {
-                spriteBatch.Draw(heros1, new Vector2(210, limite - 65), Color.White);
+                spriteBatch.Draw(heros1, new Vector2(210, limite - 70), Color.White);
 
                 spriteBatch.Draw(moins, rectangles[2], Color.White);
-                spriteBatch.DrawString(font, munitions[0].ToString(), new Vector2(280, limite - 60), Color.Red);
+                spriteBatch.DrawString(font, munitions[0].ToString(), new Vector2(280, limite - 62), Color.Red);
                 spriteBatch.Draw(plus, rectangles[3], Color.White);
 
                 spriteBatch.Draw(moins, rectangles[4], Color.White);
-                spriteBatch.DrawString(font, munitions[1].ToString(), new Vector2(450, limite - 60), Color.Red);
+                spriteBatch.DrawString(font, munitions[1].ToString(), new Vector2(450, limite - 62), Color.Red);
                 spriteBatch.Draw(plus, rectangles[5], Color.White);
 
                 spriteBatch.Draw(moins, rectangles[6], Color.White);
-                spriteBatch.DrawString(font, munitions[2].ToString(), new Vector2(620, limite - 60), Color.Red);
+                spriteBatch.DrawString(font, munitions[2].ToString(), new Vector2(620, limite - 62), Color.Red);
                 spriteBatch.Draw(plus, rectangles[7], Color.White);
 
                 spriteBatch.Draw(moins, rectangles[8], Color.White);
-                spriteBatch.DrawString(font, munitions[3].ToString(), new Vector2(790, limite - 60), Color.Red);
+                spriteBatch.DrawString(font, munitions[3].ToString(), new Vector2(790, limite - 62), Color.Red);
                 spriteBatch.Draw(plus, rectangles[9], Color.White);
             }
 
             if (hero2Existe)
             {
-                spriteBatch.Draw(heros2, new Vector2(210, limite - 35), Color.White);
+                spriteBatch.Draw(heros2, new Vector2(210, limite - 43), Color.White);
 
                 spriteBatch.Draw(moins, rectangles[10], Color.White);
-                spriteBatch.DrawString(font, munitions[4].ToString(), new Vector2(280, limite - 30), Color.Red);
+                spriteBatch.DrawString(font, munitions[4].ToString(), new Vector2(280, limite - 37), Color.Red);
                 spriteBatch.Draw(plus, rectangles[11], Color.White);
 
                 spriteBatch.Draw(moins, rectangles[12], Color.White);
-                spriteBatch.DrawString(font, munitions[5].ToString(), new Vector2(450, limite - 30), Color.Red);
+                spriteBatch.DrawString(font, munitions[5].ToString(), new Vector2(450, limite - 37), Color.Red);
                 spriteBatch.Draw(plus, rectangles[13], Color.White);
 
                 spriteBatch.Draw(moins, rectangles[14], Color.White);
-                spriteBatch.DrawString(font, munitions[6].ToString(), new Vector2(620, limite - 30), Color.Red);
+                spriteBatch.DrawString(font, munitions[6].ToString(), new Vector2(620, limite - 37), Color.Red);
                 spriteBatch.Draw(plus, rectangles[15], Color.White);
 
                 spriteBatch.Draw(moins, rectangles[16], Color.White);
-                spriteBatch.DrawString(font, munitions[7].ToString(), new Vector2(790, limite - 30), Color.Red);
+                spriteBatch.DrawString(font, munitions[7].ToString(), new Vector2(790, limite - 37), Color.Red);
                 spriteBatch.Draw(plus, rectangles[17], Color.White);
             }
         }

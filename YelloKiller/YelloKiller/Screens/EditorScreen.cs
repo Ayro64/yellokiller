@@ -99,7 +99,7 @@ namespace YelloKiller
             pointDePassage = content.Load<Texture2D>(@"Menu Editeur de Maps\pied");
             textureStatue = content.Load<Texture2D>(@"Feuilles de sprites\statue_dragon");
             textureBasFond = content.Load<Texture2D>("Bas fond");
-            infos = new Informations(ScreenManager.GraphicsDevice.Viewport.Height);
+            infos = new Informations();
             infos.LoadContent(content);
 
             foreach (Interrupteur bouton in interrupteurs)
@@ -373,9 +373,6 @@ namespace YelloKiller
 
             spriteBatch.Draw(fond, Vector2.Zero, null, Color.White, 0, Vector2.Zero, new Vector2(1, 30), SpriteEffects.None, 1);
             spriteBatch.Draw(fond, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width - 56, 0), null, Color.White, 0, Vector2.Zero, new Vector2(2, 30), SpriteEffects.None, 1);
-            //spriteBatch.Draw(fond, new Vector2(0, ScreenManager.GraphicsDevice.Viewport.Height - 84), null, Color.Blue, 0, Vector2.Zero, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / textureBasFond.Width, 1), SpriteEffects.None, 1);
-            infos.Draw(spriteBatch, ScreenManager.Font, !enableOrigine1, !enableOrigine2);
-
             menu.Draw(spriteBatch, ascenseur, ScreenManager.GraphicsDevice.Viewport.Width);
             ascenseur.Draw(spriteBatch);
             spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), null, Color.White, 0, Vector2.Zero, new Vector2((float)ScreenManager.GraphicsDevice.Viewport.Width / (float)textureBasFond.Width, (float)(ScreenManager.GraphicsDevice.Viewport.Height - Taille_Ecran.HAUTEUR_ECRAN + 84) / (float)textureBasFond.Height), SpriteEffects.FlipVertically, 1);
