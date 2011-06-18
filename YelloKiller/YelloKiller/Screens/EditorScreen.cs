@@ -229,10 +229,10 @@ namespace YelloKiller
             if (curseur.Type == TypeCase.Gomme && ServiceHelper.Get<IMouseService>().ClicBoutonGauche())
                 Supprimer_Ennemi_Ou_Bonus();
 
-            if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte())
+            if (ServiceHelper.Get<IMouseService>().ClicBoutonGauche() && ServiceHelper.Get<IMouseService>().DansLaCarte() && CasePossible)
                 Placer_Personnage_Ou_Bonus();
 
-            if (ServiceHelper.Get<IMouseService>().ClicBoutonDroit() && ServiceHelper.Get<IMouseService>().DansLaCarte())
+            if (ServiceHelper.Get<IMouseService>().ClicBoutonDroit() && ServiceHelper.Get<IMouseService>().DansLaCarte() && CasePossible)
             {
                 if (curseur.Type == TypeCase.Patrouilleur)
                     _originesPatrouilleurs[_originesPatrouilleurs.Count - 1].Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
@@ -731,6 +731,10 @@ namespace YelloKiller
             for (int t = 0; t < _originesStatues.Count; t++)
                 if (_originesStatues[t].X == curseur.Position.X + camera.X && _originesStatues[t].Y == curseur.Position.Y + camera.Y)
                 {
+                    for (int y = 0; y < 4; y++)
+                        for (int x = 1; x < 3; x++)
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].EstFranchissable = true;
+
                     _originesStatues.RemoveAt(t);
                     rotationsDesStatues.RemoveAt(t);
                 }
@@ -741,12 +745,33 @@ namespace YelloKiller
 
             for (int caca = 0; caca < interrupteurs.Count; caca++)
                 if (interrupteurs[caca].position.X == curseur.Position.X + camera.X && interrupteurs[caca].position.Y == curseur.Position.Y + camera.Y)
+                {
+                    switch (interrupteurs[caca].rotation)
+                    {
+                        case 0:
+                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y, (int)interrupteurs[caca].PortePosition.X].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y, (int)interrupteurs[caca].PortePosition.X + 1].EstFranchissable = true;
+                            break;
+                        case 1:
+                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y, (int)interrupteurs[caca].PortePosition.X - 1].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y + 1, (int)interrupteurs[caca].PortePosition.X - 1].EstFranchissable = true;
+                            break;
+                        case 2:
+                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y - 1, (int)interrupteurs[caca].PortePosition.X - 1].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y - 1, (int)interrupteurs[caca].PortePosition.X - 2].EstFranchissable = true;
+                            break;
+                        case 3:
+                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y - 1, (int)interrupteurs[caca].PortePosition.X].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y - 2, (int)interrupteurs[caca].PortePosition.X].EstFranchissable = true;
+                            break;
+                    }
                     interrupteurs.RemoveAt(caca);
+                }
         }
 
         private void Placer_Personnage_Ou_Bonus()
         {
-            if (curseur.Type == TypeCase.Joueur1 && DepartPossible(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y))
+            if (curseur.Type == TypeCase.Joueur1 && CasePossible)
             {
                 if (!enableOrigine1)
                     carte.Cases[(int)origine1.Y, (int)origine1.X].Type = TypeCase.herbe;
@@ -756,7 +781,7 @@ namespace YelloKiller
                 origine1 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
             }
 
-            else if (curseur.Type == TypeCase.Joueur2 && DepartPossible(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y))
+            else if (curseur.Type == TypeCase.Joueur2 && CasePossible)
             {
                 if (!enableOrigine2)
                     carte.Cases[(int)origine2.Y, (int)origine2.X].Type = TypeCase.herbe;
@@ -766,7 +791,7 @@ namespace YelloKiller
                 origine2 = new Vector2((int)curseur.Position.X + camera.X, (int)curseur.Position.Y + camera.Y);
             }
 
-            else if (curseur.Type == TypeCase.Dark_Hero && DepartPossible(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y))
+            else if (curseur.Type == TypeCase.Dark_Hero && CasePossible)
             {
                 enableDH = false;
                 _origineDark_Hero = new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y);
@@ -791,10 +816,14 @@ namespace YelloKiller
             else if (curseur.Type == TypeCase.Boss)
                 _originesBoss.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
 
-            else if (curseur.Type == TypeCase.Statues)
+            else if (curseur.Type == TypeCase.Statues && curseur.Position.X + camera.X < Taille_Map.LARGEUR_MAP - 3 && curseur.Position.Y + camera.Y < Taille_Map.HAUTEUR_MAP - 3)
             {
                 _originesStatues.Add(new Vector2(curseur.Position.X + camera.X, curseur.Position.Y + camera.Y));
                 rotationsDesStatues.Add(0);
+
+                for (int y = 0; y < 4; y++)
+                    for (int x = 1; x < 3; x++)
+                        carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].EstFranchissable = false;
             }
 
             else if (curseur.Type == TypeCase.BonusShurikens)
@@ -821,6 +850,7 @@ namespace YelloKiller
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 2 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].EstFranchissable = curseur.Type > 0;
                         }
                 }
             }
@@ -834,6 +864,7 @@ namespace YelloKiller
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 3 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].EstFranchissable = curseur.Type > 0;
                         }
                 }
             }
@@ -846,6 +877,7 @@ namespace YelloKiller
                     {
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                         carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].Index = x + 1;
+                        carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X + x].EstFranchissable = curseur.Type > 0;
                     }
                 }
             }
@@ -858,6 +890,7 @@ namespace YelloKiller
                     {
                         carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
                         carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X].Index = y + 1;
+                        carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X].EstFranchissable = curseur.Type > 0;
                     }
                 }
             }
@@ -871,6 +904,7 @@ namespace YelloKiller
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 3 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].EstFranchissable = curseur.Type > 0;
                         }
                 }
             }
@@ -884,6 +918,7 @@ namespace YelloKiller
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 4 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].EstFranchissable = curseur.Type > 0;
                         }
                 }
             }
@@ -897,6 +932,7 @@ namespace YelloKiller
                         {
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Type = curseur.Type;
                             carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].Index = x + 2 * y + 1;
+                            carte.Cases[(int)curseur.Position.Y + camera.Y + y, (int)curseur.Position.X + camera.X + x].EstFranchissable = curseur.Type > 0;
                         }
                 }
             }
@@ -905,6 +941,7 @@ namespace YelloKiller
             {
                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Type = curseur.Type;
                 carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].Index = 1;
+                carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].EstFranchissable = curseur.Type > 0;
             }
         }
 
@@ -918,18 +955,9 @@ namespace YelloKiller
             return true;
         }
 
-        private bool DepartPossible(float x, float y)
+        private bool CasePossible
         {
-            foreach (Interrupteur bouton in interrupteurs)
-            {
-                if (bouton.rotation == 0 && y == bouton.PortePosition.Y && (x == bouton.PortePosition.X + 1 || x == bouton.PortePosition.X) ||
-                    bouton.rotation == 2 && y == bouton.PortePosition.Y - 1 && (x == bouton.PortePosition.X - 1 || x == bouton.PortePosition.X - 2) ||
-                    bouton.rotation == 1 && x == bouton.PortePosition.X - 1 && (y == bouton.PortePosition.Y + 1 || y == bouton.PortePosition.Y) ||
-                    bouton.rotation == 3 && x == bouton.PortePosition.X && (y == bouton.PortePosition.Y - 1 || y == bouton.PortePosition.Y - 2))
-                    return false;
-            }
-
-            return true;
+            get { return carte.Cases[(int)curseur.Position.Y + camera.Y, (int)curseur.Position.X + camera.X].EstFranchissable; }
         }
 
         private void ChangerStyle(TypeCase type)

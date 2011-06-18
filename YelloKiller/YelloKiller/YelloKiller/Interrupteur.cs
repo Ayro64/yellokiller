@@ -20,6 +20,8 @@ namespace YelloKiller
             PorteOuverte = false;
             PortePosition = new Vector2(position.X, position.Y) + Vector2.One;
             rotation = 0;
+            carte.Cases[(int)portePosition.Y, (int)portePosition.X].EstFranchissable = false;
+            carte.Cases[(int)portePosition.Y, (int)portePosition.X + 1].EstFranchissable = false;
         }
 
         public void LoadContent(ContentManager content)
