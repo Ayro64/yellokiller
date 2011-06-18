@@ -133,6 +133,46 @@ namespace YelloKiller
             ScreenManager.AddScreen(editorSavePop, ControllingPlayer);
         }
 
+        void F1Selected(object sender, PlayerIndexEventArgs e)
+        {
+            ChangerStyle(TypeCase.herbe);
+        }
+
+        void F2Selected(object sender, PlayerIndexEventArgs e)
+        {
+            ChangerStyle(TypeCase.herbeFoncee);
+        }
+
+        void F3Selected(object sender, PlayerIndexEventArgs e)
+        {
+            ChangerStyle(TypeCase.terre);
+        }
+
+        void F4Selected(object sender, PlayerIndexEventArgs e)
+        {
+            ChangerStyle(TypeCase.parquet);
+        }
+
+        void F5Selected(object sender, PlayerIndexEventArgs e)
+        {
+            Labyrinthe.CreerLabyrintheSimple(carte);
+        }
+
+        void F6Selected(object sender, PlayerIndexEventArgs e)
+        {
+            Labyrinthe.CreerLabyrintheDouble(carte);
+        }
+
+        void F7Selected(object sender, PlayerIndexEventArgs e)
+        {
+            Labyrinthe.CreerLabyrintheTriple(carte);
+        }
+
+        void F8Selected(object sender, PlayerIndexEventArgs e)
+        {
+            Labyrinthe.CreerLabyrintheQuadruple(carte);
+        }
+
         #endregion
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
@@ -163,6 +203,14 @@ namespace YelloKiller
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
                 PauseMenuScreen pauseMenuScreen = new PauseMenuScreen(0, 2, game);
                 pauseMenuScreen.SaveMapMenuEntrySelected += SaveMapMenuAccepted;
+                pauseMenuScreen.F1 += F1Selected;
+                pauseMenuScreen.F2 += F2Selected;
+                pauseMenuScreen.F3 += F3Selected;
+                pauseMenuScreen.F4 += F4Selected;
+                pauseMenuScreen.F5 += F5Selected;
+                pauseMenuScreen.F6 += F6Selected;
+                pauseMenuScreen.F7 += F7Selected;
+                pauseMenuScreen.F8 += F8Selected;
                 ScreenManager.AddScreen(pauseMenuScreen, ControllingPlayer, true);
             }
 

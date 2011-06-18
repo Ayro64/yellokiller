@@ -18,10 +18,20 @@ namespace YelloKiller
         uint lan;
         YellokillerGame game;
         public event EventHandler<PlayerIndexEventArgs> SaveMapMenuEntrySelected;
+        public event EventHandler<PlayerIndexEventArgs> F1;
+        public event EventHandler<PlayerIndexEventArgs> F2;
+        public event EventHandler<PlayerIndexEventArgs> F3;
+        public event EventHandler<PlayerIndexEventArgs> F4;
+        public event EventHandler<PlayerIndexEventArgs> F5;
+        public event EventHandler<PlayerIndexEventArgs> F6;
+        public event EventHandler<PlayerIndexEventArgs> F7;
+        public event EventHandler<PlayerIndexEventArgs> F8;
+
         MenuEntry resumeGameMenuEntry;
         MenuEntry saveMapMenuEntry;
         MenuEntry loadMapMenuEntry;
         MenuEntry deleteMapMenuEntry;
+        MenuEntry presetsMenuEntry;
         MenuEntry optionsGameMenuEntry;
         MenuEntry quitGameMenuEntry;
 
@@ -70,8 +80,10 @@ namespace YelloKiller
                 saveMapMenuEntry = new MenuEntry(Langue.tr("PausEditSave"));
                 loadMapMenuEntry = new MenuEntry(Langue.tr("PausEditLoad"));
                 deleteMapMenuEntry = new MenuEntry(Langue.tr("PausEditDel"));
+                presetsMenuEntry = new MenuEntry(Langue.tr("Presets"));
                 loadMapMenuEntry.Selected += LoadMapMenuEntrySelected;
                 deleteMapMenuEntry.Selected += DeleteMapMenuEntrySelected;
+                presetsMenuEntry.Selected += PresetsMapMenuEntrySelected;
                 MenuEntries.Add(loadMapMenuEntry);
             }
 
@@ -124,13 +136,33 @@ namespace YelloKiller
             ScreenManager.AddScreen(new DelMapMenuScreen(game), e.PlayerIndex, true);
         }
 
+        void PresetsMapMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            Presets presetsScreen = new Presets(game);
+            presetsScreen.F1Selected += F1;
+            presetsScreen.F1Selected += OnCancel;
+            presetsScreen.F2Selected += F2;
+            presetsScreen.F2Selected += OnCancel;
+            presetsScreen.F3Selected += F3;
+            presetsScreen.F3Selected += OnCancel;
+            presetsScreen.F4Selected += F4;
+            presetsScreen.F4Selected += OnCancel;
+            presetsScreen.F5Selected += F5;
+            presetsScreen.F5Selected += OnCancel;
+            presetsScreen.F6Selected += F6;
+            presetsScreen.F6Selected += OnCancel;
+            presetsScreen.F7Selected += F7;
+            presetsScreen.F7Selected += OnCancel;
+            presetsScreen.F8Selected += F8;
+            presetsScreen.F8Selected += OnCancel;
+            ScreenManager.AddScreen(presetsScreen, e.PlayerIndex, true);
+        }
+
         /// <summary>
         /// Event handler for when the Options menu entry is selected.
         /// </summary>
         public void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            OptionsMenuScreen Options = new OptionsMenuScreen(mod, game);
-
             ScreenManager.AddScreen(new OptionsMenuScreen(mod, game), e.PlayerIndex, true);
         }
 
@@ -169,6 +201,7 @@ namespace YelloKiller
                 saveMapMenuEntry.Selected += SaveMapMenuEntrySelected;
                 MenuEntries.Add(saveMapMenuEntry);
                 MenuEntries.Add(deleteMapMenuEntry);
+                MenuEntries.Add(presetsMenuEntry);
                 MenuEntries.Add(optionsGameMenuEntry);
                 MenuEntries.Add(quitGameMenuEntry);
             }
@@ -194,6 +227,8 @@ namespace YelloKiller
                 resumeGameMenuEntry.Text = Langue.tr("PausEditRes");
                 quitGameMenuEntry.Text = Langue.tr("PausEditQuit");
                 saveMapMenuEntry.Text = Langue.tr("PausEditSave");
+                deleteMapMenuEntry.Text = Langue.tr("PausEditDel");
+                presetsMenuEntry.Text = Langue.tr("Presets");
                 loadMapMenuEntry.Text = Langue.tr("PausEditLoad");
             }
             else
