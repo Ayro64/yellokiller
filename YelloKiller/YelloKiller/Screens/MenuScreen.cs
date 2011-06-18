@@ -109,7 +109,8 @@ namespace YelloKiller
         /// </summary>
         protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
         {
-            menuEntries[selectedEntry].OnSelectEntry(playerIndex);
+            if (menuEntries.Count > 0)
+                menuEntries[selectedEntry].OnSelectEntry(playerIndex);
         }
 
 
@@ -168,7 +169,7 @@ namespace YelloKiller
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
             // the movement slow down as it nears the end).
-            
+
             float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
 
             /*
