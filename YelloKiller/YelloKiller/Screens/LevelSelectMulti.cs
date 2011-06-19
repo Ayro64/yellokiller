@@ -17,15 +17,11 @@ namespace YelloKiller
         YellokillerGame game;
 
         string menuTitle = Langue.tr("Multi"), level = Langue.tr("Level");
-        int selectedEntry = 0;
+        int selectedEntry = 0, page = 0, maxpage;
         ContentManager content;
         Texture2D levelSelectBkground, blankTexture, padlock;
         Color Color;
         Color titleColor;
-
-        bool[] unlocked;
-        List<string> storyMissions;
-        List<string> fileEntries;
 
         #endregion
 
@@ -36,6 +32,10 @@ namespace YelloKiller
         /// </summary>
         public LevelSelectMulti(YellokillerGame game)
         {
+            bool[] unlocked;
+            List<string> storyMissions;
+            List<string> fileEntries;
+
             this.game = game;
 
             storyMissions = new List<string>();
@@ -71,7 +71,9 @@ namespace YelloKiller
                 if (storyMissions.Contains(str))
                     menuEntry.IsLocked = !unlocked[(int.Parse(entryName[0].ToString())) - 1];
 
+
                 menuEntry.Selected += LevelMenuEntrySelected;
+
                 levels.Add(menuEntry);
 
             }
@@ -87,6 +89,8 @@ namespace YelloKiller
 
             // Add entries to the menu.
             levels.Add(abortMenuEntry);
+
+            maxpage = (levels.Count - 2) / 8;
         }
 
         /// <summary>
@@ -133,7 +137,17 @@ namespace YelloKiller
             if (input.IsMenuLeft(ControllingPlayer))
             {
                 AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
-                if (selectedEntry > 0)
+                if (selectedEntry == 0)
+                {
+                    page = maxpage;
+                    selectedEntry = levels.Count - 1;
+                }
+                else if (selectedEntry == (page * 8) && page > 0)
+                {
+                    page--;
+                    selectedEntry--;
+                }
+                else if (selectedEntry > 0)
                     selectedEntry--;
             }
 
@@ -141,7 +155,17 @@ namespace YelloKiller
             if (input.IsMenuRight(ControllingPlayer))
             {
                 AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
-                if (selectedEntry < (levels.Count - 1))
+                if (selectedEntry == (page + 1) * 8 - 1 && selectedEntry < (levels.Count - 2))
+                {
+                    page++;
+                    selectedEntry++;
+                }
+                else if (selectedEntry == levels.Count - 1)
+                {
+                    page = 0;
+                    selectedEntry = 0;
+                }
+                else if (selectedEntry < levels.Count - 1)
                     selectedEntry++;
             }
 
@@ -150,23 +174,39 @@ namespace YelloKiller
             {
                 AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
                 if (selectedEntry == levels.Count - 1)
-                    selectedEntry -= 1;
-                else if (selectedEntry > 3)
-                    selectedEntry -= 4;
-                else
+                    selectedEntry--;
+                else if (page == 0 && selectedEntry < 4)
+                {
+                    page = maxpage;
                     selectedEntry = levels.Count - 1;
+                }
+                else if (selectedEntry > (page * 8) + 3)
+                    selectedEntry -= 4;
+                else if (page > 0 && selectedEntry <= (page * 8) + 3)
+                {
+                    selectedEntry -= 4;
+                    page--;
+                }
             }
 
             // Move to the down menu entry?
             if (input.IsMenuDown(ControllingPlayer))
             {
                 AudioEngine.SoundBank.PlayCue("sonMenuBoutton");
-                if (selectedEntry < levels.Count - 4)
+                if (selectedEntry == levels.Count - 1)
+                {
+                    page = 0;
+                    selectedEntry = 0;
+                }
+                else if (selectedEntry > (page * 8) + 3 && page < maxpage)
+                {
+                    page++;
+                    selectedEntry += 4;
+                }
+                else if (selectedEntry <= (page * 8) + 3)
                     selectedEntry += 4;
                 else if (selectedEntry < levels.Count - 1)
                     selectedEntry = levels.Count - 1;
-                else
-                    selectedEntry = 0;
             }
 
             // Accept or cancel the menu? We pass in our ControllingPlayer, which may
@@ -226,12 +266,19 @@ namespace YelloKiller
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 
+            if (selectedEntry < 0)
+                selectedEntry = 0;
+            else if (selectedEntry > levels.Count - 1)
+                selectedEntry = levels.Count - 1;
+
             // Update each nested MenuEntry object.
-            for (int i = 0; i < levels.Count; i++)
+            for (int i = page * 8; i < Math.Min((page + 1) * 8, levels.Count - 1); i++)
             {
                 bool isSelected = IsActive && (i == selectedEntry);
                 levels[i].Update(this, isSelected, gameTime);
             }
+
+            levels[levels.Count - 1].Update(this, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime);
         }
 
         /// <summary>
@@ -270,12 +317,10 @@ namespace YelloKiller
                              new Color(fade, fade, fade));
 
             // Draw each menu entry in turn.
-            for (int i = 0; i < levels.Count - 1; i++)
+            for (int i = page * 8; i < Math.Min((page + 1) * 8, levels.Count - 1); i++)
             {
                 MenuEntry menuEntry = levels[i];
-
                 bool isSelected = IsActive && (i == selectedEntry);
-
                 menuEntry.CDraw(this, position, isSelected, gameTime, titleColor, TransitionPosition);
 
                 // Miniatures
@@ -284,17 +329,18 @@ namespace YelloKiller
                 if (menuEntry.IsLocked)
                     spriteBatch.Draw(padlock, new Rectangle((int)position.X - 117, (int)position.Y - 197, 225, 170), Color.White);
 
-                if ((i % 4 == 0) || (i % 4 == 1) || (i % 4 == 2))
+                if (((i % 8) % 4 == 0) || ((i % 8) % 4 == 1) || ((i % 8) % 4 == 2))
                     position.X += 250;
                 else
                 {
                     position.Y += (menuEntry.GetHeight(this) + 200);
                     position.X -= 750;
                 }
+
             }
 
             // Bouton Retour
-            position.X -= (((levels.Count - 1) % 4) * 250) + 30;
+            position.X = 100;
             position.Y = viewport.Height - 50;
             abortMenuEntry.Draw(this, position, (IsActive && (levels.Count - 1 == selectedEntry)), gameTime, titleColor, TransitionPosition);
 
