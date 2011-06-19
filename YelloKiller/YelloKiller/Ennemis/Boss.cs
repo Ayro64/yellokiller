@@ -7,8 +7,6 @@ namespace YelloKiller
 {
     class Boss : Ennemi
     {
-        Case depart;
-        Case arrivee;
         Vector2 Origine;
 
         public Boss(Vector2 position, Carte carte)
@@ -34,16 +32,30 @@ namespace YelloKiller
         public void Update(GameTime gameTime, List<Shuriken> shuriken, Carte carte, Hero hero1, Hero hero2, Rectangle camera, List<EnnemiMort> morts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), hero1, hero2, morts, fumeeHeros1, fumeeHeros2);
-            
+
+            if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumeeHeros1, fumeeHeros2))
+            {
+                Depart = carte.Cases[Y, X];
+                Arrivee = carte.Cases[hero1.Y, hero1.X];
+                Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
+            }
+            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle, fumeeHeros1, fumeeHeros2)))
+            {
+                Depart = carte.Cases[Y, X];
+                Arrivee = carte.Cases[hero2.Y, hero2.X];
+                Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
+            }
+
             if (Math.Abs(Origine.X - X) > 4 || Math.Abs(Origine.Y - Y) > 4)
             {
                 RetourneCheminNormal = true;
-                depart = carte.Cases[Y, X];
-                arrivee = carte.Cases[(int)Origine.Y, (int)Origine.X];
-                Chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
+                Depart = carte.Cases[Y, X];
+                Arrivee = carte.Cases[(int)Origine.Y, (int)Origine.X];
+                Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
             }
             else
                 RetourneCheminNormal = false;
+
 
             IA.Esquive_Shuriken.Boss_Esquive_Shuriken(hero1, this, shuriken, carte, camera);
 

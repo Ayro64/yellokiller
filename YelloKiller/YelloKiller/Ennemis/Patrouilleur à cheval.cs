@@ -19,7 +19,7 @@ namespace YelloKiller
             Etape = 0;
             parcours = new List<Case>();
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 22, 30);
-            VitesseSprite = 4;
+            VitesseSprite = 2;
             VitesseAnimation = 0.016f;
             Identifiant = id;
         }
@@ -34,12 +34,36 @@ namespace YelloKiller
         {
             base.Update(gameTime, new Rectangle((int)Index * 24, 0, 23, 30), new Rectangle((int)Index * 24, 65, 23, 30), new Rectangle((int)Index * 24, 98, 23, 30), new Rectangle((int)Index * 24, 34, 23, 30), hero1, hero2, morts, fumeeHeros1, fumeeHeros2);
 
-            if (!this.Alerte && (!Collision(hero1.Rectangle, fumeeHeros1, fumeeHeros2) || hero2 != null && !Collision(hero2.Rectangle, fumeeHeros1, fumeeHeros2)) && parcours.Count > 1)
+            if (parcours.Count > 1 && RetourneCheminNormal)
                 if (Chemin == null || Chemin.Count == 0)
                 {
                     Etape++;
-                    Chemin = Pathfinding.CalculChemin(carte, parcours[Etape % parcours.Count], parcours[(Etape + 1) % parcours.Count]);
+                    Depart = carte.Cases[(int)positionDesiree.Y / 28, (int)positionDesiree.X / 28];
+                    Arrivee = parcours[(Etape + 1) % parcours.Count];
+                    Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
                 }
+
+            if (Collision(hero1.Rectangle, fumeeHeros1, fumeeHeros2))
+            {
+                Depart = carte.Cases[(int)positionDesiree.Y / 28, (int)positionDesiree.X / 28];
+                Arrivee = carte.Cases[hero1.Y, hero1.X];
+                Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
+                RetourneCheminNormal = false;
+            }
+            else if (hero2 != null && Collision(hero2.Rectangle, fumeeHeros1, fumeeHeros2))
+            {
+                Depart = carte.Cases[(int)positionDesiree.Y / 28, (int)positionDesiree.X / 28];
+                Arrivee = carte.Cases[hero2.Y, hero2.X];
+                Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
+                RetourneCheminNormal = false;
+            }
+            else if (this.Alerte && !RetourneCheminNormal && Chemin.Count == 0)
+            {
+                Depart = carte.Cases[(int)positionDesiree.Y / 28, (int)positionDesiree.X / 28];
+                Arrivee = parcours[Etape % parcours.Count];
+                Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
+                RetourneCheminNormal = true;
+            }
         }
 
         public void CreerTrajet(Carte carte)
