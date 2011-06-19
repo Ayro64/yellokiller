@@ -956,14 +956,14 @@
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_ColorKeyColor>255, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
-    <Compile Include="Menu Editeur de Maps\origine_hero1.png">
-      <Name>origine_hero1</Name>
+    <Compile Include="Menu Editeur de Maps\origine_heros1.png">
+      <Name>origine_heros1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_ColorKeyColor>255, 255, 0, 255</ProcessorParameters_ColorKeyColor>
     </Compile>
-    <Compile Include="Menu Editeur de Maps\origine_hero2.png">
-      <Name>origine_hero2</Name>
+    <Compile Include="Menu Editeur de Maps\origine_heros2.png">
+      <Name>origine_heros2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_ColorKeyColor>255, 255, 0, 255</ProcessorParameters_ColorKeyColor>
