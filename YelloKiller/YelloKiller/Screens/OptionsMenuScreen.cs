@@ -26,6 +26,7 @@ namespace YelloKiller
         MenuEntry sonMenuEntry;
         MenuEntry soundVolumeMenuEntry;
         MenuEntry fxVolumeMenuEntry;
+        MenuEntry eraseMenuEntry;
         MenuEntry backMenuEntry;
         YellokillerGame game;
 
@@ -76,6 +77,7 @@ namespace YelloKiller
             sonMenuEntry = new MenuEntry(string.Empty);
             soundVolumeMenuEntry = new MenuEntry(string.Empty);
             fxVolumeMenuEntry = new MenuEntry(string.Empty);
+            eraseMenuEntry = new MenuEntry(string.Empty);
             backMenuEntry = new MenuEntry(string.Empty);
 
             SetMenuEntryText();
@@ -86,6 +88,7 @@ namespace YelloKiller
             fullScreenMenuEntry.Selected += FullScreenMenuEntrySelected;
 
             sonMenuEntry.Selected += SonMenuEntrySelected;
+            eraseMenuEntry.Selected += EraseMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
@@ -94,8 +97,10 @@ namespace YelloKiller
             MenuEntries.Add(sonMenuEntry);
             MenuEntries.Add(soundVolumeMenuEntry);
             MenuEntries.Add(fxVolumeMenuEntry);
+            MenuEntries.Add(eraseMenuEntry);
             MenuEntries.Add(backMenuEntry);
         }
+
 
 
         /// <summary>
@@ -115,6 +120,7 @@ namespace YelloKiller
             sonMenuEntry.Text = Langue.tr("OptSound") + son[currentSon];
             soundVolumeMenuEntry.Text = Langue.tr("OptMusic") + (uint)soundVolume;
             fxVolumeMenuEntry.Text = Langue.tr("OptFX") + fxVolume;
+            eraseMenuEntry.Text = Langue.tr("Erase");
             backMenuEntry.Text = Langue.tr("Back");
         }
 
@@ -225,6 +231,35 @@ namespace YelloKiller
         {
             currentSon = (uint)((currentSon + 1) % son.Length);
             SetMenuEntryText();
+        }
+
+        void EraseMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            string message = Langue.tr("SaveDel");
+            MessageBoxScreen confirmExitMessageBox = new MessageBoxScreen(message);
+            confirmExitMessageBox.Accepted += MessageBoxAccepted;
+            ScreenManager.AddScreen(confirmExitMessageBox, e.PlayerIndex);
+        }
+
+        /// <summary>
+        /// Event handler for when the user selects ok on the "are you sure
+        /// you want to delete" message box. This uses the loading screen to
+        /// transition from the game back to the main menu screen.
+        /// </summary>
+        void MessageBoxAccepted(object sender, PlayerIndexEventArgs e)
+        {
+            Properties.Unlocked.Default.C2 = false;
+            Properties.Unlocked.Default.C3 = false;
+            Properties.Unlocked.Default.C4 = false;
+            Properties.Unlocked.Default.C5 = false;
+            Properties.Unlocked.Default.C6 = false;
+            Properties.Unlocked.Default.S2 = false;
+            Properties.Unlocked.Default.S3 = false;
+            Properties.Unlocked.Default.S4 = false;
+            Properties.Unlocked.Default.S5 = false;
+            Properties.Unlocked.Default.S6 = false;
+
+            Properties.Unlocked.Default.Save();
         }
 
         protected override void OnCancel(PlayerIndex playerIndex)

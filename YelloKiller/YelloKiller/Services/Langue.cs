@@ -79,7 +79,9 @@ namespace YelloKiller
                         case ("PausEditDel"):
                             return "Supprimer une carte";
                         case("MapDel"):
-                            return "Êtes vous sûr de vouloir supprimer ";
+                            return "Êtes-vous sûr de vouloir supprimer ";
+                        case ("SaveDel"):
+                            return "Êtes-vous sûr de vouloir effacer\nles données sauvegardées?";
                         case ("PausGameRes"):
                             return "Reprendre le jeu";
                         case ("PausGameQuit"):
@@ -103,6 +105,8 @@ namespace YelloKiller
                             return "Volume de la musique : ";
                         case ("OptFX"):
                             return "Volume des sons : ";
+                        case("Erase"):
+                            return "Effacer la sauvegarde";
                         case("FullScr"):
                             return "Plein écran : ";
                         case ("WinMsg"):
@@ -226,6 +230,8 @@ namespace YelloKiller
                             return "Karte lösen";
                         case ("MapDel"):
                             return "Sind sie sicher, dass sie\ndie Karte lösen wollen ";
+                        case ("SaveDel"):
+                            return "Sind sie sicher, dass sie die\ngespeicherte Dateien lösen wollen?";
                         case ("PausGameRes"):
                             return "Weiter spielen";
                         case ("PausGameQuit"):
@@ -249,6 +255,8 @@ namespace YelloKiller
                             return "Musik lautstarke : ";
                         case ("OptFX"):
                             return "Effekte lautstarke : ";
+                        case ("Erase"):
+                            return "Gespeicherte Dateien lösen";
                         case ("FullScr"):
                             return "Vollbild : ";
                         case ("WinMsg"):
@@ -372,6 +380,8 @@ namespace YelloKiller
                             return "Delete a map";
                         case ("MapDel"):
                             return "Are you sure you want to delete ";
+                        case ("SaveDel"):
+                            return "Are you sure you want to delete all saved data?";
                         case ("PausGameRes"):
                             return "Resume play";
                         case ("PausGameQuit"):
@@ -395,6 +405,8 @@ namespace YelloKiller
                             return "Music Volume : ";
                         case ("OptFX"):
                             return "FX Volume : ";
+                        case ("Erase"):
+                            return "Erase unlocked levels";
                         case ("FullScr"):
                             return "Full Screen : ";
                         case ("WinMsg"):
