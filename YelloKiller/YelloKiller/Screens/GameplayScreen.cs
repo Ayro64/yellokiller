@@ -189,8 +189,7 @@ namespace YelloKiller
             foreach (Interrupteur bouton in carte.Interrupteurs)
             {
                 interrupteurs.Add(new Interrupteur(bouton.Position, carte));
-                interrupteurs[interrupteurs.Count - 1].ChangerPosition(carte, bouton.PortePosition);
-                interrupteurs[interrupteurs.Count - 1].MettreLaRotation(carte, bouton.rotation);
+                interrupteurs[interrupteurs.Count - 1].MettreLaRotation(carte, bouton.rotation, bouton.PortePosition);
             }
 
             ennemisMorts = new List<EnnemiMort>();
@@ -588,8 +587,7 @@ namespace YelloKiller
             {
                 dessert = banana.Split(',');
                 interrupteurs.Add(new Interrupteur(new Vector2(Convert.ToInt32(dessert[0]), Convert.ToInt32(dessert[1])), carte));
-                interrupteurs[interrupteurs.Count - 1].PortePosition = new Vector2(Convert.ToInt32(dessert[2]), Convert.ToInt32(dessert[3]));
-                interrupteurs[interrupteurs.Count - 1].MettreLaRotation(carte, Convert.ToByte(dessert[4]));
+                interrupteurs[interrupteurs.Count - 1].MettreLaRotation(carte, Convert.ToByte(dessert[4]), new Vector2(Convert.ToInt32(dessert[2]), Convert.ToInt32(dessert[3])));
                 interrupteurs[interrupteurs.Count - 1].PorteOuverte = Convert.ToBoolean(dessert[5]);
 
                 if (interrupteurs[interrupteurs.Count - 1].PorteOuverte)
