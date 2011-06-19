@@ -137,11 +137,11 @@ namespace YelloKiller
             file.WriteLine(position.X + "," + position.Y + "," + PortePosition.X + "," + PortePosition.Y + "," + rotation + "," + PorteOuverte);
         }
 
-        public void MettreLaRotation(Carte carte, byte nouvelleRotation)
+        public void MettreLaRotation(Carte carte, byte nouvelleRotation, Vector2 nouvellePosition)
         {
-            carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = true;
-            carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = true;
-                    
+            carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].Type > 0;
+            carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].Type > 0;
+            PortePosition = nouvellePosition;
             this.rotation = nouvelleRotation;
 
             switch (rotation)

@@ -746,9 +746,9 @@ namespace YelloKiller
             if (type == TypeCase.eau)
             {
                 if (temps < 800)
-                    spriteBatch.Draw(texture, position, null, Color.White, 0, Vector2.Zero,1, SpriteEffects.None, 1);
+                    spriteBatch.Draw(texture, position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
                 else if (temps < 1500)
-                    spriteBatch.Draw(texture, position + new Vector2(28, 0), null, Color.White, MathHelper.Pi / 2, Vector2.Zero,1, SpriteEffects.None, 1);
+                    spriteBatch.Draw(texture, position + new Vector2(28, 0), null, Color.White, MathHelper.Pi / 2, Vector2.Zero, 1, SpriteEffects.None, 1);
                 else if (temps < 2500)
                     spriteBatch.Draw(texture, position + new Vector2(28, 28), null, Color.White, MathHelper.Pi, Vector2.Zero, 1, SpriteEffects.None, 1);
                 else if (temps < 4000)
@@ -761,8 +761,8 @@ namespace YelloKiller
 
                 temps += gameTime.ElapsedGameTime.TotalMilliseconds;
             }
-            else
-                spriteBatch.Draw(texture, position, Color.White);
+
+            spriteBatch.Draw(texture, position, Color.White);
         }
 
         public void DrawInMapEditor(SpriteBatch spriteBatch, ContentManager content)
