@@ -105,7 +105,7 @@ namespace YelloKiller
         /// </summary>
         void SoloMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, false, e.PlayerIndex, new LevelSelectSolo(game));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new LevelSelectSolo(game));
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace YelloKiller
         /// </summary>
         void CoopMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, false, e.PlayerIndex, new LevelSelectMulti(game));
+            LoadingScreen.Load(ScreenManager, true, e.PlayerIndex, new LevelSelectMulti(game));
         }
 
         ///<summary>
