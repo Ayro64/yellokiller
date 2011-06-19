@@ -25,8 +25,8 @@ namespace YelloKiller
             for (int i = 0; i < NombreTexturesGauche; i++)
                 listeRectanglesGauche.Add(new Rectangle(0, 0, 28, 28));
 
-            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_heross1"));
-            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_heross2"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_heros1"));
+            listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_heros2"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_garde"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_patrouilleur"));
             listeTexturesGauche.Add(content.Load<Texture2D>(@"Menu Editeur de Maps\origine_patrouilleur_a_cheval"));
