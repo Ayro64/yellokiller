@@ -21,11 +21,11 @@ namespace YelloKiller.Moteur_Particule
             get { return random; }
         }
 
-        int direction_hero2_appele;
-        int direction_hero1_appele;
+        int direction_heross2_appele;
+        int direction_heross1_appele;
 
-        ExplosionParticleSystem hadoken_hero1;
-        ExplosionParticleSystem hadoken_hero2;
+        ExplosionParticleSystem hadoken_heross1;
+        ExplosionParticleSystem hadoken_heross2;
         ExplosionSmokeParticleSystem fume_hadoken;
         Statue_Explosion explosion_statue;
         SmokePlumeParticleSystem fume;
@@ -41,14 +41,14 @@ namespace YelloKiller.Moteur_Particule
 
         #region Rectangle tout moche Hero 1
 
-        bool rectangle_hadoken_est_present_hero1 = true; // utiliser pour effacer le rectangle apres collision 
+        bool rectangle_hadoken_est_present_heross1 = true; // utiliser pour effacer le rectangle apres collision 
         public bool Rectangle_Hadoken_Est_Present_Hero1
         {
-            get { return rectangle_hadoken_est_present_hero1; }
-            set { rectangle_hadoken_est_present_hero1 = value; }
+            get { return rectangle_hadoken_est_present_heross1; }
+            set { rectangle_hadoken_est_present_heross1 = value; }
         }
 
-        public Rectangle Rectangle_Hadoken_hero1(Hero hero) // pour gerer les collisions
+        public Rectangle Rectangle_Hadoken_heross1(Heros heros) // pour gerer les collisions
         {
             if (GameplayScreen.Timer_Hero1 > 1) // apres une seconde mon timer se remet a zero
             {
@@ -56,39 +56,39 @@ namespace YelloKiller.Moteur_Particule
                 GameplayScreen.Timer_Hero1 = 0;
             }
 
-            if (hadoken_hero1.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
+            if (hadoken_heross1.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
                 Rectangle_Hadoken_Est_Present_Hero1 = true;// je reinitialise donc mon rectangle
-                direction_hero1_appele = hero.SourceRectangle.Value.Y;
-            }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
+                direction_heross1_appele = heros.SourceRectangle.Value.Y;
+            }// direction du heros au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon heros.
 
 
-            if (hadoken_hero1.FreeParticleCount < 100 && Rectangle_Hadoken_Est_Present_Hero1 && GameplayScreen.Timer_Hero1 > 0.5)
+            if (hadoken_heross1.FreeParticleCount < 100 && Rectangle_Hadoken_Est_Present_Hero1 && GameplayScreen.Timer_Hero1 > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
-                if (direction_hero1_appele == 133) // haut
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y - (hadoken_hero1.LongueurHadoken * 28), 28, (hadoken_hero1.LongueurHadoken * 28));
+                if (direction_heross1_appele == 133) // haut
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y - (hadoken_heross1.LongueurHadoken * 28), 28, (hadoken_heross1.LongueurHadoken * 28));
 
-                else if (direction_hero1_appele == 198) // bas
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (hadoken_hero1.LongueurHadoken * 28));
+                else if (direction_heross1_appele == 198) // bas
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y, 28, (hadoken_heross1.LongueurHadoken * 28));
 
-                else if (direction_hero1_appele == 230) // gauche
-                    return new Rectangle((int)hero.position.X - (hadoken_hero1.LongueurHadoken * 28), (int)hero.position.Y, (hadoken_hero1.LongueurHadoken * 28), 28);
+                else if (direction_heross1_appele == 230) // gauche
+                    return new Rectangle((int)heros.position.X - (hadoken_heross1.LongueurHadoken * 28), (int)heros.position.Y, (hadoken_heross1.LongueurHadoken * 28), 28);
 
                 else // droite
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, (hadoken_hero1.LongueurHadoken * 28), 28);
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y, (hadoken_heross1.LongueurHadoken * 28), 28);
             }
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
         }
 
-        bool rectangle_ball_est_present_hero1 = true;
+        bool rectangle_ball_est_present_heross1 = true;
         public bool Rectangle_Ball_Est_Present_Hero1
         {
-            get { return rectangle_ball_est_present_hero1; }
-            set { rectangle_ball_est_present_hero1 = value; }
+            get { return rectangle_ball_est_present_heross1; }
+            set { rectangle_ball_est_present_heross1 = value; }
         }
 
-        public Rectangle Rectangle_Ball_hero1(Hero hero) // pour gerer les collisions
+        public Rectangle Rectangle_Ball_heross1(Heros heros) // pour gerer les collisions
         {
             if (GameplayScreen.Timer_Hero1 > 1) // apres une seconde mon timer se remet a zero
             {
@@ -99,23 +99,23 @@ namespace YelloKiller.Moteur_Particule
             if (ball1.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
                 Rectangle_Ball_Est_Present_Hero1 = true;// je reinitialise donc mon rectangle
-                direction_hero1_appele = hero.SourceRectangle.Value.Y;
-            }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
+                direction_heross1_appele = heros.SourceRectangle.Value.Y;
+            }// direction du heros au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon heros.
 
 
             if (ball1.FreeParticleCount < 100 && Rectangle_Ball_Est_Present_Hero1 && GameplayScreen.Timer_Hero1 > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
-                if (direction_hero1_appele == 133) // haut
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y - (ball1.LongueurBall * 28), 28, (ball1.LongueurBall * 28));
+                if (direction_heross1_appele == 133) // haut
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y - (ball1.LongueurBall * 28), 28, (ball1.LongueurBall * 28));
 
-                else if (direction_hero1_appele == 198) // bas
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (ball1.LongueurBall * 28));
+                else if (direction_heross1_appele == 198) // bas
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y, 28, (ball1.LongueurBall * 28));
 
-                else if (direction_hero1_appele == 230) // gauche
-                    return new Rectangle((int)hero.position.X - (ball1.LongueurBall * 28), (int)hero.position.Y, (ball1.LongueurBall * 28), 28);
+                else if (direction_heross1_appele == 230) // gauche
+                    return new Rectangle((int)heros.position.X - (ball1.LongueurBall * 28), (int)heros.position.Y, (ball1.LongueurBall * 28), 28);
 
                 else  // droite
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, (ball1.LongueurBall * 28), 28);
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y, (ball1.LongueurBall * 28), 28);
             }
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
@@ -125,14 +125,14 @@ namespace YelloKiller.Moteur_Particule
 
         #region Rectangle tout moche Hero 2
 
-        bool rectangle_hadoken_est_present_hero2 = true;
+        bool rectangle_hadoken_est_present_heross2 = true;
         public bool Rectangle_Hadoken_Est_Present_Hero2
         {
-            get { return rectangle_hadoken_est_present_hero2; }
-            set { rectangle_hadoken_est_present_hero2 = value; }
+            get { return rectangle_hadoken_est_present_heross2; }
+            set { rectangle_hadoken_est_present_heross2 = value; }
         }
 
-        public Rectangle Rectangle_Hadoken_hero2(Hero hero) // pour gerer les collisions
+        public Rectangle Rectangle_Hadoken_heross2(Heros heros) // pour gerer les collisions
         {
             if (GameplayScreen.Timer_Hero2 > 1) // apres une seconde mon timer se remet a zero
             {
@@ -140,39 +140,39 @@ namespace YelloKiller.Moteur_Particule
                 GameplayScreen.Timer_Hero2 = 0;
             }
 
-            if (hadoken_hero2.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
+            if (hadoken_heross2.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
                 Rectangle_Hadoken_Est_Present_Hero2 = true;// je reinitialise donc mon rectangle
-                direction_hero2_appele = hero.SourceRectangle.Value.Y;
-            }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
+                direction_heross2_appele = heros.SourceRectangle.Value.Y;
+            }// direction du heros au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon heros.
 
 
-            if (hadoken_hero2.FreeParticleCount < 100 && Rectangle_Hadoken_Est_Present_Hero2 && GameplayScreen.Timer_Hero2 > 0.5)
+            if (hadoken_heross2.FreeParticleCount < 100 && Rectangle_Hadoken_Est_Present_Hero2 && GameplayScreen.Timer_Hero2 > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
-                if (direction_hero2_appele == 133) // haut
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y - (hadoken_hero2.LongueurHadoken * 28), 28, (hadoken_hero2.LongueurHadoken * 28));
+                if (direction_heross2_appele == 133) // haut
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y - (hadoken_heross2.LongueurHadoken * 28), 28, (hadoken_heross2.LongueurHadoken * 28));
 
-                else if (direction_hero2_appele == 198) // bas
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (hadoken_hero2.LongueurHadoken * 28));
+                else if (direction_heross2_appele == 198) // bas
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y, 28, (hadoken_heross2.LongueurHadoken * 28));
 
-                else if (direction_hero2_appele == 230) // gauche
-                    return new Rectangle((int)hero.position.X - (hadoken_hero2.LongueurHadoken * 28), (int)hero.position.Y, (hadoken_hero2.LongueurHadoken * 28), 28);
+                else if (direction_heross2_appele == 230) // gauche
+                    return new Rectangle((int)heros.position.X - (hadoken_heross2.LongueurHadoken * 28), (int)heros.position.Y, (hadoken_heross2.LongueurHadoken * 28), 28);
 
                 else // droite
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, (hadoken_hero2.LongueurHadoken * 28), 28);
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y, (hadoken_heross2.LongueurHadoken * 28), 28);
             }
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
         }
 
-        bool rectangle_ball_est_present_hero2 = true;
+        bool rectangle_ball_est_present_heross2 = true;
         public bool Rectangle_Ball_Est_Present_Hero2
         {
-            get { return rectangle_ball_est_present_hero2; }
-            set { rectangle_ball_est_present_hero2 = value; }
+            get { return rectangle_ball_est_present_heross2; }
+            set { rectangle_ball_est_present_heross2 = value; }
         }
 
-        public Rectangle Rectangle_Ball_hero2(Hero hero) // pour gerer les collisions
+        public Rectangle Rectangle_Ball_heross2(Heros heros) // pour gerer les collisions
         {
             if (GameplayScreen.Timer_Hero2 > 1) // apres une seconde mon timer se remet a zero
             {
@@ -183,23 +183,23 @@ namespace YelloKiller.Moteur_Particule
             if (ball2.FreeParticleCount == 100) // lorsque freeparticulecount = 100 le hadoken est termine 
             {
                 Rectangle_Ball_Est_Present_Hero2 = true;// je reinitialise donc mon rectangle
-                direction_hero2_appele = hero.SourceRectangle.Value.Y;
-            }// direction du hero au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon hero.
+                direction_heross2_appele = heros.SourceRectangle.Value.Y;
+            }// direction du heros au moment de l'appel pour pas quelle change durant le meme appel si je tourne mon heros.
 
 
             if (ball2.FreeParticleCount < 100 && Rectangle_Ball_Est_Present_Hero2 && GameplayScreen.Timer_Hero2 > 0.5)
             { // j'attend une demi seconde avant de créer le rectangle pour geré la collision
-                if (direction_hero2_appele == 133) // haut
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y - (ball2.LongueurBall * 28), 28, (ball2.LongueurBall * 28));
+                if (direction_heross2_appele == 133) // haut
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y - (ball2.LongueurBall * 28), 28, (ball2.LongueurBall * 28));
 
-                else if (direction_hero2_appele == 198) // bas
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, 28, (ball2.LongueurBall * 28));
+                else if (direction_heross2_appele == 198) // bas
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y, 28, (ball2.LongueurBall * 28));
 
-                else if (direction_hero2_appele == 230) // gauche
-                    return new Rectangle((int)hero.position.X - (ball2.LongueurBall * 28), (int)hero.position.Y, (ball2.LongueurBall * 28), 28);
+                else if (direction_heross2_appele == 230) // gauche
+                    return new Rectangle((int)heros.position.X - (ball2.LongueurBall * 28), (int)heros.position.Y, (ball2.LongueurBall * 28), 28);
 
                 else // droite 
-                    return new Rectangle((int)hero.position.X, (int)hero.position.Y, (ball2.LongueurBall * 28), 28);
+                    return new Rectangle((int)heros.position.X, (int)heros.position.Y, (ball2.LongueurBall * 28), 28);
             }
             else // pas de rectangle
                 return new Rectangle(0, 0, 0, 0);
@@ -243,18 +243,18 @@ namespace YelloKiller.Moteur_Particule
 
         #region Rectangle tout moche Fumigene
 
-        public Rectangle Rectangle_Fumigene_Heros1(Hero hero) // pour gerer les collisions
+        public Rectangle Rectangle_Fumigene_Heros1(Heros heros) // pour gerer les collisions
         {
             if (fumigene1.FreeParticleCount < 135 )
-                return new Rectangle((int)hero.position.X - 28 * 3, (int)hero.position.Y - 28 * 3, 28 * 6, 28 * 6);
+                return new Rectangle((int)heros.position.X - 28 * 3, (int)heros.position.Y - 28 * 3, 28 * 6, 28 * 6);
             else // pas de rectangle
                 return Rectangle.Empty;
         }
 
-        public Rectangle Rectangle_Fumigene_Heros2(Hero hero) // pour gerer les collisions
+        public Rectangle Rectangle_Fumigene_Heros2(Heros heros) // pour gerer les collisions
         {
-            if (hero != null && fumigene2.FreeParticleCount < 135)
-                return new Rectangle((int)hero.position.X - 28 * 3, (int)hero.position.Y - 28 * 3, 28 * 6, 28 * 6);
+            if (heros != null && fumigene2.FreeParticleCount < 135)
+                return new Rectangle((int)heros.position.X - 28 * 3, (int)heros.position.Y - 28 * 3, 28 * 6, 28 * 6);
             else
                 return Rectangle.Empty;
         }
@@ -265,15 +265,15 @@ namespace YelloKiller.Moteur_Particule
 
         #region Initialization
 
-        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Carte carte, Hero hero1, Hero hero2, List<Statue> _statue)
+        public MoteurParticule(YellokillerGame game, SpriteBatch spriteBatch, Carte carte, Heros heross1, Heros heross2, List<Statue> _statue)
         {
             this.game = game;
             this.spriteBatch = spriteBatch;
 
-            hadoken_hero1 = new ExplosionParticleSystem(game, 1, hero1, carte, 50);
-            game.Components.Add(hadoken_hero1);
+            hadoken_heross1 = new ExplosionParticleSystem(game, 1, heross1, carte, 50);
+            game.Components.Add(hadoken_heross1);
 
-            ball1 = new BallParticleSystem(game, 1, hero1, carte);
+            ball1 = new BallParticleSystem(game, 1, heross1, carte);
             game.Components.Add(ball1);
 
             foreach (Statue statue in _statue)
@@ -285,7 +285,7 @@ namespace YelloKiller.Moteur_Particule
             fume_hadoken = new ExplosionSmokeParticleSystem(game, 2);
             game.Components.Add(fume_hadoken);
 
-            fumigene1 = new Fumigene(game, 9, hero1, carte);
+            fumigene1 = new Fumigene(game, 9, heross1, carte);
             game.Components.Add(fumigene1);
 
             fume = new SmokePlumeParticleSystem(game, 9);
@@ -293,10 +293,10 @@ namespace YelloKiller.Moteur_Particule
 
             try
             {
-                hadoken_hero2 = new ExplosionParticleSystem(game, 1, hero2, carte, 50);
-                game.Components.Add(hadoken_hero2);
-                ball2 = new BallParticleSystem(game, 1, hero2, carte);
-                fumigene2 = new Fumigene(game, 9, hero2, carte);
+                hadoken_heross2 = new ExplosionParticleSystem(game, 1, heross2, carte, 50);
+                game.Components.Add(hadoken_heross2);
+                ball2 = new BallParticleSystem(game, 1, heross2, carte);
+                fumigene2 = new Fumigene(game, 9, heross2, carte);
                 game.Components.Add(fumigene2);
                 game.Components.Add(ball2);
             }
@@ -306,22 +306,22 @@ namespace YelloKiller.Moteur_Particule
 
         #endregion
 
-        public void UpdateFumigene(Hero hero)
+        public void UpdateFumigene(Heros heros)
         {           
-            if (hero.NumeroHero == 1)
-                fumigene1.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+            if (heros.NumeroHero == 1)
+                fumigene1.AddParticles(new Vector2(heros.position.X - Camera.X, heros.position.Y - Camera.Y), heros);
             else
-                fumigene2.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+                fumigene2.AddParticles(new Vector2(heros.position.X - Camera.X, heros.position.Y - Camera.Y), heros);
         }
 
-        public void UpdateExplosions_hero(Hero hero)
+        public void UpdateExplosions_heros(Heros heros)
         {
-            if (hero.NumeroHero == 1)
-                hadoken_hero1.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+            if (heros.NumeroHero == 1)
+                hadoken_heross1.AddParticles(new Vector2(heros.position.X - Camera.X, heros.position.Y - Camera.Y), heros);
             else
-                hadoken_hero2.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+                hadoken_heross2.AddParticles(new Vector2(heros.position.X - Camera.X, heros.position.Y - Camera.Y), heros);
 
-            fume_hadoken.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+            fume_hadoken.AddParticles(new Vector2(heros.position.X - Camera.X, heros.position.Y - Camera.Y), heros);
         }
 
         public void UpdateExplosions_statue(Statue statue)
@@ -329,12 +329,12 @@ namespace YelloKiller.Moteur_Particule
             explosion_statue.AddParticles(new Vector2(statue.position.X - Camera.X + (statue.SourceRectangle.Value.Width / 2), statue.position.Y - Camera.Y + (statue.SourceRectangle.Value.Height / 2)), statue);
         }
 
-        public void UpdateBall(Hero hero)
+        public void UpdateBall(Heros heros)
         {
-            if (hero.NumeroHero == 1)
-                ball1.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+            if (heros.NumeroHero == 1)
+                ball1.AddParticles(new Vector2(heros.position.X - Camera.X, heros.position.Y - Camera.Y), heros);
             else
-                ball2.AddParticles(new Vector2(hero.position.X - Camera.X, hero.position.Y - Camera.Y), hero);
+                ball2.AddParticles(new Vector2(heros.position.X - Camera.X, heros.position.Y - Camera.Y), heros);
         }
 
         public static float RandomBetween(float min, float max) // random utiliser pour toutes les proprietes 

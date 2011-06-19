@@ -11,13 +11,13 @@ namespace YelloKiller.Moteur_Particule
     class Fumigene : ParticleSystem
     {
 
-        Hero hero;
+        Heros heros;
         Carte carte;
 
-        public Fumigene(YellokillerGame game, int howManyEffects, Hero hero, Carte carte)
+        public Fumigene(YellokillerGame game, int howManyEffects, Heros heros, Carte carte)
             : base(game, howManyEffects)
         {
-            this.hero = hero;
+            this.heros = heros;
             this.carte = carte;
         }
 

@@ -18,7 +18,7 @@ namespace YelloKiller
         public ContentManager Content { get { return content; } }
         SpriteFont gameFont;
         SpriteBatch spriteBatch;
-        Hero hero1, hero2;
+        Heros heross1, heross2;
         uint ennemisTues, retries;
         GameOverScreen GOScreen;
 
@@ -52,38 +52,38 @@ namespace YelloKiller
 
         #endregion
 
-        #region Timer hero 1
+        #region Timer heros 1
 
-        private static double timer_hero1 = 0;
+        private static double timer_heross1 = 0;
 
         public static double Timer_Hero1
         {
-            get { return timer_hero1; }
-            set { timer_hero1 = value; }
+            get { return timer_heross1; }
+            set { timer_heross1 = value; }
         }
 
-        private static bool enable_timer_hero1 = false;
+        private static bool enable_timer_heross1 = false;
         public static bool Enable_Timer_Hero1
         {
-            get { return enable_timer_hero1; }
-            set { enable_timer_hero1 = value; }
+            get { return enable_timer_heross1; }
+            set { enable_timer_heross1 = value; }
         }
         #endregion
 
-        #region Timer hero 2
-        private static double timer_hero2 = 0;
+        #region Timer heros 2
+        private static double timer_heross2 = 0;
 
         public static double Timer_Hero2
         {
-            get { return timer_hero2; }
-            set { timer_hero2 = value; }
+            get { return timer_heross2; }
+            set { timer_heross2 = value; }
         }
 
-        private static bool enable_timer_hero2 = false;
+        private static bool enable_timer_heross2 = false;
         public static bool Enable_Timer_Hero2
         {
-            get { return enable_timer_hero2; }
-            set { enable_timer_hero2 = value; }
+            get { return enable_timer_heross2; }
+            set { enable_timer_heross2 = value; }
         }
         #endregion
 
@@ -108,19 +108,19 @@ namespace YelloKiller
 
             camera = new Rectangle(0, 0, 36, 24);
 
-            hero1 = new Hero(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightAlt, Keys.RightControl, Keys.RightShift, 1);
-            hero1.NombreShuriken = carte.Munitions[0];
-            hero1.NombreHadoken = carte.Munitions[1];
-            hero1.NombreFumigene = carte.Munitions[2];
-            hero1.NombreBall = carte.Munitions[3];
+            heross1 = new Heros(new Vector2(28 * carte.OrigineJoueur1.X + 5, 28 * carte.OrigineJoueur1.Y + 1), Keys.Up, Keys.Down, Keys.Right, Keys.Left, Keys.RightAlt, Keys.RightControl, Keys.RightShift, 1);
+            heross1.NombreShuriken = carte.Munitions[0];
+            heross1.NombreHadoken = carte.Munitions[1];
+            heross1.NombreFumigene = carte.Munitions[2];
+            heross1.NombreBall = carte.Munitions[3];
 
             if (jeuEnCoop)
             {
-                hero2 = new Hero(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.A, Keys.Space, Keys.LeftShift, 2);
-                hero2.NombreShuriken = carte.Munitions[4];
-                hero2.NombreHadoken = carte.Munitions[5];
-                hero2.NombreFumigene = carte.Munitions[6];
-                hero2.NombreBall = carte.Munitions[7];
+                heross2 = new Heros(new Vector2(28 * carte.OrigineJoueur2.X + 5, 28 * carte.OrigineJoueur2.Y + 1), Keys.Z, Keys.S, Keys.D, Keys.Q, Keys.A, Keys.Space, Keys.LeftShift, 2);
+                heross2.NombreShuriken = carte.Munitions[4];
+                heross2.NombreHadoken = carte.Munitions[5];
+                heross2.NombreFumigene = carte.Munitions[6];
+                heross2.NombreBall = carte.Munitions[7];
             }
             // Centre la camera sur le personnage... plus ou moins...
             if (carte.OrigineJoueur1.X - 16 < 0)
@@ -206,13 +206,13 @@ namespace YelloKiller
             spriteBatch = ScreenManager.SpriteBatch;
             gameFont = content.Load<SpriteFont>("courier");
 
-            moteurparticule = new MoteurParticule(game, spriteBatch, carte, hero1, hero2, _statues);
+            moteurparticule = new MoteurParticule(game, spriteBatch, carte, heross1, heross2, _statues);
 
             audio.LoadContent(content);
 
-            hero1.LoadContent(content, 2);
+            heross1.LoadContent(content, 2);
             if (jeuEnCoop)
-                hero2.LoadContent(content, 2);
+                heross2.LoadContent(content, 2);
 
             if (Dark_Hero != null)
                 Dark_Hero.LoadContent(content, 2);
@@ -259,56 +259,56 @@ namespace YelloKiller
             if (IsActive)
             {
                 if (Enable_Timer_Hero1)
-                    timer_hero1 += gameTime.ElapsedGameTime.TotalSeconds;
+                    timer_heross1 += gameTime.ElapsedGameTime.TotalSeconds;
                 if (Enable_Timer_Hero2)
-                    timer_hero2 += gameTime.ElapsedGameTime.TotalSeconds;
+                    timer_heross2 += gameTime.ElapsedGameTime.TotalSeconds;
 
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
                 AudioEngine.Update();
 
-                hero1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero2, interrupteurs);
+                heross1.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, heross2, interrupteurs);
                 if (jeuEnCoop)
-                    hero2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, hero1, interrupteurs);
+                    heross2.Update(gameTime, carte, ref camera, moteurparticule, _shuriken, content, heross1, interrupteurs);
 
                 foreach (Garde garde in _gardes)
-                    garde.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
+                    garde.Update(gameTime, carte, heross1, heross2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(heross1), moteurparticule.Rectangle_Fumigene_Heros2(heross2));
 
                 foreach (Patrouilleur patrouilleur in _patrouilleurs)
-                    patrouilleur.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
+                    patrouilleur.Update(gameTime, carte, heross1, heross2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(heross1), moteurparticule.Rectangle_Fumigene_Heros2(heross2));
 
                 foreach (Patrouilleur_a_cheval patrouilleurACheval in _patrouilleurs_a_chevaux)
-                    patrouilleurACheval.Update(gameTime, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
+                    patrouilleurACheval.Update(gameTime, carte, heross1, heross2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(heross1), moteurparticule.Rectangle_Fumigene_Heros2(heross2));
 
                 foreach (Boss boss in _boss)
-                    boss.Update(gameTime, _shuriken, carte, hero1, hero2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(hero1), moteurparticule.Rectangle_Fumigene_Heros2(hero2));
+                    boss.Update(gameTime, _shuriken, carte, heross1, heross2, camera, ennemisMorts, moteurparticule.Rectangle_Fumigene_Heros1(heross1), moteurparticule.Rectangle_Fumigene_Heros2(heross2));
 
                 foreach (Statue statue in _statues)
                     statue.Update(gameTime, moteurparticule);
 
                 if (Dark_Hero != null)
-                    Dark_Hero.Update(gameTime, carte, hero1, camera);
+                    Dark_Hero.Update(gameTime, carte, heross1, camera);
 
                 if (timer_update_collision > 0)
                 {
-                    Moteur_physique.Collision_Armes_Ennemis(hero1, hero2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, AudioEngine.SoundBank, ref ennemisMorts, content);
+                    Moteur_physique.Collision_Armes_Ennemis(heross1, heross2, _gardes, _patrouilleurs, _patrouilleurs_a_chevaux, _boss, _shuriken, moteurparticule, AudioEngine.SoundBank, ref ennemisMorts, content);
                     if (timer_update_collision > 5)
                         timer_update_collision = 0;
                 }
 
-                if (Moteur_physique.Collision_Garde_Heros(_gardes, hero1, hero2, AudioEngine.SoundBank) ||
-                    Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, hero1, hero2, AudioEngine.SoundBank) ||
-                    Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, hero1, hero2, AudioEngine.SoundBank) ||
-                    Moteur_physique.Collision_Boss_Heros(_boss, hero1, hero2, AudioEngine.SoundBank) ||
-                    Moteur_physique.Collision_Heros_ExplosionStatues(_statues, hero1, hero2, moteurparticule, AudioEngine.SoundBank) ||
-                    Moteur_physique.Collision_Heros_Dark_Hero(hero1, Dark_Hero, AudioEngine.SoundBank))
+                if (Moteur_physique.Collision_Garde_Heros(_gardes, heross1, heross2, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_Patrouilleur_Heros(_patrouilleurs, heross1, heross2, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_PatrouilleurACheval_Heros(_patrouilleurs_a_chevaux, heross1, heross2, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_Boss_Heros(_boss, heross1, heross2, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_Heros_ExplosionStatues(_statues, heross1, heross2, moteurparticule, AudioEngine.SoundBank) ||
+                    Moteur_physique.Collision_Heros_Dark_Hero(heross1, Dark_Hero, AudioEngine.SoundBank))
                     Mourir();
 
-                if (Moteur_physique.Collision_Heros_Bonus(ref hero1, ref hero2, ref _bonus, AudioEngine.SoundBank))
+                if (Moteur_physique.Collision_Heros_Bonus(ref heross1, ref heross2, ref _bonus, AudioEngine.SoundBank))
                     SauvegarderCheckPoint();
 
-                Moteur_physique.Collisions_Heros_Interrupteurs(hero1, hero2, ref interrupteurs, AudioEngine.SoundBank, carte);
+                Moteur_physique.Collisions_Heros_Interrupteurs(heross1, heross2, ref interrupteurs, AudioEngine.SoundBank, carte);
 
-                if (_boss.Count == 0 && (hero1.EstAuPointDeDepart || hero2 != null && hero2.EstAuPointDeDepart))
+                if (_boss.Count == 0 && (heross1.EstAuPointDeDepart || heross2 != null && heross2.EstAuPointDeDepart))
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, ennemisTues - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
                     audio.Close();
@@ -375,15 +375,15 @@ namespace YelloKiller
                 }
             }
 
-            hero1.Draw_Hero(spriteBatch, camera);
+            heross1.Draw_Hero(spriteBatch, camera);
             if (jeuEnCoop)
-                hero2.Draw_Hero(spriteBatch, camera);
+                heross2.Draw_Hero(spriteBatch, camera);
 
             spriteBatch.Draw(textureBasFond, new Vector2(0, Taille_Ecran.HAUTEUR_ECRAN - 84), null, Color.PapayaWhip, 0, Vector2.Zero, new Vector2(ScreenManager.GraphicsDevice.Viewport.Width/* (float)Taille_Ecran.LARGEUR_ECRAN *// (float)textureBasFond.Width, 1.3f), SpriteEffects.None, 1);
 
-            hero1.Draw_Infos(spriteBatch);
+            heross1.Draw_Infos(spriteBatch);
             if (jeuEnCoop)
-                hero2.Draw_Infos(spriteBatch);
+                heross2.Draw_Infos(spriteBatch);
 
             if(_boss.Count > 0)
             spriteBatch.DrawString(ScreenManager.font, Langue.tr("Remaining") + _boss.Count.ToString(), new Vector2(Taille_Ecran.LARGEUR_ECRAN - 400, Taille_Ecran.HAUTEUR_ECRAN - 25), Color.DarkBlue);
@@ -447,11 +447,11 @@ namespace YelloKiller
 
             file.WriteLine(retries);
             file.WriteLine("Hero 1");
-            hero1.SauvegarderCheckPoint(ref file);
-            if (hero2 != null)
+            heross1.SauvegarderCheckPoint(ref file);
+            if (heross2 != null)
             {
                 file.WriteLine("Hero 2");
-                hero2.SauvegarderCheckPoint(ref file);
+                heross2.SauvegarderCheckPoint(ref file);
             }
 
             file.WriteLine("Gardes");
@@ -498,11 +498,11 @@ namespace YelloKiller
             retries = Convert.ToUInt32(file.ReadLine()) + 1;
             file.ReadLine();
 
-            hero1.ChargerCheckPoint(ref file);
+            heross1.ChargerCheckPoint(ref file);
             banana = file.ReadLine();
             if (banana == "Hero 2")
             {
-                hero2.ChargerCheckPoint(ref file);
+                heross2.ChargerCheckPoint(ref file);
                 banana = file.ReadLine();
             }
 
