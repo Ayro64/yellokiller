@@ -95,9 +95,9 @@ namespace YelloKiller
         public void LoadContent(ContentManager content, int maxIndex)
         {
             if (NumeroHero == 1)
-                base.LoadContent(content, @"Feuilles de sprites\Hero1");
+                base.LoadContent(content, @"Feuilles de sprites\Heros1");
             else
-                base.LoadContent(content, @"Feuilles de sprites\Hero2");
+                base.LoadContent(content, @"Feuilles de sprites\Heros2");
 
             flamme = content.Load<Texture2D>("barre de vitesse");
             textureShuriken = content.Load<Texture2D>(@"Barre infos\shuriken barre");

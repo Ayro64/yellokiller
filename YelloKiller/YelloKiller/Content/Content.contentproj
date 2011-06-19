@@ -896,13 +896,13 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Feuilles de sprites\Hero1.png">
-      <Name>Hero1</Name>
+    <Compile Include="Feuilles de sprites\Heros1.png">
+      <Name>Heros1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Feuilles de sprites\Hero2.png">
-      <Name>Hero2</Name>
+    <Compile Include="Feuilles de sprites\Heros2.png">
+      <Name>Heros2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
