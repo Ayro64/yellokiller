@@ -425,7 +425,14 @@ namespace YelloKiller
             // Draw the message box text.
             spriteBatch.DrawString(font, Message, textPosition, color);
             textPosition.Y += font.MeasureString(Message).Y - (font.MeasureString("\n").Y / 2);
-            spriteBatch.DrawString(font, playerName + (underscore ? "_\n" : "\n"), textPosition, nameColor);
+            try
+            {
+                spriteBatch.DrawString(font, playerName + (underscore ? "_\n" : "\n"), textPosition, nameColor);
+            }
+            catch (ArgumentException)
+            {
+                playerName = playerName.Remove(playerName.Length - 1);
+            }
             textPosition.Y += font.MeasureString(playerName + 'A').Y;
             spriteBatch.DrawString(font, UsageText, textPosition, color);
 
