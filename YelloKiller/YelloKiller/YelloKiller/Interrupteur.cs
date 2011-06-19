@@ -170,31 +170,46 @@ namespace YelloKiller
             switch (rotation)
             {
                 case 0:
-                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = true;
-                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = true;
-                    carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X].EstFranchissable = false;
-                    carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X + 1].EstFranchissable = false;
+                    if (nouvelleposition.X + 1 < Taille_Map.LARGEUR_MAP)
+                    {
+                        carte.Cases[(int)PortePosition.Y, (int)PortePosition.X].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y, (int)PortePosition.X + 1].EstFranchissable = true;
+                        carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X].EstFranchissable = false;
+                        carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X + 1].EstFranchissable = false;
+                        PortePosition = nouvelleposition;
+                    }
                     break;
                 case 1:
-                    carte.Cases[(int)PortePosition.Y, (int)PortePosition.X - 1].EstFranchissable = true;
-                    carte.Cases[(int)PortePosition.Y + 1, (int)PortePosition.X - 1].EstFranchissable = true;
-                    carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X - 1].EstFranchissable = false;
-                    carte.Cases[(int)nouvelleposition.Y + 1, (int)nouvelleposition.X - 1].EstFranchissable = false;
+                    if (nouvelleposition.X - 1 >= 0 && nouvelleposition.Y + 1 < Taille_Map.HAUTEUR_MAP)
+                    {
+                        carte.Cases[(int)PortePosition.Y, (int)PortePosition.X - 1].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y + 1, (int)PortePosition.X - 1].EstFranchissable = true;
+                        carte.Cases[(int)nouvelleposition.Y, (int)nouvelleposition.X - 1].EstFranchissable = false;
+                        carte.Cases[(int)nouvelleposition.Y + 1, (int)nouvelleposition.X - 1].EstFranchissable = false;
+                        PortePosition = nouvelleposition;
+                    }
                     break;
                 case 2:
-                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 1].EstFranchissable = true;
-                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 2].EstFranchissable = true;
-                    carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X - 1].EstFranchissable = false;
-                    carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X - 2].EstFranchissable = false;
+                    if (nouvelleposition.X - 2 >= 0 && nouvelleposition.Y - 1 >= 0)
+                    {
+                        carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 1].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X - 2].EstFranchissable = true;
+                        carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X - 1].EstFranchissable = false;
+                        carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X - 2].EstFranchissable = false;
+                        PortePosition = nouvelleposition;
+                    }
                     break;
                 case 3:
-                    carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X].EstFranchissable = true;
-                    carte.Cases[(int)PortePosition.Y - 2, (int)PortePosition.X].EstFranchissable = true;
-                    carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X].EstFranchissable = false;
-                    carte.Cases[(int)nouvelleposition.Y - 2, (int)nouvelleposition.X].EstFranchissable = false;
+                    if (nouvelleposition.Y - 2 >= 0)
+                    {
+                        carte.Cases[(int)PortePosition.Y - 1, (int)PortePosition.X].EstFranchissable = true;
+                        carte.Cases[(int)PortePosition.Y - 2, (int)PortePosition.X].EstFranchissable = true;
+                        carte.Cases[(int)nouvelleposition.Y - 1, (int)nouvelleposition.X].EstFranchissable = false;
+                        carte.Cases[(int)nouvelleposition.Y - 2, (int)nouvelleposition.X].EstFranchissable = false;
+                        PortePosition = nouvelleposition;
+                    }
                     break;
             }
-            PortePosition = nouvelleposition;
         }
     }
 }
