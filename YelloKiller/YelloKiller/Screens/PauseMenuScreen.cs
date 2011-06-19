@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
 using System;
+using System.IO;
 #endregion
 
 namespace YelloKiller
@@ -175,6 +176,8 @@ namespace YelloKiller
         {
             LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
                                                            new MainMenuScreen(game));
+            if (File.Exists("checkTemp.tmp"))
+                File.Delete("checkTemp.tmp");
             MediaPlayer.Stop();
         }
 

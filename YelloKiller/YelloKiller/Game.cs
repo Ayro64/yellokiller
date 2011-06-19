@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace YelloKiller
 {
@@ -36,6 +37,8 @@ namespace YelloKiller
             // Create the screen manager component.
             screenManager = new ScreenManager(this);
 
+            if (File.Exists("checkTemp.tmp"))
+                File.Delete("checkTemp.tmp");
 
             Components.Add(screenManager);
 
