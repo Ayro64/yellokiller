@@ -6,7 +6,7 @@ namespace YelloKiller.IA
 {
     static class Esquive_Shuriken
     {
-        public static void Boss_Esquive_Shuriken(Hero hero, Boss boss, List<Shuriken> shuriken, Carte carte, Rectangle camera)
+        public static void Boss_Esquive_Shuriken(Heros heros, Boss boss, List<Shuriken> shuriken, Carte carte, Rectangle camera)
         {
             foreach (Shuriken _shuriken in shuriken)
             {

@@ -179,7 +179,7 @@
     </Compile>
     <Compile Include="YelloKiller\Bonus.cs" />
     <Compile Include="YelloKiller\Dimensions.cs" />
-    <Compile Include="YelloKiller\Hero.cs" />
+    <Compile Include="YelloKiller\Heros.cs" />
     <Compile Include="YelloKiller\Moteur physique.cs" />
     <Compile Include="YelloKiller\Interrupteur.cs" />
     <Compile Include="YelloKiller\Shuriken.cs" />

@@ -108,7 +108,7 @@ namespace YelloKiller.Moteur_Particule
         }
 
 
-        public void AddParticles(Vector2 where, Hero hero) // surcharge 
+        public void AddParticles(Vector2 where, Heros heros) // surcharge 
         {
             // the number of particles we want for this effect is a random number
             // somewhere between the two constants specified by the subclasses.
@@ -121,7 +121,7 @@ namespace YelloKiller.Moteur_Particule
                 // grab a particle from the freeParticles queue, and Initialize it.
                 Particle p = freeParticles[0];
                 freeParticles.RemoveAt(0);
-                InitializeParticle(p, where, hero);
+                InitializeParticle(p, where, heros);
             }
         }
 
@@ -159,17 +159,17 @@ namespace YelloKiller.Moteur_Particule
             }
         }
 
-        protected virtual void InitializeParticle(Particle p, Vector2 where, Hero hero) // surcharge
+        protected virtual void InitializeParticle(Particle p, Vector2 where, Heros heros) // surcharge
         {
             // first, call PickRandomDirection to figure out which way the particle
             // will be moving. velocity and acceleration's values will come from this.
             Vector2 direction;
 
-            if (hero.Regarde_Haut)
+            if (heros.Regarde_Haut)
                 direction = new Vector2(0, -1);
-            else if (hero.Regarde_Bas)
+            else if (heros.Regarde_Bas)
                 direction = new Vector2(0, 1);
-            else if (hero.Regarde_Gauche)
+            else if (heros.Regarde_Gauche)
                 direction = new Vector2(-1, 0);
             else
                 direction = new Vector2(1, 0);

@@ -18,7 +18,7 @@ namespace YelloKiller
         state_sabre,
     };
 
-    class Hero : Sprite
+    class Heros : Sprite
     {
         Vector2 positionDesiree, caseDeDepart;
         Texture2D flamme, textureShuriken, textureHadoken, textureBouleDeFeu, textureFumigene, textureSabre;
@@ -30,7 +30,7 @@ namespace YelloKiller
         public int NombreBall { get; set; }
         int maxIndex, vitesseSprite;
         public byte NumeroHero { get; private set; }
-        public bool ishero { get; private set; }
+        public bool isheros { get; private set; }
         public bool attaque { get; private set; }
         bool animation_sabre;
         bool monter, descendre, droite, gauche;
@@ -39,7 +39,7 @@ namespace YelloKiller
         State currentState = State.state_shuriken;
         int state_sabre = 0;
 
-        public Hero(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, byte numeroHero)
+        public Heros(Vector2 position, Keys up, Keys down, Keys right, Keys left, Keys changer_arme, Keys tirer, Keys courir, byte numeroHero)
             : base(position)
         {
             this.position = position;
@@ -60,7 +60,7 @@ namespace YelloKiller
             index = 0;
             maxIndex = 0;
             rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 16, 26);
-            ishero = false;
+            isheros = false;
             this.up = up;
             this.down = down;
             this.right = right;
@@ -111,7 +111,7 @@ namespace YelloKiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, ContentManager content, Hero hero2, List<Interrupteur> interrupteurs)
+        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, ContentManager content, Heros heross2, List<Interrupteur> interrupteurs)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
@@ -175,7 +175,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer_Hero1 == 0)
                         {
                             NombreHadoken--;
-                            particule.UpdateExplosions_hero(this);
+                            particule.UpdateExplosions_heros(this);
                             AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
@@ -185,7 +185,7 @@ namespace YelloKiller
                         if (GameplayScreen.Timer_Hero2 == 0)
                         {
                             NombreHadoken--;
-                            particule.UpdateExplosions_hero(this);
+                            particule.UpdateExplosions_heros(this);
                             AudioEngine.SoundBank.PlayCue("hadoken");
                         }
                     }
@@ -226,12 +226,12 @@ namespace YelloKiller
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().Tirer() : false)) && NombreShuriken > 0)
                     {
                         NombreShuriken--;
-                        ishero = true;
+                        isheros = true;
                         _shuriken.Add(new Shuriken(position, this, content));
                         AudioEngine.SoundBank.PlayCue("shuriken");
                     }
                     else
-                        ishero = false;
+                        isheros = false;
                     break;
                 case State.state_sabre:
                     if ((ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(tirer) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().Tirer() : false))
@@ -239,32 +239,32 @@ namespace YelloKiller
                     {
                         if (Regarde_Bas)
                         {
-                            AllerEnBas(carte, hero2, interrupteurs);
+                            AllerEnBas(carte, heross2, interrupteurs);
                             AudioEngine.SoundBank.PlayCue("sabre");
                         }
                         else if (Regarde_Haut)
                         {
-                            AllerEnHaut(carte, hero2, interrupteurs);
+                            AllerEnHaut(carte, heross2, interrupteurs);
                             AudioEngine.SoundBank.PlayCue("sabre");
                         }
                         else if (Regarde_Gauche)
                         {
-                            AllerAGauche(carte, hero2, interrupteurs);
+                            AllerAGauche(carte, heross2, interrupteurs);
                             AudioEngine.SoundBank.PlayCue("sabre");
                         }
                         else if (Regarde_Droite)
                         {
-                            AllerADroite(carte, hero2, interrupteurs);
+                            AllerADroite(carte, heross2, interrupteurs);
                             AudioEngine.SoundBank.PlayCue("sabre");
                         }
 
                         animation_sabre = true;
-                        ishero = true;
+                        isheros = true;
                         attaque = true;
                     }
                     else
                     {
-                        ishero = false;
+                        isheros = false;
                         attaque = false;
                     }
                     break;
@@ -394,16 +394,16 @@ namespace YelloKiller
                 }
 
                 if (ServiceHelper.Get<IKeyboardService>().TouchePressee(up) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().AllerEnHaut() : false))
-                    AllerEnHaut(carte, hero2, interrupteurs);
+                    AllerEnHaut(carte, heross2, interrupteurs);
 
                 else if (ServiceHelper.Get<IKeyboardService>().TouchePressee(down) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().AllerEnBas() : false))                
-                    AllerEnBas(carte, hero2, interrupteurs);
+                    AllerEnBas(carte, heross2, interrupteurs);
 
                 else if (ServiceHelper.Get<IKeyboardService>().TouchePressee(left) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().AllerAGauche() : false))                
-                    AllerAGauche(carte, hero2, interrupteurs);
+                    AllerAGauche(carte, heross2, interrupteurs);
 
                 else if (ServiceHelper.Get<IKeyboardService>().TouchePressee(right) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().AllerADroite() : false))                
-                    AllerADroite(carte, hero2, interrupteurs);
+                    AllerADroite(carte, heross2, interrupteurs);
             }
         }
 
@@ -537,10 +537,10 @@ namespace YelloKiller
             }
         }
 
-        private void AllerEnBas(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
+        private void AllerEnBas(Carte carte, Heros heross2, List<Interrupteur> interrupteurs)
         {
             if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && carte.Cases[Y + 1, X].EstFranchissable &&
-                (hero2 == null ? true : (position.X != hero2.PositionDesiree.X || position.Y + 28 != hero2.PositionDesiree.Y)))
+                (heross2 == null ? true : (position.X != heross2.PositionDesiree.X || position.Y + 28 != heross2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
                 positionDesiree.X = position.X;
@@ -553,10 +553,10 @@ namespace YelloKiller
             Regarde_Gauche = false;
         }
 
-        private void AllerEnHaut(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
+        private void AllerEnHaut(Carte carte, Heros heross2, List<Interrupteur> interrupteurs)
         {
             if (position.Y > 5 && carte.Cases[Y - 1, X].EstFranchissable &&
-                (hero2 == null ? true : (position.X != hero2.PositionDesiree.X || position.Y - 28 != hero2.PositionDesiree.Y)))
+                (heross2 == null ? true : (position.X != heross2.PositionDesiree.X || position.Y - 28 != heross2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
                 positionDesiree.X = position.X;
@@ -569,10 +569,10 @@ namespace YelloKiller
             Regarde_Gauche = false;
         }
 
-        private void AllerAGauche(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
+        private void AllerAGauche(Carte carte, Heros heross2, List<Interrupteur> interrupteurs)
         {
             if (position.X > 8 && carte.Cases[Y, X - 1].EstFranchissable &&
-                (hero2 == null ? true : (position.X - 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y)))
+                (heross2 == null ? true : (position.X - 28 != heross2.PositionDesiree.X || position.Y != heross2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
                 positionDesiree.X = position.X - 28;
@@ -585,10 +585,10 @@ namespace YelloKiller
             Regarde_Gauche = true;
         }
 
-        private void AllerADroite(Carte carte, Hero hero2, List<Interrupteur> interrupteurs)
+        private void AllerADroite(Carte carte, Heros heross2, List<Interrupteur> interrupteurs)
         {
             if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && carte.Cases[Y, X + 1].EstFranchissable &&
-                (hero2 == null ? true : (position.X + 28 != hero2.PositionDesiree.X || position.Y != hero2.PositionDesiree.Y)))
+                (heross2 == null ? true : (position.X + 28 != heross2.PositionDesiree.X || position.Y != heross2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
                 positionDesiree.X = position.X + 28;

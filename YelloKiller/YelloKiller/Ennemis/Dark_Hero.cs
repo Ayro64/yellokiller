@@ -33,18 +33,18 @@ namespace YelloKiller
             MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, Hero hero, Rectangle camera)
+        public void Update(GameTime gameTime, Carte carte, Heros heros, Rectangle camera)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
 
-            if (pseudoChrono < 10 && Math.Sqrt((this.X - hero.X) * (this.X - hero.X) + (this.Y - hero.Y) * (this.Y - hero.Y)) > 5)
+            if (pseudoChrono < 10 && Math.Sqrt((this.X - heros.X) * (this.X - heros.X) + (this.Y - heros.Y) * (this.Y - heros.Y)) > 5)
                 pseudoChrono += gameTime.ElapsedGameTime.TotalSeconds;
             else
             {
                 pseudoChrono = 0;
                 depart = carte.Cases[Y, X];
-                arrivee = carte.Cases[hero.Y, hero.X];
+                arrivee = carte.Cases[heros.Y, heros.X];
                 chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
             }
 

@@ -12,8 +12,6 @@ namespace YelloKiller
     {
         Rectangle rectangle, champDeVision1, champDeVision2, champDeVision3;
         List<Case> chemin;
-        /*Carte carte;
-        Case depart, arrivee;*/
         public bool Alerte { get; set; }
         public bool RetourneCheminNormal { get; set; }
 
@@ -53,7 +51,7 @@ namespace YelloKiller
             this.MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Hero hero1, Hero hero2, List<EnnemiMort> ennemisMorts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
+        public void Update(GameTime gameTime, Rectangle sourceRectangle1, Rectangle sourceRectangle2, Rectangle sourceRectangle3, Rectangle sourceRectangle4, Heros heross1, Heros heross2, List<EnnemiMort> ennemisMorts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;

@@ -13,7 +13,7 @@ namespace YelloKiller
         float elapsed, circle;
         float tmpshuriken = 0;
 
-        public Shuriken(Vector2 position, Hero hero, ContentManager content)
+        public Shuriken(Vector2 position, Heros heros, ContentManager content)
             : base(position)
         {
             base.LoadContent(content, "shuriken");
@@ -27,15 +27,15 @@ namespace YelloKiller
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 12, 12);
 
-            if (hero.ishero == true)
+            if (heros.isheros == true)
             { 
-                if (hero.Regarde_Gauche)
+                if (heros.Regarde_Gauche)
                     direction = -Vector2.UnitX;
-                else if (hero.Regarde_Bas)
+                else if (heros.Regarde_Bas)
                     direction = Vector2.UnitY;
-                else if (hero.Regarde_Droite)
+                else if (heros.Regarde_Droite)
                     direction = Vector2.UnitX;
-                else if (hero.Regarde_Haut)
+                else if (heros.Regarde_Haut)
                     direction = -Vector2.UnitY;
             }
         }
