@@ -38,6 +38,7 @@ namespace YelloKiller
         uint currentLanguage;
         bool fullScreen;
         bool ToggleOK;
+        bool eraselected = false;
         uint currentSon;
         float soundVolume;
         uint fxVolume;
@@ -235,10 +236,20 @@ namespace YelloKiller
 
         void EraseMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            string message = Langue.tr("SaveDel");
-            MessageBoxScreen confirmExitMessageBox = new MessageBoxScreen(message);
-            confirmExitMessageBox.Accepted += MessageBoxAccepted;
-            ScreenManager.AddScreen(confirmExitMessageBox, e.PlayerIndex);
+            if (!eraselected)
+            {
+                eraselected = true;
+                MessageBoxScreen confirmExitMessageBox = new MessageBoxScreen(Langue.tr("SaveDel"));
+                confirmExitMessageBox.Accepted += MessageBoxAccepted;
+                confirmExitMessageBox.Accepted += MessageBoxCancelled;
+                confirmExitMessageBox.Cancelled += MessageBoxCancelled;
+                ScreenManager.AddScreen(confirmExitMessageBox, e.PlayerIndex);
+            }
+        }
+
+        void MessageBoxCancelled(object sender, PlayerIndexEventArgs e)
+        {
+            eraselected = false;
         }
 
         /// <summary>
@@ -286,7 +297,7 @@ namespace YelloKiller
                 spriteBatch.Begin();
                 // Rectangle noir des entrées menu.
                 spriteBatch.Draw(blankTexture,
-                                 new Rectangle(115, 210, 300, 230),
+                                 new Rectangle(115, 220, 330, 250),
                                  new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
                 // Celui du titre.

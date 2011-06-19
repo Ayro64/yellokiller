@@ -28,7 +28,7 @@ namespace YelloKiller
         {
             MenuEntry selected = sender as MenuEntry;
             ToDelete = selected.Text;
-            string message = Langue.tr("MapDel") + ToDelete + " ?";
+            string message = Langue.tr("MapDel") + ToDelete + " ?\n";
             MessageBoxScreen confirmExitMessageBox = new MessageBoxScreen(message);
             confirmExitMessageBox.Accepted += MessageBoxAccepted;
 
