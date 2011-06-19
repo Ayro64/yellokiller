@@ -12,10 +12,14 @@ namespace YelloKiller
     {
         Rectangle rectangle, champDeVision1, champDeVision2, champDeVision3;
         List<Case> chemin;
-        Carte carte;
-        Case depart, arrivee;
+        /*Carte carte;
+        Case depart, arrivee;*/
         public bool Alerte { get; set; }
         public bool RetourneCheminNormal { get; set; }
+
+        public Carte carte { get; set; }
+        public Case Depart { get; set; }
+        public Case Arrivee { get; set; }
 
         public Vector2 positionDesiree;
 
@@ -40,7 +44,7 @@ namespace YelloKiller
             champDeVision2 = new Rectangle(28 * X, 28 * Y + 28, 0, 0);
             champDeVision3 = new Rectangle(28 * X + 28, 28 * Y + 28, 0, 0);
             chemin = new List<Case>();
-            RetourneCheminNormal = false;
+            RetourneCheminNormal = true;
         }
 
         public void LoadContent(ContentManager content, int maxIndex, string Assetname)
@@ -55,19 +59,6 @@ namespace YelloKiller
             rectangle.Y = (int)position.Y + 1;
             UpdateChampDeVision(carte);
             MortDansLeChampDeVision(ennemisMorts, fumeeHeros1, fumeeHeros2);
-
-            if (!RetourneCheminNormal && Collision(hero1.Rectangle, fumeeHeros1, fumeeHeros2))
-            {
-                depart = carte.Cases[Y, X];
-                arrivee = carte.Cases[hero1.Y, hero1.X];
-                chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
-            }
-            else if (!RetourneCheminNormal && hero2 != null && (Collision(hero2.Rectangle, fumeeHeros1, fumeeHeros2)))
-            {
-                depart = carte.Cases[Y, X];
-                arrivee = carte.Cases[hero2.Y, hero2.X];
-                chemin = Pathfinding.CalculChemin(carte, depart, arrivee);
-            }
 
             if (chemin != null && chemin.Count != 0)
             {
@@ -102,7 +93,7 @@ namespace YelloKiller
                 }
             }
             else
-                Alerte = false;
+                this.Alerte = false;
 
             if (SourceRectangle.Value.Y == sourceRectangle1.Y)
             {
