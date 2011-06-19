@@ -62,6 +62,57 @@ namespace YelloKiller
 
             string[] fileEntries = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*." + comingfrom.Substring(comingfrom.Length - 4)), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*." + comingfrom.Substring(comingfrom.Length - 4)));
 
+            foreach (string str in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story"))
+            {
+                if (str.Substring(str.LastIndexOf('\\') + 1) == comingfrom)
+                {
+                    switch (comingfrom.Substring(comingfrom.Length - 4))
+                    {
+                        case ("solo"):
+                            switch (comingfrom.Substring(comingfrom.LastIndexOf('\\') + 1)[0])
+                            {
+                                case ('1'):
+                                    Properties.Unlocked.Default.S2 = true;
+                                    break;
+                                case ('2'):
+                                    Properties.Unlocked.Default.S3 = true;
+                                    break;
+                                case ('3'):
+                                    Properties.Unlocked.Default.S4 = true;
+                                    break;
+                                case ('4'):
+                                    Properties.Unlocked.Default.S5 = true;
+                                    break;
+                                case ('5'):
+                                    Properties.Unlocked.Default.S6 = true;
+                                    break;
+                            }
+                            break;
+                        case ("coop"):
+                            switch (comingfrom.Substring(comingfrom.LastIndexOf('\\') + 1)[0])
+                            {
+                                case ('1'):
+                                    Properties.Unlocked.Default.C2 = true;
+                                    break;
+                                case ('2'):
+                                    Properties.Unlocked.Default.C3 = true;
+                                    break;
+                                case ('3'):
+                                    Properties.Unlocked.Default.C4 = true;
+                                    break;
+                                case ('4'):
+                                    Properties.Unlocked.Default.C5 = true;
+                                    break;
+                                case ('5'):
+                                    Properties.Unlocked.Default.C6 = true;
+                                    break;
+                            }
+                            break;
+                    }
+                    Properties.Unlocked.Default.Save();
+                }
+            }
+
             for (int i = 0; i < fileEntries.Length; i++)
             {
                 if (fileEntries[i].Substring(fileEntries[i].LastIndexOf('\\') + 1) == comingfrom)
