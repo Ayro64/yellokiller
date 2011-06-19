@@ -81,7 +81,7 @@ namespace YelloKiller
                         case("MapDel"):
                             return "Êtes-vous sûr de vouloir supprimer ";
                         case ("SaveDel"):
-                            return "Êtes-vous sûr de vouloir effacer\nles données sauvegardées?";
+                            return "Êtes-vous sûr de vouloir effacer\nles données sauvegardées?\n";
                         case ("PausGameRes"):
                             return "Reprendre le jeu";
                         case ("PausGameQuit"):
@@ -231,7 +231,7 @@ namespace YelloKiller
                         case ("MapDel"):
                             return "Sind sie sicher, dass sie\ndie Karte lösen wollen ";
                         case ("SaveDel"):
-                            return "Sind sie sicher, dass sie die\ngespeicherte Dateien lösen wollen?";
+                            return "Sind sie sicher, dass sie die\ngespeicherte Dateien lösen wollen?\n";
                         case ("PausGameRes"):
                             return "Weiter spielen";
                         case ("PausGameQuit"):
@@ -381,7 +381,7 @@ namespace YelloKiller
                         case ("MapDel"):
                             return "Are you sure you want to delete ";
                         case ("SaveDel"):
-                            return "Are you sure you want to delete all saved data?";
+                            return "Are you sure you want to delete all saved data?\n";
                         case ("PausGameRes"):
                             return "Resume play";
                         case ("PausGameQuit"):
