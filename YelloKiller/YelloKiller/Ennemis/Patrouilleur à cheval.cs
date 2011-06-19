@@ -19,7 +19,7 @@ namespace YelloKiller
             Etape = 0;
             parcours = new List<Case>();
             Rectangle = new Rectangle((int)position.X + 1, (int)position.Y + 1, 22, 30);
-            VitesseSprite = 2;
+            VitesseSprite = 4;
             VitesseAnimation = 0.016f;
             Identifiant = id;
         }
