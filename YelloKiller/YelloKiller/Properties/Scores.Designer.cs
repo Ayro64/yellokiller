@@ -37,7 +37,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("90000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("190000")]
         public uint Score_01 {
             get {
                 return ((uint)(this["Score_01"]));
@@ -61,7 +61,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("80000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("180000")]
         public uint Score_02 {
             get {
                 return ((uint)(this["Score_02"]));
@@ -85,7 +85,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("170000")]
         public uint Score_03 {
             get {
                 return ((uint)(this["Score_03"]));
@@ -109,7 +109,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("160000")]
         public uint Score_04 {
             get {
                 return ((uint)(this["Score_04"]));
@@ -133,7 +133,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("150000")]
         public uint Score_05 {
             get {
                 return ((uint)(this["Score_05"]));
@@ -157,7 +157,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("40000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("140000")]
         public uint Score_06 {
             get {
                 return ((uint)(this["Score_06"]));
@@ -181,7 +181,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("130000")]
         public uint Score_07 {
             get {
                 return ((uint)(this["Score_07"]));
@@ -205,7 +205,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("120000")]
         public uint Score_08 {
             get {
                 return ((uint)(this["Score_08"]));
@@ -229,7 +229,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("110000")]
         public uint Score_09 {
             get {
                 return ((uint)(this["Score_09"]));
@@ -253,7 +253,7 @@ namespace YelloKiller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("105000")]
         public uint Score_10 {
             get {
                 return ((uint)(this["Score_10"]));
