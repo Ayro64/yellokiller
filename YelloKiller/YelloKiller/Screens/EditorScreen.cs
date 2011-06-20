@@ -396,8 +396,15 @@ namespace YelloKiller
         public void SauvegardeMap()
         {
             string[] existinglevels = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*.solo"), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*.coop"));
-            existinglevels = LoadMapMenuScreen.ConcatenerTableaux(existinglevels, Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"));
-            existinglevels = LoadMapMenuScreen.ConcatenerTableaux(existinglevels, Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"));
+            try
+            {
+                existinglevels = LoadMapMenuScreen.ConcatenerTableaux(existinglevels, Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"));
+                existinglevels = LoadMapMenuScreen.ConcatenerTableaux(existinglevels, Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"));
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory("Levels");
+            }
 
             if (enableOrigine1 && enableOrigine2 || _originesBoss.Count == 0)
                 afficherMessageErreur = true;

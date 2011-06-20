@@ -60,7 +60,16 @@ namespace YelloKiller
                 this.salaire = 0;
             score = Langue.tr("Score") + this.salaire;
 
-            string[] fileEntries = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*." + comingfrom.Substring(comingfrom.Length - 4)), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*." + comingfrom.Substring(comingfrom.Length - 4)));
+            string[] fileEntries;
+
+            try
+            {
+                fileEntries = LoadMapMenuScreen.ConcatenerTableaux(Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*." + comingfrom.Substring(comingfrom.Length - 4)), Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*." + comingfrom.Substring(comingfrom.Length - 4)));
+            }
+            catch (DirectoryNotFoundException)
+            {
+                fileEntries = Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story", "*." + comingfrom.Substring(comingfrom.Length - 4));
+            }
 
             foreach (string str in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Story"))
             {

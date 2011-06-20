@@ -45,9 +45,15 @@ namespace YelloKiller
                 storyMissions.Add(file);
                 fileEntries.Add(file);
             }
-
-            foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"))
-                fileEntries.Add(file);
+            try
+            {
+                foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.solo"))
+                    fileEntries.Add(file);
+            }
+            catch (DirectoryNotFoundException)
+            {
+ 
+            }
 
             unlocked = new bool[6];
             unlocked[0] = Properties.Unlocked.Default.S1;
