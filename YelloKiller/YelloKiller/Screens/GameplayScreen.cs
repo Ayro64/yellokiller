@@ -313,11 +313,6 @@ namespace YelloKiller
                     audio.Close();
                 }
 
-                if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.C))
-                    SauvegarderCheckPoint();
-
-                if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.O))
-                    ChargerCheckPoint();
 
                 audio.Update(gameTime);
             }
@@ -423,13 +418,13 @@ namespace YelloKiller
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1, game), ControllingPlayer, true);
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.W))
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.F7) && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl))
             {
                 audio.Close();
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, ennemisTues - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
             }
 
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.G))
+            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.F8) && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl))
             {
                 audio.Close();
                 Mourir();
