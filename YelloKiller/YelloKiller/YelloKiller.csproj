@@ -171,7 +171,6 @@
     <Compile Include="Services\ServiceHelper.cs" />
     <Compile Include="Services\Temps.cs" />
     <Compile Include="Services\Text.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="Properties\Unlocked.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
