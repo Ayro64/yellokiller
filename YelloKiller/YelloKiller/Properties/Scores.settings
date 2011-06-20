@@ -6,61 +6,61 @@
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_01" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">90000</Value>
+      <Value Profile="(Default)">190000</Value>
     </Setting>
     <Setting Name="Name_02" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_02" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">80000</Value>
+      <Value Profile="(Default)">180000</Value>
     </Setting>
     <Setting Name="Name_03" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_03" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">70000</Value>
+      <Value Profile="(Default)">170000</Value>
     </Setting>
     <Setting Name="Name_04" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_04" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">60000</Value>
+      <Value Profile="(Default)">160000</Value>
     </Setting>
     <Setting Name="Name_05" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_05" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">50000</Value>
+      <Value Profile="(Default)">150000</Value>
     </Setting>
     <Setting Name="Name_06" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_06" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">40000</Value>
+      <Value Profile="(Default)">140000</Value>
     </Setting>
     <Setting Name="Name_07" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_07" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">30000</Value>
+      <Value Profile="(Default)">130000</Value>
     </Setting>
     <Setting Name="Name_08" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_08" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">20000</Value>
+      <Value Profile="(Default)">120000</Value>
     </Setting>
     <Setting Name="Name_09" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_09" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">10000</Value>
+      <Value Profile="(Default)">110000</Value>
     </Setting>
     <Setting Name="Name_10" Type="System.String" Scope="User">
       <Value Profile="(Default)">Kassociés</Value>
     </Setting>
     <Setting Name="Score_10" Type="System.UInt32" Scope="User">
-      <Value Profile="(Default)">5000</Value>
+      <Value Profile="(Default)">105000</Value>
     </Setting>
     <Setting Name="Map_01" Type="System.String" Scope="User">
       <Value Profile="(Default)">Yello Killer</Value>

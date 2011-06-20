@@ -16,13 +16,12 @@ namespace YelloKiller
         MenuEntry abortMenuEntry;
         YellokillerGame game;
 
-        string menuTitle = Langue.tr("Solo"), level = Langue.tr("Level");
+        string menuTitle = Langue.tr("Solo");
         int selectedEntry = 0, page = 0, maxpage;
         ContentManager content;
         Texture2D levelSelectBkground, blankTexture, padlock;
         Color Color;
         Color titleColor;
-
 
         #endregion
 

@@ -52,8 +52,6 @@ namespace YelloKiller
                             return "Choix du Niveau\n     Co-op";
                         case ("Solo"):
                             return "Choix du Niveau\n     Solo";
-                        case ("Level"):
-                            return "Niveau";
                         case ("BckToMenu"):
                             return "Retour au Menu Principal";
                         case ("Back"):
@@ -202,8 +200,6 @@ namespace YelloKiller
                             return "Kartenauswahl\n    Koop";
                         case ("Solo"):
                             return "Kartenauswahl\n    Solo";
-                        case ("Level"):
-                            return "Karte";
                         case ("BckToMenu"):
                             return "Zuruck zum Hauptmenu";
                         case ("Back"):
@@ -352,8 +348,6 @@ namespace YelloKiller
                             return "Select a level\n     Co-op";
                         case ("Solo"):
                             return "Select a level\n     Solo";
-                        case ("Level"):
-                            return "Level";
                         case ("BckToMenu"):
                             return "Back to Main Menu";
                         case ("Back"):
