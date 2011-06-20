@@ -46,8 +46,15 @@ namespace YelloKiller
                 fileEntries.Add(file);
             }
 
-            foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"))
-                fileEntries.Add(file);
+            try
+            {
+                foreach (string file in Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Levels", "*.coop"))
+                    fileEntries.Add(file);
+            }
+            catch (DirectoryNotFoundException)
+            {
+
+            }
 
             unlocked = new bool[6];
             unlocked[0] = Properties.Unlocked.Default.C1;
