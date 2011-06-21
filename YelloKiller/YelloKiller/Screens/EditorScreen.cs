@@ -742,33 +742,33 @@ namespace YelloKiller
                     rotationsDesStatues.RemoveAt(t);
                 }
 
-            for (int prout = 0; prout < bonus.Count; prout++)
-                if (bonus[prout].X == curseur.Position.X + camera.X && bonus[prout].Y == curseur.Position.Y + camera.Y)
-                    bonus.RemoveAt(prout);
+            for (int i = 0; i < bonus.Count; i++)
+                if (bonus[i].X == curseur.Position.X + camera.X && bonus[i].Y == curseur.Position.Y + camera.Y)
+                    bonus.RemoveAt(i);
 
-            for (int caca = 0; caca < interrupteurs.Count; caca++)
-                if (interrupteurs[caca].position.X == curseur.Position.X + camera.X && interrupteurs[caca].position.Y == curseur.Position.Y + camera.Y)
+            for (int i = 0; i < interrupteurs.Count; i++)
+                if (interrupteurs[i].position.X == curseur.Position.X + camera.X && interrupteurs[i].position.Y == curseur.Position.Y + camera.Y)
                 {
-                    switch (interrupteurs[caca].rotation)
+                    switch (interrupteurs[i].rotation)
                     {
                         case 0:
-                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y, (int)interrupteurs[caca].PortePosition.X].EstFranchissable = true;
-                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y, (int)interrupteurs[caca].PortePosition.X + 1].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[i].PortePosition.Y, (int)interrupteurs[i].PortePosition.X].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[i].PortePosition.Y, (int)interrupteurs[i].PortePosition.X + 1].EstFranchissable = true;
                             break;
                         case 1:
-                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y, (int)interrupteurs[caca].PortePosition.X - 1].EstFranchissable = true;
-                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y + 1, (int)interrupteurs[caca].PortePosition.X - 1].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[i].PortePosition.Y, (int)interrupteurs[i].PortePosition.X - 1].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[i].PortePosition.Y + 1, (int)interrupteurs[i].PortePosition.X - 1].EstFranchissable = true;
                             break;
                         case 2:
-                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y - 1, (int)interrupteurs[caca].PortePosition.X - 1].EstFranchissable = true;
-                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y - 1, (int)interrupteurs[caca].PortePosition.X - 2].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[i].PortePosition.Y - 1, (int)interrupteurs[i].PortePosition.X - 1].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[i].PortePosition.Y - 1, (int)interrupteurs[i].PortePosition.X - 2].EstFranchissable = true;
                             break;
                         case 3:
-                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y - 1, (int)interrupteurs[caca].PortePosition.X].EstFranchissable = true;
-                            carte.Cases[(int)interrupteurs[caca].PortePosition.Y - 2, (int)interrupteurs[caca].PortePosition.X].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[i].PortePosition.Y - 1, (int)interrupteurs[i].PortePosition.X].EstFranchissable = true;
+                            carte.Cases[(int)interrupteurs[i].PortePosition.Y - 2, (int)interrupteurs[i].PortePosition.X].EstFranchissable = true;
                             break;
                     }
-                    interrupteurs.RemoveAt(caca);
+                    interrupteurs.RemoveAt(i);
                 }
         }
 
