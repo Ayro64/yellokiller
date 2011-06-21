@@ -30,9 +30,9 @@ namespace YelloKiller
             MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, Heros heross1, Heros heross2, Rectangle camera, List<EnnemiMort> morts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
+        public void Update(GameTime gameTime, Carte carte, Heros heros1, Heros heros2, Rectangle camera, List<EnnemiMort> morts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
         {
-            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 23, 30), new Rectangle((int)Index * 24, 65, 23, 30), new Rectangle((int)Index * 24, 98, 23, 30), new Rectangle((int)Index * 24, 34, 23, 30), heross1, heross2, morts, fumeeHeros1, fumeeHeros2);
+            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 23, 30), new Rectangle((int)Index * 24, 65, 23, 30), new Rectangle((int)Index * 24, 98, 23, 30), new Rectangle((int)Index * 24, 34, 23, 30), heros1, heros2, morts, fumeeHeros1, fumeeHeros2);
 
             if (parcours.Count > 1 && RetourneCheminNormal)
                 if (Chemin == null || Chemin.Count == 0)
@@ -43,17 +43,17 @@ namespace YelloKiller
                     Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
                 }
 
-            if (Collision(heross1.Rectangle, fumeeHeros1, fumeeHeros2))
+            if (Collision(heros1.Rectangle, fumeeHeros1, fumeeHeros2))
             {
                 Depart = carte.Cases[(int)positionDesiree.Y / 28, (int)positionDesiree.X / 28];
-                Arrivee = carte.Cases[heross1.Y, heross1.X];
+                Arrivee = carte.Cases[heros1.Y, heros1.X];
                 Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
                 RetourneCheminNormal = false;
             }
-            else if (heross2 != null && Collision(heross2.Rectangle, fumeeHeros1, fumeeHeros2))
+            else if (heros2 != null && Collision(heros2.Rectangle, fumeeHeros1, fumeeHeros2))
             {
                 Depart = carte.Cases[(int)positionDesiree.Y / 28, (int)positionDesiree.X / 28];
-                Arrivee = carte.Cases[heross2.Y, heross2.X];
+                Arrivee = carte.Cases[heros2.Y, heros2.X];
                 Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
                 RetourneCheminNormal = false;
             }

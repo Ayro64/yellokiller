@@ -111,7 +111,7 @@ namespace YelloKiller
             this.maxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, ContentManager content, Heros heross2, List<Interrupteur> interrupteurs)
+        public void Update(GameTime gameTime, Carte carte, ref Rectangle camera, MoteurParticule particule, List<Shuriken> _shuriken, ContentManager content, Heros heros2, List<Interrupteur> interrupteurs)
         {
             rectangle.X = (int)position.X + 1;
             rectangle.Y = (int)position.Y + 1;
@@ -239,22 +239,22 @@ namespace YelloKiller
                     {
                         if (Regarde_Bas)
                         {
-                            AllerEnBas(carte, heross2, interrupteurs);
+                            AllerEnBas(carte, heros2, interrupteurs);
                             AudioEngine.SoundBank.PlayCue("sabre");
                         }
                         else if (Regarde_Haut)
                         {
-                            AllerEnHaut(carte, heross2, interrupteurs);
+                            AllerEnHaut(carte, heros2, interrupteurs);
                             AudioEngine.SoundBank.PlayCue("sabre");
                         }
                         else if (Regarde_Gauche)
                         {
-                            AllerAGauche(carte, heross2, interrupteurs);
+                            AllerAGauche(carte, heros2, interrupteurs);
                             AudioEngine.SoundBank.PlayCue("sabre");
                         }
                         else if (Regarde_Droite)
                         {
-                            AllerADroite(carte, heross2, interrupteurs);
+                            AllerADroite(carte, heros2, interrupteurs);
                             AudioEngine.SoundBank.PlayCue("sabre");
                         }
 
@@ -394,16 +394,16 @@ namespace YelloKiller
                 }
 
                 if (ServiceHelper.Get<IKeyboardService>().TouchePressee(up) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().AllerEnHaut() : false))
-                    AllerEnHaut(carte, heross2, interrupteurs);
+                    AllerEnHaut(carte, heros2, interrupteurs);
 
                 else if (ServiceHelper.Get<IKeyboardService>().TouchePressee(down) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().AllerEnBas() : false))                
-                    AllerEnBas(carte, heross2, interrupteurs);
+                    AllerEnBas(carte, heros2, interrupteurs);
 
                 else if (ServiceHelper.Get<IKeyboardService>().TouchePressee(left) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().AllerAGauche() : false))                
-                    AllerAGauche(carte, heross2, interrupteurs);
+                    AllerAGauche(carte, heros2, interrupteurs);
 
                 else if (ServiceHelper.Get<IKeyboardService>().TouchePressee(right) || (NumeroHero == 1 ? ServiceHelper.Get<IGamePadService>().AllerADroite() : false))                
-                    AllerADroite(carte, heross2, interrupteurs);
+                    AllerADroite(carte, heros2, interrupteurs);
             }
         }
 
@@ -537,10 +537,10 @@ namespace YelloKiller
             }
         }
 
-        private void AllerEnBas(Carte carte, Heros heross2, List<Interrupteur> interrupteurs)
+        private void AllerEnBas(Carte carte, Heros heros2, List<Interrupteur> interrupteurs)
         {
             if (position.Y < 28 * (Taille_Map.HAUTEUR_MAP - 1) && carte.Cases[Y + 1, X].EstFranchissable &&
-                (heross2 == null ? true : (position.X != heross2.PositionDesiree.X || position.Y + 28 != heross2.PositionDesiree.Y)))
+                (heros2 == null ? true : (position.X != heros2.PositionDesiree.X || position.Y + 28 != heros2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
                 positionDesiree.X = position.X;
@@ -553,10 +553,10 @@ namespace YelloKiller
             Regarde_Gauche = false;
         }
 
-        private void AllerEnHaut(Carte carte, Heros heross2, List<Interrupteur> interrupteurs)
+        private void AllerEnHaut(Carte carte, Heros heros2, List<Interrupteur> interrupteurs)
         {
             if (position.Y > 5 && carte.Cases[Y - 1, X].EstFranchissable &&
-                (heross2 == null ? true : (position.X != heross2.PositionDesiree.X || position.Y - 28 != heross2.PositionDesiree.Y)))
+                (heros2 == null ? true : (position.X != heros2.PositionDesiree.X || position.Y - 28 != heros2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
                 positionDesiree.X = position.X;
@@ -569,10 +569,10 @@ namespace YelloKiller
             Regarde_Gauche = false;
         }
 
-        private void AllerAGauche(Carte carte, Heros heross2, List<Interrupteur> interrupteurs)
+        private void AllerAGauche(Carte carte, Heros heros2, List<Interrupteur> interrupteurs)
         {
             if (position.X > 8 && carte.Cases[Y, X - 1].EstFranchissable &&
-                (heross2 == null ? true : (position.X - 28 != heross2.PositionDesiree.X || position.Y != heross2.PositionDesiree.Y)))
+                (heros2 == null ? true : (position.X - 28 != heros2.PositionDesiree.X || position.Y != heros2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
                 positionDesiree.X = position.X - 28;
@@ -585,10 +585,10 @@ namespace YelloKiller
             Regarde_Gauche = true;
         }
 
-        private void AllerADroite(Carte carte, Heros heross2, List<Interrupteur> interrupteurs)
+        private void AllerADroite(Carte carte, Heros heros2, List<Interrupteur> interrupteurs)
         {
             if (position.X < 28 * Taille_Map.LARGEUR_MAP - 23 && carte.Cases[Y, X + 1].EstFranchissable &&
-                (heross2 == null ? true : (position.X + 28 != heross2.PositionDesiree.X || position.Y != heross2.PositionDesiree.Y)))
+                (heros2 == null ? true : (position.X + 28 != heros2.PositionDesiree.X || position.Y != heros2.PositionDesiree.Y)))
             {
                 AudioEngine.SoundBank.PlayCue("pasBois");
                 positionDesiree.X = position.X + 28;

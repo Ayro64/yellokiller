@@ -7,7 +7,7 @@ namespace YelloKiller
 {
     class Informations
     {
-        Texture2D shuriken, hadoken, fumigene, traineeDeFlamme, plus, moins, heross1, heross2;
+        Texture2D shuriken, hadoken, fumigene, traineeDeFlamme, plus, moins, heros1, heros2;
         Rectangle[] rectangles;
         int[] munitions;
         int limite = Taille_Ecran.HAUTEUR_ECRAN;
@@ -69,7 +69,7 @@ namespace YelloKiller
                     munitions[i - 2]++;
         }
 
-        public void Draw(SpriteBatch spriteBatch, SpriteFont font, bool heross1Existe, bool heross2Existe)
+        public void Draw(SpriteBatch spriteBatch, SpriteFont font, bool heros1Existe, bool heros2Existe)
         {
             spriteBatch.Draw(moins, rectangles[0], Color.White);
             spriteBatch.DrawString(font, "SALAIRE", new Vector2(75, limite - 70), Color.Red);
@@ -81,9 +81,9 @@ namespace YelloKiller
             spriteBatch.Draw(fumigene, new Vector2(620, limite - 85), Color.White);
             spriteBatch.Draw(traineeDeFlamme, new Vector2(790, limite - 85), Color.White);
 
-            if (heross1Existe)
+            if (heros1Existe)
             {
-                spriteBatch.Draw(heross1, new Vector2(210, limite - 70), Color.White);
+                spriteBatch.Draw(heros1, new Vector2(210, limite - 70), Color.White);
 
                 spriteBatch.Draw(moins, rectangles[2], Color.White);
                 spriteBatch.DrawString(font, munitions[0].ToString(), new Vector2(280, limite - 62), Color.Red);
@@ -102,9 +102,9 @@ namespace YelloKiller
                 spriteBatch.Draw(plus, rectangles[9], Color.White);
             }
 
-            if (heross2Existe)
+            if (heros2Existe)
             {
-                spriteBatch.Draw(heross2, new Vector2(210, limite - 43), Color.White);
+                spriteBatch.Draw(heros2, new Vector2(210, limite - 43), Color.White);
 
                 spriteBatch.Draw(moins, rectangles[10], Color.White);
                 spriteBatch.DrawString(font, munitions[4].ToString(), new Vector2(280, limite - 37), Color.Red);
@@ -132,8 +132,8 @@ namespace YelloKiller
             traineeDeFlamme = content.Load<Texture2D>(@"Barre infos\boule de feu barre");
             plus = content.Load<Texture2D>(@"Barre infos\plus");
             moins = content.Load<Texture2D>(@"Barre infos\moins");
-            heross1 = content.Load<Texture2D>(@"Barre infos\Heros1 migna");
-            heross2 = content.Load<Texture2D>(@"Barre infos\Heros2 migna");
+            heros1 = content.Load<Texture2D>(@"Barre infos\Heros1 migna");
+            heros2 = content.Load<Texture2D>(@"Barre infos\Heros2 migna");
         }
     }
 }
