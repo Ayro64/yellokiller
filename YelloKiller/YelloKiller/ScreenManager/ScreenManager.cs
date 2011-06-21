@@ -121,9 +121,7 @@ namespace YelloKiller
 
             // Tell each of the screens to load their content.
             foreach (GameScreen screen in screens)
-            {
                 screen.LoadContent();
-            }
         }
 
 
@@ -134,9 +132,7 @@ namespace YelloKiller
         {
             // Tell each of the screens to unload their content.
             foreach (GameScreen screen in screens)
-            {
                 screen.UnloadContent();
-            }
         }
 
 
@@ -245,9 +241,7 @@ namespace YelloKiller
 
             // If we have a graphics device, tell the screen to load content.
             if (isInitialized)
-            {
                 screen.LoadContent();
-            }
 
             screens.Add(screen);
         }
@@ -264,9 +258,7 @@ namespace YelloKiller
             
             // If we have a graphics device, tell the screen to load content.
             if (isInitialized)
-            {
                 screen.LoadContent();
-            }
 
             screens.Add(screen);
         }

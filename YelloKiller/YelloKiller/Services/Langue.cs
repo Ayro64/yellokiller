@@ -91,10 +91,6 @@ namespace YelloKiller
                             return "Êtes-vous sûr de vouloir quitter l'édition?\nToute édition non sauvegardée sera perdue.\n";
                         case ("GameMsgBox"):
                             return "Êtes-vous sûr de vouloir quitter la partie?\n";
-                        case ("SoundDefault"):
-                            return "Défault";
-                        case ("SoundNone"):
-                            return "Aucun";
                         case ("OptLan"):
                             return "Langage: ";
                         case ("OptSound"):
@@ -239,10 +235,6 @@ namespace YelloKiller
                             return "Sind Sie sicher, dass sie zum bearbeiten aufhoren mochten?\nAlle ungespeicherte Anderungenser werden verliert.\n";
                         case ("GameMsgBox"):
                             return "Sind sie sicher, dass Sie den Spiel verlassen mochten?\n";
-                        case ("SoundDefault"):
-                            return "Standard";
-                        case ("SoundNone"):
-                            return "Keine";
                         case ("OptLan"):
                             return "Sprache: ";
                         case ("OptSound"):
@@ -387,10 +379,6 @@ namespace YelloKiller
                             return "Are you sure you want to quit the map editor?\nAll unsaved changes will be lost.\n";
                         case ("GameMsgBox"):
                             return "Are you sure you want to quit the game?\n";
-                        case ("SoundDefault"):
-                            return "Default";
-                        case ("SoundNone"):
-                            return "None";
                         case ("OptLan"):
                             return "Language: ";
                         case ("OptSound"):
