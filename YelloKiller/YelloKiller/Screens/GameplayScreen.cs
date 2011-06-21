@@ -305,7 +305,7 @@ namespace YelloKiller
 
                 Moteur_physique.Collisions_Heros_Interrupteurs(heros1, heros2, ref interrupteurs, AudioEngine.SoundBank, carte);
 
-                if (_boss.Count == 0 && (heros1.EstAuPointDeDepart || heros2 != null && heros2.EstAuPointDeDepart))
+                if (!Alerte && _boss.Count == 0 && (heros1.EstAuPointDeDepart || heros2 != null && heros2.EstAuPointDeDepart))
                 {
                     LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, ennemisTues - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
                     audio.Close();
@@ -411,18 +411,6 @@ namespace YelloKiller
                 AudioEngine.SoundBank.PlayCue("menuBouge");
                 ScreenManager.AddScreen(new Pausebckground(), ControllingPlayer, true);
                 ScreenManager.AddScreen(new PauseMenuScreen(0, 1, game), ControllingPlayer, true);
-            }
-
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.F7) && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl))
-            {
-                audio.Close();
-                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new GameWin(nomDeCarte, (uint)carte.Salaire, temps, ennemisTues - (uint)(_gardes.Count + _patrouilleurs.Count + _patrouilleurs_a_chevaux.Count), retries, game));
-            }
-
-            if (ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.F8) && ServiceHelper.Get<IKeyboardService>().TouchePressee(Keys.LeftControl))
-            {
-                audio.Close();
-                Mourir();
             }
         }
         #endregion
