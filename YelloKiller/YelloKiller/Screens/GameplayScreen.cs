@@ -432,11 +432,11 @@ namespace YelloKiller
             StreamWriter file = new StreamWriter("checkTemp.tmp");
 
             file.WriteLine(retries);
-            file.WriteLine("Hero 1");
+            file.WriteLine("Heros 1");
             heros1.SauvegarderCheckPoint(ref file);
             if (heros2 != null)
             {
-                file.WriteLine("Hero 2");
+                file.WriteLine("Heros 2");
                 heros2.SauvegarderCheckPoint(ref file);
             }
 
@@ -486,7 +486,7 @@ namespace YelloKiller
 
             heros1.ChargerCheckPoint(ref file);
             banana = file.ReadLine();
-            if (banana == "Hero 2")
+            if (banana == "Heros 2")
             {
                 heros2.ChargerCheckPoint(ref file);
                 banana = file.ReadLine();
