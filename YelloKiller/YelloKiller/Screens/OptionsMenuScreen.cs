@@ -23,7 +23,6 @@ namespace YelloKiller
 
         MenuEntry languageMenuEntry;
         MenuEntry fullScreenMenuEntry;
-        MenuEntry sonMenuEntry;
         MenuEntry soundVolumeMenuEntry;
         MenuEntry fxVolumeMenuEntry;
         MenuEntry eraseMenuEntry;
@@ -33,13 +32,11 @@ namespace YelloKiller
         int mod;
 
         string[] language = { "Français", "Deutsch", "English" };
-        string[] son = { Langue.tr("SoundDefault"), "Player", Langue.tr("SoundNone") };
 
         uint currentLanguage;
         bool fullScreen;
         bool ToggleOK;
         bool eraselected = false;
-        uint currentSon;
         float soundVolume;
         uint fxVolume;
 
@@ -64,7 +61,6 @@ namespace YelloKiller
             currentLanguage = Properties.Settings.Default.Language;
             fullScreen = Properties.Settings.Default.FullScreen;
             ToggleOK = true;
-            currentSon = Properties.Settings.Default.AudioType;
 
             // soundVolume = (uint)(MediaPlayer.Volume * 10);
             soundVolume = Properties.Settings.Default.MusicVolume;
@@ -75,7 +71,6 @@ namespace YelloKiller
             // Create our menu entries.
             languageMenuEntry = new MenuEntry(string.Empty);
             fullScreenMenuEntry = new MenuEntry(string.Empty);
-            sonMenuEntry = new MenuEntry(string.Empty);
             soundVolumeMenuEntry = new MenuEntry(string.Empty);
             fxVolumeMenuEntry = new MenuEntry(string.Empty);
             eraseMenuEntry = new MenuEntry(string.Empty);
@@ -88,14 +83,12 @@ namespace YelloKiller
 
             fullScreenMenuEntry.Selected += FullScreenMenuEntrySelected;
 
-            sonMenuEntry.Selected += SonMenuEntrySelected;
             eraseMenuEntry.Selected += EraseMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
             MenuEntries.Add(languageMenuEntry);
             MenuEntries.Add(fullScreenMenuEntry);
-            MenuEntries.Add(sonMenuEntry);
             MenuEntries.Add(soundVolumeMenuEntry);
             MenuEntries.Add(fxVolumeMenuEntry);
             MenuEntries.Add(eraseMenuEntry);
@@ -111,14 +104,12 @@ namespace YelloKiller
         {
             Properties.Settings.Default.Language = currentLanguage;
             Properties.Settings.Default.FullScreen = fullScreen;
-            Properties.Settings.Default.AudioType = currentSon;
             Properties.Settings.Default.MusicVolume = soundVolume;
             Properties.Settings.Default.FXVolume = fxVolume;
 
             this.TitleUpdate(Langue.tr("Options"));
             languageMenuEntry.Text = Langue.tr("OptLan") + language[currentLanguage];
             fullScreenMenuEntry.Text = Langue.tr("FullScr") + (fullScreen ? Langue.tr("Yes") : Langue.tr("No"));
-            sonMenuEntry.Text = Langue.tr("OptSound") + son[currentSon];
             soundVolumeMenuEntry.Text = Langue.tr("OptMusic") + (uint)soundVolume;
             fxVolumeMenuEntry.Text = Langue.tr("OptFX") + fxVolume;
             eraseMenuEntry.Text = Langue.tr("Erase");
@@ -225,15 +216,6 @@ namespace YelloKiller
             ToggleOK = !ToggleOK;
         }
 
-        /// <summary>
-        /// Event handler for when the Language menu entry is selected.
-        /// </summary>
-        void SonMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            currentSon = (uint)((currentSon + 1) % son.Length);
-            SetMenuEntryText();
-        }
-
         void EraseMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             if (!eraselected)
@@ -297,7 +279,7 @@ namespace YelloKiller
                 spriteBatch.Begin();
                 // Rectangle noir des entrées menu.
                 spriteBatch.Draw(blankTexture,
-                                 new Rectangle(115, 220, 330, 250),
+                                 new Rectangle(115, 220, 330, 220),
                                  new Color(0, 0, 0, (byte)(TransitionAlpha * 2 / 3)));
 
                 // Celui du titre.

@@ -57,6 +57,7 @@ namespace YelloKiller
                 this.ExitScreen();
                 LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
                                                                new MainMenuScreen(game));
+                ScreenManager.AudioEngine.LoadContent(game.Content);
             }
         }
 
@@ -81,6 +82,7 @@ namespace YelloKiller
             if (ServiceHelper.Get<IKeyboardService>().ToucheAEtePressee(Keys.Enter) || ServiceHelper.Get<IGamePadService>().Tirer())
             {
                 VLC.Stop();
+                ScreenManager.AudioEngine.LoadContent(game.Content);
                 LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
                                                                new MainMenuScreen(game));
             }
