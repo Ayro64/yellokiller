@@ -715,10 +715,10 @@ namespace YelloKiller
 
 
                 case TypeCase.Joueur1:
-                    nomTexture = "origine_heross1";
+                    nomTexture = "origine_heros1";
                     break;
                 case TypeCase.Joueur2:
-                    nomTexture = "origine_heross2";
+                    nomTexture = "origine_heros2";
                     break;
                 case TypeCase.Garde:
                     nomTexture = "origine_garde";

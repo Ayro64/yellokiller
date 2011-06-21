@@ -29,20 +29,20 @@ namespace YelloKiller
 
         public int Vie { get; set; }
 
-        public void Update(GameTime gameTime, List<Shuriken> shuriken, Carte carte, Heros heross1, Heros heross2, Rectangle camera, List<EnnemiMort> morts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
+        public void Update(GameTime gameTime, List<Shuriken> shuriken, Carte carte, Heros heros1, Heros heros2, Rectangle camera, List<EnnemiMort> morts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
         {
-            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), heross1, heross2, morts, fumeeHeros1, fumeeHeros2);
+            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), heros1, heros2, morts, fumeeHeros1, fumeeHeros2);
 
-            if (!RetourneCheminNormal && Collision(heross1.Rectangle, fumeeHeros1, fumeeHeros2))
+            if (!RetourneCheminNormal && Collision(heros1.Rectangle, fumeeHeros1, fumeeHeros2))
             {
                 Depart = carte.Cases[Y, X];
-                Arrivee = carte.Cases[heross1.Y, heross1.X];
+                Arrivee = carte.Cases[heros1.Y, heros1.X];
                 Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
             }
-            else if (!RetourneCheminNormal && heross2 != null && (Collision(heross2.Rectangle, fumeeHeros1, fumeeHeros2)))
+            else if (!RetourneCheminNormal && heros2 != null && (Collision(heros2.Rectangle, fumeeHeros1, fumeeHeros2)))
             {
                 Depart = carte.Cases[Y, X];
-                Arrivee = carte.Cases[heross2.Y, heross2.X];
+                Arrivee = carte.Cases[heros2.Y, heros2.X];
                 Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
             }
 
@@ -57,17 +57,17 @@ namespace YelloKiller
                 RetourneCheminNormal = false;
 
 
-            IA.Esquive_Shuriken.Boss_Esquive_Shuriken(heross1, this, shuriken, carte, camera);
+            IA.Esquive_Shuriken.Boss_Esquive_Shuriken(heros1, this, shuriken, carte, camera);
 
             if (Vie < 5 && Chemin.Count == 0)
             {
-                if (heross1.Regarde_Bas && position.Y > heross1.position.Y)
+                if (heros1.Regarde_Bas && position.Y > heros1.position.Y)
                     SourceRectangle = new Rectangle(26, 0, 16, 24);
-                else if (heross1.Regarde_Gauche && position.X < heross1.position.X)
+                else if (heros1.Regarde_Gauche && position.X < heros1.position.X)
                     SourceRectangle = new Rectangle(26, 33, 16, 24);
-               else if (heross1.Regarde_Haut && position.Y < heross1.position.Y)
+               else if (heros1.Regarde_Haut && position.Y < heros1.position.Y)
                     SourceRectangle = new Rectangle(26, 64, 16, 24);
-                else if (heross1.Regarde_Droite && position.X > heross1.position.X)
+                else if (heros1.Regarde_Droite && position.X > heros1.position.X)
                     SourceRectangle = new Rectangle(26, 97, 16, 24);
             }
         }

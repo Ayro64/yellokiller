@@ -21,22 +21,22 @@ namespace YelloKiller
             MaxIndex = maxIndex;
         }
 
-        public void Update(GameTime gameTime, Carte carte, Heros heross1, Heros heross2, Rectangle camera, List<EnnemiMort> ennemisMorts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
+        public void Update(GameTime gameTime, Carte carte, Heros heros1, Heros heros2, Rectangle camera, List<EnnemiMort> ennemisMorts, Rectangle fumeeHeros1, Rectangle fumeeHeros2)
         {
-            if (Collision(heross1.Rectangle, fumeeHeros1, fumeeHeros2))
+            if (Collision(heros1.Rectangle, fumeeHeros1, fumeeHeros2))
             {
                 Depart = carte.Cases[Y, X];
-                Arrivee = carte.Cases[heross1.Y, heross1.X];
+                Arrivee = carte.Cases[heros1.Y, heros1.X];
                 Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
             }
-            else if (heross2 != null && (Collision(heross2.Rectangle, fumeeHeros1, fumeeHeros2)))
+            else if (heros2 != null && (Collision(heros2.Rectangle, fumeeHeros1, fumeeHeros2)))
             {
                 Depart = carte.Cases[Y, X];
-                Arrivee = carte.Cases[heross2.Y, heross2.X];
+                Arrivee = carte.Cases[heros2.Y, heros2.X];
                 Chemin = Pathfinding.CalculChemin(carte, Depart, Arrivee);
             }
 
-            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), heross1, heross2, ennemisMorts, fumeeHeros1, fumeeHeros2);            
+            base.Update(gameTime, new Rectangle((int)Index * 24, 0, 16, 24), new Rectangle((int)Index * 24, 64, 16, 24), new Rectangle((int)Index * 24, 97, 16, 24), new Rectangle((int)Index * 24, 33, 16, 24), heros1, heros2, ennemisMorts, fumeeHeros1, fumeeHeros2);            
         }
     }
 }

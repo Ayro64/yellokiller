@@ -54,36 +54,36 @@ namespace YelloKiller
 
         #region Timer heros 1
 
-        private static double timer_heross1 = 0;
+        private static double timer_heros1 = 0;
 
         public static double Timer_Hero1
         {
-            get { return timer_heross1; }
-            set { timer_heross1 = value; }
+            get { return timer_heros1; }
+            set { timer_heros1 = value; }
         }
 
-        private static bool enable_timer_heross1 = false;
+        private static bool enable_timer_heros1 = false;
         public static bool Enable_Timer_Hero1
         {
-            get { return enable_timer_heross1; }
-            set { enable_timer_heross1 = value; }
+            get { return enable_timer_heros1; }
+            set { enable_timer_heros1 = value; }
         }
         #endregion
 
         #region Timer heros 2
-        private static double timer_heross2 = 0;
+        private static double timer_heros2 = 0;
 
         public static double Timer_Hero2
         {
-            get { return timer_heross2; }
-            set { timer_heross2 = value; }
+            get { return timer_heros2; }
+            set { timer_heros2 = value; }
         }
 
-        private static bool enable_timer_heross2 = false;
+        private static bool enable_timer_heros2 = false;
         public static bool Enable_Timer_Hero2
         {
-            get { return enable_timer_heross2; }
-            set { enable_timer_heross2 = value; }
+            get { return enable_timer_heros2; }
+            set { enable_timer_heros2 = value; }
         }
         #endregion
 
@@ -256,9 +256,9 @@ namespace YelloKiller
             if (IsActive)
             {
                 if (Enable_Timer_Hero1)
-                    timer_heross1 += gameTime.ElapsedGameTime.TotalSeconds;
+                    timer_heros1 += gameTime.ElapsedGameTime.TotalSeconds;
                 if (Enable_Timer_Hero2)
-                    timer_heross2 += gameTime.ElapsedGameTime.TotalSeconds;
+                    timer_heros2 += gameTime.ElapsedGameTime.TotalSeconds;
 
                 temps += gameTime.ElapsedGameTime.TotalSeconds;
                 AudioEngine.Update();
