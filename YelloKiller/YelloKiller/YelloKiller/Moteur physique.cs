@@ -149,6 +149,8 @@ namespace YelloKiller
                     {
                         _Boss[i].Vie = 5;
                         morts.Add(new EnnemiMort(new Vector2(28 * _Boss[i].X, 28 * _Boss[i].Y), content, EnnemiMort.TypeEnnemiMort.boss));
+                        if (_Boss[i].Alerte)
+                            GameplayScreen.Alerte = false;
                         _Boss.RemoveAt(i);
                         soundBank.PlayCue("cri");
                     }
@@ -170,6 +172,8 @@ namespace YelloKiller
                         {
                             _Boss[i].Vie = 5;
                             morts.Add(new EnnemiMort(new Vector2(28 * _Boss[i].X, 28 * _Boss[i].Y), content, EnnemiMort.TypeEnnemiMort.boss));
+                            if (_Boss[i].Alerte)
+                                GameplayScreen.Alerte = false;
                             _Boss.RemoveAt(i);
                             soundBank.PlayCue("cri");
                         }
