@@ -191,7 +191,7 @@ namespace YelloKiller
                         }
                     }
                     for (int j = 0; j < listeShuriken.Count; j++)
-                        if (_Boss[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
+                        if (_Boss.Count > 0 && _Boss[i].Rectangle.Intersects(listeShuriken[j].Rectangle))
                         {
                             // une fois que le shuriken a touché le boss, le boss regarder vers le heros
                             if (listeShuriken[j].Direction == Vector2.UnitY)
